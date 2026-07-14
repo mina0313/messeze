@@ -42,6 +42,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .nav-r{margin-left:auto}
 .nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
 .nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:10px 4px 10px 10px;flex:0 0 auto}
+.nav-burger span{display:block;width:22px;height:2.5px;background:var(--ink);border-radius:2px;margin:4.5px 0;transition:.22s}
+.nav-burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.on span:nth-child(2){opacity:0}
+.nav-burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
 .mega.on{opacity:1;visibility:visible;transform:none}
 .mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
@@ -200,7 +205,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media(max-width:980px){
-  .nav-menu{display:none}.mega{display:none}
+  .nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}
   .phero-in,.fitrow{grid-template-columns:1fr;gap:40px}
   .dt-grid{grid-template-columns:1fr}
   .pr-grid{grid-template-columns:1fr 1fr}
@@ -220,6 +225,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 <a href="../glossary/index.html">용어사전</a>
 </nav>
 <div class="nav-r"><a class="nav-cta" href="../index.html#final">무료 진단 받기</a></div>
+<button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
 </div>
 <div class="mega" id="mega"><div class="wrap mega-in">
 <a class="mega-brand" href="../index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
@@ -245,7 +251,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 </div></div>
 </header>
 <script>
-(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu');if(!p||!t)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);})();
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>
 <div class="wrap crumb"><a href="../services.html">서비스</a><span>›</span><span class="cat">SERVICE 02</span></div>
 <section class="phero"><div class="wrap phero-in">
