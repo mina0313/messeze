@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>messeze · 검색량이 없어도, AI가 먼저 추천하는 회사로</title>
-<meta name="description" content="기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스. 검색량이 없는 제조·B2B 기업도 AI에게 발견되도록.">
+<title>messeze · 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로</title>
+<meta name="description" content="기업의 메시지를 언론과 검색, AI에 지속적으로 축적하는 구독형 기업 PR 서비스. 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,6 +101,37 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   radial-gradient(900px 480px at 88% -10%,rgba(43,92,255,.10),transparent 60%),
   radial-gradient(700px 420px at -8% 30%,rgba(43,92,255,.05),transparent 55%),#fff}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(16,31,63,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(640px 480px at 78% 30%,#000,transparent 75%);pointer-events:none}
+/* hero v2: 전환 타이포 중심 */
+.hero2{max-width:900px;margin:0 auto;text-align:center;position:relative;padding-top:26px}
+.hero2 .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:34px}
+.hero2 .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
+.hero-h .from{display:block;font-size:clamp(17px,2.4vw,25px);font-weight:700;color:var(--mut);letter-spacing:-.02em}
+.hero-h .to{display:block;font-size:clamp(37px,6.4vw,74px);font-weight:800;letter-spacing:-.045em;line-height:1.14;margin-top:16px;color:var(--ink);word-break:keep-all}
+.hero2 .sub2{font-size:clamp(15.5px,2vw,18px);color:var(--body);margin:28px auto 0;max-width:520px;line-height:1.68}
+.hero2 .cta2{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero2 .meta2{margin:34px auto 0;display:flex;justify-content:center;gap:0}
+.hero2 .meta2 div{padding:0 26px;border-right:1px solid var(--line);text-align:center}
+.hero2 .meta2 div:last-child{border-right:0}
+.hero2 .meta2 b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em}
+.hero2 .meta2 span{font-size:12.5px;color:var(--mut);font-weight:600}
+/* wide AI strip */
+.strip-card{max-width:880px;margin:58px auto 0;position:relative}
+.strip-card .scard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-lg);transform:rotate(-.8deg);display:grid;grid-template-columns:1.02fr .98fr;overflow:hidden;text-align:left}
+.strip-card .lab{font-size:11.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;margin-bottom:10px}
+.strip-card .sq{padding:26px 28px}
+.strip-card .sq .qt{font-size:16.5px;font-weight:800;line-height:1.5;letter-spacing:-.01em}
+.strip-card .sq .qm{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--sky);color:var(--cobalt);font-size:12px;font-weight:800;margin-right:8px;vertical-align:-4px}
+.strip-card .sa{padding:26px 28px;background:var(--sky-2);border-left:1px solid var(--line)}
+.strip-card .sa .lab{color:var(--cobalt)}
+.strip-card .ans2{display:flex;gap:10px}
+.strip-card .ans2 .am{flex:0 0 26px;height:26px;border-radius:8px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.strip-card .ans2 p{font-size:14px;color:var(--body);line-height:1.6}
+.strip-card .ans2 b{color:var(--ink)}
+.strip-card .srcs2{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-left:36px}
+.strip-card .srcs2 span{font-size:11.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 10px;display:inline-flex;gap:5px;align-items:center}
+.strip-card .srcs2 i{font-style:normal;color:var(--mint)}
+.strip-card .stick{position:absolute;top:-15px;right:26px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 17px;font-size:12.5px;font-weight:800;box-shadow:var(--sh);display:flex;align-items:center;gap:8px;transform:rotate(2.5deg);z-index:3}
+.strip-card .stick .pk{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(11,191,140,.22)}
 .hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;position:relative;min-height:calc(100vh - 240px)}
 .hero-l .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:28px}
 .hero-l .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
@@ -399,12 +430,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   .qa-r{border-top:1px solid var(--line)}
   .nav-menu{display:none}
 }
+@media (max-width:760px){
+  .strip-card .scard{grid-template-columns:1fr}
+  .strip-card .sa{border-left:0;border-top:1px solid var(--line)}
+}
 @media (max-width:560px){
   .sec,.final{padding:76px 0}
   .hero{padding:56px 0 80px}
-  .hero-meta{flex-wrap:wrap;gap:14px}
-  .hero-meta div{border-right:0;padding-right:0;margin-right:18px}
-  .win{width:100%;left:0}
+  .hero2 .meta2{flex-wrap:wrap;gap:12px}
+  .hero2 .meta2 div{border-right:0;padding:0 10px}
+  .cta2 .btn{flex:1}
   .final-in{padding:40px 26px}
   .hero-cta .btn{flex:1}
   .cmp-r{grid-template-columns:1fr}
@@ -432,7 +467,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
   <div class="mega" id="mega"><div class="wrap mega-in">
-    <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
+    <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
     <div class="mega-col">
       <h5>서비스</h5>
       <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
@@ -469,32 +504,34 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <!-- HERO -->
 <section class="hero">
   <div class="hero-dots"></div>
-  <div class="wrap hero-in">
-    <div class="hero-l rv">
-      <span class="tag"><span class="nd"></span>구독형 기업 PR · AI 가시성 관리</span>
-      <h1>검색량이 없어도,<br><span class="co cu">AI가 먼저 추천하는</span><br>회사로 만듭니다</h1>
-      <p class="sub">홈페이지·보도자료·전문 콘텐츠를 언론과 AI 검색에 매달 축적합니다. 사람에게만 보이던 홍보를, AI가 읽는 홍보로.</p>
-      <div class="hero-cta">
-        <a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a>
-        <a href="#features" class="btn btn-gh">서비스 살펴보기</a>
-      </div>
-      <div class="hero-meta">
-        <div><b>월 구독형</b><span>전담 매니저 관리</span></div>
-        <div><b>3개월~</b><span>AI 반영 기준선</span></div>
-        <div><b>제조·B2B</b><span>핵심 대상 업종</span></div>
-      </div>
+  <div class="wrap hero2 rv">
+    <span class="tag"><span class="nd"></span>구독형 기업 PR · AI 가시성 관리</span>
+    <h1 class="hero-h">
+      <span class="from">사람에게만 보이는 홍보에서,</span>
+      <span class="to">AI가 <span class="co cu">읽고 추천하는</span> 홍보로.</span>
+    </h1>
+    <p class="sub2">기업의 메시지를 언론과 검색, AI에 지속적으로 축적합니다.<br>일회성 노출이 아닌, 기업 정보 자산을 만드는 기업 PR.</p>
+    <div class="cta2">
+      <a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a>
+      <a href="#features" class="btn btn-gh">서비스 살펴보기</a>
     </div>
-
-    <div class="mock rv d1">
-      <div class="blob"></div>
-      <div class="mbadge"><span class="pk"></span>AI 인식됨 · 출처 4</div>
-      <div class="win">
-        <div class="win-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="u">ai-search · 추천 질의</span></div>
-        <div class="win-body">
-          <div class="ln-q"><span class="qm">Q</span>국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?</div>
-          <div class="ln-a"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 정밀부품을 공급했고, 2024년 수출바우처 선정 기업입니다.</p></div>
-          <div class="ln-srcs"><span><i>✓</i>언론보도</span><span><i>✓</i>홈페이지</span><span><i>✓</i>보도자료</span><span><i>✓</i>칼럼</span></div>
-        </div>
+    <div class="meta2">
+      <div><b>월 구독형</b><span>전담 매니저 관리</span></div>
+      <div><b>3개월~</b><span>AI 반영 기준선</span></div>
+      <div><b>제조·B2B</b><span>핵심 대상 업종</span></div>
+    </div>
+  </div>
+  <div class="wrap strip-card rv d1">
+    <div class="stick"><span class="pk"></span>AI 인식됨 · 출처 4</div>
+    <div class="scard">
+      <div class="sq">
+        <div class="lab">고객이 AI에게 묻습니다</div>
+        <div class="qt"><span class="qm">Q</span>국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?</div>
+      </div>
+      <div class="sa">
+        <div class="lab">AI가 이렇게 답하게 만듭니다</div>
+        <div class="ans2"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 정밀부품을 공급했고, 2024년 수출바우처 선정 기업입니다.</p></div>
+        <div class="srcs2"><span><i>✓</i>언론보도</span><span><i>✓</i>홈페이지</span><span><i>✓</i>보도자료</span><span><i>✓</i>칼럼</span></div>
       </div>
     </div>
   </div>
@@ -750,7 +787,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         <div class="foot-col"><h5>회사</h5><a href="#final">상담 신청</a><a href="#final">무료 진단</a><a href="services.html#faq">FAQ</a></div>
       </div>
     </div>
-    <div class="foot-b"><span>© 2026 messeze</span><span>검색량이 없어도, AI가 먼저 추천하는 회사로</span></div>
+    <div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div>
   </div>
 </footer>
 

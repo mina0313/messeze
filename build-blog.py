@@ -66,7 +66,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 
 def mega(p):
     return f"""<div class="mega" id="mega"><div class="wrap mega-in">
-<a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
+<a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
 <div class="mega-col"><h5>서비스</h5>
 <a href="{p}services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
 <a href="{p}services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
@@ -267,7 +267,7 @@ def foot(depth):
     return f"""<footer class="foot"><div class="wrap"><div class="foot-in">
 <div><a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
 <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p></div>
-</div><div class="foot-b"><span>© 2026 messeze</span><span>검색량이 없어도, AI가 먼저 추천하는 회사로</span></div></div></footer>"""
+</div><div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div></div></footer>"""
 
 def cta(depth):
     p = "../" * depth
