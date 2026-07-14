@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서비스 | messeze — AI가 보는 PR, 6가지 실행</title>
+<meta name="description" content="AI 가시성 평가, 홈페이지 수정·리뉴얼, 홈페이지 제작, 자사 블로그 운영, 채널 운영(네이버·티스토리·구글), 언론 배포까지 — AI가 읽는 관점으로 설계한 messeze의 6가지 서비스.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A1930;--navy:#101F3F;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;
+--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--amber:#F59F1E;--red:#E2574C;--line:#E5EAF2;--line-2:#D8E0EC;
+--sans:'Pretendard',system-ui,-apple-system,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;
+--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10);--sh-lg:0 30px 70px rgba(16,31,63,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:keep-all}
+.co{color:var(--cobalt)}
+.sec{padding:96px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:16px}
+.h2{font-size:clamp(26px,3.6vw,40px)}
+.lead{font-size:16.5px;color:var(--body);line-height:1.68;margin-top:16px}
+.shead{max-width:640px;margin-bottom:48px}
+.shead.center{margin-left:auto;margin-right:auto;text-align:center}
+.btn{font-family:var(--sans);font-weight:700;font-size:15.5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 26px;border:1.5px solid transparent;transition:.18s}
+.btn-co{background:var(--cobalt);color:#fff;box-shadow:0 8px 22px rgba(43,92,255,.28)}
+.btn-co:hover{background:var(--cobalt-dk);transform:translateY(-2px)}
+.btn-gh{background:#fff;color:var(--ink);border-color:var(--line-2)}
+.btn-gh:hover{border-color:var(--ink)}
+/* nav */
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:25px;height:25px}
+.brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
+.nav-menu{display:flex;gap:6px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 13px;border-radius:10px}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a.on{color:var(--cobalt)}
+.nav-r{margin-left:auto}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+/* mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff;transition:.2s}
+.mega-brand:hover{transform:translateY(-3px)}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.mega{display:none}}
+/* hero */
+.shero{padding:76px 0 54px;text-align:center;background:linear-gradient(180deg,#F4F9FF,#fff)}
+.shero h1{font-size:clamp(30px,4.6vw,52px)}
+.shero p{font-size:17px;color:var(--body);margin:20px auto 0;max-width:560px;line-height:1.66}
+.cu{position:relative;display:inline-block}
+.cu::after{content:"";position:absolute;left:1%;right:1%;bottom:-3px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C50 3 130 2 197 7' stroke='%232B5CFF' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+/* TOC */
+.toc{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:36px}
+.toc a{font-size:13.5px;font-weight:700;color:var(--body);background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 17px;transition:.16s;display:inline-flex;gap:8px;align-items:center}
+.toc a b{color:var(--cobalt);font-family:var(--disp);font-weight:700}
+.toc a:hover{border-color:var(--cobalt);color:var(--ink);transform:translateY(-2px)}
+/* ===== service chapter ===== */
+.svc{padding:104px 0;position:relative;overflow:hidden}
+.svc.alt{background:var(--sky-2)}
+.svc-in{display:grid;grid-template-columns:.94fr 1.06fr;gap:66px;align-items:center}
+.svc-in.flip .svc-copy{order:2}
+.svc-in.flip .svc-vis{order:1}
+.ghost{position:absolute;top:34px;font-family:var(--disp);font-weight:700;font-size:clamp(90px,12vw,150px);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--line-2);pointer-events:none;user-select:none}
+.svc .ghost{right:4%}
+.svc.alt .ghost{-webkit-text-stroke-color:#DCE4F2}
+.svc-copy .eyebrow{margin-bottom:14px}
+.svc-copy h2{font-size:clamp(25px,3.2vw,36px)}
+.svc-copy .ai-view{margin-top:18px;background:var(--ink);color:#DDE4F2;border-radius:14px;padding:16px 20px;font-size:14.3px;line-height:1.65;font-weight:600;position:relative;overflow:hidden}
+.svc-copy .ai-view::before{content:"";position:absolute;inset:0;background:radial-gradient(300px 140px at 95% 100%,rgba(43,92,255,.4),transparent 60%)}
+.svc-copy .ai-view .avl{position:relative;display:block;font-size:11px;font-weight:800;color:#7FA0FF;letter-spacing:.05em;margin-bottom:7px}
+.svc-copy .ai-view p{position:relative}
+.svc-copy .lead{margin-top:18px;font-size:15.3px}
+.svc-list{border-top:1px solid var(--line);margin-top:24px}
+.svc.alt .svc-list{border-color:var(--line-2)}
+.svc-item{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
+.svc.alt .svc-item{border-color:var(--line-2)}
+.svc-item .c{font-size:12px;font-weight:800;color:var(--mint);padding-top:4px}
+.svc-item b{font-size:15px;display:block;letter-spacing:-.01em}
+.svc-item span{font-size:13.3px;color:var(--body);line-height:1.55;display:block;margin-top:2px}
+.deliv{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.deliv em{font-style:normal;font-size:12px;font-weight:800;color:var(--mut);width:100%;letter-spacing:.03em}
+.deliv span{font-size:13px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 15px}
+.svc.alt .deliv span{background:#fff;border:1px solid var(--line)}
+/* visual shells */
+.svc-vis{position:relative;min-height:420px}
+.mini-win{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
+.mw-bar{display:flex;gap:6px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);background:#FAFBFD}
+.mw-bar i{width:9px;height:9px;border-radius:50%;background:#E3E9F4}
+.mw-bar .u{margin-left:8px;flex:1;background:#F1F4FA;border-radius:7px;font-size:11px;color:var(--mut);padding:5px 10px;font-weight:600}
+.mw-body{padding:18px 20px 20px}
+.sticker{position:absolute;font-weight:800;font-size:13px;padding:8px 16px;border-radius:999px;box-shadow:0 6px 16px rgba(16,31,63,.16);white-space:nowrap;z-index:5}
+.sticker.blue{background:var(--cobalt);color:#fff}
+.sticker.white{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.sticker.dark{background:var(--ink);color:#fff}
+/* 01 진단 리포트 */
+.rep{position:absolute;top:50%;left:2%;width:92%;transform:translateY(-50%) rotate(-1.4deg)}
+.rep .row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--sky-2);font-size:13.5px;font-weight:700}
+.rep .row:last-child{border:0}
+.rep .row .en{width:96px;color:var(--ink)}
+.rep .row .bt{flex:1;height:6px;border-radius:4px;background:#EEF2F9;overflow:hidden}
+.rep .row .bt i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cobalt),#6E93FF)}
+.rep .row .st{font-size:11.5px;font-weight:800}
+.rep .row .st.ok{color:var(--mint)}
+.rep .row .st.no{color:var(--red)}
+.rep .gaugerow{display:flex;align-items:center;gap:18px;padding-bottom:14px;margin-bottom:6px;border-bottom:1px dashed var(--line)}
+.rep .gaugerow svg{width:88px;height:88px;flex:0 0 auto}
+.rep .gaugerow .t b{font-family:var(--disp);font-size:24px;font-weight:700;display:block}
+.rep .gaugerow .t span{font-size:12.5px;color:var(--mut);font-weight:600}
+/* 02 before/after */
+.ba .cwb{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ba .cwb.before{top:6px;left:0;width:58%;transform:rotate(-4deg);box-shadow:0 14px 34px rgba(16,31,63,.10);z-index:1}
+.ba .cwb.before .mw-body{filter:grayscale(.9);opacity:.85}
+.ba .cwb.after{bottom:0;right:0;width:66%;transform:rotate(1.4deg);box-shadow:0 30px 64px rgba(16,31,63,.2);z-index:3;border-color:#C4D4FF}
+.tagchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tagchips span{font-size:11px;font-weight:800;border-radius:7px;padding:5px 9px}
+.tagchips .bad{background:#FDECEA;color:var(--red)}
+.tagchips .good{background:rgba(11,191,140,.12);color:#08916B}
+.skl{height:8px;border-radius:4px;background:#EEF2F9;margin:9px 0}
+.skl.s{width:76%}
+.skl.xs{width:52%}
+.skl.dark{background:#DCE3F0;height:11px;width:64%}
+/* 03 사이트맵 트리 */
+.tree{position:absolute;top:50%;left:0;width:100%;transform:translateY(-50%)}
+.tree .root{margin:0 auto;width:fit-content;background:var(--ink);color:#fff;font-weight:800;font-size:14px;border-radius:12px;padding:11px 20px;box-shadow:var(--sh)}
+.tree .lvl{display:flex;justify-content:center;gap:12px;margin-top:34px;position:relative;flex-wrap:wrap}
+.tree .lvl::before{content:"";position:absolute;top:-20px;left:15%;right:15%;height:1.5px;background:var(--line-2)}
+.tree .node{background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 14px;font-size:12.8px;font-weight:700;box-shadow:var(--sh-sm);position:relative}
+.tree .node::before{content:"";position:absolute;top:-20px;left:50%;width:1.5px;height:20px;background:var(--line-2)}
+.tree .node em{font-style:normal;display:block;font-size:10.5px;color:var(--cobalt);font-weight:800;margin-top:2px}
+.tree .node.q{border-color:#C4D4FF;background:var(--sky)}
+/* 04 아티클 */
+.artwin{position:absolute;top:50%;left:4%;width:88%;transform:translateY(-50%) rotate(-1.2deg)}
+.artwin .ttl{font-size:16.5px;font-weight:800;line-height:1.45}
+.artwin .meta{font-size:11.5px;color:var(--mut);font-weight:700;margin:8px 0 12px}
+.artwin .ansbox{background:var(--sky-2);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.8px;color:var(--body);line-height:1.6}
+.artwin .ansbox b{color:var(--ink)}
+.cal{position:absolute;right:-2%;bottom:4%;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh-lg);padding:16px 18px;transform:rotate(2deg);z-index:4}
+.cal .cl{font-size:11px;font-weight:800;color:var(--mut);margin-bottom:10px}
+.cal .dots{display:grid;grid-template-columns:repeat(7,14px);gap:7px}
+.cal .dots i{width:14px;height:14px;border-radius:5px;background:#EEF2F9}
+.cal .dots i.on{background:var(--cobalt)}
+/* 05 채널 방사 */
+.radial{position:absolute;top:50%;left:0;width:100%;transform:translateY(-50%)}
+.radial .hub{margin:0 auto;width:fit-content;background:var(--ink);color:#fff;border-radius:14px;padding:14px 22px;font-weight:800;font-size:14px;box-shadow:var(--sh);position:relative;z-index:2;text-align:center}
+.radial .hub em{font-style:normal;display:block;font-size:10.5px;color:#7FA0FF;font-weight:800}
+.radial .spokes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;position:relative}
+.radial .spokes::before{content:"";position:absolute;top:-26px;left:16%;right:16%;height:1.5px;background:var(--line-2)}
+.radial .ch{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh-sm);position:relative;text-align:center}
+.radial .ch::before{content:"";position:absolute;top:-26px;left:50%;width:1.5px;height:26px;background:var(--line-2)}
+.radial .ch b{font-size:14px;display:block}
+.radial .ch em{font-style:normal;font-size:11px;font-weight:800;display:inline-block;margin-top:8px;border-radius:999px;padding:4px 10px}
+.radial .ch.nv em{background:rgba(11,191,140,.13);color:#08916B}
+.radial .ch.ts em{background:var(--sky);color:var(--cobalt)}
+.radial .ch.gb em{background:#FFF3E0;color:#C77700}
+.radial .ch span{display:block;font-size:11.8px;color:var(--mut);font-weight:600;margin-top:6px;line-height:1.5}
+/* 06 언론 클리핑 */
+.clips .clip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh)}
+.clips .clip .pressname{font-size:10.5px;font-weight:800;color:var(--mut);letter-spacing:.06em}
+.clips .clip h5{font-size:14.5px;font-weight:800;line-height:1.45;margin-top:7px;letter-spacing:-.01em}
+.clips .clip.c1{top:8%;left:0;width:56%;transform:rotate(-3.5deg);z-index:1}
+.clips .clip.c1 *{opacity:.92}
+.clips .clip.c2{top:26%;right:2%;width:58%;transform:rotate(1.6deg);z-index:3;border-color:#C4D4FF;box-shadow:0 26px 56px rgba(16,31,63,.18)}
+.clips .flowrow{position:absolute;bottom:6%;left:4%;right:4%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;font-weight:800;color:var(--body)}
+.clips .flowrow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm)}
+.clips .flowrow i{font-style:normal;color:#B9C2D4}
+.clips .flowrow span.hl{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+/* filter (기존) */
+.filt{background:var(--sky-2)}
+.seg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px;width:fit-content;margin:0 auto 30px;box-shadow:var(--sh-sm)}
+.seg button{font-family:var(--sans);font-weight:700;font-size:14px;border:0;background:transparent;color:var(--body);border-radius:12px;padding:11px 18px;cursor:pointer;transition:.16s}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--ink);color:#fff}
+.qa-wrap{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr .72fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden;transition:opacity .25s}
+.qa-l{padding:30px 32px}
+.qa-l .lab{font-size:12px;font-weight:800;color:var(--mut);letter-spacing:.03em;margin-bottom:12px}
+.qa-l .qt{font-size:20px;font-weight:800;line-height:1.45;letter-spacing:-.02em}
+.qa-l .ans{margin-top:20px;padding-top:20px;border-top:1px dashed var(--line);display:flex;gap:11px}
+.qa-l .ans .am{flex:0 0 28px;height:28px;border-radius:9px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.qa-l .ans p{font-size:14.8px;color:var(--body);line-height:1.62}
+.qa-l .ans p b{color:var(--ink)}
+.qa-r{background:var(--navy);color:#fff;padding:30px 28px;display:flex;flex-direction:column}
+.qa-r .lab{font-size:12px;font-weight:800;color:#8FA3D9;letter-spacing:.03em;margin-bottom:16px}
+.qa-r .cite{display:flex;flex-direction:column;gap:10px}
+.qa-r .cite div{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 13px;font-size:13px;font-weight:600}
+.qa-r .cite .ok{margin-left:auto;color:var(--mint);font-size:12px;font-weight:800}
+.qa-r .foot{margin-top:auto;padding-top:18px;font-size:12px;color:#8FA3D9;font-weight:600}
+/* onboarding + compare + faq (기존) */
+.onb{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 auto;max-width:880px;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.onb-c{padding:34px 32px;background:#fff}
+.onb-c.you{border-right:1px solid var(--line)}
+.onb-c.us{background:var(--ink);color:#fff}
+.onb-c .lab{font-size:12px;letter-spacing:.03em;color:var(--mut);text-transform:uppercase;font-weight:800}
+.onb-c.us .lab{color:#7FA0FF}
+.onb-c h3{font-size:21px;margin:8px 0 20px}
+.onb-c ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.onb-c li{display:flex;gap:12px;font-size:14.5px;line-height:1.5}
+.onb-c.you li{color:var(--body)}
+.onb-c.us li{color:#C7D0E4}
+.onb-c li .n{font-size:12px;font-weight:800;padding-top:2px}
+.onb-c.you li .n{color:var(--mut)}
+.onb-c.us li .n{color:var(--mint)}
+.cmp{max-width:880px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm)}
+.cmp-r{display:grid;grid-template-columns:1fr 1.15fr;border-top:1px solid var(--line);background:#fff}
+.cmp-r:first-child{border-top:0}
+.cmp-c{padding:19px 26px;font-size:15.5px;display:flex;align-items:center;gap:11px}
+.cmp-c.o{color:var(--mut);background:#FAFBFD}
+.cmp-c.n{font-weight:700;border-left:1px solid var(--line)}
+.cmp-c .mk{font-size:12px;font-weight:800}
+.cmp-c.o .mk{color:#C6CDDA}
+.cmp-c.n .mk{color:var(--mint)}
+.cmp-hd .cmp-c{font-size:13px;font-weight:800;letter-spacing:.02em;padding:18px 26px}
+.cmp-hd .o{color:var(--mut)}
+.cmp-hd .n{background:var(--ink);color:#fff;border-left-color:var(--ink)}
+.faq{max-width:760px;margin:0 auto}
+.qa{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:#fff;overflow:hidden;transition:.2s}
+.qa.open{border-color:var(--ink);box-shadow:var(--sh-sm)}
+.qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:21px 24px;font-family:var(--sans);font-size:16.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qa .ico{flex:0 0 26px;height:26px;border-radius:9px;background:var(--sky-2);display:grid;place-items:center;font-size:15px;transition:.2s}
+.qa.open .ico{background:var(--ink);color:#fff;transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--body);font-size:15px;line-height:1.68}
+.qa .ans p{padding:0 24px 22px}
+/* cta + foot */
+.cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
+.cta-band h3{font-size:clamp(20px,2.6vw,27px);color:#fff;position:relative}
+.cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
+.cta-band .btn{position:relative;background:var(--cobalt);color:#fff}
+.cta-band .btn:hover{background:#4270FF}
+.foot{background:#070D1C;color:#7C879D;padding:52px 0 38px}
+.foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.foot .brand{color:#fff;margin-bottom:14px}
+.foot p{font-size:13.5px;line-height:1.7;max-width:320px}
+.foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:980px){
+  .nav-menu{display:none}
+  .svc-in{grid-template-columns:1fr;gap:44px}
+  .svc-in.flip .svc-copy{order:1}
+  .svc-in.flip .svc-vis{order:2}
+  .svc-vis{min-height:400px}
+  .ghost{font-size:90px}
+  .qa-wrap{grid-template-columns:1fr}
+  .qa-r{border-top:1px solid var(--line)}
+  .onb{grid-template-columns:1fr}
+  .onb-c.you{border-right:0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:560px){
+  .sec,.svc{padding:70px 0}
+  .cmp-r{grid-template-columns:1fr}
+  .cmp-c.n{border-left:0;border-top:1px dashed var(--line)}
+  .cal{right:0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="20.5" y2="17"/></svg><span class="bw">messeze</span></a>
+    <nav class="nav-menu">
+      <a class="on" href="services.html">서비스</a>
+      <a href="pricing.html">요금</a>
+      <a href="check.html">AI 가시성 체크</a>
+      <a href="blog/index.html">블로그</a>
+      <a href="glossary/index.html">용어사전</a>
+    </nav>
+    <div class="nav-r"><a class="nav-cta" href="index.html#final">무료 진단 받기</a></div>
+  </div>
+  <div class="mega" id="mega"><div class="wrap mega-in">
+    <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
+    <div class="mega-col">
+      <h5>서비스</h5>
+      <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+      <a href="services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+      <a href="services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+      <a href="services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+      <a href="services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+      <a href="services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>무료 도구</h5>
+      <a href="check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
+      <a href="pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+      <div class="gap"></div>
+      <h5>요금</h5>
+      <a href="pricing.html"><b>플랜 비교</b><span>기본형 · 성장형 · 기업형</span></a>
+      <a href="pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>리소스</h5>
+      <a href="blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+      <a href="glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a>
+      <div class="gap"></div>
+      <h5>많이 읽는 글</h5>
+      <a href="blog/posts/aeo-geo-seo.html"><b>AEO·GEO·SEO 차이</b><span>세 가지 최적화 쉽게 정리</span></a>
+      <a href="blog/posts/manufacturer-case.html"><b>제조기업 3개월 시나리오</b><span>AI에 발견되기까지</span></a>
+    </div>
+  </div></div>
+</header>
+<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu');if(!p||!t)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);})();
+</script>
+
+<!-- HERO -->
+<section class="shero">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center">서비스 — AI가 보는 PR</span>
+    <h1>사람이 보는 홍보 말고,<br><span class="co cu">AI가 읽는 PR</span>을 설계합니다</h1>
+    <p>진단, 홈페이지, 콘텐츠, 채널, 언론까지 — 여섯 가지 실행이 하나의 목표를 향합니다. AI가 우리 회사를 정확히 읽고, 추천하게 만드는 것.</p>
+    <div class="toc">
+      <a href="#s1"><b>01</b>AI 가시성 평가</a>
+      <a href="#s2"><b>02</b>홈페이지 수정·리뉴얼</a>
+      <a href="#s3"><b>03</b>홈페이지 제작</a>
+      <a href="#s4"><b>04</b>자사 블로그 운영</a>
+      <a href="#s5"><b>05</b>채널 운영</a>
+      <a href="#s6"><b>06</b>언론 배포</a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 AI 가시성 평가 -->
+<section class="svc" id="s1">
+  <span class="ghost">01</span>
+  <div class="wrap svc-in">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 01</span>
+      <h2>AI 가시성 평가</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>AI에게 당신 회사는 '존재하는 회사'인가요, '모르는 이름'인가요? 모든 실행의 출발점은 이 질문의 현재 답을 확인하는 것입니다.</p></div>
+      <p class="lead">ChatGPT·Gemini·Perplexity·네이버가 기업을 어떻게 인식하는지, 고객 질문에 우리 회사가 등장하는지, 경쟁사는 어디까지 와 있는지 — 감이 아니라 데이터로 확인합니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>엔진별 인식 상태 점검</b><span>주요 AI 검색 4곳에 같은 질문을 던져 인식·인용 여부를 기록합니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>핵심 질문 5~6개 설계</b><span>고객이 실제로 물어볼 질문을 정의합니다. 이 질문들이 이후 모든 콘텐츠의 뼈대가 됩니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>홈페이지 구조 진단</b><span>SEO 기본기부터 구조화 데이터·엔티티까지, AI가 읽을 수 있는 상태인지 점검합니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>경쟁사 비교</b><span>같은 질문에서 경쟁사가 어떻게 답변에 등장하는지 비교해 격차를 수치화합니다.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>AI 가시성 진단 리포트</span><span>핵심 질문 설계서</span><span>개선 우선순위 로드맵</span></div>
+      <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap"><a href="services/visibility.html" class="btn btn-co">이 서비스 자세히 보기 →</a><a href="check.html" class="btn btn-gh">셀프 버전 무료로</a></div>
+    </div>
+    <div class="svc-vis rv d1">
+      <span class="sticker white" style="top:2%;left:6%;transform:rotate(-5deg)">진단 리포트 미리보기</span>
+      <div class="mini-win rep">
+        <div class="mw-bar"><i></i><i></i><i></i><span class="u">messeze · AI 가시성 진단</span></div>
+        <div class="mw-body">
+          <div class="gaugerow">
+            <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#EEF2F9" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="#2B5CFF" stroke-width="12" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="198" transform="rotate(-90 60 60)"/><text x="60" y="67" text-anchor="middle" font-family="Poppins" font-size="24" font-weight="700" fill="#0A1930">37</text></svg>
+            <div class="t"><b>현재 37점</b><span>질문 6개 중 1개만 노출 · 개선 여지 큼</span></div>
+          </div>
+          <div class="row"><span class="en">ChatGPT</span><span class="bt"><i style="width:24%"></i></span><span class="st no">미인식</span></div>
+          <div class="row"><span class="en">Gemini</span><span class="bt"><i style="width:31%"></i></span><span class="st no">미인식</span></div>
+          <div class="row"><span class="en">Perplexity</span><span class="bt"><i style="width:58%"></i></span><span class="st ok">부분 인식</span></div>
+          <div class="row"><span class="en">네이버 검색</span><span class="bt"><i style="width:66%"></i></span><span class="st ok">인식</span></div>
+        </div>
+      </div>
+      <span class="sticker blue" style="bottom:6%;right:2%;transform:rotate(3deg)">여기서부터 시작합니다</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 홈페이지 수정·리뉴얼 -->
+<section class="svc alt" id="s2">
+  <span class="ghost">02</span>
+  <div class="wrap svc-in flip">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 02</span>
+      <h2>홈페이지 수정·리뉴얼</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>화면에는 보이는데 HTML에는 없는 정보, 이미지로만 존재하는 회사 소개 — AI에게는 전부 '없는 정보'입니다. 예쁜 홈페이지와 읽히는 홈페이지는 다릅니다.</p></div>
+      <p class="lead">지금 홈페이지를 최대한 살리는 방향이 먼저입니다. 진단 결과 구조 개선으로 충분하면 수정으로, 뼈대부터 문제라면 리뉴얼로 — 과잉 제안 없이 필요한 만큼만 제안합니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>메타·헤딩 구조 정비</b><span>페이지마다 고유한 타이틀·디스크립션, H1→H2 위계를 바로잡습니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>구조화 데이터(JSON-LD) 탑재</b><span>Organization·Service·FAQ 스키마로 발행 주체와 서비스를 기계가 읽게 선언합니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>질문-답변형 페이지 신설</b><span>설계한 핵심 질문에 정면으로 답하는 페이지를 홈페이지 안에 만듭니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>이미지·텍스트 리커버리</b><span>이미지 속에 갇힌 정보를 텍스트로 꺼내고, ALT를 채웁니다.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>수정 전후 비교 리포트</span><span>스키마 적용 페이지</span><span>질문별 랜딩 페이지</span></div><div style="margin-top:22px"><a href="services/website-renewal.html" class="btn btn-gh">이 서비스 자세히 보기 →</a></div>
+    </div>
+    <div class="svc-vis ba rv d1">
+      <span class="sticker white" style="top:-2%;left:8%;transform:rotate(-6deg)">Before — 사람만 보는 페이지</span>
+      <div class="cwb before">
+        <div class="mw-bar"><i></i><i></i><i></i><span class="u">기존 홈페이지</span></div>
+        <div class="mw-body">
+          <div class="skl dark"></div>
+          <div class="skl"></div><div class="skl s"></div><div class="skl xs"></div>
+          <div class="tagchips"><span class="bad">✕ H1 없음</span><span class="bad">✕ 스키마 없음</span><span class="bad">✕ 이미지 텍스트</span></div>
+        </div>
+      </div>
+      <div class="cwb after">
+        <div class="mw-bar"><i></i><i></i><i></i><span class="u">messeze 정비 후</span></div>
+        <div class="mw-body">
+          <div class="skl dark" style="background:var(--ink);opacity:.9"></div>
+          <div class="skl"></div><div class="skl s"></div>
+          <div class="tagchips"><span class="good">✓ H1·헤딩 위계</span><span class="good">✓ Organization 스키마</span><span class="good">✓ FAQ 페이지</span><span class="good">✓ ALT 완비</span></div>
+        </div>
+      </div>
+      <span class="sticker blue" style="bottom:0;right:6%;transform:rotate(2.5deg)">After — AI도 읽는 페이지</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 홈페이지 제작 -->
+<section class="svc" id="s3">
+  <span class="ghost">03</span>
+  <div class="wrap svc-in">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 03</span>
+      <h2>홈페이지 제작</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>새로 짓는다면, 처음부터 AI가 읽는 구조로 짓는 게 맞습니다. 다 지어놓고 스키마를 덧붙이는 것보다 뼈대부터 질문 중심으로 설계하는 쪽이 훨씬 강합니다.</p></div>
+      <p class="lead">디자인만 예쁜 홈페이지가 아니라, 고객의 질문 하나하나가 페이지가 되는 구조로 설계합니다. 페이지가 늘어날수록 AI가 인용할 답이 늘어나는 홈페이지입니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>질문 기반 정보 구조(IA) 설계</b><span>핵심 질문 → 페이지 구조로. 산업·서비스·질문별로 확장 가능한 골격을 만듭니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>AEO·SEO 기본기 내장</b><span>메타·헤딩·구조화 데이터·사이트맵이 처음부터 표준으로 들어갑니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>블로그·콘텐츠 시스템 포함</b><span>운영 단계에서 콘텐츠가 쌓일 수 있도록 발행 구조까지 함께 짓습니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>다국어 확장 대비</b><span>수출기업이라면 베트남어·영어·중국어 페이지로 확장 가능한 컴포넌트 구조로.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>신규 홈페이지</span><span>구조화 데이터 기본 탑재</span><span>운영 가이드</span></div><div style="margin-top:22px"><a href="services/website-build.html" class="btn btn-gh">이 서비스 자세히 보기 →</a></div>
+    </div>
+    <div class="svc-vis rv d1">
+      <span class="sticker white" style="top:0;left:4%;transform:rotate(-4deg)">질문이 곧 페이지가 됩니다</span>
+      <div class="tree">
+        <div class="root">🏠 회사 홈</div>
+        <div class="lvl">
+          <div class="node">회사 소개<em>Organization</em></div>
+          <div class="node">제품·서비스<em>Service</em></div>
+          <div class="node q">"소량 생산 되나요?"<em>FAQPage</em></div>
+          <div class="node q">"수출 실적 있나요?"<em>FAQPage</em></div>
+          <div class="node">블로그<em>Article</em></div>
+        </div>
+      </div>
+      <span class="sticker dark" style="bottom:4%;right:4%;transform:rotate(2deg)">스키마 기본 탑재</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 자사 블로그 운영 -->
+<section class="svc alt" id="s4">
+  <span class="ghost">04</span>
+  <div class="wrap svc-in flip">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 04</span>
+      <h2>홈페이지 내 블로그 운영</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>같은 글이라도 자사 도메인에 쌓인 글은 '그 회사의 전문성'으로 계산됩니다. 남의 플랫폼에만 쌓은 콘텐츠는 그 플랫폼의 자산이지, 우리 도메인의 자산이 아닙니다.</p></div>
+      <p class="lead">설계한 핵심 질문에 답하는 칼럼을 자사 블로그에 매달 발행합니다. 질문형 제목, 첫 문단에 답이 오는 구조, FAQ 스키마 — AI가 인용하기 가장 좋은 형태로 씁니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>질문 기반 칼럼 기획·작성</b><span>"고객이 AI에게 물어볼 질문"이 곧 글감입니다. 검색량이 아니라 질문에서 출발합니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>AEO형 구조로 집필</b><span>질문형 소제목 + 정면 답변 문단 + 근거 순서. 사람도 AI도 읽기 좋은 구조입니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>전문성 축적(E-E-A-T)</b><span>실적·사례·기술 해설이 도메인에 쌓이며 '이 분야의 전문가'라는 신호가 굳어집니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>월 단위 발행 캘린더</b><span>일회성이 아니라 발행 계획에 따라 꾸준히. 축적이 곧 전략입니다.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>월 발행 칼럼</span><span>FAQ 스키마 적용</span><span>발행 캘린더·성과 리포트</span></div><div style="margin-top:22px"><a href="services/own-blog.html" class="btn btn-gh">이 서비스 자세히 보기 →</a></div>
+    </div>
+    <div class="svc-vis rv d1">
+      <div class="mini-win artwin">
+        <div class="mw-bar"><i></i><i></i><i></i><span class="u">company.co.kr/blog</span></div>
+        <div class="mw-body">
+          <div class="ttl">항공부품 소량 생산, 어디까지 가능할까요?</div>
+          <div class="meta">전문 칼럼 · FAQPage 스키마 적용</div>
+          <div class="ansbox"><b>결론부터:</b> 시제품 1개부터 양산 전 단계까지 가능합니다. 판단 기준은 세 가지 — 가공 방식, 소재 수급, 인증 범위입니다…</div>
+          <div class="tagchips"><span class="good">✓ 질문형 제목</span><span class="good">✓ 첫 문단에 답</span><span class="good">✓ 자사 도메인 축적</span></div>
+        </div>
+      </div>
+      <div class="cal">
+        <div class="cl">이번 달 발행</div>
+        <div class="dots"><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 채널 운영 -->
+<section class="svc" id="s5">
+  <span class="ghost">05</span>
+  <div class="wrap svc-in">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 05</span>
+      <h2>외부 채널 운영</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>AI는 한 곳의 주장보다 여러 출처의 교차 확인을 신뢰합니다. 자사 블로그 혼자보다, 서로 다른 플랫폼 세 곳이 같은 사실을 말할 때 정보의 신뢰도가 뛰어오릅니다.</p></div>
+      <p class="lead">네이버 블로그·티스토리·구글 블로거를 목적에 맞게 나눠 운영합니다. 같은 메시지를 채널별 성격에 맞게 변주해, 네이버와 구글 양쪽 검색 생태계를 모두 커버합니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>네이버 블로그 — 국내 검색·발주 담당자</b><span>국내 B2B 담당자가 여전히 가장 많이 쓰는 검색. 신뢰 콘텐츠로 네이버 노출을 잡습니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>티스토리 — 구글·다음 검색</b><span>구글 검색에 잘 잡히는 플랫폼. 기술·정보성 콘텐츠의 구글 유입을 만듭니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>구글 블로거 — 빠른 구글 인덱싱</b><span>구글 소유 플랫폼 특유의 빠른 색인. 신규 소식을 구글 생태계에 빠르게 심습니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>원본-변주 체계</b><span>자사 블로그가 원본, 채널은 변주. 중복이 아닌 교차 출처가 되도록 설계합니다.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>채널별 월 발행 콘텐츠</span><span>채널 개설·세팅</span><span>채널별 유입 리포트</span></div><div style="margin-top:22px"><a href="services/channels.html" class="btn btn-gh">이 서비스 자세히 보기 →</a></div>
+    </div>
+    <div class="svc-vis rv d1">
+      <span class="sticker white" style="top:0;right:6%;transform:rotate(4deg)">출처가 셋이면, 신뢰는 배가</span>
+      <div class="radial">
+        <div class="hub"><em>원본</em>자사 블로그 칼럼</div>
+        <div class="spokes">
+          <div class="ch nv"><b>네이버 블로그</b><em>네이버 검색</em><span>국내 발주 담당자<br>신뢰 콘텐츠</span></div>
+          <div class="ch ts"><b>티스토리</b><em>구글 · 다음</em><span>기술·정보성 글<br>구글 유입</span></div>
+          <div class="ch gb"><b>구글 블로거</b><em>구글 색인</em><span>신규 소식<br>빠른 인덱싱</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 언론 배포 -->
+<section class="svc alt" id="s6">
+  <span class="ghost">06</span>
+  <div class="wrap svc-in flip">
+    <div class="svc-copy rv">
+      <span class="eyebrow">SERVICE 06</span>
+      <h2>언론 배포</h2>
+      <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>언론 기사는 제3자의 검증을 거친, AI가 가장 높게 쳐주는 출처입니다. 우리가 우리를 소개하는 백 마디보다, 기자가 쓴 한 건의 기사가 AI의 확신을 만듭니다.</p></div>
+      <p class="lead">기자가 인용하기 좋은 구조로 보도자료를 쓰고, 업종에 맞는 기자에게 배포합니다. 뉴스 가치가 있으면 보도자료로, 알리고 싶은 메시지는 애드버토리얼로 — 두 방식을 조합합니다.</p>
+      <div class="svc-list">
+        <div class="svc-item"><span class="c">✓</span><div><b>보도자료 기획·작성</b><span>리드문 승부, 검증 가능한 사실 중심. 기사화 가능성과 AI 인용 가능성 두 기준으로 씁니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>업종별 기자 매칭</b><span>산업 담당 기자 데이터베이스 기반으로, 맞는 출입처에 정확히 배포합니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>애드버토리얼 발행</b><span>게재가 보장되는 기사형 콘텐츠로 원하는 메시지를 원하는 시점에 싣습니다.</span></div></div>
+        <div class="svc-item"><span class="c">✓</span><div><b>해외 언론 확장</b><span>수출기업이라면 베트남·중국·미국 등 현지어 보도자료와 현지 매체 배포까지.</span></div></div>
+      </div>
+      <div class="deliv"><em>이렇게 받으세요</em><span>보도자료·애드버토리얼</span><span>기자 배포·발행 관리</span><span>기사화 결과 리포트</span></div><div style="margin-top:22px"><a href="services/press.html" class="btn btn-gh">이 서비스 자세히 보기 →</a></div>
+    </div>
+    <div class="svc-vis clips rv d1">
+      <div class="clip c1">
+        <div class="pressname">산업 전문지</div>
+        <h5>○○정밀, 항공부품 소량 생산 라인 증설… 수출바우처 선정</h5>
+      </div>
+      <div class="clip c2">
+        <div class="pressname">경제지</div>
+        <h5>"베트남 수출 물꼬" ○○정밀, 동남아 인증 획득하고 첫 계약</h5>
+        <div class="tagchips"><span class="good">✓ 제3자 검증 출처</span><span class="good">✓ AI 인용 근거</span></div>
+      </div>
+      <div class="flowrow"><span>보도자료</span><i>→</i><span>기자 매칭</span><i>→</i><span>기사 발행</span><i>→</i><span class="hl">AI가 인용</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="sec filt" id="ask">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">업종별 시뮬레이션</span>
+      <h2 class="h2">이 여섯 가지가 쌓이면,<br>AI는 이렇게 답하게 됩니다</h2>
+    </div>
+    <div class="seg rv" id="chips">
+      <button class="on" data-k="parts">정밀부품</button>
+      <button data-k="material">산업소재</button>
+      <button data-k="equip">자동화 설비</button>
+      <button data-k="export">수출기업</button>
+      <button data-k="startup">스타트업</button>
+      <button data-k="pro">전문 서비스</button>
+    </div>
+    <div class="qa-wrap rv" id="parsed">
+      <div class="qa-l">
+        <div class="lab">고객이 AI에게 묻는 질문</div>
+        <div class="qt" id="pq">"국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?"</div>
+        <div class="ans"><span class="am">AI</span><p id="pa"><b>○○정밀</b> — 15년간 항공·의료 정밀부품을 공급했고, 소량·다품종 대응이 가능하며 2024년 수출바우처 선정 기업입니다.</p></div>
+      </div>
+      <div class="qa-r">
+        <div class="lab">AI가 확인한 출처</div>
+        <div class="cite" id="pc">
+          <div>📰 언론보도 3건<span class="ok">✓</span></div>
+          <div>🌐 홈페이지 제품·인증 정보<span class="ok">✓</span></div>
+          <div>📄 보도자료 아카이브<span class="ok">✓</span></div>
+          <div>✍️ 전문 칼럼 2건<span class="ok">✓</span></div>
+        </div>
+        <div class="foot">messeze가 3개월간 축적한 출처입니다</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">진행 과정</span>
+      <h2 class="h2">무엇을 준비하고, 무엇을 맡기나요?</h2>
+    </div>
+    <div class="onb rv">
+      <div class="onb-c you">
+        <div class="lab">고객이 준비할 것</div>
+        <h3>이 정도면 충분합니다</h3>
+        <ul>
+          <li><span class="n">01</span>어떤 기업이고 무엇을 알리고 싶은지</li>
+          <li><span class="n">02</span>주요 고객과 목표 시장·국가</li>
+          <li><span class="n">03</span>기존 홈페이지·콘텐츠 접근 권한</li>
+          <li><span class="n">04</span>신제품·인증·실적 등 기본 자료</li>
+        </ul>
+      </div>
+      <div class="onb-c us">
+        <div class="lab">메세지가 대신 수행</div>
+        <h3>나머지는 전담팀이</h3>
+        <ul>
+          <li><span class="n">✓</span>핵심 질문 설계와 콘텐츠 기획</li>
+          <li><span class="n">✓</span>홈페이지 정비·블로그·채널 발행</li>
+          <li><span class="n">✓</span>기자 매칭과 언론·채널 배포</li>
+          <li><span class="n">✓</span>월간 AI 노출 점검과 반복 개선</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">왜 메세지인가</span>
+      <h2 class="h2">기사 몇 건 파는 곳과는 다릅니다</h2>
+    </div>
+    <div class="cmp rv">
+      <div class="cmp-r cmp-hd"><div class="cmp-c o">기존 언론홍보</div><div class="cmp-c n">messeze</div></div>
+      <div class="cmp-r"><div class="cmp-c o"><span class="mk">—</span>기사 건수 중심</div><div class="cmp-c n"><span class="mk">✓</span>기업 정보 자산 중심</div></div>
+      <div class="cmp-r"><div class="cmp-c o"><span class="mk">—</span>일회성 발행 후 종료</div><div class="cmp-c n"><span class="mk">✓</span>월간 누적 · 분석 · 반복</div></div>
+      <div class="cmp-r"><div class="cmp-c o"><span class="mk">—</span>포털 노출 중심</div><div class="cmp-c n"><span class="mk">✓</span>AI · 검색 · 언론 통합</div></div>
+      <div class="cmp-r"><div class="cmp-c o"><span class="mk">—</span>동일 원고 대량 송출</div><div class="cmp-c n"><span class="mk">✓</span>기업별 질문·메시지 설계</div></div>
+      <div class="cmp-r"><div class="cmp-c o"><span class="mk">—</span>홈페이지와 별도 운영</div><div class="cmp-c n"><span class="mk">✓</span>홈페이지까지 함께 진단</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2 class="h2">궁금한 점을 모았어요</h2>
+    </div>
+    <div class="faq rv">
+      <div class="qa"><button>여섯 가지를 다 해야 하나요?<span class="ico">+</span></button><div class="ans"><p>아니요. 진단(01) 결과에 따라 기업마다 필요한 조합이 다릅니다. 홈페이지가 멀쩡하면 콘텐츠·채널·언론에 집중하고, 홈페이지가 병목이면 정비부터 시작합니다. 플랜과 조합은 상담에서 함께 정합니다.</p></div></div>
+      <div class="qa"><button>메세지는 언론홍보 대행사인가요?<span class="ico">+</span></button><div class="ans"><p>아니요. 기사 몇 건을 발행하는 일회성 대행이 아니라, 기업의 홈페이지·보도자료·콘텐츠·외부 출처를 지속적으로 관리해 AI가 기업을 이해하고 추천하도록 만드는 AI 가시성 관리 서비스입니다.</p></div></div>
+      <div class="qa"><button>검색량이 거의 없는 제조기업인데 효과가 있나요?<span class="ico">+</span></button><div class="ans"><p>네, 오히려 이런 기업에 가장 적합합니다. 검색량이 아니라 'AI가 읽을 수 있는 구조'가 핵심이라, 여러 신뢰 출처에 정보가 축적되면 검색량이 적어도 AI 추천 후보에 오를 수 있습니다.</p></div></div>
+      <div class="qa"><button>효과는 얼마나 걸리나요?<span class="ico">+</span></button><div class="ans"><p>꾸준히 정보가 누적되면 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다. 그래서 최소 3개월 이상 운영을 권장합니다.</p></div></div>
+      <div class="qa"><button>블로그·채널 글은 누가 쓰나요?<span class="ico">+</span></button><div class="ans"><p>messeze 전담팀이 기획하고 작성합니다. 고객은 온보딩에서 기업 정보와 기본 자료만 주시면 됩니다. 발행 전 검수를 원하시면 검수 프로세스를 포함해 운영합니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="cta-band rv">
+  <div><h3>어디부터 시작할지 모르겠다면</h3><p>AI 가시성 무료 진단이 첫 단추입니다. 결과를 보고 필요한 조합을 함께 정해요.</p></div>
+  <a class="btn" href="index.html#final">무료 진단 신청하기</a>
+</div></div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="width:25px;height:25px"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bw">messeze</span></a>
+        <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p>
+      </div>
+      <div style="display:flex;gap:56px">
+        <div><h5 style="color:#C3CBDC;font-size:13.5px;margin-bottom:15px;font-weight:800">서비스</h5><a style="display:block;font-size:14px;margin-bottom:10px" href="services.html">서비스 상세</a><a style="display:block;font-size:14px;margin-bottom:10px" href="pricing.html">요금</a><a style="display:block;font-size:14px;margin-bottom:10px" href="check.html">AI 가시성 체크</a></div>
+        <div><h5 style="color:#C3CBDC;font-size:13.5px;margin-bottom:15px;font-weight:800">리소스</h5><a style="display:block;font-size:14px;margin-bottom:10px" href="blog/index.html">블로그</a><a style="display:block;font-size:14px;margin-bottom:10px" href="glossary/index.html">용어사전</a></div>
+      </div>
+    </div>
+    <div class="foot-b"><span>© 2026 messeze</span><span>검색량이 없어도, AI가 먼저 추천하는 회사로</span></div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const D={
+  parts:{q:'"국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?"',a:'<b>○○정밀</b> — 15년간 항공·의료 정밀부품을 공급했고, 소량·다품종 대응이 가능하며 2024년 수출바우처 선정 기업입니다.',c:['📰 언론보도 3건','🌐 홈페이지 제품·인증 정보','📄 보도자료 아카이브','✍️ 전문 칼럼 2건']},
+  material:{q:'"내열·경량 산업용 신소재를 국내에서 공급하는 기업을 추천해줘"',a:'<b>○○소재</b> — 자동차·항공용 경량 복합소재를 자체 개발해 공급하며, 특허 12건과 KS 인증을 보유하고 있습니다.',c:['📰 산업 전문지 보도 2건','🌐 기술·특허 페이지','📄 신제품 보도자료','✍️ 소재 기술 칼럼']},
+  equip:{q:'"소규모 라인에 맞는 맞춤형 자동화 설비를 제작하는 국내 업체는?"',a:'<b>○○오토메이션</b> — 중소 제조라인 맞춤 설계·시공 전문으로, 설치 후 유지보수까지 대응합니다.',c:['📰 설비 도입 사례 보도','🌐 시공 실적 페이지','📄 신규 라인 보도자료','✍️ 자동화 가이드 칼럼']},
+  export:{q:'"베트남 수출 경험이 있는 국내 제조업체를 알려줘"',a:'<b>○○인더스트리</b> — 베트남·태국 등 동남아 수출 실적을 보유했고, 현지 인증과 수출바우처 사업을 함께 진행한 제조기업입니다.',c:['📰 수출 성과 보도 2건','🌐 해외 인증 페이지','📄 전시회 참가 보도자료','✍️ 베트남 진출 칼럼']},
+  startup:{q:'"국내 신기술 기반 스타트업 중 이 분야 솔루션이 있는 곳은?"',a:'<b>○○랩스</b> — 자체 기술로 특허를 확보한 신기술 스타트업으로, 정부 R&D 과제와 실증 사례를 보유하고 있습니다.',c:['📰 기술 언론 보도','🌐 특허·기술 페이지','📄 투자·과제 보도자료','✍️ 기술 해설 칼럼']},
+  pro:{q:'"특정 산업에 특화된 전문 서비스 기업을 추천해줘"',a:'<b>○○파트너스</b> — 해당 산업 전담 경력을 갖춘 전문 서비스 기업으로, 검증된 레퍼런스와 전문 칼럼을 지속 발행합니다.',c:['📰 전문지 기고 2건','🌐 레퍼런스 페이지','📄 사례 보도자료','✍️ 산업 전문 칼럼']}
+};
+const chips=document.getElementById('chips'),pq=document.getElementById('pq'),pa=document.getElementById('pa'),pc=document.getElementById('pc'),parsed=document.getElementById('parsed');
+chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;chips.querySelectorAll('button').forEach(c=>c.classList.remove('on'));b.classList.add('on');const d=D[b.dataset.k];parsed.style.opacity=0;setTimeout(()=>{pq.textContent=d.q;pa.innerHTML=d.a;pc.innerHTML=d.c.map(x=>'<div>'+x+'<span class="ok">✓</span></div>').join('');parsed.style.opacity=1;},160);});
+
+document.querySelectorAll('.qa button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const qa=btn.parentElement,ans=qa.querySelector('.ans'),open=qa.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ans').style.maxHeight=null;});
+    if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+  });
+});
+</script>
+</body>
+</html>

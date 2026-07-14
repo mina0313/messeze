@@ -1,0 +1,430 @@
+# -*- coding: utf-8 -*-
+"""messeze 블로그 정적 페이지 생성기 (salesmap.kr/blog 기능 미러)
+실행: python build-blog.py  →  blog/index.html + blog/posts/*.html 생성"""
+import os, json, io
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+POSTS_DIR = os.path.join(ROOT, "blog", "posts")
+os.makedirs(POSTS_DIR, exist_ok=True)
+
+# ---------------- 공통 토큰/스타일 ----------------
+CSS = """
+:root{--ink:#0A1930;--navy:#101F3F;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;
+--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--line:#E5EAF2;--line-2:#D8E0EC;
+--sans:'Pretendard',system-ui,-apple-system,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;
+--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all}
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:25px;height:25px}
+.brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
+.nav-menu{display:flex;gap:6px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 13px;border-radius:10px}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a.on{color:var(--cobalt)}
+.nav-r{margin-left:auto}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+.foot{background:#070D1C;color:#7C879D;padding:52px 0 38px;margin-top:0}
+.foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.foot .brand{color:#fff;margin-bottom:14px}
+.foot p{font-size:13.5px;line-height:1.7;max-width:320px}
+.foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
+.cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
+.cta-band h3{font-size:clamp(20px,2.6vw,27px);color:#fff;position:relative}
+.cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
+.cta-band .btn{position:relative;background:var(--cobalt);color:#fff;font-weight:700;font-size:15px;padding:15px 26px;border-radius:14px;display:inline-flex;transition:.18s}
+.cta-band .btn:hover{background:#4270FF}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff;transition:.2s}
+.mega-brand:hover{transform:translateY(-3px)}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.nav-menu{display:none}.mega{display:none}}
+"""
+
+def mega(p):
+    return f"""<div class="mega" id="mega"><div class="wrap mega-in">
+<a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
+<div class="mega-col"><h5>서비스</h5>
+<a href="{p}services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+<a href="{p}services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+<a href="{p}services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+<a href="{p}services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+<a href="{p}services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+<a href="{p}services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
+<div class="mega-col"><h5>무료 도구</h5>
+<a href="{p}check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="{p}pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<div class="gap"></div><h5>요금</h5>
+<a href="{p}pricing.html"><b>플랜 비교</b><span>기본형 · 성장형 · 기업형</span></a>
+<a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
+<div class="mega-col"><h5>리소스</h5>
+<a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+<a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a>
+<div class="gap"></div><h5>많이 읽는 글</h5>
+<a href="{p}blog/posts/aeo-geo-seo.html"><b>AEO·GEO·SEO 차이</b><span>세 가지 최적화 쉽게 정리</span></a>
+<a href="{p}blog/posts/manufacturer-case.html"><b>제조기업 3개월 시나리오</b><span>AI에 발견되기까지</span></a></div>
+</div></div>"""
+
+MEGA_JS = """<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu');if(!p||!t)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);})();
+</script>"""
+
+LOGO = """<svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg>"""
+
+# ---------------- 글 데이터 (회의록 §10 가이드 주제) ----------------
+POSTS = [
+ dict(slug="aeo-geo-seo", cat="AI 가시성", title="AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+  desc="검색 최적화의 세 축을 처음 듣는 분도 이해할 수 있게 정리했습니다. AI 검색 시대에 기업이 먼저 챙겨야 할 순서까지.",
+  date="2026-07-10", grad="linear-gradient(135deg,#101F3F,#2B5CFF)",
+  body="""
+<p>기업 홍보 담당자라면 최근 <b>AEO, GEO</b>라는 낯선 단어를 자주 들으셨을 겁니다. 오랫동안 알던 SEO와 무엇이 다른 걸까요? 결론부터 말하면, 세 가지는 서로 대체 관계가 아니라 <b>'누가 읽느냐'가 다른 최적화</b>입니다.</p>
+<h2>SEO — 검색엔진이 읽습니다</h2>
+<p>SEO(Search Engine Optimization)는 네이버·구글 같은 검색엔진이 우리 페이지를 잘 이해하고 상위에 올리도록 만드는 작업입니다. 키워드, 제목 구조, 내부 링크, 페이지 속도 같은 요소가 핵심이었죠. 지금까지의 온라인 마케팅은 대부분 여기에 집중해 왔습니다.</p>
+<h2>AEO — AI가 '답변'으로 인용하도록</h2>
+<p>AEO(Answer Engine Optimization)는 ChatGPT·Gemini·Perplexity 같은 AI가 사용자의 질문에 답할 때 <b>우리 기업의 정보를 인용하도록</b> 만드는 최적화입니다. AI는 링크 목록을 보여주는 게 아니라 하나의 답을 만들어 냅니다. 그 답 안에 들어가려면 다음이 필요합니다.</p>
+<ul>
+<li>고객이 실제로 물어볼 질문에 대한 명확한 답변형 콘텐츠</li>
+<li>여러 신뢰 가능한 출처(언론, 홈페이지, 전문 칼럼)에서 확인되는 일관된 정보</li>
+<li>기계가 읽기 쉬운 구조화된 페이지</li>
+</ul>
+<h2>GEO — 생성형 AI 검색 전반에 대응</h2>
+<p>GEO(Generative Engine Optimization)는 AEO를 포함하는 더 넓은 개념으로, 생성형 AI 기반 검색 경험 전반에서 우리 기업이 발견되고 추천되도록 만드는 전략입니다. 콘텐츠뿐 아니라 기업 정보의 축적 방식, 출처의 다양성, 최신성 관리까지 포함합니다.</p>
+<blockquote>핵심은 이것입니다. <b>검색량이 없는 B2B·제조기업도 AI에게는 발견될 수 있습니다.</b> AI는 검색량이 아니라 '읽을 수 있는 정보의 양과 신뢰도'로 기업을 판단하기 때문입니다.</blockquote>
+<h2>그래서 무엇부터 해야 하나요?</h2>
+<p>순서는 명확합니다. ① 현재 AI 검색에서 우리 기업이 어떻게 인식되는지 진단하고 ② 고객이 AI에게 물어볼 핵심 질문을 5~6개 정의한 뒤 ③ 질문별로 답이 되는 콘텐츠를 홈페이지·언론·외부 채널에 꾸준히 축적하는 것. 이 사이클을 매달 반복하면 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다.</p>
+"""),
+ dict(slug="ai-pr-guide", cat="AI 가시성", title="AI 검색 시대의 기업 홍보법: 무엇이 달라졌나",
+  desc="고객은 이제 검색 결과를 비교하지 않고 AI에게 물어봅니다. 기업 홍보가 바뀌어야 하는 이유와 새 원칙 4가지.",
+  date="2026-07-08", grad="linear-gradient(135deg,#16295C,#419CFF)",
+  body="""
+<p>불과 몇 년 전까지 고객은 검색창에 키워드를 넣고, 여러 사이트를 열어 비교했습니다. 지금은 다릅니다. <b>AI가 먼저 정보를 검토하고, 기업이나 제품을 추천합니다.</b> 사용자는 그 답을 보고 판단하죠. 이 변화가 기업 홍보에 주는 의미는 생각보다 큽니다.</p>
+<h2>정보가 부족한 기업은 조용히 제외됩니다</h2>
+<p>AI는 답변을 만들 때 여러 출처에서 확인되는 정보를 우선합니다. 홈페이지 한 곳에만 정보가 있는 기업, 몇 년 전 기사 한 건이 전부인 기업은 AI 입장에서 '확신할 수 없는 후보'입니다. 경쟁사가 언론보도·칼럼·구조화된 홈페이지로 정보를 쌓고 있다면, 추천은 그쪽으로 갑니다.</p>
+<h2>새로운 홍보의 원칙 4가지</h2>
+<ul>
+<li><b>① 질문에서 출발하세요.</b> "우리가 알리고 싶은 것"이 아니라 "고객이 AI에게 물어볼 질문"을 먼저 정의합니다. 예: "베트남 수출 경험이 있는 ○○ 제조업체는 어디인가?"</li>
+<li><b>② 출처를 여러 곳에 만드세요.</b> 같은 정보가 언론보도, 홈페이지, 전문 칼럼에서 일관되게 확인될 때 AI의 신뢰가 올라갑니다.</li>
+<li><b>③ 일회성이 아니라 누적으로.</b> 기사 몇 건의 반짝 노출보다, 매달 쌓이는 정보 자산이 AI 검색에서는 훨씬 강합니다.</li>
+<li><b>④ 홈페이지도 함께 정비하세요.</b> 외부 콘텐츠와 홈페이지가 분리되어 있으면 AI가 맥락을 읽지 못합니다.</li>
+</ul>
+<h2>검색량이 적은 기업일수록 기회입니다</h2>
+<p>산업용 부품·소재·설비처럼 검색량이 적은 업종은 지금까지 블로그·검색광고로 효과를 보기 어려웠습니다. 하지만 AI 검색에서는 다릅니다. 해당 분야에 대해 '읽을 수 있는 정보'를 가진 기업이 드물기 때문에, 먼저 축적을 시작한 기업이 그 분야의 답이 됩니다.</p>
+<blockquote>지금 시작하는 기업과 6개월 뒤 시작하는 기업의 격차는, 그대로 AI 추천의 격차가 됩니다.</blockquote>
+"""),
+ dict(slug="press-release-writing", cat="언론홍보", title="기자가 인용하는 보도자료 작성법",
+  desc="보도자료는 '잘 쓴 글'이 아니라 '기사가 되기 쉬운 글'이어야 합니다. 실무에서 바로 쓰는 구조와 체크리스트.",
+  date="2026-07-05", grad="linear-gradient(135deg,#0F2350,#1B3C8F)",
+  body="""
+<p>보도자료의 목적은 하나입니다. <b>기자가 최소한의 수정으로 기사화할 수 있게 만드는 것.</b> 화려한 수식어가 아니라 구조가 승부를 가릅니다.</p>
+<h2>사실과 핵심을 앞에 배치하세요</h2>
+<p>기자는 하루에도 수십 건의 보도자료를 받습니다. 첫 두 문단 안에 '누가·무엇을·왜 지금'이 없으면 나머지는 읽히지 않습니다. 회사 소개부터 길게 시작하는 보도자료가 가장 흔한 실패 사례입니다.</p>
+<h2>기사가 되기 쉬운 구조</h2>
+<ul>
+<li><b>제목:</b> 업계 관점의 뉴스 가치를 담아 한 줄로. 자사 자랑이 아니라 '변화'를 담습니다.</li>
+<li><b>리드문:</b> 핵심 사실 요약. 이 문단만 실려도 기사가 되도록.</li>
+<li><b>본문:</b> 배경 → 세부 내용 → 의미 순. 수치와 근거를 포함.</li>
+<li><b>인용문:</b> 대표 코멘트는 사실 전달이 아니라 방향성과 의지를 담을 것.</li>
+<li><b>회사 소개(보일러플레이트):</b> 맨 끝에 3~4줄로.</li>
+</ul>
+<h2>피해야 할 표현</h2>
+<p>'국내 최초', '업계 최고' 같은 근거 없는 최상급 표현은 기사화 가능성을 떨어뜨립니다. 검증 가능한 사실(인증 취득, 수출 계약, 선정 실적)로 대체하세요. 과장 표현이 많은 보도자료는 스팸으로 분류되기도 합니다.</p>
+<h2>애드버토리얼과는 목적이 다릅니다</h2>
+<p>보도자료는 기자에게 뉴스거리를 제공하는 것이고, 애드버토리얼은 지면을 확보해 우리가 원하는 메시지를 싣는 것입니다. 신제품 출시·인증·수출 성과처럼 뉴스 가치가 있으면 보도자료, 서비스 소개나 브랜드 스토리는 애드버토리얼이 적합합니다. 두 가지를 상황에 맞게 조합하는 것이 실전 언론홍보입니다.</p>
+<blockquote>그리고 잊지 마세요 — 발행된 기사는 AI가 기업을 이해하는 <b>가장 신뢰도 높은 출처</b>가 됩니다. 보도자료 한 건도 AEO 관점에서 설계하면 가치가 두 배가 됩니다.</blockquote>
+"""),
+ dict(slug="advertorial-vs-press", cat="언론홍보", title="언론홍보와 애드버토리얼, 뭐가 다른가요?",
+  desc="비용, 형식, 노출 방식, 활용 시점까지 — 두 방식의 차이를 표로 정리하고 기업 상황별 조합 전략을 제안합니다.",
+  date="2026-07-01", grad="linear-gradient(135deg,#1B3C8F,#2B5CFF)",
+  body="""
+<p>언론홍보를 처음 검토하는 기업이 가장 헷갈리는 것이 <b>일반 보도자료 배포와 애드버토리얼(기사형 광고)의 차이</b>입니다. 명확히 구분하면 예산 낭비를 크게 줄일 수 있습니다.</p>
+<h2>한눈에 보는 차이</h2>
+<ul>
+<li><b>보도자료 배포:</b> 기자에게 뉴스거리를 제공 → 기자가 판단해 기사화. 비용은 낮지만 게재가 보장되지 않고, 내용도 기자가 결정합니다. 그만큼 <b>신뢰도는 가장 높습니다.</b></li>
+<li><b>애드버토리얼:</b> 매체 지면을 구매해 기사 형식으로 게재. 게재가 보장되고 내용을 우리가 정합니다. 다만 매체·독자에 따라 광고로 인식될 수 있습니다.</li>
+</ul>
+<h2>언제 무엇을 쓰나요?</h2>
+<p><b>뉴스 가치가 있을 때</b> — 신제품 출시, 인증 취득, 수출 계약, 정부사업 선정, 전시회 참가 — 는 보도자료가 우선입니다. 실제 기사화되면 비용 대비 효과가 가장 큽니다.</p>
+<p><b>뉴스거리가 약하지만 알리고 싶은 것</b> — 서비스 상세 소개, 기술력 설명, 브랜드 스토리 — 는 애드버토리얼이 적합합니다. 원하는 메시지를 원하는 시점에 확실히 실을 수 있으니까요.</p>
+<h2>AI 검색 관점에서는 '조합'이 답입니다</h2>
+<p>AI는 답변을 만들 때 여러 출처를 교차 확인합니다. 보도자료 기반 기사와 애드버토리얼, 그리고 홈페이지·전문 칼럼의 정보가 일관되게 쌓여 있을 때 기업 정보의 신뢰도가 가장 높아집니다. 한 가지 방식만 반복하는 것보다, 월 단위로 두 방식을 계획적으로 섞는 것이 AEO·GEO 관점에서 효과적입니다.</p>
+<blockquote>기사 몇 건을 사는 것이 아니라, <b>기업 정보 자산을 설계한다</b>는 관점으로 접근하세요.</blockquote>
+"""),
+ dict(slug="exhibition-pr", cat="언론홍보", title="전시회 전후, 기업 홍보는 이렇게 합니다",
+  desc="전시회 참가비의 효과를 두 배로 만드는 사전·현장·사후 홍보 타임라인. 수출상담회에도 그대로 적용됩니다.",
+  date="2026-06-27", grad="linear-gradient(135deg,#101F3F,#0BBF8C)",
+  body="""
+<p>전시회·수출상담회는 제조기업이 1년 중 가장 큰 비용을 쓰는 마케팅 활동입니다. 그런데 많은 기업이 부스 준비에만 집중하고, <b>홍보는 전시회장 안에서만</b> 합니다. 아까운 일입니다.</p>
+<h2>사전 홍보 (D-30 ~ D-7)</h2>
+<ul>
+<li>참가 확정 시점에 <b>참가 보도자료</b>를 배포합니다. "○○전시회에서 신제품 △△ 첫 공개" 형태가 기사화되기 좋습니다.</li>
+<li>홈페이지에 전시회 안내 페이지를 만들고 부스 위치·전시 품목·미팅 신청을 담습니다. 바이어가 사전 검색할 때 발견되는 지점입니다.</li>
+<li>해외 전시회라면 현지어 보도자료와 현지 매체 배포를 준비합니다.</li>
+</ul>
+<h2>현장 (전시 기간)</h2>
+<ul>
+<li>부스 방문 바이어·미팅 기록을 남기고, 현장 사진을 확보합니다. 사후 콘텐츠의 재료입니다.</li>
+<li>현장 이슈(계약 체결, 대규모 상담)가 있으면 당일 짧은 보도자료로 속보성 기사를 노립니다.</li>
+</ul>
+<h2>사후 홍보 (D+1 ~ D+30)</h2>
+<ul>
+<li><b>성과 보도자료</b>: 상담 건수, 계약·MOU, 바이어 반응을 정리해 배포합니다. 사전 기사와 이어지면 매체가 받아쓰기 좋습니다.</li>
+<li>전시회 후기 칼럼을 홈페이지·블로그에 발행합니다. "○○ 전시회에 참가한 한국 기업"을 AI에게 묻는 바이어에게 답이 되는 콘텐츠입니다.</li>
+<li>수집한 바이어에게 보낼 후속 자료에 기사 링크를 포함하면 신뢰도가 올라갑니다.</li>
+</ul>
+<blockquote>전시회 홍보의 진짜 가치는 전시 기간 3일이 아니라, <b>그 전후로 쌓이는 기록</b>에 있습니다. 이 기록은 다음 해 바이어가 AI에게 물을 때 다시 일합니다.</blockquote>
+"""),
+ dict(slug="export-pr-strategy", cat="수출·해외 PR", title="수출기업을 위한 국가별 PR 전략",
+  desc="베트남·중국·미국은 언론 환경도, 바이어가 정보를 찾는 방식도 다릅니다. 국가별 접근법과 공통 원칙.",
+  date="2026-06-22", grad="linear-gradient(135deg,#16295C,#7FA0FF)",
+  body="""
+<p>해외 바이어도 이제 AI에게 묻습니다. "한국에서 ○○을 만드는 신뢰할 만한 제조사는?" 이 질문에 답이 되려면, <b>목표 시장의 언어와 매체에 우리 기업 정보가 존재해야</b> 합니다. 한국어 콘텐츠만으로는 닿지 않습니다.</p>
+<h2>공통 원칙: 현지어 출처 만들기</h2>
+<p>국가가 어디든 순서는 같습니다. ① 현지 바이어가 물어볼 질문 정의 → ② 현지어 콘텐츠 제작(홈페이지 다국어 페이지, 보도자료) → ③ 현지 매체·채널 배포 → ④ 반복 축적. 특히 인증·수출 실적·생산 능력처럼 바이어가 확인하고 싶어 하는 정보를 현지어로 명확히 제공하는 것이 핵심입니다.</p>
+<h2>베트남 — 성장 시장, 낮은 진입 장벽</h2>
+<p>한국 기업에 대한 관심이 높고 현지 매체의 기사화 문턱이 상대적으로 낮습니다. 베트남어 보도자료와 현지 온라인 매체 배포로 비교적 빠르게 출처를 만들 수 있습니다. 전시회·상담회 연계 홍보 효과도 큽니다.</p>
+<h2>중국 — 플랫폼 중심 생태계</h2>
+<p>구글이 아닌 바이두, 그리고 위챗·샤오홍슈 같은 플랫폼 안에서 정보가 유통됩니다. 중국어 콘텐츠는 필수이고, 어떤 플랫폼에 축적할지 전략이 먼저 서야 합니다. B2B라면 산업 전문 매체와 전시회 연계가 효과적입니다.</p>
+<h2>미국 — 신뢰 출처의 기준이 높음</h2>
+<p>영문 보도자료의 품질 기준이 높고, 업계 전문지(trade media)의 영향력이 큽니다. 회사 소개보다 데이터와 사례 중심의 콘텐츠가 통합니다. 영문 홈페이지의 완성도가 낮으면 다른 노력이 모두 할인됩니다.</p>
+<blockquote>수출바우처 등 정부지원사업으로 해외 홍보 비용을 상당 부분 커버할 수 있습니다. 참여 기업이라면 바우처 항목에 <b>해외 언론홍보·다국어 콘텐츠</b>를 포함해 설계하세요.</blockquote>
+"""),
+ dict(slug="manufacturer-case", cat="사례", title="검색량 없는 제조기업이 AI에 발견되기까지",
+  desc="산업용 부품 제조사를 가정한 3개월 시나리오 — 진단, 질문 설계, 콘텐츠 축적이 실제로 어떻게 진행되는지.",
+  date="2026-06-18", grad="linear-gradient(135deg,#0F2350,#2B5CFF)",
+  body="""
+<p>메세지의 운영 방식을 가장 쉽게 이해하는 방법은 한 기업의 3개월을 따라가 보는 것입니다. 아래는 산업용 정밀부품 제조사 A사를 가정한 시나리오입니다. (특정 기업의 실제 사례가 아닌, 표준 운영 과정을 설명하기 위한 예시입니다.)</p>
+<h2>0주차 — 진단: "AI는 A사를 모른다"</h2>
+<p>주요 AI 검색에 A사 관련 질문을 던져 봅니다. "국내에서 항공용 정밀부품을 소량 생산하는 업체는?" — A사는 등장하지 않습니다. 홈페이지는 있지만 제품 사양 PDF뿐이고, 언론 기사는 5년 전 1건. AI가 읽을 수 있는 정보가 사실상 없는 상태입니다.</p>
+<h2>1~2주차 — 질문 설계</h2>
+<p>A사 대표·영업팀과 온보딩 미팅에서 핵심 질문 6개를 정의합니다. 소량 생산, 특정 인증, 수출 경험, 납기 대응 등 <b>실제 바이어가 묻는 언어</b>로요. 이 질문들이 3개월 콘텐츠 계획의 뼈대가 됩니다.</p>
+<h2>1개월차 — 첫 축적</h2>
+<ul>
+<li>홈페이지에 질문-답변 구조의 서비스 페이지 신설 (AEO 구조 적용)</li>
+<li>신규 설비 도입 보도자료 1건 배포 → 산업 전문지 2곳 기사화</li>
+<li>"항공부품 소량 생산, 무엇을 확인해야 하나" 전문 칼럼 발행</li>
+</ul>
+<h2>2개월차 — 출처 넓히기</h2>
+<ul>
+<li>수출 성과 애드버토리얼 1건, 외부 채널(블로그·워드프레스) 콘텐츠 4건</li>
+<li>인증 취득 보도자료 → 기사화. 이 시점부터 같은 정보가 서로 다른 출처 4곳에서 확인됩니다.</li>
+</ul>
+<h2>3개월차 — 변화 확인</h2>
+<p>같은 질문을 다시 AI에 던집니다. 이번에는 A사가 후보로 등장하고, 근거로 언론 기사와 홈페이지가 인용됩니다. 월간 리포트에는 질문별 노출 현황과 다음 달 보완 과제가 담깁니다. 축적은 여기서 멈추지 않고 매달 반복됩니다 — 그것이 구독형 관리의 이유입니다.</p>
+<blockquote>같은 3개월이라도, 시작이 빠른 기업이 그 분야의 '기본 답변'이 됩니다.</blockquote>
+"""),
+]
+
+CATS = ["홈", "AI 가시성", "언론홍보", "수출·해외 PR", "사례"]
+
+FONT_LINKS = """<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">"""
+
+def nav(depth):
+    p = "../" * depth
+    return f"""<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
+<nav class="nav-menu">
+<a href="{p}services.html">서비스</a>
+<a href="{p}pricing.html">요금</a>
+<a href="{p}check.html">AI 가시성 체크</a>
+<a class="on" href="{p}blog/index.html">블로그</a>
+<a href="{p}glossary/index.html">용어사전</a>
+</nav>
+<div class="nav-r"><a class="nav-cta" href="{p}index.html#final">무료 진단 받기</a></div>
+</div>
+{mega(p)}
+</header>
+{MEGA_JS}"""
+
+def foot(depth):
+    p = "../" * depth
+    return f"""<footer class="foot"><div class="wrap"><div class="foot-in">
+<div><a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
+<p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p></div>
+</div><div class="foot-b"><span>© 2026 messeze</span><span>검색량이 없어도, AI가 먼저 추천하는 회사로</span></div></div></footer>"""
+
+def cta(depth):
+    p = "../" * depth
+    return f"""<div class="wrap"><div class="cta-band">
+<div><h3>우리 회사는 AI에서 어떻게 보이고 있을까요?</h3><p>AI 가시성 무료 진단 · 보도자료 1건 무료 · 최적화 콘텐츠 3건</p></div>
+<a class="btn" href="{p}index.html#final">무료 진단 신청하기</a></div></div>"""
+
+# ---------------- 글 상세 페이지 ----------------
+POST_CSS = CSS + """
+.crumb{font-size:13.5px;font-weight:600;color:var(--mut);padding:34px 0 0;display:flex;gap:8px;align-items:center}
+.crumb a:hover{color:var(--cobalt)}
+.crumb .cat{color:var(--cobalt);font-weight:700}
+.phead{max-width:760px;margin:0 auto;padding:26px 0 34px}
+.phead h1{font-size:clamp(27px,3.8vw,40px);line-height:1.32}
+.phead .meta{margin-top:18px;font-size:13.5px;color:var(--mut);font-weight:600;display:flex;gap:14px;align-items:center}
+.phead .meta .by{color:var(--ink)}
+.pcover{max-width:860px;margin:0 auto;height:230px;border-radius:22px;position:relative;overflow:hidden}
+.pcover .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px}
+.pcover .tag{position:absolute;left:24px;bottom:20px;font-size:13px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px}
+.article{max-width:720px;margin:0 auto;padding:46px 0 10px}
+.article p{font-size:16.5px;color:#333C4E;line-height:1.85;margin-bottom:26px}
+.article h2{font-size:22px;margin:42px 0 16px;padding-top:8px}
+.article ul{margin:0 0 26px 4px;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.article li{font-size:16px;color:#333C4E;line-height:1.75}
+.article b{color:var(--ink)}
+.article blockquote{background:var(--sky);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:20px 24px;font-size:16px;color:var(--navy);line-height:1.75;margin:34px 0}
+.rel{max-width:860px;margin:60px auto 0;padding:0 24px}
+.rel h3{font-size:20px;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.rcard:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.rcard .thumb{height:110px;position:relative}
+.rcard .thumb .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:16px 16px}
+.rcard .b{padding:18px 20px 20px}
+.rcard .cat{font-size:12px;font-weight:800;color:var(--cobalt)}
+.rcard h4{font-size:15.5px;margin-top:8px;line-height:1.45}
+.backrow{max-width:720px;margin:44px auto 0;padding:0 24px}
+.backrow a{font-size:14.5px;font-weight:700;color:var(--cobalt)}
+@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:170px;border-radius:16px;margin:0 20px}}
+"""
+
+def related(post):
+    others = [q for q in POSTS if q["slug"] != post["slug"]]
+    same = [q for q in others if q["cat"] == post["cat"]] + [q for q in others if q["cat"] != post["cat"]]
+    cards = ""
+    for q in same[:2]:
+        cards += f"""<a class="rcard" href="{q['slug']}.html"><div class="thumb" style="background:{q['grad']}"><span class="pat"></span></div>
+<div class="b"><span class="cat">{q['cat']}</span><h4>{q['title']}</h4></div></a>"""
+    return cards
+
+def build_post(post):
+    return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{post['title']} | messeze 블로그</title>
+<meta name="description" content="{post['desc']}">
+{FONT_LINKS}
+<style>{POST_CSS}</style></head><body>
+{nav(2)}
+<div class="wrap crumb"><a href="../index.html">블로그</a><span>›</span><span class="cat">{post['cat']}</span></div>
+<div class="wrap phead"><h1>{post['title']}</h1>
+<div class="meta"><span class="by">by. messeze 편집팀</span><span>·</span><span>{post['date']}</span></div></div>
+<div class="pcover" style="background:{post['grad']}"><span class="pat"></span><span class="tag">{post['cat']}</span></div>
+<article class="article wrap">{post['body']}</article>
+<div class="backrow"><a href="../index.html">← 블로그 목록으로</a></div>
+<div class="rel"><h3>함께 읽으면 좋은 글</h3><div class="rel-grid">{related(post)}</div></div>
+{cta(2)}
+{foot(2)}
+</body></html>"""
+
+# ---------------- 블로그 인덱스 ----------------
+INDEX_CSS = CSS + """
+.bhero{padding:56px 0 30px}
+.bhero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.bhero h1{font-size:clamp(30px,4vw,42px)}
+.bhero p{color:var(--body);font-size:16px;margin-top:10px}
+.search{position:relative}
+.search input{width:280px;max-width:100%;background:var(--sky-2);border:1.5px solid var(--line);border-radius:14px;padding:13px 16px 13px 42px;font-family:var(--sans);font-size:14.5px;color:var(--ink);transition:.18s}
+.search input:focus{outline:none;border-color:var(--cobalt);background:#fff}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--mut)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:22px 0 0;border-bottom:1px solid var(--line);margin-bottom:40px}
+.tabs button{font-family:var(--sans);font-weight:700;font-size:15px;background:none;border:0;border-bottom:2.5px solid transparent;color:var(--body);padding:12px 14px;cursor:pointer;transition:.15s}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--cobalt);border-bottom-color:var(--cobalt)}
+.group{margin-bottom:54px}
+.group .gh{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.group .gh h2{font-size:22px}
+.group .gh a{font-size:13.5px;font-weight:700;color:var(--cobalt)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.card:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.card .thumb{height:150px;position:relative}
+.card .thumb .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:18px 18px}
+.card .thumb .tag{position:absolute;left:18px;bottom:14px;font-size:12px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:5px 12px;border-radius:999px}
+.card .b{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:17px;line-height:1.45;letter-spacing:-.02em}
+.card p{margin-top:9px;font-size:13.8px;color:var(--body);line-height:1.58;flex:1}
+.card .meta{margin-top:16px;font-size:12.5px;color:var(--mut);font-weight:600}
+.card .meta b{color:var(--ink)}
+.empty{text-align:center;color:var(--mut);padding:60px 0;font-size:15px}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.bhero .row{align-items:stretch}.search input{width:100%}}
+"""
+
+def build_index():
+    posts_json = json.dumps([{k: p[k] for k in ("slug","cat","title","desc","date","grad")} for p in POSTS], ensure_ascii=False)
+    cats_json = json.dumps(CATS, ensure_ascii=False)
+    return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>블로그 | messeze — AI 검색 시대의 기업 홍보 인사이트</title>
+<meta name="description" content="AEO·GEO·SEO, 보도자료 작성법, 수출기업 PR 전략까지 — AI 검색 시대의 기업 홍보를 다루는 messeze 블로그.">
+{FONT_LINKS}
+<style>{INDEX_CSS}</style></head><body>
+{nav(1)}
+<section class="bhero"><div class="wrap">
+<div class="row">
+<div><h1>messeze 블로그</h1><p>AI 검색 시대의 기업 홍보, 먼저 이해하고 시작하세요.</p></div>
+<div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg><input id="q" type="search" placeholder="검색어를 입력하세요"></div>
+</div>
+<div class="tabs" id="tabs"></div>
+</div></section>
+<main class="wrap" id="app"></main>
+{cta(1)}
+{foot(1)}
+<script>
+const POSTS={posts_json};
+const CATS={cats_json};
+const app=document.getElementById('app'),tabsEl=document.getElementById('tabs'),q=document.getElementById('q');
+let cur='홈';
+function card(p){{return `<a class="card" href="posts/${{p.slug}}.html">
+<div class="thumb" style="background:${{p.grad}}"><span class="pat"></span><span class="tag">${{p.cat}}</span></div>
+<div class="b"><h3>${{p.title}}</h3><p>${{p.desc}}</p><div class="meta"><b>by. messeze 편집팀</b> · ${{p.date}}</div></div></a>`}}
+function grid(list){{return list.length?`<div class="grid">${{list.map(card).join('')}}</div>`:`<div class="empty">검색 결과가 없습니다.</div>`}}
+function render(){{
+  const kw=q.value.trim().toLowerCase();
+  if(kw){{
+    const hits=POSTS.filter(p=>(p.title+p.desc+p.cat).toLowerCase().includes(kw));
+    app.innerHTML=`<div class="group"><div class="gh"><h2>'${{q.value.trim()}}' 검색 결과 ${{hits.length}}건</h2></div>${{grid(hits)}}</div>`;
+    return;
+  }}
+  if(cur==='홈'){{
+    let html=`<div class="group"><div class="gh"><h2>최근 아티클</h2></div>${{grid(POSTS.slice(0,3))}}</div>`;
+    for(const c of CATS.slice(1)){{
+      const list=POSTS.filter(p=>p.cat===c);
+      if(!list.length)continue;
+      html+=`<div class="group"><div class="gh"><h2>${{c}}</h2><a href="#" data-cat="${{c}}" class="more">전체 보기 →</a></div>${{grid(list.slice(0,3))}}</div>`;
+    }}
+    app.innerHTML=html;
+  }}else{{
+    app.innerHTML=`<div class="group"><div class="gh"><h2>${{cur}}</h2></div>${{grid(POSTS.filter(p=>p.cat===cur))}}</div>`;
+  }}
+}}
+function renderTabs(){{tabsEl.innerHTML=CATS.map(c=>`<button class="${{c===cur?'on':''}}" data-c="${{c}}">${{c}}</button>`).join('')}}
+tabsEl.addEventListener('click',e=>{{const b=e.target.closest('button');if(!b)return;cur=b.dataset.c;q.value='';renderTabs();render();scrollTo({{top:0,behavior:'smooth'}})}});
+app.addEventListener('click',e=>{{const m=e.target.closest('.more');if(!m)return;e.preventDefault();cur=m.dataset.cat;renderTabs();render();scrollTo({{top:0,behavior:'smooth'}})}});
+q.addEventListener('input',render);
+renderTabs();render();
+</script>
+</body></html>"""
+
+# ---------------- 실행 ----------------
+with io.open(os.path.join(ROOT, "blog", "index.html"), "w", encoding="utf-8") as f:
+    f.write(build_index())
+for p in POSTS:
+    with io.open(os.path.join(POSTS_DIR, p["slug"] + ".html"), "w", encoding="utf-8") as f:
+        f.write(build_post(p))
+print("OK: blog/index.html +", len(POSTS), "posts")

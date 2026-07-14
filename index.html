@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>messeze · 검색량이 없어도, AI가 먼저 추천하는 회사로</title>
+<meta name="description" content="기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스. 검색량이 없는 제조·B2B 기업도 AI에게 발견되도록.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1930;
+  --navy:#101F3F;
+  --navy-2:#16295C;
+  --body:#4A5568;
+  --mut:#8B95A7;
+  --cobalt:#2B5CFF;
+  --cobalt-dk:#1E46D9;
+  --sky:#EAF1FF;
+  --sky-2:#F5F8FD;
+  --mint:#0BBF8C;
+  --line:#E5EAF2;
+  --line-2:#D8E0EC;
+  --amber:#FF9F2E;
+  --sans:'Pretendard',system-ui,-apple-system,sans-serif;
+  --disp:'Poppins',var(--sans);
+  --maxw:1140px;
+  --sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);
+  --sh:0 12px 34px rgba(16,31,63,.10);
+  --sh-lg:0 30px 70px rgba(16,31,63,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:keep-all}
+.co{color:var(--cobalt)}
+.sec{padding:116px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:18px}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--cobalt);border-radius:2px}
+.h2{font-size:clamp(28px,3.8vw,42px)}
+.lead{font-size:17px;color:var(--body);line-height:1.65;margin-top:16px}
+.shead{max-width:640px;margin-bottom:56px}
+.shead.center{margin-left:auto;margin-right:auto;text-align:center}
+.shead.center .eyebrow{justify-content:center}
+.shead.center .eyebrow::before{display:none}
+
+/* buttons */
+.btn{font-family:var(--sans);font-weight:700;font-size:15.5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 26px;border:1.5px solid transparent;transition:.18s;letter-spacing:-.01em}
+.btn-co{background:var(--cobalt);color:#fff;box-shadow:0 8px 22px rgba(43,92,255,.28)}
+.btn-co:hover{background:var(--cobalt-dk);transform:translateY(-2px)}
+.btn-navy{background:var(--ink);color:#fff}
+.btn-navy:hover{background:#000}
+.btn-gh{background:#fff;color:var(--ink);border-color:var(--line-2)}
+.btn-gh:hover{border-color:var(--ink)}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.25s}
+.nav.on{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;height:74px;gap:44px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand .blogo{width:26px;height:26px}
+.brand .bword{font-family:var(--disp);font-weight:600;font-size:21.5px;letter-spacing:-.025em;line-height:1}
+.nav-menu{display:flex;gap:8px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.nav-r .lk{font-size:15px;font-weight:600;color:var(--body);padding:9px 12px}
+.nav-r .lk:hover{color:var(--ink)}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+/* mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff;transition:.2s}
+.mega-brand:hover{transform:translateY(-3px)}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.mega{display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:56px 0 100px;overflow:hidden;background:
+  radial-gradient(900px 480px at 88% -10%,rgba(43,92,255,.10),transparent 60%),
+  radial-gradient(700px 420px at -8% 30%,rgba(43,92,255,.05),transparent 55%),#fff}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(16,31,63,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(640px 480px at 78% 30%,#000,transparent 75%);pointer-events:none}
+.hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;position:relative;min-height:calc(100vh - 240px)}
+.hero-l .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:28px}
+.hero-l .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
+.hero-l h1{font-size:clamp(36px,5.2vw,62px);line-height:1.18}
+.hero-l p.sub{font-size:18px;color:var(--body);margin-top:24px;max-width:470px;line-height:1.66}
+.hero-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{margin-top:34px;display:flex;gap:0;border-top:1px solid var(--line);padding-top:22px}
+.hero-meta div{padding-right:28px;margin-right:28px;border-right:1px solid var(--line)}
+.hero-meta div:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-meta b{display:block;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.hero-meta span{font-size:13px;color:var(--mut);font-weight:500}
+
+/* layered mockup */
+.mock{position:relative;min-height:520px}
+.mock .blob{position:absolute;inset:9% 5% 12% 9%;background:linear-gradient(135deg,#0F2350,#1B3C8F 55%,#2B5CFF);border-radius:30px;transform:rotate(-5deg);box-shadow:var(--sh-lg)}
+.mock .blob::after{content:"";position:absolute;inset:0;border-radius:30px;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(120deg,#000,transparent 70%)}
+/* chat window */
+.win{position:absolute;top:50%;left:2%;width:94%;background:#fff;border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden;border:1px solid var(--line);transform:translateY(-50%) rotate(-1.6deg)}
+.win-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:#FAFBFE}
+.win-bar .d{width:10px;height:10px;border-radius:50%;background:#E3E9F4}
+.win-bar .u{margin-left:10px;flex:1;background:#F1F4FA;border-radius:8px;font-size:11.5px;color:var(--mut);padding:6px 12px;font-weight:500}
+.win-body{padding:26px 26px 28px}
+.ln-q{font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.55;padding-bottom:18px;border-bottom:1px dashed var(--line);margin-bottom:18px}
+.ln-q .qm{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--sky);color:var(--cobalt);font-size:12px;font-weight:800;margin-right:8px;vertical-align:-4px}
+.ln-a{display:flex;gap:11px}
+.ln-a .am{flex:0 0 26px;height:26px;border-radius:8px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.ln-a p{font-size:15px;color:var(--body);line-height:1.65}
+.ln-a p b{color:var(--ink)}
+.ln-srcs{margin-top:14px;padding-left:37px;display:flex;flex-wrap:wrap;gap:6px}
+.ln-srcs span{font-size:12px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:8px;padding:6px 11px;display:inline-flex;gap:5px;align-items:center}
+.ln-srcs span i{font-style:normal;color:var(--mint)}
+/* (score card 제거 — 히어로 단순화) */
+/* mini badge */
+.mbadge{position:absolute;top:0;right:6%;background:var(--ink);color:#fff;border-radius:999px;padding:12px 18px;font-size:12.5px;font-weight:800;box-shadow:var(--sh);display:flex;align-items:center;gap:9px;transform:rotate(-4deg);z-index:5}
+.mbadge .pk{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(11,191,140,.22)}
+.cu{position:relative;display:inline-block}
+.cu::after{content:"";position:absolute;left:1%;right:1%;bottom:-3px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C50 3 130 2 197 7' stroke='%232B5CFF' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+
+/* ============ MARQUEE ============ */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;background:#fff}
+.marq-in{display:flex;white-space:nowrap;animation:mx 30s linear infinite;width:max-content}
+.marq-in span{font-size:14.5px;font-weight:700;color:#B9C2D4;padding:0 26px;display:flex;align-items:center;gap:26px}
+.marq-in span::after{content:"·";color:var(--cobalt)}
+@keyframes mx{to{transform:translateX(-50%)}}
+
+/* ============ WHY (numbered narrative) ============ */
+.why{background:var(--sky-2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-c{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 28px;position:relative;overflow:hidden}
+.why-c .wn{font-family:var(--disp);font-size:15px;font-weight:700;color:#fff;background:var(--ink);width:38px;height:38px;border-radius:12px;display:grid;place-items:center}
+.why-c h3{font-size:20px;margin:20px 0 10px}
+.why-c p{font-size:14.8px;color:var(--body);line-height:1.62}
+.why-c.hl{background:var(--ink);border-color:var(--ink);color:#fff}
+.why-c.hl .wn{background:var(--cobalt)}
+.why-c.hl h3{color:#fff}
+.why-c.hl p{color:#B9C4DC}
+
+/* ============ WHY: editorial + collage ============ */
+.why-in{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.why-in .shead{margin-bottom:6px;max-width:none}
+.why-list{border-top:1px solid var(--line);margin-top:26px}
+.why-item{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:21px 0;border-bottom:1px solid var(--line)}
+.why-item .n{font-family:var(--disp);font-weight:700;color:#B9C2D4;font-size:17px;line-height:1.3}
+.why-item h3{font-size:18px;margin-bottom:6px}
+.why-item p{font-size:14.3px;color:var(--body);line-height:1.62}
+.why-item.em .n{color:var(--cobalt)}
+.why-item.em h3 .mk{background:linear-gradient(180deg,transparent 58%,rgba(43,92,255,.2) 42%);padding:0 2px}
+/* collage */
+.collage{position:relative;min-height:520px}
+.cw{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cw.old{top:14px;left:0;width:60%;transform:rotate(-4deg);box-shadow:0 14px 34px rgba(16,31,63,.10);z-index:1}
+.cw.old .inner{filter:grayscale(.9);opacity:.88}
+.cw.new{bottom:6px;right:0;width:76%;transform:rotate(1.4deg);box-shadow:0 34px 72px rgba(16,31,63,.20);z-index:3;border-color:#C4D4FF}
+.sticker{position:absolute;font-weight:800;font-size:13px;padding:8px 16px;border-radius:999px;box-shadow:0 6px 16px rgba(16,31,63,.16);white-space:nowrap}
+.sticker.s-old{top:-4px;left:9%;background:#fff;color:var(--mut);border:1px solid var(--line);transform:rotate(-7deg);z-index:2}
+.sticker.s-new{right:4%;bottom:calc(100% - 46%);background:var(--cobalt);color:#fff;transform:rotate(3deg);z-index:4}
+.arrow-sk{position:absolute;left:34%;top:26%;width:150px;height:130px;z-index:2;pointer-events:none}
+.collage-cap{position:absolute;right:2%;bottom:-34px;font-size:13px;font-weight:700;color:var(--ink)}
+.collage-cap b{color:var(--cobalt)}
+/* window internals */
+.sv-bar{display:flex;gap:6px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);background:#FAFBFD}
+.sv-bar i{width:9px;height:9px;border-radius:50%;background:#E3E9F4}
+.sv-bar .u{margin-left:8px;flex:1;background:#F1F4FA;border-radius:7px;font-size:11px;color:var(--mut);padding:5px 10px;font-weight:600}
+.sv-body{padding:16px 18px 18px}
+.sv-q{font-size:13px;font-weight:700;background:var(--sky-2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:12px;color:var(--ink)}
+.sv-link{padding:9px 2px;border-bottom:1px solid var(--sky-2)}
+.sv-link b{display:block;font-size:12.5px;color:#3B5BD9;font-weight:700}
+.sv-link span{font-size:10.5px;color:var(--mut)}
+.sv-sk{height:7px;border-radius:4px;background:#EEF2F9;margin:11px 0}
+.sv-sk.s{width:74%}
+.sv-ans{display:flex;gap:9px;margin-top:4px}
+.sv-ans .am{flex:0 0 24px;height:24px;border-radius:8px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800}
+.sv-ans p{font-size:12.8px;color:var(--body);line-height:1.58}
+.sv-ans b{color:var(--ink)}
+.sv-srcs{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;padding-left:33px}
+.sv-srcs span{font-size:10.5px;font-weight:700;color:var(--cobalt);background:var(--sky);border-radius:999px;padding:4px 9px}
+
+/* ============ BENTO ============ */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.bx{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;position:relative;overflow:hidden;transition:.22s}
+.bx:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:var(--line-2)}
+.bx h4{font-size:18.5px;margin-bottom:8px}
+.bx>p{font-size:14px;color:var(--body);line-height:1.6}
+.bx .bk{font-size:12px;font-weight:800;color:var(--cobalt);letter-spacing:.02em;margin-bottom:12px;display:block}
+.bx.b1{grid-column:span 3}
+.bx.b2{grid-column:span 3}
+.bx.b3{grid-column:span 2}
+.bx.b4{grid-column:span 2}
+.bx.b5{grid-column:span 2}
+/* gauge visual */
+.gauge{margin-top:22px;display:flex;align-items:center;gap:18px}
+.gauge svg{width:104px;height:104px;flex:0 0 auto}
+.gauge .gtxt b{font-family:var(--disp);font-size:26px;font-weight:700}
+.gauge .gtxt span{display:block;font-size:12.5px;color:var(--mut);font-weight:600}
+/* chat chips visual */
+.qchips{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.qchips span{font-size:12.8px;font-weight:600;color:var(--navy);background:var(--sky);border-radius:10px;padding:9px 13px;width:fit-content}
+.qchips span:nth-child(2){margin-left:18px}
+.qchips span:nth-child(3){margin-left:6px}
+/* article visual */
+.artv{margin-top:20px;background:var(--sky-2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.artv .at{height:9px;border-radius:5px;background:var(--ink);opacity:.85;width:70%}
+.artv .al{height:7px;border-radius:4px;background:#D8E0EC;margin-top:8px}
+.artv .al.s{width:82%}
+.artv .al.xs{width:58%}
+.artv .ab{margin-top:12px;display:flex;gap:6px}
+.artv .ab span{font-size:10.5px;font-weight:700;color:var(--cobalt);background:#fff;border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+/* press logos visual */
+.pressv{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.pressv span{font-size:12px;font-weight:800;color:#A6B0C3;background:var(--sky-2);border:1px solid var(--line);border-radius:9px;padding:8px 12px}
+/* chart visual */
+.chartv{margin-top:20px;display:flex;align-items:flex-end;gap:7px;height:76px}
+.chartv i{flex:1;background:linear-gradient(180deg,#6E93FF,var(--cobalt));border-radius:6px 6px 2px 2px;opacity:.9}
+.chartv i:nth-child(1){height:22%}.chartv i:nth-child(2){height:30%}.chartv i:nth-child(3){height:26%}.chartv i:nth-child(4){height:44%}.chartv i:nth-child(5){height:56%}.chartv i:nth-child(6){height:70%}.chartv i:nth-child(7){height:88%}
+/* globe visual */
+.langv{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px}
+.langv span{font-size:12.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:7px 13px}
+
+/* ============ FILTER ============ */
+.filt .seg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px;width:fit-content;margin:0 auto 30px;box-shadow:var(--sh-sm)}
+.seg button{font-family:var(--sans);font-weight:700;font-size:14px;border:0;background:transparent;color:var(--body);border-radius:12px;padding:11px 18px;cursor:pointer;transition:.16s}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--ink);color:#fff}
+.qa-wrap{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr .72fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden;transition:opacity .25s}
+.qa-l{padding:30px 32px}
+.qa-l .lab{font-size:12px;font-weight:800;color:var(--mut);letter-spacing:.03em;margin-bottom:12px}
+.qa-l .qt{font-size:20px;font-weight:800;line-height:1.45;letter-spacing:-.02em}
+.qa-l .ans{margin-top:20px;padding-top:20px;border-top:1px dashed var(--line);display:flex;gap:11px}
+.qa-l .ans .am{flex:0 0 28px;height:28px;border-radius:9px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.qa-l .ans p{font-size:14.8px;color:var(--body);line-height:1.62}
+.qa-l .ans p b{color:var(--ink)}
+.qa-r{background:var(--navy);color:#fff;padding:30px 28px;display:flex;flex-direction:column}
+.qa-r .foot{margin-top:auto;padding-top:18px}
+.qa-r .lab{font-size:12px;font-weight:800;color:#8FA3D9;letter-spacing:.03em;margin-bottom:16px}
+.qa-r .cite{display:flex;flex-direction:column;gap:10px}
+.qa-r .cite div{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 13px;font-size:13px;font-weight:600}
+.qa-r .cite .ok{margin-left:auto;color:var(--mint);font-size:12px;font-weight:800}
+.qa-r .foot{margin-top:18px;font-size:12px;color:#8FA3D9;font-weight:600}
+
+/* ============ EXPOSED? ============ */
+.miss{max-width:620px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.miss .mh{padding:20px 26px;border-bottom:1px solid var(--line);font-size:15px;font-weight:800;color:var(--ink);display:flex;gap:11px;align-items:center;background:var(--sky-2)}
+.miss .mh .mq{flex:0 0 26px;height:26px;border-radius:8px;background:var(--sky);color:var(--cobalt);display:grid;place-items:center;font-size:12px;font-weight:800}
+.miss .mrow{display:flex;gap:14px;padding:19px 26px;border-bottom:1px solid var(--line);align-items:center}
+.miss .rk{flex:0 0 32px;height:32px;border-radius:10px;background:var(--sky-2);color:var(--navy);font-weight:800;font-size:13.5px;display:grid;place-items:center}
+.miss .mrow b{font-size:15.5px;display:block;letter-spacing:-.01em}
+.miss .mrow .d{font-size:12.8px;color:var(--mut);display:block;margin-top:2px;font-weight:500}
+.miss .chk{margin-left:auto;font-size:12px;font-weight:800;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.miss .chk.ok{color:var(--mint);background:rgba(11,191,140,.1)}
+.miss .chk.no{color:#E2574C;background:rgba(226,87,76,.1)}
+.miss .mrow.you{background:#FFF9F5;border-left:3px solid #E2574C;padding-left:23px}
+.miss .mrow.you .rk{background:#FDEAE4;color:#E2574C}
+.miss .mfoot{padding:22px 26px;display:flex;justify-content:center}
+.miss .mfoot .btn{width:100%}
+
+/* ============ COMPARE ============ */
+.cmp{max-width:880px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm)}
+.cmp-r{display:grid;grid-template-columns:1fr 1.15fr;border-top:1px solid var(--line);background:#fff}
+.cmp-r:first-child{border-top:0}
+.cmp-c{padding:19px 26px;font-size:15.5px;display:flex;align-items:center;gap:11px}
+.cmp-c.o{color:var(--mut);background:#FAFBFD}
+.cmp-c.n{font-weight:700;border-left:1px solid var(--line)}
+.cmp-c .mk{font-size:12px;font-weight:800}
+.cmp-c.o .mk{color:#C6CDDA}
+.cmp-c.n .mk{color:var(--mint)}
+.cmp-hd .cmp-c{font-size:13px;font-weight:800;letter-spacing:.02em;padding:18px 26px}
+.cmp-hd .o{color:var(--mut)}
+.cmp-hd .n{background:var(--ink);color:#fff;border-left-color:var(--ink)}
+
+/* ============ STAT BAND ============ */
+.band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 380px at 82% 0,rgba(43,92,255,.35),transparent 60%)}
+.band .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.band h2{font-size:clamp(28px,4vw,44px);color:#fff}
+.band .lead{color:#AEB9D2}
+.band-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bs{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 22px}
+.bs b{font-family:var(--disp);font-size:34px;font-weight:700;letter-spacing:-.03em;display:block;line-height:1.1}
+.bs b em{font-style:normal;font-size:18px;color:#8FA3D9}
+.bs span{font-size:13.5px;color:#AEB9D2;font-weight:600;margin-top:6px;display:block}
+.bs.co b{color:#7FA0FF}
+
+/* ============ PRICING ============ */
+.price{background:var(--sky-2)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tier{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 30px;display:flex;flex-direction:column;position:relative}
+.tier.pop{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:var(--sh-lg)}
+.tier .badge{position:absolute;top:24px;right:24px;font-size:11.5px;font-weight:800;background:var(--cobalt);color:#fff;padding:6px 12px;border-radius:999px}
+.tier .tn{font-size:14px;font-weight:800;color:var(--cobalt)}
+.tier.pop .tn{color:#7FA0FF}
+.tier .tp{font-size:31px;font-weight:800;letter-spacing:-.02em;margin:14px 0 2px}
+.tier .tp small{font-size:15px;font-weight:600;color:var(--mut)}
+.tier.pop .tp small{color:#8FA3D9}
+.tier .td{font-size:14px;color:var(--body);margin:6px 0 22px;min-height:42px;line-height:1.55}
+.tier.pop .td{color:#AEB9D2}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;flex:1}
+.tier li{display:flex;gap:10px;font-size:14.5px;line-height:1.45;color:var(--body)}
+.tier.pop li{color:#C7D0E4}
+.tier li .c{font-size:12px;font-weight:800;color:var(--mint);padding-top:2px}
+.tier .btn{width:100%}
+.tier.pop .btn{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.tier.pop .btn:hover{background:#4270FF}
+.price-note{text-align:center;margin-top:24px;font-size:13px;color:var(--mut)}
+
+/* ============ FAQ ============ */
+.faq{max-width:760px;margin:0 auto}
+.qa{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:#fff;overflow:hidden;transition:.2s}
+.qa.open{border-color:var(--ink);box-shadow:var(--sh-sm)}
+.qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:22px 24px;font-family:var(--sans);font-size:17px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-.01em}
+.qa .ico{flex:0 0 26px;height:26px;border-radius:9px;background:var(--sky-2);color:var(--ink);display:grid;place-items:center;font-size:15px;font-weight:600;transition:.2s}
+.qa.open .ico{background:var(--ink);color:#fff;transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--body);font-size:15px;line-height:1.68}
+.qa .ans p{padding:0 24px 22px}
+
+/* ============ INSIGHTS ============ */
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ins{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
+.ins:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.ins .top{aspect-ratio:16/9;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-2))}
+.ins .top .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:18px 18px}
+.ins .top .tt{position:absolute;left:20px;bottom:18px;color:#fff;font-size:13px;font-weight:800;background:rgba(43,92,255,.85);padding:6px 12px;border-radius:9px}
+.ins .b{padding:22px 24px 26px}
+.ins h4{font-size:17.5px;line-height:1.42;letter-spacing:-.02em}
+.ins p{margin-top:8px;font-size:13.8px;color:var(--body);line-height:1.58}
+.ins .rd{margin-top:16px;font-size:13px;font-weight:800;color:var(--cobalt)}
+
+/* ============ FINAL ============ */
+.final{padding:116px 0}
+.final-in{background:var(--ink);border-radius:28px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;padding:60px 56px;color:#fff}
+.final-in::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 340px at 88% 100%,rgba(43,92,255,.4),transparent 60%)}
+.final-l{position:relative}
+.final-l h2{font-size:clamp(26px,3.6vw,40px);color:#fff}
+.final-l p{margin-top:16px;color:#AEB9D2;font-size:16px;max-width:400px;line-height:1.62}
+.final-l .free{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.final-l .free span{display:flex;gap:10px;font-size:14.5px;color:#DDE4F2;font-weight:600}
+.final-l .free i{font-style:normal;color:var(--mint);font-weight:800;font-size:13px}
+.fform{position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px 26px;backdrop-filter:blur(4px)}
+.fform h3{font-size:19px;color:#fff;margin-bottom:18px}
+.fld{margin-bottom:13px}
+.fld label{display:block;font-size:12.5px;font-weight:700;color:#8FA3D9;margin-bottom:7px}
+.fld input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 15px;color:#fff;font-family:var(--sans);font-size:15px;transition:.18s}
+.fld input::placeholder{color:#5F6C8C}
+.fld input:focus{outline:none;border-color:var(--cobalt);background:rgba(43,92,255,.1)}
+.fform .btn{width:100%;margin-top:6px;background:var(--cobalt);color:#fff}
+.fform .btn:hover{background:#4270FF}
+.fform .fn{margin-top:12px;font-size:12px;color:#5F6C8C;text-align:center;font-weight:600}
+
+/* ============ FOOTER ============ */
+.foot{background:#070D1C;color:#7C879D;padding:60px 0 42px}
+.foot-in{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot .brand{color:#fff;margin-bottom:16px}
+.foot p{font-size:13.5px;line-height:1.7;max-width:320px}
+.foot-cols{display:flex;gap:56px}
+.foot-col h5{color:#C3CBDC;font-size:13.5px;margin-bottom:15px;font-weight:800}
+.foot-col a{display:block;font-size:14px;margin-bottom:10px}
+.foot-col a:hover{color:#fff}
+.foot-b{margin-top:46px;padding-top:24px;border-top:1px solid #141C30;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#4E5A73}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:52px}
+  .mock{min-height:460px}
+  .why-grid,.price-grid,.ins-grid{grid-template-columns:1fr}
+  .why-in{grid-template-columns:1fr;gap:44px}
+  .collage{min-height:440px;margin-bottom:30px}
+  .collage-cap{bottom:-28px}
+  .bento{grid-template-columns:1fr 1fr}
+  .bx.b1,.bx.b2{grid-column:span 2}
+  .bx.b3,.bx.b4,.bx.b5{grid-column:span 2}
+  .band .wrap,.final-in{grid-template-columns:1fr}
+  .qa-wrap{grid-template-columns:1fr}
+  .qa-r{border-top:1px solid var(--line)}
+  .nav-menu{display:none}
+}
+@media (max-width:560px){
+  .sec,.final{padding:76px 0}
+  .hero{padding:56px 0 80px}
+  .hero-meta{flex-wrap:wrap;gap:14px}
+  .hero-meta div{border-right:0;padding-right:0;margin-right:18px}
+  .win{width:100%;left:0}
+  .final-in{padding:40px 26px}
+  .hero-cta .btn{flex:1}
+  .cmp-r{grid-template-columns:1fr}
+  .cmp-c.n{border-left:0;border-top:1px dashed var(--line)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><svg class="blogo" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bword">messeze</span></a>
+    <nav class="nav-menu">
+      <a href="services.html">서비스</a>
+      <a href="pricing.html">요금</a>
+      <a href="check.html">AI 가시성 체크</a>
+      <a href="blog/index.html">블로그</a>
+      <a href="glossary/index.html">용어사전</a>
+    </nav>
+    <div class="nav-r">
+      <a href="#final" class="lk">상담 신청</a>
+      <a href="#final" class="nav-cta">무료 진단 받기</a>
+    </div>
+  </div>
+  <div class="mega" id="mega"><div class="wrap mega-in">
+    <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>검색량이 없어도,<br>AI가 먼저 추천하는 회사로</p></a>
+    <div class="mega-col">
+      <h5>서비스</h5>
+      <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+      <a href="services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+      <a href="services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+      <a href="services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+      <a href="services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+      <a href="services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>무료 도구</h5>
+      <a href="check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
+      <a href="pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+      <div class="gap"></div>
+      <h5>요금</h5>
+      <a href="pricing.html"><b>플랜 비교</b><span>기본형 · 성장형 · 기업형</span></a>
+      <a href="pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>리소스</h5>
+      <a href="blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+      <a href="glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a>
+      <div class="gap"></div>
+      <h5>많이 읽는 글</h5>
+      <a href="blog/posts/aeo-geo-seo.html"><b>AEO·GEO·SEO 차이</b><span>세 가지 최적화 쉽게 정리</span></a>
+      <a href="blog/posts/manufacturer-case.html"><b>제조기업 3개월 시나리오</b><span>AI에 발견되기까지</span></a>
+    </div>
+  </div></div>
+</header>
+<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu');if(!p||!t)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);})();
+</script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="wrap hero-in">
+    <div class="hero-l rv">
+      <span class="tag"><span class="nd"></span>구독형 기업 PR · AI 가시성 관리</span>
+      <h1>검색량이 없어도,<br><span class="co cu">AI가 먼저 추천하는</span><br>회사로 만듭니다</h1>
+      <p class="sub">홈페이지·보도자료·전문 콘텐츠를 언론과 AI 검색에 매달 축적합니다. 사람에게만 보이던 홍보를, AI가 읽는 홍보로.</p>
+      <div class="hero-cta">
+        <a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a>
+        <a href="#features" class="btn btn-gh">서비스 살펴보기</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>월 구독형</b><span>전담 매니저 관리</span></div>
+        <div><b>3개월~</b><span>AI 반영 기준선</span></div>
+        <div><b>제조·B2B</b><span>핵심 대상 업종</span></div>
+      </div>
+    </div>
+
+    <div class="mock rv d1">
+      <div class="blob"></div>
+      <div class="mbadge"><span class="pk"></span>AI 인식됨 · 출처 4</div>
+      <div class="win">
+        <div class="win-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="u">ai-search · 추천 질의</span></div>
+        <div class="win-body">
+          <div class="ln-q"><span class="qm">Q</span>국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?</div>
+          <div class="ln-a"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 정밀부품을 공급했고, 2024년 수출바우처 선정 기업입니다.</p></div>
+          <div class="ln-srcs"><span><i>✓</i>언론보도</span><span><i>✓</i>홈페이지</span><span><i>✓</i>보도자료</span><span><i>✓</i>칼럼</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marq"><div class="marq-in">
+  <span>정밀부품</span><span>산업소재</span><span>자동화설비</span><span>의료기기</span><span>친환경소재</span><span>수출제조</span><span>신기술 스타트업</span><span>부품·소재·장비</span>
+  <span>정밀부품</span><span>산업소재</span><span>자동화설비</span><span>의료기기</span><span>친환경소재</span><span>수출제조</span><span>신기술 스타트업</span><span>부품·소재·장비</span>
+</div></div>
+
+<!-- WHY -->
+<section class="sec why" id="why">
+  <div class="wrap why-in">
+    <div class="rv">
+      <div class="shead">
+        <span class="eyebrow">왜 지금인가</span>
+        <h2 class="h2">고객은 이제 검색하지 않고,<br>AI에게 물어봅니다</h2>
+        <p class="lead">AI가 먼저 기업을 조사하고 추천하는 시대. 중요한 것은 검색량이 아니라, AI가 읽을 수 있는 기업 정보입니다.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item"><span class="n">1</span><div><h3>AI가 먼저 답합니다</h3><p>사용자가 링크를 비교하기 전에, AI가 신뢰할 만한 기업을 골라 먼저 추천합니다.</p></div></div>
+        <div class="why-item"><span class="n">2</span><div><h3>정보가 없으면 제외됩니다</h3><p>여러 출처에서 확인되지 않는 기업은 AI의 추천 후보에서 조용히 사라집니다.</p></div></div>
+        <div class="why-item em"><span class="n">3</span><div><h3><span class="mk">그래서 축적이 필요합니다</span></h3><p>언론·홈페이지·콘텐츠에 기업 정보가 꾸준히 쌓이면, 검색량이 없어도 AI가 찾아냅니다. 메세지가 그 축적을 대신합니다.</p></div></div>
+      </div>
+    </div>
+
+    <div class="collage rv d1">
+      <span class="sticker s-old">예전 — 링크 열어 비교</span>
+      <div class="cw old"><div class="inner">
+        <div class="sv-bar"><i></i><i></i><i></i><span class="u">search?q=정밀부품+제조업체</span></div>
+        <div class="sv-body">
+          <div class="sv-q">🔍 정밀부품 제조업체</div>
+          <div class="sv-link"><b>정밀부품 제조업체 추천 TOP 10</b><span>blog.example.com</span></div>
+          <div class="sv-link"><b>[광고] 부품가공 전문 △△테크</b><span>ad.example.com</span></div>
+          <div class="sv-link"><b>정밀가공 업체 견적 비교 방법</b><span>cafe.example.com</span></div>
+          <div class="sv-sk"></div>
+          <div class="sv-sk s"></div>
+        </div>
+      </div></div>
+      <svg class="arrow-sk" viewBox="0 0 150 130" fill="none">
+        <path d="M18 14 C74 6, 118 44, 122 102" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
+        <path d="M108 92 L123 106 L131 88" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="sticker s-new">지금 — AI가 골라줍니다</span>
+      <div class="cw new">
+        <div class="sv-bar"><i></i><i></i><i></i><span class="u">ai-search · 대화형 질문</span></div>
+        <div class="sv-body">
+          <div class="sv-q">💬 믿을 만한 정밀부품 제조사 추천해줘</div>
+          <div class="sv-ans"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 부품을 공급했고, 소량 생산 대응이 가능하며 수출바우처 선정 이력이 있습니다.</p></div>
+          <div class="sv-srcs"><span>✓ 언론보도</span><span>✓ 홈페이지</span><span>✓ 전문 칼럼</span></div>
+        </div>
+      </div>
+      <div class="collage-cap">AI의 답 하나로 결정됩니다 — <b>그 답에 들어가야 합니다</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="sec filt" id="ask">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">업종별 시뮬레이션</span>
+      <h2 class="h2">당신 업종의 고객은<br>AI에게 이렇게 묻습니다</h2>
+    </div>
+    <div class="seg rv" id="chips">
+      <button class="on" data-k="parts">정밀부품</button>
+      <button data-k="material">산업소재</button>
+      <button data-k="equip">자동화 설비</button>
+      <button data-k="export">수출기업</button>
+      <button data-k="startup">스타트업</button>
+      <button data-k="pro">전문 서비스</button>
+    </div>
+    <div class="qa-wrap rv" id="parsed">
+      <div class="qa-l">
+        <div class="lab">고객이 AI에게 묻는 질문</div>
+        <div class="qt" id="pq">"국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?"</div>
+        <div class="ans"><span class="am">AI</span><p id="pa"><b>○○정밀</b> — 15년간 항공·의료 정밀부품을 공급했고, 소량·다품종 대응이 가능하며 2024년 수출바우처 선정 기업입니다.</p></div>
+      </div>
+      <div class="qa-r">
+        <div class="lab">AI가 확인한 출처</div>
+        <div class="cite" id="pc">
+          <div>📰 언론보도 3건<span class="ok">✓</span></div>
+          <div>🌐 홈페이지 제품·인증 정보<span class="ok">✓</span></div>
+          <div>📄 보도자료 아카이브<span class="ok">✓</span></div>
+          <div>✍️ 전문 칼럼 2건<span class="ok">✓</span></div>
+        </div>
+        <div class="foot">messeze가 3개월간 축적한 출처입니다</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPOSED? -->
+<section class="sec" id="exposed">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">그런데, 지금은요?</span>
+      <h2 class="h2">여러분의 기업은<br><span class="co">AI 답변에 노출</span>되고 있으세요?</h2>
+      <p class="lead">같은 질문에 AI는 이미 누군가를 추천하고 있습니다.<br>그 답에 우리 회사가 없다면, 고객은 경쟁사로 갑니다.</p>
+    </div>
+    <div class="miss rv">
+      <div class="mh"><span class="mq">Q</span>"이 분야에서 믿을 만한 기업을 추천해줘"</div>
+      <div class="mrow"><span class="rk">1</span><div><b>경쟁사 A</b><span class="d">언론보도 5건 · 홈페이지 최적화 · 전문 칼럼 운영</span></div><span class="chk ok">추천됨</span></div>
+      <div class="mrow"><span class="rk">2</span><div><b>경쟁사 B</b><span class="d">보도자료 아카이브 · 수출 실적 기사화</span></div><span class="chk ok">추천됨</span></div>
+      <div class="mrow you"><span class="rk">?</span><div><b>당신의 회사</b><span class="d">아직 AI가 읽을 수 있는 정보가 없습니다</span></div><span class="chk no">미노출</span></div>
+      <div class="mfoot"><a href="check.html" class="btn btn-co">우리 회사 노출 여부 무료로 확인하기</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SUMMARY -->
+<section class="sec" id="features" style="background:var(--sky-2)">
+  <div class="wrap">
+    <div class="shead rv" style="max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <div>
+        <span class="eyebrow">메세지면 걱정 끝</span>
+        <h2 class="h2">노출 안 되고 있어도 괜찮습니다.<br>진단부터 노출 관리까지, 다 해드리니까요</h2>
+      </div>
+      <a href="services.html" class="btn btn-gh">서비스 자세히 보기 →</a>
+    </div>
+    <div class="why-grid">
+      <div class="why-c rv"><span class="wn">1</span><h3>AI 가시성 진단</h3><p>주요 AI 검색에서 우리 기업이 어떻게 인식되는지 점수로 보여드립니다. 경쟁사 비교까지.</p></div>
+      <div class="why-c rv d1"><span class="wn">2</span><h3>콘텐츠·언론 축적</h3><p>고객 질문을 설계하고, 보도자료·칼럼을 제작해 언론과 채널에 매달 배포합니다.</p></div>
+      <div class="why-c rv d2"><span class="wn">3</span><h3>월간 AI 노출 관리</h3><p>AI 검색 변화를 추적하고 부족한 정보를 보완하는 리포트를 매달 드립니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAND -->
+<section class="sec band">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow" style="color:#7FA0FF">축적의 힘</span>
+      <h2>3개월이면, AI가<br>당신 회사를 알아봅니다</h2>
+      <p class="lead">꾸준히 누적된 기업 정보는 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다. 경쟁사가 먼저 쌓기 시작하면, 따라잡는 데 그만큼 시간이 걸립니다.</p>
+    </div>
+    <div class="band-stats rv d1">
+      <div class="bs co"><b>3<em>개월</em></b><span>AI 반영 기준선</span></div>
+      <div class="bs"><b>5~6<em>개</em></b><span>기업별 핵심 질문 설계</span></div>
+      <div class="bs"><b>월간<em></em></b><span>축적 리포트 · 전략 미팅</span></div>
+      <div class="bs"><b>국내+해외<em></em></b><span>다국어 언론 확장</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec price" id="price">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">구독 요금</span>
+      <h2 class="h2">단계별 구독으로 부담 없이</h2>
+      <p class="lead">정보가 누적되는 서비스 특성상 최소 3개월 운영을 권장합니다.</p>
+    </div>
+    <div class="price-grid">
+      <div class="tier rv">
+        <div class="tn">기본형</div>
+        <div class="tp">월 50~60<small>만원</small></div>
+        <div class="td">AI 가시성 기초 구축과 콘텐츠·언론홍보를 시작합니다.</div>
+        <ul>
+          <li><span class="c">✓</span>AI 가시성 진단</li>
+          <li><span class="c">✓</span>핵심 질문·검색 의도 설계</li>
+          <li><span class="c">✓</span>보도자료 기획·작성</li>
+          <li><span class="c">✓</span>애드버토리얼 발행</li>
+          <li><span class="c">✓</span>월간 보고 · 전담 매니저</li>
+        </ul>
+        <a href="#final" class="btn btn-gh">상담 신청</a>
+      </div>
+      <div class="tier pop rv d1">
+        <span class="badge">가장 많이 찾는</span>
+        <div class="tn">성장형</div>
+        <div class="tp">월 150<small>만원 전후</small></div>
+        <div class="td">콘텐츠와 언론 노출을 확대하고 전략까지 관리합니다.</div>
+        <ul>
+          <li><span class="c">✓</span>기본형 전체 포함</li>
+          <li><span class="c">✓</span>외부 채널 콘텐츠 확대</li>
+          <li><span class="c">✓</span>기자·언론사 배포 확대</li>
+          <li><span class="c">✓</span>홈페이지 콘텐츠 보완</li>
+          <li><span class="c">✓</span>정기 전략 미팅</li>
+        </ul>
+        <a href="#final" class="btn">상담 신청</a>
+      </div>
+      <div class="tier rv d2">
+        <div class="tn">기업형</div>
+        <div class="tp">월 200<small>만원 이상</small></div>
+        <div class="td">맞춤 캠페인과 다채널·해외 홍보, 컨설팅까지.</div>
+        <ul>
+          <li><span class="c">✓</span>성장형 전체 포함</li>
+          <li><span class="c">✓</span>맞춤형 대규모 캠페인</li>
+          <li><span class="c">✓</span>해외 기자 대상 배포</li>
+          <li><span class="c">✓</span>다국어 콘텐츠·홈페이지</li>
+          <li><span class="c">✓</span>고난도 기업 컨설팅</li>
+        </ul>
+        <a href="#final" class="btn btn-gh">상담 신청</a>
+      </div>
+    </div>
+    <div class="price-note rv">* 가격은 예시 기준이며, 기업 상황과 범위에 따라 상담 시 조정됩니다.</div>
+    <div class="rv" style="text-align:center;margin-top:28px"><a href="pricing.html" class="btn btn-gh">플랜 자세히 비교하기 →</a></div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="sec" id="insights" style="background:var(--sky-2)">
+  <div class="wrap">
+    <div class="shead rv" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;max-width:none">
+      <div>
+        <span class="eyebrow">블로그</span>
+        <h2 class="h2">AI 검색 시대의 기업 홍보,<br>먼저 이해하세요</h2>
+      </div>
+      <a href="blog/index.html" class="btn btn-gh">블로그 전체 보기 →</a>
+    </div>
+    <div class="ins-grid">
+      <a class="ins rv" href="blog/posts/aeo-geo-seo.html"><div class="top"><span class="pat"></span><span class="tt">AI 가시성</span></div><div class="b"><h4>AEO·GEO·SEO, 무엇이 어떻게 다른가요?</h4><p>AI가 읽는 검색 최적화의 세 축을 쉽게 정리했습니다.</p><div class="rd">읽어보기 →</div></div></a>
+      <a class="ins rv d1" href="blog/posts/manufacturer-case.html"><div class="top"><span class="pat"></span><span class="tt">사례</span></div><div class="b"><h4>검색량 없는 제조기업이 AI에 발견되기까지</h4><p>진단, 질문 설계, 콘텐츠 축적 — 3개월의 변화.</p><div class="rd">읽어보기 →</div></div></a>
+      <a class="ins rv d2" href="blog/posts/export-pr-strategy.html"><div class="top"><span class="pat"></span><span class="tt">수출·해외 PR</span></div><div class="b"><h4>수출기업을 위한 국가별 PR 전략</h4><p>베트남·중국·미국, 언어와 언론 환경이 다릅니다.</p><div class="rd">읽어보기 →</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final" id="final">
+  <div class="wrap"><div class="final-in rv">
+    <div class="final-l">
+      <h2>우리 회사는 지금 AI에서<br>어떻게 보이고 있을까요?</h2>
+      <p>먼저 현재 상태를 무료로 확인해 드립니다. 결과를 보고 직접 하실지, 메세지에 맡기실지 정하셔도 늦지 않습니다.</p>
+      <div class="free">
+        <span><i>✓</i>AI 가시성 무료 진단 리포트</span>
+        <span><i>✓</i>보도자료 1건 무료 작성</span>
+        <span><i>✓</i>AI 최적화 콘텐츠 3건 제공</span>
+      </div>
+    </div>
+    <form class="fform" id="diagForm">
+      <h3>무료 진단 신청</h3>
+      <div class="fld"><label>담당자 이름</label><input type="text" placeholder="홍길동" required></div>
+      <div class="fld"><label>회사명</label><input type="text" placeholder="○○정밀" required></div>
+      <div class="fld"><label>연락처</label><input type="tel" placeholder="010-0000-0000" required></div>
+      <div class="fld"><label>홈페이지 주소 (선택)</label><input type="url" placeholder="https://"></div>
+      <button type="submit" class="btn">무료 진단 신청하기</button>
+      <div class="fn">영업일 기준 1일 내 회신드립니다</div>
+    </form>
+  </div></div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top"><svg class="blogo" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bword">messeze</span></a>
+        <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col"><h5>서비스</h5><a href="services.html">서비스 상세</a><a href="pricing.html">요금</a><a href="check.html">AI 가시성 체크</a><a href="blog/index.html">블로그</a><a href="glossary/index.html">용어사전</a></div>
+        <div class="foot-col"><h5>회사</h5><a href="#final">상담 신청</a><a href="#final">무료 진단</a><a href="services.html#faq">FAQ</a></div>
+      </div>
+    </div>
+    <div class="foot-b"><span>© 2026 messeze</span><span>검색량이 없어도, AI가 먼저 추천하는 회사로</span></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>8),{passive:true});
+
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// 업종별 시뮬레이션
+const D={
+  parts:{q:'"국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?"',a:'<b>○○정밀</b> — 15년간 항공·의료 정밀부품을 공급했고, 소량·다품종 대응이 가능하며 2024년 수출바우처 선정 기업입니다.',c:['📰 언론보도 3건','🌐 홈페이지 제품·인증 정보','📄 보도자료 아카이브','✍️ 전문 칼럼 2건']},
+  material:{q:'"내열·경량 산업용 신소재를 국내에서 공급하는 기업을 추천해줘"',a:'<b>○○소재</b> — 자동차·항공용 경량 복합소재를 자체 개발해 공급하며, 특허 12건과 KS 인증을 보유하고 있습니다.',c:['📰 산업 전문지 보도 2건','🌐 기술·특허 페이지','📄 신제품 보도자료','✍️ 소재 기술 칼럼']},
+  equip:{q:'"소규모 라인에 맞는 맞춤형 자동화 설비를 제작하는 국내 업체는?"',a:'<b>○○오토메이션</b> — 중소 제조라인 맞춤 설계·시공 전문으로, 설치 후 유지보수까지 대응합니다.',c:['📰 설비 도입 사례 보도','🌐 시공 실적 페이지','📄 신규 라인 보도자료','✍️ 자동화 가이드 칼럼']},
+  export:{q:'"베트남 수출 경험이 있는 국내 제조업체를 알려줘"',a:'<b>○○인더스트리</b> — 베트남·태국 등 동남아 수출 실적을 보유했고, 현지 인증과 수출바우처 사업을 함께 진행한 제조기업입니다.',c:['📰 수출 성과 보도 2건','🌐 해외 인증 페이지','📄 전시회 참가 보도자료','✍️ 베트남 진출 칼럼']},
+  startup:{q:'"국내 신기술 기반 스타트업 중 이 분야 솔루션이 있는 곳은?"',a:'<b>○○랩스</b> — 자체 기술로 특허를 확보한 신기술 스타트업으로, 정부 R&D 과제와 실증 사례를 보유하고 있습니다.',c:['📰 기술 언론 보도','🌐 특허·기술 페이지','📄 투자·과제 보도자료','✍️ 기술 해설 칼럼']},
+  pro:{q:'"특정 산업에 특화된 전문 서비스 기업을 추천해줘"',a:'<b>○○파트너스</b> — 해당 산업 전담 경력을 갖춘 전문 서비스 기업으로, 검증된 레퍼런스와 전문 칼럼을 지속 발행합니다.',c:['📰 전문지 기고 2건','🌐 레퍼런스 페이지','📄 사례 보도자료','✍️ 산업 전문 칼럼']}
+};
+const chips=document.getElementById('chips'),pq=document.getElementById('pq'),pa=document.getElementById('pa'),pc=document.getElementById('pc'),parsed=document.getElementById('parsed');
+if(chips){chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;chips.querySelectorAll('button').forEach(c=>c.classList.remove('on'));b.classList.add('on');const d=D[b.dataset.k];parsed.style.opacity=0;setTimeout(()=>{pq.textContent=d.q;pa.innerHTML=d.a;pc.innerHTML=d.c.map(x=>'<div>'+x+'<span class="ok">✓</span></div>').join('');parsed.style.opacity=1;},160);});}
+
+document.getElementById('diagForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const b=e.target.querySelector('button');
+  b.textContent='신청 완료 · 곧 연락드립니다 ✓';b.style.background='var(--mint)';b.disabled=true;
+});
+</script>
+</body>
+</html>
