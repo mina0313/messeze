@@ -116,7 +116,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero2 .meta2 span{font-size:12.5px;color:var(--mut);font-weight:600}
 /* wide AI strip */
 .strip-card{max-width:880px;margin:58px auto 0;position:relative}
-.strip-card .scard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-lg);transform:rotate(-.8deg);display:grid;grid-template-columns:1.02fr .98fr;overflow:hidden;text-align:left}
+.strip-card .scard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-lg);transform:rotate(-.8deg);display:block;overflow:hidden;text-align:left}
 .strip-card .lab{font-size:11.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;margin-bottom:10px}
 .strip-card .sq{padding:26px 28px}
 .strip-card .sq .qt{font-size:16.5px;font-weight:800;line-height:1.5;letter-spacing:-.01em}
@@ -132,6 +132,33 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .strip-card .srcs2 i{font-style:normal;color:var(--mint)}
 .strip-card .stick{position:absolute;top:-15px;right:26px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 17px;font-size:12.5px;font-weight:800;box-shadow:var(--sh);display:flex;align-items:center;gap:8px;transform:rotate(2.5deg);z-index:3}
 .strip-card .stick .pk{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(11,191,140,.22)}
+/* strip-card → AI 가시성 대시보드 목업 */
+.strip-card .shead-bar{display:flex;align-items:center;gap:6px;padding:13px 18px;border-bottom:1px solid var(--line);background:#FAFBFE}
+.strip-card .shead-bar .d{width:9px;height:9px;border-radius:50%;background:#E3E9F4}
+.strip-card .shead-bar .ttl{font-size:12.5px;font-weight:800;color:var(--ink);margin-left:8px}
+.strip-card .shead-bar .live{margin-left:auto;font-size:11px;font-weight:800;color:var(--mint);background:rgba(11,191,140,.1);border-radius:999px;padding:5px 11px;display:inline-flex;align-items:center;gap:6px}
+.strip-card .shead-bar .live .pk2{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pkPulse 2.2s ease-in-out infinite}
+.strip-card .sbody{display:grid;grid-template-columns:1.05fr .95fr}
+.strip-card .ans2{margin-top:16px}
+.strip-card .dgauge-wrap{display:flex;align-items:center;gap:16px;margin-top:12px}
+.strip-card .dgauge{position:relative;width:94px;height:94px;flex:0 0 auto}
+.strip-card .dgauge svg{width:94px;height:94px;transform:rotate(-90deg)}
+.strip-card .dgauge .arc{stroke-dashoffset:59;animation:gaugeFill 1.4s 1s both cubic-bezier(.3,.8,.3,1)}
+.strip-card .dgauge .dn{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--disp);font-size:25px;font-weight:700;color:var(--ink)}
+.strip-card .dmeta b{display:block;font-size:15px;font-weight:800;color:var(--ink)}
+.strip-card .dmeta .delta{display:block;font-size:12.5px;font-weight:800;color:var(--mint);margin-top:3px}
+.strip-card .dmeta .dsub{display:block;font-size:11.5px;color:var(--mut);font-weight:600;margin-top:3px}
+.strip-card .chartv2{margin-top:14px;display:flex;align-items:flex-end;gap:6px;height:52px}
+.strip-card .chartv2 i{flex:1;background:linear-gradient(180deg,#6E93FF,var(--cobalt));border-radius:5px 5px 2px 2px;opacity:.92;transform-origin:bottom;animation:barGrow .55s both cubic-bezier(.3,.9,.3,1)}
+.strip-card .chartv2 i:nth-child(1){height:26%;animation-delay:1.05s}
+.strip-card .chartv2 i:nth-child(2){height:34%;animation-delay:1.13s}
+.strip-card .chartv2 i:nth-child(3){height:30%;animation-delay:1.21s}
+.strip-card .chartv2 i:nth-child(4){height:48%;animation-delay:1.29s}
+.strip-card .chartv2 i:nth-child(5){height:62%;animation-delay:1.37s}
+.strip-card .chartv2 i:nth-child(6){height:78%;animation-delay:1.45s}
+.strip-card .chartv2 i:nth-child(7){height:96%;animation-delay:1.53s}
+@keyframes gaugeFill{from{stroke-dashoffset:326.7}to{stroke-dashoffset:59}}
+@keyframes barGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 .hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;position:relative;min-height:calc(100vh - 240px)}
 .hero-l .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:28px}
 .hero-l .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
@@ -500,7 +527,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   .nav-menu{display:none}
 }
 @media (max-width:760px){
-  .strip-card .scard{grid-template-columns:1fr}
+  .strip-card .sbody{grid-template-columns:1fr}
   .strip-card .sa{border-left:0;border-top:1px solid var(--line)}
 }
 @media (max-width:560px){
@@ -602,14 +629,34 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   <div class="wrap strip-card">
     <div class="stick"><span class="pk"></span>AI 인식됨 · 출처 4</div>
     <div class="scard">
-      <div class="sq">
-        <div class="lab">고객이 AI에게 묻습니다</div>
-        <div class="qt"><span class="qm">Q</span>국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?</div>
+      <div class="shead-bar">
+        <span class="d"></span><span class="d"></span><span class="d"></span>
+        <span class="ttl">messeze · AI 가시성 리포트</span>
+        <span class="live"><span class="pk2"></span>실시간</span>
       </div>
-      <div class="sa">
-        <div class="lab">AI가 이렇게 답하게 만듭니다</div>
-        <div class="ans2"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 정밀부품을 공급했고, 2024년 수출바우처 선정 기업입니다.</p></div>
-        <div class="srcs2"><span><i>✓</i>언론보도</span><span><i>✓</i>홈페이지</span><span><i>✓</i>보도자료</span><span><i>✓</i>칼럼</span></div>
+      <div class="sbody">
+        <div class="sq">
+          <div class="lab">고객이 AI에게 묻습니다</div>
+          <div class="qt"><span class="qm">Q</span>국내에서 항공·의료용 정밀부품을 소량 생산할 수 있는 믿을 만한 제조사는?</div>
+          <div class="ans2"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 정밀부품을 공급했고, 2024년 수출바우처 선정 기업입니다.</p></div>
+          <div class="srcs2"><span><i>✓</i>언론보도</span><span><i>✓</i>홈페이지</span><span><i>✓</i>보도자료</span><span><i>✓</i>칼럼</span></div>
+        </div>
+        <div class="sa">
+          <div class="lab">AI 노출 점수</div>
+          <div class="dgauge-wrap">
+            <div class="dgauge">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#E5EAF2" stroke-width="11"/>
+                <circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="url(#gg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="326.7"/>
+                <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#2B5CFF"/></linearGradient></defs>
+              </svg>
+              <span class="dn num" data-to="82">0</span>
+            </div>
+            <div class="dmeta"><b>양호</b><span class="delta">▲ 3개월 +54</span><span class="dsub">경쟁사 평균 61</span></div>
+          </div>
+          <div class="lab" style="margin-top:20px">3개월 축적 추이</div>
+          <div class="chartv2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
       </div>
     </div>
   </div>
