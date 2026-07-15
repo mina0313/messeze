@@ -234,29 +234,26 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   -webkit-mask-image:radial-gradient(720px 460px at 50% 32%,#000,transparent 78%)}
 /* floating source chips — AI가 읽는 출처들이 히어로 주변을 떠다님 */
 .hero-floats{position:absolute;inset:0;z-index:1;pointer-events:none;display:none}
-@media(min-width:1360px){.hero-floats{display:block}}
-.fl{position:absolute;background:#fff;border:1px solid var(--line-2);border-radius:16px;
-  box-shadow:0 18px 38px rgba(16,31,63,.16),0 3px 9px rgba(16,31,63,.05);
-  padding:10px 15px 10px 10px;display:flex;align-items:center;gap:11px;white-space:nowrap;will-change:translate}
-.fl .fi{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;color:#fff;font-weight:800;font-size:17px;box-shadow:0 6px 14px rgba(16,31,63,.2)}
-.fl .fi svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.fl .ft{display:flex;flex-direction:column;line-height:1.25}
-.fl .ft b{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
-.fl .ft span{font-size:10.5px;color:var(--mut);font-weight:600;margin-top:1px}
-.fl.c-press .fi{background:linear-gradient(135deg,#3D6BFF,#1E46D9)}
-.fl.c-web .fi{background:linear-gradient(135deg,#37B6FF,#2B78FF)}
-.fl.c-naver .fi{background:linear-gradient(135deg,#06C167,#03A24A)}
-.fl.c-col .fi{background:linear-gradient(135deg,#FFB03A,#F98A1E)}
-.fl.c-tistory .fi{background:linear-gradient(135deg,#FF8A4C,#F0562A)}
-.fl.c-ai .fi{background:linear-gradient(135deg,#14D1A0,#08A97B)}
-.fl.f1{top:53%;left:calc(50% - 585px);transform:rotate(-5deg);animation:bob 6s ease-in-out infinite,flIn .7s .8s both}
-.fl.f2{top:69%;left:calc(50% - 558px);transform:rotate(4deg);animation:bob 7.5s ease-in-out .6s infinite,flIn .7s .95s both}
-.fl.f3{top:85%;left:calc(50% - 600px);transform:rotate(-3deg);animation:bob 6.8s ease-in-out .3s infinite,flIn .7s 1.1s both}
-.fl.f4{top:55%;left:calc(50% + 430px);transform:rotate(5deg);animation:bob 7s ease-in-out .2s infinite,flIn .7s .88s both}
-.fl.f5{top:71%;left:calc(50% + 452px);transform:rotate(-4deg);animation:bob 6.3s ease-in-out .9s infinite,flIn .7s 1.03s both}
-.fl.f6{top:87%;left:calc(50% + 428px);transform:rotate(4deg);animation:bob 8s ease-in-out .4s infinite,flIn .7s 1.18s both}
-@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -11px}}
-@keyframes flIn{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
+@media(min-width:1260px){.hero-floats{display:block}}
+.fl{position:absolute;border-radius:21px;display:grid;place-items:center;color:#fff;
+  box-shadow:0 24px 44px -12px var(--fls,rgba(43,92,255,.5)),0 8px 16px rgba(16,31,63,.13),inset 0 2px 3px rgba(255,255,255,.55),inset 0 -9px 16px rgba(0,0,0,.15);
+  will-change:translate}
+.fl::after{content:"";position:absolute;inset:0;border-radius:21px;background:linear-gradient(158deg,rgba(255,255,255,.6),rgba(255,255,255,0) 46%);pointer-events:none}
+.fl svg{width:45%;height:45%;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
+.fl.c-press{background:linear-gradient(150deg,#5480FF,#1E46D9);--fls:rgba(43,92,255,.5)}
+.fl.c-web{background:linear-gradient(150deg,#46C4FF,#2B7CFF);--fls:rgba(43,124,255,.45)}
+.fl.c-naver{background:linear-gradient(150deg,#2ADB77,#04A34B);--fls:rgba(6,193,103,.45)}
+.fl.c-col{background:linear-gradient(150deg,#FFC658,#F98A1E);--fls:rgba(249,138,30,.45)}
+.fl.c-tistory{background:linear-gradient(150deg,#FFA062,#F0562A);--fls:rgba(240,86,42,.45)}
+.fl.c-ai{background:linear-gradient(150deg,#22E0AD,#08A97B);--fls:rgba(11,191,140,.45)}
+.fl.f1{width:66px;height:66px;top:19%;left:6%;transform:rotate(-8deg);animation:bob 6s ease-in-out infinite,flIn .7s .7s both}
+.fl.f2{width:58px;height:58px;top:45%;left:3%;transform:rotate(6deg);animation:bob 7.5s ease-in-out .5s infinite,flIn .7s .85s both}
+.fl.f3{width:72px;height:72px;top:71%;left:7%;transform:rotate(-5deg);animation:bob 6.8s ease-in-out .3s infinite,flIn .7s 1s both}
+.fl.f4{width:64px;height:64px;top:16%;right:6.5%;transform:rotate(8deg);animation:bob 7s ease-in-out .2s infinite,flIn .7s .78s both}
+.fl.f5{width:70px;height:70px;top:43%;right:3%;transform:rotate(-6deg);animation:bob 6.3s ease-in-out .9s infinite,flIn .7s .93s both}
+.fl.f6{width:60px;height:60px;top:70%;right:6.5%;transform:rotate(5deg);animation:bob 8s ease-in-out .4s infinite,flIn .7s 1.08s both}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -13px}}
+@keyframes flIn{from{opacity:0;scale:.8}to{opacity:1;scale:1}}
 
 /* ============ MARQUEE ============ */
 .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;background:#fff}
@@ -651,12 +648,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   <div class="hero-rays"></div>
   <div class="hero-dots"></div>
   <div class="hero-floats" aria-hidden="true">
-    <div class="fl f1 c-press"><span class="fi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="15" rx="1.5"/><path d="M16 8h4a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"/><path d="M6 9h7M6 13h7M6 17h4"/></svg></span><span class="ft"><b>언론보도</b><span>기자 배포</span></span></div>
-    <div class="fl f2 c-web"><span class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 2.6 2.8 15.4 0 18M12 3c-2.8 2.6-2.8 15.4 0 18"/></svg></span><span class="ft"><b>홈페이지</b><span>제품·인증</span></span></div>
-    <div class="fl f3 c-naver"><span class="fi">N</span><span class="ft"><b>네이버 블로그</b><span>주 2회 발행</span></span></div>
-    <div class="fl f4 c-col"><span class="fi"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M14 6l4 4"/></svg></span><span class="ft"><b>전문 칼럼</b><span>자사 발행</span></span></div>
-    <div class="fl f5 c-tistory"><span class="fi">T</span><span class="ft"><b>티스토리</b><span>기술 글</span></span></div>
-    <div class="fl f6 c-ai"><span class="fi"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/></svg></span><span class="ft"><b>AI 추천됨</b><span>출처 4</span></span></div>
+    <div class="fl f1 c-press"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="15" rx="1.5"/><path d="M16 8h4a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"/><path d="M6 9h7M6 13h7M6 17h4"/></svg></div>
+    <div class="fl f2 c-web"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 2.6 2.8 15.4 0 18M12 3c-2.8 2.6-2.8 15.4 0 18"/></svg></div>
+    <div class="fl f3 c-naver"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></div>
+    <div class="fl f4 c-col"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M14 6l4 4"/></svg></div>
+    <div class="fl f5 c-tistory"><svg viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-6"/></svg></div>
+    <div class="fl f6 c-ai"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7L12 3Z"/></svg></div>
   </div>
   <div class="wrap hero2">
     <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
