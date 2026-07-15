@@ -315,6 +315,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   .collage.rv .cw.old{transform:rotate(-4deg)}.collage.rv .cw.new{transform:rotate(1.4deg)}
   .collage .sticker,.collage .arrow-sk,.collage .collage-cap{opacity:1}
 }
+/* 업종 전환 — 부드러운 크로스페이드 (카드 틀 고정, 안쪽 내용만) */
+#parsed .qa-l,#parsed .qa-r .cite{transition:opacity .32s ease,transform .32s ease}
+#parsed.swapping .qa-l,#parsed.swapping .qa-r .cite{opacity:0;transform:translateY(7px)}
+@media (prefers-reduced-motion:reduce){#parsed .qa-l,#parsed .qa-r .cite{transition:none}#parsed.swapping .qa-l,#parsed.swapping .qa-r .cite{opacity:1;transform:none}}
 /* 스크롤 피닝 (why · ask) — 데스크톱만 */
 .pin-sec{position:relative;padding:0}
 .pin-sec .pin-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
@@ -984,8 +988,14 @@ const chips=document.getElementById('chips'),pq=document.getElementById('pq'),pa
 function setIndustry(k){
   const b=chips&&chips.querySelector('button[data-k="'+k+'"]');if(!b)return;
   chips.querySelectorAll('button').forEach(c=>c.classList.remove('on'));b.classList.add('on');
-  const d=D[k];parsed.style.opacity=0;
-  setTimeout(()=>{pq.textContent=d.q;pa.innerHTML=d.a;pc.innerHTML=d.c.map(x=>'<div>'+x+'<span class="ok">✓</span></div>').join('');parsed.style.opacity=1;},160);
+  const d=D[k];
+  clearTimeout(parsed._t);
+  parsed.classList.add('swapping');
+  parsed._t=setTimeout(()=>{
+    pq.textContent=d.q;pa.innerHTML=d.a;
+    pc.innerHTML=d.c.map(x=>'<div>'+x+'<span class="ok">✓</span></div>').join('');
+    parsed.classList.remove('swapping');
+  },200);
 }
 if(chips){chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;setIndustry(b.dataset.k);});}
 
