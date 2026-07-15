@@ -466,8 +466,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .foot-b{margin-top:46px;padding-top:24px;border-top:1px solid #141C30;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#4E5A73}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(24px);filter:blur(4px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none;filter:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 
 /* ============ MICRO POLISH ============ */
@@ -514,7 +514,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   .cmp-r{grid-template-columns:1fr}
   .cmp-c.n{border-left:0;border-top:1px dashed var(--line)}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
 </style>
 </head>
 <body id="top">
