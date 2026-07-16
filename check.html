@@ -169,7 +169,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 /* 점수별 등급 */
 .grade-tiers{max-width:940px;margin:38px auto 0}
 .grade-tiers h3{font-size:16.5px;text-align:center;margin-bottom:22px}
-.gt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gt-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .gt{border-radius:14px;padding:18px 12px;text-align:center;border:1px solid}
 .gt .rg{font-family:var(--disp);font-size:13px;font-weight:700;display:block;opacity:.75}
 .gt strong{font-size:16px;display:block;margin:7px 0 4px}
@@ -374,11 +374,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
     <div class="grade-tiers">
       <h3>점수별 등급</h3>
       <div class="gt-grid">
-        <div class="gt" style="background:#E9FAF4;border-color:#B7EAD9"><span class="rg">90~100점</span><strong style="color:#0BBF8C">우수</strong><em>AI·검색 모두 잘 읽는 상태</em></div>
-        <div class="gt" style="background:#EAF1FF;border-color:#C7D6FF"><span class="rg">80~89점</span><strong style="color:#2B5CFF">양호</strong><em>기본기는 갖춤</em></div>
-        <div class="gt" style="background:#FFF6E8;border-color:#FBE2B8"><span class="rg">70~79점</span><strong style="color:#E8963A">보통</strong><em>검색은 되나 AI 인용 부족</em></div>
-        <div class="gt" style="background:#FFF0E6;border-color:#FBD3B8"><span class="rg">60~69점</span><strong style="color:#E8823A">개선 필요</strong><em>절반쯤만 이해됨</em></div>
-        <div class="gt" style="background:#FDECEA;border-color:#F6C9C4"><span class="rg">0~59점</span><strong style="color:#E2574C">취약</strong><em>추천 후보에 오르기 어려움</em></div>
+        <div class="gt" style="background:#E9FAF4;border-color:#B7EAD9"><span class="rg">90~100점</span><strong style="color:#0BBF8C">AI 인싸</strong><em>AI가 먼저 추천</em></div>
+        <div class="gt" style="background:#EAF1FF;border-color:#C7D6FF"><span class="rg">80~89점</span><strong style="color:#2B5CFF">AI 단골</strong><em>AI가 확실히 아는</em></div>
+        <div class="gt" style="background:#EEF3FF;border-color:#D4E0FF"><span class="rg">70~79점</span><strong style="color:#6E93FF">아는 사이</strong><em>알긴 하지만 가끔</em></div>
+        <div class="gt" style="background:#FFF6E8;border-color:#FBE2B8"><span class="rg">60~69점</span><strong style="color:#E8963A">얼굴만 아는 사이</strong><em>어렴풋이 스치는</em></div>
+        <div class="gt" style="background:#FFF0E6;border-color:#FBD3B8"><span class="rg">50~59점</span><strong style="color:#E8823A">초면</strong><em>거의 모르는 상태</em></div>
+        <div class="gt" style="background:#FDECEA;border-color:#F6C9C4"><span class="rg">0~49점</span><strong style="color:#E2574C">투명인간</strong><em>AI에 안 보임</em></div>
       </div>
     </div>
   </div>
@@ -505,11 +506,12 @@ function analyze(html,baseUrl,robots,sitemap,via){
 
 /* ================= scoring & render ================= */
 const CAT_GROUPS={'콘텐츠 SEO':'seo','기술적 SEO':'seo','크롤링 준비':'seo','속도·기술 최적화':'seo','구조화 데이터':'geo','엔티티 연결성':'geo','AI 읽기 용이성':'geo'};
-const GRADES=[[90,'우수','#0BBF8C','AI와 검색엔진 모두 잘 읽을 수 있는 상태입니다. 이제 콘텐츠 축적으로 추천 순위를 높일 차례입니다.'],
-[80,'양호','#2B5CFF','기본기는 갖췄습니다. 남은 항목을 보완하면 AI 인용 가능성이 눈에 띄게 올라갑니다.'],
-[70,'보통','#F59F1E','검색은 되지만 AI가 인용하기엔 부족합니다. 구조화 데이터부터 보강하세요.'],
-[60,'개선 필요','#F59F1E','AI가 이 페이지의 주체와 내용을 절반쯤만 이해합니다. 우선순위 항목부터 개선이 필요합니다.'],
-[0,'취약','#E2574C','현재 상태로는 AI 추천 후보에 오르기 어렵습니다. 기초 구조부터 다시 세워야 합니다.']];
+const GRADES=[[90,'AI 인싸','#0BBF8C','AI가 먼저 꺼내 추천하는 상태입니다. 이제 콘텐츠 축적으로 추천 순위를 굳힐 차례입니다.'],
+[80,'AI 단골','#2B5CFF','AI가 확실히 아는 상태입니다. 남은 항목을 보완하면 인용이 눈에 띄게 늘어납니다.'],
+[70,'아는 사이','#6E93FF','AI가 알긴 하지만 인용까지는 부족합니다. 구조화 데이터부터 보강하세요.'],
+[60,'얼굴만 아는 사이','#E8963A','AI가 이 페이지를 절반쯤만 이해합니다. 우선순위 항목부터 개선이 필요합니다.'],
+[50,'초면','#E8823A','AI가 거의 모르는 상태입니다. 기초 구조부터 다시 세워야 합니다.'],
+[0,'투명인간','#E2574C','AI 답변에 아예 보이지 않습니다. 지금 시작하면 격차를 줄일 수 있습니다.']];
 
 function grade(sc){for(const g of GRADES)if(sc>=g[0])return g;}
 
