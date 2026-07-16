@@ -68,6 +68,7 @@ def mega(p):
     return f"""<div class="mega" id="mega"><div class="wrap mega-in">
 <a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
 <div class="mega-col"><h5>서비스</h5>
+<a href="{p}services.html"><b style="color:var(--cobalt)">서비스 전체 보기 →</b><span>6가지 서비스를 한눈에</span></a>
 <a href="{p}services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
 <a href="{p}services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
 <a href="{p}services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
