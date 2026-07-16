@@ -288,6 +288,70 @@ POSTS = [
 <p>영문 보도자료의 품질 기준이 높고, 업계 전문지(trade media)의 영향력이 큽니다. 회사 소개보다 데이터와 사례 중심의 콘텐츠가 통합니다. 영문 홈페이지의 완성도가 낮으면 다른 노력이 모두 할인됩니다.</p>
 <blockquote>수출바우처 등 정부지원사업으로 해외 홍보 비용을 상당 부분 커버할 수 있습니다. 참여 기업이라면 바우처 항목에 <b>해외 언론홍보·다국어 콘텐츠</b>를 포함해 설계하세요.</blockquote>
 """),
+ dict(slug="global-buyer-ai", cat="수출·해외 PR", title="해외 바이어도 이제 AI에게 묻습니다",
+  desc="해외 바이어의 소싱도 검색에서 AI로 옮겨가고 있습니다. 글로벌 시장에서 AI에 발견되는 수출기업의 조건.",
+  date="2026-06-20", grad="linear-gradient(135deg,#0E2148,#3D6BFF)",
+  body="""
+<p>해외 바이어의 소싱 방식이 조용히 바뀌고 있습니다. 전시회 명함과 검색으로 후보를 추리던 담당자들이, 이제 AI에게 먼저 묻습니다. "한국에서 이 부품을 믿고 맡길 만한 제조사는?" 이 질문의 답에 들어가지 못하면, 우리 회사는 검토 후보에도 오르지 못합니다.</p>
+<h2>문제는 '언어와 위치'입니다</h2>
+<p>AI는 웹에서 읽을 수 있는 정보로 기업을 판단합니다. 우리 정보가 <b>목표 시장의 언어로, 그 시장의 웹에 존재하지 않으면</b> AI에게 우리는 없는 회사입니다. 한국어 홈페이지와 국내 기사만으로는 베트남·미국 바이어의 질문에 닿지 않습니다.</p>
+<h2>글로벌 GEO의 세 가지 조건</h2>
+<ul>
+<li><b>현지어 1차 정보.</b> 제품 사양·인증·수출 실적을 목표 시장 언어로 명확히 제공합니다.</li>
+<li><b>현지 출처.</b> 현지 매체 보도, 현지 플랫폼 콘텐츠로 '그 시장 안에서 확인되는' 출처를 만듭니다.</li>
+<li><b>엔티티 일관성.</b> 영문 상호·주소·인증명이 어디서나 똑같이 표기되어야 AI가 같은 회사로 인식합니다.</li>
+</ul>
+<blockquote>국내 시장보다 정보 경쟁이 느슨한 해외 시장일수록, 먼저 현지어로 쌓은 기업이 그 분야의 기본 답이 됩니다.</blockquote>
+<h2>어디부터 시작하나요</h2>
+<p>순서는 국내와 같습니다. 목표 시장 바이어가 물어볼 질문을 현지어로 정의하고, 그 질문에 답하는 콘텐츠를 현지 홈페이지·보도자료로 만들고, 현지 매체와 채널에 배포해 축적합니다. 수출은 결국 '누가 먼저 현지 웹에 신뢰를 쌓았는가'의 싸움입니다.</p>
+"""),
+ dict(slug="export-voucher-pr", cat="수출·해외 PR", title="수출바우처로 해외 홍보비, 어디까지 아낄 수 있나요?",
+  desc="해외 언론·다국어 콘텐츠 비용을 정부 지원사업으로 상당 부분 커버할 수 있습니다. 수출바우처 활용 포인트 정리.",
+  date="2026-06-18", grad="linear-gradient(135deg,#101F3F,#0BBF8C)",
+  body="""
+<p>"해외 홍보, 하고 싶은데 비용이 부담됩니다." 수출기업이 가장 많이 하는 고민입니다. 그런데 이 비용의 상당 부분을 <b>정부 지원사업으로 커버</b>할 수 있다는 사실은 의외로 덜 알려져 있습니다. 대표적인 것이 수출바우처입니다.</p>
+<h2>수출바우처란</h2>
+<p>수출바우처는 정부가 수출기업에 일정 한도의 바우처를 지급하고, 기업이 <b>메뉴판처럼 필요한 서비스를 골라 쓰는</b> 지원사업입니다. 통번역·마케팅·홍보·디자인 등 다양한 항목이 있고, 여기에 해외 홍보도 포함됩니다.</p>
+<h2>홍보에 쓸 수 있는 항목</h2>
+<ul>
+<li><b>해외 언론홍보.</b> 현지어 보도자료 작성·배포, 현지 매체 기사화.</li>
+<li><b>다국어 콘텐츠·홈페이지.</b> 영문·현지어 페이지 제작, 콘텐츠 번역·현지화.</li>
+<li><b>브랜드·디자인.</b> 해외용 회사 소개서, 카탈로그 등.</li>
+</ul>
+<blockquote>포인트는 '흩어 쓰지 않는 것'입니다. 진단으로 우선순위를 정한 뒤 가장 효과가 큰 항목에 바우처를 몰아주는 편이 성과가 분명합니다.</blockquote>
+<h2>활용 전 확인할 것</h2>
+<p>바우처는 보통 사후정산이라 증빙이 중요하고, 지정된 수행기관을 통해야 인정됩니다. 신청 시기(연초 집중)도 놓치기 쉽습니다. messeze는 진단부터 바우처 항목 매핑·집행까지 상담에서 함께 설계해 드립니다.</p>
+"""),
+ dict(slug="renewal-case", cat="사례", title="홈페이지만 고쳤을 뿐인데 — 리뉴얼 후 3개월",
+  desc="새 콘텐츠도, 광고도 아닙니다. 구조만 바꿨습니다. 소재기업을 가정한 리뉴얼 시나리오와 AI 인용의 변화.",
+  date="2026-06-16", grad="linear-gradient(135deg,#12203F,#4A6BFF)",
+  body="""
+<p>새 콘텐츠를 쓴 것도, 광고를 돌린 것도 아닙니다. <b>홈페이지 구조만</b> 바꿨습니다. 아래는 이미지 위주로 제작된 구축형 홈페이지를 쓰던 소재기업 B사를 가정한 시나리오입니다. (실제 특정 기업 사례가 아닌 표준 과정 예시입니다.)</p>
+<h2>0주차 — AI가 못 읽는 홈페이지</h2>
+<p>B사 홈페이지는 보기엔 멀끔했습니다. 문제는 회사 소개도, 제품 스펙도 전부 <b>이미지 안에 갇혀</b> 있었다는 것. AI 크롤러에게는 텍스트가 거의 없는, 사실상 빈 페이지였습니다. 당연히 AI 답변에 등장하지 못했습니다.</p>
+<h2>1개월 — 구조만 정비</h2>
+<ul>
+<li>이미지 속 정보를 텍스트로 꺼내고, 모든 이미지에 의미 있는 ALT 부여</li>
+<li>페이지별 고유 타이틀·헤딩 위계 정리, Organization·Service 스키마 탑재</li>
+<li>핵심 질문에 답하는 질문-답변형 페이지 신설</li>
+</ul>
+<h2>3개월 — 읽히기 시작하다</h2>
+<p>콘텐츠 '내용'은 그대로였지만, 읽을 수 있는 정보량이 몇 배로 늘었습니다. 색인이 개선되고, 일부 핵심 질문에서 B사가 인용되기 시작했습니다. 리뉴얼의 목표가 '예쁜 디자인'이 아니라 <b>'읽히는 구조'</b>임을 보여주는 대목입니다.</p>
+<blockquote>리뉴얼은 다시 짓는 일이 아닙니다. 이미 가진 정보를 기계가 읽을 수 있게 꺼내는 일이 먼저입니다.</blockquote>
+"""),
+ dict(slug="press-case", cat="사례", title="보도자료 한 건이 만든 변화 — B2B 부품사 사례",
+  desc="제3자 출처 하나가 AI의 확신을 바꿉니다. 부품 제조사를 가정한 언론 배포 시나리오와 인용의 변화.",
+  date="2026-06-14", grad="linear-gradient(135deg,#0E2148,#5B7CFF)",
+  body="""
+<p>홈페이지도 있고 블로그도 꾸준히 씁니다. 그런데 AI는 여전히 우리 회사를 확신하지 못합니다. 무엇이 빠진 걸까요? 아래는 산업용 부품 제조사 C사를 가정한 시나리오로, <b>제3자 출처</b> 하나가 만든 변화를 따라갑니다.</p>
+<h2>문제 — 자기 말만 있는 회사</h2>
+<p>C사의 정보는 모두 '스스로 한 말'이었습니다. 홈페이지도, 블로그도 회사가 직접 쓴 것뿐. AI는 여러 곳에서 <b>교차 확인되는 사실</b>을 신뢰하는데, C사에는 그 제3자 검증이 없었습니다.</p>
+<h2>조치 — 뉴스가 될 소식 하나</h2>
+<p>마침 C사는 해외 인증을 획득했습니다. 이 소식을 뉴스 가치를 살린 보도자료로 다듬어 산업 전문지에 배포했고, 2곳에서 기사화됐습니다. 회사가 아니라 <b>기자가 검증해 쓴 문장</b>이 웹에 남은 것입니다.</p>
+<h2>변화 — 인용의 근거가 되다</h2>
+<p>기사를 홈페이지·채널과 연결하자, AI가 C사를 설명할 때 그 기사를 근거로 삼기 시작했습니다. 자기소개 백 마디보다 기사 한 건이 AI의 확신을 바꾼 셈입니다.</p>
+<blockquote>기사화된 보도자료는 AI가 가장 높게 평가하는 자연 출처입니다. 신뢰는 스스로 주장하는 것이 아니라, 남이 확인해 줄 때 생깁니다.</blockquote>
+"""),
  dict(slug="manufacturer-case", cat="사례", title="검색량 없는 제조기업이 AI에 발견되기까지",
   desc="산업용 부품 제조사를 가정한 3개월 시나리오 — 진단, 질문 설계, 콘텐츠 축적이 실제로 어떻게 진행되는지.",
   date="2026-06-18", grad="linear-gradient(135deg,#0F2350,#2B5CFF)",
@@ -347,7 +411,11 @@ COVERS["indexed-not-cited"] = _SVG_COVERS["indexed-not-cited"]  # 신규 글 —
 _PHOTOS["measuring-geo"] = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&q=70&auto=format"  # 분석·대시보드
 _PHOTOS["llms-txt"] = "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&q=70&auto=format"  # 코드·파일
 _PHOTOS["ai-hallucination-brand"] = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop&q=70&auto=format"  # AI·ChatGPT
-for _s in ("measuring-geo","llms-txt","ai-hallucination-brand"):
+_PHOTOS["global-buyer-ai"] = "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&h=450&fit=crop&q=70&auto=format"  # 항만·글로벌 무역
+_PHOTOS["export-voucher-pr"] = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&q=70&auto=format"  # 비즈니스·상담
+_PHOTOS["renewal-case"] = "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=450&fit=crop&q=70&auto=format"  # 웹·화면
+_PHOTOS["press-case"] = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=450&fit=crop&q=70&auto=format"  # 신문·언론
+for _s in ("measuring-geo","llms-txt","ai-hallucination-brand","global-buyer-ai","export-voucher-pr","renewal-case","press-case"):
     COVERS[_s] = f'<img class="cover" src="{_PHOTOS[_s]}" alt="" loading="lazy" referrerpolicy="no-referrer">'  # SVG 대신 사진 커버
 
 # ---------------- 본문 삽입 도식 (SVG figure, slug별) ----------------
@@ -363,6 +431,10 @@ FIGS = {
 "measuring-geo": """<figure class="fig"><svg viewBox="0 0 600 172" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><g><rect x="14" y="26" width="108" height="122" rx="13" fill="#fff" stroke="#E5EAF2"/><circle cx="68" cy="56" r="15" fill="#2B5CFF"/><text x="68" y="61" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">1</text><text x="68" y="94" font-size="13" fill="#0A1930" text-anchor="middle" font-weight="800">인용률</text><text x="68" y="116" font-size="10.5" fill="#8B95A7" text-anchor="middle">AI 답변에</text><text x="68" y="130" font-size="10.5" fill="#8B95A7" text-anchor="middle">등장한 비율</text></g><g><rect x="130" y="26" width="108" height="122" rx="13" fill="#fff" stroke="#E5EAF2"/><circle cx="184" cy="56" r="15" fill="#2B5CFF"/><text x="184" y="61" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">2</text><text x="184" y="94" font-size="13" fill="#0A1930" text-anchor="middle" font-weight="800">엔진 커버리지</text><text x="184" y="116" font-size="10.5" fill="#8B95A7" text-anchor="middle">몇 개 엔진이</text><text x="184" y="130" font-size="10.5" fill="#8B95A7" text-anchor="middle">인식하는가</text></g><g><rect x="246" y="26" width="108" height="122" rx="13" fill="#fff" stroke="#E5EAF2"/><circle cx="300" cy="56" r="15" fill="#2B5CFF"/><text x="300" y="61" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">3</text><text x="300" y="94" font-size="13" fill="#0A1930" text-anchor="middle" font-weight="800">노출 맥락</text><text x="300" y="116" font-size="10.5" fill="#8B95A7" text-anchor="middle">순위·출처·</text><text x="300" y="130" font-size="10.5" fill="#8B95A7" text-anchor="middle">경쟁사 비교</text></g><g><rect x="362" y="26" width="108" height="122" rx="13" fill="#fff" stroke="#E5EAF2"/><circle cx="416" cy="56" r="15" fill="#0BBF8C"/><text x="416" y="61" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">4</text><text x="416" y="94" font-size="13" fill="#0A1930" text-anchor="middle" font-weight="800">크롤 신호</text><text x="416" y="116" font-size="10.5" fill="#8B95A7" text-anchor="middle">AI 봇의</text><text x="416" y="130" font-size="10.5" fill="#8B95A7" text-anchor="middle">실제 fetch</text></g><g><rect x="478" y="26" width="108" height="122" rx="13" fill="#fff" stroke="#E5EAF2"/><circle cx="532" cy="56" r="15" fill="#0BBF8C"/><text x="532" y="61" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">5</text><text x="532" y="94" font-size="13" fill="#0A1930" text-anchor="middle" font-weight="800">기반 지표</text><text x="532" y="116" font-size="10.5" fill="#8B95A7" text-anchor="middle">기술점수·</text><text x="532" y="130" font-size="10.5" fill="#8B95A7" text-anchor="middle">발행량</text></g></svg><figcaption>AI 검색 성과를 재는 5가지 지표</figcaption></figure>""",
 "llms-txt": """<figure class="fig"><svg viewBox="0 0 600 158" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><text x="24" y="38" font-size="14.5" fill="#0A1930" font-weight="800">AI 인용을 만드는 힘의 비중</text><rect x="24" y="54" width="452" height="72" rx="14" fill="#2B5CFF"/><text x="44" y="86" font-size="14.5" fill="#fff" font-weight="800">기본기</text><text x="44" y="108" font-size="11.5" fill="#DCE6F7">읽히는 구조 · 구조화 데이터 · 신뢰 출처 축적</text><text x="458" y="84" font-size="13" fill="#fff" text-anchor="end" font-weight="800">대부분</text><rect x="486" y="54" width="90" height="72" rx="14" fill="#EAF1FF" stroke="#C7D6FF"/><text x="531" y="86" font-size="12.5" fill="#2B5CFF" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">llms.txt</text><text x="531" y="105" font-size="10.5" fill="#8B95A7" text-anchor="middle">보조 5%</text></svg><figcaption>기본기가 먼저, llms.txt는 그 위에 얹는 마지막 5%입니다</figcaption></figure>""",
 "ai-hallucination-brand": """<figure class="fig"><svg viewBox="0 0 600 196" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect x="20" y="28" width="160" height="70" rx="13" fill="#fff" stroke="#F3C6C1"/><text x="100" y="60" font-size="14" fill="#E2574C" text-anchor="middle" font-weight="800">정보 공백</text><text x="100" y="80" font-size="11" fill="#8B95A7" text-anchor="middle">우리 정보가 부족</text><path d="M186 63 h26" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M208 58 l8 5 -8 5" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="220" y="28" width="160" height="70" rx="13" fill="#fff" stroke="#E5EAF2"/><text x="300" y="60" font-size="14" fill="#0A1930" text-anchor="middle" font-weight="800">AI가 추정</text><text x="300" y="80" font-size="11" fill="#8B95A7" text-anchor="middle">빈칸을 상상으로 메움</text><path d="M386 63 h26" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M408 58 l8 5 -8 5" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="420" y="28" width="160" height="70" rx="13" fill="#FDECEA" stroke="#F3C6C1"/><text x="500" y="60" font-size="14" fill="#E2574C" text-anchor="middle" font-weight="800">틀린 답 (환각)</text><text x="500" y="80" font-size="11" fill="#8B95A7" text-anchor="middle">잘못된 사실을 답변</text><rect x="20" y="118" width="560" height="58" rx="14" fill="#2B5CFF"/><text x="300" y="145" font-size="14" fill="#fff" text-anchor="middle" font-weight="800">해결: 정확한 1차 정보를 먼저, 꾸준히 제공하기</text><text x="300" y="164" font-size="11" fill="#DCE6F7" text-anchor="middle">AI가 참고할 사실을 우리가 채운다</text></svg><figcaption>정보 공백이 오류를 부릅니다 — 먼저 채우는 것이 최선의 방어</figcaption></figure>""",
+"global-buyer-ai": """<figure class="fig"><svg viewBox="0 0 600 176" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><g><rect x="16" y="26" width="180" height="124" rx="14" fill="#fff" stroke="#E5EAF2"/><circle cx="46" cy="56" r="15" fill="#2B5CFF"/><text x="46" y="61" font-size="13" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">1</text><text x="70" y="53" font-size="14" fill="#0A1930" font-weight="800">현지어 정보</text><text x="36" y="92" font-size="12" fill="#8B95A7">사양·인증·실적을</text><text x="36" y="110" font-size="12" fill="#8B95A7">목표 시장 언어로</text></g><g><rect x="210" y="26" width="180" height="124" rx="14" fill="#fff" stroke="#E5EAF2"/><circle cx="240" cy="56" r="15" fill="#2B5CFF"/><text x="240" y="61" font-size="13" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">2</text><text x="264" y="53" font-size="14" fill="#0A1930" font-weight="800">현지 출처</text><text x="230" y="92" font-size="12" fill="#8B95A7">현지 매체·플랫폼에서</text><text x="230" y="110" font-size="12" fill="#8B95A7">교차 확인되는 언급</text></g><g><rect x="404" y="26" width="180" height="124" rx="14" fill="#fff" stroke="#B7EAD9"/><circle cx="434" cy="56" r="15" fill="#0BBF8C"/><text x="434" y="61" font-size="13" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">3</text><text x="458" y="53" font-size="14" fill="#0A1930" font-weight="800">엔티티 일관성</text><text x="424" y="92" font-size="12" fill="#8B95A7">영문 상호·인증명이</text><text x="424" y="110" font-size="12" fill="#8B95A7">어디서나 동일하게</text></g></svg><figcaption>해외 시장에서 AI에 발견되는 세 가지 조건</figcaption></figure>""",
+"export-voucher-pr": """<figure class="fig"><svg viewBox="0 0 600 168" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect x="20" y="22" width="560" height="126" rx="16" fill="#fff" stroke="#E5EAF2"/><text x="40" y="52" font-size="14.5" fill="#0A1930" font-weight="800">수출바우처로 커버 가능한 홍보 항목</text><g><circle cx="52" cy="86" r="9" fill="#0BBF8C"/><path d="M48 86l2.8 2.8 5-5.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="70" y="90" font-size="13" fill="#0A1930" font-weight="700">해외 언론홍보 — 현지어 보도자료·기사화</text></g><g><circle cx="52" cy="112" r="9" fill="#0BBF8C"/><path d="M48 112l2.8 2.8 5-5.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="70" y="116" font-size="13" fill="#0A1930" font-weight="700">다국어 콘텐츠·홈페이지 제작</text></g><g><circle cx="330" cy="112" r="9" fill="#0BBF8C"/><path d="M326 112l2.8 2.8 5-5.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="348" y="116" font-size="13" fill="#0A1930" font-weight="700">해외용 브랜드·회사소개서</text></g></svg><figcaption>진단으로 우선순위를 정하고 바우처를 몰아주면 성과가 분명합니다</figcaption></figure>""",
+"renewal-case": """<figure class="fig"><svg viewBox="0 0 600 176" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect x="20" y="26" width="250" height="124" rx="14" fill="#fff" stroke="#F3C6C1"/><text x="40" y="54" font-size="13.5" fill="#E2574C" font-weight="800">Before — 이미지에 갇힘</text><rect x="40" y="70" width="130" height="34" rx="6" fill="#EEF2F9"/><text x="105" y="91" font-size="11" fill="#8B95A7" text-anchor="middle">회사소개 (이미지)</text><text x="40" y="126" font-size="11.5" fill="#8B95A7">AI가 읽을 텍스트 없음</text><path d="M282 88 h36" stroke="#B7C0D0" stroke-width="2.4" stroke-dasharray="4 6" fill="none" stroke-linecap="round"/><path d="M312 82 l9 6 -9 6" stroke="#B7C0D0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="330" y="26" width="250" height="124" rx="14" fill="#fff" stroke="#B7EAD9"/><text x="350" y="54" font-size="13.5" fill="#08916B" font-weight="800">After — 읽히는 구조</text><rect x="350" y="70" width="150" height="8" rx="4" fill="#0A1930"/><rect x="350" y="84" width="120" height="6" rx="3" fill="#DCE6F7"/><rect x="350" y="96" width="120" height="6" rx="3" fill="#DCE6F7"/><rect x="350" y="112" width="92" height="16" rx="6" fill="#DBF3EA"/><text x="396" y="123" font-size="10.5" fill="#08916B" text-anchor="middle" font-weight="800">+ 스키마·ALT</text></svg><figcaption>콘텐츠는 그대로, 구조만 바꿔도 읽히는 정보량이 몇 배가 됩니다</figcaption></figure>""",
+"press-case": """<figure class="fig"><svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><g><rect x="14" y="46" width="122" height="58" rx="12" fill="#fff" stroke="#E5EAF2"/><text x="75" y="72" font-size="12.5" fill="#8B95A7" text-anchor="middle" font-weight="700">자기 말</text><text x="75" y="90" font-size="10.5" fill="#B9C2D4" text-anchor="middle">홈피·블로그</text></g><path d="M142 75 h22" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M160 70 l8 5 -8 5" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g><rect x="172" y="46" width="122" height="58" rx="12" fill="#fff" stroke="#E5EAF2"/><text x="233" y="72" font-size="12.5" fill="#0A1930" text-anchor="middle" font-weight="800">보도자료</text><text x="233" y="90" font-size="10.5" fill="#8B95A7" text-anchor="middle">뉴스 가치 있는 소식</text></g><path d="M300 75 h22" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M318 70 l8 5 -8 5" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g><rect x="330" y="46" width="122" height="58" rx="12" fill="#fff" stroke="#C4D4FF"/><text x="391" y="72" font-size="12.5" fill="#2B5CFF" text-anchor="middle" font-weight="800">기사화</text><text x="391" y="90" font-size="10.5" fill="#8B95A7" text-anchor="middle">기자가 검증</text></g><path d="M458 75 h22" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M476 70 l8 5 -8 5" stroke="#B7C0D0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g><rect x="488" y="46" width="98" height="58" rx="12" fill="#0BBF8C"/><text x="537" y="72" font-size="12.5" fill="#fff" text-anchor="middle" font-weight="800">AI가 인용</text><text x="537" y="90" font-size="10.5" fill="#DFF6EE" text-anchor="middle">확신의 근거</text></g></svg><figcaption>자기소개 백 마디보다 기사 한 건이 AI의 확신을 바꿉니다</figcaption></figure>""",
 }
 
 FONT_LINKS = """<link rel="preconnect" href="https://cdn.jsdelivr.net">
