@@ -227,6 +227,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .h-trust span{font-size:13px;font-weight:700;color:var(--navy);display:inline-flex;align-items:center;gap:7px}
 .h-trust span::before{content:"✓";color:var(--mint);font-size:12px;font-weight:800}
 .h-trust .dot{color:var(--line-2);font-style:normal}
+/* next-t 참고 — 타깃 AI 플랫폼 스트립 */
+.ai-plat{margin:30px auto 0;text-align:center;animation:hRise .75s .62s both}
+.ai-plat .lbl{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.01em}
+.ai-plat .logos{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+.ai-plat .logos span{font-size:13px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm);display:inline-flex;align-items:center;gap:7px;transition:.16s}
+.ai-plat .logos span:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.ai-plat .logos span i{width:7px;height:7px;border-radius:50%;display:inline-block;flex:0 0 auto}
 /* subtle vertical light rays */
 .hero-rays{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:repeating-linear-gradient(90deg,rgba(43,92,255,.045) 0 1px,transparent 1px 86px);
@@ -705,6 +712,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <span>AI 가시성 무료 진단</span><i class="dot">·</i>
       <span>카드 등록 없이</span><i class="dot">·</i>
       <span>영업일 1일 내 회신</span>
+    </div>
+    <div class="ai-plat">
+      <div class="lbl">주요 AI 답변에 노출되게 만듭니다</div>
+      <div class="logos">
+        <span><i style="background:#10A37F"></i>ChatGPT</span>
+        <span><i style="background:#4285F4"></i>Gemini</span>
+        <span><i style="background:#20B8CD"></i>Perplexity</span>
+        <span><i style="background:#D97757"></i>Claude</span>
+        <span><i style="background:#03C75A"></i>네이버 AI</span>
+        <span><i style="background:#4285F4"></i>구글 AI</span>
+      </div>
     </div>
   </div>
   <div class="wrap strip-card">
