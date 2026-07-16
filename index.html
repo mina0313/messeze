@@ -509,7 +509,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bs{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px}
 .bs b{font-family:var(--disp);font-size:38px;font-weight:700;letter-spacing:-.03em;display:block;line-height:1.05;white-space:nowrap}
 .bs b em{font-style:normal;font-size:18px;color:#8FA3D9;margin-left:2px}
-.bs b .num,.tp .num{display:inline}
+.bs b .num,.tp .num{display:inline;font-size:inherit;color:inherit;letter-spacing:inherit;font-weight:inherit}
 /* ============ MARKET OPPORTUNITY (선점 기회 차트) ============ */
 .mopp{background:var(--ink);color:#fff;position:relative;overflow:hidden}
 .mopp::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 380px at 82% -10%,rgba(43,92,255,.3),transparent 60%);pointer-events:none}
@@ -568,6 +568,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .tier .btn{width:100%}
 .tier.pop .btn{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
 .tier.pop .btn:hover{background:#4270FF}
+/* webseller식 비용 카드 모션 — 스프링 상승 + 인기 카드 부양 + 호버 리프트 (delay는 .stagger가 관리) */
+.price .tier{transition-property:transform,box-shadow,opacity,border-color;transition-duration:.55s,.4s,.6s,.3s;transition-timing-function:cubic-bezier(.34,1.3,.38,1),ease,ease,ease;will-change:transform}
+.price-grid.stagger.rv.in>.tier.pop{transform:translateY(-16px)}
+.price-grid.stagger.rv.in>.tier:hover{transform:translateY(-10px);box-shadow:0 26px 60px rgba(20,32,68,.15)}
+.price-grid.stagger.rv.in>.tier.pop:hover{transform:translateY(-24px);box-shadow:0 34px 74px rgba(20,32,68,.34)}
+@media(max-width:980px){.price-grid.stagger.rv.in>.tier.pop{transform:none}.price-grid.stagger.rv.in>.tier:hover,.price-grid.stagger.rv.in>.tier.pop:hover{transform:none}}
 .price-note{text-align:center;margin-top:24px;font-size:13px;color:var(--mut)}
 
 /* ============ FAQ ============ */
