@@ -62,10 +62,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .mega-col a:hover{background:var(--sky-2)}
 .mega-col a:hover b{color:var(--cobalt)}
 @media(max-width:900px){.nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
-.cover{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+.cover{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;z-index:0}
+.card .thumb::after,.pcover::after,.rcard .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,31,63,.06) 42%,rgba(9,17,35,.55));z-index:1;pointer-events:none}
 .card .thumb .tag,.pcover .tag{z-index:2}
-.card:hover .thumb .cover,.rcard:hover .thumb .cover{transform:scale(1.05);transition:transform .5s ease}
-.card .thumb .cover,.rcard .thumb .cover{transition:transform .5s ease}
+.card:hover .thumb .cover,.rcard:hover .thumb .cover{transform:scale(1.06);transition:transform .6s ease}
+.card .thumb .cover,.rcard .thumb .cover{transition:transform .6s ease}
 """
 
 def mega(p):
@@ -253,6 +254,18 @@ COVERS = {
 "export-pr-strategy": """<svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c6sph" cx="38%" cy="34%" r="72%"><stop offset="0" stop-color="#EAF1FF"/><stop offset="45%" stop-color="#7CA0FF"/><stop offset="100%" stop-color="#1E46D9"/></radialGradient><radialGradient id="c6a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".5"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><linearGradient id="c6m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22E0AD"/><stop offset="1" stop-color="#08A97B"/></linearGradient><filter id="c6s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="11" flood-color="#06122b" flood-opacity=".4"/></filter></defs><circle cx="240" cy="46" r="80" fill="url(#c6a)"/><g filter="url(#c6s)"><circle cx="128" cy="92" r="60" fill="url(#c6sph)"/></g><g opacity=".55" stroke="#fff" fill="none" stroke-width="1.4"><ellipse cx="128" cy="92" rx="60" ry="22"/><ellipse cx="128" cy="92" rx="24" ry="60"/><line x1="68" y1="92" x2="188" y2="92"/></g><ellipse cx="110" cy="70" rx="20" ry="12" fill="#fff" opacity=".25"/><circle cx="102" cy="66" r="5" fill="#fff"/><circle cx="156" cy="80" r="5" fill="#fff"/><circle cx="120" cy="122" r="5" fill="#fff"/><g filter="url(#c6s)"><circle cx="240" cy="48" r="9" fill="url(#c6m)"/></g><path d="M156 80 Q210 42 234 48" stroke="#fff" stroke-width="2" fill="none" stroke-dasharray="2 6" stroke-linecap="round" opacity=".85"/><g filter="url(#c6s)"><path d="M232 116 l40 -14 -14 40 -8 -16 -18 -10z" fill="url(#c6m)"/></g></svg>""",
 "manufacturer-case": """<svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c7a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".5"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><linearGradient id="c7b" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2B5CFF"/><stop offset="1" stop-color="#7CA0FF"/></linearGradient><linearGradient id="c7m" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#08A97B"/><stop offset="1" stop-color="#22E0AD"/></linearGradient><filter id="c7s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#06122b" flood-opacity=".38"/></filter></defs><circle cx="248" cy="150" r="82" fill="url(#c7a)"/><g filter="url(#c7s)"><rect x="54" y="118" width="28" height="40" rx="6" fill="url(#c7b)" opacity=".75"/><rect x="92" y="98" width="28" height="60" rx="6" fill="url(#c7b)" opacity=".85"/><rect x="130" y="74" width="28" height="84" rx="6" fill="url(#c7b)"/><rect x="168" y="52" width="28" height="106" rx="6" fill="url(#c7b)"/><rect x="206" y="32" width="28" height="126" rx="6" fill="url(#c7m)"/></g><path d="M62 108 L106 88 L144 66 L182 46 L220 26" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g filter="url(#c7s)"><circle cx="220" cy="26" r="7" fill="#fff"/></g><path d="M240 42 l14 -16 14 16" stroke="#22E0AD" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="252" y="150" font-size="13" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif" opacity=".95">3M</text></svg>""",
 }
+
+# 커버는 실제 사진(Unsplash 핫링크)으로 대체 — 위 SVG 딕셔너리는 폴백/참고용으로 남겨둠
+_PHOTOS = {
+"aeo-geo-seo":"https://images.unsplash.com/photo-1773332611528-566f16120979?w=800&h=450&fit=crop&q=70&auto=format",
+"ai-pr-guide":"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop&q=70&auto=format",
+"press-release-writing":"https://images.unsplash.com/photo-1631519952398-5b1d76b946e8?w=800&h=450&fit=crop&q=70&auto=format",
+"advertorial-vs-press":"https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&h=450&fit=crop&q=70&auto=format",
+"exhibition-pr":"https://images.unsplash.com/photo-1632383380175-812d44ec112b?w=800&h=450&fit=crop&q=70&auto=format",
+"export-pr-strategy":"https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=450&fit=crop&q=70&auto=format",
+"manufacturer-case":"https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=800&h=450&fit=crop&q=70&auto=format",
+}
+COVERS = {s: f'<img class="cover" src="{u}" alt="" loading="lazy" referrerpolicy="no-referrer">' for s, u in _PHOTOS.items()}
 
 # ---------------- 본문 삽입 도식 (SVG figure, slug별) ----------------
 FIGS = {
