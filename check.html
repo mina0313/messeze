@@ -143,6 +143,38 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .ex ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
 .ex li{font-size:13.5px;color:var(--body);display:flex;gap:8px}
 .ex li::before{content:"✓";color:var(--mint);font-weight:800;font-size:11px;padding-top:2px}
+/* 분석 항목 카드 (next-t 스타일) */
+.acat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:940px;margin:0 auto}
+.acat{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm)}
+.acat-hd{display:flex;align-items:center;gap:11px;padding:15px 20px;background:var(--ink);color:#fff}
+.acat-hd .ico{width:24px;height:24px;flex:0 0 auto;color:#9DB3FF}
+.acat-hd .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.acat-hd h3{font-size:15.5px;color:#fff;flex:1}
+.acat-hd .pt{font-size:12.5px;font-weight:800;border-radius:999px;padding:5px 12px;white-space:nowrap}
+.acat.seo .acat-hd .pt{background:#7FA0FF;color:#0a1a3d}
+.acat.geo .acat-hd .pt{background:var(--mint);color:#04241a}
+.ai-row{padding:13px 20px;border-top:1px solid var(--sky-2)}
+.ai-row b{font-size:14px;font-weight:700;color:var(--ink);display:block}
+.ai-row span{font-size:12.5px;color:var(--mut);display:block;margin-top:3px;line-height:1.5}
+/* 점수 구조 막대 */
+.score-struct{max-width:720px;margin:38px auto 0;background:var(--sky-2);border:1px solid var(--line);border-radius:18px;padding:28px 30px}
+.score-struct h3{font-size:16.5px;text-align:center;margin-bottom:22px}
+.ss{display:grid;grid-template-columns:118px 1fr 44px;gap:14px;align-items:center;margin-bottom:12px;font-size:13.5px;font-weight:700}
+.ss:last-child{margin-bottom:0}
+.ss .ssb{height:12px;border-radius:6px;background:#E4EAF3;overflow:hidden}
+.ss .ssb i{display:block;height:100%;border-radius:6px}
+.ss.seo .ssb i{background:linear-gradient(90deg,#2B5CFF,#6E93FF)}
+.ss.geo .ssb i{background:linear-gradient(90deg,#0BBF8C,#22E0AD)}
+.ss .num{text-align:right;font-family:var(--disp);color:var(--mut);font-weight:700}
+/* 점수별 등급 */
+.grade-tiers{max-width:940px;margin:38px auto 0}
+.grade-tiers h3{font-size:16.5px;text-align:center;margin-bottom:22px}
+.gt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gt{border-radius:14px;padding:18px 12px;text-align:center;border:1px solid}
+.gt .rg{font-family:var(--disp);font-size:13px;font-weight:700;display:block;opacity:.75}
+.gt strong{font-size:16px;display:block;margin:7px 0 4px}
+.gt em{font-size:11.5px;font-style:normal;color:var(--mut)}
+@media(max-width:820px){.acat-grid{grid-template-columns:1fr}.gt-grid{grid-template-columns:1fr 1fr 1fr}.ss{grid-template-columns:100px 1fr 40px}}
 /* foot */
 .foot{background:#070D1C;color:#7C879D;padding:52px 0 38px}
 .foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
@@ -270,29 +302,83 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   <div class="wrap">
     <div class="shead">
       <h2 class="h2">무엇을 진단하나요?</h2>
+      <p style="font-size:15.5px;color:var(--body);margin-top:12px">URL 하나로 SEO 기본기부터 AI 인용 준비도까지 — 총 <b style="color:var(--cobalt)">100점</b>, 7개 영역 <b style="color:var(--cobalt)">32개 항목</b>을 검사합니다.</p>
     </div>
-    <div class="ex-grid">
-      <div class="ex seo">
-        <span class="tag">SEO 기본기 · 50점</span>
-        <h3>검색엔진이 읽는 기본기</h3>
-        <p>네이버·구글 검색 노출의 토대가 되는 페이지 기본 구조를 점검합니다.</p>
-        <ul>
-          <li>타이틀·메타 디스크립션·H1 등 콘텐츠 구조 (28점)</li>
-          <li>HTTPS·canonical·viewport·OG 태그 등 기술 요소 (12점)</li>
-          <li>robots.txt·sitemap.xml·파비콘 크롤링 준비 (6점)</li>
-          <li>혼합 콘텐츠·지연 로딩·WebP·리소스 힌트 속도 최적화 (4점)</li>
-        </ul>
+    <div class="acat-grid">
+      <div class="acat seo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/></svg></span><h3>콘텐츠 SEO</h3><span class="pt">28점</span></div>
+        <div class="ai-row"><b>타이틀 태그</b><span>검색결과에 표시되는 페이지 제목. 핵심을 앞쪽에 담습니다.</span></div>
+        <div class="ai-row"><b>타이틀 단일 사용</b><span>title 태그는 페이지당 1개여야 합니다.</span></div>
+        <div class="ai-row"><b>메타 디스크립션</b><span>검색결과 설명문. 클릭률(CTR)에 직접 영향.</span></div>
+        <div class="ai-row"><b>H1 태그 존재</b><span>페이지 대표 제목. 검색·AI의 주제 파악 기준.</span></div>
+        <div class="ai-row"><b>H1 단일 사용</b><span>H1은 페이지당 1개로 주제를 명확히.</span></div>
+        <div class="ai-row"><b>H2 구조화</b><span>소제목으로 콘텐츠를 구조화 — AI 인용에 유리.</span></div>
+        <div class="ai-row"><b>제목 태그 계층 구조</b><span>H1→H2→H3 순서 준수, 건너뛰기 없음.</span></div>
+        <div class="ai-row"><b>이미지 ALT 속성</b><span>기계·AI가 이미지를 이해하는 유일한 통로.</span></div>
       </div>
-      <div class="ex geo">
-        <span class="tag">AI 준비도 · 50점</span>
-        <h3>AI가 인용할 수 있는 구조</h3>
-        <p>ChatGPT·Gemini 같은 AI가 기업·서비스를 식별하고 답변에 인용할 수 있는지 봅니다.</p>
-        <ul>
-          <li>JSON-LD 구조화 데이터와 문법 유효성 (12점)</li>
-          <li>Organization·WebSite·WebPage·Breadcrumb 엔티티 (18점)</li>
-          <li>@id 식별자·sameAs 외부 연결 (10점)</li>
-          <li>본문 텍스트 충분성·질문형 콘텐츠 (10점)</li>
-        </ul>
+      <div class="acat seo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M4.4 7.2l2.3 1.3M17.3 15.5l2.3 1.3M4.4 16.8l2.3-1.3M17.3 8.5l2.3-1.3"/></svg></span><h3>기술적 SEO</h3><span class="pt">12점</span></div>
+        <div class="ai-row"><b>HTTPS 보안</b><span>SSL 적용. 신뢰·랭킹 요소이자 AI 크롤러 접근 조건.</span></div>
+        <div class="ai-row"><b>Canonical 태그</b><span>대표 URL 명시로 중복 콘텐츠 방지.</span></div>
+        <div class="ai-row"><b>Viewport 설정</b><span>모바일 우선 인덱싱 대응.</span></div>
+        <div class="ai-row"><b>언어 속성 (lang)</b><span>html lang으로 콘텐츠 언어를 명시.</span></div>
+        <div class="ai-row"><b>DOCTYPE 선언</b><span>HTML5 표준 문서 선언.</span></div>
+        <div class="ai-row"><b>Open Graph 태그</b><span>SNS 공유·네이버 사이트명 표시용.</span></div>
+      </div>
+      <div class="acat seo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><h3>크롤링 준비</h3><span class="pt">6점</span></div>
+        <div class="ai-row"><b>파비콘</b><span>브라우저 탭·검색결과에 표시되는 사이트 아이콘.</span></div>
+        <div class="ai-row"><b>robots.txt</b><span>크롤러 접근 제어. AI 크롤러 허용 여부도 관리.</span></div>
+        <div class="ai-row"><b>sitemap.xml</b><span>검색엔진에 사이트 구조를 제공해 색인을 돕습니다.</span></div>
+      </div>
+      <div class="acat seo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><h3>속도·기술 최적화</h3><span class="pt">4점</span></div>
+        <div class="ai-row"><b>혼합 콘텐츠 없음</b><span>HTTPS 페이지에 http 리소스가 섞이지 않았는지.</span></div>
+        <div class="ai-row"><b>이미지 지연 로딩</b><span>loading="lazy"로 초기 로딩 속도 개선.</span></div>
+        <div class="ai-row"><b>차세대 이미지 포맷</b><span>WebP·AVIF로 이미지 용량을 크게 절감.</span></div>
+        <div class="ai-row"><b>리소스 힌트</b><span>preconnect·preload로 외부 자원 사전 연결.</span></div>
+      </div>
+      <div class="acat geo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M8 4C6 4 6 8.5 4 12c2 3.5 2 8 4 8M16 4c2 0 2 4.5 4 8-2 3.5-2 8-4 8"/></svg></span><h3>구조화 데이터</h3><span class="pt">30점</span></div>
+        <div class="ai-row"><b>JSON-LD 존재</b><span>AI가 페이지의 발행 주체를 식별하는 기반.</span></div>
+        <div class="ai-row"><b>JSON-LD 문법 유효</b><span>파싱 오류 없이 기계가 읽히는지.</span></div>
+        <div class="ai-row"><b>발행 주체 (Organization)</b><span>누가 만든 페이지인지 조직 엔티티로 선언.</span></div>
+        <div class="ai-row"><b>WebSite · WebPage</b><span>사이트·페이지 엔티티 선언.</span></div>
+        <div class="ai-row"><b>이동경로 (BreadcrumbList)</b><span>페이지 위치 맥락을 AI에 전달.</span></div>
+        <div class="ai-row"><b>페이지 유형 스키마</b><span>Article·Service·FAQPage 등 콘텐츠 성격 선언.</span></div>
+      </div>
+      <div class="acat geo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M9.5 14.5l5-5"/><path d="M10.5 6.5 12 5a4 4 0 0 1 6 6l-1.5 1.5"/><path d="M13.5 17.5 12 19a4 4 0 0 1-6-6l1.5-1.5"/></svg></span><h3>엔티티 연결성</h3><span class="pt">10점</span></div>
+        <div class="ai-row"><b>@id 식별자</b><span>엔티티끼리 상호 연결하는 기준점.</span></div>
+        <div class="ai-row"><b>sameAs 외부 연결</b><span>SNS·외부 프로필과 연결해 지식과 이어줍니다.</span></div>
+      </div>
+      <div class="acat geo">
+        <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span><h3>AI 읽기 용이성</h3><span class="pt">10점</span></div>
+        <div class="ai-row"><b>본문 텍스트 충분성</b><span>서버 HTML에 AI가 읽을 텍스트가 충분한지.</span></div>
+        <div class="ai-row"><b>질문형 콘텐츠</b><span>Q&amp;A형 구조는 AI 인용에 유리.</span></div>
+        <div class="ai-row"><b>타이틀 최적 길이</b><span>권장 15~60자.</span></div>
+      </div>
+    </div>
+
+    <div class="score-struct">
+      <h3>점수 구조 (100점 만점)</h3>
+      <div class="ss seo"><span>콘텐츠 SEO</span><span class="ssb"><i style="width:93%"></i></span><span class="num">28점</span></div>
+      <div class="ss seo"><span>기술적 SEO</span><span class="ssb"><i style="width:40%"></i></span><span class="num">12점</span></div>
+      <div class="ss seo"><span>크롤링 준비</span><span class="ssb"><i style="width:20%"></i></span><span class="num">6점</span></div>
+      <div class="ss seo"><span>속도·기술</span><span class="ssb"><i style="width:13%"></i></span><span class="num">4점</span></div>
+      <div class="ss geo"><span>구조화 데이터</span><span class="ssb"><i style="width:100%"></i></span><span class="num">30점</span></div>
+      <div class="ss geo"><span>엔티티 연결성</span><span class="ssb"><i style="width:33%"></i></span><span class="num">10점</span></div>
+      <div class="ss geo"><span>AI 읽기 용이성</span><span class="ssb"><i style="width:33%"></i></span><span class="num">10점</span></div>
+    </div>
+
+    <div class="grade-tiers">
+      <h3>점수별 등급</h3>
+      <div class="gt-grid">
+        <div class="gt" style="background:#E9FAF4;border-color:#B7EAD9"><span class="rg">90~100점</span><strong style="color:#0BBF8C">우수</strong><em>AI·검색 모두 잘 읽는 상태</em></div>
+        <div class="gt" style="background:#EAF1FF;border-color:#C7D6FF"><span class="rg">80~89점</span><strong style="color:#2B5CFF">양호</strong><em>기본기는 갖춤</em></div>
+        <div class="gt" style="background:#FFF6E8;border-color:#FBE2B8"><span class="rg">70~79점</span><strong style="color:#E8963A">보통</strong><em>검색은 되나 AI 인용 부족</em></div>
+        <div class="gt" style="background:#FFF0E6;border-color:#FBD3B8"><span class="rg">60~69점</span><strong style="color:#E8823A">개선 필요</strong><em>절반쯤만 이해됨</em></div>
+        <div class="gt" style="background:#FDECEA;border-color:#F6C9C4"><span class="rg">0~59점</span><strong style="color:#E2574C">취약</strong><em>추천 후보에 오르기 어려움</em></div>
       </div>
     </div>
   </div>
