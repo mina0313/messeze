@@ -559,16 +559,6 @@ s(slug="press", no="06", title="언론 배포", en="Press Distribution",
 
 BY_SLUG = {x["slug"]: x for x in S}
 
-# fit 섹션(이런 기업에 맞아요) 서비스별 맞춤 제목
-FITHEADS = {
- "visibility": "지금 우리 위치부터<br>알고 싶다면",
- "website-renewal": "홈페이지는 있는데<br>AI엔 안 잡힌다면",
- "website-build": "이왕 짓는다면,<br>AI가 읽는 구조로",
- "own-blog": "쓸 사람이 없어<br>블로그가 멈췄다면",
- "channels": "네이버·구글 검색까지<br>넓혀야 한다면",
- "press": "제3자의 신뢰가<br>필요하다면",
-}
-
 def build_page(x):
     rel_cards = ""
     for slug in x["rel"]:
@@ -620,7 +610,7 @@ def build_page(x):
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
-<div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">{FITHEADS.get(x['slug'], '이런 상황이라면,<br>시작할 때입니다')}</h2><div class="fit-list">{fits}</div></div>
+<div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">이런 상황이라면,<br>시작할 때입니다</h2><div class="fit-list">{fits}</div></div>
 <div class="dv-card rv"><h3>이렇게 받으세요</h3><div class="chips">{delivs}</div></div>
 </div>
 </div></section>
