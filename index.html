@@ -510,6 +510,37 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bs b{font-family:var(--disp);font-size:38px;font-weight:700;letter-spacing:-.03em;display:block;line-height:1.05;white-space:nowrap}
 .bs b em{font-style:normal;font-size:18px;color:#8FA3D9;margin-left:2px}
 .bs b .num,.tp .num{display:inline}
+/* ============ MARKET OPPORTUNITY (선점 기회 차트) ============ */
+.mopp{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.mopp::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 380px at 82% -10%,rgba(43,92,255,.3),transparent 60%);pointer-events:none}
+.mopp .wrap{position:relative}
+.mopp .shead{text-align:center;max-width:660px;margin:0 auto 42px}
+.mopp .shead .eyebrow{color:#7FA0FF;justify-content:center}
+.mopp .shead .eyebrow::before{display:none}
+.mopp .shead h2{color:#fff}
+.mopp .shead .lead{color:#AEB9D2}
+.mopp .shead .lead b{color:#fff}
+.mopp-card{max-width:920px;margin:0 auto;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:30px 32px 22px}
+.mopp-card .ct{font-size:17px;font-weight:800;color:#fff}
+.mopp-card .cs{font-size:13px;color:#8FA3D9;font-weight:600;margin-top:5px}
+.mopp-legend{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap}
+.mopp-legend .lg{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#C7D0E4}
+.mopp-legend .lg i{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.mopp-nums{display:flex;gap:44px;margin-top:12px}
+.mopp-nums .mn b{font-family:var(--disp);font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1;display:block}
+.mopp-nums .mn b em{font-style:normal;font-size:13px;font-weight:700;margin-left:5px;vertical-align:middle}
+.mopp-nums .mn span{font-size:12.5px;color:#8FA3D9;font-weight:600;margin-top:6px;display:block}
+.mopp-nums .geo b{color:#6E93FF}
+.mopp-nums .trad b{color:#94A0B4}
+.mopp-chart{margin-top:18px}
+.mopp-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.mopp .src{text-align:center;font-size:12px;color:#5F6C8C;margin-top:18px;font-weight:600}
+.mopp-chart .drawline{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.9s cubic-bezier(.4,0,.2,1) .25s}
+.mopp-card.in .drawline{stroke-dashoffset:0}
+.mopp-chart .geoarea{opacity:0;transition:opacity 1.1s ease .9s}
+.mopp-card.in .geoarea{opacity:1}
+@media(prefers-reduced-motion:reduce){.mopp-chart .drawline{stroke-dashoffset:0}.mopp-chart .geoarea{opacity:1}}
+@media(max-width:560px){.mopp-nums{gap:26px}.mopp-nums .mn b{font-size:31px}}
 .bs span{font-size:13.5px;color:#AEB9D2;font-weight:600;margin-top:6px;display:block}
 .bs.co b{color:#7FA0FF}
 
@@ -879,6 +910,46 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <div class="mrow"><span class="rk">2</span><div><b>경쟁사 B</b><span class="d">보도자료 아카이브 · 수출 실적 기사화</span></div><span class="chk ok">추천됨</span></div>
       <div class="mrow you"><span class="rk">?</span><div><b>당신의 회사</b><span class="d">아직 AI가 읽을 수 있는 정보가 없습니다</span></div><span class="chk no">미노출</span></div>
       <div class="mfoot"><a href="check.html" class="btn btn-co">우리 회사 노출 여부 무료로 확인하기</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET OPPORTUNITY -->
+<section class="sec mopp">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow">Market Opportunity</span>
+      <h2 class="h2">지금이 AI 검색 시장의<br>선점 기회입니다</h2>
+      <p class="lead">2027년, AI 추천이 전통 검색을 추월합니다.<br>선점한 브랜드와의 격차는 시간이 갈수록 <b>더 벌어집니다.</b></p>
+    </div>
+    <div class="mopp-card rv d1">
+      <div class="ct">직접 검색 vs AI 추천 점유율 변화 (2023 — 2030)</div>
+      <div class="cs">2027년 이후 AI 답변이 전통 검색을 추월합니다 · 출처: Gartner</div>
+      <div class="mopp-legend">
+        <span class="lg"><i style="background:#6E93FF"></i>GEO (AI 답변 점유율)</span>
+        <span class="lg"><i style="background:#94A0B4"></i>전통 검색 트래픽</span>
+      </div>
+      <div class="mopp-nums">
+        <div class="mn geo"><b>78%<em>2030</em></b><span>GEO — AI 답변 점유율</span></div>
+        <div class="mn trad"><b>22%<em>2030</em></b><span>전통 검색 트래픽</span></div>
+      </div>
+      <div class="mopp-chart">
+        <svg viewBox="0 0 820 356" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',sans-serif">
+          <defs><linearGradient id="geoA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#2B5CFF" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="rgba(255,255,255,.08)" stroke-width="1"><line x1="56" y1="24" x2="780" y2="24"/><line x1="56" y1="98" x2="780" y2="98"/><line x1="56" y1="172" x2="780" y2="172"/><line x1="56" y1="246" x2="780" y2="246"/><line x1="56" y1="320" x2="780" y2="320"/></g>
+          <g fill="#5F6C8C" font-size="11" text-anchor="end"><text x="46" y="28">100%</text><text x="46" y="102">75%</text><text x="46" y="176">50%</text><text x="46" y="250">25%</text></g>
+          <g fill="#6E7893" font-size="11" text-anchor="middle"><text x="56" y="342">2023</text><text x="159" y="342">2024</text><text x="263" y="342">2025</text><text x="366" y="342">2026</text><text x="470" y="342">2027</text><text x="573" y="342">2028</text><text x="676" y="342">2029</text><text x="780" y="342">2030</text></g>
+          <path class="geoarea" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89 L780,320 L56,320 Z" fill="url(#geoA)"/>
+          <path class="drawline tradline" pathLength="1" d="M56,39 L159,60 L263,95 L366,134 L470,172 L573,208 L676,234 L780,255" fill="none" stroke="#94A0B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="drawline geoline" pathLength="1" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89" fill="none" stroke="#6E93FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="470" y1="24" x2="470" y2="320" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4 5"/>
+          <circle cx="470" cy="172" r="5.5" fill="#fff" stroke="#2B5CFF" stroke-width="2.5"/>
+          <rect x="424" y="5" width="92" height="20" rx="10" fill="#101F3F" stroke="rgba(255,255,255,.2)"/><text x="470" y="19" fill="#fff" font-size="10.5" font-weight="800" text-anchor="middle">Golden Cross</text>
+          <circle cx="780" cy="89" r="5" fill="#6E93FF"/><text x="770" y="80" fill="#6E93FF" font-size="13" font-weight="800" text-anchor="end">78%</text>
+          <circle cx="780" cy="255" r="5" fill="#94A0B4"/><text x="770" y="274" fill="#94A0B4" font-size="13" font-weight="800" text-anchor="end">22%</text>
+        </svg>
+      </div>
+      <div class="src">전통 검색량은 2026년까지 약 25% 감소할 전망입니다 (Gartner, 2024).</div>
     </div>
   </div>
 </section>
