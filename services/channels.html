@@ -165,7 +165,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .svc-vis.in .rep .row .st{opacity:1;transition:opacity .45s 1.2s}
 /* 02 리뉴얼 — After 카드가 뒤이어 팝인 */
 .ba .cwb.after{opacity:0;transform:rotate(1.4deg) scale(.9)}
-.svc-vis.in .ba .cwb.after{opacity:1;transform:rotate(1.4deg) scale(1);transition:opacity .6s .55s,transform .78s .55s cubic-bezier(.3,1.35,.4,1)}
+.svc-vis.ba.in .cwb.after{opacity:1;transform:rotate(1.4deg) scale(1);transition:opacity .6s .55s,transform .78s .55s cubic-bezier(.3,1.35,.4,1)}
 /* 03 제작 — 루트 → 노드 순차 낙하 */
 .tree .root{opacity:0;transform:translateY(-10px)}
 .svc-vis.in .tree .root{opacity:1;transform:none;transition:.6s cubic-bezier(.3,1.2,.4,1)}
@@ -192,17 +192,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 /* 06 언론 — 클립 팝인 + 플로우 좌→우 순차 */
 .clips .clip.c1{opacity:0;transform:rotate(-3.5deg) translateY(15px)}
 .clips .clip.c2{opacity:0;transform:rotate(1.6deg) translateY(15px)}
-.svc-vis.in .clips .clip.c1{opacity:1;transform:rotate(-3.5deg);transition:opacity .6s .25s,transform .72s .25s cubic-bezier(.3,1.3,.4,1)}
-.svc-vis.in .clips .clip.c2{opacity:1;transform:rotate(1.6deg);transition:opacity .6s .5s,transform .72s .5s cubic-bezier(.3,1.3,.4,1)}
+.svc-vis.clips.in .clip.c1{opacity:1;transform:rotate(-3.5deg);transition:opacity .6s .25s,transform .72s .25s cubic-bezier(.3,1.3,.4,1)}
+.svc-vis.clips.in .clip.c2{opacity:1;transform:rotate(1.6deg);transition:opacity .6s .5s,transform .72s .5s cubic-bezier(.3,1.3,.4,1)}
 .clips .flowrow>span,.clips .flowrow>i{opacity:0;transform:translateY(7px)}
-.svc-vis.in .clips .flowrow>span,.svc-vis.in .clips .flowrow>i{opacity:1;transform:none;transition:.45s cubic-bezier(.3,1.2,.4,1)}
-.svc-vis.in .clips .flowrow>*:nth-child(1){transition-delay:.7s}
-.svc-vis.in .clips .flowrow>*:nth-child(2){transition-delay:.8s}
-.svc-vis.in .clips .flowrow>*:nth-child(3){transition-delay:.9s}
-.svc-vis.in .clips .flowrow>*:nth-child(4){transition-delay:1s}
-.svc-vis.in .clips .flowrow>*:nth-child(5){transition-delay:1.1s}
-.svc-vis.in .clips .flowrow>*:nth-child(6){transition-delay:1.2s}
-.svc-vis.in .clips .flowrow>*:nth-child(7){transition-delay:1.3s}
+.svc-vis.clips.in .flowrow>span,.svc-vis.clips.in .flowrow>i{opacity:1;transform:none;transition:.45s cubic-bezier(.3,1.2,.4,1)}
+.svc-vis.clips.in .flowrow>*:nth-child(1){transition-delay:.7s}
+.svc-vis.clips.in .flowrow>*:nth-child(2){transition-delay:.8s}
+.svc-vis.clips.in .flowrow>*:nth-child(3){transition-delay:.9s}
+.svc-vis.clips.in .flowrow>*:nth-child(4){transition-delay:1s}
+.svc-vis.clips.in .flowrow>*:nth-child(5){transition-delay:1.1s}
+.svc-vis.clips.in .flowrow>*:nth-child(6){transition-delay:1.2s}
+.svc-vis.clips.in .flowrow>*:nth-child(7){transition-delay:1.3s}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
