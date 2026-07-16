@@ -124,11 +124,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .artwin .meta{font-size:11.5px;color:var(--mut);font-weight:700;margin:8px 0 12px}
 .artwin .ansbox{background:var(--sky-2);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.8px;color:var(--body);line-height:1.6}
 .artwin .ansbox b{color:var(--ink)}
-.cal{position:absolute;right:-2%;bottom:4%;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh-lg);padding:16px 18px;transform:rotate(2deg);z-index:4}
-.cal .cl{font-size:11px;font-weight:800;color:var(--mut);margin-bottom:10px}
-.cal .dots{display:grid;grid-template-columns:repeat(7,14px);gap:7px}
-.cal .dots i{width:14px;height:14px;border-radius:5px;background:#EEF2F9}
-.cal .dots i.on{background:var(--cobalt)}
+.cal{position:absolute;right:-2%;bottom:4%;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh-lg);padding:14px 15px 15px;transform:rotate(2deg);z-index:4;width:176px}
+.cal .cl{font-size:11.5px;font-weight:800;color:var(--ink);margin-bottom:11px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cal .cl em{font-style:normal;font-size:9.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.cal-hd{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:6px}
+.cal-hd span{font-size:9px;font-weight:800;color:var(--mut);text-align:center}
+.cal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.cal-grid i{aspect-ratio:1;border-radius:6px;background:#EEF2F9}
+.cal-grid i.pub{background:linear-gradient(150deg,#2B5CFF,#6E93FF);box-shadow:0 3px 8px rgba(43,92,255,.32);position:relative}
+.cal-grid i.pub::after{content:"";position:absolute;inset:0;margin:auto;width:5px;height:5px;border-radius:50%;background:#fff}
 .radial{position:absolute;top:50%;left:0;width:100%;transform:translateY(-50%)}
 .radial .hub{margin:0 auto;width:fit-content;background:var(--ink);color:#fff;border-radius:14px;padding:14px 22px;font-weight:800;font-size:14px;box-shadow:var(--sh);position:relative;z-index:2;text-align:center}
 .radial .hub em{font-style:normal;display:block;font-size:10.5px;color:#7FA0FF;font-weight:800}
@@ -145,8 +149,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .clips .clip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh)}
 .clips .clip .pressname{font-size:10.5px;font-weight:800;color:var(--mut);letter-spacing:.06em}
 .clips .clip h5{font-size:14.5px;font-weight:800;line-height:1.45;margin-top:7px;letter-spacing:-.01em}
-.clips .clip.c1{top:8%;left:0;width:56%;transform:rotate(-3.5deg);z-index:1}
-.clips .clip.c2{top:26%;right:2%;width:58%;transform:rotate(1.6deg);z-index:3;border-color:#C4D4FF;box-shadow:0 26px 56px rgba(16,31,63,.18)}
+.clips .clip.c1{top:0;left:0;width:52%;transform:rotate(-3.5deg);z-index:1}
+.clips .clip.c2{top:16%;right:0;width:55%;transform:rotate(1.6deg);z-index:3;border-color:#C4D4FF;box-shadow:0 26px 56px rgba(16,31,63,.18)}
+.clips .clip.c3{top:41%;left:5%;width:52%;transform:rotate(-1.8deg);z-index:2}
 .clips .flowrow{position:absolute;bottom:6%;left:4%;right:4%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;font-weight:800;color:var(--body)}
 .clips .flowrow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm)}
 .clips .flowrow i{font-style:normal;color:#B9C2D4}
@@ -165,35 +170,37 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .svc-vis.in .rep .row .st{opacity:1;transition:opacity .45s 1.2s}
 /* 02 리뉴얼 — After 카드가 뒤이어 팝인 */
 .ba .cwb.after{opacity:0;transform:rotate(1.4deg) scale(.9)}
-.svc-vis.ba.in .cwb.after{opacity:1;transform:rotate(1.4deg) scale(1);transition:opacity .6s .55s,transform .78s .55s cubic-bezier(.3,1.35,.4,1)}
+.svc-vis.ba.in .cwb.after{opacity:1;transform:rotate(1.4deg) scale(1);transition:opacity .5s .12s,transform .62s .12s cubic-bezier(.3,1.25,.4,1)}
 /* 03 제작 — 루트 → 노드 순차 낙하 */
 .tree .root{opacity:0;transform:translateY(-10px)}
 .svc-vis.in .tree .root{opacity:1;transform:none;transition:.6s cubic-bezier(.3,1.2,.4,1)}
 .tree .lvl .node{opacity:0;transform:translateY(13px)}
 .svc-vis.in .tree .lvl .node{opacity:1;transform:none;transition:.55s cubic-bezier(.3,1.2,.4,1)}
-.svc-vis.in .tree .lvl .node:nth-child(1){transition-delay:.35s}
-.svc-vis.in .tree .lvl .node:nth-child(2){transition-delay:.47s}
-.svc-vis.in .tree .lvl .node:nth-child(3){transition-delay:.59s}
-.svc-vis.in .tree .lvl .node:nth-child(4){transition-delay:.71s}
-.svc-vis.in .tree .lvl .node:nth-child(5){transition-delay:.83s}
+.svc-vis.in .tree .lvl .node:nth-child(1){transition-delay:.45s}
+.svc-vis.in .tree .lvl .node:nth-child(2){transition-delay:.65s}
+.svc-vis.in .tree .lvl .node:nth-child(3){transition-delay:.85s}
+.svc-vis.in .tree .lvl .node:nth-child(4){transition-delay:1.05s}
+.svc-vis.in .tree .lvl .node:nth-child(5){transition-delay:1.25s}
 /* 04 블로그 — 답변 박스 등장 + 캘린더 도트 팝 */
 .artwin .ansbox{opacity:0;transform:translateY(9px)}
 .svc-vis.in .artwin .ansbox{opacity:1;transform:none;transition:.6s .45s cubic-bezier(.3,1,.4,1)}
-.cal .dots i{transform:scale(0)}
-.svc-vis.in .cal .dots i{transform:scale(1);transition:transform .45s cubic-bezier(.3,1.6,.4,1) .5s}
+.cal-grid i{transform:scale(0)}
+.svc-vis.in .cal-grid i{transform:scale(1);transition:transform .4s cubic-bezier(.3,1.6,.4,1) .5s}
 /* 05 채널 — 허브 → 스포크 순차 */
 .radial .hub{opacity:0;transform:translateY(-9px)}
 .svc-vis.in .radial .hub{opacity:1;transform:none;transition:.6s cubic-bezier(.3,1.2,.4,1)}
 .radial .spokes .ch{opacity:0;transform:translateY(15px)}
 .svc-vis.in .radial .spokes .ch{opacity:1;transform:none;transition:.55s cubic-bezier(.3,1.2,.4,1)}
-.svc-vis.in .radial .spokes .ch:nth-child(1){transition-delay:.35s}
-.svc-vis.in .radial .spokes .ch:nth-child(2){transition-delay:.5s}
-.svc-vis.in .radial .spokes .ch:nth-child(3){transition-delay:.65s}
+.svc-vis.in .radial .spokes .ch:nth-child(1){transition-delay:.45s}
+.svc-vis.in .radial .spokes .ch:nth-child(2){transition-delay:.7s}
+.svc-vis.in .radial .spokes .ch:nth-child(3){transition-delay:.95s}
 /* 06 언론 — 클립 팝인 + 플로우 좌→우 순차 */
 .clips .clip.c1{opacity:0;transform:rotate(-3.5deg) translateY(15px)}
 .clips .clip.c2{opacity:0;transform:rotate(1.6deg) translateY(15px)}
-.svc-vis.clips.in .clip.c1{opacity:1;transform:rotate(-3.5deg);transition:opacity .6s .25s,transform .72s .25s cubic-bezier(.3,1.3,.4,1)}
-.svc-vis.clips.in .clip.c2{opacity:1;transform:rotate(1.6deg);transition:opacity .6s .5s,transform .72s .5s cubic-bezier(.3,1.3,.4,1)}
+.clips .clip.c3{opacity:0;transform:rotate(-1.8deg) translateY(15px)}
+.svc-vis.clips.in .clip.c1{opacity:1;transform:rotate(-3.5deg);transition:opacity .55s .2s,transform .7s .2s cubic-bezier(.3,1.3,.4,1)}
+.svc-vis.clips.in .clip.c2{opacity:1;transform:rotate(1.6deg);transition:opacity .55s .45s,transform .7s .45s cubic-bezier(.3,1.3,.4,1)}
+.svc-vis.clips.in .clip.c3{opacity:1;transform:rotate(-1.8deg);transition:opacity .55s .7s,transform .7s .7s cubic-bezier(.3,1.3,.4,1)}
 .clips .flowrow>span,.clips .flowrow>i{opacity:0;transform:translateY(7px)}
 .svc-vis.clips.in .flowrow>span,.svc-vis.clips.in .flowrow>i{opacity:1;transform:none;transition:.45s cubic-bezier(.3,1.2,.4,1)}
 .svc-vis.clips.in .flowrow>*:nth-child(1){transition-delay:.7s}
@@ -341,8 +348,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 <div class="ansbox"><b>결론부터:</b> 시제품 1개부터 양산 전 단계까지 가능합니다. 판단 기준은 세 가지 — 가공 방식, 소재 수급, 인증 범위입니다…</div>
 <div class="tagchips"><span class="good">✓ 질문형 제목</span><span class="good">✓ 첫 문단에 답</span><span class="good">✓ 자사 도메인 축적</span></div>
 </div></div>
-<div class="cal"><div class="cl">이번 달 발행</div>
-<div class="dots"><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i></div></div>
+<div class="cal"><div class="cl">이번 달 발행<em>주 2회</em></div>
+<div class="cal-hd"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span></div>
+<div class="cal-grid"><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i></div></div>
 </div>
 </div></section>
 
