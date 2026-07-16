@@ -166,6 +166,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .ss.seo .ssb i{background:linear-gradient(90deg,#2B5CFF,#6E93FF)}
 .ss.geo .ssb i{background:linear-gradient(90deg,#0BBF8C,#22E0AD)}
 .ss .num{text-align:right;font-family:var(--disp);color:var(--mut);font-weight:700}
+/* 점수 구조 막대 채우기 모션 — 스크롤 시 순차로 차오름 */
+.score-struct .ssb i{transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.3,.9,.3,1)}
+.score-struct.filled .ssb i{transform:scaleX(1)}
+.score-struct.filled .ss:nth-child(2) .ssb i{transition-delay:.04s}
+.score-struct.filled .ss:nth-child(3) .ssb i{transition-delay:.12s}
+.score-struct.filled .ss:nth-child(4) .ssb i{transition-delay:.2s}
+.score-struct.filled .ss:nth-child(5) .ssb i{transition-delay:.28s}
+.score-struct.filled .ss:nth-child(6) .ssb i{transition-delay:.36s}
+.score-struct.filled .ss:nth-child(7) .ssb i{transition-delay:.44s}
+.score-struct.filled .ss:nth-child(8) .ssb i{transition-delay:.52s}
+@media(prefers-reduced-motion:reduce){.score-struct .ssb i{transform:none;transition:none}}
 /* 점수별 등급 */
 .grade-tiers{max-width:940px;margin:38px auto 0}
 .grade-tiers h3{font-size:16.5px;text-align:center;margin-bottom:22px}
@@ -593,6 +604,10 @@ function render(u,items){
 
 document.getElementById('goBtn').addEventListener('click',run);
 document.getElementById('urlIn').addEventListener('keydown',e=>{if(e.key==='Enter')run()});
+</script>
+<script>
+// 점수 구조 막대 — 스크롤 진입 시 채우기(재생)
+(function(){var el=document.querySelector('.score-struct');if(!el)return;var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('filled',e.isIntersecting);});},{threshold:.35});io.observe(el);})();
 </script>
 </body>
 </html>
