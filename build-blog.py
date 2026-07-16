@@ -244,8 +244,8 @@ POSTS = [
 
 CATS = ["홈", "AI 가시성", "언론홍보", "수출·해외 PR", "사례"]
 
-# ---------------- 썸네일 커버 (SVG, slug별) ----------------
-COVERS = {
+# ---------------- 썸네일 커버 (SVG, slug별) — 폴백 + aeo-geo-seo용 ----------------
+_SVG_COVERS = {
 "aeo-geo-seo": """<svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c1a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".6"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><radialGradient id="c1b" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0BBF8C" stop-opacity=".45"/><stop offset="1" stop-color="#0BBF8C" stop-opacity="0"/></radialGradient><linearGradient id="c1c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#1E46D9"/></linearGradient><filter id="c1s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#06122b" flood-opacity=".4"/></filter></defs><circle cx="252" cy="34" r="92" fill="url(#c1a)"/><circle cx="52" cy="164" r="72" fill="url(#c1b)"/><g filter="url(#c1s)"><rect x="36" y="34" width="150" height="34" rx="17" fill="#fff"/></g><circle cx="57" cy="51" r="8" fill="none" stroke="#2B5CFF" stroke-width="3"/><line x1="63" y1="57" x2="69" y2="63" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round"/><rect x="78" y="47" width="72" height="8" rx="4" fill="#C7D6FF"/><g filter="url(#c1s)"><rect x="58" y="92" width="208" height="58" rx="16" fill="#fff"/></g><rect x="74" y="108" width="26" height="26" rx="9" fill="url(#c1c)"/><text x="87" y="125" font-size="11" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">AI</text><rect x="110" y="107" width="142" height="8" rx="4" fill="#0A1930"/><rect x="110" y="123" width="104" height="7" rx="3.5" fill="#C0C9D8"/><g filter="url(#c1s)"><path d="M264 82l5 12.5 12.5 5-12.5 5-5 12.5-5-12.5-12.5-5 12.5-5z" fill="#0BBF8C"/></g></svg>""",
 "ai-pr-guide": """<svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c2a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".55"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><linearGradient id="c2c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#1E46D9"/></linearGradient><linearGradient id="c2m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22E0AD"/><stop offset="1" stop-color="#08A97B"/></linearGradient><filter id="c2s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#06122b" flood-opacity=".4"/></filter></defs><circle cx="250" cy="40" r="94" fill="url(#c2a)"/><g filter="url(#c2s)"><rect x="40" y="30" width="240" height="120" rx="18" fill="#fff"/></g><rect x="58" y="48" width="26" height="26" rx="9" fill="url(#c2c)"/><text x="71" y="65" font-size="11" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">AI</text><rect x="94" y="50" width="120" height="8" rx="4" fill="#0A1930"/><rect x="94" y="64" width="80" height="6" rx="3" fill="#C0C9D8"/><rect x="58" y="88" width="204" height="20" rx="8" fill="#EEF3FF"/><circle cx="72" cy="98" r="6" fill="#2B5CFF"/><rect x="86" y="95" width="96" height="6" rx="3" fill="#8FA3D9"/><rect x="224" y="90" width="30" height="16" rx="8" fill="url(#c2m)"/><rect x="58" y="116" width="204" height="20" rx="8" fill="#EEF3FF"/><circle cx="72" cy="126" r="6" fill="#2B5CFF"/><rect x="86" y="123" width="74" height="6" rx="3" fill="#8FA3D9"/><rect x="224" y="118" width="30" height="16" rx="8" fill="url(#c2m)"/></svg>""",
 "press-release-writing": """<svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c3a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0BBF8C" stop-opacity=".4"/><stop offset="1" stop-color="#0BBF8C" stop-opacity="0"/></radialGradient><radialGradient id="c3b" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".5"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><linearGradient id="c3c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#1E46D9"/></linearGradient><filter id="c3s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#06122b" flood-opacity=".4"/></filter></defs><circle cx="250" cy="150" r="78" fill="url(#c3a)"/><circle cx="70" cy="30" r="60" fill="url(#c3b)"/><g filter="url(#c3s)"><rect x="74" y="26" width="150" height="132" rx="12" fill="#fff"/></g><rect x="90" y="42" width="118" height="12" rx="3" fill="#0A1930"/><rect x="90" y="62" width="118" height="6" rx="3" fill="#C7D6FF"/><rect x="90" y="74" width="88" height="6" rx="3" fill="#DCE6F7"/><rect x="90" y="92" width="52" height="38" rx="6" fill="#EEF3FF"/><rect x="150" y="92" width="58" height="6" rx="3" fill="#DCE6F7"/><rect x="150" y="104" width="58" height="6" rx="3" fill="#DCE6F7"/><rect x="150" y="116" width="40" height="6" rx="3" fill="#DCE6F7"/><rect x="90" y="140" width="72" height="9" rx="4" fill="#2B5CFF"/><g filter="url(#c3s)"><rect x="224" y="36" width="60" height="24" rx="12" fill="url(#c3c)"/></g><text x="254" y="52" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">PRESS</text></svg>""",
@@ -266,6 +266,7 @@ _PHOTOS = {
 "manufacturer-case":"https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=800&h=450&fit=crop&q=70&auto=format",
 }
 COVERS = {s: f'<img class="cover" src="{u}" alt="" loading="lazy" referrerpolicy="no-referrer">' for s, u in _PHOTOS.items()}
+COVERS["aeo-geo-seo"] = _SVG_COVERS["aeo-geo-seo"]  # 이 글은 사진 대신 SVG 커버
 
 # ---------------- 본문 삽입 도식 (SVG figure, slug별) ----------------
 FIGS = {
@@ -323,7 +324,7 @@ POST_CSS = CSS + """
 .phead h1{font-size:clamp(27px,3.8vw,40px);line-height:1.32}
 .phead .meta{margin-top:18px;font-size:13.5px;color:var(--mut);font-weight:600;display:flex;gap:14px;align-items:center}
 .phead .meta .by{color:var(--ink)}
-.pcover{max-width:860px;margin:0 auto;height:230px;border-radius:22px;position:relative;overflow:hidden}
+.pcover{max-width:860px;margin:0 auto;height:360px;border-radius:22px;position:relative;overflow:hidden}
 .pcover .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px}
 .pcover .tag{position:absolute;left:24px;bottom:20px;font-size:13px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px}
 .article{max-width:720px;margin:0 auto;padding:46px 0 10px}
@@ -348,7 +349,7 @@ POST_CSS = CSS + """
 .rcard h4{font-size:15.5px;margin-top:8px;line-height:1.45}
 .backrow{max-width:720px;margin:44px auto 0;padding:0 24px}
 .backrow a{font-size:14.5px;font-weight:700;color:var(--cobalt)}
-@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:170px;border-radius:16px;margin:0 20px}}
+@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:220px;border-radius:16px;margin:0 20px}}
 """
 
 def related(post):
