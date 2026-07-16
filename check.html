@@ -229,7 +229,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   <div class="pt" id="progTitle">분석 중…</div>
   <div class="steps">
     <div class="st" id="st1"><span class="dot">✓</span>페이지 HTML 가져오기</div>
-    <div class="st" id="st2"><span class="dot">✓</span>SEO 기본기 24개 항목 점검</div>
+    <div class="st" id="st2"><span class="dot">✓</span>SEO 기본기 · 속도 항목 점검</div>
     <div class="st" id="st3"><span class="dot">✓</span>robots.txt · sitemap.xml 확인</div>
     <div class="st" id="st4"><span class="dot">✓</span>구조화 데이터(JSON-LD) · 엔티티 분석</div>
   </div>
@@ -277,9 +277,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
         <h3>검색엔진이 읽는 기본기</h3>
         <p>네이버·구글 검색 노출의 토대가 되는 페이지 기본 구조를 점검합니다.</p>
         <ul>
-          <li>타이틀·메타 디스크립션·H1 등 콘텐츠 구조 (30점)</li>
+          <li>타이틀·메타 디스크립션·H1 등 콘텐츠 구조 (28점)</li>
           <li>HTTPS·canonical·viewport·OG 태그 등 기술 요소 (12점)</li>
-          <li>robots.txt·sitemap.xml·파비콘 크롤링 준비 (8점)</li>
+          <li>robots.txt·sitemap.xml·파비콘 크롤링 준비 (6점)</li>
+          <li>혼합 콘텐츠·지연 로딩·WebP·리소스 힌트 속도 최적화 (4점)</li>
         </ul>
       </div>
       <div class="ex geo">
@@ -357,7 +358,7 @@ function analyze(html,baseUrl,robots,sitemap,via){
   add('콘텐츠 SEO','제목 태그 계층 구조',hier,3,hier?'H1→H2→H3 순서 준수':'헤딩 레벨을 건너뛰는 구간이 있습니다 (예: H1→H3).');
   const imgs=[...doc.querySelectorAll('img')];
   const noAlt=imgs.filter(i=>!(i.getAttribute('alt')||'').trim()).length;
-  add('콘텐츠 SEO','이미지 ALT 속성',imgs.length>0&&noAlt===0,5,imgs.length===0?'이미지가 없어 판정 제외 (통과 처리)':(noAlt===0?'전체 '+imgs.length+'개 이미지에 ALT 있음':noAlt+'/'+imgs.length+'개 이미지에 ALT가 없습니다.'),imgs.length===0);
+  add('콘텐츠 SEO','이미지 ALT 속성',imgs.length>0&&noAlt===0,3,imgs.length===0?'이미지가 없어 판정 제외 (통과 처리)':(noAlt===0?'전체 '+imgs.length+'개 이미지에 ALT 있음':noAlt+'/'+imgs.length+'개 이미지에 ALT가 없습니다.'),imgs.length===0);
 
   /* ---- B. 기술적 SEO (12) ---- */
   add('기술적 SEO','HTTPS 보안',baseUrl.startsWith('https'),3,baseUrl.startsWith('https')?'SSL 적용됨':'HTTP로 접속됩니다. SSL 인증서를 적용하세요.');
@@ -371,9 +372,19 @@ function analyze(html,baseUrl,robots,sitemap,via){
   add('기술적 SEO','Open Graph 태그',og>=3,2,og?('OG 태그 '+og+'개'):'SNS 공유·네이버 사이트명 표시용 OG 태그가 없습니다.',og>0&&og<3);
 
   /* ---- C. 크롤링 준비 (8) ---- */
-  add('크롤링 준비','파비콘',!!doc.querySelector('link[rel*="icon"]'),2,doc.querySelector('link[rel*="icon"]')?'선언됨':'브라우저 탭·검색결과 아이콘이 없습니다.');
-  add('크롤링 준비','robots.txt',robots.ok&&robots.text.toLowerCase().includes('user-agent'),3,robots.ok?(robots.text.toLowerCase().includes('user-agent')?'유효한 규칙 확인':'파일은 있으나 User-agent 규칙이 없습니다.'):'robots.txt가 없습니다. 크롤러 접근 제어가 안 됩니다.',robots.ok&&!robots.text.toLowerCase().includes('user-agent'));
+  add('크롤링 준비','파비콘',!!doc.querySelector('link[rel*="icon"]'),1,doc.querySelector('link[rel*="icon"]')?'선언됨':'브라우저 탭·검색결과 아이콘이 없습니다.');
+  add('크롤링 준비','robots.txt',robots.ok&&robots.text.toLowerCase().includes('user-agent'),2,robots.ok?(robots.text.toLowerCase().includes('user-agent')?'유효한 규칙 확인':'파일은 있으나 User-agent 규칙이 없습니다.'):'robots.txt가 없습니다. 크롤러 접근 제어가 안 됩니다.',robots.ok&&!robots.text.toLowerCase().includes('user-agent'));
   add('크롤링 준비','sitemap.xml',sitemap.ok&&sitemap.text.includes('<url'),3,sitemap.ok?(sitemap.text.includes('<url')?'유효한 사이트맵 확인':'파일은 있으나 URL 목록이 없습니다.'):'sitemap.xml이 없습니다. 검색엔진이 사이트 구조를 파악하기 어렵습니다.',sitemap.ok&&!sitemap.text.includes('<url'));
+
+  /* ---- C2. 속도·기술 최적화 (4) ---- */
+  const mixed=baseUrl.startsWith('https')?[...doc.querySelectorAll('img[src],script[src],link[href]')].filter(el=>/^http:\/\//i.test(el.getAttribute('src')||el.getAttribute('href')||'')).length:0;
+  add('속도·기술 최적화','혼합 콘텐츠 없음',mixed===0,1,!baseUrl.startsWith('https')?'HTTP 페이지 — 판정 제외 (통과 처리)':(mixed?mixed+'개 리소스가 http로 로드됩니다. HTTPS에서 차단·경고될 수 있습니다.':'모든 리소스가 https로 로드됩니다 — 정상'));
+  const lazyN=imgs.filter(i=>(i.getAttribute('loading')||'').toLowerCase()==='lazy').length;
+  add('속도·기술 최적화','이미지 지연 로딩',imgs.length===0||lazyN>0,1,imgs.length===0?'이미지 없음 — 판정 제외 (통과 처리)':(lazyN?lazyN+'/'+imgs.length+'개 이미지에 lazy 로딩 적용':'loading="lazy"가 없어 초기 로딩이 무거워질 수 있습니다.'),imgs.length>0&&lazyN>0&&lazyN<imgs.length);
+  const nextGen=[...doc.querySelectorAll('img,source')].some(el=>/\.(webp|avif)([?#\s]|$)/i.test((el.getAttribute('src')||'')+' '+(el.getAttribute('srcset')||''))||/image\/(webp|avif)/i.test(el.getAttribute('type')||''));
+  add('속도·기술 최적화','차세대 이미지 포맷',imgs.length===0||nextGen,1,imgs.length===0?'이미지 없음 — 판정 제외 (통과 처리)':(nextGen?'WebP/AVIF 사용 확인':'JPG/PNG만 쓰고 있습니다. WebP로 바꾸면 용량이 줄어 속도가 개선됩니다.'));
+  const hints=doc.querySelectorAll('link[rel="preconnect"],link[rel="preload"],link[rel="dns-prefetch"],link[rel="prefetch"]').length;
+  add('속도·기술 최적화','리소스 힌트',hints>0,1,hints?('preconnect·preload 등 '+hints+'개 적용':'외부 자원 연결을 앞당기는 리소스 힌트(preconnect 등)가 없습니다.'));
 
   /* ---- D. 구조화 데이터 (30) ---- */
   const ldNodes=[...doc.querySelectorAll('script[type="application/ld+json"]')];
@@ -407,7 +418,7 @@ function analyze(html,baseUrl,robots,sitemap,via){
 }
 
 /* ================= scoring & render ================= */
-const CAT_GROUPS={'콘텐츠 SEO':'seo','기술적 SEO':'seo','크롤링 준비':'seo','구조화 데이터':'geo','엔티티 연결성':'geo','AI 읽기 용이성':'geo'};
+const CAT_GROUPS={'콘텐츠 SEO':'seo','기술적 SEO':'seo','크롤링 준비':'seo','속도·기술 최적화':'seo','구조화 데이터':'geo','엔티티 연결성':'geo','AI 읽기 용이성':'geo'};
 const GRADES=[[90,'우수','#0BBF8C','AI와 검색엔진 모두 잘 읽을 수 있는 상태입니다. 이제 콘텐츠 축적으로 추천 순위를 높일 차례입니다.'],
 [80,'양호','#2B5CFF','기본기는 갖췄습니다. 남은 항목을 보완하면 AI 인용 가능성이 눈에 띄게 올라갑니다.'],
 [70,'보통','#F59F1E','검색은 되지만 AI가 인용하기엔 부족합니다. 구조화 데이터부터 보강하세요.'],
