@@ -610,7 +610,7 @@ def build_page(x):
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
-<div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">우리 얘기다 싶다면</h2><div class="fit-list">{fits}</div></div>
+<div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">이런 상황이라면,<br>시작할 때입니다</h2><div class="fit-list">{fits}</div></div>
 <div class="dv-card rv"><h3>이렇게 받으세요</h3><div class="chips">{delivs}</div></div>
 </div>
 </div></section>
