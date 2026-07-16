@@ -207,6 +207,19 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .faq-hero .eyebrow{display:inline-flex;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:14px}
 .faq-hero h1{font-size:clamp(28px,4vw,42px);line-height:1.26}
 .faq-hero p{font-size:16px;color:var(--body);margin:14px auto 0;max-width:560px}
+/* 카테고리 사이드 레이아웃 */
+.faq-layout{display:grid;grid-template-columns:236px 1fr;gap:52px;max-width:1060px;margin:0 auto;align-items:start}
+.faq-side{position:sticky;top:90px}
+.faq-side .fs-lab{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--mut);margin:0 0 12px 15px}
+.faq-side a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 15px;border-radius:12px;font-size:15px;font-weight:700;color:var(--body);border-left:3px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.faq-side a:hover{background:var(--sky-2);color:var(--ink)}
+.faq-side a.on{background:var(--sky-2);color:var(--cobalt);border-left-color:var(--cobalt)}
+.faq-side a .cnt{font-size:12.5px;font-weight:700;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:20px;padding:1px 9px}
+.faq-side a.on .cnt{color:var(--cobalt);border-color:var(--cobalt)}
+.faq-side .side-cta{margin-top:18px;background:var(--cobalt);color:#fff;justify-content:center;border-left:0}
+.faq-side .side-cta:hover{background:#1E48E0;color:#fff}
+.faq-group{scroll-margin-top:86px}
+@media(max-width:900px){.faq-layout{grid-template-columns:1fr;gap:0}.faq-side{position:sticky;top:64px;z-index:20;display:flex;gap:8px;overflow-x:auto;margin-bottom:18px;padding:8px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}.faq-side .fs-lab,.faq-side .side-cta{display:none}.faq-side a{border-left:0;border:1.5px solid var(--line);white-space:nowrap;padding:9px 14px}.faq-side a.on{border-color:var(--cobalt)}}
 </style>
 </head>
 <body id="top">
@@ -269,10 +282,19 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   </div>
 </section>
 
-<section style="padding:22px 0 72px">
-  <div class="wrap" style="max-width:820px">
-    <div class="faq-group">
-      <h2 class="fg-title">일반</h2>
+<section style="padding:30px 0 84px">
+  <div class="wrap" style="max-width:1060px">
+    <div class="faq-layout">
+      <aside class="faq-side" id="faqSide">
+        <p class="fs-lab">카테고리</p>
+        <a href="#g-general">일반 안내<span class="cnt">4</span></a>
+        <a href="#g-geo">AI 검색 · GEO<span class="cnt">5</span></a>
+        <a href="#g-exec">홈페이지 · 실행<span class="cnt">2</span></a>
+        <a class="side-cta" href="index.html#final">무료 상담 신청 →</a>
+      </aside>
+      <div class="faq-main">
+    <div class="faq-group" id="g-general">
+      <h2 class="fg-title">일반 안내</h2>
       <div class="faq">
         <div class="qa"><button>효과는 얼마나 걸리나요?<span class="ico">+</span></button><div class="ans"><p>정보가 누적되는 특성상 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다. 홈페이지 구조 개선 같은 기술적 부분은 수 주 내에 반영되고, 언론·콘텐츠 축적 효과는 시간이 지날수록 커집니다.</p></div></div>
         <div class="qa"><button>노출·순위를 보장해 주나요?<span class="ico">+</span></button><div class="ans"><p>AI 답변은 검색 순위처럼 보장할 수 없습니다. 대신 무엇을 얼마나 했는지 월간 리포트로 투명하게 보여드리고, 질문별 노출 변화를 추적해 다음 달 과제를 함께 정합니다.</p></div></div>
@@ -280,7 +302,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
         <div class="qa"><button>비용은 어떻게 되나요?<span class="ico">+</span></button><div class="ans"><p>소상공인형 월 60만원, 기업형 월 100만원부터 시작하며 3개월 결제 시 할인됩니다. 규모·범위에 따라 엔터프라이즈는 별도 협의합니다. 자세한 구성은 요금 페이지에서 비교하실 수 있어요.</p></div></div>
       </div>
     </div>
-    <div class="faq-group">
+    <div class="faq-group" id="g-geo">
       <h2 class="fg-title">AI 검색 · GEO</h2>
       <div class="faq">
         <div class="qa"><button>SEO·AEO·GEO는 뭐가 다른가요?<span class="ico">+</span></button><div class="ans"><p>SEO는 검색엔진 상위 노출, AEO는 AI가 답변에 우리 정보를 인용하게, GEO는 생성형 AI 검색 전반에서 추천받게 만드는 최적화입니다. messeze는 이 셋을 함께 다룹니다.</p></div></div>
@@ -290,14 +312,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
         <div class="qa"><button>이미 유명한 브랜드인데도 필요한가요?<span class="ico">+</span></button><div class="ans"><p>오히려 더 필요합니다. 인지도가 높아도 AI가 경쟁사를 먼저 추천하면 그 접점을 빼앗깁니다. 사람이 아는 것과 AI가 읽을 수 있는 것은 다르기 때문에, AI가 정확히 인식하도록 정보 자산을 갖춰야 합니다.</p></div></div>
       </div>
     </div>
-    <div class="faq-group">
+    <div class="faq-group" id="g-exec">
       <h2 class="fg-title">홈페이지 · 실행</h2>
       <div class="faq">
         <div class="qa"><button>다른 업체가 만든 홈페이지도 최적화되나요?<span class="ico">+</span></button><div class="ans"><p>대부분 가능합니다. 지금 홈페이지를 최대한 살리는 방향(수정)을 먼저 제안하고, 뼈대부터 문제라면 리뉴얼을 권합니다. 필요한 만큼만, 과잉 제안 없이 진행합니다.</p></div></div>
         <div class="qa"><button>백링크 같은 작업도 하나요?<span class="ico">+</span></button><div class="ans"><p>인위적으로 링크를 사는 방식은 하지 않습니다. 언론 기사, 자사 콘텐츠, 구조화된 홈페이지 같은 진짜 신뢰 신호를 축적합니다. 특히 기사화된 보도자료가 가장 강력한 자연 링크가 됩니다.</p></div></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:30px"><a class="btn btn-co" href="index.html#final">더 궁금하면 무료 상담 신청하기</a></div>
+    <div style="text-align:center;margin-top:38px"><a class="btn btn-co" href="index.html#final">더 궁금하면 무료 상담 신청하기</a></div>
+      </div>
+    </div>
   </div>
 </section>
 <footer class="foot">
@@ -317,6 +341,24 @@ document.querySelectorAll('.qa button').forEach(function(b){b.addEventListener('
   var qa=b.closest('.qa'),ans=qa.querySelector('.ans'),open=qa.classList.toggle('open');
   ans.style.maxHeight=open?ans.scrollHeight+'px':'0';
 });});
+
+// 카테고리 사이드바: 부드러운 점프 + 스크롤 하이라이트(스크롤스파이)
+(function(){
+  var side=document.getElementById('faqSide');if(!side)return;
+  var links=[].slice.call(side.querySelectorAll('a[href^="#"]'));
+  var groups=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  links.forEach(function(a){a.addEventListener('click',function(e){
+    e.preventDefault();var t=document.getElementById(a.getAttribute('href').slice(1));
+    if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+  });});
+  var setOn=function(i){links.forEach(function(a,n){a.classList.toggle('on',n===i);});};
+  var spy=function(){
+    var y=window.scrollY+140,idx=0;
+    groups.forEach(function(g,i){if(g&&g.offsetTop<=y)idx=i;});
+    setOn(idx);
+  };
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
 </script>
 </body>
 </html>
