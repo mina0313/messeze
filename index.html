@@ -1208,8 +1208,12 @@ if(matchMedia('(min-width:981px)').matches){
 
 // FAQ 아코디언
 document.querySelectorAll('#faq .qa button').forEach(b=>b.addEventListener('click',()=>{
-  const qa=b.closest('.qa'),ans=qa.querySelector('.ans'),open=qa.classList.toggle('open');
-  ans.style.maxHeight=open?ans.scrollHeight+'px':'0';
+  const qa=b.closest('.qa'),ans=qa.querySelector('.ans'),willOpen=!qa.classList.contains('open');
+  if(willOpen){
+    document.querySelectorAll('#faq .qa.open').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight='0';});
+  }
+  qa.classList.toggle('open',willOpen);
+  ans.style.maxHeight=willOpen?ans.scrollHeight+'px':'0';
 }));
 
 document.getElementById('diagForm').addEventListener('submit',e=>{

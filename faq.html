@@ -399,8 +399,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 
 <script>
 document.querySelectorAll('.qa button').forEach(function(b){b.addEventListener('click',function(){
-  var qa=b.closest('.qa'),ans=qa.querySelector('.ans'),open=qa.classList.toggle('open');
-  ans.style.maxHeight=open?ans.scrollHeight+'px':'0';
+  var qa=b.closest('.qa'),ans=qa.querySelector('.ans'),willOpen=!qa.classList.contains('open');
+  if(willOpen){
+    document.querySelectorAll('.qa.open').forEach(function(o){o.classList.remove('open');o.querySelector('.ans').style.maxHeight='0';});
+  }
+  qa.classList.toggle('open',willOpen);
+  ans.style.maxHeight=willOpen?ans.scrollHeight+'px':'0';
 });});
 
 // 카테고리 사이드바: 부드러운 점프 + 스크롤 하이라이트(스크롤스파이)
