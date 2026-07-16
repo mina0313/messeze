@@ -243,8 +243,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .qa .ans p{padding:0 24px 20px}
 /* related */
 .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto}
-.relc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;transition:.18s;display:block}
-.relc:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.relc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;transition:transform .3s cubic-bezier(.34,1.2,.4,1),box-shadow .3s ease,border-color .3s ease;display:block}
+.relc:hover{box-shadow:0 22px 48px rgba(20,32,68,.14);transform:translateY(-7px);border-color:#B9CCFF}
+.relc .no{transition:color .3s ease}
+.relc:hover .no{color:var(--cobalt)}
+.relc b{transition:color .3s ease}
+.relc:hover b{color:var(--cobalt)}
 .relc .no{font-family:var(--disp);font-size:12.5px;font-weight:700;color:var(--cobalt)}
 .relc b{font-size:17px;display:block;margin-top:6px}
 .relc span{font-size:13px;color:var(--mut);display:block;margin-top:4px}

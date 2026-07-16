@@ -106,12 +106,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .price-grid .tier{transition:transform .4s cubic-bezier(.34,1.2,.4,1),box-shadow .4s ease,opacity .6s ease,border-color .3s;will-change:transform}
 .price-grid .tier:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,32,68,.16)}
 .price-grid .tier.pop:hover{box-shadow:0 32px 74px rgba(20,32,68,.42)}
+/* 요금 카드 스크롤 등장 — 순차로 나타남 */
+@keyframes tierAppear{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.price-grid .tier.in{animation:tierAppear .62s cubic-bezier(.2,.7,.2,1) backwards}
+.price-grid .tier.in:nth-child(2){animation-delay:.14s}
+.price-grid .tier.in:nth-child(3){animation-delay:.28s}
+@media(prefers-reduced-motion:reduce){.price-grid .tier.in{animation:none}}
 /* 비교표 핀 — 섹션 고정 + 스크롤에 따라 강조 열이 소상공인→기업형→엔터로 이동 */
 .cmp-pin{position:relative;min-height:240vh;padding:0}
 .cmp-pin .pin-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
 .cmpx-c{transition:background .45s ease,color .3s ease}
-.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2),.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3),.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4){background:rgba(43,92,255,.12)}
-.cmpx.col1 .cmpx-hd>.cmpx-c:nth-child(2),.cmpx.col2 .cmpx-hd>.cmpx-c:nth-child(3),.cmpx.col3 .cmpx-hd>.cmpx-c:nth-child(4){background:var(--cobalt);color:#fff}
+/* 소상공인·엔터 활성 = 코발트 */
+.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4){background:rgba(43,92,255,.12)}
+.cmpx.col1 .cmpx-hd>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-hd>.cmpx-c:nth-child(4){background:var(--cobalt);color:#fff}
+/* 기업형은 활성일 때만 진한 잉크 */
+.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3){background:rgba(16,31,63,.08)}
+.cmpx.col2 .cmpx-hd>.cmpx-c:nth-child(3){background:var(--ink);color:#fff}
 .cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2) .v,.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3) .v,.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4) .v{color:var(--ink);font-weight:800}
 @media(max-width:980px){.cmp-pin{min-height:0;padding:64px 0}.cmp-pin .pin-stick{position:static;min-height:0;display:block}}
 .price-note{text-align:center;margin-top:22px;font-size:13px;color:var(--mut)}
@@ -122,11 +132,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .cmpx-c{padding:17px 20px;font-size:14.5px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--body)}
 .cmpx-c.lb{justify-content:flex-start;text-align:left;font-weight:700;color:var(--ink);background:#FAFBFD}
 .cmpx-hd .cmpx-c{font-size:14px;font-weight:800;padding:20px;color:var(--ink)}
-.cmpx-hd .cmpx-c.pp{background:var(--ink);color:#fff}
+.cmpx-hd .cmpx-c.pp{background:transparent;color:var(--ink)}
 .cmpx-c .v{font-weight:700;color:var(--ink)}
 .cmpx-c .ok{color:var(--mint);font-weight:800}
 .cmpx-c .no{color:#C6CDDA;font-weight:800}
-.cmpx-c.pp{background:var(--sky-2)}
 .cmpx-note{text-align:center;margin-top:18px;font-size:13px;color:var(--mut)}
 /* common features */
 .common{background:var(--sky-2)}
