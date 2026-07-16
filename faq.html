@@ -1,0 +1,323 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자주 묻는 질문 (FAQ) | messeze — AI 검색 시대의 기업 PR</title>
+<meta name="description" content="AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문을 한곳에 모았습니다. 효과 기간·비용·구독·AI 노출까지.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A1930;--navy:#101F3F;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;
+--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--amber:#F59F1E;--red:#E2574C;--line:#E5EAF2;--line-2:#D8E0EC;
+--sans:'Pretendard',system-ui,-apple-system,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;
+--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10);--sh-lg:0 30px 70px rgba(16,31,63,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all}
+.co{color:var(--cobalt)}
+.btn{font-family:var(--sans);font-weight:700;font-size:15.5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 26px;border:1.5px solid transparent;transition:.18s}
+.btn-co{background:var(--cobalt);color:#fff;box-shadow:0 8px 22px rgba(43,92,255,.28)}
+.btn-co:hover{background:var(--cobalt-dk);transform:translateY(-2px)}
+/* nav */
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:25px;height:25px}
+.brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
+.nav-menu{display:flex;gap:6px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 13px;border-radius:10px}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a.on{color:var(--cobalt)}
+.nav-r{margin-left:auto}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:10px 4px 10px 10px;flex:0 0 auto}
+.nav-burger span{display:block;width:22px;height:2.5px;background:var(--ink);border-radius:2px;margin:4.5px 0;transition:.22s}
+.nav-burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.on span:nth-child(2){opacity:0}
+.nav-burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff;transition:.2s}
+.mega-brand:hover{transform:translateY(-3px)}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
+/* hero */
+.chero{padding:70px 0 54px;text-align:center;background:linear-gradient(180deg,#F4F9FF,#fff)}
+.chero .eyebrow{display:inline-flex;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:16px}
+.chero h1{font-size:clamp(28px,4.2vw,46px);line-height:1.26}
+.chero p{font-size:16.5px;color:var(--body);margin:16px auto 0;max-width:560px}
+.chero .caveat{font-size:12.5px;color:var(--mut);margin-top:12px}
+/* input */
+.cbox{max-width:640px;margin:32px auto 0;display:flex;gap:10px}
+.cbox input{flex:1;background:#fff;border:1.5px solid var(--line-2);border-radius:14px;padding:16px 18px;font-family:var(--sans);font-size:15.5px;color:var(--ink);transition:.18s;box-shadow:var(--sh-sm)}
+.cbox input:focus{outline:none;border-color:var(--cobalt)}
+.cbox .btn{white-space:nowrap}
+.cerr{max-width:640px;margin:14px auto 0;font-size:13.5px;font-weight:600;color:var(--red);display:none}
+/* progress */
+.prog{max-width:640px;margin:40px auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:28px;display:none}
+.prog .pt{font-size:15px;font-weight:800;margin-bottom:18px}
+.prog .steps{display:flex;flex-direction:column;gap:12px}
+.prog .st{display:flex;gap:11px;align-items:center;font-size:14px;font-weight:600;color:var(--mut)}
+.prog .st .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center;font-size:10px;flex:0 0 auto}
+.prog .st.run{color:var(--ink)}
+.prog .st.run .dot{border-color:var(--cobalt);animation:spin 1s linear infinite;border-top-color:transparent}
+.prog .st.ok{color:var(--ink)}
+.prog .st.ok .dot{border-color:var(--mint);background:var(--mint);color:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* result */
+.res{display:none;padding-bottom:20px}
+.res-top{max-width:920px;margin:44px auto 0;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);padding:38px 40px}
+.gauge{position:relative;width:190px;height:190px}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .gv{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.gauge .gv b{font-family:var(--disp);font-size:52px;font-weight:700;line-height:1;letter-spacing:-.03em;display:block}
+.gauge .gv span{font-size:12.5px;font-weight:700;color:var(--mut)}
+.res-info h2{font-size:24px;margin-bottom:6px;word-break:break-all}
+.res-info .grade{display:inline-flex;font-size:13.5px;font-weight:800;border-radius:999px;padding:7px 16px;margin:8px 0 16px}
+.res-info .gsum{font-size:14.5px;color:var(--body);line-height:1.65}
+.subbars{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.sb{display:grid;grid-template-columns:120px 1fr 52px;gap:12px;align-items:center;font-size:13.5px;font-weight:700}
+.sb .bt{height:9px;border-radius:5px;background:#EEF2F9;overflow:hidden}
+.sb .bt i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--cobalt),#6E93FF);width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.sb .num{text-align:right;font-family:var(--disp)}
+/* categories */
+.cats{max-width:920px;margin:26px auto 0;display:flex;flex-direction:column;gap:14px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cat-hd{display:flex;align-items:center;gap:14px;padding:20px 24px;cursor:pointer}
+.cat-hd h3{font-size:16.5px;flex:1}
+.cat-hd .cs{font-family:var(--disp);font-size:15px;font-weight:700}
+.cat-hd .arrow{color:var(--mut);transition:.2s;font-size:13px}
+.cat.open .arrow{transform:rotate(180deg)}
+.cat-bd{display:none;border-top:1px solid var(--line)}
+.cat.open .cat-bd{display:block}
+.item{display:flex;gap:12px;align-items:flex-start;padding:15px 24px;border-top:1px solid var(--sky-2);font-size:14.5px}
+.item:first-child{border-top:0}
+.item .mk{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:1px}
+.item.ok .mk{background:rgba(11,191,140,.12);color:var(--mint)}
+.item.no .mk{background:rgba(226,87,76,.1);color:var(--red)}
+.item.warn .mk{background:rgba(245,159,30,.12);color:var(--amber)}
+.item b{display:block;font-size:14.5px}
+.item span{display:block;font-size:12.8px;color:var(--mut);margin-top:2px;line-height:1.5}
+.item .pts{margin-left:auto;font-size:12px;font-weight:800;color:var(--mut);white-space:nowrap;padding-top:3px}
+.item.ok .pts{color:var(--mint)}
+/* todo */
+.todo{max-width:920px;margin:26px auto 0;background:var(--sky-2);border:1px solid var(--line);border-radius:18px;padding:26px 28px}
+.todo h3{font-size:17px;margin-bottom:16px}
+.todo ol{padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.todo li{font-size:14.5px;color:var(--body);line-height:1.6}
+.todo li b{color:var(--ink)}
+/* cta */
+.res-cta{max-width:920px;margin:30px auto 60px;background:var(--ink);border-radius:22px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden}
+.res-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(480px 260px at 90% 100%,rgba(43,92,255,.42),transparent 60%)}
+.res-cta h3{font-size:clamp(19px,2.4vw,25px);color:#fff;position:relative}
+.res-cta p{color:#AEB9D2;font-size:14px;margin-top:8px;position:relative}
+.res-cta .btn{position:relative}
+/* explainer */
+.explain{background:var(--sky-2);padding:80px 0}
+.explain .shead{max-width:640px;margin:0 auto 44px;text-align:center}
+.explain .h2{font-size:clamp(24px,3.2vw,34px)}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:920px;margin:0 auto}
+.ex{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
+.ex .tag{display:inline-flex;font-size:12px;font-weight:800;border-radius:999px;padding:6px 13px;margin-bottom:14px}
+.ex.seo .tag{background:var(--sky);color:var(--cobalt)}
+.ex.geo .tag{background:rgba(11,191,140,.12);color:var(--mint)}
+.ex h3{font-size:18px;margin-bottom:10px}
+.ex p{font-size:14px;color:var(--body);line-height:1.62}
+.ex ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.ex li{font-size:13.5px;color:var(--body);display:flex;gap:8px}
+.ex li::before{content:"✓";color:var(--mint);font-weight:800;font-size:11px;padding-top:2px}
+/* 분석 항목 카드 (next-t 스타일) */
+.acat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:940px;margin:0 auto}
+.acat{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm)}
+.acat-hd{display:flex;align-items:center;gap:11px;padding:15px 20px;background:var(--ink);color:#fff}
+.acat-hd .ico{width:24px;height:24px;flex:0 0 auto;color:#9DB3FF}
+.acat-hd .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.acat-hd h3{font-size:15.5px;color:#fff;flex:1}
+.acat-hd .pt{font-size:12.5px;font-weight:800;border-radius:999px;padding:5px 12px;white-space:nowrap}
+.acat.seo .acat-hd .pt{background:#7FA0FF;color:#0a1a3d}
+.acat.geo .acat-hd .pt{background:var(--mint);color:#04241a}
+.ai-row{padding:13px 20px;border-top:1px solid var(--sky-2)}
+.ai-row b{font-size:14px;font-weight:700;color:var(--ink);display:block}
+.ai-row span{font-size:12.5px;color:var(--mut);display:block;margin-top:3px;line-height:1.5}
+/* 점수 구조 막대 */
+.score-struct{max-width:720px;margin:38px auto 0;background:var(--sky-2);border:1px solid var(--line);border-radius:18px;padding:28px 30px}
+.score-struct h3{font-size:16.5px;text-align:center;margin-bottom:22px}
+.ss{display:grid;grid-template-columns:118px 1fr 44px;gap:14px;align-items:center;margin-bottom:12px;font-size:13.5px;font-weight:700}
+.ss:last-child{margin-bottom:0}
+.ss .ssb{height:12px;border-radius:6px;background:#E4EAF3;overflow:hidden}
+.ss .ssb i{display:block;height:100%;border-radius:6px}
+.ss.seo .ssb i{background:linear-gradient(90deg,#2B5CFF,#6E93FF)}
+.ss.geo .ssb i{background:linear-gradient(90deg,#0BBF8C,#22E0AD)}
+.ss .num{text-align:right;font-family:var(--disp);color:var(--mut);font-weight:700}
+/* 점수별 등급 */
+.grade-tiers{max-width:940px;margin:38px auto 0}
+.grade-tiers h3{font-size:16.5px;text-align:center;margin-bottom:22px}
+.gt-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gt{border-radius:14px;padding:18px 12px;text-align:center;border:1px solid}
+.gt .rg{font-family:var(--disp);font-size:13px;font-weight:700;display:block;opacity:.75}
+.gt strong{font-size:16px;display:block;margin:7px 0 4px}
+.gt em{font-size:11.5px;font-style:normal;color:var(--mut)}
+@media(max-width:820px){.acat-grid{grid-template-columns:1fr}.gt-grid{grid-template-columns:1fr 1fr 1fr}.ss{grid-template-columns:100px 1fr 40px}}
+/* foot */
+.foot{background:#070D1C;color:#7C879D;padding:52px 0 38px}
+.foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.foot .brand{color:#fff;margin-bottom:14px}
+.foot p{font-size:13.5px;line-height:1.7;max-width:320px}
+.foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
+@media(max-width:820px){
+  .nav-menu{display:none}
+  .res-top{grid-template-columns:1fr;text-align:center;padding:30px 24px}
+  .gauge{margin:0 auto}
+  .subbars .sb{grid-template-columns:96px 1fr 44px}
+  .ex-grid{grid-template-columns:1fr}
+  .cbox{flex-direction:column}
+}
+/* FAQ */
+.faq-group{margin-bottom:44px}
+.fg-title{font-size:20px;margin-bottom:18px;padding-left:2px;display:flex;align-items:center;gap:10px}
+.fg-title::before{content:"";width:5px;height:20px;border-radius:3px;background:var(--cobalt)}
+.faq{display:flex;flex-direction:column;gap:12px}
+.qa{border:1.5px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.qa:hover{border-color:var(--line-2)}
+.qa.open{border-color:var(--cobalt);box-shadow:0 10px 28px rgba(43,92,255,.09)}
+.qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:22px 26px;font-family:var(--sans);font-size:17px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-.01em}
+.qa .ico{flex:0 0 28px;height:28px;border-radius:9px;background:var(--sky-2);color:var(--ink);display:grid;place-items:center;font-size:18px;font-weight:600;transition:.3s cubic-bezier(.34,1.4,.5,1)}
+.qa.open .ico{background:var(--cobalt);color:#fff;transform:rotate(135deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1);color:var(--body);font-size:15.5px;line-height:1.72}
+.qa .ans p{padding:0 26px 24px;opacity:0;transform:translateY(8px);transition:opacity .4s ease .05s,transform .4s ease .05s}
+.qa.open .ans p{opacity:1;transform:none}
+.faq-hero{padding:64px 0 34px;text-align:center;background:linear-gradient(180deg,#F4F9FF,#fff)}
+.faq-hero .eyebrow{display:inline-flex;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:14px}
+.faq-hero h1{font-size:clamp(28px,4vw,42px);line-height:1.26}
+.faq-hero p{font-size:16px;color:var(--body);margin:14px auto 0;max-width:560px}
+</style>
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bw">messeze</span></a>
+    <nav class="nav-menu">
+      <a href="services.html">서비스</a>
+      <a href="pricing.html">요금</a>
+      <a href="check.html">AI 가시성 체크</a>
+      <a href="blog/index.html">블로그</a>
+      <a href="glossary/index.html">용어사전</a>
+      <a class="on" href="faq.html">FAQ</a>
+    </nav>
+    <div class="nav-r"><a class="nav-cta" href="index.html#final">무료 진단 받기</a></div>
+    <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mega" id="mega"><div class="wrap mega-in">
+    <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
+    <div class="mega-col">
+      <h5>서비스</h5>
+      <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+      <a href="services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+      <a href="services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+      <a href="services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+      <a href="services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+      <a href="services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>무료 도구</h5>
+      <a href="check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
+      <a href="pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+      <div class="gap"></div>
+      <h5>요금</h5>
+      <a href="pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
+      <a href="pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a>
+    </div>
+    <div class="mega-col">
+      <h5>리소스</h5>
+      <a href="blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+      <a href="glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a>
+      <div class="gap"></div>
+      <h5>많이 읽는 글</h5>
+      <a href="blog/posts/aeo-geo-seo.html"><b>AEO·GEO·SEO 차이</b><span>세 가지 최적화 쉽게 정리</span></a>
+      <a href="blog/posts/manufacturer-case.html"><b>제조기업 3개월 시나리오</b><span>AI에 발견되기까지</span></a>
+    </div>
+  </div></div>
+</header>
+<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+</script>
+
+<!-- FAQ HERO -->
+<section class="faq-hero">
+  <div class="wrap">
+    <span class="eyebrow">자주 묻는 질문 · FAQ</span>
+    <h1>궁금한 점을 <span class="co">한곳에 모았습니다</span></h1>
+    <p>AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문들입니다.</p>
+  </div>
+</section>
+
+<section style="padding:22px 0 72px">
+  <div class="wrap" style="max-width:820px">
+    <div class="faq-group">
+      <h2 class="fg-title">일반</h2>
+      <div class="faq">
+        <div class="qa"><button>효과는 얼마나 걸리나요?<span class="ico">+</span></button><div class="ans"><p>정보가 누적되는 특성상 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다. 홈페이지 구조 개선 같은 기술적 부분은 수 주 내에 반영되고, 언론·콘텐츠 축적 효과는 시간이 지날수록 커집니다.</p></div></div>
+        <div class="qa"><button>노출·순위를 보장해 주나요?<span class="ico">+</span></button><div class="ans"><p>AI 답변은 검색 순위처럼 보장할 수 없습니다. 대신 무엇을 얼마나 했는지 월간 리포트로 투명하게 보여드리고, 질문별 노출 변화를 추적해 다음 달 과제를 함께 정합니다.</p></div></div>
+        <div class="qa"><button>왜 구독형인가요? 한 번만 하면 안 되나요?<span class="ico">+</span></button><div class="ans"><p>기업 정보는 한 번에 쌓이지 않습니다. 매달 언론·콘텐츠가 누적돼야 AI가 지금도 활동하는 신뢰할 만한 기업으로 인식합니다. 그래서 일회성이 아니라 꾸준히 쌓는 구독형으로 운영합니다.</p></div></div>
+        <div class="qa"><button>비용은 어떻게 되나요?<span class="ico">+</span></button><div class="ans"><p>소상공인형 월 60만원, 기업형 월 100만원부터 시작하며 3개월 결제 시 할인됩니다. 규모·범위에 따라 엔터프라이즈는 별도 협의합니다. 자세한 구성은 요금 페이지에서 비교하실 수 있어요.</p></div></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <h2 class="fg-title">AI 검색 · GEO</h2>
+      <div class="faq">
+        <div class="qa"><button>SEO·AEO·GEO는 뭐가 다른가요?<span class="ico">+</span></button><div class="ans"><p>SEO는 검색엔진 상위 노출, AEO는 AI가 답변에 우리 정보를 인용하게, GEO는 생성형 AI 검색 전반에서 추천받게 만드는 최적화입니다. messeze는 이 셋을 함께 다룹니다.</p></div></div>
+        <div class="qa"><button>어떤 AI에 노출되게 하나요?<span class="ico">+</span></button><div class="ans"><p>ChatGPT·Claude·Gemini·Perplexity·구글 AI 오버뷰·네이버 AI 등 주요 AI 검색 플랫폼 전반을 대상으로 합니다. 특정 한 곳이 아니라 여러 AI가 교차 확인하는 정보를 만드는 것이 핵심입니다.</p></div></div>
+        <div class="qa"><button>정말 ChatGPT에 우리 회사가 나올 수 있나요?<span class="ico">+</span></button><div class="ans"><p>네. AI는 웹에서 확인되는 언급량·엔티티 구조·콘텐츠 신뢰도를 종합해 답합니다. 이 신호들을 꾸준히 쌓으면 AI가 귀사를 인용·추천하게 됩니다. 검색량이 적은 분야일수록 먼저 쌓은 기업이 유리합니다.</p></div></div>
+        <div class="qa"><button>검색량이 거의 없는 업종인데 효과가 있을까요?<span class="ico">+</span></button><div class="ans"><p>오히려 기회입니다. AI 검색은 검색량이 아니라 읽을 수 있는 신뢰 정보의 양으로 기업을 판단합니다. 정보를 가진 기업이 드문 분야일수록, 먼저 축적을 시작한 기업이 그 분야의 기본 답이 됩니다.</p></div></div>
+        <div class="qa"><button>이미 유명한 브랜드인데도 필요한가요?<span class="ico">+</span></button><div class="ans"><p>오히려 더 필요합니다. 인지도가 높아도 AI가 경쟁사를 먼저 추천하면 그 접점을 빼앗깁니다. 사람이 아는 것과 AI가 읽을 수 있는 것은 다르기 때문에, AI가 정확히 인식하도록 정보 자산을 갖춰야 합니다.</p></div></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <h2 class="fg-title">홈페이지 · 실행</h2>
+      <div class="faq">
+        <div class="qa"><button>다른 업체가 만든 홈페이지도 최적화되나요?<span class="ico">+</span></button><div class="ans"><p>대부분 가능합니다. 지금 홈페이지를 최대한 살리는 방향(수정)을 먼저 제안하고, 뼈대부터 문제라면 리뉴얼을 권합니다. 필요한 만큼만, 과잉 제안 없이 진행합니다.</p></div></div>
+        <div class="qa"><button>백링크 같은 작업도 하나요?<span class="ico">+</span></button><div class="ans"><p>인위적으로 링크를 사는 방식은 하지 않습니다. 언론 기사, 자사 콘텐츠, 구조화된 홈페이지 같은 진짜 신뢰 신호를 축적합니다. 특히 기사화된 보도자료가 가장 강력한 자연 링크가 됩니다.</p></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:30px"><a class="btn btn-co" href="index.html#final">더 궁금하면 무료 상담 신청하기</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="width:25px;height:25px"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bw">messeze</span></a>
+        <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p>
+      </div>
+    </div>
+    <div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.qa button').forEach(function(b){b.addEventListener('click',function(){
+  var qa=b.closest('.qa'),ans=qa.querySelector('.ans'),open=qa.classList.toggle('open');
+  ans.style.maxHeight=open?ans.scrollHeight+'px':'0';
+});});
+</script>
+</body>
+</html>
+

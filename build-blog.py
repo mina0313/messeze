@@ -294,6 +294,7 @@ def nav(depth):
 <a href="{p}check.html">AI 가시성 체크</a>
 <a class="on" href="{p}blog/index.html">블로그</a>
 <a href="{p}glossary/index.html">용어사전</a>
+<a href="{p}faq.html">FAQ</a>
 </nav>
 <div class="nav-r"><a class="nav-cta" href="{p}index.html#final">무료 진단 받기</a></div>
 <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
