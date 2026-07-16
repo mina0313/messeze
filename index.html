@@ -541,6 +541,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .mopp-card.in .geoarea{opacity:1}
 @media(prefers-reduced-motion:reduce){.mopp-chart .drawline{stroke-dashoffset:0}.mopp-chart .geoarea{opacity:1}}
 @media(max-width:560px){.mopp-nums{gap:26px}.mopp-nums .mn b{font-size:31px}}
+/* 차트 아래 통계 카드 3종 */
+.mopp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:920px;margin:20px auto 0}
+.mopp-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:30px 20px;text-align:center;transition:border-color .3s,background .3s}
+.mopp-stat:hover{border-color:rgba(127,160,255,.4);background:rgba(255,255,255,.06)}
+.mopp-stat b{display:block;font-family:var(--disp);font-size:clamp(34px,4.4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
+.mopp-stat b em{font-style:normal;font-size:.5em;font-weight:700;color:#8FA3D9;margin-left:1px;vertical-align:-.02em}
+.mopp-stat .ml{font-size:13.5px;color:#C7D0E4;font-weight:600;margin-top:14px;line-height:1.5}
+.mopp-stat .msrc{font-size:11px;color:#59647E;font-weight:600;letter-spacing:.04em;margin-top:12px;font-family:ui-monospace,'SFMono-Regular',monospace}
+@media(max-width:720px){.mopp-stats{grid-template-columns:1fr;max-width:420px}}
 .bs span{font-size:13.5px;color:#AEB9D2;font-weight:600;margin-top:6px;display:block}
 .bs.co b{color:#7FA0FF}
 
@@ -956,7 +965,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
           <circle cx="780" cy="255" r="5" fill="#94A0B4"/><text x="770" y="274" fill="#94A0B4" font-size="13" font-weight="800" text-anchor="end">22%</text>
         </svg>
       </div>
-      <div class="src">전통 검색량은 2026년까지 약 25% 감소할 전망입니다 (Gartner, 2024).</div>
+    </div>
+    <div class="mopp-stats rv stagger">
+      <div class="mopp-stat"><b>-25<em>%</em></b><div class="ml">2026년까지 전통 검색량 감소</div><div class="msrc">Gartner, 2024</div></div>
+      <div class="mopp-stat"><b>3.2<em>x</em></b><div class="ml">AI 추천 대비 구매 전환율</div><div class="msrc">Princeton GEO Study, 2022</div></div>
+      <div class="mopp-stat"><b>90<em>%</em></b><div class="ml">상위 25% 브랜드의 AI 답변 점유</div><div class="msrc">Ahrefs, 2025</div></div>
     </div>
   </div>
 </section>
