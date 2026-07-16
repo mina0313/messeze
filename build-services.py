@@ -204,6 +204,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
+/* 히어로(1번 섹션) 좌우 미끄러지는 등장 */
+.phero-in>.rv{transform:translateX(-34px);transition-duration:.85s}
+.phero-in>.svc-vis.rv{transform:translateX(34px);transition-delay:.12s}
+.phero-in>.rv.in,.phero-in>.svc-vis.rv.in{transform:none}
 @media(max-width:980px){
   .nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}
   .phero-in,.fitrow{grid-template-columns:1fr;gap:40px}
@@ -213,7 +217,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
   .svc-vis{min-height:400px}
 }
 @media(max-width:560px){.sec{padding:64px 0}.pr-grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}.rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv{opacity:1;transform:none}}
 """
 
 LOGO = """<svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg>"""
