@@ -123,6 +123,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .cg h4{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
 .cg h4 .ic{width:30px;height:30px;border-radius:9px;background:var(--sky);display:grid;place-items:center;font-size:14px}
 .cg ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+/* 모든 플랜 공통 4카드 — 스크롤 시 하나씩 선택되는 강조 모션 */
+.cg-grid .cg{transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
+.cg h4 .ic{transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
+.cg.in{border-color:#B9CCFF;box-shadow:0 16px 40px rgba(43,92,255,.13)}
+.cg.in h4 .ic{background:#E4ECFF;box-shadow:0 0 0 4px rgba(43,92,255,.16);transform:scale(1.12)}
+.cg-grid .cg:nth-child(2),.cg-grid .cg:nth-child(2) h4 .ic{transition-delay:.16s}
+.cg-grid .cg:nth-child(3),.cg-grid .cg:nth-child(3) h4 .ic{transition-delay:.32s}
+.cg-grid .cg:nth-child(4),.cg-grid .cg:nth-child(4) h4 .ic{transition-delay:.48s}
 .cg li{font-size:13.5px;color:var(--body);display:flex;gap:8px;line-height:1.5}
 .cg li::before{content:"✓";color:var(--mint);font-weight:800;font-size:11px;padding-top:2px}
 /* quiz */
@@ -389,7 +397,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting)})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 // ---- 30초 플랜 추천 ----
