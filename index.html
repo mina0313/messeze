@@ -97,16 +97,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 @media(max-width:900px){.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
 
 /* ============ HERO ============ */
-.hero{position:relative;padding:56px 0 100px;overflow:hidden;background:
-  radial-gradient(900px 480px at 88% -10%,rgba(43,92,255,.10),transparent 60%),
-  radial-gradient(700px 420px at -8% 30%,rgba(43,92,255,.05),transparent 55%),#fff}
+.hero{position:relative;padding:42px 0 72px;overflow:hidden;background:
+  radial-gradient(880px 460px at 86% -8%,rgba(43,92,255,.18),transparent 60%),
+  radial-gradient(720px 440px at -6% 34%,rgba(11,191,140,.09),transparent 55%),
+  linear-gradient(178deg,#E7F0FF 0%,#F2F8FF 44%,#fff 100%)}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(16,31,63,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(640px 480px at 78% 30%,#000,transparent 75%);pointer-events:none}
 /* hero v2: 전환 타이포 중심 */
 .hero2{max-width:900px;margin:0 auto;text-align:center;position:relative;padding-top:26px}
-.hero2 .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:34px}
+.hero2 .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:24px}
 .hero2 .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
 .hero-h .from{display:block;font-size:clamp(17px,2.4vw,25px);font-weight:700;color:var(--mut);letter-spacing:-.02em}
-.hero-h .to{display:block;font-size:clamp(37px,6.4vw,74px);font-weight:800;letter-spacing:-.045em;line-height:1.14;margin-top:16px;color:var(--ink);word-break:keep-all}
+.hero-h .to{display:block;font-size:clamp(34px,5.4vw,60px);font-weight:800;letter-spacing:-.045em;line-height:1.16;margin-top:14px;color:var(--ink);word-break:keep-all}
 .hero2 .sub2{font-size:clamp(15.5px,2vw,18px);color:var(--body);margin:28px auto 0;max-width:520px;line-height:1.68}
 .hero2 .cta2{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .hero2 .meta2{margin:34px auto 0;display:flex;justify-content:center;gap:0}
@@ -115,7 +116,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero2 .meta2 b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em}
 .hero2 .meta2 span{font-size:12.5px;color:var(--mut);font-weight:600}
 /* wide AI strip */
-.strip-card{max-width:880px;margin:58px auto 0;position:relative}
+.strip-card{max-width:880px;margin:42px auto 0;position:relative}
 .strip-card .scard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-lg);transform:rotate(-.8deg);display:block;overflow:hidden;text-align:left}
 .strip-card .lab{font-size:11.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;margin-bottom:10px}
 .strip-card .sq{padding:26px 28px}
@@ -695,14 +696,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   <div class="hero-aura"></div>
   <div class="hero-rays"></div>
   <div class="hero-dots"></div>
-  <div class="hero-floats" aria-hidden="true">
-    <div class="fl f1 c-press"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="15" rx="1.5"/><path d="M16 8h4a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"/><path d="M6 9h7M6 13h7M6 17h4"/></svg></div>
-    <div class="fl f2 c-web"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 2.6 2.8 15.4 0 18M12 3c-2.8 2.6-2.8 15.4 0 18"/></svg></div>
-    <div class="fl f3 c-naver"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></div>
-    <div class="fl f4 c-col"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M14 6l4 4"/></svg></div>
-    <div class="fl f5 c-tistory"><svg viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-6"/></svg></div>
-    <div class="fl f6 c-ai"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7L12 3Z"/></svg></div>
-  </div>
   <div class="wrap hero2">
     <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
     <h1 class="hero-h">
