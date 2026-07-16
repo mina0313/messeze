@@ -560,6 +560,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bs.co b{color:#7FA0FF}
 .bs.co b .num{color:#fff}
 
+/* ============ FLOW (4단계 프로세스) ============ */
+.flow{background:linear-gradient(180deg,#E9F1FF,#F7FBFF 55%,#fff)}
+.flow .shead{text-align:center;max-width:700px;margin:0 auto}
+.flow-steps{max-width:980px;margin:44px auto 0;position:relative}
+.flow-steps::before{content:"";position:absolute;left:27px;top:52px;bottom:52px;width:2px;background:linear-gradient(180deg,var(--cobalt),#B9CCFF);opacity:.35}
+.fstep{display:grid;grid-template-columns:56px 1fr 320px;gap:30px;align-items:center;padding:38px 0;position:relative}
+.fstep+.fstep{border-top:1px dashed var(--line)}
+.fs-num{width:54px;height:54px;border-radius:16px;background:#fff;border:2px solid var(--cobalt);color:var(--cobalt);font-family:var(--disp);font-weight:800;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(43,92,255,.16);position:relative;z-index:1}
+.fstep h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.02em}
+.fs-body p{font-size:15px;color:var(--body);line-height:1.7;margin-top:10px;max-width:440px}
+.fs-out{display:inline-flex;align-items:center;gap:8px;border-left:3px solid var(--cobalt);padding:7px 0 7px 13px;margin-top:16px;font-size:14px;font-weight:800;color:var(--ink);background:linear-gradient(90deg,var(--sky),transparent);border-radius:0 8px 8px 0}
+.fs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.fs-tags span{font-size:12.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.fs-vis{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);overflow:hidden}
+.fs-vis svg{width:100%;height:auto;display:block}
+@media(max-width:900px){.flow-steps::before{display:none}.fstep{grid-template-columns:44px 1fr;gap:14px 16px;padding:30px 0}.fs-num{width:44px;height:44px;font-size:17px}.fs-body{grid-column:2}.fs-vis{grid-column:1/-1;margin-top:8px}}
 /* ============ PRICING ============ */
 .price{background:var(--sky-2)}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -980,6 +996,59 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <div class="mopp-stat"><b>-25<em>%</em></b><div class="ml">2026년까지 전통 검색량 감소</div><div class="msrc">Gartner, 2024</div></div>
       <div class="mopp-stat"><b>3.2<em>x</em></b><div class="ml">AI 추천 대비 구매 전환율</div><div class="msrc">Princeton GEO Study, 2022</div></div>
       <div class="mopp-stat"><b>90<em>%</em></b><div class="ml">상위 25% 브랜드의 AI 답변 점유</div><div class="msrc">Ahrefs, 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW (4단계 프로세스) -->
+<section class="sec flow" id="how">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">HOW · 이렇게 진행됩니다</span>
+      <h2 class="h2">AI 추천은 우연이 아닙니다,<br>4단계로 쌓아 만듭니다</h2>
+      <p class="lead">진단부터 리포트까지, 순서대로 축적합니다. 각 단계가 다음 단계의 재료가 됩니다.</p>
+    </div>
+    <div class="flow-steps">
+      <div class="fstep rv">
+        <div class="fs-num">01</div>
+        <div class="fs-body">
+          <h3>지금 우리 위치부터 진단합니다</h3>
+          <p>주요 AI 검색이 우리 회사를 어떻게 인식하는지, 홈페이지는 읽히는 구조인지 데이터로 확인하고 개선 우선순위를 매깁니다.</p>
+          <div class="fs-out">→ 현재 상태와 개선 방향이 담긴 진단 리포트</div>
+          <div class="fs-tags"><span>AI 가시성 평가</span><span>경쟁사 노출 비교</span><span>핵심 질문 설계</span><span>구조 진단</span></div>
+        </div>
+        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="20" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><circle cx="40" cy="37" r="5" fill="#0BBF8C"/><text x="56" y="41" font-size="12" fill="#0A1930" font-weight="800">messeze · AI 가시성 진단</text><g transform="translate(28,72)"><circle cx="34" cy="34" r="28" fill="none" stroke="#EEF2F9" stroke-width="9"/><circle cx="34" cy="34" r="28" fill="none" stroke="#2B5CFF" stroke-width="9" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="111" transform="rotate(-90 34 34)"/><text x="34" y="40" font-size="18" fill="#0A1930" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">37</text></g><g transform="translate(108,74)"><text x="0" y="8" font-size="11" fill="#8B95A7" font-weight="700">ChatGPT</text><rect x="0" y="14" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="14" width="52" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="42" font-size="11" fill="#8B95A7" font-weight="700">네이버 검색</text><rect x="0" y="48" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="48" width="122" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="76" font-size="11" fill="#8B95A7" font-weight="700">Perplexity</text><rect x="0" y="82" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="82" width="96" height="7" rx="3.5" fill="#2B5CFF"/></g></svg></div>
+      </div>
+      <div class="fstep rv">
+        <div class="fs-num">02</div>
+        <div class="fs-body">
+          <h3>AI가 읽는 구조로 정비합니다</h3>
+          <p>이미지에 갇힌 정보를 텍스트로 꺼내고, 구조화 데이터와 질문-답변형 페이지로 홈페이지를 AI가 읽을 수 있게 정비합니다.</p>
+          <div class="fs-out">→ 검색과 AI 양쪽에서 읽히는 홈페이지</div>
+          <div class="fs-tags"><span>메타·헤딩 정비</span><span>JSON-LD 스키마</span><span>질문답변 페이지</span><span>속도 최적화</span></div>
+        </div>
+        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="34" width="130" height="120" rx="12" fill="#fff" stroke="#F3C6C1"/><text x="36" y="58" font-size="11" fill="#E2574C" font-weight="800">Before</text><rect x="36" y="72" width="96" height="30" rx="6" fill="#EEF2F9"/><text x="84" y="91" font-size="9.5" fill="#8B95A7" text-anchor="middle">이미지에 갇힘</text><rect x="36" y="112" width="70" height="7" rx="3.5" fill="#EEF2F9"/><rect x="36" y="126" width="50" height="7" rx="3.5" fill="#EEF2F9"/><path d="M158 94 h20" stroke="#B7C0D0" stroke-width="2" stroke-dasharray="3 4" fill="none"/><path d="M174 90 l6 4 -6 4" stroke="#B7C0D0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="186" y="34" width="114" height="120" rx="12" fill="#fff" stroke="#B7EAD9"/><text x="202" y="58" font-size="11" fill="#08916B" font-weight="800">After</text><rect x="202" y="70" width="82" height="7" rx="3.5" fill="#0A1930"/><rect x="202" y="82" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="94" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="112" width="66" height="16" rx="6" fill="#DBF3EA"/><text x="235" y="123" font-size="9.5" fill="#08916B" text-anchor="middle" font-weight="800">+스키마·ALT</text></svg></div>
+      </div>
+      <div class="fstep rv">
+        <div class="fs-num">03</div>
+        <div class="fs-body">
+          <h3>콘텐츠와 출처를 매달 쌓습니다</h3>
+          <p>자사 블로그·외부 채널·언론 배포로, 여러 곳에서 교차 확인되는 신뢰 정보를 꾸준히 축적합니다. AI가 신뢰하는 건 반복 확인되는 사실입니다.</p>
+          <div class="fs-out">→ 여러 출처에서 확인되는 기업 정보</div>
+          <div class="fs-tags"><span>자사 블로그</span><span>네이버·티스토리·블로거</span><span>언론 보도</span><span>애드버토리얼</span></div>
+        </div>
+        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="112" y="22" width="96" height="34" rx="10" fill="#101F3F"/><text x="160" y="43" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">자사 블로그</text><g stroke="#C7D6FF" stroke-width="1.6" fill="none"><path d="M160 56 V74"/><path d="M60 96 V84 H270 V96"/><path d="M160 84 V96"/></g><rect x="16" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#E5EAF2"/><text x="60" y="124" font-size="11" fill="#0A1930" text-anchor="middle" font-weight="800">네이버·티스토리</text><text x="60" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">외부 채널</text><rect x="116" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#C4D4FF"/><text x="160" y="124" font-size="11.5" fill="#2B5CFF" text-anchor="middle" font-weight="800">언론 보도</text><text x="160" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">기사화</text><rect x="216" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#B7EAD9"/><text x="260" y="124" font-size="11.5" fill="#08916B" text-anchor="middle" font-weight="800">구글 블로거</text><text x="260" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">빠른 색인</text></svg></div>
+      </div>
+      <div class="fstep rv">
+        <div class="fs-num">04</div>
+        <div class="fs-body">
+          <h3>성과를 확인하고 다음을 정합니다</h3>
+          <p>무엇을 얼마나 했고 AI 노출이 어떻게 바뀌었는지 월간 리포트로 투명하게 공유하고, 다음 달 과제를 함께 정합니다.</p>
+          <div class="fs-out">→ 월간 성과 리포트 · 다음 달 실행 계획</div>
+          <div class="fs-tags"><span>월간 리포트</span><span>AI 노출 변화</span><span>인용률 추적</span><span>우선순위 갱신</span></div>
+        </div>
+        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><defs><linearGradient id="flowbar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#2B5CFF"/></linearGradient></defs><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="22" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><text x="36" y="43" font-size="12" fill="#0A1930" font-weight="800">월간 성과 리포트</text><rect x="230" y="30" width="54" height="18" rx="9" fill="#DBF3EA"/><text x="257" y="43" font-size="10.5" fill="#08916B" text-anchor="middle" font-weight="800">▲ +54</text><g transform="translate(30,72)"><rect x="0" y="60" width="24" height="26" rx="4" fill="url(#flowbar)" opacity=".7"/><rect x="42" y="46" width="24" height="40" rx="4" fill="url(#flowbar)" opacity=".82"/><rect x="84" y="30" width="24" height="56" rx="4" fill="url(#flowbar)"/><rect x="126" y="14" width="24" height="72" rx="4" fill="url(#flowbar)"/><rect x="168" y="2" width="24" height="84" rx="4" fill="#0BBF8C"/><path d="M12 66 L54 52 L96 36 L138 20 L180 8" stroke="#0BBF8C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="4.5" fill="#fff" stroke="#0BBF8C" stroke-width="2.5"/></g><text x="234" y="150" font-size="10.5" fill="#8B95A7" font-weight="700">3개월 축적 추이</text></svg></div>
+      </div>
     </div>
   </div>
 </section>
