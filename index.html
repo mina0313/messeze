@@ -209,14 +209,28 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero .wrap{position:relative;z-index:1}
 /* staggered entrance */
 @keyframes hRise{from{opacity:0;transform:translateY(20px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
-.hero2 .tag{animation:hRise .7s .02s both}
-.hero-h .from{animation:hRise .75s .1s both}
-.hero-h .to{animation:hRise .8s .2s both}
-.hero2 .sub2{animation:hRise .75s .34s both}
-.hero2 .cta2{animation:hRise .75s .44s both}
-.hero2 .h-trust{animation:hRise .75s .54s both}
-.strip-card{animation:hRise .8s .64s both,floatY 6.5s 1.5s ease-in-out infinite}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* 2단 분할 좌우 슬라이드 등장 */
+.hero-split .hero2{animation:slideInL .9s .12s both}
+.hero-split .strip-card{animation:slideInR .9s .3s both,floatY 6.6s 1.8s ease-in-out infinite}
+@keyframes slideInL{from{opacity:0;transform:translateX(-46px)}to{opacity:1;transform:none}}
+@keyframes slideInR{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
+@keyframes floatY{0%,100%{translate:0 0}50%{translate:0 -9px}}
+/* 2단 레이아웃 */
+.hero-split{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;position:relative;z-index:1}
+.hero-split .hero2{max-width:none;margin:0;text-align:left;padding-top:0}
+.hero-split .hero-h .to{font-size:clamp(30px,3.5vw,49px)}
+.hero-split .sub2{margin-left:0;max-width:470px}
+.hero-split .cta2,.hero-split .h-trust,.hero-split .ai-plat .logos{justify-content:flex-start}
+.hero-split .ai-plat{text-align:left}
+.hero-split .strip-card{max-width:none;margin:0}
+@media(max-width:980px){
+  .hero-split{grid-template-columns:1fr;gap:34px}
+  .hero-split .hero2{text-align:center}
+  .hero-split .hero2 .tag,.hero-split .sub2{margin-left:auto;margin-right:auto}
+  .hero-split .cta2,.hero-split .h-trust,.hero-split .ai-plat .logos{justify-content:center}
+  .hero-split .ai-plat{text-align:center}
+  .hero-split .strip-card{max-width:640px;margin:0 auto}
+}
 /* hand-drawn underline draws in */
 .cu::after{transform-origin:left center;animation:drawUL .55s 1s both cubic-bezier(.4,.8,.3,1)}
 @keyframes drawUL{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -229,7 +243,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .h-trust span::before{content:"✓";color:var(--mint);font-size:12px;font-weight:800}
 .h-trust .dot{color:var(--line-2);font-style:normal}
 /* next-t 참고 — 타깃 AI 플랫폼 스트립 */
-.ai-plat{margin:30px auto 0;text-align:center;animation:hRise .75s .62s both}
+.ai-plat{margin:30px auto 0;text-align:center}
 .ai-plat .lbl{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.01em}
 .ai-plat .logos{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
 .ai-plat .logos span{font-size:13px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm);display:inline-flex;align-items:center;gap:7px;transition:.16s}
@@ -692,7 +706,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <section class="hero">
   <div class="hero-aura"></div>
   <div class="hero-rays"></div>
-  <div class="wrap hero2">
+  <div class="wrap hero-split">
+  <div class="hero2">
     <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
     <h1 class="hero-h">
       <span class="from">사람에게만 보이는 홍보에서,</span>
@@ -720,7 +735,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       </div>
     </div>
   </div>
-  <div class="wrap strip-card">
+  <div class="strip-card">
     <div class="stick"><span class="pk"></span>AI 인식됨 · 출처 4</div>
     <div class="scard">
       <div class="shead-bar">
@@ -753,6 +768,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
