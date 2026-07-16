@@ -102,6 +102,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .tier .btn{width:100%}
 .tier.pop .btn{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
 .tier.pop .btn:hover{background:#4270FF}
+/* 요금 카드 호버 리프트 */
+.price-grid .tier{transition:transform .4s cubic-bezier(.34,1.2,.4,1),box-shadow .4s ease,opacity .6s ease,border-color .3s;will-change:transform}
+.price-grid .tier:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,32,68,.16)}
+.price-grid .tier.pop:hover{box-shadow:0 32px 74px rgba(20,32,68,.42)}
+/* 비교표 — 스크롤 시 플랜 열 순차(소상공인→기업형→엔터) 등장 */
+.cmpx.rv{opacity:1;transform:none}
+.cmpx .cmpx-c:nth-child(n+2){opacity:0;transform:translateY(14px)}
+.cmpx.in .cmpx-c:nth-child(n+2){opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+.cmpx.in .cmpx-c:nth-child(2){transition-delay:.05s}
+.cmpx.in .cmpx-c:nth-child(3){transition-delay:.22s}
+.cmpx.in .cmpx-c:nth-child(4){transition-delay:.39s}
 .price-note{text-align:center;margin-top:22px;font-size:13px;color:var(--mut)}
 /* compare table */
 .cmpx{max-width:920px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm);background:#fff}
