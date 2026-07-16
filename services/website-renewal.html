@@ -151,6 +151,58 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .clips .flowrow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm)}
 .clips .flowrow i{font-style:normal;color:#B9C2D4}
 .clips .flowrow span.hl{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+/* ===== 히어로 비주얼 내부 모션 (게이지·막대·노드 채움/순차 등장) — .svc-vis.in 재생. transition 기반이라 reduced-motion서 자동 즉시표시 ===== */
+/* 01 가시성 — 게이지 채움 + 엔진 막대 채움 + 상태 라벨 */
+.rep .gaugerow svg circle:nth-child(2){stroke-dashoffset:314}
+.svc-vis.in .rep .gaugerow svg circle:nth-child(2){stroke-dashoffset:198;transition:stroke-dashoffset 1.4s .4s cubic-bezier(.3,.8,.3,1)}
+.rep .row .bt i{transform-origin:left;transform:scaleX(0)}
+.svc-vis.in .rep .row .bt i{transform:scaleX(1);transition:transform .95s cubic-bezier(.3,.9,.3,1)}
+.svc-vis.in .rep .row:nth-child(2) .bt i{transition-delay:.55s}
+.svc-vis.in .rep .row:nth-child(3) .bt i{transition-delay:.7s}
+.svc-vis.in .rep .row:nth-child(4) .bt i{transition-delay:.85s}
+.svc-vis.in .rep .row:nth-child(5) .bt i{transition-delay:1s}
+.rep .row .st{opacity:0}
+.svc-vis.in .rep .row .st{opacity:1;transition:opacity .45s 1.2s}
+/* 02 리뉴얼 — After 카드가 뒤이어 팝인 */
+.ba .cwb.after{opacity:0;transform:rotate(1.4deg) scale(.9)}
+.svc-vis.in .ba .cwb.after{opacity:1;transform:rotate(1.4deg) scale(1);transition:opacity .6s .55s,transform .78s .55s cubic-bezier(.3,1.35,.4,1)}
+/* 03 제작 — 루트 → 노드 순차 낙하 */
+.tree .root{opacity:0;transform:translateY(-10px)}
+.svc-vis.in .tree .root{opacity:1;transform:none;transition:.6s cubic-bezier(.3,1.2,.4,1)}
+.tree .lvl .node{opacity:0;transform:translateY(13px)}
+.svc-vis.in .tree .lvl .node{opacity:1;transform:none;transition:.55s cubic-bezier(.3,1.2,.4,1)}
+.svc-vis.in .tree .lvl .node:nth-child(1){transition-delay:.35s}
+.svc-vis.in .tree .lvl .node:nth-child(2){transition-delay:.47s}
+.svc-vis.in .tree .lvl .node:nth-child(3){transition-delay:.59s}
+.svc-vis.in .tree .lvl .node:nth-child(4){transition-delay:.71s}
+.svc-vis.in .tree .lvl .node:nth-child(5){transition-delay:.83s}
+/* 04 블로그 — 답변 박스 등장 + 캘린더 도트 팝 */
+.artwin .ansbox{opacity:0;transform:translateY(9px)}
+.svc-vis.in .artwin .ansbox{opacity:1;transform:none;transition:.6s .45s cubic-bezier(.3,1,.4,1)}
+.cal .dots i{transform:scale(0)}
+.svc-vis.in .cal .dots i{transform:scale(1);transition:transform .45s cubic-bezier(.3,1.6,.4,1) .5s}
+/* 05 채널 — 허브 → 스포크 순차 */
+.radial .hub{opacity:0;transform:translateY(-9px)}
+.svc-vis.in .radial .hub{opacity:1;transform:none;transition:.6s cubic-bezier(.3,1.2,.4,1)}
+.radial .spokes .ch{opacity:0;transform:translateY(15px)}
+.svc-vis.in .radial .spokes .ch{opacity:1;transform:none;transition:.55s cubic-bezier(.3,1.2,.4,1)}
+.svc-vis.in .radial .spokes .ch:nth-child(1){transition-delay:.35s}
+.svc-vis.in .radial .spokes .ch:nth-child(2){transition-delay:.5s}
+.svc-vis.in .radial .spokes .ch:nth-child(3){transition-delay:.65s}
+/* 06 언론 — 클립 팝인 + 플로우 좌→우 순차 */
+.clips .clip.c1{opacity:0;transform:rotate(-3.5deg) translateY(15px)}
+.clips .clip.c2{opacity:0;transform:rotate(1.6deg) translateY(15px)}
+.svc-vis.in .clips .clip.c1{opacity:1;transform:rotate(-3.5deg);transition:opacity .6s .25s,transform .72s .25s cubic-bezier(.3,1.3,.4,1)}
+.svc-vis.in .clips .clip.c2{opacity:1;transform:rotate(1.6deg);transition:opacity .6s .5s,transform .72s .5s cubic-bezier(.3,1.3,.4,1)}
+.clips .flowrow>span,.clips .flowrow>i{opacity:0;transform:translateY(7px)}
+.svc-vis.in .clips .flowrow>span,.svc-vis.in .clips .flowrow>i{opacity:1;transform:none;transition:.45s cubic-bezier(.3,1.2,.4,1)}
+.svc-vis.in .clips .flowrow>*:nth-child(1){transition-delay:.7s}
+.svc-vis.in .clips .flowrow>*:nth-child(2){transition-delay:.8s}
+.svc-vis.in .clips .flowrow>*:nth-child(3){transition-delay:.9s}
+.svc-vis.in .clips .flowrow>*:nth-child(4){transition-delay:1s}
+.svc-vis.in .clips .flowrow>*:nth-child(5){transition-delay:1.1s}
+.svc-vis.in .clips .flowrow>*:nth-child(6){transition-delay:1.2s}
+.svc-vis.in .clips .flowrow>*:nth-child(7){transition-delay:1.3s}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
