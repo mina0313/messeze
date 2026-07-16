@@ -982,6 +982,27 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:var(--sky-2)">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2 class="h2">궁금한 점을 모았습니다</h2>
+    </div>
+    <div class="faq rv stagger">
+      <div class="qa"><button>효과는 얼마나 걸리나요?<span class="ico">+</span></button><div class="ans"><p>정보가 누적되는 특성상 대략 3개월 시점부터 AI 검색에 반영되기 시작합니다. 홈페이지 구조 개선 같은 기술적 부분은 수 주 내에 반영되고, 언론·콘텐츠 축적 효과는 시간이 지날수록 커집니다.</p></div></div>
+      <div class="qa"><button>SEO·AEO·GEO는 뭐가 다른가요?<span class="ico">+</span></button><div class="ans"><p>SEO는 검색엔진 상위 노출, AEO는 AI가 답변에 우리 정보를 인용하게, GEO는 생성형 AI 검색 전반에서 추천받게 만드는 최적화입니다. messeze는 이 셋을 함께 다룹니다. 더 자세한 설명은 블로그 글에서 확인하실 수 있어요.</p></div></div>
+      <div class="qa"><button>검색량이 거의 없는 업종인데 효과가 있을까요?<span class="ico">+</span></button><div class="ans"><p>오히려 기회입니다. AI 검색은 검색량이 아니라 '읽을 수 있는 신뢰 정보의 양'으로 기업을 판단합니다. 정보를 가진 기업이 드문 분야일수록, 먼저 축적을 시작한 기업이 그 분야의 기본 답이 됩니다.</p></div></div>
+      <div class="qa"><button>노출·순위를 보장해 주나요?<span class="ico">+</span></button><div class="ans"><p>AI 답변은 검색 순위처럼 보장할 수 없습니다. 대신 무엇을 얼마나 했는지 월간 리포트로 투명하게 보여드리고, 질문별 노출 변화를 추적해 다음 달 과제를 함께 정합니다.</p></div></div>
+      <div class="qa"><button>다른 업체가 만든 홈페이지도 최적화되나요?<span class="ico">+</span></button><div class="ans"><p>대부분 가능합니다. 지금 홈페이지를 최대한 살리는 방향(수정)을 먼저 제안하고, 뼈대부터 문제라면 리뉴얼을 권합니다. 필요한 만큼만, 과잉 제안 없이 진행합니다.</p></div></div>
+      <div class="qa"><button>비용은 어떻게 되나요?<span class="ico">+</span></button><div class="ans"><p>소상공인형 월 60만원, 기업형 월 100만원부터 시작하며 3개월 결제 시 할인됩니다. 규모·범위에 따라 엔터프라이즈는 별도 협의합니다. 자세한 구성은 요금 페이지에서 비교하실 수 있어요.</p></div></div>
+      <div class="qa"><button>왜 구독형인가요? 한 번만 하면 안 되나요?<span class="ico">+</span></button><div class="ans"><p>기업 정보는 한 번에 쌓이지 않습니다. 매달 언론·콘텐츠가 누적돼야 AI가 '지금도 활동하는 신뢰할 만한 기업'으로 인식합니다. 그래서 일회성이 아니라 꾸준히 쌓는 구독형으로 운영합니다.</p></div></div>
+      <div class="qa"><button>백링크 같은 작업도 하나요?<span class="ico">+</span></button><div class="ans"><p>인위적으로 링크를 사는 방식은 하지 않습니다. 언론 기사, 자사 콘텐츠, 구조화된 홈페이지 같은 진짜 신뢰 신호를 축적합니다. 특히 기사화된 보도자료가 가장 강력한 자연 링크가 됩니다.</p></div></div>
+    </div>
+    <div class="rv" style="text-align:center;margin-top:26px;font-size:14.5px;color:var(--mut)">더 궁금한 점은 <a href="#final" style="color:var(--cobalt);font-weight:700">무료 상담</a>에서 편하게 물어보세요.</div>
+  </div>
+</section>
+
 <!-- FINAL -->
 <section class="final" id="final">
   <div class="wrap"><div class="final-in rv">
@@ -1076,6 +1097,12 @@ if(matchMedia('(min-width:981px)').matches){
   const wo=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){wItems.forEach(i=>i.classList.remove('active'));e.target.classList.add('active');}});},{rootMargin:'-45% 0px -45% 0px',threshold:0});
   wItems.forEach(i=>wo.observe(i));
 }
+
+// FAQ 아코디언
+document.querySelectorAll('#faq .qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.closest('.qa'),ans=qa.querySelector('.ans'),open=qa.classList.toggle('open');
+  ans.style.maxHeight=open?ans.scrollHeight+'px':'0';
+}));
 
 document.getElementById('diagForm').addEventListener('submit',e=>{
   e.preventDefault();
