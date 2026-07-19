@@ -239,6 +239,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .dv-card h3{color:#fff;font-size:19px;position:relative}
 .dv-card .chips{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .dv-card .chips span{font-size:13px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 15px}
+.prcheck{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:30px 32px;display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center}.prc-score{text-align:center}.prc-gauge{display:inline-flex;align-items:baseline;gap:2px;font-family:var(--disp);color:var(--cobalt)}.prc-gauge b{font-size:52px;font-weight:700;line-height:1}.prc-gauge span{font-size:16px;font-weight:700}.prc-score p{font-size:13px;color:var(--body);margin-top:10px;line-height:1.6}.prc-items{display:flex;flex-direction:column;gap:11px}.prc-i{display:grid;grid-template-columns:82px 1fr 46px;gap:10px;align-items:center;font-size:13px;font-weight:700}.prc-i i{height:8px;border-radius:4px;background:#EEF2F9;overflow:hidden;display:block}.prc-i i em{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cobalt),#6E93FF)}.prc-i b{text-align:right;font-family:var(--disp);color:var(--mut)}.prc-cta{max-width:820px;margin:22px auto 0;background:var(--ink);color:#fff;border-radius:18px;padding:24px 28px;text-align:center}.prc-cta b{font-size:16px;display:block}.prc-cta span{display:block;font-size:13.5px;color:#AEB9D2;margin:8px 0 16px}@media(max-width:720px){.prcheck{grid-template-columns:1fr;gap:22px}}
 /* faq */
 .faq{max-width:760px;margin:0 auto}
 .qa{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:#fff;overflow:hidden;transition:.2s}
@@ -569,6 +570,7 @@ s(slug="press", no="06", title="언론 배포", en="Press Distribution",
 <div class="clip c3"><div class="pressname">온라인 뉴스</div><h5>○○정밀, 스마트공장 구축으로 정밀부품 납기 30% 단축</h5></div>
 <div class="flowrow"><span>보도자료</span><i>→</i><span>기자 매칭</span><i>→</i><span>기사 발행</span><i>→</i><span class="hl">AI가 인용</span></div>
 </div>""",
+  tool="""<section class="sec" style="background:var(--sky-2)"><div class="wrap"><div class="shead center rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">우리 회사 소식, 기사로 나갈 수 있을까요?</h2><p class="lead">간단한 정보만 입력하면 기사화 가능성과 보완 포인트를 무료로 진단해 드립니다.</p></div><div class="prcheck rv"><div class="prc-score"><div class="prc-gauge"><b>74</b><span>점</span></div><p>현재 소재는 보도자료로 활용할 수 있습니다. 구체적 수치와 시장적 의미를 더하면 기사 채택 가능성이 올라갑니다.</p></div><div class="prc-items"><div class="prc-i"><span>시의성</span><i><em style="width:80%"></em></i><b>16/20</b></div><div class="prc-i"><span>구체성</span><i><em style="width:60%"></em></i><b>12/20</b></div><div class="prc-i"><span>차별성</span><i><em style="width:75%"></em></i><b>15/20</b></div><div class="prc-i"><span>산업적 의미</span><i><em style="width:65%"></em></i><b>13/20</b></div><div class="prc-i"><span>신뢰 근거</span><i><em style="width:90%"></em></i><b>18/20</b></div></div></div><div class="prc-cta rv"><b>기사 가능성은 있지만, 어떻게 써야 할지 막막하신가요?</b><span>messeze가 강점을 기사 관점으로 정리하고 보도자료 작성부터 언론 배포까지 진행해 드립니다.</span><a href="../index.html#final" class="btn btn-co">무료 보도자료 상담받기</a></div></div></section>""",
   rel=["channels","visibility"])
 
 BY_SLUG = {x["slug"]: x for x in S}
@@ -617,7 +619,7 @@ def build_page(x):
 <div class="dt-grid">{items}</div>
 </div></section>
 
-<section class="sec proc"><div class="wrap">
+{x.get('tool','')}<section class="sec proc"><div class="wrap">
 <div class="shead center rv"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
 <div class="pr-grid">{procs}</div>
 </div></section>

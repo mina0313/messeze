@@ -299,6 +299,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .why-c.hl h3{color:#fff}
 .why-c.hl p{color:#B9C4DC}
 
+/* ============ WHY (haoc식 2단 지표) ============ */
+.whyx{background:linear-gradient(180deg,#EAF2FF,#F7FBFF 60%,#fff)}
+.whyx-in{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
+.whyx-l .eyebrow{margin-bottom:14px}
+.whyx-l h2{font-size:clamp(28px,3.6vw,45px);line-height:1.26}
+.whyx-l .ul{font-style:italic;background:linear-gradient(180deg,transparent 62%,rgba(43,92,255,.22) 38%);padding:0 3px}
+.whyx-l .lead{margin-top:20px;max-width:470px}
+.whyx-l .lead b{color:var(--cobalt)}
+.whyx-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh-sm);transition:transform .3s cubic-bezier(.34,1.2,.4,1),box-shadow .3s ease,border-color .3s}
+.wcard:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:#C4D4FF}
+.wcard .wn{font-family:var(--disp);font-size:15px;font-weight:800;color:var(--cobalt);letter-spacing:.02em;display:block}
+.wcard h3{font-size:18.5px;margin-top:9px;letter-spacing:-.02em;line-height:1.32}
+.wcard p{font-size:13.5px;color:var(--body);margin-top:11px;line-height:1.6}.wcard .wtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.wcard .wtags span{font-size:11.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:7px;padding:4px 9px}
+@media(max-width:900px){.whyx-in{grid-template-columns:1fr;gap:34px}.whyx-l .lead{max-width:none}}
+@media(max-width:480px){.whyx-cards{grid-template-columns:1fr}}
 /* ============ WHY: editorial + collage ============ */
 .why-in{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
 .why-in .shead{margin-bottom:6px;max-width:none}
@@ -560,22 +576,32 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bs.co b{color:#7FA0FF}
 .bs.co b .num{color:#fff}
 
-/* ============ FLOW (4단계 프로세스) ============ */
-.flow{background:linear-gradient(180deg,#E9F1FF,#F7FBFF 55%,#fff)}
-.flow .shead{text-align:center;max-width:700px;margin:0 auto}
-.flow-steps{max-width:980px;margin:44px auto 0;position:relative}
-.flow-steps::before{content:"";position:absolute;left:27px;top:52px;bottom:52px;width:2px;background:linear-gradient(180deg,var(--cobalt),#B9CCFF);opacity:.35}
-.fstep{display:grid;grid-template-columns:56px 1fr 320px;gap:30px;align-items:center;padding:38px 0;position:relative}
-.fstep+.fstep{border-top:1px dashed var(--line)}
-.fs-num{width:54px;height:54px;border-radius:16px;background:#fff;border:2px solid var(--cobalt);color:var(--cobalt);font-family:var(--disp);font-weight:800;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(43,92,255,.16);position:relative;z-index:1}
-.fstep h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.02em}
-.fs-body p{font-size:15px;color:var(--body);line-height:1.7;margin-top:10px;max-width:440px}
-.fs-out{display:inline-flex;align-items:center;gap:8px;border-left:3px solid var(--cobalt);padding:7px 0 7px 13px;margin-top:16px;font-size:14px;font-weight:800;color:var(--ink);background:linear-gradient(90deg,var(--sky),transparent);border-radius:0 8px 8px 0}
+/* ============ FLOW (4단계 — 좌우 스크롤 캐러셀) ============ */
+.hflow{background:linear-gradient(180deg,#E9F1FF,#F7FBFF 55%,#fff)}
+.hflow-head{padding-top:8px;text-align:center;max-width:720px}
+.hpin{position:relative;height:360vh}
+.hpin-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hpin-track{display:flex;flex-wrap:nowrap;will-change:transform}
+.hslide{flex:0 0 100vw;min-width:100vw;display:flex;align-items:center}
+.hs-in{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hs-num{width:56px;height:56px;border-radius:16px;background:var(--cobalt);color:#fff;font-family:var(--disp);font-weight:800;font-size:21px;display:grid;place-items:center;box-shadow:0 10px 24px rgba(43,92,255,.3);margin-bottom:18px}
+.hs-l h3{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.02em;line-height:1.24}
+.hs-l p{font-size:15.5px;color:var(--body);line-height:1.7;margin-top:14px;max-width:460px}
+.hs-vis{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);overflow:hidden;max-width:460px;width:100%}
+.fs-out{display:inline-flex;align-items:center;gap:8px;border-left:3px solid var(--cobalt);padding:7px 0 7px 13px;margin-top:18px;font-size:14px;font-weight:800;color:var(--ink);background:linear-gradient(90deg,var(--sky),transparent);border-radius:0 8px 8px 0}
 .fs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
 .fs-tags span{font-size:12.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
-.fs-vis{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);overflow:hidden}
 .fs-vis svg{width:100%;height:auto;display:block}
-@media(max-width:900px){.flow-steps::before{display:none}.fstep{grid-template-columns:44px 1fr;gap:14px 16px;padding:30px 0}.fs-num{width:44px;height:44px;font-size:17px}.fs-body{grid-column:2}.fs-vis{grid-column:1/-1;margin-top:8px}}
+.hpin-nav{display:flex;align-items:center;gap:22px;margin-top:38px}
+.hpin-page b{font-family:var(--disp);font-size:22px;color:var(--cobalt);font-weight:700}
+.hpin-page em{font-style:normal;color:var(--mut);font-weight:700;font-size:15px}
+.hpin-bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;max-width:360px}
+.hpin-bar i{display:block;height:100%;background:var(--cobalt);border-radius:2px;width:25%;transition:width .15s linear}
+.hpin-arrows{display:flex;gap:9px}
+.hpin-arrows button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;cursor:pointer;font-size:20px;line-height:1;color:var(--ink);display:grid;place-items:center;transition:.15s}
+.hpin-arrows button:hover{border-color:var(--cobalt);color:var(--cobalt);transform:translateY(-2px)}
+@media(max-width:900px){.hpin{height:auto}.hpin-stick{position:static;height:auto;overflow:visible;display:block;padding:16px 0 50px}.hpin-track{flex-direction:column;transform:none!important;gap:20px}.hslide{flex:0 0 auto;min-width:0}.hs-in{grid-template-columns:1fr;gap:22px;padding:24px 0;border-top:1px dashed var(--line)}.hs-vis{max-width:none}.hpin-nav{display:none}}
+.qgen{background:linear-gradient(180deg,#fff,#F4F9FF)}.qgen-in{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}.qgen-l h2{font-size:clamp(26px,3.2vw,40px);line-height:1.26}.qgen-l .lead{margin:18px 0 24px;max-width:440px}.qgen-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:24px}.qg-lab{font-size:12px;font-weight:800;color:var(--mut);margin-bottom:14px}.qg-q{display:flex;gap:11px;align-items:flex-start;font-size:15px;font-weight:700;color:var(--ink);padding:13px 0;border-top:1px solid var(--line);line-height:1.5}.qg-q:first-of-type{border-top:0}.qg-i{flex:0 0 24px;height:24px;border-radius:8px;background:var(--sky);color:var(--cobalt);display:grid;place-items:center;font-size:12px;font-weight:800}@media(max-width:900px){.qgen-in{grid-template-columns:1fr;gap:30px}}
 /* ============ PRICING ============ */
 .price{background:var(--sky-2)}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -853,51 +879,19 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 </div></div>
 
 <!-- WHY -->
-<section class="sec why pin-sec" id="why">
-  <div class="pin-stick">
-  <div class="wrap why-in">
-    <div class="rv">
-      <div class="shead">
-        <span class="eyebrow">왜 지금인가</span>
-        <h2 class="h2">고객은 이제 검색하지 않고,<br>AI에게 물어봅니다</h2>
-        <p class="lead">AI가 먼저 기업을 조사하고 추천하는 시대. 중요한 것은 검색량이 아니라, AI가 읽을 수 있는 기업 정보입니다.</p>
-      </div>
-      <div class="why-list">
-        <div class="why-item"><span class="n">1</span><div><h3>AI가 먼저 답합니다</h3><p>사용자가 링크를 비교하기 전에, AI가 신뢰할 만한 기업을 골라 먼저 추천합니다.</p></div></div>
-        <div class="why-item"><span class="n">2</span><div><h3>정보가 없으면 제외됩니다</h3><p>여러 출처에서 확인되지 않는 기업은 AI의 추천 후보에서 조용히 사라집니다.</p></div></div>
-        <div class="why-item em"><span class="n">3</span><div><h3><span class="mk">그래서 축적이 필요합니다</span></h3><p>언론·홈페이지·콘텐츠에 기업 정보가 꾸준히 쌓이면, 검색량이 없어도 AI가 찾아냅니다. 메세지가 그 축적을 대신합니다.</p></div></div>
-      </div>
+<section class="sec whyx" id="why">
+  <div class="wrap whyx-in">
+    <div class="whyx-l rv">
+      <span class="eyebrow">WHY messeze · 왜 지금인가</span>
+      <h2 class="h2">고객은 이제 검색하지 않고,<br>AI에게 <span class="ul">물어봅니다</span></h2>
+      <p class="lead">AI가 먼저 기업을 조사하고 추천하는 시대. 중요한 것은 검색량이 아니라 <b>AI가 읽을 수 있는 기업 정보</b>입니다. 정보를 먼저 쌓은 기업이 그 답의 기본값이 됩니다.</p>
     </div>
-
-    <div class="collage rv d1">
-      <span class="sticker s-old">예전 — 링크 열어 비교</span>
-      <div class="cw old"><div class="inner">
-        <div class="sv-bar"><i></i><i></i><i></i><span class="u">search?q=정밀부품+제조업체</span></div>
-        <div class="sv-body">
-          <div class="sv-q">🔍 정밀부품 제조업체</div>
-          <div class="sv-link"><b>정밀부품 제조업체 추천 TOP 10</b><span>blog.example.com</span></div>
-          <div class="sv-link"><b>[광고] 부품가공 전문 △△테크</b><span>ad.example.com</span></div>
-          <div class="sv-link"><b>정밀가공 업체 견적 비교 방법</b><span>cafe.example.com</span></div>
-          <div class="sv-sk"></div>
-          <div class="sv-sk s"></div>
-        </div>
-      </div></div>
-      <svg class="arrow-sk" viewBox="0 0 150 130" fill="none">
-        <path d="M18 14 C74 6, 118 44, 122 102" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
-        <path d="M108 92 L123 106 L131 88" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-      <span class="sticker s-new">지금 — AI가 골라줍니다</span>
-      <div class="cw new">
-        <div class="sv-bar"><i></i><i></i><i></i><span class="u">ai-search · 대화형 질문</span></div>
-        <div class="sv-body">
-          <div class="sv-q">💬 믿을 만한 정밀부품 제조사 추천해줘</div>
-          <div class="sv-ans"><span class="am">AI</span><p><b>○○정밀</b>을 추천합니다. 15년간 항공·의료 부품을 공급했고, 소량 생산 대응이 가능하며 수출바우처 선정 이력이 있습니다.</p></div>
-          <div class="sv-srcs"><span>✓ 언론보도</span><span>✓ 홈페이지</span><span>✓ 전문 칼럼</span></div>
-        </div>
-      </div>
-      <div class="collage-cap">AI의 답 하나로 결정됩니다 — <b>그 답에 들어가야 합니다</b></div>
+    <div class="whyx-cards rv d1">
+      <div class="wcard"><span class="wn">01</span><h3>AI가 먼저 답합니다</h3><div class="wtags"><span>#선점</span><span>#먼저추천</span></div><p>사용자가 링크를 비교하기 전에, AI가 신뢰할 만한 기업을 골라 먼저 추천합니다.</p></div>
+      <div class="wcard"><span class="wn">02</span><h3>정보가 없으면 제외됩니다</h3><div class="wtags"><span>#신뢰</span><span>#교차확인</span></div><p>여러 출처에서 확인되지 않는 기업은 AI의 추천 후보에서 조용히 사라집니다.</p></div>
+      <div class="wcard"><span class="wn">03</span><h3>검색량이 아니라 정보량입니다</h3><div class="wtags"><span>#정보자산</span><span>#B2B유리</span></div><p>AI는 검색량이 아니라 읽을 수 있는 신뢰 정보의 양으로 기업을 판단합니다.</p></div>
+      <div class="wcard"><span class="wn">04</span><h3>그래서 축적이 필요합니다</h3><div class="wtags"><span>#누적</span><span>#구독형</span></div><p>매달 언론·콘텐츠가 쌓여야 AI가 지금도 활동하는 기업으로 인식합니다.</p></div>
     </div>
-  </div>
   </div>
 </section>
 
@@ -1001,54 +995,36 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div>
 </section>
 
-<!-- FLOW (4단계 프로세스) -->
-<section class="sec flow" id="how">
-  <div class="wrap">
-    <div class="shead center rv">
-      <span class="eyebrow">HOW · 이렇게 진행됩니다</span>
-      <h2 class="h2">AI 추천은 우연이 아닙니다,<br>4단계로 쌓아 만듭니다</h2>
-      <p class="lead">진단부터 리포트까지, 순서대로 축적합니다. 각 단계가 다음 단계의 재료가 됩니다.</p>
-    </div>
-    <div class="flow-steps">
-      <div class="fstep rv">
-        <div class="fs-num">01</div>
-        <div class="fs-body">
-          <h3>지금 우리 위치부터 진단합니다</h3>
-          <p>주요 AI 검색이 우리 회사를 어떻게 인식하는지, 홈페이지는 읽히는 구조인지 데이터로 확인하고 개선 우선순위를 매깁니다.</p>
-          <div class="fs-out">→ 현재 상태와 개선 방향이 담긴 진단 리포트</div>
-          <div class="fs-tags"><span>AI 가시성 평가</span><span>경쟁사 노출 비교</span><span>핵심 질문 설계</span><span>구조 진단</span></div>
-        </div>
-        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="20" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><circle cx="40" cy="37" r="5" fill="#0BBF8C"/><text x="56" y="41" font-size="12" fill="#0A1930" font-weight="800">messeze · AI 가시성 진단</text><g transform="translate(28,72)"><circle cx="34" cy="34" r="28" fill="none" stroke="#EEF2F9" stroke-width="9"/><circle cx="34" cy="34" r="28" fill="none" stroke="#2B5CFF" stroke-width="9" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="111" transform="rotate(-90 34 34)"/><text x="34" y="40" font-size="18" fill="#0A1930" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">37</text></g><g transform="translate(108,74)"><text x="0" y="8" font-size="11" fill="#8B95A7" font-weight="700">ChatGPT</text><rect x="0" y="14" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="14" width="52" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="42" font-size="11" fill="#8B95A7" font-weight="700">네이버 검색</text><rect x="0" y="48" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="48" width="122" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="76" font-size="11" fill="#8B95A7" font-weight="700">Perplexity</text><rect x="0" y="82" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="82" width="96" height="7" rx="3.5" fill="#2B5CFF"/></g></svg></div>
+<!-- FLOW (4단계 프로세스 — 좌우 스크롤 캐러셀) -->
+<section class="hflow" id="how">
+  <div class="wrap hflow-head rv">
+    <span class="eyebrow">HOW · 이렇게 진행됩니다</span>
+    <h2 class="h2">AI 추천은 우연이 아닙니다,<br>4단계로 쌓아 만듭니다</h2>
+  </div>
+  <div class="hpin" id="hpin">
+    <div class="hpin-stick">
+      <div class="hpin-track" id="hpinTrack">
+        <div class="hslide"><div class="hs-in wrap">
+          <div class="hs-l"><div class="hs-num">01</div><h3>지금 우리 위치부터 진단합니다</h3><p>주요 AI 검색이 우리 회사를 어떻게 인식하는지, 홈페이지는 읽히는 구조인지 데이터로 확인하고 개선 우선순위를 매깁니다.</p><div class="fs-out">→ 현재 상태와 개선 방향이 담긴 진단 리포트</div><div class="fs-tags"><span>AI 가시성 평가</span><span>경쟁사 노출 비교</span><span>핵심 질문 설계</span><span>구조 진단</span></div></div>
+          <div class="hs-vis fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="20" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><circle cx="40" cy="37" r="5" fill="#0BBF8C"/><text x="56" y="41" font-size="12" fill="#0A1930" font-weight="800">messeze · AI 가시성 진단</text><g transform="translate(28,72)"><circle cx="34" cy="34" r="28" fill="none" stroke="#EEF2F9" stroke-width="9"/><circle cx="34" cy="34" r="28" fill="none" stroke="#2B5CFF" stroke-width="9" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="111" transform="rotate(-90 34 34)"/><text x="34" y="40" font-size="18" fill="#0A1930" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">37</text></g><g transform="translate(108,74)"><text x="0" y="8" font-size="11" fill="#8B95A7" font-weight="700">ChatGPT</text><rect x="0" y="14" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="14" width="52" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="42" font-size="11" fill="#8B95A7" font-weight="700">네이버 검색</text><rect x="0" y="48" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="48" width="122" height="7" rx="3.5" fill="#2B5CFF"/><text x="0" y="76" font-size="11" fill="#8B95A7" font-weight="700">Perplexity</text><rect x="0" y="82" width="184" height="7" rx="3.5" fill="#EEF2F9"/><rect x="0" y="82" width="96" height="7" rx="3.5" fill="#2B5CFF"/></g></svg></div>
+        </div></div>
+        <div class="hslide"><div class="hs-in wrap">
+          <div class="hs-l"><div class="hs-num">02</div><h3>AI가 읽는 구조로 정비합니다</h3><p>이미지에 갇힌 정보를 텍스트로 꺼내고, 구조화 데이터와 질문-답변형 페이지로 홈페이지를 AI가 읽을 수 있게 정비합니다.</p><div class="fs-out">→ 검색과 AI 양쪽에서 읽히는 홈페이지</div><div class="fs-tags"><span>메타·헤딩 정비</span><span>JSON-LD 스키마</span><span>질문답변 페이지</span><span>속도 최적화</span></div></div>
+          <div class="hs-vis fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="34" width="130" height="120" rx="12" fill="#fff" stroke="#F3C6C1"/><text x="36" y="58" font-size="11" fill="#E2574C" font-weight="800">Before</text><rect x="36" y="72" width="96" height="30" rx="6" fill="#EEF2F9"/><text x="84" y="91" font-size="9.5" fill="#8B95A7" text-anchor="middle">이미지에 갇힘</text><rect x="36" y="112" width="70" height="7" rx="3.5" fill="#EEF2F9"/><rect x="36" y="126" width="50" height="7" rx="3.5" fill="#EEF2F9"/><path d="M158 94 h20" stroke="#B7C0D0" stroke-width="2" stroke-dasharray="3 4" fill="none"/><path d="M174 90 l6 4 -6 4" stroke="#B7C0D0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="186" y="34" width="114" height="120" rx="12" fill="#fff" stroke="#B7EAD9"/><text x="202" y="58" font-size="11" fill="#08916B" font-weight="800">After</text><rect x="202" y="70" width="82" height="7" rx="3.5" fill="#0A1930"/><rect x="202" y="82" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="94" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="112" width="66" height="16" rx="6" fill="#DBF3EA"/><text x="235" y="123" font-size="9.5" fill="#08916B" text-anchor="middle" font-weight="800">+스키마·ALT</text></svg></div>
+        </div></div>
+        <div class="hslide"><div class="hs-in wrap">
+          <div class="hs-l"><div class="hs-num">03</div><h3>콘텐츠와 출처를 매달 쌓습니다</h3><p>자사 블로그·외부 채널·언론 배포로, 여러 곳에서 교차 확인되는 신뢰 정보를 꾸준히 축적합니다. AI가 신뢰하는 건 반복 확인되는 사실입니다.</p><div class="fs-out">→ 여러 출처에서 확인되는 기업 정보</div><div class="fs-tags"><span>자사 블로그</span><span>네이버·티스토리·블로거</span><span>언론 보도</span><span>애드버토리얼</span></div></div>
+          <div class="hs-vis fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="112" y="22" width="96" height="34" rx="10" fill="#101F3F"/><text x="160" y="43" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">자사 블로그</text><g stroke="#C7D6FF" stroke-width="1.6" fill="none"><path d="M160 56 V74"/><path d="M60 96 V84 H270 V96"/><path d="M160 84 V96"/></g><rect x="16" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#E5EAF2"/><text x="60" y="124" font-size="11" fill="#0A1930" text-anchor="middle" font-weight="800">네이버·티스토리</text><text x="60" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">외부 채널</text><rect x="116" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#C4D4FF"/><text x="160" y="124" font-size="11.5" fill="#2B5CFF" text-anchor="middle" font-weight="800">언론 보도</text><text x="160" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">기사화</text><rect x="216" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#B7EAD9"/><text x="260" y="124" font-size="11.5" fill="#08916B" text-anchor="middle" font-weight="800">구글 블로거</text><text x="260" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">빠른 색인</text></svg></div>
+        </div></div>
+        <div class="hslide"><div class="hs-in wrap">
+          <div class="hs-l"><div class="hs-num">04</div><h3>성과를 확인하고 다음을 정합니다</h3><p>무엇을 얼마나 했고 AI 노출이 어떻게 바뀌었는지 월간 리포트로 투명하게 공유하고, 다음 달 과제를 함께 정합니다.</p><div class="fs-out">→ 월간 성과 리포트 · 다음 달 실행 계획</div><div class="fs-tags"><span>월간 리포트</span><span>AI 노출 변화</span><span>인용률 추적</span><span>우선순위 갱신</span></div></div>
+          <div class="hs-vis fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><defs><linearGradient id="flowbar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#2B5CFF"/></linearGradient></defs><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="22" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><text x="36" y="43" font-size="12" fill="#0A1930" font-weight="800">월간 성과 리포트</text><rect x="230" y="30" width="54" height="18" rx="9" fill="#DBF3EA"/><text x="257" y="43" font-size="10.5" fill="#08916B" text-anchor="middle" font-weight="800">▲ +54</text><g transform="translate(30,72)"><rect x="0" y="60" width="24" height="26" rx="4" fill="url(#flowbar)" opacity=".7"/><rect x="42" y="46" width="24" height="40" rx="4" fill="url(#flowbar)" opacity=".82"/><rect x="84" y="30" width="24" height="56" rx="4" fill="url(#flowbar)"/><rect x="126" y="14" width="24" height="72" rx="4" fill="url(#flowbar)"/><rect x="168" y="2" width="24" height="84" rx="4" fill="#0BBF8C"/><path d="M12 66 L54 52 L96 36 L138 20 L180 8" stroke="#0BBF8C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="4.5" fill="#fff" stroke="#0BBF8C" stroke-width="2.5"/></g><text x="234" y="150" font-size="10.5" fill="#8B95A7" font-weight="700">3개월 축적 추이</text></svg></div>
+        </div></div>
       </div>
-      <div class="fstep rv">
-        <div class="fs-num">02</div>
-        <div class="fs-body">
-          <h3>AI가 읽는 구조로 정비합니다</h3>
-          <p>이미지에 갇힌 정보를 텍스트로 꺼내고, 구조화 데이터와 질문-답변형 페이지로 홈페이지를 AI가 읽을 수 있게 정비합니다.</p>
-          <div class="fs-out">→ 검색과 AI 양쪽에서 읽히는 홈페이지</div>
-          <div class="fs-tags"><span>메타·헤딩 정비</span><span>JSON-LD 스키마</span><span>질문답변 페이지</span><span>속도 최적화</span></div>
-        </div>
-        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="34" width="130" height="120" rx="12" fill="#fff" stroke="#F3C6C1"/><text x="36" y="58" font-size="11" fill="#E2574C" font-weight="800">Before</text><rect x="36" y="72" width="96" height="30" rx="6" fill="#EEF2F9"/><text x="84" y="91" font-size="9.5" fill="#8B95A7" text-anchor="middle">이미지에 갇힘</text><rect x="36" y="112" width="70" height="7" rx="3.5" fill="#EEF2F9"/><rect x="36" y="126" width="50" height="7" rx="3.5" fill="#EEF2F9"/><path d="M158 94 h20" stroke="#B7C0D0" stroke-width="2" stroke-dasharray="3 4" fill="none"/><path d="M174 90 l6 4 -6 4" stroke="#B7C0D0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="186" y="34" width="114" height="120" rx="12" fill="#fff" stroke="#B7EAD9"/><text x="202" y="58" font-size="11" fill="#08916B" font-weight="800">After</text><rect x="202" y="70" width="82" height="7" rx="3.5" fill="#0A1930"/><rect x="202" y="82" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="94" width="66" height="6" rx="3" fill="#DCE6F7"/><rect x="202" y="112" width="66" height="16" rx="6" fill="#DBF3EA"/><text x="235" y="123" font-size="9.5" fill="#08916B" text-anchor="middle" font-weight="800">+스키마·ALT</text></svg></div>
-      </div>
-      <div class="fstep rv">
-        <div class="fs-num">03</div>
-        <div class="fs-body">
-          <h3>콘텐츠와 출처를 매달 쌓습니다</h3>
-          <p>자사 블로그·외부 채널·언론 배포로, 여러 곳에서 교차 확인되는 신뢰 정보를 꾸준히 축적합니다. AI가 신뢰하는 건 반복 확인되는 사실입니다.</p>
-          <div class="fs-out">→ 여러 출처에서 확인되는 기업 정보</div>
-          <div class="fs-tags"><span>자사 블로그</span><span>네이버·티스토리·블로거</span><span>언론 보도</span><span>애드버토리얼</span></div>
-        </div>
-        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect width="320" height="188" fill="#F7FAFF"/><rect x="112" y="22" width="96" height="34" rx="10" fill="#101F3F"/><text x="160" y="43" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">자사 블로그</text><g stroke="#C7D6FF" stroke-width="1.6" fill="none"><path d="M160 56 V74"/><path d="M60 96 V84 H270 V96"/><path d="M160 84 V96"/></g><rect x="16" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#E5EAF2"/><text x="60" y="124" font-size="11" fill="#0A1930" text-anchor="middle" font-weight="800">네이버·티스토리</text><text x="60" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">외부 채널</text><rect x="116" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#C4D4FF"/><text x="160" y="124" font-size="11.5" fill="#2B5CFF" text-anchor="middle" font-weight="800">언론 보도</text><text x="160" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">기사화</text><rect x="216" y="96" width="88" height="66" rx="11" fill="#fff" stroke="#B7EAD9"/><text x="260" y="124" font-size="11.5" fill="#08916B" text-anchor="middle" font-weight="800">구글 블로거</text><text x="260" y="142" font-size="10" fill="#8B95A7" text-anchor="middle">빠른 색인</text></svg></div>
-      </div>
-      <div class="fstep rv">
-        <div class="fs-num">04</div>
-        <div class="fs-body">
-          <h3>성과를 확인하고 다음을 정합니다</h3>
-          <p>무엇을 얼마나 했고 AI 노출이 어떻게 바뀌었는지 월간 리포트로 투명하게 공유하고, 다음 달 과제를 함께 정합니다.</p>
-          <div class="fs-out">→ 월간 성과 리포트 · 다음 달 실행 계획</div>
-          <div class="fs-tags"><span>월간 리포트</span><span>AI 노출 변화</span><span>인용률 추적</span><span>우선순위 갱신</span></div>
-        </div>
-        <div class="fs-vis"><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><defs><linearGradient id="flowbar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#2B5CFF"/></linearGradient></defs><rect width="320" height="188" fill="#F7FAFF"/><rect x="20" y="22" width="280" height="34" rx="10" fill="#fff" stroke="#E5EAF2"/><text x="36" y="43" font-size="12" fill="#0A1930" font-weight="800">월간 성과 리포트</text><rect x="230" y="30" width="54" height="18" rx="9" fill="#DBF3EA"/><text x="257" y="43" font-size="10.5" fill="#08916B" text-anchor="middle" font-weight="800">▲ +54</text><g transform="translate(30,72)"><rect x="0" y="60" width="24" height="26" rx="4" fill="url(#flowbar)" opacity=".7"/><rect x="42" y="46" width="24" height="40" rx="4" fill="url(#flowbar)" opacity=".82"/><rect x="84" y="30" width="24" height="56" rx="4" fill="url(#flowbar)"/><rect x="126" y="14" width="24" height="72" rx="4" fill="url(#flowbar)"/><rect x="168" y="2" width="24" height="84" rx="4" fill="#0BBF8C"/><path d="M12 66 L54 52 L96 36 L138 20 L180 8" stroke="#0BBF8C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="4.5" fill="#fff" stroke="#0BBF8C" stroke-width="2.5"/></g><text x="234" y="150" font-size="10.5" fill="#8B95A7" font-weight="700">3개월 축적 추이</text></svg></div>
+      <div class="hpin-nav wrap">
+        <span class="hpin-page"><b id="hpinIdx">01</b><em> / 04</em></span>
+        <div class="hpin-bar"><i id="hpinFill"></i></div>
+        <div class="hpin-arrows"><button id="hpinPrev" aria-label="이전 단계">‹</button><button id="hpinNext" aria-label="다음 단계">›</button></div>
       </div>
     </div>
   </div>
@@ -1146,6 +1122,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div>
 </section>
 
+<!-- QGEN 무료도구 티저 --><section class="sec qgen"><div class="wrap qgen-in"><div class="qgen-l rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">고객은 AI에게 우리 업종을<br>어떻게 물어볼까요?</h2><p class="lead">업종·서비스만 입력하면 고객이 ChatGPT·Gemini에 던질 질문을 자동으로 만들어 드립니다. 그 질문에 우리 회사가 등장하는지가 AI 노출의 출발점입니다.</p><a href="check.html" class="btn btn-co">AI 노출 무료 진단 먼저 받기</a></div><div class="qgen-r rv d1"><div class="qgen-card"><div class="qg-lab">예시 — 정밀부품 제조 · 항공·의료 소량생산</div><div class="qg-q"><span class="qg-i">Q</span>항공용 정밀부품을 소량 생산할 수 있는 국내 업체는?</div><div class="qg-q"><span class="qg-i">Q</span>의료기기 부품 시제품 제작이 가능한 업체 추천해줘</div><div class="qg-q"><span class="qg-i">Q</span>대구에서 5축 가공이 가능한 정밀가공 업체는?</div></div></div></div></section>
 <!-- INSIGHTS -->
 <section class="sec" id="insights" style="background:var(--sky-2)">
   <div class="wrap">
@@ -1299,6 +1276,36 @@ document.getElementById('diagForm').addEventListener('submit',e=>{
   const b=e.target.querySelector('button');
   b.textContent='신청 완료 · 곧 연락드립니다 ✓';b.style.background='var(--mint)';b.disabled=true;
 });
+<script>
+(function(){
+  var hpin=document.getElementById('hpin'), track=document.getElementById('hpinTrack');
+  if(!hpin||!track) return;
+  var N=track.children.length;
+  var idxEl=document.getElementById('hpinIdx'), fill=document.getElementById('hpinFill');
+  var prevB=document.getElementById('hpinPrev'), nextB=document.getElementById('hpinNext');
+  var curIdx=0;
+  function onScroll(){
+    if(!matchMedia('(min-width:901px)').matches){track.style.transform='';return;}
+    var len=hpin.offsetHeight-window.innerHeight;
+    if(len<=0){return;}
+    var p=-hpin.getBoundingClientRect().top/len;
+    p=Math.max(0,Math.min(1,p));
+    track.style.transform='translateX(-'+(p*(N-1)*100)+'vw)';
+    curIdx=Math.min(N-1,Math.round(p*(N-1)));
+    if(idxEl) idxEl.textContent=('0'+(curIdx+1)).slice(-2);
+    if(fill) fill.style.width=(100/N + p*(100-100/N))+'%';
+  }
+  function goTo(i){
+    i=Math.max(0,Math.min(N-1,i));
+    var len=hpin.offsetHeight-window.innerHeight;
+    window.scrollTo({top:hpin.offsetTop + (i/(N-1))*len, behavior:'smooth'});
+  }
+  if(prevB) prevB.addEventListener('click',function(){goTo(curIdx-1);});
+  if(nextB) nextB.addEventListener('click',function(){goTo(curIdx+1);});
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  onScroll();
+})();
 </script>
 </body>
 </html>
