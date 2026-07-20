@@ -283,17 +283,18 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .marq-in span{font-size:14.5px;font-weight:700;color:#7B8698;padding:0 26px;display:flex;align-items:center;gap:26px}
 .marq-in span::after{content:"·";color:var(--cobalt)}
 @keyframes mx{to{transform:translateX(-50%)}}
+@keyframes lroll{to{transform:translateX(-16.6667%)}}
 /* 마퀴는 reduce-motion에서도 흐르게(사용자 요청) */
 @media (prefers-reduced-motion:reduce){.marq-in{animation:mx 30s linear infinite!important}}
 /* 고객사 로고 마퀴 */
 .lmarq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0 28px;overflow:hidden;background:#fff}
 .lmarq-head{text-align:center;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--mut);text-transform:uppercase;margin-bottom:20px}
 .lmarq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.lmarq-track{display:flex;align-items:center;gap:64px;white-space:nowrap;width:max-content;animation:mx 26s linear infinite}
+.lmarq-track{display:flex;align-items:center;gap:64px;white-space:nowrap;width:max-content;animation:lroll 14s linear infinite}
 .lmarq:hover .lmarq-track{animation-play-state:paused}
 .lmarq-track img{height:32px;width:auto;object-fit:contain;flex:0 0 auto;transition:transform .2s}
 .lmarq-track img:hover{transform:scale(1.06)}
-@media(prefers-reduced-motion:reduce){.lmarq-track{animation:mx 26s linear infinite!important}}
+@media(prefers-reduced-motion:reduce){.lmarq-track{animation:lroll 14s linear infinite!important}}
 @media(max-width:640px){.lmarq-track{gap:44px}.lmarq-track img{height:24px}}
 
 /* ============ WHY (numbered narrative) ============ */
@@ -880,11 +881,21 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     <img src="assets/logos/trevity.png" alt="trevity">
     <img src="assets/logos/winchina.png" alt="winchina">
     <img src="assets/logos/redtrans.png" alt="redtrans">
-    <img src="assets/logos/hao.png" alt="hao communication">
-    <img src="assets/logos/first.png" alt="first">
-    <img src="assets/logos/trevity.png" alt="trevity">
-    <img src="assets/logos/winchina.png" alt="winchina">
-    <img src="assets/logos/redtrans.png" alt="redtrans">
+    <img src="assets/logos/hao.png" alt="" aria-hidden="true">
+    <img src="assets/logos/first.png" alt="" aria-hidden="true">
+    <img src="assets/logos/trevity.png" alt="" aria-hidden="true">
+    <img src="assets/logos/winchina.png" alt="" aria-hidden="true">
+    <img src="assets/logos/redtrans.png" alt="" aria-hidden="true">
+    <img src="assets/logos/hao.png" alt="" aria-hidden="true">
+    <img src="assets/logos/first.png" alt="" aria-hidden="true">
+    <img src="assets/logos/trevity.png" alt="" aria-hidden="true">
+    <img src="assets/logos/winchina.png" alt="" aria-hidden="true">
+    <img src="assets/logos/redtrans.png" alt="" aria-hidden="true">
+    <img src="assets/logos/hao.png" alt="" aria-hidden="true">
+    <img src="assets/logos/first.png" alt="" aria-hidden="true">
+    <img src="assets/logos/trevity.png" alt="" aria-hidden="true">
+    <img src="assets/logos/winchina.png" alt="" aria-hidden="true">
+    <img src="assets/logos/redtrans.png" alt="" aria-hidden="true">
     <img src="assets/logos/hao.png" alt="" aria-hidden="true">
     <img src="assets/logos/first.png" alt="" aria-hidden="true">
     <img src="assets/logos/trevity.png" alt="" aria-hidden="true">
