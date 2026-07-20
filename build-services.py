@@ -222,10 +222,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .pr{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
 .pr .n{font-family:var(--disp);font-weight:700;font-size:14px;color:#fff;background:#AEBBD4;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
 /* 진행 절차 — 화면 고정(핀) + 스크롤에 따라 1→2→3→4 순서대로 채워짐 */
-.proc-pin{position:relative;height:260vh}
-.proc-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%)}
+.proc-pin{position:relative;height:180vh;background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%)}
+.proc-stick{position:sticky;top:0;min-height:72vh;display:flex;align-items:center}
 .proc-stick>section{width:100%}
 .proc-stick .proc{background:transparent}
+.proc-stick .sec{padding:44px 0}
 .proc .pr{opacity:0;transform:translateY(48px) scale(.94)}
 .proc .pr.on{opacity:1;transform:none;border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
 .proc .pr.on .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
