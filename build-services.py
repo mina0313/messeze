@@ -323,7 +323,6 @@ def mega():
 <a href="press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
 <a href="{p}check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="{p}tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
 <a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
 <a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
 <div class="gap"></div><h5>요금</h5>
@@ -331,10 +330,7 @@ def mega():
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
 <div class="mega-col"><h5>리소스</h5>
 <a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
-<a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a>
-<div class="gap"></div><h5>많이 읽는 글</h5>
-<a href="{p}blog/posts/aeo-geo-seo.html"><b>AEO·GEO·SEO 차이</b><span>세 가지 최적화 쉽게 정리</span></a>
-<a href="{p}blog/posts/manufacturer-case.html"><b>제조기업 3개월 시나리오</b><span>AI에 발견되기까지</span></a></div>
+<a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a></div>
 </div></div>"""
 
 MEGA_JS = """<script>
@@ -385,7 +381,6 @@ def s(**kw): S.append(kw)
 # 서비스별 관련 무료 도구 (slug -> (링크, 이름, 한줄설명))
 RELTOOL = {
   "visibility":     ("../check.html",         "AI 가시성 진단",   "URL만 넣으면 우리 회사가 AI 답변에 얼마나 노출되는지 100점으로 확인합니다."),
-  "website-renewal":("../tools.html#home",    "홈페이지 건강검진", "6가지 항목 체크로 우리 홈페이지가 AI가 읽을 준비가 됐는지 진단합니다."),
   "website-build":  ("../tools.html#seo",     "SEO 점수 확인",    "검색 기본기 6가지를 자가 점검해 SEO 준비도를 확인합니다."),
   "press":          ("../tools.html#pr",      "PR 플랜 추천",     "상황·목표·예산 3가지 질문으로 우리에게 맞는 PR 플랜을 추천합니다."),
 }
