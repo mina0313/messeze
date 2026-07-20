@@ -172,7 +172,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <a href="tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
       <a href="tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
       <a href="tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
-      <a href="tools.html#blog"><b>블로그 운영 진단</b><span>AI 신뢰 구조인지 진단</span></a>
       <div class="gap"></div>
       <h5>요금</h5>
       <a href="pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
@@ -230,12 +229,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <p>상황·목표·예산 <b>3가지 질문</b>으로 우리에게 맞는 구독 플랜을 추천해 드립니다.</p>
       <span class="go">진단 시작 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <a class="tcard" href="#blog">
-      <span class="tic"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/></svg></span>
-      <h3>블로그 운영 진단</h3>
-      <p>4가지 질문으로 우리 블로그가 <b>AI에 신뢰받는 구조</b>인지 진단합니다.</p>
-      <span class="go">진단 시작 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
   </div>
 </section>
 
@@ -273,18 +266,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
     </div>
     <div class="quiz" data-tool="pr">
       <div class="quiz-hd"><b class="qTitle">PR 플랜 추천</b><span class="qdots"></span></div>
-      <div class="qBody"></div>
-    </div>
-  </div>
-
-  <div class="tool-block" id="blog">
-    <div class="wrap qhead">
-      <span class="eyebrow" style="justify-content:center">블로그 운영 진단</span>
-      <h2>우리 블로그, AI가 신뢰하는 구조인가요?</h2>
-      <p>4가지 질문으로 블로그 운영 상태를 진단합니다.</p>
-    </div>
-    <div class="quiz" data-tool="blog">
-      <div class="quiz-hd"><b class="qTitle">블로그 운영 진단</b><span class="qdots"></span></div>
       <div class="qBody"></div>
     </div>
   </div>
@@ -330,16 +311,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
         {tag:'Q3 · 월 예산',q:'매달 투입 가능한 예산은?',o:[{k:'A',t:'50만원 이하',s:1},{k:'B',t:'100만원 안팎',s:2},{k:'C',t:'300만원 이상',s:3}]}
       ],
       result:function(ans){var total=ans[0].s+ans[1].s+ans[2].s;var P=total<=1.5?{n:'소상공인형',p:'월 60만원 · 3개월 150만원'}:(total<=3.5?{n:'기업형',p:'월 100만원 · 3개월 240만원'}:{n:'엔터프라이즈',p:'목표·범위 맞춤 견적'});
-        return {big:P.n,sub:P.p,tone:'var(--cobalt)',stars:true,why:'<b>'+ans[0].t+'</b> 상황에서 <b>'+ans[1].t+'</b>이(가) 목표라면 '+P.n+'이 가장 잘 맞습니다. 전담팀이 홈페이지·언론·콘텐츠를 매달 쌓아 올립니다.',cta:{href:'pricing.html',label:'플랜 자세히 비교'}};}},
-    blog:{title:'블로그 운영 진단',type:'quiz',
-      questions:[
-        {tag:'Q1 · 발행 빈도',q:'블로그를 얼마나 자주 발행하나요?',o:[{k:'A',t:'주 2회 이상',s:2},{k:'B',t:'월 2~4회',s:1},{k:'C',t:'거의 안 함',s:0}]},
-        {tag:'Q2 · 주제 일관성',q:'글 주제가 한 분야로 모이나요?',o:[{k:'A',t:'전문 분야에 집중',s:2},{k:'B',t:'이것저것 섞임',s:1},{k:'C',t:'주제가 없음',s:0}]},
-        {tag:'Q3 · 근거·전문성',q:'글에 데이터·사례·경험이 담기나요?',o:[{k:'A',t:'대부분 담긴다',s:2},{k:'B',t:'가끔',s:1},{k:'C',t:'거의 없다',s:0}]},
-        {tag:'Q4 · 행동 유도',q:'글 끝에 문의·다음 행동 안내가 있나요?',o:[{k:'A',t:'항상 있다',s:2},{k:'B',t:'가끔',s:1},{k:'C',t:'없다',s:0}]}
-      ],
-      result:function(ans){var s=0;for(var i=0;i<ans.length;i++)s+=ans[i].s;var g=s>=6?['AI가 신뢰할 구조','var(--mint)']:(s>=3?['보완하면 좋아요','var(--cobalt)']:['구조부터 다시','var(--amber)']);
-        return {big:s+' / 8점',sub:g[0],tone:g[1],why:'AI는 꾸준히·일관되게·근거 있게 쌓인 블로그를 신뢰합니다. 부족한 부분을 채우면 인용 확률이 올라갑니다. messeze는 전문 분야 블로그를 매달 대신 운영해 드립니다.',cta:{href:'services/own-blog.html',label:'자사 블로그 운영 보기'}};}}
+        return {big:P.n,sub:P.p,tone:'var(--cobalt)',stars:true,why:'<b>'+ans[0].t+'</b> 상황에서 <b>'+ans[1].t+'</b>이(가) 목표라면 '+P.n+'이 가장 잘 맞습니다. 전담팀이 홈페이지·언론·콘텐츠를 매달 쌓아 올립니다.',cta:{href:'pricing.html',label:'플랜 자세히 비교'}};}}
   };
 
   function mount(box){

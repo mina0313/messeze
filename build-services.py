@@ -326,7 +326,6 @@ def mega():
 <a href="{p}tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
 <a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
 <a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
-<a href="{p}tools.html#blog"><b>블로그 운영 진단</b><span>AI 신뢰 구조인지 진단</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
@@ -388,7 +387,6 @@ RELTOOL = {
   "visibility":     ("../check.html",         "AI 가시성 진단",   "URL만 넣으면 우리 회사가 AI 답변에 얼마나 노출되는지 100점으로 확인합니다."),
   "website-renewal":("../tools.html#home",    "홈페이지 건강검진", "6가지 항목 체크로 우리 홈페이지가 AI가 읽을 준비가 됐는지 진단합니다."),
   "website-build":  ("../tools.html#seo",     "SEO 점수 확인",    "검색 기본기 6가지를 자가 점검해 SEO 준비도를 확인합니다."),
-  "own-blog":       ("../tools.html#blog",    "블로그 운영 진단", "4가지 질문으로 우리 블로그가 AI에 신뢰받는 구조인지 진단합니다."),
   "press":          ("../tools.html#pr",      "PR 플랜 추천",     "상황·목표·예산 3가지 질문으로 우리에게 맞는 PR 플랜을 추천합니다."),
 }
 
