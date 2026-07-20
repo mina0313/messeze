@@ -300,21 +300,47 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .why-c.hl p{color:#B9C4DC}
 
 /* ============ WHY (haoc식 2단 지표) ============ */
-.whyx{background:linear-gradient(180deg,#EAF2FF,#F7FBFF 60%,#fff)}
-.whyx-in{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
-.whyx-l .eyebrow{margin-bottom:14px}
-.whyx-l h2{font-size:clamp(28px,3.6vw,45px);line-height:1.26}
-.whyx-l .ul{font-style:italic;background:linear-gradient(180deg,transparent 62%,rgba(43,92,255,.22) 38%);padding:0 3px}
-.whyx-l .lead{margin-top:20px;max-width:470px}
-.whyx-l .lead b{color:var(--cobalt)}
-.whyx-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.wcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh-sm);transition:transform .3s cubic-bezier(.34,1.2,.4,1),box-shadow .3s ease,border-color .3s}
-.wcard:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:#C4D4FF}
-.wcard .wn{font-family:var(--disp);font-size:15px;font-weight:800;color:var(--cobalt);letter-spacing:.02em;display:block}
-.wcard h3{font-size:18.5px;margin-top:9px;letter-spacing:-.02em;line-height:1.32}
-.wcard p{font-size:13.5px;color:var(--body);margin-top:11px;line-height:1.6}.wcard .wtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.wcard .wtags span{font-size:11.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:7px;padding:4px 9px}
-@media(max-width:900px){.whyx-in{grid-template-columns:1fr;gap:34px}.whyx-l .lead{max-width:none}}
-@media(max-width:480px){.whyx-cards{grid-template-columns:1fr}}
+/* WHY — 다크 sticky-stack (하오 Differentiator 스타일) */
+.whyx{background:linear-gradient(180deg,#0A1526,#0B1A33 55%,#0A1526);color:#fff;position:relative;overflow:hidden}
+.whyx::before{content:"";position:absolute;top:-16%;left:-8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(43,92,255,.30),transparent 68%);pointer-events:none}
+.whyx-in{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:start;position:relative;z-index:1}
+.whyx-l{position:sticky;top:118px;align-self:start}
+.whyx-l .eyebrow{color:var(--cobalt);letter-spacing:.16em;text-transform:uppercase;font-size:12.5px;margin-bottom:16px}
+.whyx-l h2{font-size:clamp(28px,3.4vw,44px);line-height:1.24;color:#fff;letter-spacing:-.02em}
+.whyx-l .ul{color:#7CA0FF;font-style:normal;background:none;padding:0}
+.whyx-l .lead{margin-top:20px;max-width:400px;color:#AEB9CE}
+.whyx-l .lead b{color:#fff}
+.whyx-prog{display:flex;align-items:center;gap:18px;margin-top:46px}
+.whyx-idx{font-family:var(--disp);font-weight:700;line-height:1;display:flex;align-items:baseline;gap:7px}
+.whyx-idx b{font-size:46px;color:var(--cobalt);transition:color .3s}
+.whyx-idx em{font-size:16px;font-style:normal;color:#5C6C88}
+.whyx-bar{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden;position:relative}
+.whyx-bar i{position:absolute;left:0;top:0;height:100%;width:25%;background:var(--cobalt);border-radius:2px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.whyx-stack{display:flex;flex-direction:column;gap:22px}
+.wcard{position:sticky;background:#fff;color:var(--ink);border-radius:24px;padding:34px 36px 30px;box-shadow:0 26px 60px rgba(0,0,0,.36);min-height:300px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.whyx-stack .wcard:nth-child(1){top:104px}
+.whyx-stack .wcard:nth-child(2){top:120px}
+.whyx-stack .wcard:nth-child(3){top:136px}
+.whyx-stack .wcard:nth-child(4){top:152px}
+.wcard .wn{font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--mut)}
+.wcard h3{font-size:22px;margin-top:20px;letter-spacing:-.02em;line-height:1.34;max-width:74%}
+.wcard p{font-size:14px;color:var(--body);margin-top:14px;line-height:1.65;max-width:82%}
+.wcard .wtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:24px}
+.wcard .wtags span{font-size:12px;font-weight:700;color:var(--cobalt);background:var(--sky);border-radius:999px;padding:7px 14px}
+.wcard .wic{position:absolute;top:30px;right:30px;width:76px;height:76px;color:#CBD5E8;stroke-width:1.5}
+.wcard-hl{background:var(--cobalt);color:#fff}
+.wcard-hl .wn{color:rgba(255,255,255,.7)}
+.wcard-hl h3{color:#fff}
+.wcard-hl p{color:rgba(255,255,255,.88)}
+.wcard-hl .wtags span{color:#fff;background:rgba(255,255,255,.18)}
+.wcard-hl .wic{color:rgba(255,255,255,.9)}
+@media(max-width:900px){
+  .whyx-in{grid-template-columns:1fr;gap:34px}
+  .whyx-l{position:static}.whyx-l .lead{max-width:none}
+  .whyx-prog{margin-top:28px}
+  .whyx-stack .wcard{position:relative;min-height:0;top:auto!important}
+  .wcard h3,.wcard p{max-width:none}
+}
 /* ============ WHY: editorial + collage ============ */
 .why-in{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
 .why-in .shead{margin-bottom:6px;max-width:none}
@@ -587,15 +613,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hs-num{width:56px;height:56px;border-radius:16px;background:var(--cobalt);color:#fff;font-family:var(--disp);font-weight:800;font-size:21px;display:grid;place-items:center;box-shadow:0 10px 24px rgba(43,92,255,.3);margin-bottom:18px}
 .hs-l h3{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.02em;line-height:1.24}
 .hs-l p{font-size:15.5px;color:var(--body);line-height:1.7;margin-top:14px;max-width:460px}
-.hs-vis{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);overflow:hidden;max-width:460px;width:100%}
+.hs-vis{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 26px 64px rgba(16,31,63,.18);overflow:hidden;max-width:540px;width:100%}
 .fs-out{display:inline-flex;align-items:center;gap:8px;border-left:3px solid var(--cobalt);padding:7px 0 7px 13px;margin-top:18px;font-size:14px;font-weight:800;color:var(--ink);background:linear-gradient(90deg,var(--sky),transparent);border-radius:0 8px 8px 0}
 .fs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
 .fs-tags span{font-size:12.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
 .fs-vis svg{width:100%;height:auto;display:block}
-.hpin-nav{display:flex;align-items:center;gap:22px;margin-top:38px}
-.hpin-page b{font-family:var(--disp);font-size:22px;color:var(--cobalt);font-weight:700}
-.hpin-page em{font-style:normal;color:var(--mut);font-weight:700;font-size:15px}
-.hpin-bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;max-width:360px}
+.hpin-nav{display:flex;align-items:center;gap:18px;margin-top:40px;justify-content:flex-start;width:100%}
+.hpin-page b{font-family:var(--disp);font-size:20px;color:var(--cobalt);font-weight:700}
+.hpin-page em{font-style:normal;color:var(--mut);font-weight:700;font-size:14px}
+.hpin-bar{flex:0 0 132px;width:132px;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
 .hpin-bar i{display:block;height:100%;background:var(--cobalt);border-radius:2px;width:25%;transition:width .15s linear}
 .hpin-arrows{display:flex;gap:9px}
 .hpin-arrows button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;cursor:pointer;font-size:20px;line-height:1;color:var(--ink);display:grid;place-items:center;transition:.15s}
@@ -882,15 +908,39 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <section class="sec whyx" id="why">
   <div class="wrap whyx-in">
     <div class="whyx-l rv">
-      <span class="eyebrow">WHY messeze · 왜 지금인가</span>
+      <span class="eyebrow">Differentiator · 왜 지금인가</span>
       <h2 class="h2">고객은 이제 검색하지 않고,<br>AI에게 <span class="ul">물어봅니다</span></h2>
       <p class="lead">AI가 먼저 기업을 조사하고 추천하는 시대. 중요한 것은 검색량이 아니라 <b>AI가 읽을 수 있는 기업 정보</b>입니다. 정보를 먼저 쌓은 기업이 그 답의 기본값이 됩니다.</p>
+      <div class="whyx-prog">
+        <span class="whyx-idx"><b id="whyIdx">01</b><em>/ 04</em></span>
+        <div class="whyx-bar"><i id="whyFill"></i></div>
+      </div>
     </div>
-    <div class="whyx-cards rv d1">
-      <div class="wcard"><span class="wn">01</span><h3>AI가 먼저 답합니다</h3><div class="wtags"><span>#선점</span><span>#먼저추천</span></div><p>사용자가 링크를 비교하기 전에, AI가 신뢰할 만한 기업을 골라 먼저 추천합니다.</p></div>
-      <div class="wcard"><span class="wn">02</span><h3>정보가 없으면 제외됩니다</h3><div class="wtags"><span>#신뢰</span><span>#교차확인</span></div><p>여러 출처에서 확인되지 않는 기업은 AI의 추천 후보에서 조용히 사라집니다.</p></div>
-      <div class="wcard"><span class="wn">03</span><h3>검색량이 아니라 정보량입니다</h3><div class="wtags"><span>#정보자산</span><span>#B2B유리</span></div><p>AI는 검색량이 아니라 읽을 수 있는 신뢰 정보의 양으로 기업을 판단합니다.</p></div>
-      <div class="wcard"><span class="wn">04</span><h3>그래서 축적이 필요합니다</h3><div class="wtags"><span>#누적</span><span>#구독형</span></div><p>매달 언론·콘텐츠가 쌓여야 AI가 지금도 활동하는 기업으로 인식합니다.</p></div>
+    <div class="whyx-stack">
+      <article class="wcard wcard-hl">
+        <svg class="wic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
+        <span class="wn">01</span><h3>AI가 먼저 답합니다</h3>
+        <p>사용자가 링크를 비교하기 전에, AI가 신뢰할 만한 기업을 골라 먼저 추천합니다.</p>
+        <div class="wtags"><span># 선점</span><span># 먼저추천</span></div>
+      </article>
+      <article class="wcard">
+        <svg class="wic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span class="wn">02</span><h3>정보가 없으면 제외됩니다</h3>
+        <p>여러 출처에서 확인되지 않는 기업은 AI의 추천 후보에서 조용히 사라집니다.</p>
+        <div class="wtags"><span># 신뢰</span><span># 교차확인</span></div>
+      </article>
+      <article class="wcard">
+        <svg class="wic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V11"/><path d="M12 21V4"/><path d="M18 21v-7"/></svg>
+        <span class="wn">03</span><h3>검색량이 아니라 정보량입니다</h3>
+        <p>AI는 검색량이 아니라 읽을 수 있는 신뢰 정보의 양으로 기업을 판단합니다.</p>
+        <div class="wtags"><span># 정보자산</span><span># B2B유리</span></div>
+      </article>
+      <article class="wcard">
+        <svg class="wic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></svg>
+        <span class="wn">04</span><h3>그래서 축적이 필요합니다</h3>
+        <p>매달 언론·콘텐츠가 쌓여야 AI가 지금도 활동하는 기업으로 인식합니다.</p>
+        <div class="wtags"><span># 누적</span><span># 구독형</span></div>
+      </article>
     </div>
   </div>
 </section>
@@ -1261,6 +1311,23 @@ if(matchMedia('(min-width:981px)').matches){
   wItems.forEach(i=>wo.observe(i));
 }
 
+// WHY differentiator 스택 → 카운터/진행바
+(function(){
+  const cards=[...document.querySelectorAll('.whyx-stack .wcard')];
+  const idxEl=document.getElementById('whyIdx'),fill=document.getElementById('whyFill');
+  if(!cards.length||!idxEl||!fill)return;
+  const N=cards.length;let cur=-1,tick=false;
+  function upd(){
+    tick=false;const line=190;let act=0;
+    for(let i=0;i<N;i++){if(cards[i].getBoundingClientRect().top<=line)act=i;}
+    if(act===cur)return;cur=act;
+    idxEl.textContent=('0'+(act+1)).slice(-2);
+    fill.style.width=((act+1)/N*100)+'%';
+  }
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+})();
+
 // FAQ 아코디언
 document.querySelectorAll('#faq .qa button').forEach(b=>b.addEventListener('click',()=>{
   const qa=b.closest('.qa'),ans=qa.querySelector('.ans'),willOpen=!qa.classList.contains('open');
@@ -1276,7 +1343,7 @@ document.getElementById('diagForm').addEventListener('submit',e=>{
   const b=e.target.querySelector('button');
   b.textContent='신청 완료 · 곧 연락드립니다 ✓';b.style.background='var(--mint)';b.disabled=true;
 });
-<script>
+
 (function(){
   var hpin=document.getElementById('hpin'), track=document.getElementById('hpinTrack');
   if(!hpin||!track) return;
