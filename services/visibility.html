@@ -224,9 +224,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 /* 진행 절차 — 단계별 순차 강조(진한 색감): reveal 시 번호가 코발트로 채워지고 카드가 도드라짐 */
 .pr.in{border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
 .pr.in .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
-.pr-grid .pr:nth-child(2),.pr-grid .pr:nth-child(2) .n{transition-delay:.16s}
-.pr-grid .pr:nth-child(3),.pr-grid .pr:nth-child(3) .n{transition-delay:.32s}
-.pr-grid .pr:nth-child(4),.pr-grid .pr:nth-child(4) .n{transition-delay:.48s}
+/* 절차 카드: 스크롤 시 1→2→3→4 또렷하게 하나씩 등장 */
+.proc .pr.rv{opacity:0;transform:translateY(40px) scale(.965)}
+.proc .pr.rv.in{opacity:1;transform:none}
+.pr-grid .pr:nth-child(1),.pr-grid .pr:nth-child(1) .n{transition-delay:0s}
+.pr-grid .pr:nth-child(2),.pr-grid .pr:nth-child(2) .n{transition-delay:.2s}
+.pr-grid .pr:nth-child(3),.pr-grid .pr:nth-child(3) .n{transition-delay:.4s}
+.pr-grid .pr:nth-child(4),.pr-grid .pr:nth-child(4) .n{transition-delay:.6s}
 .pr b{font-size:15.5px;display:block}
 .pr p{font-size:13px;color:var(--body);line-height:1.58;margin-top:6px}
 /* fit + deliv */
