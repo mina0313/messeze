@@ -103,6 +103,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(16,31,63,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(640px 480px at 78% 30%,#000,transparent 75%);pointer-events:none}
 /* hero v2: 전환 타이포 중심 */
 .hero2{max-width:900px;margin:0 auto;text-align:center;position:relative;padding-top:26px}
+/* 히어로 캐러셀 */
+.hero-slides{display:grid}
+.hslide2{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease,visibility .55s;pointer-events:none}
+.hslide2.on{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.hero-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:34px}
+.hn-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;color:var(--ink);font-size:21px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.16s;box-shadow:var(--sh-sm);padding-bottom:2px}
+.hn-arrow:hover{border-color:var(--cobalt);color:var(--cobalt);transform:translateY(-2px)}
+.hero-dots{display:flex;gap:9px;align-items:center}
+.hdot{width:9px;height:9px;border-radius:50%;border:0;background:var(--line-2);cursor:pointer;padding:0;transition:width .28s,background .28s}
+.hdot.on{width:26px;border-radius:5px;background:var(--cobalt)}
 .hero2 .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:24px}
 .hero2 .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
 .hero-h .from{display:block;font-size:clamp(17px,2.4vw,25px);font-weight:700;color:var(--mut);letter-spacing:-.02em}
@@ -840,33 +850,52 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   <div class="hero-aura"></div>
   <div class="hero-rays"></div>
   <div class="wrap">
-  <div class="hero2">
-    <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
-    <h1 class="hero-h">
-      <span class="from">사람에게만 보이는 홍보에서,</span>
-      <span class="to">AI가 <span class="co cu">읽고 추천하는</span> 홍보로.</span>
-    </h1>
-    <p class="sub2">기업의 메시지를 언론과 검색, AI에 지속적으로 축적합니다.<br>일회성 노출이 아닌, 기업 정보 자산을 만드는 기업 PR.</p>
-    <div class="cta2">
-      <a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a>
-      <a href="#features" class="btn btn-gh">서비스 살펴보기</a>
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero2 hslide2 on">
+      <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
+      <h1 class="hero-h"><span class="from">사람에게만 보이는 홍보에서,</span><span class="to">AI가 <span class="co cu">읽고 추천하는</span> 홍보로.</span></h1>
+      <p class="sub2">기업의 메시지를 언론과 검색, AI에 지속적으로 축적합니다.<br>일회성 노출이 아닌, 기업 정보 자산을 만드는 기업 PR.</p>
+      <div class="cta2"><a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a><a href="#features" class="btn btn-gh">서비스 살펴보기</a></div>
     </div>
-    <div class="h-trust">
-      <span>AI 가시성 무료 진단</span><i class="dot">·</i>
-      <span>카드 등록 없이</span><i class="dot">·</i>
-      <span>영업일 1일 내 회신</span>
+    <div class="hero2 hslide2">
+      <div class="tag"><span class="nd"></span>AI 검색 시대 · GEO</div>
+      <h1 class="hero-h"><span class="from">고객은 이제 검색하지 않고,</span><span class="to">AI에게 <span class="co cu">물어봅니다.</span></span></h1>
+      <p class="sub2">ChatGPT·Gemini·Perplexity가 먼저 기업을 조사하고 추천합니다.<br>AI가 읽을 수 있는 정보를 먼저 쌓은 기업이 그 답의 기본값이 됩니다.</p>
+      <div class="cta2"><a href="tools.html" class="btn btn-co">AI 가시성 무료 진단</a><a href="#why" class="btn btn-gh">작동 원리 보기</a></div>
     </div>
-    <div class="ai-plat">
-      <div class="lbl">주요 AI 답변에 노출되게 만듭니다</div>
-      <div class="logos">
-        <span><i style="background:#10A37F"></i>ChatGPT</span>
-        <span><i style="background:#4285F4"></i>Gemini</span>
-        <span><i style="background:#20B8CD"></i>Perplexity</span>
-        <span><i style="background:#D97757"></i>Claude</span>
-        <span><i style="background:#03C75A"></i>네이버 AI</span>
-        <span><i style="background:#4285F4"></i>구글 AI</span>
-      </div>
+    <div class="hero2 hslide2">
+      <div class="tag"><span class="nd"></span>구독형 · 매달 쌓입니다</div>
+      <h1 class="hero-h"><span class="from">3개월이면,</span><span class="to">AI가 <span class="co cu">당신 회사를 알아봅니다.</span></span></h1>
+      <p class="sub2">언론 보도·자사 블로그·외부 채널을 매달 축적해,<br>여러 출처에서 교차 확인되는 신뢰 정보를 만듭니다.</p>
+      <div class="cta2"><a href="pricing.html" class="btn btn-co">요금·플랜 보기</a><a href="#final" class="btn btn-gh">무료 상담</a></div>
     </div>
+    <div class="hero2 hslide2">
+      <div class="tag"><span class="nd"></span>전담팀 대행 · 카드 등록 없이</div>
+      <h1 class="hero-h"><span class="from">진단부터 노출 관리까지,</span><span class="to"><span class="co cu">전담팀이 다</span> 해드립니다.</span></h1>
+      <p class="sub2">홈페이지 정비·언론 배포·콘텐츠 발행·월간 리포트까지.<br>우리 회사에 맞는 조합만 골라 시작하세요.</p>
+      <div class="cta2"><a href="services.html" class="btn btn-co">서비스 전체 보기</a><a href="#final" class="btn btn-gh">무료 진단</a></div>
+    </div>
+  </div>
+  <div class="h-trust">
+    <span>AI 가시성 무료 진단</span><i class="dot">·</i>
+    <span>카드 등록 없이</span><i class="dot">·</i>
+    <span>영업일 1일 내 회신</span>
+  </div>
+  <div class="ai-plat">
+    <div class="lbl">주요 AI 답변에 노출되게 만듭니다</div>
+    <div class="logos">
+      <span><i style="background:#10A37F"></i>ChatGPT</span>
+      <span><i style="background:#4285F4"></i>Gemini</span>
+      <span><i style="background:#20B8CD"></i>Perplexity</span>
+      <span><i style="background:#D97757"></i>Claude</span>
+      <span><i style="background:#03C75A"></i>네이버 AI</span>
+      <span><i style="background:#4285F4"></i>구글 AI</span>
+    </div>
+  </div>
+  <div class="hero-nav">
+    <button class="hn-arrow" id="heroPrev" aria-label="이전 슬라이드">‹</button>
+    <div class="hero-dots" id="heroDots"></div>
+    <button class="hn-arrow" id="heroNext" aria-label="다음 슬라이드">›</button>
   </div>
   </div>
 </section>
@@ -1264,6 +1293,24 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <script>
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>8),{passive:true});
+
+// 히어로 캐러셀 (자동 전환 + 화살표 + 점)
+(function(){
+  const slides=[...document.querySelectorAll('#heroSlides .hslide2')];
+  const dotsWrap=document.getElementById('heroDots');
+  const hero=document.querySelector('.hero');
+  if(slides.length<2||!dotsWrap)return;
+  const N=slides.length;let cur=0,timer;
+  slides.forEach((_,i)=>{const d=document.createElement('button');d.className='hdot'+(i===0?' on':'');d.setAttribute('aria-label',(i+1)+'번 슬라이드');d.addEventListener('click',()=>go(i));dotsWrap.appendChild(d);});
+  const dots=[...dotsWrap.children];
+  function go(i){cur=(i%N+N)%N;slides.forEach((s,k)=>s.classList.toggle('on',k===cur));dots.forEach((d,k)=>d.classList.toggle('on',k===cur));start();}
+  function start(){clearInterval(timer);timer=setInterval(()=>go(cur+1),5500);}
+  const nx=document.getElementById('heroNext'),pv=document.getElementById('heroPrev');
+  if(nx)nx.addEventListener('click',()=>go(cur+1));
+  if(pv)pv.addEventListener('click',()=>go(cur-1));
+  if(hero){hero.addEventListener('mouseenter',()=>clearInterval(timer));hero.addEventListener('mouseleave',start);}
+  start();
+})();
 
 const io=new IntersectionObserver(es=>{es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting)})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
