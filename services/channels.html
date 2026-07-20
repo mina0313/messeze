@@ -221,16 +221,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:pr}
 .pr{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
 .pr .n{font-family:var(--disp);font-weight:700;font-size:14px;color:#fff;background:#AEBBD4;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
-/* 진행 절차 — 단계별 순차 강조(진한 색감): reveal 시 번호가 코발트로 채워지고 카드가 도드라짐 */
-.pr.in{border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
-.pr.in .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
-/* 절차 카드: 스크롤 시 1→2→3→4 또렷하게 하나씩 등장 */
-.proc .pr.rv{opacity:0;transform:translateY(40px) scale(.965)}
-.proc .pr.rv.in{opacity:1;transform:none}
-.pr-grid .pr:nth-child(1),.pr-grid .pr:nth-child(1) .n{transition-delay:0s}
-.pr-grid .pr:nth-child(2),.pr-grid .pr:nth-child(2) .n{transition-delay:.2s}
-.pr-grid .pr:nth-child(3),.pr-grid .pr:nth-child(3) .n{transition-delay:.4s}
-.pr-grid .pr:nth-child(4),.pr-grid .pr:nth-child(4) .n{transition-delay:.6s}
+/* 진행 절차 — 화면 고정(핀) + 스크롤에 따라 1→2→3→4 순서대로 채워짐 */
+.proc-pin{position:relative;height:260vh}
+.proc-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%)}
+.proc-stick>section{width:100%}
+.proc-stick .proc{background:transparent}
+.proc .pr{opacity:0;transform:translateY(48px) scale(.94)}
+.proc .pr.on{opacity:1;transform:none;border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
+.proc .pr.on .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
 .pr b{font-size:15.5px;display:block}
 .pr p{font-size:13px;color:var(--body);line-height:1.58;margin-top:6px}
 /* fit + deliv */
@@ -300,8 +298,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
   .rel-grid{grid-template-columns:1fr}
   .svc-vis{min-height:400px}
 }
+@media(max-width:720px){.proc-pin{height:auto}.proc-stick{position:static;min-height:0;display:block}}
 @media(max-width:560px){.sec{padding:64px 0}.pr-grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv{opacity:1;transform:none;translate:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv,.proc .pr{opacity:1;transform:none;translate:none}}
 </style></head><body id="top">
 <header class="nav"><div class="wrap nav-in">
 <a class="brand" href="../index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bw">messeze</span></a>
@@ -372,13 +371,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 
 </div></section>
 
-<section class="sec proc"><div class="wrap">
-<div class="shead center rv"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
-<div class="pr-grid"><div class="pr rv"><span class="n">1</span><b>채널 전략 수립</b><p>업종·목표에 맞춰 채널별 역할을 정합니다.</p></div>
-<div class="pr rv"><span class="n">2</span><b>개설·세팅</b><p>계정 개설, 프로필·소개·카테고리를 브랜드에 맞게 정비합니다.</p></div>
-<div class="pr rv"><span class="n">3</span><b>변주 콘텐츠 발행</b><p>원본 칼럼을 채널 성격에 맞게 다시 써서 발행합니다.</p></div>
-<div class="pr rv"><span class="n">4</span><b>유입 분석·조정</b><p>채널별 성과를 보고 비중을 조정합니다.</p></div></div>
-</div></section>
+<div class="proc-pin" id="procPin"><div class="proc-stick"><section class="sec proc"><div class="wrap">
+<div class="shead center"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
+<div class="pr-grid"><div class="pr"><span class="n">1</span><b>채널 전략 수립</b><p>업종·목표에 맞춰 채널별 역할을 정합니다.</p></div>
+<div class="pr"><span class="n">2</span><b>개설·세팅</b><p>계정 개설, 프로필·소개·카테고리를 브랜드에 맞게 정비합니다.</p></div>
+<div class="pr"><span class="n">3</span><b>변주 콘텐츠 발행</b><p>원본 칼럼을 채널 성격에 맞게 다시 써서 발행합니다.</p></div>
+<div class="pr"><span class="n">4</span><b>유입 분석·조정</b><p>채널별 성과를 보고 비중을 조정합니다.</p></div></div>
+</div></section></div></div>
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
@@ -419,5 +418,23 @@ document.querySelectorAll('.qa button').forEach(btn=>{
     if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
   });
 });
+/* 진행 절차: 핀 고정 + 스크롤 진행도에 따라 1→2→3→4 누적 등장 */
+(function(){
+  var pin=document.getElementById('procPin');
+  if(!pin) return;
+  var cards=[].slice.call(pin.querySelectorAll('.pr'));
+  var N=cards.length; if(!N) return;
+  function upd(){
+    if(!matchMedia('(min-width:721px)').matches){cards.forEach(function(c){c.classList.add('on');});return;}
+    var len=pin.offsetHeight-window.innerHeight;
+    if(len<=0){cards.forEach(function(c){c.classList.add('on');});return;}
+    var p=-pin.getBoundingClientRect().top/len; p=Math.max(0,Math.min(1,p));
+    var revealed=Math.min(N,1+Math.floor(p*N));
+    for(var i=0;i<N;i++){cards[i].classList.toggle('on',i<revealed);}
+  }
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd);
+  upd();
+})();
 </script>
 </body></html>
