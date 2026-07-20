@@ -132,6 +132,45 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero2 .meta2 div:last-child{border-right:0}
 .hero2 .meta2 b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em}
 .hero2 .meta2 span{font-size:12.5px;color:var(--mut);font-weight:600}
+/* ===== HERO v3 — next-t 스타일 다크(포인트 코발트) ===== */
+.hero.nx{background:
+  radial-gradient(900px 520px at 50% -8%,rgba(43,92,255,.30),transparent 60%),
+  radial-gradient(680px 380px at 84% 14%,rgba(43,92,255,.15),transparent 66%),
+  linear-gradient(180deg,#0A0F1E 0%,#0E1531 52%,#0A1020 100%);
+  padding:34px 0 62px;color:#fff}
+.hero.nx .nx-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.nx-search{width:min(560px,92%);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:7px 7px 7px 24px;margin:8px 0 72px;backdrop-filter:blur(6px)}
+.nx-search input{flex:1;background:none;border:0;outline:none;color:#E8EEFF;font-size:15px;font-family:inherit;letter-spacing:-.01em}
+.nx-search input::placeholder{color:#8B98B9}
+.nx-search button{width:48px;height:48px;border-radius:50%;border:0;background:var(--cobalt);color:#fff;cursor:pointer;display:grid;place-items:center;flex:0 0 auto;transition:.16s}
+.nx-search button:hover{background:#1E46D9;transform:scale(1.05)}
+.nx-search button svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round}
+.hero.nx .hero-slides{width:100%;max-width:980px;margin:0 auto;text-align:center}
+.hero.nx .hero2{max-width:none;padding-top:0}
+.nx-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.15em;color:#7FA0FF;border:1px solid rgba(76,123,255,.5);background:rgba(43,92,255,.12);border-radius:999px;padding:8px 18px;margin-bottom:30px}
+.nx-badge .bolt{color:#F5C451;letter-spacing:0}
+.nx-h{font-size:clamp(34px,6vw,72px);font-weight:800;letter-spacing:-.045em;line-height:1.1;color:#F4F7FF;word-break:keep-all}
+.nx-h .arw{color:#6F7DA6;font-weight:700;margin:0 .08em}
+.nx-h .ac{background:linear-gradient(92deg,#4C7BFF 0%,#8FB2FF 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.nx-sub{font-size:clamp(15px,1.9vw,19px);color:#A7B4D4;font-weight:600;margin-top:22px;letter-spacing:-.01em}
+.nx-sub b{color:#fff;font-weight:800}
+.nx-sub .g{color:#5B8CFF;font-weight:800}
+.nx-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 15px;margin-top:32px;font-size:15px;font-weight:700;color:#C0CBE6}
+.nx-flow i{color:#54618A;font-style:normal;font-size:13px}
+.nx-flow b{color:#fff;font-weight:800}
+.nx-cta{margin-top:40px;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.nx-btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:15px 30px;font-size:15.5px;font-weight:800;letter-spacing:-.01em;transition:.18s;cursor:pointer}
+.nx-btn.primary{background:linear-gradient(135deg,#3B6BFF,#1E46D9);color:#fff;box-shadow:0 12px 30px rgba(43,92,255,.45)}
+.nx-btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(43,92,255,.55)}
+.nx-btn.ghost{background:rgba(255,255,255,.045);color:#E8EEFF;border:1px solid rgba(255,255,255,.22)}
+.nx-btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero.nx .hero-nav{margin-top:46px}
+.hero.nx .hn-arrow{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:#DDE6FB;box-shadow:none}
+.hero.nx .hn-arrow:hover{border-color:#5B8CFF;color:#fff;background:rgba(43,92,255,.24);transform:translateY(-2px)}
+.hero.nx .hero-dots{position:static;inset:auto;background:none;mask:none;display:flex;gap:9px}
+.hero.nx .hdot{background:rgba(255,255,255,.28)}
+.hero.nx .hdot.on{background:#4C7BFF}
+@media(max-width:640px){.nx-search{margin-bottom:52px}.nx-flow{font-size:12.5px;gap:8px 11px}}
 /* wide AI strip */
 .strip-card{max-width:880px;margin:42px auto 0;position:relative}
 .strip-card .scard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-lg);transform:rotate(-.8deg);display:block;overflow:hidden;text-align:left}
@@ -856,50 +895,48 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 (function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-aura"></div>
-  <div class="hero-rays"></div>
-  <div class="wrap">
-  <div class="hero-slides" id="heroSlides">
-    <div class="hero2 hslide2 on">
-      <div class="tag"><span class="nd"></span>제조·수출 기업 전용 · 구독형 AI 가시성 관리</div>
-      <h1 class="hero-h"><span class="from">사람에게만 보이는 홍보에서,</span><span class="to">AI가 <span class="co cu">읽고 추천하는</span> 홍보로.</span></h1>
-      <p class="sub2">기업의 메시지를 언론과 검색, AI에 지속적으로 축적합니다.<br>일회성 노출이 아닌, 기업 정보 자산을 만드는 기업 PR.</p>
-      <div class="cta2"><a href="#final" class="btn btn-co">우리 회사 AI 노출 무료 진단</a><a href="#features" class="btn btn-gh">서비스 살펴보기</a></div>
-      <div class="h-trust"><span>AI 가시성 무료 진단</span><i class="dot">·</i><span>카드 등록 없이</span><i class="dot">·</i><span>영업일 1일 내 회신</span></div>
-      <div class="ai-plat"><div class="logos"><span><i style="background:#10A37F"></i>ChatGPT</span><span><i style="background:#4285F4"></i>Gemini</span><span><i style="background:#20B8CD"></i>Perplexity</span><span><i style="background:#D97757"></i>Claude</span><span><i style="background:#03C75A"></i>네이버 AI</span><span><i style="background:#4285F4"></i>구글 AI</span></div></div>
+<!-- HERO (next-t 스타일 다크) -->
+<section class="hero nx">
+  <div class="wrap nx-wrap">
+    <form class="nx-search" onsubmit="location.href='check.html';return false;">
+      <input type="text" placeholder="우리 회사 AI 가시성 진단 (URL 입력)" aria-label="URL 입력">
+      <button type="submit" aria-label="AI 가시성 진단하기"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/></svg></button>
+    </form>
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero2 hslide2 on">
+        <div class="nx-badge"><span class="bolt">⚡</span> SOLUTION</div>
+        <h1 class="nx-h">정보 축적 <span class="arw">→</span> AI 추천 <span class="ac">3개월, messeze</span></h1>
+        <p class="nx-sub">구독형 <span class="g">AI 가시성 관리</span> 플랫폼</p>
+        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
+        <div class="nx-cta"><a class="nx-btn primary" href="#final">무료 진단 신청</a><a class="nx-btn ghost" href="services.html">🚀 서비스 보기</a></div>
+      </div>
+      <div class="hero2 hslide2">
+        <div class="nx-badge"><span class="bolt">⚡</span> GEO · AI 검색</div>
+        <h1 class="nx-h">검색의 시대 끝 <span class="arw">→</span> <span class="ac">AI에게 묻는 시대</span></h1>
+        <p class="nx-sub">고객은 이제 <span class="g">AI에게</span> 물어봅니다</p>
+        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
+        <div class="nx-cta"><a class="nx-btn primary" href="check.html">AI 가시성 무료 진단</a><a class="nx-btn ghost" href="#why">작동 원리</a></div>
+      </div>
+      <div class="hero2 hslide2">
+        <div class="nx-badge"><span class="bolt">⚡</span> 구독형 · 매달 축적</div>
+        <h1 class="nx-h">사람만 보는 홍보 <span class="arw">→</span> <span class="ac">AI가 읽는 홍보</span></h1>
+        <p class="nx-sub">일회성 노출이 아닌 <span class="g">기업 정보 자산</span></p>
+        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
+        <div class="nx-cta"><a class="nx-btn primary" href="pricing.html">요금·플랜 보기</a><a class="nx-btn ghost" href="#final">무료 상담</a></div>
+      </div>
+      <div class="hero2 hslide2">
+        <div class="nx-badge"><span class="bolt">⚡</span> 전담팀 대행</div>
+        <h1 class="nx-h">진단부터 관리까지 <span class="arw">→</span> <span class="ac">전담팀이 다, messeze</span></h1>
+        <p class="nx-sub">홈페이지·언론·콘텐츠·리포트 <span class="g">한 번에</span></p>
+        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
+        <div class="nx-cta"><a class="nx-btn primary" href="services.html">서비스 전체 보기</a><a class="nx-btn ghost" href="#final">무료 진단</a></div>
+      </div>
     </div>
-    <div class="hero2 hslide2">
-      <div class="tag"><span class="nd"></span>AI 검색 시대 · GEO</div>
-      <h1 class="hero-h"><span class="from">고객은 이제 검색하지 않고,</span><span class="to">AI에게 <span class="co cu">물어봅니다.</span></span></h1>
-      <p class="sub2">ChatGPT·Gemini·Perplexity가 먼저 기업을 조사하고 추천합니다.<br>AI가 읽을 수 있는 정보를 먼저 쌓은 기업이 그 답의 기본값이 됩니다.</p>
-      <div class="cta2"><a href="tools.html" class="btn btn-co">AI 가시성 무료 진단</a><a href="#why" class="btn btn-gh">작동 원리 보기</a></div>
-      <div class="h-trust"><span>AI 가시성 무료 진단</span><i class="dot">·</i><span>카드 등록 없이</span><i class="dot">·</i><span>영업일 1일 내 회신</span></div>
-      <div class="ai-plat"><div class="logos"><span><i style="background:#10A37F"></i>ChatGPT</span><span><i style="background:#4285F4"></i>Gemini</span><span><i style="background:#20B8CD"></i>Perplexity</span><span><i style="background:#D97757"></i>Claude</span><span><i style="background:#03C75A"></i>네이버 AI</span><span><i style="background:#4285F4"></i>구글 AI</span></div></div>
+    <div class="hero-nav">
+      <button class="hn-arrow" id="heroPrev" aria-label="이전 슬라이드">‹</button>
+      <div class="hero-dots" id="heroDots"></div>
+      <button class="hn-arrow" id="heroNext" aria-label="다음 슬라이드">›</button>
     </div>
-    <div class="hero2 hslide2">
-      <div class="tag"><span class="nd"></span>구독형 · 매달 쌓입니다</div>
-      <h1 class="hero-h"><span class="from">3개월이면,</span><span class="to">AI가 <span class="co cu">당신 회사를 알아봅니다.</span></span></h1>
-      <p class="sub2">언론 보도·자사 블로그·외부 채널을 매달 축적해,<br>여러 출처에서 교차 확인되는 신뢰 정보를 만듭니다.</p>
-      <div class="cta2"><a href="pricing.html" class="btn btn-co">요금·플랜 보기</a><a href="#final" class="btn btn-gh">무료 상담</a></div>
-      <div class="h-trust"><span>AI 가시성 무료 진단</span><i class="dot">·</i><span>카드 등록 없이</span><i class="dot">·</i><span>영업일 1일 내 회신</span></div>
-      <div class="ai-plat"><div class="logos"><span><i style="background:#10A37F"></i>ChatGPT</span><span><i style="background:#4285F4"></i>Gemini</span><span><i style="background:#20B8CD"></i>Perplexity</span><span><i style="background:#D97757"></i>Claude</span><span><i style="background:#03C75A"></i>네이버 AI</span><span><i style="background:#4285F4"></i>구글 AI</span></div></div>
-    </div>
-    <div class="hero2 hslide2">
-      <div class="tag"><span class="nd"></span>전담팀 대행 · 카드 등록 없이</div>
-      <h1 class="hero-h"><span class="from">진단부터 노출 관리까지,</span><span class="to"><span class="co cu">전담팀이 다</span> 해드립니다.</span></h1>
-      <p class="sub2">홈페이지 정비·언론 배포·콘텐츠 발행·월간 리포트까지.<br>우리 회사에 맞는 조합만 골라 시작하세요.</p>
-      <div class="cta2"><a href="services.html" class="btn btn-co">서비스 전체 보기</a><a href="#final" class="btn btn-gh">무료 진단</a></div>
-      <div class="h-trust"><span>AI 가시성 무료 진단</span><i class="dot">·</i><span>카드 등록 없이</span><i class="dot">·</i><span>영업일 1일 내 회신</span></div>
-      <div class="ai-plat"><div class="logos"><span><i style="background:#10A37F"></i>ChatGPT</span><span><i style="background:#4285F4"></i>Gemini</span><span><i style="background:#20B8CD"></i>Perplexity</span><span><i style="background:#D97757"></i>Claude</span><span><i style="background:#03C75A"></i>네이버 AI</span><span><i style="background:#4285F4"></i>구글 AI</span></div></div>
-    </div>
-  </div>
-  <div class="hero-nav">
-    <button class="hn-arrow" id="heroPrev" aria-label="이전 슬라이드">‹</button>
-    <div class="hero-dots" id="heroDots"></div>
-    <button class="hn-arrow" id="heroNext" aria-label="다음 슬라이드">›</button>
-  </div>
   </div>
 </section>
 
