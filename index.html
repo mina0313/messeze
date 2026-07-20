@@ -40,15 +40,23 @@ img{display:block;max-width:100%}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:keep-all}
 .co{color:var(--cobalt)}
-.sec{padding:116px 0}
+.sec{padding:132px 0}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--cobalt);margin-bottom:18px;letter-spacing:.01em}
 .eyebrow::before{content:"";width:18px;height:2px;background:var(--cobalt);border-radius:2px}
 .h2{font-size:clamp(28px,3.8vw,42px)}
 .lead{font-size:17px;color:var(--body);line-height:1.72;margin-top:16px}
-.shead{max-width:640px;margin-bottom:56px}
+.shead{max-width:640px;margin-bottom:64px}
 .shead.center{margin-left:auto;margin-right:auto;text-align:center}
 .shead.center .eyebrow{justify-content:center}
 .shead.center .eyebrow::before{display:none}
+/* 신뢰 지표 밴드 */
+.statband{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:54px 0}
+.statband-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stt{text-align:center;position:relative;padding:0 12px}
+.stt+.stt::before{content:"";position:absolute;left:0;top:12%;height:76%;width:1px;background:var(--line)}
+.stt b{display:block;font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1;background:linear-gradient(135deg,#2B5CFF,#6E93FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stt span{display:block;font-size:13px;color:var(--body);margin-top:11px;font-weight:600;line-height:1.5;word-break:keep-all}
+@media(max-width:720px){.statband{padding:40px 0}.statband-in{grid-template-columns:repeat(2,1fr);gap:34px 12px}.stt:nth-child(odd)::before{display:none}}
 
 /* buttons */
 .btn{font-family:var(--sans);font-weight:700;font-size:15.5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 26px;border:1.5px solid transparent;transition:.18s;letter-spacing:-.01em}
@@ -97,7 +105,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 @media(max-width:900px){.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
 
 /* ============ HERO ============ */
-.hero{position:relative;padding:42px 0 72px;overflow:hidden;background:
+.hero{position:relative;padding:54px 0 90px;overflow:hidden;background:
   radial-gradient(880px 460px at 86% -8%,rgba(43,92,255,.18),transparent 60%),
   radial-gradient(720px 440px at -6% 34%,rgba(11,191,140,.09),transparent 55%),
   linear-gradient(178deg,#E7F0FF 0%,#F2F8FF 44%,#fff 100%)}
@@ -117,7 +125,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero2 .tag{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--sky);border-radius:999px;padding:8px 16px;margin-bottom:24px}
 .hero2 .tag .nd{width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
 .hero-h .from{display:block;font-size:clamp(17px,2.4vw,25px);font-weight:700;color:var(--mut);letter-spacing:-.02em}
-.hero-h .to{display:block;font-size:clamp(34px,5.4vw,60px);font-weight:800;letter-spacing:-.045em;line-height:1.16;margin-top:14px;color:var(--ink);word-break:keep-all}
+.hero-h .to{display:block;font-size:clamp(38px,5.9vw,67px);font-weight:800;letter-spacing:-.045em;line-height:1.14;margin-top:15px;color:var(--ink);word-break:keep-all}
 .hero2 .sub2{font-size:clamp(15.5px,2vw,18px);color:var(--body);margin:28px auto 0;max-width:520px;line-height:1.68}
 .hero2 .cta2{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .hero2 .meta2{margin:34px auto 0;display:flex;justify-content:center;gap:0}
@@ -929,6 +937,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     <img src="assets/logos/winchina.png" alt="" aria-hidden="true">
     <img src="assets/logos/redtrans.png" alt="" aria-hidden="true">
   </div></div>
+</div>
+
+<!-- STATS BAND -->
+<div class="statband">
+  <div class="wrap statband-in">
+    <div class="stt"><b>3개월</b><span>AI가 우리 회사를<br>인식하기 시작</span></div>
+    <div class="stt"><b>6개</b><span>동시 관리하는<br>AI 검색 플랫폼</span></div>
+    <div class="stt"><b>월 40건+</b><span>매달 쌓는 콘텐츠·<br>언론 (기업형)</span></div>
+    <div class="stt"><b>1:1</b><span>전담 매니저가<br>처음부터 끝까지</span></div>
+  </div>
 </div>
 
 <!-- WHY -->
