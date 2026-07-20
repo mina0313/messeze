@@ -1420,5 +1420,89 @@ document.getElementById('diagForm').addEventListener('submit',e=>{
   onScroll();
 })();
 </script>
+
+<!-- ===== messeze 챗 위젯 ===== -->
+<style>
+.mchat{position:fixed;right:22px;bottom:22px;z-index:200;font-family:'Pretendard',system-ui,sans-serif}
+.mchat-fab{position:relative;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(140deg,#3B6BFF,#1E46D9);color:#fff;box-shadow:0 14px 30px rgba(43,92,255,.42);display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
+.mchat-fab:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 38px rgba(43,92,255,.5)}
+.mchat-fab svg{width:27px;height:27px;position:absolute;transition:opacity .2s,transform .2s}
+.mchat-fab .ic-close{opacity:0;transform:rotate(-45deg)}
+.mchat.open .mchat-fab .ic-chat{opacity:0;transform:rotate(45deg)}
+.mchat.open .mchat-fab .ic-close{opacity:1;transform:none}
+.mchat-badge{position:absolute;top:-2px;right:-2px;min-width:19px;height:19px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px;border:2px solid #fff}
+.mchat.open .mchat-badge{display:none}
+.mchat-panel{position:absolute;right:0;bottom:74px;width:360px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 120px);background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(16,31,63,.28);display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);transform-origin:bottom right;transition:opacity .26s,transform .26s,visibility .26s}
+.mchat.open .mchat-panel{opacity:1;visibility:visible;transform:none}
+.mchat-hd{background:linear-gradient(135deg,#3B6BFF,#1E46D9);color:#fff;padding:18px 18px 20px;display:flex;align-items:center;gap:12px}
+.mchat-av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-weight:800;font-size:18px;flex:0 0 auto}
+.mchat-hd b{font-size:16px;display:block;letter-spacing:-.01em}
+.mchat-hd span{font-size:12px;color:#DCE6FF;display:block;margin-top:2px}
+.mchat-x{margin-left:auto;background:none;border:0;color:#fff;font-size:17px;cursor:pointer;opacity:.85;line-height:1;align-self:flex-start}
+.mchat-x:hover{opacity:1}
+.mchat-body{flex:1;overflow-y:auto;padding:18px 15px 8px;background:#F5F8FD;display:flex;flex-direction:column;gap:10px}
+.mmsg{max-width:84%;font-size:13.6px;line-height:1.55;padding:11px 14px;border-radius:15px;word-break:break-word;animation:mpop .3s ease}
+@keyframes mpop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.mbot{align-self:flex-start;background:#fff;color:#0A1930;border:1px solid #EAF0F8;border-bottom-left-radius:5px;box-shadow:0 2px 6px rgba(16,31,63,.05)}
+.mbot b{color:#2B5CFF}
+.muser{align-self:flex-end;background:#2B5CFF;color:#fff;border-bottom-right-radius:5px}
+.mbot a.mlink{display:inline-flex;align-items:center;gap:4px;margin-top:9px;font-weight:800;color:#2B5CFF;font-size:12.8px;text-decoration:none}
+.mchat-chips{padding:9px 14px 4px;display:flex;flex-wrap:wrap;gap:7px;background:#F5F8FD}
+.mchip{font-size:12.5px;font-weight:700;color:#2B5CFF;background:#fff;border:1.5px solid #DCE6F7;border-radius:999px;padding:8px 13px;cursor:pointer;transition:.15s}
+.mchip:hover{background:#EAF1FF;border-color:#2B5CFF}
+.mchat-input{display:flex;align-items:center;gap:8px;padding:11px 14px;border-top:1px solid #EDF1F7;background:#fff}
+.mchat-input input{flex:1;border:1.5px solid #DDE4EE;border-radius:12px;padding:11px 13px;font-family:inherit;font-size:13.5px;color:#0A1930;outline:none}
+.mchat-input input:focus{border-color:#2B5CFF}
+.mchat-input button{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:11px;background:#2B5CFF;color:#fff;cursor:pointer;display:grid;place-items:center;transition:.15s}
+.mchat-input button:hover{background:#1E46D9}
+.mchat-input button svg{width:18px;height:18px}
+.mchat-foot{display:block;text-align:center;font-size:11.5px;color:#8B95A7;padding:2px 0 12px;background:#fff;text-decoration:none;font-weight:700}
+.mchat-foot:hover{color:#2B5CFF}
+@media(max-width:480px){.mchat{right:14px;bottom:14px}.mchat-panel{bottom:70px}}
+</style>
+<div class="mchat" id="mchat">
+  <div class="mchat-panel" id="mchatPanel" role="dialog" aria-label="messeze 상담 채팅">
+    <div class="mchat-hd">
+      <div class="mchat-av">m</div>
+      <div><b>messeze 상담</b><span>보통 1영업일 내 답변드려요</span></div>
+      <button class="mchat-x" id="mchatX" aria-label="닫기">✕</button>
+    </div>
+    <div class="mchat-body" id="mchatBody"></div>
+    <div class="mchat-chips" id="mchatChips"></div>
+    <form class="mchat-input" id="mchatForm">
+      <input type="text" id="mchatText" placeholder="메시지를 입력하세요" autocomplete="off">
+      <button type="submit" aria-label="보내기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+    </form>
+    <a class="mchat-foot" href="index.html#final">담당자에게 직접 문의하기 →</a>
+  </div>
+  <button class="mchat-fab" id="mchatFab" aria-label="문의 채팅 열기">
+    <svg class="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
+    <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    <span class="mchat-badge">1</span>
+  </button>
+</div>
+<script>
+(function(){
+  var root=document.getElementById('mchat'),fab=document.getElementById('mchatFab'),x=document.getElementById('mchatX');
+  var body=document.getElementById('mchatBody'),chipsWrap=document.getElementById('mchatChips');
+  var form=document.getElementById('mchatForm'),input=document.getElementById('mchatText');
+  if(!root)return;
+  var QA=[
+    {q:'가격이 궁금해요',a:'소상공인형 <b>월 60만원</b> · 기업형 <b>월 100만원</b> · 엔터프라이즈는 별도 문의예요. 3가지 질문으로 딱 맞는 플랜을 추천받아 보실 수 있어요.',link:{href:'pricing.html',label:'요금·플랜 보기'}},
+    {q:'어떤 서비스인가요?',a:'AI 가시성 평가 · 홈페이지 정비 · 자사 블로그 · 외부 채널 · 언론 배포를 매달 대신 쌓아 올려 드려요.',link:{href:'services.html',label:'서비스 자세히 보기'}},
+    {q:'AI 노출 진단 받고 싶어요',a:'URL만 넣으면 <b>30초</b> 만에 100점으로 진단해 드려요. 가입 없이 바로 됩니다.',link:{href:'check.html',label:'무료 진단 시작'}},
+    {q:'얼마나 걸리나요?',a:'보통 <b>3개월</b>이면 AI가 회사를 인식하기 시작해요. 정보가 누적되는 특성상 3개월 이상 운영을 권장드려요.',link:null}
+  ];
+  var opened=false;
+  function down(){body.scrollTop=body.scrollHeight;}
+  function bot(html,link){var d=document.createElement('div');d.className='mmsg mbot';d.innerHTML=html+(link?'<a class="mlink" href="'+link.href+'">'+link.label+' →</a>':'');body.appendChild(d);down();}
+  function usr(t){var d=document.createElement('div');d.className='mmsg muser';d.textContent=t;body.appendChild(d);down();}
+  function chips(){chipsWrap.innerHTML='';QA.forEach(function(it){var b=document.createElement('button');b.className='mchip';b.type='button';b.textContent=it.q;b.addEventListener('click',function(){usr(it.q);setTimeout(function(){bot(it.a,it.link);},350);});chipsWrap.appendChild(b);});}
+  function init(){if(opened)return;opened=true;bot('안녕하세요, AI 검색 시대의 기업 PR <b>messeze</b>입니다 👋');setTimeout(function(){bot('궁금한 점을 편하게 물어봐 주세요. 아래 버튼을 누르거나 메시지를 남기시면 담당자가 확인 후 연락드려요.');},420);chips();}
+  fab.addEventListener('click',function(){var on=root.classList.toggle('open');if(on){init();setTimeout(function(){input.focus();},300);}});
+  x.addEventListener('click',function(){root.classList.remove('open');});
+  form.addEventListener('submit',function(e){e.preventDefault();var v=input.value.trim();if(!v)return;usr(v);input.value='';setTimeout(function(){bot('메시지 감사합니다! 담당자가 확인 후 <b>영업일 1일 내</b>로 연락드릴게요 🙏 급하시면 아래 버튼으로 상담을 남겨주세요.',{href:'index.html#final',label:'무료 상담 신청'});},420);});
+})();
+</script>
 </body>
 </html>
