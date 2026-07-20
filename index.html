@@ -106,9 +106,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 
 /* ============ HERO ============ */
 .hero{position:relative;padding:54px 0 90px;overflow:hidden;background:
-  radial-gradient(880px 460px at 86% -8%,rgba(43,92,255,.18),transparent 60%),
-  radial-gradient(720px 440px at -6% 34%,rgba(11,191,140,.09),transparent 55%),
-  linear-gradient(178deg,#E7F0FF 0%,#F2F8FF 44%,#fff 100%)}
+  radial-gradient(720px 360px at 82% -12%,rgba(43,92,255,.07),transparent 62%),
+  linear-gradient(180deg,#F6FAFF 0%,#FBFDFF 42%,#fff 100%)}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(16,31,63,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(640px 480px at 78% 30%,#000,transparent 75%);pointer-events:none}
 /* hero v2: 전환 타이포 중심 */
 .hero2{max-width:900px;margin:0 auto;text-align:center;position:relative;padding-top:26px}
@@ -220,9 +219,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero{z-index:0}
 .hero-aura{position:absolute;inset:-12% -12% 0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(430px 330px at 24% 16%,rgba(43,92,255,.16),transparent 62%),
-    radial-gradient(460px 340px at 80% 6%,rgba(11,191,140,.10),transparent 60%);
-  filter:blur(8px);animation:auraDrift 22s ease-in-out infinite alternate}
+    radial-gradient(420px 320px at 22% 12%,rgba(43,92,255,.08),transparent 64%),
+    radial-gradient(440px 330px at 82% 4%,rgba(11,191,140,.05),transparent 62%);
+  filter:blur(10px);animation:auraDrift 22s ease-in-out infinite alternate}
 @keyframes auraDrift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-3.5%,2.5%,0) scale(1.09)}}
 .hero .wrap{position:relative;z-index:1}
 /* staggered entrance */
@@ -263,16 +262,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 /* next-t 참고 — 타깃 AI 플랫폼 스트립 */
 .ai-plat{margin:30px auto 0;text-align:center}
 .ai-plat .lbl{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.01em}
-.ai-plat .logos{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
-.ai-plat .logos span{font-size:13px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--sh-sm);display:inline-flex;align-items:center;gap:7px;transition:.16s}
-.ai-plat .logos span:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.ai-plat .logos{margin-top:14px;display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap;row-gap:6px}
+.ai-plat .logos span{font-size:13.5px;font-weight:700;color:var(--navy);padding:4px 0;display:inline-flex;align-items:center;gap:7px;transition:color .16s}
+.ai-plat .logos span:not(:last-child){margin-right:26px;position:relative}
+.ai-plat .logos span:not(:last-child)::after{content:"·";position:absolute;right:-16px;color:var(--line-2);font-weight:800}
+.ai-plat .logos span:hover{color:var(--cobalt)}
 .ai-plat .logos span i{width:7px;height:7px;border-radius:50%;display:inline-block;flex:0 0 auto}
 .ai-plat .logos span.brk{flex-basis:100%;height:0;padding:0;margin:0;border:0;background:none;box-shadow:none}
 /* subtle vertical light rays */
-.hero-rays{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:repeating-linear-gradient(90deg,rgba(43,92,255,.045) 0 1px,transparent 1px 86px);
-  mask-image:radial-gradient(720px 460px at 50% 32%,#000,transparent 78%);
-  -webkit-mask-image:radial-gradient(720px 460px at 50% 32%,#000,transparent 78%)}
+.hero-rays{display:none}
 /* floating source chips — AI가 읽는 출처들이 히어로 주변을 떠다님 */
 .hero-floats{position:absolute;inset:0;z-index:1;pointer-events:none;display:none}
 @media(min-width:1240px){.hero-floats{display:block}}
