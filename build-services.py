@@ -267,6 +267,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
 .cta-band .btn{position:relative;background:var(--cobalt);color:#fff}
 .cta-band .btn:hover{background:#4270FF}
+.reltool{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:26px 30px;margin:40px auto 0;box-shadow:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);transition:.2s;flex-wrap:wrap;text-align:left}
+.reltool:hover{border-color:#C4D4FF;box-shadow:0 12px 34px rgba(16,31,63,.1);transform:translateY(-3px)}
+.reltool .rt-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:var(--cobalt);margin-bottom:9px}
+.reltool .rt-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
+.reltool h3{font-size:20px;letter-spacing:-.02em}
+.reltool p{font-size:14px;color:var(--body);margin-top:7px;line-height:1.55;max-width:560px}
+.reltool .rt-go{flex:0 0 auto;font-weight:800;font-size:14.5px;color:var(--cobalt);background:var(--sky);border-radius:12px;padding:12px 20px;white-space:nowrap}
 .foot{background:#070D1C;color:#7C879D;padding:52px 0 38px}
 .foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
 .foot .brand{color:#fff;margin-bottom:14px}
@@ -315,8 +322,11 @@ def mega():
 <a href="channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
-<a href="{p}check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="{p}pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="{p}check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="{p}tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
+<a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="{p}tools.html#blog"><b>블로그 운영 진단</b><span>AI 신뢰 구조인지 진단</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
@@ -329,7 +339,7 @@ def mega():
 </div></div>"""
 
 MEGA_JS = """<script>
-(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>"""
 
 def nav():
@@ -372,6 +382,15 @@ document.querySelectorAll('.qa button').forEach(btn=>{
 # ---------------- 서비스 데이터 ----------------
 S = []
 def s(**kw): S.append(kw)
+
+# 서비스별 관련 무료 도구 (slug -> (링크, 이름, 한줄설명))
+RELTOOL = {
+  "visibility":     ("../check.html",         "AI 가시성 진단",   "URL만 넣으면 우리 회사가 AI 답변에 얼마나 노출되는지 100점으로 확인합니다."),
+  "website-renewal":("../tools.html#home",    "홈페이지 건강검진", "6가지 항목 체크로 우리 홈페이지가 AI가 읽을 준비가 됐는지 진단합니다."),
+  "website-build":  ("../tools.html#seo",     "SEO 점수 확인",    "검색 기본기 6가지를 자가 점검해 SEO 준비도를 확인합니다."),
+  "own-blog":       ("../tools.html#blog",    "블로그 운영 진단", "4가지 질문으로 우리 블로그가 AI에 신뢰받는 구조인지 진단합니다."),
+  "press":          ("../tools.html#pr",      "PR 플랜 추천",     "상황·목표·예산 3가지 질문으로 우리에게 맞는 PR 플랜을 추천합니다."),
+}
 
 s(slug="visibility", no="01", title="AI 가시성 평가", en="AI Visibility Assessment",
   one="AI에게 우리 회사는 '존재하는 회사'인지, '모르는 이름'인지 — 모든 실행은 이 확인에서 시작합니다.",
@@ -585,6 +604,8 @@ def build_page(x):
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
     delivs = "".join(f"<span>{d}</span>" for d in x["deliv"])
     faqs = "\n".join(f"""<div class="qa"><button>{q}<span class="ico">+</span></button><div class="ans"><p>{a}</p></div></div>""" for q,a in x["faq"])
+    _rt = RELTOOL.get(x["slug"])
+    reltool = (f"""<a class="reltool rv" href="{_rt[0]}"><div><span class="rt-tag">관련 무료 도구</span><h3>{_rt[1]}</h3><p>{_rt[2]}</p></div><span class="rt-go">바로 써보기 →</span></a>""" if _rt else "")
     ld = json.dumps({
       "@context":"https://schema.org","@graph":[
         {"@type":"Service","name":x["title"],"alternateName":x["en"],"description":x["one"],
@@ -617,6 +638,7 @@ def build_page(x):
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">무엇을 하나요</span><h2 class="h2">이 서비스에 포함된 것</h2><p class="lead">{x['intro']}</p></div>
 <div class="dt-grid">{items}</div>
+{reltool}
 </div></section>
 
 {x.get('tool','')}<section class="sec proc"><div class="wrap">

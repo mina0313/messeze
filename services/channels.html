@@ -267,6 +267,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
 .cta-band .btn{position:relative;background:var(--cobalt);color:#fff}
 .cta-band .btn:hover{background:#4270FF}
+.reltool{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:26px 30px;margin:40px auto 0;box-shadow:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);transition:.2s;flex-wrap:wrap;text-align:left}
+.reltool:hover{border-color:#C4D4FF;box-shadow:0 12px 34px rgba(16,31,63,.1);transform:translateY(-3px)}
+.reltool .rt-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:var(--cobalt);margin-bottom:9px}
+.reltool .rt-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cobalt)}
+.reltool h3{font-size:20px;letter-spacing:-.02em}
+.reltool p{font-size:14px;color:var(--body);margin-top:7px;line-height:1.55;max-width:560px}
+.reltool .rt-go{flex:0 0 auto;font-weight:800;font-size:14.5px;color:var(--cobalt);background:var(--sky);border-radius:12px;padding:12px 20px;white-space:nowrap}
 .foot{background:#070D1C;color:#7C879D;padding:52px 0 38px}
 .foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
 .foot .brand{color:#fff;margin-bottom:14px}
@@ -315,8 +322,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 <a href="channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
-<a href="../check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="../pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="../check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="../tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
+<a href="../tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="../tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="../tools.html#blog"><b>블로그 운영 진단</b><span>AI 신뢰 구조인지 진단</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="../pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
 <a href="../pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
@@ -329,7 +339,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 </div></div>
 </header>
 <script>
-(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>
 <div class="wrap crumb"><a href="../services.html">서비스</a><span>›</span><span class="cat">SERVICE 05</span></div>
 <section class="phero"><div class="wrap phero-in">
@@ -360,6 +370,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 <div class="dt rv"><span class="c">POINT 04</span><b>원본-변주 체계</b><p>자사 블로그 원본을 채널별로 다시 씁니다. 복붙 중복이 아니라 서로를 보강하는 교차 출처가 되게.</p></div>
 <div class="dt rv"><span class="c">POINT 05</span><b>채널 개설·세팅 대행</b><p>채널이 없다면 개설부터 프로필·카테고리 세팅까지 대행합니다.</p></div>
 <div class="dt rv"><span class="c">POINT 06</span><b>채널별 유입 리포트</b><p>채널별 노출·유입을 월간 리포트로 비교해 잘 되는 채널에 힘을 싣습니다.</p></div></div>
+
 </div></section>
 
 <section class="sec proc"><div class="wrap">

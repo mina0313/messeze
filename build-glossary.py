@@ -76,8 +76,11 @@ def mega(p):
 <a href="{p}services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="{p}services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
-<a href="{p}check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="{p}pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="{p}check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="{p}tools.html#home"><b>홈페이지 건강검진</b><span>6가지 체크로 점수 확인</span></a>
+<a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<a href="{p}tools.html#blog"><b>블로그 운영 진단</b><span>AI 신뢰 구조인지 진단</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
@@ -90,7 +93,7 @@ def mega(p):
 </div></div>"""
 
 MEGA_JS = """<script>
-(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>"""
 
 LOGO = """<svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg>"""
@@ -670,6 +673,130 @@ t("search-console","basic","구글 서치콘솔","Google Search Console",
 "수치를 보는 것 자체보다, 노출은 되는데 클릭이 없는 페이지나 색인에서 누락된 페이지 같은 문제 신호를 찾아 개선하는 데 씁니다."],
 "messeze 운영은 서치콘솔 데이터로 색인·노출 상태를 정기 점검합니다.",
 ["crawling-indexing","sitemap","organic-traffic"])
+
+# ---------------- GEO 심화 용어 (3차 배치) ----------------
+t("self-referential-accumulation","ai","자기참조 누적","Self-Referential Accumulation",
+"한 번 AI 답변에 인용된 콘텐츠가 다시 참조되며 권위가 스스로 쌓여가는 경향.",
+["AI와 검색은 이미 여러 곳에서 인용되는 출처를 더 신뢰합니다. 그래서 초기에 한 번 인용의 물꼬가 트이면, 그 콘텐츠가 다른 답변·글에서 또 인용되고 그 인용이 다시 신뢰 신호가 되는 선순환이 생깁니다.",
+"이는 초기 선점이 왜 중요한지를 설명합니다. 남보다 먼저 인용 가능한 콘텐츠를 쌓아두면 시간이 지날수록 격차가 벌어집니다."],
+"messeze가 '지금 시작해 매달 축적'을 강조하는 이유가 바로 이 누적 효과입니다.",
+["citation","share-of-voice","geo"])
+
+t("entity-alignment","trust","엔티티 정합","Entity Alignment",
+"회사·저자·제품 정보가 모든 채널에서 똑같이 연결돼 하나의 실체로 인식되는 상태.",
+["AI는 흩어진 정보를 모아 '이것들이 같은 회사'라고 판단합니다. 상호명·대표자·주소·업종 표기가 채널마다 다르면 같은 기업인지 확신하지 못해 신뢰가 깎입니다.",
+"엔티티 정합은 개체해소가 잘 되도록 표기를 미리 통일하는 작업입니다. sameAs·구조화 데이터로 프로필을 서로 연결하면 정합이 강해집니다."],
+"messeze는 모든 채널의 기업 정보 표기를 통일해 AI가 흔들림 없이 같은 회사로 인식하게 합니다.",
+["entity-resolution","sameas","knowledge-graph"])
+
+t("signal-to-noise","ai","신호 대 잡음","Signal-to-Noise Ratio",
+"페이지에서 실제 본문(신호)과 메뉴·광고·반복 영역(잡음)의 비율.",
+["AI 크롤러가 페이지를 읽을 때 핵심 본문이 메뉴·배너·푸터 같은 반복 요소에 파묻혀 있으면 무엇이 진짜 내용인지 파악하기 어렵습니다. 신호 대 잡음 비가 높을수록(본문이 또렷할수록) 인용될 확률이 올라갑니다."],
+"messeze는 홈페이지 정비 때 본문이 도드라지도록 구조를 다듬어 AI가 핵심을 놓치지 않게 합니다.",
+["boilerplate","self-contained","information-gain"])
+
+t("lazy-loading","ai","지연 로딩","Lazy Loading",
+"필요 없는 자원을 처음 HTML에서 빼두고 화면에 필요할 때 불러오는 기법.",
+["지연 로딩은 사람 방문자에겐 속도를 높여주지만, 자바스크립트를 실행하지 않는 AI 크롤러에겐 정작 중요한 콘텐츠가 처음 HTML에 없어 '빈 페이지'로 보일 수 있습니다.",
+"그래서 핵심 텍스트·정보는 지연 로딩에 맡기지 말고 초기 HTML에 담아야 AI가 읽습니다."],
+"messeze는 AI가 읽어야 할 핵심 정보를 초기 HTML에 노출되게 정비합니다.",
+["ai-crawler","page-speed","structured-data"])
+
+t("memory-retrieval-synthesis","ai","기억·검색·합성","Memory · Retrieval · Synthesis",
+"AI가 답을 만드는 세 단계 — 학습된 기억, 외부 문서 검색, 그리고 종합 생성.",
+["AI는 먼저 학습으로 익힌 지식(기억)을 떠올리고, 부족하면 외부 문서를 검색한 뒤, 이 둘을 엮어 하나의 답을 만듭니다(합성). 우리 정보가 이 세 단계 어디에도 없으면 답에 등장하지 못합니다."],
+"messeze는 학습·검색·합성 모든 경로에 우리 기업 정보가 걸리도록 콘텐츠와 출처를 쌓습니다.",
+["rag","parametric-knowledge","live-web-search"])
+
+t("parametric-knowledge","ai","파라메트릭 지식","Parametric Knowledge",
+"모델의 가중치 속에 학습으로 새겨진 지식. 검색 없이도 떠올리는 '기억'.",
+["파라메트릭 지식은 학습 시점까지의 정보라, 지식 컷오프 이후의 사실은 담기지 않습니다. 우리 회사가 학습 데이터에 충분히 등장했다면 검색 없이도 AI가 우리를 언급할 수 있습니다."],
+"널리 인용되는 콘텐츠를 꾸준히 쌓아두면 다음 모델 학습에 우리 정보가 파라메트릭 지식으로 새겨질 확률이 올라갑니다.",
+["knowledge-cutoff","memory-retrieval-synthesis","rag"])
+
+t("primary-vs-derivative","trust","1차 소스 vs 파생 자료","Primary Source vs Derivative",
+"직접 만든 원본 자료(1차)와 그것을 번역·요약·재가공한 자료(파생)의 구분.",
+["AI와 검색은 원본 출처를 더 신뢰하고 우선 인용합니다. 보도자료 원문, 자사 공식 페이지, 직접 작성한 칼럼은 1차 소스이고, 이를 짜깁기한 글은 파생 자료입니다."],
+"messeze는 기업이 직접 발신하는 1차 소스(홈페이지·보도자료·자사 블로그)를 만들어 인용 우선순위를 높입니다.",
+["citation","press-release","eeat"])
+
+t("structured-error","ai","구조화된 오류","Structured / Authoritative Error",
+"출처·구조가 붙은 채 퍼지는 오류. 그럴듯해서 AI가 사실로 받아들이기 쉽다.",
+["잘못된 정보라도 표·인용·권위 있는 형식을 갖추면 AI가 신뢰하고 재인용해 오류가 굳어질 수 있습니다. 우리 회사에 대한 잘못된 정보가 이렇게 퍼지면 정정이 어렵습니다."],
+"messeze는 정확한 1차 정보를 선제적으로 축적해, 잘못된 정보가 자리 잡기 전에 올바른 사실이 기본값이 되게 합니다.",
+["hallucination","grounding","corpus-consensus"])
+
+t("graphrag","ai","GraphRAG","GraphRAG",
+"지식 그래프를 RAG에 결합해, 문서뿐 아니라 실체 간 관계까지 근거로 답을 만드는 방식.",
+["일반 RAG가 비슷한 문장을 찾아온다면, GraphRAG는 '이 회사—이 제품—이 인증'처럼 연결된 관계망을 함께 활용해 더 정확하고 맥락 있는 답을 냅니다."],
+"회사·제품·인증·수상이 그래프로 잘 연결돼 있으면 GraphRAG 기반 AI가 우리를 더 풍부하게 설명합니다.",
+["rag","knowledge-graph","entity"])
+
+t("bitemporal","ai","시간성","Bitemporal Modeling",
+"사실이 참이던 기간과 시스템이 그것을 알게 된 시점을 구분해 다루는 시간 모델링.",
+["'2024년에 인증을 받았다'는 사실과 'AI가 그것을 2025년에 알았다'는 시점은 다릅니다. 시간성을 구분하지 못하면 AI가 옛 정보를 현재로 말하거나 최신 변화를 놓칩니다."],
+"messeze는 갱신 시점을 명확히 남겨, AI가 우리 회사의 최신 상태를 정확히 반영하게 합니다.",
+["freshness","knowledge-cutoff","grounding"])
+
+t("corpus-consensus","ai","코퍼스 합의","Corpus Consensus",
+"여러 독립된 출처가 같은 사실을 일관되게 말하는 상태. AI가 사실로 확신하는 근거.",
+["AI는 한 곳에만 있는 정보보다 여러 곳에서 교차 확인되는 정보를 신뢰합니다. 언론·홈페이지·블로그·외부 채널이 같은 사실을 말할 때 그 사실은 '합의된 진실'로 취급됩니다."],
+"messeze는 여러 채널에 일관된 기업 정보를 배포해 코퍼스 합의를 만들고, AI가 우리를 확신하게 합니다.",
+["citation-vs-mention","entity-alignment","eeat"])
+
+t("answer-orchestration","ai","응답 정책·랭킹","Answer Orchestration",
+"검색된 근거가 그대로 답이 되는 게 아니라, 정책·랭킹·필터를 거쳐 최종 출력이 정해지는 단계.",
+["같은 자료를 찾아와도 AI 서비스마다 안전 정책, 출처 랭킹, 노출 필터가 달라 최종 답과 인용 출처가 달라집니다. 검색에 걸리는 것과 실제로 인용되는 것은 별개입니다."],
+"messeze는 여러 AI의 응답을 관측해, 실제로 인용까지 이어지는 출처 조건에 맞춰 콘텐츠를 다듬습니다.",
+["ranking-signals","share-of-voice","geo-signal"])
+
+t("whitespace","onpage","화이트스페이스","Whitespace",
+"아직 아무도 제대로 답하지 않은 주제의 공백. 선점하면 그 질문의 기본 답이 된다.",
+["경쟁이 몰린 키워드보다, 고객이 궁금해하지만 좋은 답이 없는 틈새 질문을 먼저 채우면 AI가 그 주제에서 우리를 유일한 답으로 인용하기 쉽습니다."],
+"messeze는 업종별로 답이 비어 있는 질문을 찾아 선제적으로 채워, 경쟁이 적은 곳에서 인용을 확보합니다.",
+["information-gain","self-contained","query-fanout"])
+
+t("observation-vs-inference","ai","관측 vs 추정","Observation vs Inference",
+"실제로 측정 가능한 것(관측)과 추측만 되는 것(추정)의 경계.",
+["'ChatGPT 답변에 우리 회사가 나왔다'는 관측이지만, '그래서 매출이 올랐다'는 추정입니다. GEO 성과는 관측 가능한 신호를 근거로 삼아야 과장 없이 정직합니다."],
+"messeze 리포트는 관측된 AI 노출·인용만 성과로 보고하고, 추정은 추정이라고 구분해 전합니다.",
+["geo-signal","share-of-voice","citation-vs-mention"])
+
+t("closed-loop","ai","폐쇄루프 되먹임","Closed-Loop Feedback",
+"관측 → 역산 → 작성 → 재관측으로 이어지는 닫힌 개선 순환.",
+["AI 응답을 관측하고, 왜 그렇게 답했는지 역산하고, 부족한 부분을 콘텐츠로 채운 뒤, 다시 관측해 효과를 확인하는 순환입니다. 한 번의 작업이 아니라 매달 도는 루프입니다."],
+"messeze의 월간 운영은 이 폐쇄루프 그대로 — 관측·개선·재관측을 반복해 인용을 늘립니다.",
+["quality-reverse-eng","geo-signal","observation-vs-inference"])
+
+t("temperature-sampling","ai","Temperature·샘플링","Temperature · Sampling",
+"AI가 다음 단어를 고를 때의 무작위성을 조절하는 값. 같은 질문에도 답이 조금씩 달라지는 이유.",
+["Temperature가 높으면 답이 다양해지고 낮으면 일관됩니다. 그래서 같은 질문을 여러 번 물어야 우리 브랜드가 얼마나 안정적으로 인용되는지 알 수 있습니다."],
+"messeze는 답의 무작위성을 감안해 여러 번·여러 엔진으로 관측하여 인용 안정성을 측정합니다.",
+["multi-ai-cross-analysis","observation-vs-inference","hallucination"])
+
+t("geo-signal","ai","GEO Signal","GEO Signal",
+"AI 응답에서 실제로 관측 가능한 신호(등장·인용·출처 링크)만 모아 성과의 근거로 삼는 것.",
+["AI 내부 알고리즘은 볼 수 없지만, 응답에 우리가 등장했는지·인용됐는지·경쟁사 대비 얼마나 나오는지는 관측할 수 있습니다. 이 관측값이 GEO의 정직한 성과 지표입니다."],
+"messeze는 GEO Signal을 정기 수집해, 짐작이 아닌 관측된 데이터로 성과를 보고합니다.",
+["share-of-voice","observation-vs-inference","closed-loop"])
+
+t("quality-reverse-eng","ai","품질 역산","Quality Reverse-Engineering",
+"이미 AI에 인용되는 콘텐츠를 뜯어보고, 인용되는 기준을 거꾸로 알아내는 작업.",
+["지금 AI가 인용하는 글의 구조·문장·출처 형태를 분석하면, 어떤 콘텐츠가 선택되는지 패턴이 보입니다. 그 기준에 맞춰 우리 콘텐츠를 설계합니다."],
+"messeze는 인용되는 콘텐츠를 역산해, 검증된 기준에 맞춰 우리 페이지를 만듭니다.",
+["closed-loop","liftable-claim","answer-first"])
+
+t("lab-style-geo","ai","실험실형 GEO","Lab-style GEO",
+"통제된 프롬프트 실험을 반복해 AI가 무엇을 인용하는지 역설계하는 방식.",
+["같은 조건에서 질문을 바꿔가며 AI 반응을 실험실처럼 관찰하면, 어떤 요인이 인용을 좌우하는지 근거 있게 파악할 수 있습니다. 감이 아니라 실험으로 GEO를 다룹니다."],
+"messeze는 업종별 질문을 실험적으로 관측해, 추측이 아닌 데이터로 최적화 방향을 잡습니다.",
+["quality-reverse-eng","multi-ai-cross-analysis","geo-signal"])
+
+t("multi-ai-cross-analysis","ai","다중 AI 교차분석","Multi-AI Cross-Analysis",
+"ChatGPT·Gemini·Perplexity·Claude 등 여러 AI의 답을 동시에 비교 분석하는 방식.",
+["엔진마다 학습 데이터와 정책이 달라 인용하는 출처가 다릅니다. 여러 AI를 교차로 보면 우리가 어디서 강하고 어디서 빠지는지, 어떤 채널을 보강해야 하는지 드러납니다."],
+"messeze는 주요 AI를 함께 관측해, 특정 엔진에 치우치지 않는 균형 잡힌 노출을 만듭니다.",
+["share-of-voice","geo-signal","temperature-sampling"])
 
 CAT_BY_KEY = {c[0]: c for c in CATS}
 
