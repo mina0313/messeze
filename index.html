@@ -164,6 +164,23 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .nx-trust{margin-top:24px;font-size:13.5px;font-weight:600;color:#7E8CB0;letter-spacing:-.01em}
 .nx-plat{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;color:#8895B6;font-size:14px;font-weight:700}
 .nx-plat i{width:4px;height:4px;border-radius:50%;background:#3A4668}
+/* 히어로 임팩트 모션 */
+.nx-solo{position:relative}
+.nx-solo::before{content:"";position:absolute;top:6%;left:50%;width:min(560px,86%);height:290px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(43,92,255,.4),transparent 72%);filter:blur(26px);z-index:0;pointer-events:none;animation:heroGlow 4.2s ease-in-out infinite}
+.nx-solo>*{position:relative;z-index:1;opacity:0;animation:heroRise .72s cubic-bezier(.2,.75,.25,1) forwards}
+.nx-solo .nx-badge{animation-delay:.05s}
+.nx-solo .nx-h{animation-delay:.16s}
+.nx-solo .nx-sub2{animation-delay:.32s}
+.nx-solo .nx-cta{animation-delay:.46s}
+.nx-solo .nx-trust{animation-delay:.56s}
+.nx-solo .nx-plat{animation-delay:.64s}
+.nx-solo .nx-btn.primary{animation:btnPulse 2.6s ease-in-out 1.3s infinite}
+.nx-solo .nx-h .ac{background:linear-gradient(92deg,#4C7BFF,#A6C3FF,#4C7BFF);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:acShine 3.6s linear infinite}
+@keyframes heroRise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes heroGlow{0%,100%{opacity:.45}50%{opacity:.9}}
+@keyframes acShine{to{background-position:220% center}}
+@keyframes btnPulse{0%,100%{box-shadow:0 12px 30px rgba(43,92,255,.45)}50%{box-shadow:0 16px 44px rgba(43,92,255,.75)}}
+@media(prefers-reduced-motion:reduce){.nx-solo>*{opacity:1;animation:none}.nx-solo::before,.nx-solo .nx-h .ac,.nx-solo .nx-btn.primary{animation:none}}
 .nx-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 15px;margin-top:32px;font-size:15px;font-weight:700;color:#C0CBE6}
 .nx-flow i{color:#54618A;font-style:normal;font-size:13px}
 .nx-flow b{color:#fff;font-weight:800}
@@ -949,8 +966,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <section class="hero nx">
   <div class="wrap nx-wrap nx-solo">
     <div class="nx-badge"><span class="bolt">⚡</span> AI 검색 시대의 기업 홍보 · 전담 대행</div>
-    <h1 class="nx-h">사람이 보는 홍보에서,<br><span class="ac">AI가 읽는 홍보로</span></h1>
-    <p class="nx-sub2">보도자료를 뿌려도, 블로그를 써도 이제 사람들은 잘 보지 않습니다.<br>고객은 AI에게 묻고 — <b>AI가 읽는 기업 정보를 전담팀이 매달 대신 쌓아</b>, 검색하면 우리 회사가 노출되게 만듭니다.</p>
+    <h1 class="nx-h">사람이 보는 홍보는 끝났습니다.<br><span class="ac">이제 AI가 읽는 홍보입니다.</span></h1>
+    <p class="nx-sub2">고객은 이제 AI에게 묻고, AI는 <b>읽을 수 있는 기업만</b> 추천합니다.<br>보도자료·블로그로는 닿지 않습니다 — 전담팀이 <b>AI가 읽는 정보를 대신 쌓아, 검색에 노출</b>시킵니다.</p>
     <div class="nx-cta"><a class="nx-btn primary" href="#final">우리 회사 AI 노출 무료 진단</a><a class="nx-btn ghost" href="services.html">서비스 살펴보기</a></div>
     <div class="nx-trust">카드 등록 없이 · 영업일 1일 내 회신 · 중소기업 환영</div>
     <div class="nx-plat"><span>ChatGPT</span><i></i><span>Gemini</span><i></i><span>Perplexity</span><i></i><span>Claude</span><i></i><span>네이버 AI</span><i></i><span>구글 AI</span></div>
