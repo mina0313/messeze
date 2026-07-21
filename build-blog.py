@@ -89,7 +89,7 @@ def mega(p):
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
 <div class="mega-col"><h5>리소스</h5>
 <a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
-<a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 35개</span></a></div>
+<a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 102개</span></a></div>
 </div></div>"""
 
 MEGA_JS = """<script>

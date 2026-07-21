@@ -19,7 +19,7 @@ message-landing/
 │
 ├── build-services.py   → services/ 6개 서비스 상세 페이지 생성
 ├── build-blog.py       → blog/ 목록 + 글 7개 생성
-├── build-glossary.py   → glossary/ 목록 + 용어 35개 생성
+├── build-glossary.py   → glossary/ 목록 + 용어 102개 생성
 │
 ├── services/           ⚠️ 생성물 — 직접 수정 금지
 ├── blog/               ⚠️ 생성물 — 직접 수정 금지

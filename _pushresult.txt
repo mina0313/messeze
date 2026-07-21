@@ -1,0 +1,9 @@
+﻿git : To https://github.com/mina0313/messeze.git
+At line:6 char:1
++ git push origin master 2>&1 | Out-File "C:\Users\mycom\Desktop\messez ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (To https://gith...313/messeze.git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   f5f319f..22bed22  master -> master
+BUILD+PUSH DONE
