@@ -155,6 +155,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .nx-sub{font-size:clamp(15px,1.9vw,19px);color:#A7B4D4;font-weight:600;margin-top:22px;letter-spacing:-.01em}
 .nx-sub b{color:#fff;font-weight:800}
 .nx-sub .g{color:#5B8CFF;font-weight:800}
+/* 단일 히어로 */
+.nx-solo{text-align:center;padding:76px 0 68px}
+.nx-solo .nx-h{margin-top:8px}
+.nx-sub2{font-size:clamp(16px,1.9vw,19px);color:#AEBBD9;font-weight:500;line-height:1.66;margin:26px auto 0;max-width:640px;letter-spacing:-.01em}
+.nx-sub2 b{color:#fff;font-weight:700}
+.nx-solo .nx-cta{margin-top:38px}
+.nx-trust{margin-top:24px;font-size:13.5px;font-weight:600;color:#7E8CB0;letter-spacing:-.01em}
+.nx-plat{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;color:#8895B6;font-size:14px;font-weight:700}
+.nx-plat i{width:4px;height:4px;border-radius:50%;background:#3A4668}
 .nx-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 15px;margin-top:32px;font-size:15px;font-weight:700;color:#C0CBE6}
 .nx-flow i{color:#54618A;font-style:normal;font-size:13px}
 .nx-flow b{color:#fff;font-weight:800}
@@ -913,48 +922,15 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 (function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>
 
-<!-- HERO (next-t 스타일 다크) -->
+<!-- HERO (단일 · 핵심 메시지 중심) -->
 <section class="hero nx">
-  <div class="wrap nx-wrap">
-    <form class="nx-search" onsubmit="location.href='check.html';return false;">
-      <input type="text" placeholder="우리 회사 AI 가시성 진단 (URL 입력)" aria-label="URL 입력">
-      <button type="submit" aria-label="AI 가시성 진단하기"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.65" y2="16.65"/></svg></button>
-    </form>
-    <div class="hero-slides" id="heroSlides">
-      <div class="hero2 hslide2 on">
-        <div class="nx-badge"><span class="bolt">⚡</span> SOLUTION</div>
-        <h1 class="nx-h">정보 축적 <span class="arw">→</span> AI 추천 <span class="ac">3개월</span></h1>
-        <p class="nx-sub">구독형 <span class="g">AI 가시성 관리</span> 플랫폼</p>
-        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
-        <div class="nx-cta"><a class="nx-btn primary" href="#final">무료 진단 신청</a><a class="nx-btn ghost" href="services.html">🚀 서비스 보기</a></div>
-      </div>
-      <div class="hero2 hslide2">
-        <div class="nx-badge"><span class="bolt">⚡</span> GEO · AI 검색</div>
-        <h1 class="nx-h">검색의 시대 끝 <span class="arw">→</span> <span class="ac">AI에게 묻는 시대</span></h1>
-        <p class="nx-sub">고객은 이제 <span class="g">AI에게</span> 물어봅니다</p>
-        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
-        <div class="nx-cta"><a class="nx-btn primary" href="check.html">AI 가시성 무료 진단</a><a class="nx-btn ghost" href="#why">작동 원리</a></div>
-      </div>
-      <div class="hero2 hslide2">
-        <div class="nx-badge"><span class="bolt">⚡</span> 구독형 · 매달 축적</div>
-        <h1 class="nx-h">사람만 보는 홍보 <span class="arw">→</span> <span class="ac">AI가 읽는 홍보</span></h1>
-        <p class="nx-sub">일회성 노출이 아닌 <span class="g">기업 정보 자산</span></p>
-        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
-        <div class="nx-cta"><a class="nx-btn primary" href="pricing.html">요금·플랜 보기</a><a class="nx-btn ghost" href="#final">무료 상담</a></div>
-      </div>
-      <div class="hero2 hslide2">
-        <div class="nx-badge"><span class="bolt">⚡</span> 전담팀 대행</div>
-        <h1 class="nx-h">진단부터 관리까지 <span class="arw">→</span> <span class="ac">전담팀이 다</span></h1>
-        <p class="nx-sub">홈페이지·언론·콘텐츠·리포트 <span class="g">한 번에</span></p>
-        <div class="nx-flow"><span>질문 설계</span><i>→</i><span>AI 진단</span><i>→</i><span>구조 정비</span><i>→</i><span>콘텐츠 축적</span><i>→</i><b>AI 추천</b></div>
-        <div class="nx-cta"><a class="nx-btn primary" href="services.html">서비스 전체 보기</a><a class="nx-btn ghost" href="#final">무료 진단</a></div>
-      </div>
-    </div>
-    <div class="hero-nav">
-      <button class="hn-arrow" id="heroPrev" aria-label="이전 슬라이드">‹</button>
-      <div class="hero-dots" id="heroDots"></div>
-      <button class="hn-arrow" id="heroNext" aria-label="다음 슬라이드">›</button>
-    </div>
+  <div class="wrap nx-wrap nx-solo">
+    <div class="nx-badge"><span class="bolt">⚡</span> 구독형 AI 가시성 관리 · 전담팀 대행</div>
+    <h1 class="nx-h">AI가 추천하는 기업,<br><span class="ac">messeze가 대신 만듭니다</span></h1>
+    <p class="nx-sub2">고객은 이제 검색이 아니라 AI에게 묻습니다.<br><b>AI가 읽는 기업 정보를 전담팀이 매달 대신 쌓아</b> — 검색량 적은 중소기업도 AI 답변에 등장하게 만듭니다.</p>
+    <div class="nx-cta"><a class="nx-btn primary" href="#final">우리 회사 AI 노출 무료 진단</a><a class="nx-btn ghost" href="services.html">서비스 살펴보기</a></div>
+    <div class="nx-trust">카드 등록 없이 · 영업일 1일 내 회신 · 중소기업 환영</div>
+    <div class="nx-plat"><span>ChatGPT</span><i></i><span>Gemini</span><i></i><span>Perplexity</span><i></i><span>Claude</span><i></i><span>네이버 AI</span><i></i><span>구글 AI</span></div>
   </div>
 </section>
 
