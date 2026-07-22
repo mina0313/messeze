@@ -181,6 +181,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 @keyframes acShine{to{background-position:220% center}}
 @keyframes btnPulse{0%,100%{box-shadow:0 12px 30px rgba(43,92,255,.45)}50%{box-shadow:0 16px 44px rgba(43,92,255,.75)}}
 @media(prefers-reduced-motion:reduce){.nx-solo>*{opacity:1;animation:none}.nx-solo::before,.nx-solo .nx-h .ac,.nx-solo .nx-btn.primary{animation:none}}
+/* 롤링 헤드라인 */
+.nx-hroll{position:relative;display:grid;margin-top:8px}
+.nx-hroll .nx-h{margin-top:0}
+.nxh-slide{grid-area:1/1;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.nxh-slide.on{opacity:1;transform:none;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.nxh-slide{transition:none}}
 .nx-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 15px;margin-top:32px;font-size:15px;font-weight:700;color:#C0CBE6}
 .nx-flow i{color:#54618A;font-style:normal;font-size:13px}
 .nx-flow b{color:#fff;font-weight:800}
@@ -966,7 +972,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 <section class="hero nx">
   <div class="wrap nx-wrap nx-solo">
     <div class="nx-badge"><span class="bolt">⚡</span> AI 검색 시대의 기업 홍보 · 전담 대행</div>
-    <h1 class="nx-h">AI에게 물어보면,<br><span class="ac">지금 나오는 건 경쟁사입니다</span></h1>
+    <div class="nx-hroll" id="nxhroll">
+      <h1 class="nx-h nxh-slide on">AI에게 물어보면,<br><span class="ac">지금 나오는 건 경쟁사입니다</span></h1>
+      <h1 class="nx-h nxh-slide">검색은 끝났습니다.<br><span class="ac">이제 AI가 기업을 고릅니다</span></h1>
+      <h1 class="nx-h nxh-slide">보도자료 100장보다,<br><span class="ac">AI가 읽는 정보 1줄</span></h1>
+    </div>
     <p class="nx-sub2">고객은 검색 대신 AI에게 묻고, AI는 <b>읽을 수 있는 기업만</b> 추천합니다.<br>그 답에 우리 회사가 없다면 — 전담팀이 <b>AI가 읽는 정보를 대신 쌓아 노출</b>시킵니다.</p>
     <div class="nx-cta"><a class="nx-btn primary" href="#final">우리 회사 AI 노출 무료 진단</a><a class="nx-btn ghost" href="services.html">서비스 살펴보기</a></div>
     <div class="nx-trust">카드 등록 없이 · 영업일 1일 내 회신 · 중소기업 환영</div>
@@ -1357,6 +1367,19 @@ if(matchMedia('(min-width:981px)').matches){
   }
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   upd();
+})();
+
+// 롤링 헤드라인 (3개 카피 자동 순환)
+(function(){
+  var roll=document.getElementById('nxhroll'); if(!roll) return;
+  var slides=[].slice.call(roll.querySelectorAll('.nxh-slide'));
+  if(slides.length<2||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var i=0;
+  setInterval(function(){
+    slides[i].classList.remove('on');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('on');
+  },3400);
 })();
 
 // 업종별 카드 필터
