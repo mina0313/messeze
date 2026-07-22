@@ -626,6 +626,25 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bc-foot b{color:var(--ink);font-weight:800}
 @media(max-width:900px){.bgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.bgrid{grid-template-columns:1fr}}
+/* ============ 고객 인터뷰 ============ */
+.ivw-sec{background:linear-gradient(180deg,#fff,#F6FAFF)}
+.ivw-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto}
+.ivw{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s}
+.ivw:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:var(--line-2)}
+.ivw-top{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.ivw-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#EDF3FF}
+.ivw-who b{font-size:15.5px;display:block;letter-spacing:-.01em;color:var(--ink)}
+.ivw-who span{font-size:13px;color:var(--mut);display:block;margin-top:2px}
+.ivw-q{font-size:20px;font-weight:800;line-height:1.52;letter-spacing:-.02em;color:var(--ink);position:relative;padding-left:26px}
+.ivw-q::before{content:"\201C";position:absolute;left:-2px;top:-6px;font-size:40px;line-height:1;color:var(--cobalt);font-family:Georgia,serif;opacity:.5}
+.ivw-q b{color:var(--cobalt)}
+.ivw-qa{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:9px}
+.ivw-qa p{font-size:14px;line-height:1.55;color:var(--body)}
+.ivw-qa em{font-style:normal;font-weight:800;color:var(--cobalt);margin-right:7px}
+.ivw-res{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.ivw-res span{font-size:12.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:999px;padding:7px 13px}
+.ivw-note{max-width:1000px;margin:22px auto 0;text-align:center;font-size:12.5px;color:var(--mut)}
+@media(max-width:820px){.ivw-grid{grid-template-columns:1fr}}
 /* ============ FILTER ============ */
 .filt .seg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px;width:fit-content;margin:0 auto 30px;box-shadow:var(--sh-sm)}
 .seg button{font-family:var(--sans);font-weight:700;font-size:14px;border:0;background:transparent;color:var(--body);border-radius:12px;padding:11px 18px;cursor:pointer;transition:.16s}
@@ -924,6 +943,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     <a class="brand" href="#top"><svg class="blogo" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bword">messeze</span></a>
     <nav class="nav-menu">
       <a href="services.html">서비스</a>
+      <a href="#interview">고객 사례</a>
       <a href="pricing.html">요금</a>
       <a href="check.html">AI 가시성 체크</a>
       <a href="blog/index.html">블로그</a>
@@ -1154,6 +1174,43 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <div class="why-c rv d1"><span class="wtag">축적</span><h3>콘텐츠·언론 축적</h3><p>고객 질문을 설계하고, 보도자료·칼럼을 제작해 <b>언론과 채널에 매달 배포</b>합니다.</p></div>
       <div class="why-c rv d2"><span class="wtag">관리</span><h3>월간 AI 노출 관리</h3><p>AI 검색 변화를 추적하고 부족한 정보를 보완하는 <b>리포트를 매달</b> 드립니다.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="sec ivw-sec" id="interview">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">고객 인터뷰</span>
+      <h2 class="h2">먼저 시작한 기업들의 <span class="bc-ac">이야기</span></h2>
+    </div>
+    <div class="ivw-grid">
+      <article class="ivw rv">
+        <div class="ivw-top">
+          <img class="ivw-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="김 대표" loading="lazy" referrerpolicy="no-referrer">
+          <div class="ivw-who"><b>김○○ 대표</b><span>○○정밀 · 정밀부품 제조</span></div>
+        </div>
+        <blockquote class="ivw-q">검색량이 없어 홍보를 반쯤 포기했었는데, 이제 <b>AI가 먼저 우리를 추천</b>합니다.</blockquote>
+        <div class="ivw-qa">
+          <p><em>Q.</em> 가장 큰 변화는요?</p>
+          <p><em>A.</em> 문의가 "어떻게 아셨어요?"에서 "AI가 추천해서요"로 바뀌었어요.</p>
+        </div>
+        <div class="ivw-res"><span>3개월 만에 AI 답변 등장</span><span>언론 6건 축적</span></div>
+      </article>
+      <article class="ivw rv d1">
+        <div class="ivw-top">
+          <img class="ivw-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="이 팀장" loading="lazy" referrerpolicy="no-referrer">
+          <div class="ivw-who"><b>이○○ 마케팅팀장</b><span>○○인더스트리 · 수출기업</span></div>
+        </div>
+        <blockquote class="ivw-q">보도자료만 뿌리던 걸, 이제 <b>AI가 읽는 자산</b>으로 쌓습니다.</blockquote>
+        <div class="ivw-qa">
+          <p><em>Q.</em> 왜 직접 안 하고 맡기셨어요?</p>
+          <p><em>A.</em> 할 인력이 없었어요. 진단부터 발행까지 전담팀이 다 대신해줍니다.</p>
+        </div>
+        <div class="ivw-res"><span>6개월 · 해외 바이어 문의 3배</span><span>다국어 언론 확장</span></div>
+      </article>
+    </div>
+    <div class="ivw-note">※ 서비스 준비 단계의 예시 인터뷰입니다. 실제 고객 인터뷰로 교체됩니다.</div>
   </div>
 </section>
 
