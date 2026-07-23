@@ -334,6 +334,7 @@ def mega():
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
 <div class="mega-col"><h5>리소스</h5>
 <a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+<a href="{p}interview.html"><b>인터뷰</b><span>먼저 시작한 기업들의 이야기</span></a>
 <a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 102개</span></a></div>
 </div></div>"""
 
@@ -350,6 +351,7 @@ def nav():
 <a href="{p}pricing.html">요금</a>
 <a href="{p}check.html">AI 가시성 체크</a>
 <a href="{p}blog/index.html">블로그</a>
+<a href="{p}interview.html">인터뷰</a>
 <a href="{p}glossary/index.html">용어사전</a>
 </nav>
 <div class="nav-r"><a class="nav-cta" href="{p}index.html#final">무료 진단 받기</a></div>
