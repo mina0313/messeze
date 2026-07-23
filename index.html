@@ -184,11 +184,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .hero.sf{position:relative;min-height:86vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;padding:84px 0 92px;background:#070C1E}
 .sf-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=70&auto=format') center 32%/cover no-repeat}
 .sf-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,30,.66),rgba(10,16,44,.34) 46%,rgba(5,9,26,.82)),radial-gradient(900px 460px at 50% 10%,rgba(43,92,255,.18),transparent 65%)}
-.wrap.sf-in{position:relative;z-index:2;max-width:1400px;display:grid;grid-template-columns:272px 1fr 344px;gap:36px;align-items:center;width:100%}
-.sf-center{text-align:center}
+.wrap.sf-in{position:relative;z-index:2;max-width:1500px;display:grid;grid-template-columns:246px minmax(0,1fr) 316px;gap:clamp(30px,3.4vw,54px);align-items:center;width:100%;padding:0 clamp(28px,3vw,44px)}
+.sf-center{text-align:center;padding:0 6px}
 .sf-eyebrow{font-size:clamp(15px,1.8vw,19px);font-weight:700;color:#EAF0FF;letter-spacing:-.01em}
-.sf-h{font-size:clamp(29px,4.4vw,53px);font-weight:800;letter-spacing:-.04em;line-height:1.24;margin-top:14px;color:#fff;word-break:keep-all}
-.sf-sub{margin-top:22px;font-size:clamp(13.5px,1.5vw,16.5px);color:#D9E1F5;line-height:1.72;font-weight:500}
+.sf-hroll{position:relative;display:grid;margin-top:16px}
+.sf-h{font-size:clamp(27px,3.4vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1.26;color:#fff;word-break:keep-all;white-space:nowrap}
+.sf-hroll .sf-h{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.sf-hroll .sf-h.on{opacity:1;transform:none;pointer-events:auto}
+.sf-h span{background:linear-gradient(92deg,#7FA6FF,#C6D8FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.sf-sub{margin-top:24px;font-size:clamp(14.5px,1.6vw,18px);color:#DCE4F7;line-height:1.7;font-weight:600;letter-spacing:-.01em}
+.sf-sub b{color:#9DC0FF;font-weight:800}
+@media(max-width:900px){.sf-h{white-space:normal}}
 .sf-sub b{color:#fff;font-weight:800}
 .sf-cta{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .sfb{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:15px 28px;font-size:15.5px;font-weight:800;transition:.18s;letter-spacing:-.01em}
@@ -1110,8 +1116,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     </aside>
     <div class="sf-center">
       <p class="sf-eyebrow">AI 검색 시대의 기업 홍보를 지원하는</p>
-      <h1 class="sf-h">AI PR과 검색 최적화,<br><span>이제 하나의 구독으로 관리</span></h1>
-      <p class="sf-sub">진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지.<br><b>messeze</b>는 기업 홍보 전반을 연결하는 <b>AI PR·검색 최적화 통합 운영 서비스</b>입니다.</p>
+      <div class="sf-hroll" id="sfhroll">
+        <h1 class="sf-h nxh-slide on">사람이 읽는 PR에서, <span>AI가 보는 PR로</span></h1>
+        <h1 class="sf-h nxh-slide">검색되는 기업에서, <span>추천되는 기업으로</span></h1>
+        <h1 class="sf-h nxh-slide">AI가 <span>추천하는 기업</span>을 만듭니다</h1>
+      </div>
+      <p class="sf-sub"><b>AI PR</b>과 <b>AI 검색 최적화</b>를 통해, 기업이 AI에서 추천될 수 있도록 만듭니다.</p>
       <div class="sf-cta"><a class="sfb main" href="#final">무료 진단 신청 <span class="rk">🚀</span></a><a class="sfb ghost" href="services.html">📄 서비스 보기</a></div>
     </div>
     <aside class="sf-card sf-right">
@@ -1587,8 +1597,8 @@ if(matchMedia('(min-width:981px)').matches){
 
 // 롤링 헤드라인 (3개 카피 자동 순환)
 (function(){
-  var roll=document.getElementById('nxhroll'); if(!roll) return;
-  var slides=[].slice.call(roll.querySelectorAll('.nxh-slide'));
+  var roll=document.getElementById('nxhroll')||document.getElementById('sfhroll'); if(!roll) return;
+  var slides=[].slice.call(roll.querySelectorAll('.nxh-slide,.sf-h'));
   if(slides.length<2||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var i=0;
   setInterval(function(){
