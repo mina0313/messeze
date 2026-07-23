@@ -851,6 +851,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 
 /* ============ FAQ ============ */
 .faq{max-width:880px;margin:0 auto}
+#faq .qa.extra{display:none}
+#faq .faq.open .qa.extra{display:block}
+.faq-more{display:block;margin:6px auto 0;font-family:var(--sans);font-weight:800;font-size:14.5px;color:var(--cobalt);background:#fff;border:1.5px solid var(--line-2);border-radius:999px;padding:13px 30px;cursor:pointer;transition:.16s}
+.faq-more:hover{border-color:var(--cobalt);transform:translateY(-2px);box-shadow:var(--sh-sm)}
 .qa{border:1.5px solid var(--line);border-radius:18px;margin-bottom:14px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s}
 .qa:hover{border-color:var(--line-2)}
 .qa.open{border-color:var(--cobalt);box-shadow:0 12px 32px rgba(43,92,255,.1)}
@@ -1234,7 +1238,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
     <div class="ivw-grid">
       <article class="ivw rv">
         <div class="ivw-top">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="김 대표" loading="lazy" referrerpolicy="no-referrer">
+          <img class="ivw-photo" src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="김 대표" loading="lazy" referrerpolicy="no-referrer">
           <div class="ivw-who"><b>김○○ 대표</b><span>○○정밀 · 정밀부품 제조</span></div>
         </div>
         <blockquote class="ivw-q">검색량이 없어 홍보를 반쯤 포기했었는데, 이제 <b>AI가 먼저 우리를 추천</b>합니다.</blockquote>
@@ -1246,7 +1250,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       </article>
       <article class="ivw rv d1">
         <div class="ivw-top">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="이 팀장" loading="lazy" referrerpolicy="no-referrer">
+          <img class="ivw-photo" src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="이 팀장" loading="lazy" referrerpolicy="no-referrer">
           <div class="ivw-who"><b>이○○ 마케팅팀장</b><span>○○인더스트리 · 수출기업</span></div>
         </div>
         <blockquote class="ivw-q">보도자료만 뿌리던 걸, 이제 <b>AI가 읽는 자산</b>으로 쌓습니다.</blockquote>
@@ -1332,13 +1336,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <div class="qa rv"><button>검색량이 거의 없는 업종인데 효과가 있을까요?<span class="ico">+</span></button><div class="ans"><p>오히려 기회입니다. AI 검색은 검색량이 아니라 '읽을 수 있는 신뢰 정보의 양'으로 기업을 판단합니다. 정보를 가진 기업이 드문 분야일수록, 먼저 축적을 시작한 기업이 그 분야의 기본 답이 됩니다.</p></div></div>
       <div class="qa rv"><button>노출·순위를 보장해 주나요?<span class="ico">+</span></button><div class="ans"><p>AI 답변은 검색 순위처럼 보장할 수 없습니다. 대신 무엇을 얼마나 했는지 월간 리포트로 투명하게 보여드리고, 질문별 노출 변화를 추적해 다음 달 과제를 함께 정합니다.</p></div></div>
       <div class="qa rv"><button>다른 업체가 만든 홈페이지도 최적화되나요?<span class="ico">+</span></button><div class="ans"><p>대부분 가능합니다. 지금 홈페이지를 최대한 살리는 방향(수정)을 먼저 제안하고, 뼈대부터 문제라면 리뉴얼을 권합니다. 필요한 만큼만, 과잉 제안 없이 진행합니다.</p></div></div>
-      <div class="qa rv"><button>비용은 어떻게 되나요?<span class="ico">+</span></button><div class="ans"><p>소상공인형 월 60만원, 기업형 월 100만원부터 시작하며 3개월 결제 시 할인됩니다. 규모·범위에 따라 엔터프라이즈는 별도 협의합니다. 자세한 구성은 요금 페이지에서 비교하실 수 있어요.</p></div></div>
-      <div class="qa rv"><button>왜 구독형인가요? 한 번만 하면 안 되나요?<span class="ico">+</span></button><div class="ans"><p>기업 정보는 한 번에 쌓이지 않습니다. 매달 언론·콘텐츠가 누적돼야 AI가 '지금도 활동하는 신뢰할 만한 기업'으로 인식합니다. 그래서 일회성이 아니라 꾸준히 쌓는 구독형으로 운영합니다.</p></div></div>
-      <div class="qa rv"><button>백링크 같은 작업도 하나요?<span class="ico">+</span></button><div class="ans"><p>인위적으로 링크를 사는 방식은 하지 않습니다. 언론 기사, 자사 콘텐츠, 구조화된 홈페이지 같은 진짜 신뢰 신호를 축적합니다. 특히 기사화된 보도자료가 가장 강력한 자연 링크가 됩니다.</p></div></div>
-      <div class="qa rv"><button>어떤 AI에 노출되게 하나요?<span class="ico">+</span></button><div class="ans"><p>ChatGPT·Claude·Gemini·Perplexity·구글 AI 오버뷰·네이버 AI 등 주요 AI 검색 플랫폼 전반을 대상으로 합니다. 특정 한 곳이 아니라 여러 AI가 교차 확인하는 정보를 만드는 것이 핵심입니다.</p></div></div>
-      <div class="qa rv"><button>정말 ChatGPT에 우리 회사가 나올 수 있나요?<span class="ico">+</span></button><div class="ans"><p>네. AI는 웹에서 확인되는 언급량·엔티티 구조·콘텐츠 신뢰도를 종합해 답합니다. 이 신호들을 꾸준히 쌓으면 AI가 귀사를 인용·추천하게 됩니다. 검색량이 적은 분야일수록 먼저 쌓은 기업이 유리합니다.</p></div></div>
-      <div class="qa rv"><button>이미 유명한 브랜드인데도 필요한가요?<span class="ico">+</span></button><div class="ans"><p>오히려 더 필요합니다. 인지도가 높아도 AI가 경쟁사를 먼저 추천하면 그 접점을 빼앗깁니다. 사람이 아는 것과 AI가 읽을 수 있는 것은 다르기 때문에, AI가 정확히 인식하도록 정보 자산을 갖춰야 합니다.</p></div></div>
+      <div class="qa rv extra"><button>비용은 어떻게 되나요?<span class="ico">+</span></button><div class="ans"><p>소상공인형 월 60만원, 기업형 월 100만원부터 시작하며 3개월 결제 시 할인됩니다. 규모·범위에 따라 엔터프라이즈는 별도 협의합니다. 자세한 구성은 요금 페이지에서 비교하실 수 있어요.</p></div></div>
+      <div class="qa rv extra"><button>왜 구독형인가요? 한 번만 하면 안 되나요?<span class="ico">+</span></button><div class="ans"><p>기업 정보는 한 번에 쌓이지 않습니다. 매달 언론·콘텐츠가 누적돼야 AI가 '지금도 활동하는 신뢰할 만한 기업'으로 인식합니다. 그래서 일회성이 아니라 꾸준히 쌓는 구독형으로 운영합니다.</p></div></div>
+      <div class="qa rv extra"><button>백링크 같은 작업도 하나요?<span class="ico">+</span></button><div class="ans"><p>인위적으로 링크를 사는 방식은 하지 않습니다. 언론 기사, 자사 콘텐츠, 구조화된 홈페이지 같은 진짜 신뢰 신호를 축적합니다. 특히 기사화된 보도자료가 가장 강력한 자연 링크가 됩니다.</p></div></div>
+      <div class="qa rv extra"><button>어떤 AI에 노출되게 하나요?<span class="ico">+</span></button><div class="ans"><p>ChatGPT·Claude·Gemini·Perplexity·구글 AI 오버뷰·네이버 AI 등 주요 AI 검색 플랫폼 전반을 대상으로 합니다. 특정 한 곳이 아니라 여러 AI가 교차 확인하는 정보를 만드는 것이 핵심입니다.</p></div></div>
+      <div class="qa rv extra"><button>정말 ChatGPT에 우리 회사가 나올 수 있나요?<span class="ico">+</span></button><div class="ans"><p>네. AI는 웹에서 확인되는 언급량·엔티티 구조·콘텐츠 신뢰도를 종합해 답합니다. 이 신호들을 꾸준히 쌓으면 AI가 귀사를 인용·추천하게 됩니다. 검색량이 적은 분야일수록 먼저 쌓은 기업이 유리합니다.</p></div></div>
+      <div class="qa rv extra"><button>이미 유명한 브랜드인데도 필요한가요?<span class="ico">+</span></button><div class="ans"><p>오히려 더 필요합니다. 인지도가 높아도 AI가 경쟁사를 먼저 추천하면 그 접점을 빼앗깁니다. 사람이 아는 것과 AI가 읽을 수 있는 것은 다르기 때문에, AI가 정확히 인식하도록 정보 자산을 갖춰야 합니다.</p></div></div>
     </div>
+    <button class="faq-more rv" id="faqMore" onclick="this.previousElementSibling.classList.add('open');this.remove()">+ 더보기</button>
     <div class="rv" style="text-align:center;margin-top:8px"><a href="faq.html" class="btn btn-gh">전체 FAQ 보기 →</a></div>
     <div class="rv" style="text-align:center;margin-top:26px;font-size:14.5px;color:var(--mut)">더 궁금한 점은 <a href="#final" style="color:var(--cobalt);font-weight:700">무료 상담</a>에서 편하게 물어보세요.</div>
   </div>
