@@ -68,8 +68,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .btn-gh:hover{border-color:var(--ink)}
 
 /* ============ NAV ============ */
-.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.25s}
-.nav.on{border-color:var(--line)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:70;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
+.nav.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-color:var(--line);box-shadow:0 4px 20px rgba(16,31,63,.05)}
+/* 히어로 위에선 흰 글자 */
+.nav:not(.solid) .bword,.nav:not(.solid) .brand .blogo{color:#fff}
+.nav:not(.solid) .nav-menu{color:rgba(255,255,255,.82)}
+.nav:not(.solid) .nav-menu a:hover{background:rgba(255,255,255,.14);color:#fff}
+.nav:not(.solid) .nav-r .lk{color:rgba(255,255,255,.82)}
+.nav:not(.solid) .nav-r .lk:hover{color:#fff}
+.nav:not(.solid) .nav-cta{background:#fff;color:#0A1930}
+.nav:not(.solid) .nav-cta:hover{background:rgba(255,255,255,.85)}
+.nav:not(.solid) .nav-burger span{background:#fff}
 .nav-in{display:flex;align-items:center;height:74px;gap:44px}
 .brand{display:flex;align-items:center;gap:9px}
 .brand .blogo{width:25px;height:25px}
@@ -1479,7 +1488,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 
 <script>
 const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>8),{passive:true});
+(function(){
+  const heroSec=document.querySelector('.hero.sf');
+  function upd(){
+    const trigger=heroSec?heroSec.getBoundingClientRect().bottom-74:0;
+    nav.classList.toggle('solid',heroSec?trigger<=0:scrollY>8);
+  }
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd);
+  upd();
+})();
 
 // 히어로 캐러셀 (자동 전환 + 화살표 + 점)
 (function(){
