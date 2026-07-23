@@ -171,6 +171,59 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .nx-trust{margin-top:24px;font-size:13.5px;font-weight:600;color:#7E8CB0;letter-spacing:-.01em}
 .nx-plat{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;color:#8895B6;font-size:14px;font-weight:700}
 .nx-plat i{width:4px;height:4px;border-radius:50%;background:#3A4668}
+/* ===== HERO sufly 스타일 ===== */
+.hero.sf{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;padding:84px 0 120px;background:#070C1E}
+.sf-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=70&auto=format') center 32%/cover no-repeat}
+.sf-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,30,.66),rgba(10,16,44,.34) 46%,rgba(5,9,26,.82)),radial-gradient(900px 460px at 50% 10%,rgba(43,92,255,.18),transparent 65%)}
+.wrap.sf-in{position:relative;z-index:2;max-width:1400px;display:grid;grid-template-columns:272px 1fr 344px;gap:36px;align-items:center;width:100%}
+.sf-center{text-align:center}
+.sf-eyebrow{font-size:clamp(15px,1.8vw,19px);font-weight:700;color:#EAF0FF;letter-spacing:-.01em}
+.sf-h{font-size:clamp(29px,4.4vw,53px);font-weight:800;letter-spacing:-.04em;line-height:1.24;margin-top:14px;color:#fff;word-break:keep-all}
+.sf-sub{margin-top:22px;font-size:clamp(13.5px,1.5vw,16.5px);color:#D9E1F5;line-height:1.72;font-weight:500}
+.sf-sub b{color:#fff;font-weight:800}
+.sf-cta{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sfb{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:15px 28px;font-size:15.5px;font-weight:800;transition:.18s;letter-spacing:-.01em}
+.sfb.main{background:#fff;color:#0A1930}
+.sfb.main .rk{display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#0A1930;font-size:14px;margin:-5px -12px -5px 3px}
+.sfb.main:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,0,0,.4)}
+.sfb.ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.07);backdrop-filter:blur(5px)}
+.sfb.ghost:hover{background:rgba(255,255,255,.17)}
+.sf-left{display:flex;flex-direction:column;gap:12px}
+.sf-phd{background:#fff;border-radius:14px;padding:15px 17px;font-weight:800;font-size:14.5px;letter-spacing:.05em;display:flex;gap:9px;align-items:center;box-shadow:0 18px 44px rgba(3,8,26,.42);color:#0A1930}
+.sf-mini{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 18px 44px rgba(3,8,26,.42);display:flex;flex-direction:column;gap:6px;color:#0A1930}
+.sf-mini .smc{font-size:11.5px;color:var(--mut);font-weight:700}
+.sf-mini b{font-size:14px;letter-spacing:-.01em;line-height:1.4}
+.smt{display:flex;gap:6px}
+.smt i{font-style:normal;font-size:11px;font-weight:800;border-radius:999px;padding:4px 10px}
+.smt .g{background:#E7F8F1;color:#0BA678}.smt .y{background:#FFF4E0;color:#C98A12}.smt .b{background:#EAF1FF;color:#2B5CFF}.smt .p{background:#F4EAFF;color:#8A3FFC}
+.smd{font-size:11.5px;color:#9AA4B6;font-weight:600}
+.sf-right{background:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 60px rgba(3,8,26,.5);color:#0A1930}
+.sf-tabs{display:flex;gap:18px;font-size:13.5px;font-weight:700;color:#8B95A7;border-bottom:1.5px solid var(--line);padding-bottom:11px}
+.sf-tabs .on{color:#0A1930;position:relative}
+.sf-tabs .on::after{content:"";position:absolute;left:0;right:0;bottom:-12.5px;height:2px;background:#0A1930}
+.sf-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ss{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ss span{font-size:11.5px;color:var(--mut);font-weight:700;display:block}
+.ss b{font-family:var(--disp);font-size:29px;font-weight:700;display:block;margin-top:4px}
+.ss em{font-style:normal;font-size:11px;color:#0BA678;font-weight:800}
+.sf-rep{border:1px solid var(--line);border-radius:14px;padding:14px}
+.srh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.srh b{font-size:14px}
+.srh .lk{font-size:11px;color:var(--cobalt);font-weight:800;white-space:nowrap}
+.srr{display:flex;align-items:center;gap:8px;margin-top:11px;font-size:12px}
+.srr .lab{font-weight:800;color:#43506A}
+.pill{font-style:normal;background:#FFE9EF;color:#E2537E;font-size:11px;font-weight:800;border-radius:999px;padding:4px 10px}
+.pill2{font-style:normal;background:#EAF1FF;color:#2B5CFF;font-size:11px;font-weight:800;border-radius:999px;padding:4px 10px}
+.srr .d{color:#9AA4B6;font-weight:600;font-size:11.5px}
+.srf{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:12px;font-weight:700;color:#43506A;display:flex;align-items:center;gap:6px}
+.srf em{font-style:normal;color:#9AA4B6}
+.sf-banner{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:13px;background:#1B2BE0;color:#fff;border-radius:14px;padding:13px 20px;font-size:14px;font-weight:700;box-shadow:0 18px 44px rgba(8,14,60,.55);white-space:nowrap;transition:.18s}
+.sf-banner:hover{transform:translate(-50%,-3px)}
+.sf-banner .bp{background:#CFFF5E;color:#1A2B12;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800}
+.sf-banner .bt b{font-weight:800}
+.sf-banner .go{margin-left:4px}
+@media(max-width:1240px){.sf-left,.sf-right{display:none}.wrap.sf-in{grid-template-columns:1fr;max-width:var(--maxw)}}
+@media(max-width:640px){.hero.sf{min-height:72vh;padding:64px 0 110px}.sf-banner{white-space:normal;width:calc(100% - 32px);justify-content:center;text-align:center;font-size:12.5px;gap:8px}}
 /* 히어로 임팩트 모션 */
 .nx-solo{position:relative}
 .nx-solo::before{content:"";position:absolute;top:6%;left:50%;width:min(560px,86%);height:290px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(43,92,255,.4),transparent 72%);filter:blur(26px);z-index:0;pointer-events:none;animation:heroGlow 4.2s ease-in-out infinite}
@@ -1021,18 +1074,52 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 (function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>
 
-<!-- HERO (단일 · 핵심 메시지 중심) -->
-<section class="hero nx">
-  <div class="wrap nx-wrap nx-solo">
-    <div class="nx-hroll" id="nxhroll">
-      <div class="nxh-slide on"><h1 class="nx-h one">사람이 읽는 PR에서, <span class="ac">AI가 보는 PR로</span></h1></div>
-      <div class="nxh-slide"><h1 class="nx-h one">검색되는 기업에서, <span class="ac">추천되는 기업으로</span></h1></div>
-      <div class="nxh-slide"><h1 class="nx-h one">AI가 <span class="ac">추천하는 기업</span>을 만듭니다</h1></div>
+<!-- HERO (sufly 스타일 · 풀스크린 배경 + 플로팅 대시보드) -->
+<section class="hero sf">
+  <div class="sf-bg"></div>
+  <div class="wrap sf-in">
+    <aside class="sf-card sf-left">
+      <div class="sf-phd"><i>📊</i> AI VISIBILITY</div>
+      <div class="sf-mini">
+        <span class="smc">○○정밀 · 정밀부품</span>
+        <b>ChatGPT 답변 첫 등장</b>
+        <div class="smt"><i class="g">노출</i><i class="y">담당자</i></div>
+        <span class="smd">2026-07-08</span>
+      </div>
+      <div class="sf-mini">
+        <span class="smc">하오커뮤니케이션</span>
+        <b>홈페이지 AI 구조 정비</b>
+        <div class="smt"><i class="b">진행</i><i class="y">담당자</i></div>
+        <span class="smd">2026-07-14</span>
+      </div>
+      <div class="sf-mini">
+        <span class="smc">○○인더스트리 · 수출</span>
+        <b>해외 언론 3건 배포</b>
+        <div class="smt"><i class="p">배포</i><i class="y">담당자</i></div>
+        <span class="smd">2026-07-18</span>
+      </div>
+    </aside>
+    <div class="sf-center">
+      <p class="sf-eyebrow">AI 검색 시대의 기업 홍보를 지원하는</p>
+      <h1 class="sf-h">AI PR과 검색 최적화,<br><span>이제 하나의 구독으로 관리</span></h1>
+      <p class="sf-sub">진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지.<br><b>messeze</b>는 기업 홍보 전반을 연결하는 <b>AI PR·검색 최적화 통합 운영 서비스</b>입니다.</p>
+      <div class="sf-cta"><a class="sfb main" href="#final">무료 진단 신청 <span class="rk">🚀</span></a><a class="sfb ghost" href="services.html">📄 서비스 보기</a></div>
     </div>
-    <p class="nx-sub2 cat"><span class="hl">AI PR</span>과 <span class="hl">AI 검색 최적화</span>를 통해, 기업이 AI에서 추천될 수 있도록 만듭니다.</p>
-    <div class="nx-cta"><a class="nx-btn primary" href="#final">우리 회사 AI 노출 무료 진단</a><a class="nx-btn ghost" href="services.html">서비스 살펴보기</a></div>
-    <div class="nx-plat"><span>ChatGPT</span><i></i><span>Gemini</span><i></i><span>Perplexity</span><i></i><span>Claude</span><i></i><span>네이버 AI</span><i></i><span>구글 AI</span></div>
+    <aside class="sf-card sf-right">
+      <div class="sf-tabs"><b class="on">전체</b><span>⚡ 노출</span><span>☆ 인용</span></div>
+      <div class="sf-stats">
+        <div class="ss"><span>이번 달 AI 인용</span><b>24</b><em>지난달 대비 +9</em></div>
+        <div class="ss"><span>노출 질문 수</span><b>12</b><em>지난달 대비 +3</em></div>
+      </div>
+      <div class="sf-rep">
+        <div class="srh"><b>○○정밀 AI 가시성 리포트</b><span class="lk">연결된 리포트 ↗</span></div>
+        <div class="srr"><span class="lab">상태변화</span><i class="pill">노출</i><span class="d">3일전 업데이트</span></div>
+        <div class="srr"><span class="lab">최근활동</span><i class="pill2">언론 2건</i><span class="d">2026-07-15</span></div>
+        <div class="srf">상태변경 : 검증 <em>→</em> <i class="pill">인용</i></div>
+      </div>
+    </aside>
   </div>
+  <a class="sf-banner" href="#final"><span class="bp">수출바우처</span><span class="bt"><b>messeze</b> AI PR — 수출바우처 활용 도입 상담</span><b class="go">도입문의 ↗</b></a>
 </section>
 
 <!-- MARQUEE -->
