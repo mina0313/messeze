@@ -198,6 +198,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .sf-hroll .sf-h{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .sf-hroll .sf-h.on{opacity:1;transform:none;pointer-events:auto}
 .sf-h span{background:linear-gradient(92deg,#7FA6FF,#C6D8FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.sf-subroll{position:relative;display:grid;margin-top:24px;min-height:3.4em}
+.sf-subroll .sf-sub{grid-area:1/1;margin-top:0;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.sf-subroll .sf-sub.on{opacity:1;transform:none;pointer-events:auto}
 .sf-sub{margin-top:24px;font-size:clamp(14.5px,1.6vw,18px);color:#DCE4F7;line-height:1.7;font-weight:600;letter-spacing:-.01em}
 .sf-sub b{color:#9DC0FF;font-weight:800}
 @media(max-width:900px){.sf-h{white-space:normal}}
@@ -1176,7 +1179,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         <h1 class="sf-h nxh-slide">광고비를 태우는 대신,<br><span>AI가 읽는 정보를 쌓습니다</span></h1>
         <h1 class="sf-h nxh-slide">검색량 없는 우리 업종,<br><span>AI에는 답이 있습니다</span></h1>
       </div>
-      <p class="sf-sub"><b>블로그 4채널 · 언론보도 · 홈페이지 정비</b>를 구독형으로 운영하는 AI 검색 PR 대행사입니다. 월 60만원부터.</p>
+      <div class="sf-subroll" id="sfsubroll">
+        <p class="sf-sub on"><b>블로그 4채널 · 언론보도 · 홈페이지 정비</b>를 구독형으로 운영하는 AI 검색 PR 대행사입니다. 월 60만원부터.</p>
+        <p class="sf-sub">상위노출 경쟁이 아니라 <b>정보 축적</b>으로. 매달 쌓인 기업 정보가 AI 답변의 근거가 됩니다.</p>
+        <p class="sf-sub"><b>제조·B2B·병원·수출기업</b>을 위한 AI 검색 노출 관리. 진단부터 언론·콘텐츠 축적까지 매달 운영합니다.</p>
+      </div>
       <div class="sf-cta"><a class="sfb main" href="#final">무료 진단 신청 <span class="rk">🚀</span></a><a class="sfb ghost" href="services.html">📄 서비스 보기</a></div>
     </div>
     <aside class="sf-card sf-right">
@@ -1734,12 +1741,16 @@ if(matchMedia('(min-width:981px)').matches){
 (function(){
   var roll=document.getElementById('nxhroll')||document.getElementById('sfhroll'); if(!roll) return;
   var slides=[].slice.call(roll.querySelectorAll('.nxh-slide,.sf-h'));
+  var subroll=document.getElementById('sfsubroll');
+  var subs=subroll?[].slice.call(subroll.querySelectorAll('.sf-sub')):[];
   if(slides.length<2||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var i=0;
   setInterval(function(){
     slides[i].classList.remove('on');
+    if(subs[i]) subs[i].classList.remove('on');
     i=(i+1)%slides.length;
     slides[i].classList.add('on');
+    if(subs[i]) subs[i].classList.add('on');
   },2600);
 })();
 
