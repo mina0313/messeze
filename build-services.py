@@ -227,27 +227,17 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
-.ptrow{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
-.ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
-.ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
-.ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
-.ptitem .ptimg.ptlogo{display:grid;place-items:center}
-.ptitem .ptimg.ptlogo img{width:118px;height:118px;object-fit:cover;border-radius:26px;box-shadow:0 12px 30px rgba(16,31,63,.16)}
-.ptitem .ptcard{background:#fff;border:1px solid rgba(43,92,255,.1);border-radius:18px;box-shadow:0 3px 8px rgba(16,31,63,.05),0 26px 60px -10px rgba(30,58,110,.22);padding:32px 34px;position:relative;z-index:2}
-.pttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.ptrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ptc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s}
+.ptc:hover{box-shadow:0 18px 44px rgba(16,31,63,.13);transform:translateY(-3px);border-color:#B9CCFF}
+.ptc-hd{display:flex;align-items:center;gap:14px}
+.ptc-no{flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:16.5px;color:#fff;background:linear-gradient(135deg,#3B6BFF,#1E46D9);box-shadow:0 8px 18px rgba(43,92,255,.28)}
+.ptc-ico{flex:0 0 auto;width:46px;height:46px;border-radius:14px;object-fit:cover;box-shadow:0 8px 18px rgba(16,31,63,.14)}
+.ptc-hd b{font-size:18.5px;letter-spacing:-.02em;line-height:1.32;color:var(--ink)}
+.ptc>p{font-size:14.3px;color:#3D4A63;line-height:1.66;margin-top:14px}
+.pttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:16px}
 .pttags span{font-size:12.5px;font-weight:700;color:#2748B8;background:#F0F5FF;border:1px solid #D9E5FF;border-radius:999px;padding:6px 13px;line-height:1.45}
-.ptitem:nth-child(odd) .ptimg{grid-column:1;grid-row:1}
-.ptitem:nth-child(odd) .ptcard{grid-column:2;grid-row:1;margin-left:-56px}
-.ptitem:nth-child(even) .ptimg{grid-column:2;grid-row:1}
-.ptitem:nth-child(even) .ptcard{grid-column:1;grid-row:1;margin-right:-56px}
-.ptcard .ptcat{display:inline-flex;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;background:linear-gradient(135deg,#3B6BFF,#1E46D9);border-radius:999px;padding:6px 13px;box-shadow:0 6px 14px rgba(43,92,255,.3)}
-.ptcard b{display:block;font-size:23px;margin-top:14px;letter-spacing:-.025em;line-height:1.3;color:var(--ink)}
-.ptcard b::after{content:"";display:block;width:40px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--cobalt),#8FB2FF);margin-top:12px}
-.ptcard p{font-size:14.8px;color:#3D4A63;line-height:1.68;margin-top:12px}
-.ptnum{position:absolute;top:-14px;font-family:var(--disp);font-size:84px;font-weight:700;color:rgba(43,92,255,.13);z-index:1;line-height:1}
-.ptitem:nth-child(odd) .ptnum{right:8px}
-.ptitem:nth-child(even) .ptnum{left:8px}
-@media(max-width:820px){.ptitem{grid-template-columns:1fr;min-height:0}.ptitem .ptimg,.ptitem .ptcard{grid-column:1!important}.ptitem .ptimg{grid-row:1!important;min-height:190px}.ptitem .ptcard{grid-row:2!important;margin:-30px 16px 0!important}.ptnum{display:none}}
+@media(max-width:820px){.ptrow{grid-template-columns:1fr}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -721,16 +711,13 @@ def build_page(x):
     for slug in x["rel"]:
         r = BY_SLUG[slug]
         rel_cards += f"""<a class="relc rv" href="{r['slug']}.html"><span class="no">SERVICE {r['no']}</span><b>{r['title']}</b><span>{r['one'][:38]}…</span></a>"""
-    _pool = PTPHOTOS.get(x["slug"], [])
     _logos = ITEMLOGOS.get(x["slug"], {})
     def _pt(i, t, d, tg):
         lg = _logos.get(i)
-        if lg:
-            img = f'<div class="ptimg ptlogo" style="background:{lg[1]}"><img src="{lg[0]}" alt="{t}" loading="lazy" referrerpolicy="no-referrer"></div>'
-        else:
-            img = f'<div class="ptimg"><img src="https://images.unsplash.com/{_pool[i%len(_pool)] if _pool else ""}?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div>'
+        badge = (f'<img class="ptc-ico" src="{lg[0]}" alt="" loading="lazy">' if lg
+                 else f'<span class="ptc-no">{i+1:02d}</span>')
         tags = "".join("<span>"+g+"</span>" for g in tg)
-        return f'<div class="ptitem rv"><span class="ptnum">{i+1:02d}</span>{img}<div class="ptcard"><span class="ptcat">POINT {i+1:02d}</span><b>{t}</b><p>{d}</p><div class="pttags">{tags}</div></div></div>'
+        return f'<div class="ptc rv"><div class="ptc-hd">{badge}<b>{t}</b></div><p>{d}</p><div class="pttags">{tags}</div></div>'
     items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
     procs = "\n".join(f"""<div class="pr"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
