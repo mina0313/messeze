@@ -227,6 +227,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
+.ptrow{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
+.ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
+.ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitem .ptcard{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(16,31,63,.13);padding:30px 32px;position:relative;z-index:2}
+.ptitem:nth-child(odd) .ptimg{grid-column:1;grid-row:1}
+.ptitem:nth-child(odd) .ptcard{grid-column:2;grid-row:1;margin-left:-56px}
+.ptitem:nth-child(even) .ptimg{grid-column:2;grid-row:1}
+.ptitem:nth-child(even) .ptcard{grid-column:1;grid-row:1;margin-right:-56px}
+.ptcard .ptcat{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.ptcard b{display:block;font-size:19px;margin-top:9px;letter-spacing:-.02em}
+.ptcard p{font-size:14px;color:var(--body);line-height:1.65;margin-top:10px}
+.ptnum{position:absolute;top:-6px;font-family:var(--disp);font-size:58px;font-weight:700;color:#DDE6FA;z-index:1;line-height:1}
+.ptitem:nth-child(odd) .ptnum{right:8px}
+.ptitem:nth-child(even) .ptnum{left:8px}
+@media(max-width:820px){.ptitem{grid-template-columns:1fr;min-height:0}.ptitem .ptimg,.ptitem .ptcard{grid-column:1!important}.ptitem .ptimg{grid-row:1!important;min-height:190px}.ptitem .ptcard{grid-row:2!important;margin:-30px 16px 0!important}.ptnum{display:none}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -625,6 +641,14 @@ s(slug="press", no="06", title="언론 배포", en="Press Distribution",
   tool="""<section class="sec" style="background:var(--sky-2)"><div class="wrap"><div class="shead center rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">우리 회사 소식, 기사로 나갈 수 있을까요?</h2><p class="lead">간단한 정보만 입력하면 기사화 가능성과 보완 포인트를 무료로 진단해 드립니다.</p></div><div class="prcheck rv"><div class="prc-score"><div class="prc-gauge"><b>74</b><span>점</span></div><p>현재 소재는 보도자료로 활용할 수 있습니다. 구체적 수치와 시장적 의미를 더하면 기사 채택 가능성이 올라갑니다.</p></div><div class="prc-items"><div class="prc-i"><span>시의성</span><i><em style="width:80%"></em></i><b>16/20</b></div><div class="prc-i"><span>구체성</span><i><em style="width:60%"></em></i><b>12/20</b></div><div class="prc-i"><span>차별성</span><i><em style="width:75%"></em></i><b>15/20</b></div><div class="prc-i"><span>산업적 의미</span><i><em style="width:65%"></em></i><b>13/20</b></div><div class="prc-i"><span>신뢰 근거</span><i><em style="width:90%"></em></i><b>18/20</b></div></div></div><div class="prc-cta rv"><b>기사 가능성은 있지만, 어떻게 써야 할지 막막하신가요?</b><span>messeze가 강점을 기사 관점으로 정리하고 보도자료 작성부터 언론 배포까지 진행해 드립니다.</span><a href="../index.html#final" class="btn btn-co">무료 보도자료 상담받기</a></div></div></section>""",
   rel=["channels","visibility"])
 
+PTPHOTOS = {
+ "visibility": ["photo-1551288049-bebda4e38f71","photo-1460925895917-afdab827c52f","photo-1454165804606-c3d57bc86b40","photo-1543286386-713bdd548da4","photo-1504868584819-f8e8b4b6d7e3","photo-1517245386807-bb43f82c33c4"],
+ "website-renewal": ["photo-1547658719-da2b51169166","photo-1467232004584-a241de8bcf5d","photo-1461749280684-dccba630e2f6","photo-1498050108023-c5249f4df085","photo-1522542550221-31fd19575a2d","photo-1551434678-e076c223a692"],
+ "website-build": ["photo-1460925895917-afdab827c52f","photo-1507238691740-187a5b1d37b8","photo-1481487196290-c152efe083f5","photo-1555066931-4365d14bab8c","photo-1517180102446-f3ece451e9d8","photo-1531403009284-440f080d1e12"],
+ "own-blog": ["photo-1499750310107-5fef28a66643","photo-1486312338219-ce68d2c6f44d","photo-1455390582262-044cdead277a","photo-1434030216411-0b793f4b4173","photo-1516321318423-f06f85e504b3","photo-1517048676732-d65bc937f952"],
+ "channels": ["photo-1522542550221-31fd19575a2d","photo-1611162617213-7d7a39e9b1d7","photo-1432888622747-4eb9a8efeb07","photo-1533750349088-cd871a92f312","photo-1557804506-669a67965ba0","photo-1460925895917-afdab827c52f"],
+ "press": ["photo-1504711434969-e33886168f5c","photo-1495020689067-958852a7765e","photo-1585829365295-ab7cd400c167","photo-1526304640581-d334cdbbf45e","photo-1450101499163-c8848c66ca85","photo-1521737604893-d14cc237f11d"],
+}
 SVCPHOTO = {
  "visibility": ("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=560&fit=crop&q=72&auto=format","진단 리포트로 현재 위치를 숫자로 확인합니다"),
  "website-renewal": ("https://images.unsplash.com/photo-1547658719-da2b51169166?w=1000&h=560&fit=crop&q=72&auto=format","AI가 읽을 수 있는 구조로 홈페이지를 정비합니다"),
@@ -671,7 +695,8 @@ def build_page(x):
     for slug in x["rel"]:
         r = BY_SLUG[slug]
         rel_cards += f"""<a class="relc rv" href="{r['slug']}.html"><span class="no">SERVICE {r['no']}</span><b>{r['title']}</b><span>{r['one'][:38]}…</span></a>"""
-    items = "\n".join(f"""<div class="dt rv"><span class="c">POINT {i+1:02d}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d) in enumerate(x["items"]))
+    _pool = PTPHOTOS.get(x["slug"], [])
+    items = "\n".join(f"""<div class="ptitem rv"><span class="ptnum">{i+1:02d}</span><div class="ptimg"><img src="https://images.unsplash.com/{_pool[i%len(_pool)] if _pool else ""}?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT {i+1:02d}</span><b>{t}</b><p>{d}</p></div></div>""" for i,(t,d) in enumerate(x["items"]))
     procs = "\n".join(f"""<div class="pr"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
     delivs = "".join(f"<span>{d}</span>" for d in x["deliv"])
@@ -709,8 +734,7 @@ def build_page(x):
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead">{x['intro']}</p></div>
-{photo_html(x["slug"])}
-<div class="dt-grid">{items}</div>
+<div class="ptrow">{items}</div>
 {reltool}
 </div></section>
 

@@ -227,6 +227,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
+.ptrow{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
+.ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
+.ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitem .ptcard{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(16,31,63,.13);padding:30px 32px;position:relative;z-index:2}
+.ptitem:nth-child(odd) .ptimg{grid-column:1;grid-row:1}
+.ptitem:nth-child(odd) .ptcard{grid-column:2;grid-row:1;margin-left:-56px}
+.ptitem:nth-child(even) .ptimg{grid-column:2;grid-row:1}
+.ptitem:nth-child(even) .ptcard{grid-column:1;grid-row:1;margin-right:-56px}
+.ptcard .ptcat{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.ptcard b{display:block;font-size:19px;margin-top:9px;letter-spacing:-.02em}
+.ptcard p{font-size:14px;color:var(--body);line-height:1.65;margin-top:10px}
+.ptnum{position:absolute;top:-6px;font-family:var(--disp);font-size:58px;font-weight:700;color:#DDE6FA;z-index:1;line-height:1}
+.ptitem:nth-child(odd) .ptnum{right:8px}
+.ptitem:nth-child(even) .ptnum{left:8px}
+@media(max-width:820px){.ptitem{grid-template-columns:1fr;min-height:0}.ptitem .ptimg,.ptitem .ptcard{grid-column:1!important}.ptitem .ptimg{grid-row:1!important;min-height:190px}.ptitem .ptcard{grid-row:2!important;margin:-30px 16px 0!important}.ptnum{display:none}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -384,13 +400,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">어떻게 운영하나요</span><h2 class="h2">이렇게 쌓아 올립니다</h2><p class="lead">설계한 핵심 질문에 답하는 칼럼을 자사 블로그에 매달 발행합니다. 질문형 제목, 첫 문단에 결론, FAQ 스키마 — AI가 인용하기 가장 좋은 형태로 쓰고, 발행 캘린더로 꾸준히 쌓습니다.</p></div>
-<figure class="svc-photo rv"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1000&h=560&fit=crop&q=72&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"><figcaption>자사 도메인에 전문성이 쌓이도록 매주 발행합니다</figcaption></figure>
-<div class="dt-grid"><div class="dt rv"><span class="c">POINT 01</span><b>질문 기반 칼럼 기획</b><p>'고객이 AI에게 물어볼 질문'이 곧 글감입니다. 검색량이 아니라 질문에서 출발해 글감이 고갈되지 않습니다.</p></div>
-<div class="dt rv"><span class="c">POINT 02</span><b>AEO형 구조로 집필</b><p>질문형 소제목 → 정면 답변 → 근거 순서. 사람도 AI도 원하는 답을 바로 찾는 구조입니다.</p></div>
-<div class="dt rv"><span class="c">POINT 03</span><b>전문성 소재 인터뷰</b><p>현장의 노하우를 짧은 인터뷰·자료로 받아 전문가의 글로 바꿉니다. 쓸 사람이 없어도 됩니다.</p></div>
-<div class="dt rv"><span class="c">POINT 04</span><b>FAQ·Article 스키마 적용</b><p>발행 글마다 구조화 데이터를 붙여 리치 결과와 AI 인용 자격을 만듭니다.</p></div>
-<div class="dt rv"><span class="c">POINT 05</span><b>발행 캘린더 운영</b><p>월 단위 발행 계획으로 꾸준히. 축적의 리듬이 곧 전략입니다.</p></div>
-<div class="dt rv"><span class="c">POINT 06</span><b>성과 추적</b><p>글별 노출·유입과 AI 인용 변화를 월간 리포트에 담습니다.</p></div></div>
+<div class="ptrow"><div class="ptitem rv"><span class="ptnum">01</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 01</span><b>질문 기반 칼럼 기획</b><p>'고객이 AI에게 물어볼 질문'이 곧 글감입니다. 검색량이 아니라 질문에서 출발해 글감이 고갈되지 않습니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">02</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 02</span><b>AEO형 구조로 집필</b><p>질문형 소제목 → 정면 답변 → 근거 순서. 사람도 AI도 원하는 답을 바로 찾는 구조입니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">03</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 03</span><b>전문성 소재 인터뷰</b><p>현장의 노하우를 짧은 인터뷰·자료로 받아 전문가의 글로 바꿉니다. 쓸 사람이 없어도 됩니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">04</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 04</span><b>FAQ·Article 스키마 적용</b><p>발행 글마다 구조화 데이터를 붙여 리치 결과와 AI 인용 자격을 만듭니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">05</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 05</span><b>발행 캘린더 운영</b><p>월 단위 발행 계획으로 꾸준히. 축적의 리듬이 곧 전략입니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">06</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 06</span><b>성과 추적</b><p>글별 노출·유입과 AI 인용 변화를 월간 리포트에 담습니다.</p></div></div></div>
 
 </div></section>
 

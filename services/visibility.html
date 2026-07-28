@@ -227,6 +227,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
+.ptrow{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
+.ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
+.ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitem .ptcard{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(16,31,63,.13);padding:30px 32px;position:relative;z-index:2}
+.ptitem:nth-child(odd) .ptimg{grid-column:1;grid-row:1}
+.ptitem:nth-child(odd) .ptcard{grid-column:2;grid-row:1;margin-left:-56px}
+.ptitem:nth-child(even) .ptimg{grid-column:2;grid-row:1}
+.ptitem:nth-child(even) .ptcard{grid-column:1;grid-row:1;margin-right:-56px}
+.ptcard .ptcat{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.ptcard b{display:block;font-size:19px;margin-top:9px;letter-spacing:-.02em}
+.ptcard p{font-size:14px;color:var(--body);line-height:1.65;margin-top:10px}
+.ptnum{position:absolute;top:-6px;font-family:var(--disp);font-size:58px;font-weight:700;color:#DDE6FA;z-index:1;line-height:1}
+.ptitem:nth-child(odd) .ptnum{right:8px}
+.ptitem:nth-child(even) .ptnum{left:8px}
+@media(max-width:820px){.ptitem{grid-template-columns:1fr;min-height:0}.ptitem .ptimg,.ptitem .ptcard{grid-column:1!important}.ptitem .ptimg{grid-row:1!important;min-height:190px}.ptitem .ptcard{grid-row:2!important;margin:-30px 16px 0!important}.ptnum{display:none}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -385,13 +401,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">무엇을 진단하나요</span><h2 class="h2">이렇게 진단합니다</h2><p class="lead">ChatGPT·Gemini·Perplexity·네이버가 기업을 어떻게 인식하는지, 고객 질문에 우리 회사가 등장하는지, 경쟁사는 어디까지 와 있는지 — 감이 아니라 데이터로 확인하고, 다음 3개월의 실행 순서를 정합니다.</p></div>
-<figure class="svc-photo rv"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=560&fit=crop&q=72&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"><figcaption>진단 리포트로 현재 위치를 숫자로 확인합니다</figcaption></figure>
-<div class="dt-grid"><div class="dt rv"><span class="c">POINT 01</span><b>엔진별 인식 상태 점검</b><p>주요 AI 검색 4곳에 동일한 질문 세트를 던져 인식·인용 여부와 답변 내용을 기록합니다. '어느 엔진이 우리를 아는가'가 지도에 그려집니다.</p></div>
-<div class="dt rv"><span class="c">POINT 02</span><b>핵심 질문 5~6개 설계</b><p>고객이 실제로 물어볼 질문을 온보딩 미팅에서 함께 정의합니다. 이 질문들이 이후 홈페이지·콘텐츠·언론 실행 전체의 뼈대가 됩니다.</p></div>
-<div class="dt rv"><span class="c">POINT 03</span><b>홈페이지 구조 진단</b><p>타이틀·헤딩·메타 같은 SEO 기본기부터 구조화 데이터·엔티티 연결까지, AI 크롤러 관점에서 읽히는 상태를 점검합니다.</p></div>
-<div class="dt rv"><span class="c">POINT 04</span><b>경쟁사 비교 분석</b><p>같은 질문에서 경쟁사가 어떤 출처 덕분에 답변에 등장하는지 분해합니다. 따라잡을 목록이 그대로 실행 과제가 됩니다.</p></div>
-<div class="dt rv"><span class="c">POINT 05</span><b>개선 우선순위 로드맵</b><p>점수를 가장 많이 올릴 항목부터 순서대로. 직접 실행해도 되고, messeze에 맡겨도 되는 형태로 작성합니다.</p></div>
-<div class="dt rv"><span class="c">POINT 06</span><b>기존 콘텐츠·기사 자산 조사</b><p>이미 보유한 기사·블로그·자료 중 AI가 활용할 수 있는 자산과 방치된 자산을 구분합니다.</p></div></div>
+<div class="ptrow"><div class="ptitem rv"><span class="ptnum">01</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 01</span><b>엔진별 인식 상태 점검</b><p>주요 AI 검색 4곳에 동일한 질문 세트를 던져 인식·인용 여부와 답변 내용을 기록합니다. '어느 엔진이 우리를 아는가'가 지도에 그려집니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">02</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 02</span><b>핵심 질문 5~6개 설계</b><p>고객이 실제로 물어볼 질문을 온보딩 미팅에서 함께 정의합니다. 이 질문들이 이후 홈페이지·콘텐츠·언론 실행 전체의 뼈대가 됩니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">03</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 03</span><b>홈페이지 구조 진단</b><p>타이틀·헤딩·메타 같은 SEO 기본기부터 구조화 데이터·엔티티 연결까지, AI 크롤러 관점에서 읽히는 상태를 점검합니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">04</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 04</span><b>경쟁사 비교 분석</b><p>같은 질문에서 경쟁사가 어떤 출처 덕분에 답변에 등장하는지 분해합니다. 따라잡을 목록이 그대로 실행 과제가 됩니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">05</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 05</span><b>개선 우선순위 로드맵</b><p>점수를 가장 많이 올릴 항목부터 순서대로. 직접 실행해도 되고, messeze에 맡겨도 되는 형태로 작성합니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">06</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 06</span><b>기존 콘텐츠·기사 자산 조사</b><p>이미 보유한 기사·블로그·자료 중 AI가 활용할 수 있는 자산과 방치된 자산을 구분합니다.</p></div></div></div>
 <a class="reltool rv" href="../check.html"><div><span class="rt-tag">관련 무료 도구</span><h3>AI 가시성 진단</h3><p>URL만 넣으면 우리 회사가 AI 답변에 얼마나 노출되는지 100점으로 확인합니다.</p></div><span class="rt-go">바로 써보기 →</span></a>
 </div></section>
 

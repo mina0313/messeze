@@ -227,6 +227,22 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
+.ptrow{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
+.ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
+.ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitem .ptcard{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(16,31,63,.13);padding:30px 32px;position:relative;z-index:2}
+.ptitem:nth-child(odd) .ptimg{grid-column:1;grid-row:1}
+.ptitem:nth-child(odd) .ptcard{grid-column:2;grid-row:1;margin-left:-56px}
+.ptitem:nth-child(even) .ptimg{grid-column:2;grid-row:1}
+.ptitem:nth-child(even) .ptcard{grid-column:1;grid-row:1;margin-right:-56px}
+.ptcard .ptcat{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.ptcard b{display:block;font-size:19px;margin-top:9px;letter-spacing:-.02em}
+.ptcard p{font-size:14px;color:var(--body);line-height:1.65;margin-top:10px}
+.ptnum{position:absolute;top:-6px;font-family:var(--disp);font-size:58px;font-weight:700;color:#DDE6FA;z-index:1;line-height:1}
+.ptitem:nth-child(odd) .ptnum{right:8px}
+.ptitem:nth-child(even) .ptnum{left:8px}
+@media(max-width:820px){.ptitem{grid-template-columns:1fr;min-height:0}.ptitem .ptimg,.ptitem .ptcard{grid-column:1!important}.ptitem .ptimg{grid-row:1!important;min-height:190px}.ptitem .ptcard{grid-row:2!important;margin:-30px 16px 0!important}.ptnum{display:none}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -381,13 +397,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">무엇을 정비하나요</span><h2 class="h2">이렇게 정비합니다</h2><p class="lead">진단 결과 구조 개선으로 충분하면 수정으로, 뼈대부터 문제라면 리뉴얼로 갑니다. 과잉 제안 없이 필요한 범위만 — 목표는 새 디자인이 아니라 AI와 검색엔진이 읽는 홈페이지입니다.</p></div>
-<figure class="svc-photo rv"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=1000&h=560&fit=crop&q=72&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"><figcaption>AI가 읽을 수 있는 구조로 홈페이지를 정비합니다</figcaption></figure>
-<div class="dt-grid"><div class="dt rv"><span class="c">POINT 01</span><b>메타·헤딩 구조 정비</b><p>페이지마다 고유한 타이틀과 디스크립션, H1→H2→H3 위계를 바로잡습니다. 검색과 AI가 문서 구조를 즉시 파악하게 됩니다.</p></div>
-<div class="dt rv"><span class="c">POINT 02</span><b>구조화 데이터(JSON-LD) 탑재</b><p>Organization·Service·FAQPage 스키마로 발행 주체와 서비스를 기계가 읽는 형식으로 선언합니다. @id·sameAs 연결까지.</p></div>
-<div class="dt rv"><span class="c">POINT 03</span><b>질문-답변형 페이지 신설</b><p>설계한 핵심 질문에 정면으로 답하는 페이지를 홈페이지 안에 만듭니다. AI 인용의 착지 지점이 됩니다.</p></div>
-<div class="dt rv"><span class="c">POINT 04</span><b>이미지·텍스트 리커버리</b><p>이미지 속에 갇힌 정보를 텍스트로 꺼내고, 모든 이미지에 의미 있는 ALT를 채웁니다.</p></div>
-<div class="dt rv"><span class="c">POINT 05</span><b>크롤링 기반 정비</b><p>robots.txt·sitemap.xml·canonical을 정리해 검색엔진과 AI 크롤러의 수집 경로를 엽니다.</p></div>
-<div class="dt rv"><span class="c">POINT 06</span><b>전후 점수 검증</b><p>수정 전후를 AI 가시성 체크 점수로 비교해 개선을 숫자로 증명합니다.</p></div></div>
+<div class="ptrow"><div class="ptitem rv"><span class="ptnum">01</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 01</span><b>메타·헤딩 구조 정비</b><p>페이지마다 고유한 타이틀과 디스크립션, H1→H2→H3 위계를 바로잡습니다. 검색과 AI가 문서 구조를 즉시 파악하게 됩니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">02</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 02</span><b>구조화 데이터(JSON-LD) 탑재</b><p>Organization·Service·FAQPage 스키마로 발행 주체와 서비스를 기계가 읽는 형식으로 선언합니다. @id·sameAs 연결까지.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">03</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 03</span><b>질문-답변형 페이지 신설</b><p>설계한 핵심 질문에 정면으로 답하는 페이지를 홈페이지 안에 만듭니다. AI 인용의 착지 지점이 됩니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">04</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 04</span><b>이미지·텍스트 리커버리</b><p>이미지 속에 갇힌 정보를 텍스트로 꺼내고, 모든 이미지에 의미 있는 ALT를 채웁니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">05</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 05</span><b>크롤링 기반 정비</b><p>robots.txt·sitemap.xml·canonical을 정리해 검색엔진과 AI 크롤러의 수집 경로를 엽니다.</p></div></div>
+<div class="ptitem rv"><span class="ptnum">06</span><div class="ptimg"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT 06</span><b>전후 점수 검증</b><p>수정 전후를 AI 가시성 체크 점수로 비교해 개선을 숫자로 증명합니다.</p></div></div></div>
 
 </div></section>
 
