@@ -296,6 +296,18 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .relc .no{font-family:var(--disp);font-size:12.5px;font-weight:700;color:var(--cobalt)}
 .relc b{font-size:17px;display:block;margin-top:6px}
 .relc span{font-size:13px;color:var(--mut);display:block;margin-top:4px}
+.svcta{background:linear-gradient(135deg,#1E46D9,#2B5CFF 55%,#4270FF);color:#fff;text-align:center;padding:92px 0;position:relative;overflow:hidden}
+.svcta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 80% 15%,rgba(255,255,255,.16),transparent 60%)}
+.svcta .wrap{position:relative}
+.svcta h2{color:#fff;font-size:clamp(26px,3.6vw,42px);letter-spacing:-.03em;line-height:1.28}
+.svcta p{color:#DCE6FF;font-size:16px;margin-top:16px;line-height:1.7}
+.svcta .sbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--cobalt);font-weight:800;font-size:16px;border-radius:14px;padding:17px 34px;margin-top:32px;box-shadow:0 14px 34px rgba(10,25,48,.24);transition:.2s}
+.svcta .sbtn:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(10,25,48,.3)}
+.svcta-stats{display:flex;justify-content:center;gap:56px;margin-top:52px;flex-wrap:wrap}
+.svcta-stats div{text-align:center}
+.svcta-stats b{display:block;font-size:19px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.svcta-stats span{display:block;font-size:12.5px;color:#BCCCFF;margin-top:6px;font-weight:600}
+@media(max-width:640px){.svcta{padding:66px 0}.svcta-stats{gap:28px}}
 /* cta foot */
 .cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
 .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
@@ -428,9 +440,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 <div class="qa"><button>해외 배포는 어떻게 진행되나요?<span class="ico">+</span></button><div class="ans"><p>목표 국가의 언어로 현지화한 보도자료를 현지 매체·기자에게 배포합니다. 베트남·중국 등 국가별 매체망을 활용하며, 엔터프라이즈 플랜 또는 별도 견적으로 진행합니다.</p></div></div></div>
 </div></section>
 
-<section class="sec" style="padding-top:40px"><div class="wrap">
-<div class="shead center rv"><span class="eyebrow">함께 보면 좋은 서비스</span><h2 class="h2">이 서비스와 이어집니다</h2></div>
-<div class="rel-grid"><a class="relc rv" href="channels.html"><span class="no">SERVICE 05</span><b>외부 채널 운영</b><span>AI는 한 곳의 주장보다 여러 출처의 교차 확인을 신뢰합니다. 네이버…</span></a><a class="relc rv" href="visibility.html"><span class="no">SERVICE 01</span><b>AI 가시성 평가</b><span>AI에게 우리 회사는 '존재하는 회사'인지, '모르는 이름'인지 — …</span></a></div>
+<section class="svcta"><div class="wrap">
+<h2>언론 배포, 혼자 고민하지 마세요</h2>
+<p>전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.</p>
+<a class="sbtn" href="../check.html">AI 가시성 무료 체크</a>
+<div class="svcta-stats"><div><b>4개 엔진</b><span>ChatGPT·Gemini·Perplexity·네이버</span></div><div><b>월 60만원~</b><span>구독형 운영 · 약정 없음</span></div><div><b>3개월</b><span>AI 반영 기준선</span></div></div>
 </div></section>
 
 <div class="wrap"><div class="cta-band rv">
