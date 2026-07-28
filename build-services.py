@@ -762,16 +762,16 @@ def build_page(x):
 </div>
 </div></section>
 
-<section class="sec" style="background:var(--sky-2)"><div class="wrap">
-<div class="shead center rv"><span class="eyebrow">자주 묻는 질문</span><h2 class="h2">{x['title']}, 궁금한 점</h2></div>
-<div class="faq rv">{faqs}</div>
-</div></section>
-
 <section class="svcta"><div class="wrap">
 <h2>{x['title']}, 혼자 고민하지 마세요</h2>
 <p>전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.</p>
 <a class="sbtn" href="../index.html#final">무료 상담 신청</a>
 <div class="svcta-stats"><div><b>4개 엔진</b><span>ChatGPT·Gemini·Perplexity·네이버</span></div><div><b>월 60만원~</b><span>구독형 운영 · 약정 없음</span></div><div><b>3개월</b><span>AI 반영 기준선</span></div></div>
+</div></section>
+
+<section class="sec" style="background:var(--sky-2)"><div class="wrap">
+<div class="shead center rv"><span class="eyebrow">자주 묻는 질문</span><h2 class="h2">{x['title']}, 궁금한 점</h2></div>
+<div class="faq rv">{faqs}</div>
 </div></section>
 {foot()}
 {FAQ_JS}
