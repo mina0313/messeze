@@ -231,6 +231,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .ptitem{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:250px}
 .ptitem .ptimg{border-radius:16px;overflow:hidden;height:100%;min-height:250px;box-shadow:var(--sh-sm)}
 .ptitem .ptimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitem .ptimg.ptlogo{display:grid;place-items:center}
+.ptitem .ptimg.ptlogo img{width:118px;height:118px;object-fit:cover;border-radius:26px;box-shadow:0 12px 30px rgba(16,31,63,.16)}
 .ptitem .ptcard{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(16,31,63,.13);padding:30px 32px;position:relative;z-index:2}
 .pttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .pttags span{font-size:12.5px;font-weight:700;color:#2748B8;background:#F0F5FF;border:1px solid #D9E5FF;border-radius:999px;padding:6px 13px;line-height:1.45}
@@ -704,13 +706,31 @@ def flow_html(slug):
     cells = "".join(f'<div class="hm-step"><span class="hn">STEP {i+1:02d}</span><b>{a}</b><span>{b}<br>{c}</span></div>' for i,(a,b,c) in enumerate(steps))
     return f'<div class="hflow-mini rv"><h4>진행 흐름 한눈에 보기</h4><p class="hm-sub">문의부터 결과 전달까지, 이 순서로 진행됩니다.</p><div class="hm-row">{cells}</div></div>'
 
+# 포인트별 채널 로고 타일 (slug -> {item_index: (logo_url, tile_bg)})
+ITEMLOGOS = {
+  "channels": {
+    0: ("../assets/logos/ch-naver.svg", "#E8F7EE"),
+    1: ("../assets/logos/ch-tistory.png", "#FFF2EA"),
+    2: ("../assets/logos/ch-blogger.png", "#FFF4E5"),
+  },
+}
+
 def build_page(x):
     rel_cards = ""
     for slug in x["rel"]:
         r = BY_SLUG[slug]
         rel_cards += f"""<a class="relc rv" href="{r['slug']}.html"><span class="no">SERVICE {r['no']}</span><b>{r['title']}</b><span>{r['one'][:38]}…</span></a>"""
     _pool = PTPHOTOS.get(x["slug"], [])
-    items = "\n".join(f"""<div class="ptitem rv"><span class="ptnum">{i+1:02d}</span><div class="ptimg"><img src="https://images.unsplash.com/{_pool[i%len(_pool)] if _pool else ""}?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div><div class="ptcard"><span class="ptcat">POINT {i+1:02d}</span><b>{t}</b><p>{d}</p><div class="pttags">{"".join("<span>"+g+"</span>" for g in tg)}</div></div></div>""" for i,(t,d,*rest) in enumerate(x["items"]) for tg in [rest[0] if rest else []])
+    _logos = ITEMLOGOS.get(x["slug"], {})
+    def _pt(i, t, d, tg):
+        lg = _logos.get(i)
+        if lg:
+            img = f'<div class="ptimg ptlogo" style="background:{lg[1]}"><img src="{lg[0]}" alt="{t}" loading="lazy" referrerpolicy="no-referrer"></div>'
+        else:
+            img = f'<div class="ptimg"><img src="https://images.unsplash.com/{_pool[i%len(_pool)] if _pool else ""}?w=760&h=520&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div>'
+        tags = "".join("<span>"+g+"</span>" for g in tg)
+        return f'<div class="ptitem rv"><span class="ptnum">{i+1:02d}</span>{img}<div class="ptcard"><span class="ptcat">POINT {i+1:02d}</span><b>{t}</b><p>{d}</p><div class="pttags">{tags}</div></div></div>'
+    items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
     procs = "\n".join(f"""<div class="pr"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
     delivs = "".join(f"<span>{d}</span>" for d in x["deliv"])
