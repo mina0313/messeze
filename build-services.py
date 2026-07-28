@@ -318,7 +318,7 @@ def mega():
     return f"""<div class="mega" id="mega"><div class="wrap mega-in">
 <a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
 <div class="mega-col"><h5>서비스</h5>
-<a href="../services.html"><b style="color:var(--cobalt)">서비스 전체 보기 →</b><span>6가지 서비스를 한눈에</span></a>
+<a href="../services.html"><b style="color:var(--cobalt)">구독형 AI PR 패키지 →</b><span>진단·홈페이지·콘텐츠·언론을 월 단위로 함께 운영</span></a>
 <a href="visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
 <a href="website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
 <a href="website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
@@ -647,7 +647,7 @@ def build_page(x):
 <h1>{x['title']}</h1>
 <p class="sub">{x['one']}</p>
 <div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>{x['ai']}</p></div>
-<div class="cta"><a href="../index.html#final" class="btn btn-co">무료 진단으로 시작하기</a><a href="../pricing.html" class="btn btn-gh">요금 보기</a></div>
+<div class="cta"><a href="../check.html" class="btn btn-co">AI 가시성 무료 체크</a><a href="../pricing.html" class="btn btn-gh">요금 보기</a></div>
 </div>
 {x['vis']}
 </div></section>
