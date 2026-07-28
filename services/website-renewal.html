@@ -250,14 +250,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .pr{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
 .pr .n{font-family:var(--disp);font-weight:700;font-size:14px;color:#fff;background:#AEBBD4;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
 /* 진행 절차 — 화면 고정(핀) + 스크롤에 따라 1→2→3→4 순서대로 채워짐 */
-.proc-pin{position:relative;height:180vh;background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%)}
-.proc-stick{position:sticky;top:0;min-height:72vh;display:flex;align-items:center}
-.proc-stick>section{width:100%}
-.proc-stick .proc{background:transparent}
-.proc-stick .sec{padding:44px 0}
-.proc .pr{opacity:0;transform:translateY(48px) scale(.94)}
-.proc .pr.on{opacity:1;transform:none;border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
-.proc .pr.on .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
+.proc{background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%);padding:84px 0}
+.proc .pr.in{border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
+.proc .pr.in .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
+.pr-grid .pr:nth-child(2){transition-delay:.12s}
+.pr-grid .pr:nth-child(3){transition-delay:.24s}
+.pr-grid .pr:nth-child(4){transition-delay:.36s}
 .pr b{font-size:15.5px;display:block}
 .pr p{font-size:13px;color:var(--body);line-height:1.58;margin-top:6px}
 /* fit + deliv */
@@ -339,7 +337,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
   .rel-grid{grid-template-columns:1fr}
   .svc-vis{min-height:400px}
 }
-@media(max-width:720px){.proc-pin{height:auto}.proc-stick{position:static;min-height:0;display:block}}
+
 @media(max-width:560px){.sec{padding:64px 0}.pr-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv,.proc .pr{opacity:1;transform:none;translate:none}}
 </style></head><body id="top">
@@ -413,13 +411,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 
 </div></section>
 
-<div class="proc-pin" id="procPin"><div class="proc-stick"><section class="sec proc"><div class="wrap">
-<div class="shead center"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
-<div class="pr-grid"><div class="pr"><span class="n">1</span><b>범위 확정</b><p>진단 결과를 바탕으로 수정으로 갈지, 리뉴얼이 필요한지 판정하고 범위를 합의합니다.</p></div>
-<div class="pr"><span class="n">2</span><b>구조 정비 실행</b><p>메타·헤딩·콘텐츠·이미지를 순서대로 정비합니다.</p></div>
-<div class="pr"><span class="n">3</span><b>스키마·기술 적용</b><p>JSON-LD, 사이트맵, canonical 등 기술 요소를 적용합니다.</p></div>
-<div class="pr"><span class="n">4</span><b>전후 비교 검증</b><p>적용 전후 점수와 변화를 리포트로 확인시켜 드립니다.</p></div></div>
-</div></section></div></div>
+<section class="proc"><div class="wrap">
+<div class="shead center rv" style="margin-bottom:40px"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
+<div class="pr-grid"><div class="pr rv"><span class="n">1</span><b>범위 확정</b><p>진단 결과를 바탕으로 수정으로 갈지, 리뉴얼이 필요한지 판정하고 범위를 합의합니다.</p></div>
+<div class="pr rv"><span class="n">2</span><b>구조 정비 실행</b><p>메타·헤딩·콘텐츠·이미지를 순서대로 정비합니다.</p></div>
+<div class="pr rv"><span class="n">3</span><b>스키마·기술 적용</b><p>JSON-LD, 사이트맵, canonical 등 기술 요소를 적용합니다.</p></div>
+<div class="pr rv"><span class="n">4</span><b>전후 비교 검증</b><p>적용 전후 점수와 변화를 리포트로 확인시켜 드립니다.</p></div></div>
+</div></section>
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
@@ -458,23 +456,5 @@ document.querySelectorAll('.qa button').forEach(btn=>{
     if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
   });
 });
-/* 진행 절차: 핀 고정 + 스크롤 진행도에 따라 1→2→3→4 누적 등장 */
-(function(){
-  var pin=document.getElementById('procPin');
-  if(!pin) return;
-  var cards=[].slice.call(pin.querySelectorAll('.pr'));
-  var N=cards.length; if(!N) return;
-  function upd(){
-    if(!matchMedia('(min-width:721px)').matches){cards.forEach(function(c){c.classList.add('on');});return;}
-    var len=pin.offsetHeight-window.innerHeight;
-    if(len<=0){cards.forEach(function(c){c.classList.add('on');});return;}
-    var p=-pin.getBoundingClientRect().top/len; p=Math.max(0,Math.min(1,p));
-    var revealed=Math.min(N,1+Math.floor(p*N));
-    for(var i=0;i<N;i++){cards[i].classList.toggle('on',i<revealed);}
-  }
-  addEventListener('scroll',upd,{passive:true});
-  addEventListener('resize',upd);
-  upd();
-})();
 </script>
 </body></html>

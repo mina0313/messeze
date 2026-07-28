@@ -250,14 +250,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .pr{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
 .pr .n{font-family:var(--disp);font-weight:700;font-size:14px;color:#fff;background:#AEBBD4;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
 /* 진행 절차 — 화면 고정(핀) + 스크롤에 따라 1→2→3→4 순서대로 채워짐 */
-.proc-pin{position:relative;height:180vh;background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%)}
-.proc-stick{position:sticky;top:0;min-height:72vh;display:flex;align-items:center}
-.proc-stick>section{width:100%}
-.proc-stick .proc{background:transparent}
-.proc-stick .sec{padding:44px 0}
-.proc .pr{opacity:0;transform:translateY(48px) scale(.94)}
-.proc .pr.on{opacity:1;transform:none;border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
-.proc .pr.on .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
+.proc{background:linear-gradient(180deg,#E4ECFF,#F4F9FF 72%);padding:84px 0}
+.proc .pr.in{border-color:#B9CCFF;box-shadow:0 18px 44px rgba(43,92,255,.14)}
+.proc .pr.in .n{background:linear-gradient(135deg,#2B5CFF,#6E93FF);box-shadow:0 8px 18px rgba(43,92,255,.34);transform:scale(1.06)}
+.pr-grid .pr:nth-child(2){transition-delay:.12s}
+.pr-grid .pr:nth-child(3){transition-delay:.24s}
+.pr-grid .pr:nth-child(4){transition-delay:.36s}
 .pr b{font-size:15.5px;display:block}
 .pr p{font-size:13px;color:var(--body);line-height:1.58;margin-top:6px}
 /* fit + deliv */
@@ -339,7 +337,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
   .rel-grid{grid-template-columns:1fr}
   .svc-vis{min-height:400px}
 }
-@media(max-width:720px){.proc-pin{height:auto}.proc-stick{position:static;min-height:0;display:block}}
+
 @media(max-width:560px){.sec{padding:64px 0}.pr-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv,.proc .pr{opacity:1;transform:none;translate:none}}
 """
@@ -417,24 +415,6 @@ document.querySelectorAll('.qa button').forEach(btn=>{
     if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
   });
 });
-/* 진행 절차: 핀 고정 + 스크롤 진행도에 따라 1→2→3→4 누적 등장 */
-(function(){
-  var pin=document.getElementById('procPin');
-  if(!pin) return;
-  var cards=[].slice.call(pin.querySelectorAll('.pr'));
-  var N=cards.length; if(!N) return;
-  function upd(){
-    if(!matchMedia('(min-width:721px)').matches){cards.forEach(function(c){c.classList.add('on');});return;}
-    var len=pin.offsetHeight-window.innerHeight;
-    if(len<=0){cards.forEach(function(c){c.classList.add('on');});return;}
-    var p=-pin.getBoundingClientRect().top/len; p=Math.max(0,Math.min(1,p));
-    var revealed=Math.min(N,1+Math.floor(p*N));
-    for(var i=0;i<N;i++){cards[i].classList.toggle('on',i<revealed);}
-  }
-  addEventListener('scroll',upd,{passive:true});
-  addEventListener('resize',upd);
-  upd();
-})();
 </script>"""
 
 # ---------------- 서비스 데이터 ----------------
@@ -719,7 +699,7 @@ def build_page(x):
         tags = "".join("<span>"+g+"</span>" for g in tg)
         return f'<div class="ptc rv"><div class="ptc-hd">{badge}<b>{t}</b></div><p>{d}</p><div class="pttags">{tags}</div></div>'
     items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
-    procs = "\n".join(f"""<div class="pr"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
+    procs = "\n".join(f"""<div class="pr rv"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
     delivs = "".join(f"<span>{d}</span>" for d in x["deliv"])
     faqs = "\n".join(f"""<div class="qa"><button>{q}<span class="ico">+</span></button><div class="ans"><p>{a}</p></div></div>""" for q,a in x["faq"])
@@ -760,10 +740,10 @@ def build_page(x):
 {reltool}
 </div></section>
 
-{x.get('tool','')}<div class="proc-pin" id="procPin"><div class="proc-stick"><section class="sec proc"><div class="wrap">
-<div class="shead center"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
+{x.get('tool','')}<section class="proc"><div class="wrap">
+<div class="shead center rv" style="margin-bottom:40px"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
 <div class="pr-grid">{procs}</div>
-</div></section></div></div>
+</div></section>
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
