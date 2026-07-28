@@ -91,7 +91,7 @@ MEGA_JS = """<script>
 (function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>"""
 
-LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M38 22 26 74" stroke="currentColor" stroke-width="20" stroke-linecap="round"/><path d="M70 22 58 74" stroke="#2B5CFF" stroke-width="20" stroke-linecap="round"/><circle cx="86" cy="68" r="10" fill="#2B5CFF"/></svg>"""
+LOGO = """<svg viewBox="0 0 104 100" fill="none"><path d="M20 78 20 26 45 59" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M45 59 70 26 70 78" stroke="#2B5CFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="94" cy="76" r="9" fill="#2B5CFF"/></svg>"""
 
 FONT_LINKS = """<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
