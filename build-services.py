@@ -210,6 +210,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .svc-vis.clips.in .flowrow>*:nth-child(5){transition-delay:1.1s}
 .svc-vis.clips.in .flowrow>*:nth-child(6){transition-delay:1.2s}
 .svc-vis.clips.in .flowrow>*:nth-child(7){transition-delay:1.3s}
+.svc-photo{max-width:980px;margin:0 auto 38px;border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--sh);background:#EEF2F9}
+.svc-photo img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+.svc-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 30px 22px;background:linear-gradient(180deg,transparent,rgba(10,25,48,.86));color:#fff;font-size:15px;font-weight:700}
+@media(max-width:640px){.svc-photo figcaption{font-size:13.5px;padding:34px 20px 16px}}
 /* 진행 흐름 미니 플로우 */
 .hflow-mini{max-width:980px;margin:0 auto 34px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;box-shadow:var(--sh-sm)}
 .hflow-mini h4{font-size:14.5px;margin-bottom:4px}
@@ -621,6 +625,14 @@ s(slug="press", no="06", title="언론 배포", en="Press Distribution",
   tool="""<section class="sec" style="background:var(--sky-2)"><div class="wrap"><div class="shead center rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">우리 회사 소식, 기사로 나갈 수 있을까요?</h2><p class="lead">간단한 정보만 입력하면 기사화 가능성과 보완 포인트를 무료로 진단해 드립니다.</p></div><div class="prcheck rv"><div class="prc-score"><div class="prc-gauge"><b>74</b><span>점</span></div><p>현재 소재는 보도자료로 활용할 수 있습니다. 구체적 수치와 시장적 의미를 더하면 기사 채택 가능성이 올라갑니다.</p></div><div class="prc-items"><div class="prc-i"><span>시의성</span><i><em style="width:80%"></em></i><b>16/20</b></div><div class="prc-i"><span>구체성</span><i><em style="width:60%"></em></i><b>12/20</b></div><div class="prc-i"><span>차별성</span><i><em style="width:75%"></em></i><b>15/20</b></div><div class="prc-i"><span>산업적 의미</span><i><em style="width:65%"></em></i><b>13/20</b></div><div class="prc-i"><span>신뢰 근거</span><i><em style="width:90%"></em></i><b>18/20</b></div></div></div><div class="prc-cta rv"><b>기사 가능성은 있지만, 어떻게 써야 할지 막막하신가요?</b><span>messeze가 강점을 기사 관점으로 정리하고 보도자료 작성부터 언론 배포까지 진행해 드립니다.</span><a href="../index.html#final" class="btn btn-co">무료 보도자료 상담받기</a></div></div></section>""",
   rel=["channels","visibility"])
 
+SVCPHOTO = {
+ "visibility": ("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=560&fit=crop&q=72&auto=format","진단 리포트로 현재 위치를 숫자로 확인합니다"),
+ "website-renewal": ("https://images.unsplash.com/photo-1547658719-da2b51169166?w=1000&h=560&fit=crop&q=72&auto=format","AI가 읽을 수 있는 구조로 홈페이지를 정비합니다"),
+ "website-build": ("https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&h=560&fit=crop&q=72&auto=format","질문에서 출발해 페이지 구조를 설계합니다"),
+ "own-blog": ("https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1000&h=560&fit=crop&q=72&auto=format","자사 도메인에 전문성이 쌓이도록 매주 발행합니다"),
+ "channels": ("https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1000&h=560&fit=crop&q=72&auto=format","네이버·티스토리·구글까지 출처를 넓힙니다"),
+ "press": ("https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&h=560&fit=crop&q=72&auto=format","기자가 검증한 기사로 제3자 신뢰를 만듭니다"),
+}
 # 서비스별 진행 흐름 (4단계)
 FLOWSTEPS = {
  "visibility": [("자료 수집","회사·제품 정보 전달","간단한 질문지 작성"),("AI 질의 테스트","4개 엔진에 질문 실행","답변·인용 출처 기록"),("구조 분석","홈페이지 크롤러 관점 점검","경쟁사 비교 분석"),("리포트 브리핑","진단 결과 미팅 설명","개선 우선순위 전달")],
@@ -641,6 +653,12 @@ WHATHEADS = {
 }
 
 BY_SLUG = {x["slug"]: x for x in S}
+
+def photo_html(slug):
+    p = SVCPHOTO.get(slug)
+    if not p: return ""
+    url, cap = p
+    return f'<figure class="svc-photo rv"><img src="{url}" alt="" loading="lazy" referrerpolicy="no-referrer"><figcaption>{cap}</figcaption></figure>'
 
 def flow_html(slug):
     steps = FLOWSTEPS.get(slug)
@@ -691,7 +709,7 @@ def build_page(x):
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead">{x['intro']}</p></div>
-{flow_html(x["slug"])}
+{photo_html(x["slug"])}
 <div class="dt-grid">{items}</div>
 {reltool}
 </div></section>
