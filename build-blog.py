@@ -96,7 +96,7 @@ MEGA_JS = """<script>
 (function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
 </script>"""
 
-LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M26 74 38 22 52 60" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 60 70 22 58 74" stroke="#2B5CFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="68" r="10" fill="#2B5CFF"/></svg>"""
+LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg>"""
 
 # ---------------- 글 데이터 (회의록 §10 가이드 주제) ----------------
 POSTS = [

@@ -351,7 +351,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv,.proc .pr{opacity:1;transform:none;translate:none}}
 """
 
-LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M26 74 38 22 52 60" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 60 70 22 58 74" stroke="#2B5CFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="68" r="10" fill="#2B5CFF"/></svg>"""
+LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg>"""
 
 FONT_LINKS = """<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
