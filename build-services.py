@@ -210,6 +210,19 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .svc-vis.clips.in .flowrow>*:nth-child(5){transition-delay:1.1s}
 .svc-vis.clips.in .flowrow>*:nth-child(6){transition-delay:1.2s}
 .svc-vis.clips.in .flowrow>*:nth-child(7){transition-delay:1.3s}
+/* 진행 흐름 미니 플로우 */
+.hflow-mini{max-width:980px;margin:0 auto 34px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;box-shadow:var(--sh-sm)}
+.hflow-mini h4{font-size:14.5px;margin-bottom:4px}
+.hflow-mini .hm-sub{font-size:12.5px;color:var(--mut);margin-bottom:20px}
+.hm-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+.hm-step{background:var(--sky-2);border:1px solid var(--line);border-radius:14px;padding:16px 15px;position:relative;transition:.25s}
+.hm-step:hover{border-color:#C4D4FF;transform:translateY(-3px);background:#fff}
+.hm-step .hn{font-family:var(--disp);font-size:11px;font-weight:800;color:var(--cobalt);display:block;margin-bottom:7px}
+.hm-step b{font-size:13.5px;display:block;line-height:1.4}
+.hm-step span{display:block;font-size:11.5px;color:var(--mut);margin-top:6px;line-height:1.5;font-weight:600}
+.hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
+.hm-step:last-child::after{display:none}
+@media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -608,7 +621,32 @@ s(slug="press", no="06", title="언론 배포", en="Press Distribution",
   tool="""<section class="sec" style="background:var(--sky-2)"><div class="wrap"><div class="shead center rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">우리 회사 소식, 기사로 나갈 수 있을까요?</h2><p class="lead">간단한 정보만 입력하면 기사화 가능성과 보완 포인트를 무료로 진단해 드립니다.</p></div><div class="prcheck rv"><div class="prc-score"><div class="prc-gauge"><b>74</b><span>점</span></div><p>현재 소재는 보도자료로 활용할 수 있습니다. 구체적 수치와 시장적 의미를 더하면 기사 채택 가능성이 올라갑니다.</p></div><div class="prc-items"><div class="prc-i"><span>시의성</span><i><em style="width:80%"></em></i><b>16/20</b></div><div class="prc-i"><span>구체성</span><i><em style="width:60%"></em></i><b>12/20</b></div><div class="prc-i"><span>차별성</span><i><em style="width:75%"></em></i><b>15/20</b></div><div class="prc-i"><span>산업적 의미</span><i><em style="width:65%"></em></i><b>13/20</b></div><div class="prc-i"><span>신뢰 근거</span><i><em style="width:90%"></em></i><b>18/20</b></div></div></div><div class="prc-cta rv"><b>기사 가능성은 있지만, 어떻게 써야 할지 막막하신가요?</b><span>messeze가 강점을 기사 관점으로 정리하고 보도자료 작성부터 언론 배포까지 진행해 드립니다.</span><a href="../index.html#final" class="btn btn-co">무료 보도자료 상담받기</a></div></div></section>""",
   rel=["channels","visibility"])
 
+# 서비스별 진행 흐름 (4단계)
+FLOWSTEPS = {
+ "visibility": [("자료 수집","회사·제품 정보 전달","간단한 질문지 작성"),("AI 질의 테스트","4개 엔진에 질문 실행","답변·인용 출처 기록"),("구조 분석","홈페이지 크롤러 관점 점검","경쟁사 비교 분석"),("리포트 브리핑","진단 결과 미팅 설명","개선 우선순위 전달")],
+ "website-renewal": [("범위 확정","진단 결과로 수정/리뉴얼 판정","작업 범위 합의"),("구조 정비","메타·헤딩·콘텐츠 정리","이미지 텍스트 복구"),("스키마 적용","JSON-LD·사이트맵 적용","크롤링 경로 개방"),("전후 검증","점수 비교 리포트","개선 수치 확인")],
+ "website-build": [("질문·구조 설계","핵심 질문 정의","사이트 구조(IA) 확정"),("디자인·개발","브랜드 디자인 작업","표준 마크업 개발"),("콘텐츠·스키마","초기 콘텐츠 게재","페이지별 구조화 데이터"),("런칭·색인","서치콘솔 등록","초기 색인 확인")],
+ "own-blog": [("글감 캘린더","핵심 질문을 월별 배치","발행 일정 확정"),("초안 작성","전담팀 집필","전문성 인터뷰 반영"),("검수·발행","고객 검수 후 수정","스키마 붙여 발행"),("성과 추적","노출·유입 확인","다음 달 계획 반영")],
+ "channels": [("채널 전략","업종별 채널 역할 정의","운영 방향 수립"),("개설·세팅","계정 개설·프로필 정비","카테고리 구성"),("변주 발행","원본을 채널별 재작성","각 채널 성격에 맞게"),("유입 분석","채널별 성과 비교","비중 조정")],
+ "press": [("소재 발굴","월간 미팅에서 뉴스거리","보도 가치 판단"),("원고 작성","보도자료·애드버토리얼","리드문 중심 작성"),("기자 매칭 배포","업종별 출입처 선별","맞춤 배포"),("결과 관리","게재 확인·팔로업","기사 자산화")],
+}
+# 서비스별 "무엇을 하나요" 섹션 제목
+WHATHEADS = {
+ "visibility": ("무엇을 진단하나요", "이렇게 진단합니다"),
+ "website-renewal": ("무엇을 정비하나요", "이렇게 정비합니다"),
+ "website-build": ("어떻게 설계하나요", "이렇게 설계하고 짓습니다"),
+ "own-blog": ("어떻게 운영하나요", "이렇게 쌓아 올립니다"),
+ "channels": ("어떻게 운영하나요", "이렇게 확산시킵니다"),
+ "press": ("어떻게 배포하나요", "이렇게 기사로 만듭니다"),
+}
+
 BY_SLUG = {x["slug"]: x for x in S}
+
+def flow_html(slug):
+    steps = FLOWSTEPS.get(slug)
+    if not steps: return ""
+    cells = "".join(f'<div class="hm-step"><span class="hn">STEP {i+1:02d}</span><b>{a}</b><span>{b}<br>{c}</span></div>' for i,(a,b,c) in enumerate(steps))
+    return f'<div class="hflow-mini rv"><h4>진행 흐름 한눈에 보기</h4><p class="hm-sub">문의부터 결과 전달까지, 이 순서로 진행됩니다.</p><div class="hm-row">{cells}</div></div>'
 
 def build_page(x):
     rel_cards = ""
@@ -652,7 +690,8 @@ def build_page(x):
 </div></section>
 
 <section class="sec"><div class="wrap">
-<div class="shead rv"><span class="eyebrow">무엇을 하나요</span><h2 class="h2">이 서비스에 포함된 것</h2><p class="lead">{x['intro']}</p></div>
+<div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead">{x['intro']}</p></div>
+{flow_html(x["slug"])}
 <div class="dt-grid">{items}</div>
 {reltool}
 </div></section>
