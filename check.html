@@ -482,7 +482,7 @@ function analyze(html,baseUrl,robots,sitemap,via){
   const nextGen=[...doc.querySelectorAll('img,source')].some(el=>/\.(webp|avif)([?#\s]|$)/i.test((el.getAttribute('src')||'')+' '+(el.getAttribute('srcset')||''))||/image\/(webp|avif)/i.test(el.getAttribute('type')||''));
   add('속도·기술 최적화','차세대 이미지 포맷',imgs.length===0||nextGen,1,imgs.length===0?'이미지 없음 — 판정 제외 (통과 처리)':(nextGen?'WebP/AVIF 사용 확인':'JPG/PNG만 쓰고 있습니다. WebP로 바꾸면 용량이 줄어 속도가 개선됩니다.'));
   const hints=doc.querySelectorAll('link[rel="preconnect"],link[rel="preload"],link[rel="dns-prefetch"],link[rel="prefetch"]').length;
-  add('속도·기술 최적화','리소스 힌트',hints>0,1,hints?('preconnect·preload 등 '+hints+'개 적용':'외부 자원 연결을 앞당기는 리소스 힌트(preconnect 등)가 없습니다.'));
+  add('속도·기술 최적화','리소스 힌트',hints>0,1,hints?('preconnect·preload 등 '+hints+'개 적용'):'외부 자원 연결을 앞당기는 리소스 힌트(preconnect 등)가 없습니다.');
 
   /* ---- D. 구조화 데이터 (30) ---- */
   const ldNodes=[...doc.querySelectorAll('script[type="application/ld+json"]')];
