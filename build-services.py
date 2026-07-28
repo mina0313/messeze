@@ -351,7 +351,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv,.phero-in>.rv,.phero-in>.svc-vis.rv,.proc .pr{opacity:1;transform:none;translate:none}}
 """
 
-LOGO = """<svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg>"""
+LOGO = """<svg viewBox="0 0 100 100" fill="none"><path d="M46 22 32 72" stroke="currentColor" stroke-width="24" stroke-linecap="round"/><path d="M74 22 60 72" stroke="#2B5CFF" stroke-width="24" stroke-linecap="round"/><circle cx="87" cy="65" r="12" fill="#2B5CFF"/></svg>"""
 
 FONT_LINKS = """<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
