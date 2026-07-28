@@ -446,7 +446,7 @@ def nav(depth):
     return f"""<header class="nav"><div class="wrap nav-in">
 <a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
 <nav class="nav-menu">
-<a href="{p}services.html">서비스</a>
+<a href="{p}services/visibility.html">서비스</a>
 <a href="{p}pricing.html">요금</a>
 <a href="{p}check.html">AI 가시성 체크</a>
 <a class="on" href="{p}blog/index.html">블로그</a>
