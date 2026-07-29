@@ -712,7 +712,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 @media(max-width:560px){.bgrid{grid-template-columns:1fr}}
 /* ============ 고객 인터뷰 ============ */
 .ivw-sec{background:linear-gradient(180deg,#fff,#F6FAFF)}
-.ivw-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto}
+.ivw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0 auto}
+#interview .ivw-q{font-size:17px}
+#interview .ivw{padding:26px 26px 24px}
+@media(max-width:1024px){.ivw-grid{grid-template-columns:1fr 1fr}}
 .ivw{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s}
 .ivw:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:var(--line-2)}
 .ivw-top{display:flex;align-items:center;gap:14px;margin-bottom:20px}
@@ -1484,6 +1487,18 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
           <p><em>A.</em> 할 인력이 없었어요. 진단부터 발행까지 전담팀이 다 대신해줍니다.</p>
         </div>
         <div class="ivw-res"><span>6개월 · 해외 바이어 문의 3배</span><span>다국어 언론 확장</span></div>
+      </a>
+      <a class="ivw rv d2" href="interview/material.html">
+        <div class="ivw-top">
+          <img class="ivw-photo" src="https://images.unsplash.com/photo-1611403119860-57c4937ef987?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="박 대표" loading="lazy" referrerpolicy="no-referrer">
+          <div class="ivw-who"><b>박○○ 대표</b><span>○○소재 · 산업소재</span></div>
+        </div>
+        <blockquote class="ivw-q">특허는 있는데 아무도 몰랐어요. 이제 <b>AI가 우리 소재를 먼저 설명</b>합니다.</blockquote>
+        <div class="ivw-qa">
+          <p><em>Q.</em> 어떤 게 놀라운가요?</p>
+          <p><em>A.</em> 경쟁사 대신 우리가 먼저 인용되는 걸 보고 놀랍습니다.</p>
+        </div>
+        <div class="ivw-res"><span>16주 · AI 답변 등장률 81%</span><span>기술 문의 2배</span></div>
       </a>
     </div>
     <div style="text-align:center;margin-top:32px"><a class="btn btn-gh" href="interview.html">인터뷰 전체 보기 →</a></div>
