@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>○○식품 성과 인터뷰 | messeze — 식품 중소기업</title>
+<meta name="description" content="식품 중소기업 ○○식품의 messeze 도입 성과 — 16주 동안의 AI 가시성 변화와 인터뷰.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A1930;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--line:#E5EAF2;--line-2:#D8E0EC;--sans:'Pretendard',system-ui,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all}
+.btn{font-weight:700;font-size:15.5px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border-radius:14px;padding:15px 26px;border:1.5px solid transparent;transition:.18s}
+.btn-co{background:var(--cobalt);color:#fff;box-shadow:0 8px 22px rgba(43,92,255,.28)}
+.btn-co:hover{background:var(--cobalt-dk);transform:translateY(-2px)}
+/* nav (서비스 페이지에서 추출한 헤더용) */
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:25px;height:25px}
+.brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
+.nav-menu{display:flex;gap:6px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 13px;border-radius:10px}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a.on{color:var(--cobalt)}
+.nav-r{margin-left:auto}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:10px 4px 10px 10px}
+.nav-burger span{display:block;width:22px;height:2.5px;background:var(--ink);border-radius:2px;margin:4.5px 0;transition:.22s}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto}}
+/* case */
+.chero{background:linear-gradient(180deg,#F4F9FF,#fff);padding:64px 0 46px}
+.crumb{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:18px}
+.crumb a{color:var(--cobalt)}
+.ctags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.ctags span{font-size:12.5px;font-weight:800;border-radius:999px;padding:6px 14px;background:var(--sky);color:var(--cobalt)}
+.ctags .gray{background:#EEF2F8;color:#5A6780}
+.chero h1{font-size:clamp(26px,3.8vw,42px)}
+.cwho{display:flex;align-items:center;gap:14px;margin-top:26px}
+.cwho img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.cwho b{display:block;font-size:15px}
+.cwho span{font-size:13px;color:var(--mut)}
+.cquote{margin-top:18px;font-size:17px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:16px 20px;max-width:720px;line-height:1.6}
+.msec{padding:46px 0}
+.msec h2{font-size:clamp(21px,2.6vw,28px);margin-bottom:22px}
+.msec h2 em{font-style:normal;color:var(--cobalt)}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;box-shadow:var(--sh-sm)}
+.mc b{font-family:var(--disp);font-size:clamp(24px,2.8vw,34px);font-weight:700;color:var(--cobalt);display:block}
+.mc .l{font-size:13.5px;font-weight:800;margin-top:6px}
+.mc .s{font-size:11.5px;color:var(--mut);margin-top:3px;display:block}
+.bsec{background:var(--sky-2)}
+.btxt{max-width:820px;font-size:15.5px;color:var(--body);line-height:1.75}
+.alist{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:980px}
+.ac{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sh-sm)}
+.ac i{font-style:normal;flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--sky);color:var(--cobalt);font-weight:800;font-size:13px;display:grid;place-items:center}
+.ac b{font-size:15px;display:block}
+.ac p{font-size:13.3px;color:var(--body);margin-top:5px;line-height:1.6}
+.chart{max-width:820px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;box-shadow:var(--sh-sm)}
+.chart .ct{font-size:13.5px;font-weight:800;margin-bottom:20px}
+.cbars{display:flex;align-items:flex-end;gap:0;height:180px}
+.cb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px}
+.cb i{width:min(52px,70%);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#6E93FF,var(--cobalt));position:relative}
+.cb i em{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-style:normal;font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--cobalt);white-space:nowrap}
+.cb.zero i{background:#E3E9F4;min-height:6px}
+.cb span{font-size:12px;color:var(--mut);font-weight:700}
+.cnote{font-size:12px;color:var(--mut);margin-top:16px}
+.qa2{max-width:820px;display:flex;flex-direction:column;gap:14px}
+.qi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--sh-sm)}
+.qi .q{font-size:15.5px;font-weight:800}
+.qi .q i{font-style:normal;color:var(--cobalt);margin-right:8px}
+.qi .a{font-size:14.3px;color:var(--body);line-height:1.7;margin-top:10px}
+.qi .a i{font-style:normal;color:var(--mint);font-weight:800;margin-right:8px}
+.exnote{max-width:820px;font-size:12.5px;color:var(--mut);background:#F6F8FC;border:1px dashed var(--line-2);border-radius:12px;padding:12px 16px}
+.ccta{background:linear-gradient(180deg,#0B1533,#101F3F 60%,#0A1224);color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
+.ccta::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% -10%,rgba(43,92,255,.32),transparent 62%)}
+.ccta .wrap{position:relative}
+.ccta h2{color:#fff;font-size:clamp(23px,3vw,34px)}
+.ccta p{color:#C9D6F5;font-size:15px;margin-top:12px}
+.ccta .btn{background:#fff;color:var(--cobalt);margin-top:26px;border-radius:999px;padding:16px 32px;font-weight:800}
+.ccta .btn:hover{transform:translateY(-3px)}
+/* footer */
+.foot{background:#0C1426;color:#8B95A7;padding:56px 0 30px;font-size:13.5px}
+.foot a{color:inherit}
+@media(max-width:860px){.mgrid{grid-template-columns:1fr 1fr}.alist{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="../index.html"><svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg><span class="bw">messeze</span></a>
+<nav class="nav-menu">
+<a class="on" href="../services.html">서비스</a>
+<a href="../pricing.html">요금</a>
+<a href="../check.html">AI 가시성 체크</a>
+<a href="../blog/index.html">블로그</a>
+<a href="../interview.html">인터뷰</a>
+<a href="../glossary/index.html">용어사전</a>
+</nav>
+<div class="nav-r"><a class="nav-cta" href="../index.html#final">무료 진단 받기</a></div>
+<button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+</div>
+<div class="mega" id="mega"><div class="wrap mega-in">
+<a class="mega-brand" href="../index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
+<div class="mega-col"><h5>서비스</h5>
+<a href="visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+<a href="website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+<a href="website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+<a href="own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+<a href="channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+<a href="press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
+<div class="mega-col"><h5>무료 도구</h5>
+<a href="../check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="../tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="../tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<div class="gap"></div><h5>요금</h5>
+<a href="../pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
+<a href="../pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
+<div class="mega-col"><h5>리소스</h5>
+<a href="../blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+<a href="../interview.html"><b>인터뷰</b><span>먼저 시작한 기업들의 이야기</span></a>
+<a href="../glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 102개</span></a></div>
+</div></div>
+</header>
+<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+</script>
+
+<section class="chero"><div class="wrap">
+<div class="crumb"><a href="../interview.html">← 인터뷰 목록</a></div>
+<div class="ctags"><span>식품 중소기업</span><span class="gray">16주 진행</span><span class="gray">소상공인형 플랜</span></div>
+<h1>30년 제조만 하던 식품회사,<br>납품처가 먼저 찾아오는 회사로</h1>
+<div class="cwho"><img src="https://images.pexels.com/photos/7964223/pexels-photo-7964223.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="오○○ 대표" referrerpolicy="no-referrer"><div><b>오○○ 대표</b><span>○○식품 · 식품 중소기업</span></div></div>
+<div class="cquote">“영업 없이 30년을 버텼는데, 이제는 AI 검색이 우리 영업사원입니다.”</div>
+</div></section>
+
+<section class="msec"><div class="wrap">
+<h2>핵심 성과 <em>한눈에</em></h2>
+<div class="mgrid"><div class="mc"><b>0→6</b><span class="l">AI 인용 질문 수</span><span class="s">핵심 질문 8개 중</span></div><div class="mc"><b>27%</b><span class="l">AI 답변 등장률</span><span class="s">4개 엔진 평균</span></div><div class="mc"><b>13건</b><span class="l">축적 콘텐츠·기사</span><span class="s">HACCP 스토리 포함</span></div><div class="mc"><b>1.7배</b><span class="l">납품 문의</span><span class="s">시작 전 대비</span></div></div>
+</div></section>
+
+<section class="msec bsec"><div class="wrap">
+<h2>시작 전 상황</h2>
+<p class="btxt">OEM 납품 위주라 홍보를 해본 적이 없었습니다. 바이어가 'HACCP 인증 소스류 제조사'를 검색해도, AI에 물어도 우리는 없는 회사였습니다.</p>
+</div></section>
+
+<section class="msec"><div class="wrap">
+<h2>무엇을 실행했나</h2>
+<div class="alist"><div class="ac"><i>1</i><div><b>AI 가시성 진단</b><p>바이어 질문 8개 테스트, 인증·설비 정보 노출 0 확인</p></div></div><div class="ac"><i>2</i><div><b>홈페이지 정비</b><p>인증·생산능력·미니멈 수량을 텍스트로 공개</p></div></div><div class="ac"><i>3</i><div><b>콘텐츠 축적</b><p>'OEM 파트너 고르는 법' 등 바이어용 칼럼</p></div></div><div class="ac"><i>4</i><div><b>언론 배포</b><p>HACCP 갱신·설비 증설 보도 3건</p></div></div></div>
+</div></section>
+
+<section class="msec bsec"><div class="wrap">
+<h2>주차별 AI 답변 등장률 변화</h2>
+<div class="chart"><div class="ct">핵심 질문 세트 기준 · 4개 엔진 평균</div><div class="cbars"><div class="cb zero"><i style="height:6px"><em>0%</em></i><span>시작</span></div><div class="cb"><i style="height:31px"><em>5%</em></i><span>4주</span></div><div class="cb"><i style="height:73px"><em>13%</em></i><span>8주</span></div><div class="cb"><i style="height:114px"><em>21%</em></i><span>12주</span></div><div class="cb"><i style="height:146px"><em>27%</em></i><span>16주</span></div></div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 값입니다.</div></div>
+</div></section>
+
+<section class="msec"><div class="wrap">
+<h2>오○○ 대표 인터뷰</h2>
+<div class="qa2"><div class="qi"><div class="q"><i>Q.</i>홍보가 처음이셨는데 어려움은요?</div><div class="a"><i>A.</i>뭘 줘야 할지 몰랐는데, 질문지에 답만 하면 되게 만들어줘서 부담이 없었습니다.</div></div><div class="qi"><div class="q"><i>Q.</i>문의의 질이 달라졌나요?</div><div class="a"><i>A.</i>네. 인증과 생산능력을 이미 알고 연락이 와서, 바로 견적 얘기로 들어갑니다.</div></div><div class="qi"><div class="q"><i>Q.</i>비용 대비 어떤가요?</div><div class="a"><i>A.</i>전시회 한 번 비용으로 1년 내내 쌓이는 걸 생각하면 비교가 안 됩니다.</div></div></div>
+<div class="exnote" style="margin-top:22px">※ 본 사례는 서비스 준비 단계의 예시 구성이며, 수치·인터뷰는 실제 고객 사례로 순차 교체됩니다.</div>
+</div></section>
+
+<section class="ccta"><div class="wrap">
+<h2>우리 회사도 이렇게 될 수 있을까요?</h2>
+<p>현재 AI 노출 상태를 무료로 진단해 드립니다. 결과를 보고 결정하세요.</p>
+<a class="btn" href="../index.html#final">무료 진단 신청 →</a>
+</div></section>
+
+<footer class="foot"><div class="wrap"><div class="foot-in">
+<div><a class="brand" href="../index.html"><svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg><span class="bw">messeze</span></a>
+<p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p></div>
+</div><div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div></div></footer>
+</body></html>
