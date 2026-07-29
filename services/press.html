@@ -289,8 +289,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .relc .no{font-family:var(--disp);font-size:12.5px;font-weight:700;color:var(--cobalt)}
 .relc b{font-size:17px;display:block;margin-top:6px}
 .relc span{font-size:13px;color:var(--mut);display:block;margin-top:4px}
-.svcta{background:linear-gradient(135deg,#1E46D9,#2B5CFF 55%,#4270FF);color:#fff;text-align:center;padding:92px 0;position:relative;overflow:hidden}
-.svcta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 80% 15%,rgba(255,255,255,.16),transparent 60%)}
+.svcta{background:linear-gradient(180deg,#0B1533 0%,#101F3F 60%,#0A1224 100%);color:#fff;text-align:center;padding:92px 0;position:relative;overflow:hidden}
+.svcta::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 380px at 50% -10%,rgba(43,92,255,.32),transparent 62%),radial-gradient(520px 300px at 85% 110%,rgba(43,92,255,.16),transparent 60%)}
 .svcta .wrap{position:relative}
 .svcta h2{color:#fff;font-size:clamp(26px,3.6vw,42px);letter-spacing:-.03em;line-height:1.28}
 .svcta p{color:#DCE6FF;font-size:16px;margin-top:16px;line-height:1.7}
