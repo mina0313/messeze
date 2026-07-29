@@ -1046,6 +1046,16 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .rv{opacity:0;transform:translateY(24px);filter:blur(4px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none;filter:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+/* ============ HOW IT WORKS (번호 리스트) ============ */
+.hwork{background:#fff}
+.hwork .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:12.5px}
+.hw-list{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.hw-row{display:flex;align-items:flex-start;gap:22px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s,border-color .2s}
+.hw-row:hover{border-color:#B9CCFF;box-shadow:0 16px 40px rgba(16,31,63,.1);transform:translateY(-2px)}
+.hw-no{flex:0 0 auto;width:46px;height:46px;border-radius:50%;border:2px solid var(--cobalt);color:var(--cobalt);font-family:var(--disp);font-weight:700;font-size:15px;display:grid;place-items:center}
+.hw-row b{font-size:17.5px;letter-spacing:-.02em;display:block}
+.hw-row p{font-size:14.3px;color:var(--body);line-height:1.66;margin-top:7px}
+@media(max-width:560px){.hw-row{flex-direction:column;gap:12px;padding:22px 20px}}
 
 /* ============ MICRO POLISH ============ */
 /* keyboard focus ring (a11y) */
@@ -1422,6 +1432,23 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
       <div class="why-c rv"><span class="wtag">진단</span><h3>AI 가시성 진단</h3><p>주요 AI 검색에서 우리 기업이 어떻게 인식되는지 <b>점수로 보여드립니다</b>. 경쟁사 비교까지.</p></div>
       <div class="why-c rv d1"><span class="wtag">축적</span><h3>콘텐츠·언론 축적</h3><p>고객 질문을 설계하고, 보도자료·칼럼을 제작해 <b>언론과 채널에 매달 배포</b>합니다.</p></div>
       <div class="why-c rv d2"><span class="wtag">관리</span><h3>월간 AI 노출 관리</h3><p>AI 검색 변화를 추적하고 부족한 정보를 보완하는 <b>리포트를 매달</b> 드립니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec hwork" id="howwork">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">HOW IT WORKS</span>
+      <h2 class="h2">이렇게 진행됩니다</h2>
+      <p class="lead">진단 데이터를 기반으로, 우리 회사 상황에 맞는 것만 골라 실행합니다.</p>
+    </div>
+    <div class="hw-list">
+      <div class="hw-row rv"><span class="hw-no">01</span><div><b>무료 상담과 목표 정의</b><p>회사 현황과 목표 시장, 고객이 AI에게 물어볼 질문을 함께 정리합니다. 시작할 만한지부터 솔직하게 말씀드립니다.</p></div></div>
+      <div class="hw-row rv d1"><span class="hw-no">02</span><div><b>AI 가시성 진단</b><p>ChatGPT·Gemini·Perplexity·네이버에 실제 질문을 던져, 현재 우리 회사의 노출·인용 현황과 경쟁사 격차를 측정합니다.</p></div></div>
+      <div class="hw-row rv d2"><span class="hw-no">03</span><div><b>실행 조합 설계</b><p>홈페이지 정비, 블로그 4채널, 언론 배포 중 효과가 큰 순서로 우선순위를 잡습니다. 필요한 만큼만 제안합니다.</p></div></div>
+      <div class="hw-row rv d3"><span class="hw-no">04</span><div><b>매달 축적과 월간 리포트</b><p>콘텐츠와 기사를 매달 발행해 쌓고, AI 노출이 어떻게 변했는지 월간 리포트로 확인하며 다음 달 계획을 함께 정합니다.</p></div></div>
     </div>
   </div>
 </section>
