@@ -429,6 +429,11 @@ _PHOTOS["press-case"] = "https://images.unsplash.com/photo-1504711434969-e338861
 for _s in ("measuring-geo","llms-txt","ai-hallucination-brand","global-buyer-ai","export-voucher-pr","renewal-case","press-case"):
     COVERS[_s] = f'<img class="cover" src="{_PHOTOS[_s]}" alt="" loading="lazy" referrerpolicy="no-referrer">'  # SVG 대신 사진 커버
 
+# admin CMS: 글 데이터에 photo 필드가 있으면 그 사진을 커버로 사용 (비어 있으면 위 기본값/SVG 유지)
+for _p in POSTS:
+    if _p.get("photo"):
+        COVERS[_p["slug"]] = f'<img class="cover" src="{_p["photo"]}" alt="" loading="lazy" referrerpolicy="no-referrer">'
+
 # ---------------- 본문 삽입 도식 (SVG figure, slug별) ----------------
 FIGS = {
 "aeo-geo-seo": """<figure class="fig"><svg viewBox="0 0 600 244" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><rect x="28" y="20" width="544" height="64" rx="12" fill="#fff" stroke="#E5EAF2"/><rect x="44" y="38" width="62" height="28" rx="8" fill="#8B95A7"/><text x="75" y="57" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">SEO</text><text x="124" y="47" font-size="15" fill="#0A1930" font-weight="700">검색엔진이 읽습니다</text><text x="124" y="68" font-size="12.5" fill="#8B95A7">네이버·구글 상위 노출 — 키워드·구조·속도</text><rect x="28" y="92" width="544" height="64" rx="12" fill="#fff" stroke="#C7D6FF"/><rect x="44" y="110" width="62" height="28" rx="8" fill="#2B5CFF"/><text x="75" y="129" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">AEO</text><text x="124" y="119" font-size="15" fill="#0A1930" font-weight="700">AI가 답변에 인용합니다</text><text x="124" y="140" font-size="12.5" fill="#8B95A7">질문형 콘텐츠 · 여러 출처에서 확인 · 구조화</text><rect x="28" y="164" width="544" height="64" rx="12" fill="#fff" stroke="#B7EAD9"/><rect x="44" y="182" width="62" height="28" rx="8" fill="#0BBF8C"/><text x="75" y="201" font-size="14" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">GEO</text><text x="124" y="191" font-size="15" fill="#0A1930" font-weight="700">생성형 AI 검색 전반에 대응</text><text x="124" y="212" font-size="12.5" fill="#8B95A7">정보 축적 · 최신성 · 출처 다양성까지 관리</text></svg><figcaption>SEO·AEO·GEO — '누가 읽느냐'가 다른 세 가지 최적화</figcaption></figure>""",

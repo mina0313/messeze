@@ -106,6 +106,15 @@ select.s-완료{color:var(--mut);border-color:var(--line);background:var(--sky-2
 .tok-box input{width:100%;margin-top:8px;border:1.5px solid #F5D9A8;border-radius:8px;padding:9px 12px;font-family:var(--sans);font-size:13px}
 .msg-ok{background:#E7F8F0;border:1px solid #9FDFC4;color:#0B8F5C;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
 .msg-err{background:#FCEFEF;border:1px solid #F2C1C1;color:var(--red);border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
+/* 이미지 필드 */
+.imgfld{display:flex;gap:12px;align-items:flex-start}
+.imgfld .thumbbox{flex:0 0 auto;width:110px;height:72px;border-radius:10px;border:1px solid var(--line);background:#F3F5F9 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="%23A9B4C9" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>') center no-repeat;overflow:hidden}
+.imgfld .thumbbox img{width:100%;height:100%;object-fit:cover;display:block}
+.imgfld .ctrls{flex:1;min-width:0}
+.upbtn{margin-top:7px;background:#fff;border:1.5px solid var(--cobalt);color:var(--cobalt);border-radius:9px;padding:8px 14px;font-family:var(--sans);font-weight:800;font-size:12.5px;cursor:pointer}
+.upbtn:hover{background:var(--sky)}
+.upbtn:disabled{opacity:.5;cursor:wait}
+.uphint{font-size:11.5px;color:var(--mut);margin-top:5px}
 @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.tbl{overflow-x:auto}table{min-width:760px}}
 </style>
 </head>
@@ -252,13 +261,60 @@ const TYPES=[
  {key:'blog',   file:'data/posts.json',       name:'블로그',   label:p=>p.title,             sub:p=>p.date||''},
 ];
 /* 필드 한글 라벨 */
-const LBL={q:'질문',a:'답변',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',metrics:'지표',weeks:'주차별 등장률(%)',quote:'인용문',industry:'업종',period:'기간',kws:'키워드',engines:'AI 엔진별',before:'이전',after:'이후',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
+const LBL={q:'질문',a:'답변',photo:'사진',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',metrics:'지표',weeks:'주차별 등장률(%)',quote:'인용문',industry:'업종',period:'기간',kws:'키워드',engines:'AI 엔진별',before:'이전',after:'이후',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
 const lbl=k=>LBL[k]||k;
 const CMS={type:null,arr:null,sha:null,idx:null};
 
 function b64dec(b){const bin=atob(b.replace(/\n/g,''));const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new TextDecoder().decode(u)}
 function b64enc(s){const u=new TextEncoder().encode(s);let bin='';for(let i=0;i<u.length;i+=8192)bin+=String.fromCharCode(...u.subarray(i,i+8192));return btoa(bin)}
 const ghH=t=>({Accept:'application/vnd.github+json',...(t?{Authorization:'Bearer '+t}:{})});
+const SITE='https://mina0313.github.io/messeze/';
+const isImgField=(k,v)=>/^(photo|img|image|cover|thumb|logo|avatar|pic)$/i.test(k)||/^https?:\/\/\S+\.(png|jpe?g|webp|gif|svg)(\?|$)/i.test(v||'')||/(images\.unsplash\.com|images\.pexels\.com)/.test(v||'');
+
+/* 토큰이 없으면 안내 박스 띄우고, 입력되면 then 실행 */
+function askToken(then){
+  const tok=localStorage.getItem(TOK_LS);
+  if(tok)return then(tok);
+  const msg=document.getElementById('edMsg');
+  msg.innerHTML=`<div class="tok-box"><b>처음 한 번만:</b> GitHub 토큰이 필요합니다.<br>
+  github.com 로그인 → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token → Repository: <b>messeze</b>만 선택 → Permissions에서 <b>Contents: Read and write</b> → 생성된 토큰(github_pat_…)을 아래에 붙여넣기.
+  <input id="tokIn" type="password" placeholder="github_pat_… 붙여넣기 후 Enter"></div>`;
+  const inp=document.getElementById('tokIn');inp.focus();
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&inp.value.trim()){localStorage.setItem(TOK_LS,inp.value.trim());msg.innerHTML='';then(inp.value.trim());}});
+}
+
+/* 사진 파일 → (필요시 축소) → GitHub assets/uploads/ 업로드 → 사이트 주소 반환 */
+async function pickAndUpload(btn){
+  return new Promise(resolve=>{
+    const fi=document.createElement('input');fi.type='file';fi.accept='image/*';
+    fi.onchange=async()=>{
+      const f=fi.files[0];if(!f)return resolve(null);
+      askToken(async tok=>{
+        btn.disabled=true;const orig=btn.textContent;btn.textContent='올리는 중…';
+        try{
+          let blob=f;
+          if(/image\/(jpe?g|png|webp)/.test(f.type)&&f.size>250*1024){
+            const bmp=await createImageBitmap(f);
+            const sc=Math.min(1,1600/bmp.width);
+            const cv=document.createElement('canvas');cv.width=Math.round(bmp.width*sc);cv.height=Math.round(bmp.height*sc);
+            cv.getContext('2d').drawImage(bmp,0,0,cv.width,cv.height);
+            blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.85));
+          }
+          const buf=new Uint8Array(await blob.arrayBuffer());
+          let bin='';for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode(...buf.subarray(i,i+8192));
+          const ext=blob.type==='image/jpeg'?'jpg':(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';
+          const name=`up-${Date.now()}.${ext}`;
+          const r=await fetch(`https://api.github.com/repos/${REPO}/contents/assets/uploads/${name}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify({message:'admin: 사진 업로드 '+name,content:btoa(bin),branch:BR})});
+          if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);alert('토큰이 유효하지 않습니다. 버튼을 다시 눌러 새 토큰을 입력하세요.');return resolve(null);}
+          if(!r.ok)throw 0;
+          resolve(SITE+'assets/uploads/'+name);
+        }catch(e){alert('업로드 실패 — 인터넷 연결 또는 토큰 권한을 확인하세요.');resolve(null);}
+        finally{btn.disabled=false;btn.textContent=orig;}
+      });
+    };
+    fi.click();
+  });
+}
 
 function cmsHome(msg,isErr){
   app.innerHTML=`<h1 style="margin:26px 0 6px">콘텐츠 관리</h1>
@@ -301,6 +357,12 @@ function fld(val,path,key){
   const P=esc(path);
   if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;
   if(typeof val==='string'){
+    if(isImgField(key,val))
+      return`<div class="fld2"><label>${esc(lbl(key))}</label><div class="imgfld">
+      <div class="thumbbox">${val?`<img src="${esc(val)}" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div>
+      <div class="ctrls"><input data-path="${P}" value="${esc(val)}" placeholder="사진 주소(URL) — 아래 버튼으로 올리면 자동 입력">
+      <button type="button" class="upbtn" data-upl="${P}">📷 내 컴퓨터에서 사진 올리기</button>
+      <div class="uphint">올리면 사이트 저장소에 보관되고 주소가 자동으로 채워집니다. 비워두면 기본 이미지가 쓰입니다.</div></div></div></div>`;
     const long=val.length>70||val.includes('<');
     return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;
   }
@@ -325,6 +387,7 @@ function cmsEdit(i){
   document.getElementById('cmsBody').innerHTML=`
   <div class="ed-bar">
     <button class="back" id="edBack">← ${t.name} 목록</button><span class="sp"></span>
+    <button class="dup" id="edImg">📷 본문용 사진 올리기</button>
     <button class="dup" id="edDup">복제</button>
     <button class="del" id="edDel">삭제</button>
     <button class="save" id="edSave">💾 저장 → 사이트 반영</button>
@@ -343,20 +406,22 @@ function cmsEdit(i){
   document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{collect();getP(it,b.dataset.del).splice(+b.dataset.i,1);cmsEdit(i)});
   document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{collect();const arr2=getP(it,b.dataset.add);const last=arr2[arr2.length-1];arr2.push(typeof last==='object'?JSON.parse(JSON.stringify(last)):(typeof last==='number'?0:''));cmsEdit(i)});
   document.getElementById('edSave').onclick=()=>{collect();cmsSave()};
+  document.querySelectorAll('[data-upl]').forEach(b=>b.onclick=async()=>{
+    const url=await pickAndUpload(b);
+    if(url){document.querySelector(`[data-path="${CSS.escape(b.dataset.upl)}"]`).value=url;collect();cmsEdit(i);
+      document.getElementById('edMsg').innerHTML='<div class="msg-ok">📷 사진이 올라갔습니다 — 아래 💾 저장을 눌러야 사이트에 반영됩니다.</div>';}
+  });
+  document.getElementById('edImg').onclick=async()=>{
+    const b=document.getElementById('edImg');const url=await pickAndUpload(b);
+    if(url){try{await navigator.clipboard.writeText(url)}catch(e){}
+      document.getElementById('edMsg').innerHTML=`<div class="msg-ok">📷 올라갔습니다 — 사진 주소가 복사됐어요. 본문 원하는 곳에 이렇게 붙여넣으세요:<br><code style="font-size:11.5px;word-break:break-all">&lt;img src="${esc(url)}" alt="" style="max-width:100%;border-radius:12px"&gt;</code></div>`;}
+  };
 }
 
 async function cmsSave(){
   const msg=document.getElementById('edMsg');
-  let tok=localStorage.getItem(TOK_LS);
-  if(!tok){
-    msg.innerHTML=`<div class="tok-box"><b>처음 저장할 때 한 번만:</b> GitHub 토큰이 필요합니다.<br>
-    github.com 로그인 → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token → Repository: <b>messeze</b>만 선택 → Permissions에서 <b>Contents: Read and write</b> → 생성된 토큰(github_pat_…)을 아래에 붙여넣기.
-    <input id="tokIn" type="password" placeholder="github_pat_… 붙여넣기 후 Enter">
-    </div>`;
-    const inp=document.getElementById('tokIn');inp.focus();
-    inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&inp.value.trim()){localStorage.setItem(TOK_LS,inp.value.trim());cmsSave();}});
-    return;
-  }
+  const tok=localStorage.getItem(TOK_LS);
+  if(!tok)return askToken(()=>cmsSave());
   msg.innerHTML='<div class="load" style="padding:14px">저장 중…</div>';
   try{
     const body={message:`admin: ${CMS.type.name} 수정`,content:b64enc(JSON.stringify(CMS.arr,null,1)),sha:CMS.sha,branch:BR};
