@@ -1791,7 +1791,7 @@ document.querySelectorAll('#faq .qa button').forEach(b=>b.addEventListener('clic
 }));
 
 /* 문의 전송 — 관리자-설정-가이드.md 완료 후 Apps Script 웹앱 URL을 넣으면 실제 저장됩니다 */
-const APPS_URL='';
+const APPS_URL='https://script.google.com/macros/s/AKfycbzBWMloPYJjGqCdxzHbsI8psVm-MOf1iFtsVPLSHpvEWZeGNH4wrtZJG_se5GGzJPpk/exec';
 document.getElementById('diagForm').addEventListener('submit',async e=>{
   e.preventDefault();
   const f=e.target,b=f.querySelector('button');
