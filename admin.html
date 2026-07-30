@@ -68,6 +68,44 @@ select.s-완료{color:var(--mut);border-color:var(--line);background:var(--sky-2
 .memo:focus{outline:none;border-color:var(--cobalt);background:#fff}
 .empty{padding:50px;text-align:center;color:var(--mut);font-size:14px}
 .load{padding:50px;text-align:center;color:var(--mut)}
+/* 뷰 탭 */
+.vtabs{background:#101B3A;padding:0}
+.vtabs .wrap{display:flex;gap:4px}
+.vtabs button{background:none;border:0;color:#8FA6D9;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 18px;cursor:pointer;border-bottom:2.5px solid transparent}
+.vtabs button.on{color:#fff;border-bottom-color:var(--cobalt)}
+/* CMS */
+.cms-types{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.cms-types button{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;font-family:var(--sans);font-weight:700;font-size:13.5px;cursor:pointer;color:var(--body)}
+.cms-types button.on{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.cms-note{font-size:12.5px;color:var(--mut);margin-bottom:14px;line-height:1.6}
+.cms-list{display:flex;flex-direction:column;gap:8px}
+.cms-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:.15s}
+.cms-item:hover{border-color:#B9CCFF}
+.cms-item b{font-size:14.5px}
+.cms-item span{font-size:12px;color:var(--mut)}
+.cms-item .idx{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--sky);color:var(--cobalt);font-weight:800;font-size:12px;display:grid;place-items:center}
+.ed-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.ed-bar .back{background:none;border:0;color:var(--cobalt);font-weight:800;font-size:13.5px;cursor:pointer;font-family:var(--sans);padding:6px 0}
+.ed-bar .sp{flex:1}
+.ed-bar .save{background:var(--cobalt);color:#fff;border:0;border-radius:10px;padding:11px 22px;font-family:var(--sans);font-weight:800;font-size:14px;cursor:pointer}
+.ed-bar .save:hover{background:#1E46D9}
+.ed-bar .del{background:#fff;border:1.5px solid #F2C1C1;color:var(--red);border-radius:10px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer}
+.ed-bar .dup{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer}
+.ed{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.fgrp{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--sky-2)}
+.fgrp>.glab{font-size:12px;font-weight:800;color:var(--cobalt);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.fgrp .rowdel{margin-left:auto;background:none;border:0;color:var(--red);font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+.addrow{background:#fff;border:1.5px dashed var(--line-2);border-radius:10px;padding:9px;width:100%;font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--cobalt);cursor:pointer;margin-top:6px}
+.fld2{margin:10px 0}
+.fld2 label{display:block;font-size:12px;font-weight:800;color:var(--mut);margin-bottom:5px}
+.fld2 input,.fld2 textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--sans);font-size:13.5px;background:#fff}
+.fld2 textarea{min-height:74px;resize:vertical;line-height:1.6}
+.fld2 textarea.big{min-height:220px;font-size:12.5px}
+.fld2 input:focus,.fld2 textarea:focus{outline:none;border-color:var(--cobalt)}
+.tok-box{background:#FFF7E8;border:1px solid #F5D9A8;border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:12.5px;color:#854F0B;line-height:1.6}
+.tok-box input{width:100%;margin-top:8px;border:1.5px solid #F5D9A8;border-radius:8px;padding:9px 12px;font-family:var(--sans);font-size:13px}
+.msg-ok{background:#E7F8F0;border:1px solid #9FDFC4;color:#0B8F5C;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
+.msg-err{background:#FCEFEF;border:1px solid #F2C1C1;color:var(--red);border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
 @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.tbl{overflow-x:auto}table{min-width:760px}}
 </style>
 </head>
@@ -76,6 +114,10 @@ select.s-완료{color:var(--mut);border-color:var(--line);background:var(--sky-2
 <svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="#fff" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg>
 <b>messeze</b><span class="tag">ADMIN</span>
 <a href="index.html">사이트로 →</a>
+</div></div>
+<div class="vtabs"><div class="wrap">
+<button data-v="inq" class="on">📥 문의 관리</button>
+<button data-v="cms">✏️ 콘텐츠 관리</button>
 </div></div>
 
 <main><div class="wrap" id="app"></div></main>
@@ -201,8 +243,142 @@ function render(key, rows){
   document.getElementById('out').onclick = ()=>{localStorage.removeItem(KEY_LS);showGate();};
 }
 
-if(!APPS_URL){ showSetup(); }
-else{ const saved=localStorage.getItem(KEY_LS); saved?load(saved):showGate(); }
+/* ───────────────────────── 콘텐츠 관리 (CMS) ───────────────────────── */
+const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
+const TYPES=[
+ {key:'faq',    file:'data/faq.json',        name:'FAQ',     label:g=>g.title,            sub:g=>`문항 ${g.items.length}개`},
+ {key:'interview',file:'data/interviews.json',name:'인터뷰',  label:c=>`${c.com}`,          sub:c=>c.who||''},
+ {key:'glossary',file:'data/glossary.json',   name:'용어사전', label:t=>t.ko||t.slug,        sub:t=>t.en||''},
+ {key:'blog',   file:'data/posts.json',       name:'블로그',   label:p=>p.title,             sub:p=>p.date||''},
+];
+/* 필드 한글 라벨 */
+const LBL={q:'질문',a:'답변',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',metrics:'지표',weeks:'주차별 등장률(%)',quote:'인용문',industry:'업종',period:'기간',kws:'키워드',engines:'AI 엔진별',before:'이전',after:'이후',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
+const lbl=k=>LBL[k]||k;
+const CMS={type:null,arr:null,sha:null,idx:null};
+
+function b64dec(b){const bin=atob(b.replace(/\n/g,''));const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new TextDecoder().decode(u)}
+function b64enc(s){const u=new TextEncoder().encode(s);let bin='';for(let i=0;i<u.length;i+=8192)bin+=String.fromCharCode(...u.subarray(i,i+8192));return btoa(bin)}
+const ghH=t=>({Accept:'application/vnd.github+json',...(t?{Authorization:'Bearer '+t}:{})});
+
+function cmsHome(msg,isErr){
+  app.innerHTML=`<h1 style="margin:26px 0 6px">콘텐츠 관리</h1>
+  <p class="cms-note">사이트의 FAQ·인터뷰·용어사전·블로그를 여기서 직접 수정합니다. 저장하면 <b>1~2분 뒤 자동으로 사이트에 반영</b>됩니다 (GitHub 자동 빌드).</p>
+  ${msg?`<div class="${isErr?'msg-err':'msg-ok'}">${esc(msg)}</div>`:''}
+  <div class="cms-types">${TYPES.map(t=>`<button data-k="${t.key}">${t.name}</button>`).join('')}</div>
+  <div id="cmsBody"><div class="empty">위에서 편집할 콘텐츠 종류를 선택하세요.</div></div>`;
+  document.querySelectorAll('.cms-types button').forEach(b=>b.onclick=()=>cmsLoad(b.dataset.k));
+}
+
+async function cmsLoad(key){
+  const t=TYPES.find(x=>x.key===key);
+  document.querySelectorAll('.cms-types button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));
+  const body=document.getElementById('cmsBody');
+  body.innerHTML='<div class="load">불러오는 중…</div>';
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${t.file}?ref=${BR}&t=${Date.now()}`,{headers:ghH(localStorage.getItem(TOK_LS))});
+    if(!r.ok)throw 0;
+    const j=await r.json();
+    CMS.type=t;CMS.sha=j.sha;CMS.arr=JSON.parse(b64dec(j.content));CMS.idx=null;
+    cmsList();
+  }catch(e){body.innerHTML='<div class="msg-err">불러오기 실패 — 인터넷 연결을 확인하세요.</div>';}
+}
+
+function cmsList(){
+  const t=CMS.type;
+  document.getElementById('cmsBody').innerHTML=`
+  <div class="ed-bar"><b style="font-size:15px">${t.name} · ${CMS.arr.length}개</b><span class="sp"></span>
+  <button class="dup" id="addNew">+ 새 항목 (마지막 항목 복제)</button></div>
+  <div class="cms-list">${CMS.arr.map((it,i)=>`<div class="cms-item" data-i="${i}"><span class="idx">${i+1}</span><div><b>${esc(t.label(it))}</b><br><span>${esc(t.sub(it))}</span></div></div>`).join('')}</div>`;
+  document.querySelectorAll('.cms-item').forEach(el=>el.onclick=()=>cmsEdit(+el.dataset.i));
+  document.getElementById('addNew').onclick=()=>{
+    CMS.arr.push(JSON.parse(JSON.stringify(CMS.arr[CMS.arr.length-1])));
+    cmsEdit(CMS.arr.length-1);
+  };
+}
+
+/* 값 타입별 폼 렌더 — data-path로 위치 기록 */
+function fld(val,path,key){
+  const P=esc(path);
+  if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;
+  if(typeof val==='string'){
+    const long=val.length>70||val.includes('<');
+    return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;
+  }
+  if(Array.isArray(val)){
+    const rows=val.map((v,i)=>{
+      const inner=(typeof v==='object'&&v!==null)
+        ?Object.entries(v).map(([k2,v2])=>fld(v2,`${path}.${i}.${k2}`,k2)).join('')
+        :fld(v,`${path}.${i}`,key+' '+(i+1)).replace(/<label>.*?<\/label>/,'');
+      return`<div class="fgrp"><div class="glab">${esc(lbl(key))} ${i+1}<button class="rowdel" data-del="${P}" data-i="${i}">✕ 삭제</button></div>${inner}</div>`;
+    }).join('');
+    return`<div class="fld2"><label>${esc(lbl(key))}</label>${rows}<button class="addrow" data-add="${P}">+ ${esc(lbl(key))} 추가</button></div>`;
+  }
+  if(typeof val==='object'&&val!==null)
+    return`<div class="fgrp"><div class="glab">${esc(lbl(key))}</div>${Object.entries(val).map(([k2,v2])=>fld(v2,`${path}.${k2}`,k2)).join('')}</div>`;
+  return'';
+}
+const getP=(o,p)=>p.split('.').reduce((a,k)=>a[k],o);
+const setP=(o,p,v)=>{const ks=p.split('.');const last=ks.pop();let cur=o;for(const k of ks)cur=cur[k];cur[last]=v;};
+
+function cmsEdit(i){
+  CMS.idx=i;const it=CMS.arr[i],t=CMS.type;
+  document.getElementById('cmsBody').innerHTML=`
+  <div class="ed-bar">
+    <button class="back" id="edBack">← ${t.name} 목록</button><span class="sp"></span>
+    <button class="dup" id="edDup">복제</button>
+    <button class="del" id="edDel">삭제</button>
+    <button class="save" id="edSave">💾 저장 → 사이트 반영</button>
+  </div>
+  <div id="edMsg"></div>
+  <div class="ed">${Object.entries(it).map(([k,v])=>fld(v,k,k)).join('')}</div>`;
+  const collect=()=>{
+    document.querySelectorAll('#cmsBody [data-path]').forEach(el=>{
+      const v=el.type==='number'?Number(el.value):el.value;
+      setP(it,el.dataset.path,v);
+    });
+  };
+  document.getElementById('edBack').onclick=()=>{collect();cmsList()};
+  document.getElementById('edDup').onclick=()=>{collect();CMS.arr.splice(i+1,0,JSON.parse(JSON.stringify(it)));cmsEdit(i+1)};
+  document.getElementById('edDel').onclick=()=>{if(confirm('이 항목을 삭제할까요? 저장을 눌러야 사이트에 반영됩니다.')){CMS.arr.splice(i,1);cmsList()}};
+  document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{collect();getP(it,b.dataset.del).splice(+b.dataset.i,1);cmsEdit(i)});
+  document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{collect();const arr2=getP(it,b.dataset.add);const last=arr2[arr2.length-1];arr2.push(typeof last==='object'?JSON.parse(JSON.stringify(last)):(typeof last==='number'?0:''));cmsEdit(i)});
+  document.getElementById('edSave').onclick=()=>{collect();cmsSave()};
+}
+
+async function cmsSave(){
+  const msg=document.getElementById('edMsg');
+  let tok=localStorage.getItem(TOK_LS);
+  if(!tok){
+    msg.innerHTML=`<div class="tok-box"><b>처음 저장할 때 한 번만:</b> GitHub 토큰이 필요합니다.<br>
+    github.com 로그인 → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token → Repository: <b>messeze</b>만 선택 → Permissions에서 <b>Contents: Read and write</b> → 생성된 토큰(github_pat_…)을 아래에 붙여넣기.
+    <input id="tokIn" type="password" placeholder="github_pat_… 붙여넣기 후 Enter">
+    </div>`;
+    const inp=document.getElementById('tokIn');inp.focus();
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&inp.value.trim()){localStorage.setItem(TOK_LS,inp.value.trim());cmsSave();}});
+    return;
+  }
+  msg.innerHTML='<div class="load" style="padding:14px">저장 중…</div>';
+  try{
+    const body={message:`admin: ${CMS.type.name} 수정`,content:b64enc(JSON.stringify(CMS.arr,null,1)),sha:CMS.sha,branch:BR};
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CMS.type.file}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const j=await r.json();
+    if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다 — 다시 저장을 눌러 새 토큰을 입력하세요.</div>';return;}
+    if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 먼저 수정됐습니다 — 목록으로 돌아가 다시 불러온 뒤 수정해 주세요.</div>';return;}
+    if(!r.ok)throw 0;
+    CMS.sha=j.content.sha;
+    msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 사이트에 자동 반영됩니다.</div>';
+  }catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 인터넷 연결 또는 토큰 권한(Contents: Read and write)을 확인하세요.</div>';}
+}
+
+/* ───────────────────────── 뷰 라우터 ───────────────────────── */
+function go(v){
+  document.querySelectorAll('.vtabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  if(v==='cms')return cmsHome();
+  if(!APPS_URL)return showSetup();
+  const saved=localStorage.getItem(KEY_LS);saved?load(saved):showGate();
+}
+document.querySelectorAll('.vtabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+go('inq');
 </script>
 </body>
 </html>

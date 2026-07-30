@@ -851,6 +851,18 @@ t("zero-click","ai","제로클릭 검색 (ZCS)","Zero-Click Search",
 "messeze는 클릭이 아니라 'AI 답변에 인용되는가'를 기준으로 삼아, 제로클릭 시대에도 존재감을 유지하도록 정보를 축적합니다.",
 ["ai-overview","share-of-voice","citation"])
 
+
+# ---- 데이터 외부화: data/glossary.json가 있으면 그것을 사용, `--dump`로 최초 1회 내보내기 ----
+import json as _json, sys as _sys
+_DF = os.path.join(ROOT, "data", "glossary.json")
+if "--dump" in _sys.argv:
+    os.makedirs(os.path.dirname(_DF), exist_ok=True)
+    _json.dump(T, io.open(_DF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("dumped:", _DF); _sys.exit(0)
+if os.path.exists(_DF):
+    T[:] = _json.load(io.open(_DF, encoding="utf-8"))
+
+
 CAT_BY_KEY = {c[0]: c for c in CATS}
 
 # ---------------- 인덱스 페이지 ----------------

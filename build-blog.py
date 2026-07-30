@@ -377,6 +377,18 @@ POSTS = [
 """),
 ]
 
+# ---- 데이터 외부화: data/posts.json가 있으면 그것을 사용, `--dump`로 최초 1회 내보내기 ----
+import json as _json, sys as _sys
+_DF = os.path.join(ROOT, "data", "posts.json")
+if "--dump" in _sys.argv:
+    os.makedirs(os.path.dirname(_DF), exist_ok=True)
+    _json.dump(POSTS, io.open(_DF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("dumped:", _DF); _sys.exit(0)
+if os.path.exists(_DF):
+    POSTS[:] = _json.load(io.open(_DF, encoding="utf-8"))
+
+
+
 CATS = ["홈", "AI 가시성", "언론홍보", "수출·해외 PR", "사례"]
 
 # ---------------- 썸네일 커버 (SVG, slug별) — 폴백 + aeo-geo-seo용 ----------------

@@ -116,6 +116,17 @@ c(slug="franchise", tag="프랜차이즈 외식", com="○○외식", who="강�
       ("가맹 문의가 실제로 늘었나요?","상담 신청서에 '조건 다 보고 왔다'는 분들이 늘었어요. 상담 시간도 짧아졌습니다."),
       ("아쉬운 점은 없나요?","더 일찍 시작 안 한 거요. 경쟁 브랜드가 먼저 쌓기 시작했으면 아찔했을 겁니다.")])
 
+
+# ---- 데이터 외부화: data/interviews.json가 있으면 그것을 사용, `--dump`로 최초 1회 내보내기 ----
+import json as _json, sys as _sys
+_DF = os.path.join(ROOT, "data", "interviews.json")
+if "--dump" in _sys.argv:
+    os.makedirs(os.path.dirname(_DF), exist_ok=True)
+    _json.dump(C, io.open(_DF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("dumped:", _DF); _sys.exit(0)
+if os.path.exists(_DF):
+    C[:] = _json.load(io.open(_DF, encoding="utf-8"))
+
 CSS = """<style>
 :root{--ink:#0A1930;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--line:#E5EAF2;--line-2:#D8E0EC;--sans:'Pretendard',system-ui,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10)}
 *{box-sizing:border-box;margin:0;padding:0}
