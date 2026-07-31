@@ -137,6 +137,10 @@ details.qbox summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#CFE0
   </details>
   <details class="qbox" open>
     <summary>🤖 자동 진단 — AI에 실제로 질의해서 리포트 자동 채움</summary>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;padding:10px 0 0;align-items:flex-end">
+      <div class="f" style="flex:1;min-width:250px"><label>회사 홈페이지 주소만 넣으면 끝 (업종 분석→질문 생성→실측→경쟁사 추출)</label><input id="iURL" style="width:100%" placeholder="예: company.co.kr"></div>
+      <button id="runURL" class="pr">🚀 URL로 전체 자동 생성</button>
+    </div>
     <div style="display:flex;flex-wrap:wrap;gap:10px;padding:8px 0 4px;align-items:flex-end">
       <div class="f"><label>OpenAI 키 (sk-…)</label><input id="kOA" type="password" autocomplete="off"></div>
       <div class="f"><label>Gemini 키 (AIza…)</label><input id="kGM" type="password" autocomplete="off"></div>
@@ -395,26 +399,40 @@ var ENGINES=[
   {k:'gem',label:'Gemini',fn:askGM,has:function(){return !!KEYS.gm}},
   {k:'ppx',label:'PPLX',fn:askPX,has:function(){return !!KEYS.px}}
 ];
-var running=false;
-document.getElementById('runAuto').onclick=async function(){
-  if(running)return;
-  saveKeys();
+function lockBtns(v){['runAuto','runURL'].forEach(function(id){document.getElementById(id).disabled=v})}
+function stripJson(t){return String(t).replace(/```json|```/gi,'').trim()}
+
+/* 답변 모음에서 경쟁사 자동 추출 (Gemini) */
+async function extractComps(texts,total){
+  try{
+    var t=await askGM('다음은 AI 답변 모음이다.\n---\n'+texts.join('\n---\n').slice(0,12000)+'\n---\n위 답변들에서 언급된 실제 회사/브랜드명만 추출해 JSON으로만 출력(설명 금지): {"names":["이름1","이름2"]} · 많이 언급된 순 최대 8개 · 일반명사/지역명 제외');
+    var j=JSON.parse(stripJson(t));
+    var names=(j.names||[]).map(String).filter(function(n){return n.length>=2&&!hit(n,D.co)&&!hit(D.co,n)});
+    if(names.length){
+      D.comps=names.slice(0,4).map(function(n){
+        var c=0; texts.forEach(function(tx){if(hit(tx,n))c++});
+        return {n:n,r:Math.round(c/total*100)};
+      }).sort(function(a,b){return b.r-a.r});
+    }
+  }catch(e){}
+}
+
+/* 실측 스캔 (질의→판정→경쟁사) */
+async function runScan(pref){
+  pref=pref||'';
   var st=document.getElementById('autoSt');
   var use=ENGINES.filter(function(e){return e.has()});
-  if(!use.length){st.textContent='⚠ API 키를 하나 이상 입력하세요';return;}
-  running=true; this.disabled=true;
-  var total=D.qs.length*use.length, done=0, fails=[];
-  var compHits={}, answers=0;
-  D.comps.forEach(function(c){compHits[c.n]=0});
+  if(!use.length){st.textContent='⚠ API 키를 하나 이상 입력하세요 (Gemini는 무료)';return;}
+  lockBtns(true);
+  var total=D.qs.length*use.length, done=0, fails=[], answers=0, ANS=[];
   for(var i=0;i<D.qs.length;i++){
     D.qs[i].eng={};
     for(var e=0;e<use.length;e++){
-      st.textContent='질의 중… '+(done+1)+'/'+total+' ('+use[e].label+')';
+      st.textContent=pref+'AI 질의 중… '+(done+1)+'/'+total+' ('+use[e].label+')';
       try{
         var text=await use[e].fn(D.qs[i].t);
-        answers++;
+        answers++; ANS.push(text);
         D.qs[i].eng[use[e].k]=hit(text,D.co);
-        D.comps.forEach(function(c){ if(hit(text,c.n)) compHits[c.n]++; });
       }catch(err){
         D.qs[i].eng[use[e].k]=null;
         if(fails.indexOf(use[e].label)<0)fails.push(use[e].label);
@@ -423,12 +441,53 @@ document.getElementById('runAuto').onclick=async function(){
     }
     D.qs[i].cited=Object.keys(D.qs[i].eng).some(function(k){return D.qs[i].eng[k]===true});
   }
-  if(answers>0){
-    D.comps.forEach(function(c){ c.r=Math.round(compHits[c.n]/answers*100); });
+  if(answers>0&&KEYS.gm){
+    st.textContent=pref+'답변에서 경쟁사 자동 추출 중…';
+    await extractComps(ANS,answers);
+  }else if(answers>0){
+    D.comps.forEach(function(c){var h=0;ANS.forEach(function(tx){if(hit(tx,c.n))h++});c.r=Math.round(h/answers*100);});
   }
   buildEditors(); render();
   st.textContent='✅ 완료 — 답변 '+answers+'건 실측 반영'+(fails.length?' · 실패: '+fails.join(',')+' (키/한도 확인)':'');
-  running=false; document.getElementById('runAuto').disabled=false;
+  lockBtns(false);
+}
+document.getElementById('runAuto').onclick=function(){saveKeys();runScan();};
+
+/* URL 하나로 전체 자동 생성 */
+document.getElementById('runURL').onclick=async function(){
+  saveKeys();
+  var st=document.getElementById('autoSt');
+  var url=(document.getElementById('iURL').value||'').trim();
+  if(!url){st.textContent='⚠ 회사 홈페이지 주소를 입력하세요';return;}
+  if(!KEYS.gm){st.textContent='⚠ 업종 분석·질문 생성에는 Gemini 키가 필요합니다 (aistudio.google.com에서 무료 발급)';return;}
+  if(!/^https?:/i.test(url))url='https://'+url;
+  lockBtns(true);
+  try{
+    st.textContent='① 홈페이지 읽는 중…';
+    var txt='';
+    try{
+      var r=await fetch('https://r.jina.ai/'+url);
+      if(!r.ok)throw 0;
+      txt=await r.text();
+    }catch(e){
+      var r2=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(url));
+      txt=(await r2.text()).replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<style[\s\S]*?<\/style>/gi,' ').replace(/<[^>]+>/g,' ');
+    }
+    txt=txt.replace(/\s+/g,' ').slice(0,6000);
+    if(txt.length<200)throw new Error('홈페이지 내용을 읽지 못했습니다 — 주소를 확인하세요');
+    st.textContent='② 업종 분석·고객 질문 생성 중…';
+    var t=await askGM('다음은 한 회사 홈페이지의 텍스트다.\n---\n'+txt+'\n---\n이 회사에 대해 아래 형식의 JSON으로만 답하라(설명·마크다운 금지): {"company":"회사/브랜드명(짧게)","industry":"업종(한국어 4~12자)","questions":["q1","q2","q3","q4","q5"]} · questions는 이 회사의 잠재 고객이 ChatGPT 같은 AI에게 실제로 물어볼 법한 현실적인 한국어 질문 5개 · 질문에 회사명을 넣지 말고 업종·제품·지역·상황 중심으로');
+    var j=JSON.parse(stripJson(t));
+    if(j.company){D.co=String(j.company);iCo.value=D.co;}
+    if(j.industry){D.ind=String(j.industry);iInd.value=D.ind;}
+    if(j.questions&&j.questions.length)D.qs=j.questions.slice(0,5).map(function(s){return{t:String(s),cited:false}});
+    buildEditors(); render();
+    lockBtns(false);
+    await runScan('③ ');
+  }catch(e){
+    st.textContent='⚠ '+(e.message||'실패 — 주소/키를 확인하세요');
+    lockBtns(false);
+  }
 };
 </script>
 </body>
