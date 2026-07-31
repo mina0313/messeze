@@ -133,6 +133,7 @@ select.s-완료{color:var(--mut);border-color:var(--line);background:var(--sky-2
 <div class="vtabs"><div class="wrap">
 <button data-v="inq" class="on">📥 문의 관리</button>
 <button data-v="cms">✏️ 콘텐츠 관리</button>
+<button data-v="rpt">📊 진단 리포트</button>
 </div></div>
 
 <main><div class="wrap" id="app"></div></main>
@@ -461,9 +462,17 @@ async function cmsSave(){
 }
 
 /* ───────────────────────── 뷰 라우터 ───────────────────────── */
+function rptHome(){
+  app.innerHTML=`<div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
+  <h1 style="font-size:19px">진단 리포트 생성기</h1>
+  <span class="cms-note" style="margin:0">AI 실측 질의 → 리포트 자동 생성 → PDF로 저장해 콜드메일·제안서에 첨부</span>
+  <a href="report.html" target="_blank" style="margin-left:auto;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:800;font-size:13px;border-radius:10px;padding:9px 14px">↗ 새 창에서 열기 (인쇄용 권장)</a></div>
+  <iframe src="report.html" style="width:100%;height:calc(100vh - 200px);min-height:600px;border:1px solid var(--line);border-radius:16px;background:#fff"></iframe>`;
+}
 function go(v){
   document.querySelectorAll('.vtabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   if(v==='cms')return cmsHome();
+  if(v==='rpt')return rptHome();
   if(!APPS_URL)return showSetup();
   const saved=localStorage.getItem(KEY_LS);saved?load(saved):showGate();
 }
