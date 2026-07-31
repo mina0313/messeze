@@ -599,6 +599,12 @@ function render(u,items){
   todo.innerHTML=fails.length?`<h3>🎯 점수를 가장 많이 올릴 개선 과제 TOP ${fails.length}</h3><ol>${fails.map(f=>`<li><b>${f.label}</b> (+${f.max-f.pts}점) — ${f.desc}</li>`).join('')}</ol>`:`<h3>🎉 모든 항목 통과!</h3><ol><li>이제 콘텐츠와 출처를 꾸준히 축적해 AI 추천 순위를 높일 차례입니다.</li></ol>`;
   document.getElementById('ctaTitle').textContent=total>=80?'좋은 기반, 이제 축적이 승부입니다':'이 점수, 메세지가 올려드립니다';
   res.scrollIntoView({behavior:'smooth',block:'start'});
+
+  // 체크 기록을 관리자 목록으로 전송 (개인정보 없음: URL·점수만)
+  try{
+    const APPS_URL='https://script.google.com/macros/s/AKfycbzBWMloPYJjGqCdxzHbsI8psVm-MOf1iFtsVPLSHpvEWZeGNH4wrtZJG_se5GGzJPpk/exec';
+    fetch(APPS_URL,{method:'POST',body:JSON.stringify({action:'check',site:u,score:total})});
+  }catch(e){}
 }
 
 document.getElementById('goBtn').addEventListener('click',run);

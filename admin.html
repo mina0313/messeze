@@ -132,6 +132,7 @@ select.s-완료{color:var(--mut);border-color:var(--line);background:var(--sky-2
 </div></div>
 <div class="vtabs"><div class="wrap">
 <button data-v="inq" class="on">📥 문의 관리</button>
+<button data-v="chk">🔍 가시성 체크</button>
 <button data-v="cms">✏️ 콘텐츠 관리</button>
 <button data-v="rpt">📊 진단 리포트</button>
 </div></div>
@@ -183,7 +184,8 @@ function showGate(msg){
   (localStorage.getItem('mz_admin_id')?document.getElementById('key'):document.getElementById('gid')).focus();
 }
 
-async function load(key){
+let LAST={key:null,rows:[],checks:[]};
+async function load(key,view){
   app.innerHTML = '<div class="load">불러오는 중…</div>';
   try{
     const r = await fetch(APPS_URL+'?key='+encodeURIComponent(key)+'&t='+Date.now());
@@ -191,10 +193,36 @@ async function load(key){
     if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
     localStorage.setItem(KEY_LS,key);
     document.body.classList.remove('gated');
-    render(key, j.rows||[]);
+    LAST={key:key,rows:j.rows||[],checks:j.checks||[]};
+    view==='chk' ? renderChk() : render(key, LAST.rows);
   }catch(e){
     showGate('불러오기 실패 — 네트워크 또는 설정을 확인하세요.');
   }
+}
+
+/* ── 가시성 체크 목록 ── */
+function fmtTs(ts){
+  try{const d=new Date(ts);if(isNaN(d))return String(ts);
+  const p=n=>String(n).padStart(2,'0');
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}catch(e){return String(ts)}
+}
+function renderChk(){
+  const list=LAST.checks||[];
+  app.innerHTML=`<h1 style="margin:26px 0 6px">가시성 체크 목록 · ${list.length}건</h1>
+  <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다 — 이미 관심을 보인 잠재 고객이니, 버튼 한 번으로 진단 리포트를 만들어 연락해 보세요.</p>
+  ${list.length?'':'<div class="empty">아직 기록이 없습니다. Apps Script를 새 코드로 교체하고 "새 버전 배포"한 뒤부터 쌓입니다.</div>'}
+  <div class="cms-list">${list.map((c,i)=>{
+    const sc=Number(c.score), col=sc>=80?'#0BBF8C':(sc>=50?'#B45309':'#E2574C');
+    return `<div class="cms-item" style="cursor:default">
+      <span class="idx">${list.length-i}</span>
+      <div style="flex:1;min-width:0"><b>${esc(String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,''))}</b><br><span>${esc(fmtTs(c.ts))}</span></div>
+      <span style="font-weight:900;font-size:17px;color:${col};flex:0 0 auto">${isNaN(sc)?'-':sc+'점'}</span>
+      <button class="dup" style="flex:0 0 auto" data-site="${esc(c.site||'')}">📊 진단 리포트 생성</button>
+    </div>`}).join('')}</div>`;
+  document.querySelectorAll('[data-site]').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.vtabs button').forEach(t=>t.classList.toggle('on',t.dataset.v==='rpt'));
+    rptHome(b.dataset.site);
+  });
 }
 
 function render(key, rows){
@@ -462,19 +490,23 @@ async function cmsSave(){
 }
 
 /* ───────────────────────── 뷰 라우터 ───────────────────────── */
-function rptHome(){
+function rptHome(url){
+  const q=url?('?url='+encodeURIComponent(url)):'';
   app.innerHTML=`<div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
   <h1 style="font-size:19px">진단 리포트 생성기</h1>
   <span class="cms-note" style="margin:0">AI 실측 질의 → 리포트 자동 생성 → PDF로 저장해 콜드메일·제안서에 첨부</span>
-  <a href="report.html" target="_blank" style="margin-left:auto;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:800;font-size:13px;border-radius:10px;padding:9px 14px">↗ 새 창에서 열기 (인쇄용 권장)</a></div>
-  <iframe src="report.html" style="width:100%;height:calc(100vh - 200px);min-height:600px;border:1px solid var(--line);border-radius:16px;background:#fff"></iframe>`;
+  <a href="report.html${q}" target="_blank" style="margin-left:auto;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:800;font-size:13px;border-radius:10px;padding:9px 14px">↗ 새 창에서 열기 (인쇄용 권장)</a></div>
+  <iframe src="report.html${q}" style="width:100%;height:calc(100vh - 200px);min-height:600px;border:1px solid var(--line);border-radius:16px;background:#fff"></iframe>`;
 }
 function go(v){
   document.querySelectorAll('.vtabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   if(v==='cms')return cmsHome();
   if(v==='rpt')return rptHome();
   if(!APPS_URL)return showSetup();
-  const saved=localStorage.getItem(KEY_LS);saved?load(saved):showGate();
+  const saved=localStorage.getItem(KEY_LS);
+  if(!saved)return showGate();
+  if(v==='chk')return load(saved,'chk');
+  load(saved);
 }
 document.querySelectorAll('.vtabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 go('inq');

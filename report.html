@@ -357,6 +357,11 @@ buildEditors();
 lineChart();
 barChart();
 render();
+/* admin 가시성 체크 목록에서 넘어온 URL 자동 입력 */
+try{
+  var _pu=new URLSearchParams(location.search).get('url');
+  if(_pu){ setTimeout(function(){ document.getElementById('iURL').value=_pu; },0); }
+}catch(e){}
 
 /* ── 자동 진단: AI 실측 질의 ── */
 var KEYS={oa:'',gm:'',px:''};
