@@ -135,6 +135,17 @@ details.qbox summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#CFE0
     <summary>경쟁사 4곳 편집</summary>
     <div class="qgrid" id="cEdit"></div>
   </details>
+  <details class="qbox" open>
+    <summary>🤖 자동 진단 — AI에 실제로 질의해서 리포트 자동 채움</summary>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;padding:8px 0 4px;align-items:flex-end">
+      <div class="f"><label>OpenAI 키 (sk-…)</label><input id="kOA" type="password" autocomplete="off"></div>
+      <div class="f"><label>Gemini 키 (AIza…)</label><input id="kGM" type="password" autocomplete="off"></div>
+      <div class="f"><label>Perplexity 키 (pplx-…)</label><input id="kPX" type="password" autocomplete="off"></div>
+      <button id="runAuto">▶ 자동 진단 실행</button>
+      <span id="autoSt" style="font-size:12.5px;color:#9FB0D6;font-weight:700"></span>
+    </div>
+    <div class="hint">키는 이 브라우저에만 저장됩니다(사이트 코드·저장소에 절대 안 들어감). 넣은 키의 엔진만 질의하고, 회사명·경쟁사명이 답변에 나오는지 자동 판정해 인용 여부와 인용률을 실측값으로 채웁니다. 네이버AI는 API가 없어 수동 확인 후 위 '질문 편집'에서 직접 조정하세요.</div>
+  </details>
   <div class="hint">입력하면 아래 리포트에 바로 반영됩니다 · 내용은 이 브라우저에만 저장(자동) · PDF로 저장해 메일·제안서에 첨부하세요</div>
 </div>
 
@@ -315,8 +326,18 @@ function render(){
 
   /* 질문별 */
   var q='';
+  var EL={gpt:'GPT',gem:'Gemini',ppx:'PPLX'};
   D.qs.forEach(function(it){
-    q+='<div class="qcard"><span class="qtxt">“'+esc(it.t)+'”</span><span class="st '+(it.cited?'ok':'no')+'">'+(it.cited?'○ 인용됨':'✕ 미인용')+'</span></div>';
+    var chips='';
+    if(it.eng){
+      chips='<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">'+Object.keys(it.eng).map(function(k){
+        var v=it.eng[k];
+        var col=v===true?'#4ADE80':(v===false?'#FF7DAF':'#6C7394');
+        var sym=v===true?'○':(v===false?'✕':'–');
+        return '<span style="font-size:10.5px;font-weight:800;color:'+col+';background:#1A1C2B;border-radius:6px;padding:3px 7px">'+EL[k]+' '+sym+'</span>';
+      }).join('')+'</div>';
+    }
+    q+='<div class="qcard"><span class="qtxt">“'+esc(it.t)+'”'+chips+'</span><span class="st '+(it.cited?'ok':'no')+'">'+(it.cited?'○ 인용됨':'✕ 미인용')+'</span></div>';
   });
   document.getElementById('vQres').innerHTML=q;
 
@@ -332,6 +353,83 @@ buildEditors();
 lineChart();
 barChart();
 render();
+
+/* ── 자동 진단: AI 실측 질의 ── */
+var KEYS={oa:'',gm:'',px:''};
+try{ var kv=JSON.parse(localStorage.getItem('mz_api_keys')); if(kv)KEYS=kv; }catch(e){}
+var kOA=document.getElementById('kOA'), kGM=document.getElementById('kGM'), kPX=document.getElementById('kPX');
+kOA.value=KEYS.oa; kGM.value=KEYS.gm; kPX.value=KEYS.px;
+function saveKeys(){ KEYS={oa:kOA.value.trim(),gm:kGM.value.trim(),px:kPX.value.trim()}; try{localStorage.setItem('mz_api_keys',JSON.stringify(KEYS));}catch(e){} }
+[kOA,kGM,kPX].forEach(function(el){el.oninput=saveKeys});
+
+async function askOA(q){
+  var r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEYS.oa},
+    body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'user',content:q}],max_tokens:600})});
+  if(!r.ok)throw new Error('OpenAI '+r.status);
+  var j=await r.json(); return j.choices[0].message.content||'';
+}
+async function askGM(q){
+  var r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+encodeURIComponent(KEYS.gm),{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contents:[{parts:[{text:q}]}]})});
+  if(!r.ok)throw new Error('Gemini '+r.status);
+  var j=await r.json();
+  return (j.candidates&&j.candidates[0]&&j.candidates[0].content.parts.map(function(p){return p.text||''}).join(' '))||'';
+}
+async function askPX(q){
+  var r=await fetch('https://api.perplexity.ai/chat/completions',{method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+KEYS.px},
+    body:JSON.stringify({model:'sonar',messages:[{role:'user',content:q}],max_tokens:600})});
+  if(!r.ok)throw new Error('Perplexity '+r.status);
+  var j=await r.json(); return j.choices[0].message.content||'';
+}
+function hit(text,name){
+  if(!name)return false;
+  var t=String(text).replace(/\s+/g,'').toLowerCase(), n=String(name).replace(/\s+/g,'').toLowerCase();
+  return n.length>=2 && t.indexOf(n)>=0;
+}
+
+var ENGINES=[
+  {k:'gpt',label:'GPT',fn:askOA,has:function(){return !!KEYS.oa}},
+  {k:'gem',label:'Gemini',fn:askGM,has:function(){return !!KEYS.gm}},
+  {k:'ppx',label:'PPLX',fn:askPX,has:function(){return !!KEYS.px}}
+];
+var running=false;
+document.getElementById('runAuto').onclick=async function(){
+  if(running)return;
+  saveKeys();
+  var st=document.getElementById('autoSt');
+  var use=ENGINES.filter(function(e){return e.has()});
+  if(!use.length){st.textContent='⚠ API 키를 하나 이상 입력하세요';return;}
+  running=true; this.disabled=true;
+  var total=D.qs.length*use.length, done=0, fails=[];
+  var compHits={}, answers=0;
+  D.comps.forEach(function(c){compHits[c.n]=0});
+  for(var i=0;i<D.qs.length;i++){
+    D.qs[i].eng={};
+    for(var e=0;e<use.length;e++){
+      st.textContent='질의 중… '+(done+1)+'/'+total+' ('+use[e].label+')';
+      try{
+        var text=await use[e].fn(D.qs[i].t);
+        answers++;
+        D.qs[i].eng[use[e].k]=hit(text,D.co);
+        D.comps.forEach(function(c){ if(hit(text,c.n)) compHits[c.n]++; });
+      }catch(err){
+        D.qs[i].eng[use[e].k]=null;
+        if(fails.indexOf(use[e].label)<0)fails.push(use[e].label);
+      }
+      done++;
+    }
+    D.qs[i].cited=Object.keys(D.qs[i].eng).some(function(k){return D.qs[i].eng[k]===true});
+  }
+  if(answers>0){
+    D.comps.forEach(function(c){ c.r=Math.round(compHits[c.n]/answers*100); });
+  }
+  buildEditors(); render();
+  st.textContent='✅ 완료 — 답변 '+answers+'건 실측 반영'+(fails.length?' · 실패: '+fails.join(',')+' (키/한도 확인)':'');
+  running=false; document.getElementById('runAuto').disabled=false;
+};
 </script>
 </body>
 </html>
