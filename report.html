@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI 진단 리포트 생성기 — messeze</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--vio:#7C3AED;--vio2:#A855F7;--pink:#EC4899;--ink:#17181C;--mut:#8B95A7;--line:#ECEEF4;--bgd:#0B0C14;--card:#13141F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;background:#E9EAF2;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ── 입력 툴바 (인쇄 시 숨김) ── */
+.bar{position:sticky;top:0;z-index:50;background:#101B3A;color:#fff;padding:14px 22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.bar b{font-size:15px;margin-right:6px}
+.bar label{font-size:11px;color:#9FB0D6;display:block;margin-bottom:3px}
+.bar .f{display:flex;flex-direction:column}
+.bar input{border:0;border-radius:8px;padding:8px 10px;font-family:inherit;font-size:13px;width:150px}
+.bar input.sm{width:64px}
+.bar button{border:0;border-radius:9px;padding:10px 16px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer;background:#2B5CFF;color:#fff}
+.bar button.pr{background:#fff;color:#101B3A}
+.bar .hint{width:100%;font-size:11.5px;color:#9FB0D6}
+details.qbox{width:100%}
+details.qbox summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#CFE0FF;padding:2px 0}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px;padding:8px 0 2px}
+.qrow{display:flex;gap:6px;align-items:center}
+.qrow input[type=text]{flex:1;width:auto}
+.qrow select{border:0;border-radius:8px;padding:8px 6px;font-family:inherit;font-size:12.5px}
+.crow{display:flex;gap:6px;align-items:center}
+.crow input[type=text]{width:110px}
+
+/* ── 리포트 캔버스 ── */
+.page{max-width:1080px;margin:26px auto 60px;background:#F6F6FB;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,60,.18)}
+
+/* 헤더 */
+.rhead{display:flex;align-items:center;gap:14px;padding:26px 34px;background:#fff;border-bottom:1px solid var(--line)}
+.rhead .logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:21px;letter-spacing:-.02em}
+.rhead .logo svg{width:26px;height:26px}
+.rhead .x{color:#B9BFCC;font-weight:700}
+.rhead .co{font-weight:900;font-size:21px}
+.rhead .tag{color:var(--vio);font-weight:800;font-size:14px;margin-left:2px}
+.rhead .sp{flex:1}
+.rhead .period{background:#F1F2F8;border-radius:10px;padding:9px 14px;font-size:12.5px;color:#555E70;font-weight:600}
+.rhead .pdf{background:linear-gradient(135deg,#6D5EF3,#8A5CF6);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer}
+
+/* 다크 진단 섹션 */
+.dark{background:var(--bgd);color:#fff;padding:34px}
+.search{display:flex;align-items:center;gap:10px;background:#171827;border:1px solid #262840;border-radius:14px;padding:15px 18px;font-size:15.5px;font-weight:600}
+.search svg{width:18px;height:18px;stroke:#8B93B8;flex:0 0 auto}
+.search .ai{margin-left:auto;flex:0 0 auto;border:1px solid #4A3F8C;color:#B9A6FF;border-radius:9px;padding:6px 11px;font-size:12px;font-weight:800}
+.dark h3{font-size:13.5px;color:#AEB4CC;font-weight:700;margin:24px 2px 10px}
+.tbl{background:#12131E;border:1px solid #23253A;border-radius:16px;overflow:hidden}
+.trow{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid #1D1F30}
+.trow:last-child{border-bottom:0}
+.trow .no{width:24px;height:24px;border-radius:7px;background:#1E2032;color:#9AA1C2;font-size:12px;font-weight:800;display:grid;place-items:center;flex:0 0 auto}
+.trow .bname{font-weight:800;font-size:15px;width:150px}
+.trow .qs{flex:1;color:#7C84A8;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trow .rate{width:170px;flex:0 0 auto}
+.trow .rate b{font-size:17px;color:#C4B5FD;display:block;margin-bottom:5px}
+.trow .rbar{height:5px;border-radius:3px;background:#23253A;overflow:hidden}
+.trow .rbar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#7C6CF6,#A855F7)}
+.trow.you{border:1.5px dashed #4A3F8C;border-radius:12px;margin:8px;background:#15122A}
+.trow.you .bname{color:#fff}
+.trow.you .warn{flex:1;display:flex;align-items:center;gap:7px;background:#1E1930;border:1px solid #37305C;border-radius:9px;padding:8px 12px;font-size:12.5px;color:#CDB8FF;font-weight:700;max-width:280px}
+.trow.you .rate b{color:var(--pink)}
+.trow.you .rbar i{background:var(--pink);width:2%}
+.tfoot{text-align:center;font-size:11.5px;color:#6C7394;padding:12px}
+/* 질문별 결과 */
+.qres{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-top:10px}
+.qcard{background:#12131E;border:1px solid #23253A;border-radius:13px;padding:13px 15px;display:flex;gap:10px;align-items:center}
+.qcard .qtxt{flex:1;font-size:13.5px;font-weight:600;color:#D6DAEC}
+.qcard .st{flex:0 0 auto;font-size:12px;font-weight:800;border-radius:8px;padding:5px 10px}
+.qcard .st.no{background:#2A1622;color:#FF7DAF}
+.qcard .st.ok{background:#12261E;color:#4ADE80}
+/* 통계 3종 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding:30px 6px 4px}
+.stat b{font-size:38px;font-weight:900;color:var(--pink);letter-spacing:-.02em}
+.stat h4{font-size:14.5px;margin:6px 0 7px;color:#fff}
+.stat p{font-size:12.5px;color:#8B93B8;line-height:1.6}
+
+/* 라이트 기대 시나리오 섹션 */
+.light{background:#F6F6FB;padding:34px}
+.lhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.lhead h2{font-size:26px;letter-spacing:-.02em}
+.lhead h2 .a{color:var(--ink)}
+.lhead h2 .b{color:var(--vio);font-size:34px}
+.lhead .ex{font-size:11.5px;color:#fff;background:#B9BFD2;border-radius:7px;padding:4px 9px;font-weight:800}
+.lgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.lcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.lcard h5{font-size:13px;color:#555E70;margin-bottom:4px}
+.lcard .up{font-size:12px;color:var(--vio);font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.kpi h5{font-size:13px;color:#555E70}
+.kpi b{font-size:34px;font-weight:900;color:var(--vio);letter-spacing:-.02em}
+.kpi b i{font-style:normal;font-size:19px}
+.kpi p{font-size:12px;color:var(--mut);margin-top:2px}
+.kpi .pill{margin-top:9px;display:inline-block;background:#F4F0FF;border-radius:8px;padding:5px 10px;font-size:11.5px;color:#6D5EF3;font-weight:700}
+.insight{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 20px;margin-top:16px}
+.insight .ic{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#6D5EF3,#A855F7);display:grid;place-items:center;color:#fff;flex:0 0 auto}
+.insight b{font-size:13px;margin-right:8px}
+.insight span{font-size:13px;color:#555E70}
+.insight .src{margin-left:auto;font-size:11px;color:#AEB4C6;flex:0 0 auto}
+/* CTA */
+.cta{background:#101B3A;color:#fff;padding:30px 34px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cta b{font-size:19px;letter-spacing:-.01em}
+.cta p{font-size:13px;color:#9FB0D6;margin-top:4px}
+.cta a{margin-left:auto;background:#2B5CFF;color:#fff;text-decoration:none;font-weight:800;font-size:14px;border-radius:12px;padding:13px 22px}
+
+@media(max-width:860px){.lgrid,.stats,.kpis{grid-template-columns:1fr}.trow .qs{display:none}}
+@media print{
+  .bar{display:none}
+  body{background:#fff}
+  .page{margin:0;max-width:none;border-radius:0;box-shadow:none}
+  .dark,.cta{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rhead .pdf{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 입력 툴바 -->
+<div class="bar">
+  <b>진단 리포트 생성기</b>
+  <div class="f"><label>회사/브랜드명</label><input id="iCo" value="OO정밀"></div>
+  <div class="f"><label>업종 표기</label><input id="iInd" value="정밀부품 제조"></div>
+  <div class="f"><label>분석 기간</label><input id="iPeriod" value=""></div>
+  <button class="pr" onclick="window.print()">🖨 인쇄 / PDF 저장</button>
+  <details class="qbox">
+    <summary>질문 5개 + 인용 여부 편집</summary>
+    <div class="qgrid" id="qEdit"></div>
+  </details>
+  <details class="qbox">
+    <summary>경쟁사 4곳 편집</summary>
+    <div class="qgrid" id="cEdit"></div>
+  </details>
+  <div class="hint">입력하면 아래 리포트에 바로 반영됩니다 · 내용은 이 브라우저에만 저장(자동) · PDF로 저장해 메일·제안서에 첨부하세요</div>
+</div>
+
+<div class="page" id="rep">
+
+  <!-- 헤더 -->
+  <div class="rhead">
+    <span class="logo"><svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg>messeze</span>
+    <span class="x">×</span>
+    <span class="co" id="vCo">OO정밀</span>
+    <span class="tag">AI 진단 리포트</span>
+    <span class="sp"></span>
+    <span class="period">📅 분석 기간&nbsp; <span id="vPeriod"></span></span>
+    <button class="pdf" onclick="window.print()">⬇ PDF 다운로드</button>
+  </div>
+
+  <!-- 다크: 현재 진단 -->
+  <div class="dark">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      <span id="vQ0">믿을 만한 정밀부품 제조사 추천해줘</span>
+      <span class="ai">✦ AI 검색</span>
+    </div>
+
+    <h3>AI 검색 결과 비교 리포트 &nbsp;·&nbsp; ChatGPT·Gemini·Perplexity·네이버 AI 실측</h3>
+    <div class="tbl" id="vTbl"></div>
+
+    <h3>질문별 인용 여부 &nbsp;·&nbsp; <span id="vCoQ">OO정밀</span></h3>
+    <div class="qres" id="vQres"></div>
+
+    <div class="stats">
+      <div class="stat"><b>62%</b><h4>AI 검색 사용자</h4><p>한국 소비자 절반 이상이 ChatGPT·Claude·Gemini로 제품과 업체를 탐색합니다.</p></div>
+      <div class="stat"><b id="vAvg">0건</b><h4>평균 인용 빈도</h4><p id="vAvgP">주요 질문에 대한 AI 답변에 귀사가 등장한 횟수입니다.</p></div>
+      <div class="stat"><b>73%</b><h4>잃어버린 잠재 고객</h4><p>AI 답변에 인용되지 않는 브랜드는 비교 후보군에서 시작부터 제외됩니다.</p></div>
+    </div>
+  </div>
+
+  <!-- 라이트: 기대 시나리오 -->
+  <div class="light">
+    <div class="lhead">
+      <h2><span class="a">AI 인용률</span> &nbsp;<span id="vFrom" class="a">0%</span> <span class="b">→ 67%</span></h2>
+      <span class="ex">운영 시 기대 시나리오 · 예시</span>
+    </div>
+
+    <div class="lgrid">
+      <div class="lcard">
+        <h5>AI 인용률 추이 (6개월 운영 예시) <span class="up" style="float:right">+56%p</span></h5>
+        <svg id="chartLine" viewBox="0 0 620 240" style="width:100%"></svg>
+      </div>
+      <div class="lcard">
+        <h5>콘텐츠 자산 누적 (건) <span class="up" style="float:right">매달 48~80건</span></h5>
+        <svg id="chartBar" viewBox="0 0 300 240" style="width:100%"></svg>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><h5>노출 채널</h5><b>4<i>+1</i></b><p>블로그 4채널 + 언론보도</p><span class="pill">홈페이지 · 네이버 · 티스토리 · 블로거</span></div>
+      <div class="kpi"><h5>AI 등장률 (사례 평균)</h5><b>78~92<i>%</i></b><p>3개월 차 주요 질문 기준</p><span class="pill">운영 사례 시나리오 기준</span></div>
+      <div class="kpi"><h5>효과 시작 시점</h5><b>3<i>개월</i></b><p>정보 축적 후 AI 반영 시작</p><span class="pill">매월 실측 리포트 제공</span></div>
+    </div>
+
+    <div class="insight">
+      <span class="ic">✦</span>
+      <b>핵심 인사이트</b>
+      <span id="vInsight">현재 주요 질문 5개 중 5개에서 인용되지 않고 있습니다. 콘텐츠 축적 시작 시점이 빠를수록 해당 분야의 '기본 답변' 자리를 선점합니다.</span>
+      <span class="src">● 데이터: messeze AI Visibility 진단</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div><b>이 리포트는 무료 진단 결과입니다</b><p>실제 질문·엔진별 상세 결과와 맞춤 플랜은 상담에서 안내드립니다 · 결제 강요 없음</p></div>
+    <a href="https://mina0313.github.io/messeze/index.html#final">무료 상담 신청 →</a>
+  </div>
+</div>
+
+<script>
+/* ── 데이터 (localStorage 자동 저장) ── */
+var D = {
+  co:'OO정밀', ind:'정밀부품 제조', period:'',
+  qs:[
+    {t:'믿을 만한 정밀부품 제조사 추천해줘', cited:false},
+    {t:'OO 소재 가공 잘하는 업체 어디야?', cited:false},
+    {t:'국내 정밀부품 업체 비교해줘', cited:false},
+    {t:'대량 납품 가능한 부품 제조사는?', cited:false},
+    {t:'품질 관리 잘하는 제조 파트너 추천', cited:false}
+  ],
+  comps:[ {n:'A사',r:82},{n:'B사',r:75},{n:'C사',r:64},{n:'D사',r:58} ]
+};
+try{ var sv=localStorage.getItem('mz_report'); if(sv) D=JSON.parse(sv); }catch(e){}
+
+function save(){ try{localStorage.setItem('mz_report',JSON.stringify(D));}catch(e){} }
+function esc(s){return String(s??'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* 기본 분석기간 = 최근 2주 */
+function defPeriod(){
+  var e=new Date(), s=new Date(e.getTime()-13*864e5);
+  function f(d){return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')}
+  return f(s)+' ~ '+f(e);
+}
+if(!D.period) D.period=defPeriod();
+
+/* ── 툴바 바인딩 ── */
+var iCo=document.getElementById('iCo'), iInd=document.getElementById('iInd'), iPeriod=document.getElementById('iPeriod');
+iCo.value=D.co; iInd.value=D.ind; iPeriod.value=D.period;
+iCo.oninput=function(){D.co=this.value;render()};
+iInd.oninput=function(){D.ind=this.value;render()};
+iPeriod.oninput=function(){D.period=this.value;render()};
+
+function buildEditors(){
+  var q=document.getElementById('qEdit'); q.innerHTML='';
+  D.qs.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='qrow';
+    d.innerHTML='<input type="text" value="'+esc(it.t)+'"><select><option value="0"'+(it.cited?'':' selected')+'>✕ 미인용</option><option value="1"'+(it.cited?' selected':'')+'>○ 인용됨</option></select>';
+    d.querySelector('input').oninput=function(){D.qs[i].t=this.value;render()};
+    d.querySelector('select').onchange=function(){D.qs[i].cited=this.value==='1';render()};
+    q.appendChild(d);
+  });
+  var c=document.getElementById('cEdit'); c.innerHTML='';
+  D.comps.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='crow';
+    d.innerHTML='<input type="text" value="'+esc(it.n)+'"><input class="sm" type="number" min="0" max="100" value="'+it.r+'"><span style="font-size:12px;color:#9FB0D6">%</span>';
+    var ins=d.querySelectorAll('input');
+    ins[0].oninput=function(){D.comps[i].n=this.value;render()};
+    ins[1].oninput=function(){D.comps[i].r=Number(this.value)||0;render()};
+    c.appendChild(d);
+  });
+}
+
+/* ── 차트 ── */
+function lineChart(){
+  var pts=[11,18,29,41,55,67], W=620,H=240,px=40,py=26;
+  var xs=function(i){return px+i*(W-px-20)/5}, ys=function(v){return H-py-(v/100)*(H-py-30)};
+  var path='M'+pts.map(function(v,i){return xs(i)+' '+ys(v)}).join(' L ');
+  var area=path+' L '+xs(5)+' '+(H-py)+' L '+xs(0)+' '+(H-py)+' Z';
+  var s='<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C084FC" stop-opacity=".55"/><stop offset="1" stop-color="#C084FC" stop-opacity="0"/></linearGradient></defs>';
+  for(var g=0;g<=5;g++){var gy=H-py-g*(H-py-30)/5;s+='<line x1="'+px+'" y1="'+gy+'" x2="'+(W-20)+'" y2="'+gy+'" stroke="#EFF0F6"/><text x="'+(px-8)+'" y="'+(gy+4)+'" font-size="10" fill="#AEB4C6" text-anchor="end">'+(g*20)+'%</text>';}
+  s+='<path d="'+area+'" fill="url(#ga)"/><path d="'+path+'" fill="none" stroke="#A855F7" stroke-width="3" stroke-linecap="round"/>';
+  pts.forEach(function(v,i){
+    s+='<circle cx="'+xs(i)+'" cy="'+ys(v)+'" r="'+(i===5?6:4)+'" fill="'+(i===5?'#fff':'#A855F7')+'" stroke="#A855F7" stroke-width="'+(i===5?3:0)+'"/>';
+    s+='<text x="'+xs(i)+'" y="'+(ys(v)-12)+'" font-size="'+(i===5?15:11)+'" font-weight="'+(i===5?'900':'700')+'" fill="'+(i===5?'#7C3AED':'#8B95A7')+'" text-anchor="middle">'+v+'%</text>';
+    s+='<text x="'+xs(i)+'" y="'+(H-6)+'" font-size="10.5" fill="#AEB4C6" text-anchor="middle">'+(i+1)+'월차</text>';
+  });
+  document.getElementById('chartLine').innerHTML=s;
+}
+function barChart(){
+  var vals=[48,96,144,192,240,288], W=300,H=240,px=36,py=26, mx=300;
+  var s='';
+  for(var g=0;g<=3;g++){var gy=H-py-g*(H-py-30)/3;s+='<line x1="'+px+'" y1="'+gy+'" x2="'+(W-8)+'" y2="'+gy+'" stroke="#EFF0F6"/><text x="'+(px-6)+'" y="'+(gy+4)+'" font-size="10" fill="#AEB4C6" text-anchor="end">'+Math.round(g*mx/3)+'</text>';}
+  vals.forEach(function(v,i){
+    var bw=24, x=px+8+i*((W-px-16)/6), h=(v/mx)*(H-py-30), y=H-py-h;
+    s+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+h+'" rx="6" fill="'+(i===5?'#A855F7':'#C4B5FD')+'"/>';
+    s+='<text x="'+(x+bw/2)+'" y="'+(y-6)+'" font-size="10.5" font-weight="800" fill="'+(i===5?'#7C3AED':'#8B95A7')+'" text-anchor="middle">'+v+'</text>';
+    s+='<text x="'+(x+bw/2)+'" y="'+(H-6)+'" font-size="10" fill="#AEB4C6" text-anchor="middle">'+(i+1)+'월</text>';
+  });
+  document.getElementById('chartBar').innerHTML=s;
+}
+
+/* ── 렌더 ── */
+function render(){
+  save();
+  document.getElementById('vCo').textContent=D.co;
+  document.getElementById('vCoQ').textContent=D.co;
+  document.getElementById('vPeriod').textContent=D.period;
+  document.getElementById('vQ0').textContent=D.qs[0].t;
+
+  /* 비교 테이블 */
+  var t='';
+  D.comps.forEach(function(c,i){
+    t+='<div class="trow"><span class="no">'+(i+1)+'</span><span class="bname">'+esc(c.n)+'</span><span class="qs">'+esc(D.ind)+' 관련 질문 '+D.qs.length+'개 기준</span><span class="rate"><b>'+c.r+'%</b><span class="rbar"><i style="width:'+c.r+'%"></i></span></span></div>';
+  });
+  var cited=D.qs.filter(function(q){return q.cited}).length;
+  var myRate=Math.round(cited/D.qs.length*100);
+  t+='<div class="trow you"><span class="no">'+(D.comps.length+1)+'</span><span class="bname">'+esc(D.co)+'</span>'
+   +'<span class="warn">⚠ '+(cited===0?'인용되지 않은 브랜드입니다':'일부 질문에서만 인용됩니다')+'</span>'
+   +'<span class="rate"><b>'+myRate+'%</b><span class="rbar"><i style="width:'+Math.max(myRate,2)+'%"></i></span></span></div>';
+  document.getElementById('vTbl').innerHTML=t+'';
+
+  /* 질문별 */
+  var q='';
+  D.qs.forEach(function(it){
+    q+='<div class="qcard"><span class="qtxt">“'+esc(it.t)+'”</span><span class="st '+(it.cited?'ok':'no')+'">'+(it.cited?'○ 인용됨':'✕ 미인용')+'</span></div>';
+  });
+  document.getElementById('vQres').innerHTML=q;
+
+  /* 통계·인사이트 */
+  document.getElementById('vAvg').textContent=cited+'건';
+  document.getElementById('vFrom').textContent=myRate+'%';
+  document.getElementById('vInsight').textContent='현재 주요 질문 '+D.qs.length+'개 중 '+(D.qs.length-cited)+'개에서 인용되지 않고 있습니다. 콘텐츠 축적 시작 시점이 빠를수록 해당 분야의 \'기본 답변\' 자리를 선점합니다.';
+
+  document.title=D.co+' AI 진단 리포트 — messeze';
+}
+
+buildEditors();
+lineChart();
+barChart();
+render();
+</script>
+</body>
+</html>
