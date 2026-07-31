@@ -1852,14 +1852,23 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
 <!-- ===== messeze 챗 위젯 ===== -->
 <style>
 .mchat{position:fixed;right:22px;bottom:22px;z-index:200;font-family:'Pretendard',system-ui,sans-serif}
-.mchat-fab{position:relative;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(140deg,#3B6BFF,#1E46D9);color:#fff;box-shadow:0 14px 30px rgba(43,92,255,.42);display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
-.mchat-fab:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 38px rgba(43,92,255,.5)}
-.mchat-fab svg{width:27px;height:27px;position:absolute;transition:opacity .2s,transform .2s}
-.mchat-fab .ic-close{opacity:0;transform:rotate(-45deg)}
-.mchat.open .mchat-fab .ic-chat{opacity:0;transform:rotate(45deg)}
-.mchat.open .mchat-fab .ic-close{opacity:1;transform:none}
-.mchat-badge{position:absolute;top:-2px;right:-2px;min-width:19px;height:19px;border-radius:10px;background:#FF4D4F;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px;border:2px solid #fff}
-.mchat.open .mchat-badge{display:none}
+/* 상담사 인사 카드 (design-concierge형) */
+.mchat-card{position:relative;width:225px;background:#fff;border-radius:24px;padding:9px 9px 16px;box-shadow:0 20px 55px rgba(16,31,63,.24);cursor:pointer;transition:transform .22s,box-shadow .22s;animation:mcardIn .5s cubic-bezier(.2,.85,.3,1.15) both}
+@keyframes mcardIn{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}
+.mchat-card:hover{transform:translateY(-4px);box-shadow:0 26px 64px rgba(16,31,63,.3)}
+.mchat-card>img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:17px;display:block;background:#EAF0F8}
+.mchat-cx{position:absolute;top:-11px;right:-11px;width:33px;height:33px;border-radius:50%;border:2px solid #fff;background:#666E7A;color:#fff;font-size:14px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.28);display:grid;place-items:center;line-height:1;z-index:2}
+.mchat-cx:hover{background:#4B5361}
+.mchat-clabel{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:#C9930A;margin:13px 5px 7px}
+.mchat-clabel i{width:7px;height:7px;border-radius:50%;background:#22C55E;display:inline-block;box-shadow:0 0 0 3px rgba(34,197,94,.18)}
+.mchat-cmsg{margin:0 5px;font-size:15.5px;font-weight:700;color:#191F28;line-height:1.48;letter-spacing:-.01em}
+/* 접었을 때 미니 아바타 버튼 */
+.mchat-mini{width:64px;height:64px;border-radius:50%;border:3px solid #fff;padding:0;overflow:hidden;cursor:pointer;box-shadow:0 14px 32px rgba(16,31,63,.32);background:#EAF0F8;display:none;transition:transform .2s,box-shadow .2s}
+.mchat-mini:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 18px 40px rgba(16,31,63,.4)}
+.mchat-mini img{width:100%;height:100%;object-fit:cover;display:block}
+.mchat.min .mchat-card{display:none}
+.mchat.min .mchat-mini{display:block}
+.mchat.open .mchat-card,.mchat.open .mchat-mini{display:none}
 .mchat-panel{position:absolute;right:0;bottom:74px;width:360px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 120px);background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(16,31,63,.28);display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);transform-origin:bottom right;transition:opacity .26s,transform .26s,visibility .26s}
 .mchat.open .mchat-panel{opacity:1;visibility:visible;transform:none}
 .mchat-hd{background:linear-gradient(135deg,#3B6BFF,#1E46D9);color:#fff;padding:18px 18px 20px;display:flex;align-items:center;gap:12px}
@@ -1891,8 +1900,8 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
 <div class="mchat" id="mchat">
   <div class="mchat-panel" id="mchatPanel" role="dialog" aria-label="messeze 상담 채팅">
     <div class="mchat-hd">
-      <div class="mchat-av">m</div>
-      <div><b>messeze 상담</b><span>보통 1영업일 내 답변드려요</span></div>
+      <div class="mchat-av"><img src="assets/consultant.webp" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+      <div><b>메세지 AI 상담</b><span>보통 1영업일 내 답변드려요</span></div>
       <button class="mchat-x" id="mchatX" aria-label="닫기">✕</button>
     </div>
     <div class="mchat-body" id="mchatBody"></div>
@@ -1903,15 +1912,19 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
     </form>
     <a class="mchat-foot" href="index.html#final">담당자에게 직접 문의하기 →</a>
   </div>
-  <button class="mchat-fab" id="mchatFab" aria-label="문의 채팅 열기">
-    <svg class="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
-    <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    <span class="mchat-badge">1</span>
+  <div class="mchat-card" id="mchatCard" role="button" tabindex="0" aria-label="상담 채팅 열기">
+    <button class="mchat-cx" id="mchatCX" aria-label="상담 카드 접기">✕</button>
+    <img src="assets/consultant.webp" alt="메세지 AI 상담사">
+    <div class="mchat-clabel"><i></i>메세지 AI 상담</div>
+    <p class="mchat-cmsg">안녕하세요.<br>무엇을 도와드릴까요?</p>
+  </div>
+  <button class="mchat-mini" id="mchatMini" aria-label="상담 채팅 열기">
+    <img src="assets/consultant.webp" alt="">
   </button>
 </div>
 <script>
 (function(){
-  var root=document.getElementById('mchat'),fab=document.getElementById('mchatFab'),x=document.getElementById('mchatX');
+  var root=document.getElementById('mchat'),card=document.getElementById('mchatCard'),cx=document.getElementById('mchatCX'),mini=document.getElementById('mchatMini'),x=document.getElementById('mchatX');
   var body=document.getElementById('mchatBody'),chipsWrap=document.getElementById('mchatChips');
   var form=document.getElementById('mchatForm'),input=document.getElementById('mchatText');
   if(!root)return;
@@ -1927,8 +1940,13 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
   function usr(t){var d=document.createElement('div');d.className='mmsg muser';d.textContent=t;body.appendChild(d);down();}
   function chips(){chipsWrap.innerHTML='';QA.forEach(function(it){var b=document.createElement('button');b.className='mchip';b.type='button';b.textContent=it.q;b.addEventListener('click',function(){usr(it.q);setTimeout(function(){bot(it.a,it.link);},350);});chipsWrap.appendChild(b);});}
   function init(){if(opened)return;opened=true;bot('안녕하세요, AI 검색 시대의 기업 PR <b>messeze</b>입니다 👋');setTimeout(function(){bot('궁금한 점을 편하게 물어봐 주세요. 아래 버튼을 누르거나 메시지를 남기시면 담당자가 확인 후 연락드려요.');},420);chips();}
-  fab.addEventListener('click',function(){var on=root.classList.toggle('open');if(on){init();setTimeout(function(){input.focus();},300);}});
-  x.addEventListener('click',function(){root.classList.remove('open');});
+  function open(){root.classList.add('open');init();setTimeout(function(){input.focus();},300);}
+  card.addEventListener('click',function(){open();});
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  mini.addEventListener('click',function(){open();});
+  cx.addEventListener('click',function(e){e.stopPropagation();root.classList.add('min');try{sessionStorage.setItem('mz_chat_min','1');}catch(err){}});
+  x.addEventListener('click',function(){root.classList.remove('open');root.classList.add('min');});
+  try{if(sessionStorage.getItem('mz_chat_min'))root.classList.add('min');}catch(err){}
   form.addEventListener('submit',function(e){e.preventDefault();var v=input.value.trim();if(!v)return;usr(v);input.value='';setTimeout(function(){bot('메시지 감사합니다! 담당자가 확인 후 <b>영업일 1일 내</b>로 연락드릴게요 🙏 급하시면 아래 버튼으로 상담을 남겨주세요.',{href:'index.html#final',label:'무료 상담 신청'});},420);});
 })();
 </script>
