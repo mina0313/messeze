@@ -20,14 +20,20 @@ body{font-family:var(--sans);color:var(--ink);background:#F2F5FA;line-height:1.6
 .top a:hover{color:#fff}
 main{padding:34px 0 80px}
 /* 키 게이트 */
-.gate{max-width:420px;margin:70px auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 20px 50px rgba(16,31,63,.08);text-align:center}
-.gate h1{font-size:21px;letter-spacing:-.02em}
-.gate p{font-size:13.5px;color:var(--mut);margin-top:8px}
-.gate input{width:100%;margin-top:20px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;font-family:var(--sans);font-size:15px;text-align:center;letter-spacing:.06em}
-.gate input:focus{outline:none;border-color:var(--cobalt)}
-.gate button{width:100%;margin-top:12px;background:var(--cobalt);color:#fff;border:0;border-radius:12px;padding:14px;font-family:var(--sans);font-weight:800;font-size:15px;cursor:pointer}
+body.gated{background:#F1EFEA}
+body.gated .vtabs{display:none}
+.gate{max-width:440px;margin:64px auto;background:#fff;border-radius:24px;padding:44px 40px 34px;box-shadow:0 24px 60px rgba(40,36,24,.1)}
+.gate .glogo{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:26px}
+.gate .glogo svg{width:44px;height:44px;color:#101B3A}
+.gate .glogo .wm{font-weight:900;font-size:19px;letter-spacing:-.02em;color:#101B3A}
+.gate h1{font-size:19px;letter-spacing:.14em;text-align:center;color:#2A2E3A;margin-bottom:26px}
+.gate label{display:block;font-size:13px;font-weight:700;color:#3A4152;margin:16px 2px 7px}
+.gate input{width:100%;border:1px solid #E7E4DC;background:#F7F5F0;border-radius:12px;padding:14px 16px;font-family:var(--sans);font-size:15px}
+.gate input:focus{outline:none;border-color:var(--cobalt);background:#fff}
+.gate .err{color:#E2574C;font-size:13px;font-weight:700;margin-top:16px;display:none;text-align:center}
+.gate button{width:100%;margin-top:16px;background:var(--cobalt);color:#fff;border:0;border-radius:12px;padding:15px;font-family:var(--sans);font-weight:800;font-size:16px;cursor:pointer;transition:.15s}
 .gate button:hover{background:#1E46D9}
-.gate .err{color:var(--red);font-size:13px;font-weight:700;margin-top:12px;display:none}
+.gate .gfoot{text-align:center;font-size:12.5px;color:#8B95A7;margin-top:18px}
 /* 설정 안내 */
 .setup{max-width:640px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 20px 50px rgba(16,31,63,.08)}
 .setup h1{font-size:20px}
@@ -148,14 +154,32 @@ function showSetup(){
 }
 
 function showGate(msg){
-  app.innerHTML = `<div class="gate"><h1>관리자 확인</h1><p>문의 목록을 보려면 관리자 키를 입력하세요.</p>
-  <input id="key" type="password" placeholder="관리자 키" autocomplete="off">
-  <button id="go">입장</button><div class="err" id="gerr">${esc(msg||'')}</div></div>`;
+  document.body.classList.add('gated');
+  app.innerHTML = `<div class="gate">
+  <div class="glogo">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M38 24 16 71" stroke="currentColor" stroke-width="17" stroke-linecap="round"/><path d="M72 24 51 71" stroke="#2B5CFF" stroke-width="17" stroke-linecap="round"/><circle cx="85" cy="69" r="9" fill="#2B5CFF"/></svg>
+    <span class="wm">messeze</span>
+  </div>
+  <h1>MESSEZE ADMIN</h1>
+  <label for="gid">아이디</label>
+  <input id="gid" type="text" autocomplete="username" value="${esc(localStorage.getItem('mz_admin_id')||'')}">
+  <label for="key">비밀번호</label>
+  <input id="key" type="password" autocomplete="current-password">
+  <div class="err" id="gerr">${esc(msg||'')}</div>
+  <button id="go">로그인</button>
+  <div class="gfoot">메세지닷컴 문의·콘텐츠 관리자 페이지입니다.</div>
+  </div>`;
   if(msg) document.getElementById('gerr').style.display='block';
-  const tryGo = ()=>{const k=document.getElementById('key').value.trim();if(k)load(k);};
+  const tryGo = ()=>{
+    const id=document.getElementById('gid').value.trim();
+    const k=document.getElementById('key').value.trim();
+    if(!id||!k){const e=document.getElementById('gerr');e.textContent='아이디와 비밀번호를 입력하세요.';e.style.display='block';return;}
+    try{localStorage.setItem('mz_admin_id',id);}catch(e){}
+    load(k);
+  };
   document.getElementById('go').onclick = tryGo;
-  document.getElementById('key').addEventListener('keydown',e=>{if(e.key==='Enter')tryGo()});
-  document.getElementById('key').focus();
+  [document.getElementById('gid'),document.getElementById('key')].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')tryGo()}));
+  (localStorage.getItem('mz_admin_id')?document.getElementById('key'):document.getElementById('gid')).focus();
 }
 
 async function load(key){
@@ -163,8 +187,9 @@ async function load(key){
   try{
     const r = await fetch(APPS_URL+'?key='+encodeURIComponent(key)+'&t='+Date.now());
     const j = await r.json();
-    if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('키가 올바르지 않습니다.');}
+    if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
     localStorage.setItem(KEY_LS,key);
+    document.body.classList.remove('gated');
     render(key, j.rows||[]);
   }catch(e){
     showGate('불러오기 실패 — 네트워크 또는 설정을 확인하세요.');
