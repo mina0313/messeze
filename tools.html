@@ -174,7 +174,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <a href="tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
       <div class="gap"></div>
       <h5>요금</h5>
-      <a href="pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
+      <a href="pricing.html"><b>플랜 비교</b><span>베이직 · 프리미엄 · 엔터프라이즈</span></a>
       <a href="pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a>
     </div>
     <div class="mega-col">
@@ -285,7 +285,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
         {tag:'Q2 · 가장 중요한 목표',q:'PR로 가장 이루고 싶은 목표는?',o:[{k:'A',t:'브랜드 인지도 알리기',s:0},{k:'B',t:'검색·AI 노출 늘리기',s:0},{k:'C',t:'투자·B2B 신뢰 확보',s:1},{k:'D',t:'해외 진출·수출 확대',s:1}]},
         {tag:'Q3 · 월 예산',q:'매달 투입 가능한 예산은?',o:[{k:'A',t:'50만원 이하',s:1},{k:'B',t:'100만원 안팎',s:2},{k:'C',t:'300만원 이상',s:3}]}
       ],
-      result:function(ans){var total=ans[0].s+ans[1].s+ans[2].s;var P=total<=1.5?{n:'소상공인형',p:'월 60만원 · 3개월 150만원'}:(total<=3.5?{n:'기업형',p:'월 100만원 · 3개월 240만원'}:{n:'엔터프라이즈',p:'목표·범위 맞춤 견적'});
+      result:function(ans){var total=ans[0].s+ans[1].s+ans[2].s;var P=total<=1.5?{n:'베이직',p:'월 60만원 · 3개월 150만원'}:(total<=3.5?{n:'프리미엄',p:'월 100만원 · 3개월 240만원'}:{n:'엔터프라이즈',p:'목표·범위 맞춤 견적'});
         return {big:P.n,sub:P.p,tone:'var(--cobalt)',stars:true,why:'<b>'+ans[0].t+'</b> 상황에서 <b>'+ans[1].t+'</b>이(가) 목표라면 '+P.n+'이 가장 잘 맞습니다. 전담팀이 홈페이지·언론·콘텐츠를 매달 쌓아 올립니다.',cta:{href:'pricing.html',label:'플랜 자세히 비교'}};}}
   };
 
