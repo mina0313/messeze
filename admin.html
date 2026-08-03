@@ -193,7 +193,9 @@ async function load(key,view){
     if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
     localStorage.setItem(KEY_LS,key);
     document.body.classList.remove('gated');
-    LAST={key:key,rows:j.rows||[],checks:j.checks||[]};
+    LAST={key:key,
+      rows:(j.rows||[]).filter(r=>String(r.name||'')||String(r.company||'')||String(r.phone||'')||String(r.memo||'')),
+      checks:(j.checks||[]).filter(c=>String(c.site||''))};
     view==='chk' ? renderChk() : render(key, LAST.rows);
   }catch(e){
     showGate('불러오기 실패 — 네트워크 또는 설정을 확인하세요.');
