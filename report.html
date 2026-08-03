@@ -330,18 +330,8 @@ function render(){
 
   /* 질문별 */
   var q='';
-  var EL={gpt:'GPT',gem:'Gemini',ppx:'PPLX'};
   D.qs.forEach(function(it){
-    var chips='';
-    if(it.eng){
-      chips='<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">'+Object.keys(it.eng).map(function(k){
-        var v=it.eng[k];
-        var col=v===true?'#4ADE80':(v===false?'#FF7DAF':'#6C7394');
-        var sym=v===true?'○':(v===false?'✕':'–');
-        return '<span style="font-size:10.5px;font-weight:800;color:'+col+';background:#1A1C2B;border-radius:6px;padding:3px 7px">'+EL[k]+' '+sym+'</span>';
-      }).join('')+'</div>';
-    }
-    q+='<div class="qcard"><span class="qtxt">“'+esc(it.t)+'”'+chips+'</span><span class="st '+(it.cited?'ok':'no')+'">'+(it.cited?'○ 인용됨':'✕ 미인용')+'</span></div>';
+    q+='<div class="qcard"><span class="qtxt">“'+esc(it.t)+'”</span><span class="st '+(it.cited?'ok':'no')+'">'+(it.cited?'○ 인용됨':'✕ 미인용')+'</span></div>';
   });
   document.getElementById('vQres').innerHTML=q;
 
