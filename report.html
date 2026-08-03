@@ -405,7 +405,12 @@ var ENGINES=[
   {k:'ppx',label:'PPLX',fn:askPX,has:function(){return !!KEYS.px}}
 ];
 function lockBtns(v){['runAuto','runURL'].forEach(function(id){document.getElementById(id).disabled=v})}
-function stripJson(t){return String(t).replace(/```json|```/gi,'').trim()}
+function stripJson(t){
+  t=String(t).replace(/```json|```/gi,'');
+  var a=t.indexOf('{'),b=t.lastIndexOf('}');
+  if(a>=0&&b>a)t=t.slice(a,b+1);           // 앞뒤 설명 문장이 붙어도 JSON 본문만 추출
+  return t.trim();
+}
 
 /* 답변 모음에서 경쟁사 자동 추출 (Gemini) */
 async function extractComps(texts,total){
