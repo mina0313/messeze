@@ -14,6 +14,13 @@
    "aeo",
    "geo",
    "serp"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -31,7 +38,8 @@
    "seo",
    "ai-overview",
    "citation"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "search-intent",
@@ -48,7 +56,8 @@
    "keyword",
    "aeo",
    "faq-schema"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "keyword",
@@ -65,6 +74,13 @@
    "search-intent",
    "seo",
    "geo"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -82,7 +98,8 @@
    "ai-crawler",
    "structured-data",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "aeo",
@@ -99,6 +116,28 @@
    "geo",
    "citation",
    "faq-schema"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "press-release-writing",
+    "title": "기자가 인용하는 보도자료 작성법",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "advertorial-vs-press",
+    "title": "언론홍보와 애드버토리얼, 뭐가 다른가요?",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "manufacturer-case",
+    "title": "검색량 없는 제조기업이 AI에 발견되기까지",
+    "cat": "사례"
+   }
   ]
  },
  {
@@ -116,6 +155,23 @@
    "aeo",
    "entity",
    "knowledge-graph"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "measuring-geo",
+    "title": "AI 검색 성과, 무엇으로 측정하나요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "advertorial-vs-press",
+    "title": "언론홍보와 애드버토리얼, 뭐가 다른가요?",
+    "cat": "언론홍보"
+   }
   ]
  },
  {
@@ -133,6 +189,23 @@
    "ai-overview",
    "aeo",
    "llm"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "measuring-geo",
+    "title": "AI 검색 성과, 무엇으로 측정하나요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "advertorial-vs-press",
+    "title": "언론홍보와 애드버토리얼, 뭐가 다른가요?",
+    "cat": "언론홍보"
+   }
   ]
  },
  {
@@ -150,7 +223,8 @@
    "ai-search",
    "serp",
    "citation"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "llm",
@@ -167,7 +241,8 @@
    "ai-search",
    "knowledge-graph",
    "entity"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "ai-crawler",
@@ -184,7 +259,8 @@
    "crawling-indexing",
    "structured-data",
    "geo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "citation",
@@ -201,6 +277,13 @@
    "aeo",
    "ai-overview",
    "press-release"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "indexed-not-cited",
+    "title": "구글엔 나오는데 왜 ChatGPT엔 안 나올까요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -218,6 +301,18 @@
    "knowledge-graph",
    "structured-data",
    "sameas"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "indexed-not-cited",
+    "title": "구글엔 나오는데 왜 ChatGPT엔 안 나올까요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "global-buyer-ai",
+    "title": "해외 바이어도 이제 AI에게 묻습니다",
+    "cat": "수출·해외 PR"
+   }
   ]
  },
  {
@@ -235,7 +330,8 @@
    "entity",
    "sameas",
    "llm"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "title-tag",
@@ -252,7 +348,8 @@
    "meta-description",
    "heading-structure",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "meta-description",
@@ -269,7 +366,8 @@
    "title-tag",
    "serp",
    "aeo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "heading-structure",
@@ -286,7 +384,8 @@
    "title-tag",
    "faq-schema",
    "aeo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "alt-text",
@@ -303,7 +402,8 @@
    "heading-structure",
    "crawling-indexing",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "structured-data",
@@ -320,6 +420,28 @@
    "json-ld",
    "entity",
    "faq-schema"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "indexed-not-cited",
+    "title": "구글엔 나오는데 왜 ChatGPT엔 안 나올까요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "measuring-geo",
+    "title": "AI 검색 성과, 무엇으로 측정하나요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "llms-txt",
+    "title": "llms.txt, 정말 효과가 있을까요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "ai-hallucination-brand",
+    "title": "AI가 우리 회사를 틀리게 말할 때",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -337,7 +459,8 @@
    "structured-data",
    "entity",
    "sameas"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "canonical",
@@ -354,7 +477,8 @@
    "crawling-indexing",
    "structured-data",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "faq-schema",
@@ -371,6 +495,13 @@
    "structured-data",
    "aeo",
    "search-intent"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "ai-hallucination-brand",
+    "title": "AI가 우리 회사를 틀리게 말할 때",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -388,7 +519,8 @@
    "domain-authority",
    "press-release",
    "eeat"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "eeat",
@@ -405,7 +537,8 @@
    "backlink",
    "brand-mention",
    "press-release"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "domain-authority",
@@ -422,7 +555,8 @@
    "backlink",
    "eeat",
    "newswire"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "sameas",
@@ -439,7 +573,8 @@
    "entity",
    "json-ld",
    "knowledge-graph"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "brand-mention",
@@ -456,7 +591,8 @@
    "eeat",
    "citation",
    "press-release"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "press-release",
@@ -473,6 +609,38 @@
    "advertorial",
    "boilerplate",
    "lead-paragraph"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "press-release-writing",
+    "title": "기자가 인용하는 보도자료 작성법",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "advertorial-vs-press",
+    "title": "언론홍보와 애드버토리얼, 뭐가 다른가요?",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "exhibition-pr",
+    "title": "전시회 전후, 기업 홍보는 이렇게 합니다",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "export-pr-strategy",
+    "title": "수출기업을 위한 국가별 PR 전략",
+    "cat": "수출·해외 PR"
+   },
+   {
+    "slug": "export-voucher-pr",
+    "title": "수출바우처로 해외 홍보비, 어디까지 아낄 수 있나요?",
+    "cat": "수출·해외 PR"
+   },
+   {
+    "slug": "manufacturer-case",
+    "title": "검색량 없는 제조기업이 AI에 발견되기까지",
+    "cat": "사례"
+   }
   ]
  },
  {
@@ -490,6 +658,18 @@
    "press-release",
    "newswire",
    "brand-mention"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "advertorial-vs-press",
+    "title": "언론홍보와 애드버토리얼, 뭐가 다른가요?",
+    "cat": "언론홍보"
+   },
+   {
+    "slug": "manufacturer-case",
+    "title": "검색량 없는 제조기업이 AI에 발견되기까지",
+    "cat": "사례"
+   }
   ]
  },
  {
@@ -507,6 +687,13 @@
    "press-release",
    "entity",
    "brand-mention"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "press-release-writing",
+    "title": "기자가 인용하는 보도자료 작성법",
+    "cat": "언론홍보"
+   }
   ]
  },
  {
@@ -524,7 +711,8 @@
    "press-release",
    "media-list",
    "exhibition-pr"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "media-list",
@@ -541,7 +729,8 @@
    "press-release",
    "newswire",
    "embargo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "newswire",
@@ -558,7 +747,8 @@
    "media-list",
    "press-release",
    "domain-authority"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "lead-paragraph",
@@ -575,6 +765,13 @@
    "press-release",
    "boilerplate",
    "meta-description"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "press-release-writing",
+    "title": "기자가 인용하는 보도자료 작성법",
+    "cat": "언론홍보"
+   }
   ]
  },
  {
@@ -592,7 +789,8 @@
    "embargo",
    "press-release",
    "geo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "llms-txt",
@@ -609,6 +807,13 @@
    "ai-crawler",
    "structured-data",
    "geo"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "llms-txt",
+    "title": "llms.txt, 정말 효과가 있을까요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -626,7 +831,8 @@
    "grounding",
    "citation",
    "ai-search"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "hallucination",
@@ -643,6 +849,13 @@
    "grounding",
    "llm",
    "citation"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "ai-hallucination-brand",
+    "title": "AI가 우리 회사를 틀리게 말할 때",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -660,7 +873,8 @@
    "hallucination",
    "citation",
    "rag"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "knowledge-cutoff",
@@ -677,7 +891,8 @@
    "rag",
    "freshness",
    "ai-search"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "multimodal",
@@ -694,7 +909,8 @@
    "alt-text",
    "structured-data",
    "ai-crawler"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "share-of-voice",
@@ -711,7 +927,8 @@
    "citation",
    "brand-mention",
    "ai-overview"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "self-contained",
@@ -728,7 +945,8 @@
    "answer-first",
    "heading-structure",
    "aeo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "answer-first",
@@ -745,7 +963,8 @@
    "self-contained",
    "heading-structure",
    "aeo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "information-gain",
@@ -762,7 +981,8 @@
    "self-contained",
    "eeat",
    "geo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "freshness",
@@ -779,6 +999,18 @@
    "knowledge-cutoff",
    "geo",
    "brand-mention"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   },
+   {
+    "slug": "indexed-not-cited",
+    "title": "구글엔 나오는데 왜 ChatGPT엔 안 나올까요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -796,6 +1028,13 @@
    "anchor-text",
    "crawling-indexing",
    "entity"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -813,7 +1052,8 @@
    "internal-link",
    "backlink",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "hreflang",
@@ -830,7 +1070,8 @@
    "canonical",
    "structured-data",
    "geo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "robots-txt",
@@ -847,7 +1088,8 @@
    "crawling-indexing",
    "ai-crawler",
    "sitemap"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "sitemap",
@@ -864,7 +1106,8 @@
    "robots-txt",
    "crawling-indexing",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "core-web-vitals",
@@ -881,6 +1124,13 @@
    "seo",
    "alt-text",
    "crawling-indexing"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "measuring-geo",
+    "title": "AI 검색 성과, 무엇으로 측정하나요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -898,7 +1148,8 @@
    "canonical",
    "crawling-indexing",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "link-building",
@@ -915,7 +1166,8 @@
    "backlink",
    "domain-authority",
    "press-release"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "embedding",
@@ -932,7 +1184,8 @@
    "rag",
    "search-intent",
    "self-contained"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "context-window",
@@ -949,7 +1202,8 @@
    "answer-first",
    "chunking",
    "self-contained"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "token",
@@ -966,7 +1220,8 @@
    "context-window",
    "information-gain",
    "answer-first"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "query-fanout",
@@ -983,7 +1238,8 @@
    "search-intent",
    "rag",
    "faq-schema"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "chunking",
@@ -1000,7 +1256,8 @@
    "self-contained",
    "heading-structure",
    "context-window"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "author-signal",
@@ -1017,7 +1274,8 @@
    "eeat",
    "entity",
    "structured-data"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "entity-resolution",
@@ -1034,7 +1292,8 @@
    "entity",
    "sameas",
    "knowledge-graph"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "live-web-search",
@@ -1051,7 +1310,8 @@
    "rag",
    "knowledge-cutoff",
    "freshness"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "citation-vs-mention",
@@ -1068,7 +1328,8 @@
    "citation",
    "brand-mention",
    "share-of-voice"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "liftable-claim",
@@ -1085,7 +1346,8 @@
    "self-contained",
    "answer-first",
    "citation"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "definitional-sentence",
@@ -1102,7 +1364,8 @@
    "entity",
    "answer-first",
    "liftable-claim"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "localization",
@@ -1119,6 +1382,13 @@
    "hreflang",
    "structured-data",
    "geo"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "export-voucher-pr",
+    "title": "수출바우처로 해외 홍보비, 어디까지 아낄 수 있나요?",
+    "cat": "수출·해외 PR"
+   }
   ]
  },
  {
@@ -1136,7 +1406,8 @@
    "structured-data",
    "answer-first",
    "faq-schema"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "url-structure",
@@ -1153,7 +1424,8 @@
    "redirect",
    "canonical",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "nofollow",
@@ -1170,7 +1442,8 @@
    "backlink",
    "link-building",
    "domain-authority"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "ranking-signals",
@@ -1187,7 +1460,8 @@
    "seo",
    "backlink",
    "core-web-vitals"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "duplicate-content",
@@ -1204,7 +1478,8 @@
    "canonical",
    "internal-link",
    "seo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "page-speed",
@@ -1221,6 +1496,13 @@
    "core-web-vitals",
    "seo",
    "crawling-indexing"
+  ],
+  "relatedBlogs": [
+   {
+    "slug": "aeo-geo-seo",
+    "title": "AEO·GEO·SEO, 무엇이 어떻게 다른가요?",
+    "cat": "AI 가시성"
+   }
   ]
  },
  {
@@ -1238,7 +1520,8 @@
    "seo",
    "share-of-voice",
    "search-console"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "search-console",
@@ -1255,7 +1538,8 @@
    "crawling-indexing",
    "sitemap",
    "organic-traffic"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "self-referential-accumulation",
@@ -1272,7 +1556,8 @@
    "citation",
    "share-of-voice",
    "geo"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "entity-alignment",
@@ -1289,7 +1574,8 @@
    "entity-resolution",
    "sameas",
    "knowledge-graph"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "signal-to-noise",
@@ -1305,7 +1591,8 @@
    "boilerplate",
    "self-contained",
    "information-gain"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "lazy-loading",
@@ -1322,7 +1609,8 @@
    "ai-crawler",
    "page-speed",
    "structured-data"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "memory-retrieval-synthesis",
@@ -1338,7 +1626,8 @@
    "rag",
    "parametric-knowledge",
    "live-web-search"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "parametric-knowledge",
@@ -1354,7 +1643,8 @@
    "knowledge-cutoff",
    "memory-retrieval-synthesis",
    "rag"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "primary-vs-derivative",
@@ -1370,7 +1660,8 @@
    "citation",
    "press-release",
    "eeat"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "structured-error",
@@ -1386,7 +1677,8 @@
    "hallucination",
    "grounding",
    "corpus-consensus"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "graphrag",
@@ -1402,7 +1694,8 @@
    "rag",
    "knowledge-graph",
    "entity"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "bitemporal",
@@ -1418,7 +1711,8 @@
    "freshness",
    "knowledge-cutoff",
    "grounding"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "corpus-consensus",
@@ -1434,7 +1728,8 @@
    "citation-vs-mention",
    "entity-alignment",
    "eeat"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "answer-orchestration",
@@ -1450,7 +1745,8 @@
    "ranking-signals",
    "share-of-voice",
    "geo-signal"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "whitespace",
@@ -1466,7 +1762,8 @@
    "information-gain",
    "self-contained",
    "query-fanout"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "observation-vs-inference",
@@ -1482,7 +1779,8 @@
    "geo-signal",
    "share-of-voice",
    "citation-vs-mention"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "closed-loop",
@@ -1498,7 +1796,8 @@
    "quality-reverse-eng",
    "geo-signal",
    "observation-vs-inference"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "temperature-sampling",
@@ -1514,7 +1813,8 @@
    "multi-ai-cross-analysis",
    "observation-vs-inference",
    "hallucination"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "geo-signal",
@@ -1530,7 +1830,8 @@
    "share-of-voice",
    "observation-vs-inference",
    "closed-loop"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "quality-reverse-eng",
@@ -1546,7 +1847,8 @@
    "closed-loop",
    "liftable-claim",
    "answer-first"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "lab-style-geo",
@@ -1562,7 +1864,8 @@
    "quality-reverse-eng",
    "multi-ai-cross-analysis",
    "geo-signal"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "multi-ai-cross-analysis",
@@ -1578,7 +1881,8 @@
    "share-of-voice",
    "geo-signal",
    "temperature-sampling"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "topic-cluster",
@@ -1595,7 +1899,8 @@
    "internal-link",
    "keyword-research",
    "information-gain"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "cannibalization",
@@ -1612,7 +1917,8 @@
    "keyword",
    "canonical",
    "keyword-research"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "keyword-research",
@@ -1629,7 +1935,8 @@
    "keyword",
    "search-intent",
    "topic-cluster"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "technical-seo",
@@ -1646,7 +1953,8 @@
    "crawling-indexing",
    "core-web-vitals",
    "sitemap"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "javascript-seo",
@@ -1663,7 +1971,8 @@
    "crawling-indexing",
    "rendering",
    "ai-crawler"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "rendering",
@@ -1680,7 +1989,8 @@
    "javascript-seo",
    "crawling-indexing",
    "page-speed"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "site-migration",
@@ -1697,7 +2007,8 @@
    "redirect",
    "canonical",
    "sitemap"
-  ]
+  ],
+  "relatedBlogs": []
  },
  {
   "slug": "zero-click",
@@ -1714,6 +2025,7 @@
    "ai-overview",
    "share-of-voice",
    "citation"
-  ]
+  ],
+  "relatedBlogs": []
  }
 ]
