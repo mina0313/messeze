@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /report.html
+Disallow: /_motion-demo.html
+
+Sitemap: https://mina0313.github.io/messeze/sitemap.xml
