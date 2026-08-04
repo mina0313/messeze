@@ -191,7 +191,7 @@ async function load(key,view){
     const r = await fetch(APPS_URL+'?key='+encodeURIComponent(key)+'&t='+Date.now());
     const j = await r.json();
     if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
-    localStorage.setItem(KEY_LS,key);
+    sessionStorage.setItem(KEY_LS,key);
     document.body.classList.remove('gated');
     LAST={key:key,
       rows:(j.rows||[]).filter(r=>String(r.name||'')||String(r.company||'')||String(r.phone||'')||String(r.memo||'')),
