@@ -396,13 +396,9 @@ function seoHome(){
   <div class="ed" style="margin-top:20px" id="seoForm"><div class="load">불러오는 중…</div></div>`;
   setTimeout(async()=>{
     try{
-      const tok=localStorage.getItem('mz_gh_token');
-      if(!tok){askToken(()=>seoHome());return;}
-      const r=await fetch(`https://api.github.com/repos/${REPO}/contents/data/seo.json?ref=${BR}`,{headers:ghH(tok)});
+      const r=await fetch('/data/seo.json');
       if(!r.ok)throw 0;
-      const j=await r.json();
-      const seo=JSON.parse(b64dec(j.content));
-      let seoSha=j.sha;
+      const seo=await r.json();
       const pageName=Object.keys(seo.pages||{})[0]||'메인';
       const pageData=seo.pages[pageName]||{};
       document.getElementById('seoForm').innerHTML=`
@@ -459,14 +455,11 @@ function seoHome(){
           headCode:document.getElementById('seoHeadCode').value.trim()
         };
         try{
-          const body={message:`admin: SEO 설정 수정 (${page})`,content:b64enc(JSON.stringify(seo,null,1)),sha:seoSha,branch:BR};
-          const ur=await fetch(`https://api.github.com/repos/${REPO}/contents/data/seo.json`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});
-          if(ur.status===401||ur.status===403){localStorage.removeItem('mz_gh_token');msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}
-          const uj=await ur.json();
+          const ur=await fetch('http://localhost:8000/api/seo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(seo)});
           if(!ur.ok)throw 0;
-          seoSha=uj.content.sha;
-          msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 페이지가 업데이트됩니다.</div>';
-        }catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 토큰 권한을 확인하세요.</div>';}
+          msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 페이지를 새로고침하면 반영됩니다.</div>';
+          setTimeout(()=>{window.location.reload();},1500);
+        }catch(e){msg.innerHTML='<div class="msg-err">❌ 저장 실패 — dev-server.py가 실행중인지 확인하세요. (python dev-server.py)</div>';}
       };
     }catch(e){document.getElementById('seoForm').innerHTML='<div class="msg-err">불러오기 실패 — 토큰을 확인하세요.</div>';}
   },0);
