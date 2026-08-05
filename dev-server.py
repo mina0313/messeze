@@ -32,6 +32,31 @@ class DevHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({'ok': False, 'error': str(e)}).encode('utf-8'))
                 print(f"❌ 오류: {e}")
+        elif self.path == '/api/settings':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length)
+                data = json.loads(body.decode('utf-8'))
+
+                # data/settings.json 저장
+                os.makedirs('data', exist_ok=True)
+                with open('data/settings.json', 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+
+                # 응답
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({'ok': True, 'msg': '사이트 설정이 저장되었습니다.'}).encode('utf-8'))
+                print(f"✅ 사이트 설정 저장됨")
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({'ok': False, 'error': str(e)}).encode('utf-8'))
+                print(f"❌ 오류: {e}")
         else:
             self.send_response(404)
             self.end_headers()
