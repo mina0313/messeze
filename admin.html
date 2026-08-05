@@ -442,8 +442,8 @@ function settingsHome(){
       <div style="font-size:12px;color:var(--mut);margin-bottom:16px">계정 정보는 local storage에만 저장됩니다 (서버 저장 안 됨)</div>
       <button style="background:var(--primary);color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer" id="saveSetting">💾 설정 저장</button>
     </div>
-  </div>
-  <script>
+  </div>`;
+  setTimeout(()=>{
     document.getElementById('saveSetting').onclick=()=>{
       const settings={
         company:document.getElementById('companyName').value.trim(),
@@ -455,7 +455,7 @@ function settingsHome(){
       if(pwd) settings.password=pwd;
       try{localStorage.setItem('mz_settings',JSON.stringify(settings));alert('설정이 저장되었습니다.');}catch(e){alert('저장 실패');}
     };
-  </script>`;
+  },0);
 }
 
 function go(v){
