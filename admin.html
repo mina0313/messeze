@@ -390,55 +390,85 @@ function rptHome(url){
 
 function seoHome(){
   updateSidebar('seo');
-  let seo=JSON.parse(localStorage.getItem('mz_seo')||'{"siteUrl":"https://messeze.io","ogImage":"","pages":[]}');
   app.innerHTML=`<div class="bar"><h1>SEO 관리</h1><button class="dup" id="seoSave" style="margin-left:auto;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:9px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;margin-right:0">전체 저장</button></div>
+  <div id="seoMsg"></div>
   <div class="cms-note">김석연진에 포시되는 제목·설명·카드들 관리합니다. 제목 35자, 설명 80자 인한 권장.</div>
-  <div class="ed" style="margin-top:20px">
-    <div class="fld2">
-      <label>사이트 기본 주소</label>
-      <input id="siteUrl" type="url" value="${esc(seo.siteUrl)}" placeholder="https://messeze.io">
-    </div>
-    <div class="fld2">
-      <label>대표 공유 이미지(og:image) 경로</label>
-      <input id="ogImage" type="text" value="${esc(seo.ogImage)}" placeholder="assets/img/og-image.jpg">
-    </div>
-    <div class="fld2">
-      <label>페이지 선택</label>
-      <select id="seoPage" style="width:100%;margin-bottom:12px"><option value="메인">메인</option><option value="서비스">서비스</option><option value="블로그">블로그</option></select>
-    </div>
-    <div class="fld2">
-      <label>제목 (title)</label>
-      <input id="seoTitle" type="text" placeholder="페이지 제목" maxlength="60">
-    </div>
-    <div class="fld2">
-      <label>설명 (description)</label>
-      <textarea id="seoDesc" placeholder="페이지 설명" maxlength="160" style="min-height:60px"></textarea>
-    </div>
-    <div class="fld2">
-      <label>키워드 (쉼표 구분)</label>
-      <input id="seoKeywords" type="text" placeholder="키워드1, 키워드2, 키워드3">
-    </div>
-    <div style="margin:16px 0;padding:12px;background:var(--sky-2);border-radius:8px">
-      <label style="display:flex;align-items:center;gap:8px;font-size:13px"><input type="checkbox" id="seoNoindex"> 이 페이지를 검색에서 제외 (noindex)</label>
-    </div>
-    <div style="font-size:12px;color:var(--mut);margin-top:12px">
-      제목 길이: <b id="titleLen">0</b>자 (권장 -35) · 설명 길이: <b id="descLen">0</b>자 (권장 -80)
-    </div>
-    <div class="fld2" style="margin-top:20px">
-      <label>맞춤 HEAD 코드</label>
-      <textarea id="seoHeadCode" placeholder="<meta ...>" style="min-height:120px;font-size:12px"></textarea>
-    </div>
-  </div>`;
-  setTimeout(()=>{
-    document.getElementById('titleLen').textContent=document.getElementById('seoTitle').value.length;
-    document.getElementById('descLen').textContent=document.getElementById('seoDesc').value.length;
-    document.getElementById('seoTitle').addEventListener('input',e=>{document.getElementById('titleLen').textContent=e.target.value.length;});
-    document.getElementById('seoDesc').addEventListener('input',e=>{document.getElementById('descLen').textContent=e.target.value.length;});
-    document.getElementById('seoSave').onclick=()=>{
-      seo.siteUrl=document.getElementById('siteUrl').value.trim();
-      seo.ogImage=document.getElementById('ogImage').value.trim();
-      try{localStorage.setItem('mz_seo',JSON.stringify(seo));alert('SEO 설정이 저장되었습니다.');}catch(e){alert('저장 실패');}
-    };
+  <div class="ed" style="margin-top:20px" id="seoForm"><div class="load">불러오는 중…</div></div>`;
+  setTimeout(async()=>{
+    try{
+      const tok=localStorage.getItem('mz_gh_token');
+      if(!tok){askToken(()=>seoHome());return;}
+      const r=await fetch(`https://api.github.com/repos/${REPO}/contents/data/seo.json?ref=${BR}`,{headers:ghH(tok)});
+      if(!r.ok)throw 0;
+      const j=await r.json();
+      const seo=JSON.parse(b64dec(j.content));
+      let seoSha=j.sha;
+      const pageName=Object.keys(seo.pages||{})[0]||'메인';
+      const pageData=seo.pages[pageName]||{};
+      document.getElementById('seoForm').innerHTML=`
+        <div class="fld2">
+          <label>사이트 기본 주소</label>
+          <input id="siteUrl" type="url" value="${esc(seo.siteUrl)}" placeholder="https://messeze.io">
+        </div>
+        <div class="fld2">
+          <label>대표 공유 이미지(og:image) 경로</label>
+          <input id="ogImage" type="text" value="${esc(seo.ogImage)}" placeholder="https://messeze.io/og-image.jpg">
+        </div>
+        <div class="fld2">
+          <label>페이지 선택</label>
+          <select id="seoPage" style="width:100%;margin-bottom:12px">${Object.keys(seo.pages||{}).map(p=>`<option value="${p}" ${p===pageName?'selected':''}>${p}</option>`).join('')}</select>
+        </div>
+        <div class="fld2">
+          <label>제목 (title)</label>
+          <input id="seoTitle" type="text" value="${esc(pageData.title||'')}" placeholder="페이지 제목" maxlength="60">
+        </div>
+        <div class="fld2">
+          <label>설명 (description)</label>
+          <textarea id="seoDesc" placeholder="페이지 설명" maxlength="160" style="min-height:60px">${esc(pageData.description||'')}</textarea>
+        </div>
+        <div class="fld2">
+          <label>키워드 (쉼표 구분)</label>
+          <input id="seoKeywords" type="text" value="${esc(pageData.keywords||'')}" placeholder="키워드1, 키워드2, 키워드3">
+        </div>
+        <div style="margin:16px 0;padding:12px;background:var(--sky-2);border-radius:8px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px"><input type="checkbox" id="seoNoindex" ${pageData.noindex?'checked':''}> 이 페이지를 검색에서 제외 (noindex)</label>
+        </div>
+        <div style="font-size:12px;color:var(--mut);margin-top:12px">
+          제목 길이: <b id="titleLen">${(pageData.title||'').length}</b>자 (권장 -35) · 설명 길이: <b id="descLen">${(pageData.description||'').length}</b>자 (권장 -80)
+        </div>
+        <div class="fld2" style="margin-top:20px">
+          <label>맞춤 HEAD 코드</label>
+          <textarea id="seoHeadCode" placeholder="<meta ...>" style="min-height:120px;font-size:12px">${esc(pageData.headCode||'')}</textarea>
+        </div>
+      `;
+      document.getElementById('seoTitle').addEventListener('input',e=>{document.getElementById('titleLen').textContent=e.target.value.length;});
+      document.getElementById('seoDesc').addEventListener('input',e=>{document.getElementById('descLen').textContent=e.target.value.length;});
+      document.getElementById('seoPage').addEventListener('change',()=>seoHome());
+      document.getElementById('seoSave').onclick=async()=>{
+        const msg=document.getElementById('seoMsg');
+        msg.innerHTML='<div class="load">저장 중…</div>';
+        const page=document.getElementById('seoPage').value;
+        seo.siteUrl=document.getElementById('siteUrl').value.trim();
+        seo.ogImage=document.getElementById('ogImage').value.trim();
+        seo.pages[page]={
+          file:seo.pages[page]?.file||'index.html',
+          title:document.getElementById('seoTitle').value.trim(),
+          description:document.getElementById('seoDesc').value.trim(),
+          keywords:document.getElementById('seoKeywords').value.trim(),
+          noindex:document.getElementById('seoNoindex').checked,
+          headCode:document.getElementById('seoHeadCode').value.trim()
+        };
+        try{
+          const body={message:`admin: SEO 설정 수정 (${page})`,content:b64enc(JSON.stringify(seo,null,1)),sha:seoSha,branch:BR};
+          const ur=await fetch(`https://api.github.com/repos/${REPO}/contents/data/seo.json`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});
+          if(ur.status===401||ur.status===403){localStorage.removeItem('mz_gh_token');msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}
+          const uj=await ur.json();
+          if(!ur.ok)throw 0;
+          seoSha=uj.content.sha;
+          msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 페이지가 업데이트됩니다.</div>';
+        }catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 토큰 권한을 확인하세요.</div>';}
+      };
+    }catch(e){document.getElementById('seoForm').innerHTML='<div class="msg-err">불러오기 실패 — 토큰을 확인하세요.</div>';}
   },0);
 }
 
