@@ -535,31 +535,38 @@ function settingsHome(){
 }
 
 function adminAccountsHome(){
-  updateSidebar('settings');
-  let accounts=JSON.parse(localStorage.getItem('mz_accounts')||'[{"id":"admin","pwd":"password"}]');
-  const renderAccounts=()=>{
-    const html=accounts.map((acc,i)=>`
-      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px">
-        <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:16px;align-items:flex-start">
-          <div><label style="font-size:12px;font-weight:800;color:var(--body);display:block;margin-bottom:6px">아이디</label><input type="text" value="${esc(acc.id)}" readonly style="background:var(--sky-2);border:none;padding:10px 12px;border-radius:8px;width:100%;font-family:var(--sans);font-size:13px"></div>
-          <div><label style="font-size:12px;font-weight:800;color:var(--body);display:block;margin-bottom:6px">비밀번호</label><input type="password" id="pwd${i}" value="${esc(acc.pwd)}" style="border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;font-family:var(--sans);font-size:13px;background:var(--sky-2)"></div>
-          <div style="padding-top:26px"><button style="background:none;border:0;color:var(--red);font-weight:700;font-size:13px;cursor:pointer" onclick="removeAccount(${i})">삭제</button></div>
-        </div>
-      </div>
-    `).join('');
-    document.getElementById('accountsList').innerHTML=html;
-  };
+  updateSidebar('admin');
   app.innerHTML=`<div class="bar"><h1>관리자 계정</h1><button class="dup" id="accountSave" style="margin-left:auto;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:9px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;margin-right:0">저장</button></div>
-  <div class="cms-note">이 센터에 로그인할 수 있는 계정입니다. 추가·수정 시에 저장하세요. 통합 관리자 계정은 모든 센터에 로그인할 수 있습니다.</div>
-  <div class="ed" id="accountsList" style="margin-top:20px"></div>
-  <button id="addAccount" style="background:#fff;border:1.5px solid var(--line);color:var(--primary);border-radius:8px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;margin-top:16px">+ 계정 추가</button>`;
-  renderAccounts();
-  setTimeout(()=>{
-    window.removeAccount=(i)=>{if(confirm('삭제할까요?')){accounts.splice(i,1);renderAccounts();}};
-    document.getElementById('addAccount').onclick=()=>{accounts.push({id:'newuser',pwd:'password'});renderAccounts();};
-    document.getElementById('accountSave').onclick=()=>{
-      document.querySelectorAll('[id^="pwd"]').forEach((el,i)=>{accounts[i].pwd=el.value.trim();});
-      try{localStorage.setItem('mz_accounts',JSON.stringify(accounts));alert('계정이 저장되었습니다.');}catch(e){alert('저장 실패');}
+  <div id="accountsMsg"></div>
+  <div class="cms-note">이 페이지에 로그인할 수 있는 계정입니다. 추가·수정·삭제 후 <b>저장</b>하세요.</div>
+  <div class="ed" id="accountsList" style="margin-top:20px"><div class="load">불러오는 중…</div></div>
+  <button id="addAccount" style="background:#fff;border:1.5px solid var(--line);color:var(--primary);border-radius:8px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;margin-top:16px">+ 계정 추가</button>
+  <div class="cms-note" style="margin-top:12px">⚠️ 비밀번호는 단순 접근 제한용입니다(파일에 평문 저장). 강력한 보안이 필요하면 별도 인증을 권장합니다.</div>`;
+  setTimeout(async()=>{
+    let accounts=[{id:'admin',pwd:'password'}];
+    try{const r=await fetch('/data/accounts.json');if(r.ok)accounts=await r.json();}catch(e){}
+    const collect=()=>{document.querySelectorAll('#accountsList [data-i]').forEach(row=>{const i=+row.dataset.i;accounts[i].id=row.querySelector('.acc-id').value.trim();accounts[i].pwd=row.querySelector('.acc-pwd').value;});};
+    const render=()=>{
+      document.getElementById('accountsList').innerHTML=accounts.length?accounts.map((acc,i)=>`
+        <div data-i="${i}" style="display:grid;grid-template-columns:1fr 1fr auto;gap:16px;align-items:end;margin-bottom:14px">
+          <div><label style="font-size:12px;font-weight:800;color:var(--body);display:block;margin-bottom:6px">아이디</label><input class="acc-id" type="text" value="${esc(acc.id)}" placeholder="아이디" style="border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;font-family:var(--sans);font-size:13px;background:var(--sky-2)"></div>
+          <div><label style="font-size:12px;font-weight:800;color:var(--body);display:block;margin-bottom:6px">비밀번호</label><input class="acc-pwd" type="text" value="${esc(acc.pwd)}" placeholder="비밀번호" style="border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;font-family:var(--sans);font-size:13px;background:var(--sky-2)"></div>
+          <button class="acc-del" data-del="${i}" style="background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--body);cursor:pointer">삭제</button>
+        </div>`).join(''):'<div class="empty">계정이 없습니다 — 아래에서 추가하세요.</div>';
+      document.querySelectorAll('.acc-del').forEach(b=>b.onclick=()=>{if(confirm('삭제할까요?')){collect();accounts.splice(+b.dataset.del,1);render();}});
+    };
+    render();
+    document.getElementById('addAccount').onclick=()=>{collect();accounts.push({id:'',pwd:''});render();};
+    document.getElementById('accountSave').onclick=async()=>{
+      collect();
+      const msg=document.getElementById('accountsMsg');
+      if(accounts.some(a=>!a.id||!a.pwd)){msg.innerHTML='<div class="msg-err">아이디와 비밀번호를 모두 입력하세요.</div>';return;}
+      msg.innerHTML='<div class="load">저장 중…</div>';
+      try{
+        const ur=await fetch('http://localhost:8000/api/accounts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(accounts)});
+        if(!ur.ok)throw 0;
+        msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — data/accounts.json에 반영되었습니다.</div>';
+      }catch(e){msg.innerHTML='<div class="msg-err">❌ 저장 실패 — dev-server.py가 실행중인지 확인하세요.</div>';}
     };
   },0);
 }

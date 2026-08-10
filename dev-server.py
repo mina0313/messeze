@@ -11,51 +11,32 @@ try:
 except Exception:
     pass
 
+# API 경로 → 저장할 파일 매핑
+API_FILES = {
+    '/api/seo': ('data/seo.json', 'SEO 설정'),
+    '/api/settings': ('data/settings.json', '사이트 설정'),
+    '/api/accounts': ('data/accounts.json', '관리자 계정'),
+}
+
 class DevHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
-        if self.path == '/api/seo':
+        if self.path in API_FILES:
+            fname, label = API_FILES[self.path]
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 body = self.rfile.read(content_length)
                 data = json.loads(body.decode('utf-8'))
 
-                # data/seo.json 저장
                 os.makedirs('data', exist_ok=True)
-                with open('data/seo.json', 'w', encoding='utf-8') as f:
+                with open(fname, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
 
-                # 응답
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
                 self.send_header('Access-Control-Allow-Origin', '*')
                 self.end_headers()
-                self.wfile.write(json.dumps({'ok': True, 'msg': 'SEO 설정이 저장되었습니다.'}).encode('utf-8'))
-                print(f"✅ SEO 설정 저장됨")
-            except Exception as e:
-                self.send_response(500)
-                self.send_header('Content-type', 'application/json')
-                self.send_header('Access-Control-Allow-Origin', '*')
-                self.end_headers()
-                self.wfile.write(json.dumps({'ok': False, 'error': str(e)}).encode('utf-8'))
-                print(f"❌ 오류: {e}")
-        elif self.path == '/api/settings':
-            try:
-                content_length = int(self.headers.get('Content-Length', 0))
-                body = self.rfile.read(content_length)
-                data = json.loads(body.decode('utf-8'))
-
-                # data/settings.json 저장
-                os.makedirs('data', exist_ok=True)
-                with open('data/settings.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-
-                # 응답
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.send_header('Access-Control-Allow-Origin', '*')
-                self.end_headers()
-                self.wfile.write(json.dumps({'ok': True, 'msg': '사이트 설정이 저장되었습니다.'}).encode('utf-8'))
-                print(f"✅ 사이트 설정 저장됨")
+                self.wfile.write(json.dumps({'ok': True, 'msg': f'{label}이(가) 저장되었습니다.'}).encode('utf-8'))
+                print(f"✅ {label} 저장됨 → {fname}")
             except Exception as e:
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
