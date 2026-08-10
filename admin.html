@@ -7,7 +7,7 @@
 <title>messeze 관리자 — 문의 관리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{--ink:#0A1930;--body:#4A5568;--mut:#8B95A7;--primary:#FF3E00;--sky:#F5F5F5;--sky-2:#F0F0F0;--mint:#0BBF8C;--amber:#F59F1E;--red:#E2574C;--line:#E5EAF2;--sans:'Pretendard',system-ui,sans-serif;--dark:#1a1a1a}
+:root{--ink:#0A1930;--body:#4A5568;--mut:#8B95A7;--primary:#2B5CFF;--sky:#F5F5F5;--sky-2:#F0F0F0;--mint:#0BBF8C;--amber:#F59F1E;--red:#E2574C;--line:#E5EAF2;--sans:'Pretendard',system-ui,sans-serif;--dark:#1a1a1a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);color:var(--ink);background:var(--sky);line-height:1.6;-webkit-font-smoothing:antialiased;display:grid;grid-template-columns:190px 1fr;min-height:100vh}
 
@@ -19,7 +19,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--sky);line-height:
 .sidebar-menu button{width:100%;background:none;border:0;color:#999;font-family:var(--sans);font-weight:700;font-size:13px;padding:12px 14px;text-align:left;cursor:pointer;border-radius:10px;margin:4px 0;transition:.2s}
 .sidebar-menu button:hover{background:rgba(255,255,255,.05);color:#fff}
 .sidebar-menu button.on{background:var(--primary);color:#fff}
-.sidebar-menu .badge{background:rgba(255,62,0,.2);color:#FF8F66;border-radius:999px;font-size:11px;padding:2px 7px;margin-left:auto;font-weight:900}
+.sidebar-menu .badge{background:rgba(43,92,255,.22);color:#9DB4FF;border-radius:999px;font-size:11px;padding:2px 7px;margin-left:auto;font-weight:900}
 .sidebar-footer{padding:0 8px;font-size:11px;color:#666;border-top:1px solid rgba(255,255,255,.1);margin-top:auto;padding-top:16px}
 .sidebar-footer button{background:none;border:0;color:#999;font-family:var(--sans);font-size:12px;padding:8px 14px;cursor:pointer;width:100%;text-align:left;border-radius:8px;margin:4px 0}
 .sidebar-footer button:hover{color:#fff;background:rgba(255,255,255,.05)}
@@ -54,7 +54,7 @@ td .co{color:var(--body);font-size:12.5px;display:block}
 td a{color:var(--primary);font-weight:700;text-decoration:none}
 td a:hover{text-decoration:underline}
 select{font-family:var(--sans);font-weight:700;font-size:12.5px;border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;cursor:pointer;background:#fff}
-select.s-신규{color:var(--primary);border-color:#FFB3A0;background:#FFF5F0}
+select.s-신규{color:var(--primary);border-color:#B3C6FF;background:#F0F4FF}
 select.s-연락중{color:var(--amber);border-color:#F5D9A8;background:#FFF7E8}
 select.s-계약{color:#0B8F5C;border-color:#9FDFC4;background:#E7F8F0;font-weight:800}
 select.s-보류{color:var(--red);border-color:#F2C1C1;background:#FCEFEF}
@@ -81,7 +81,7 @@ body.gated main{display:none}
 .gate input:focus{outline:none;border-color:var(--primary);background:#fff}
 .gate .err{color:var(--red);font-size:12px;font-weight:700;margin-top:14px;display:none;text-align:center}
 .gate button{width:100%;margin-top:18px;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:14px;font-family:var(--sans);font-weight:800;font-size:15px;cursor:pointer}
-.gate button:hover{background:#E63100}
+.gate button:hover{background:#1E46D9}
 .gate .gfoot{text-align:center;font-size:12px;color:var(--mut);margin-top:16px}
 
 /* ━━━ 설정 안내 ━━━ */
@@ -107,7 +107,7 @@ body.gated main{display:none}
 .ed-bar .back{background:none;border:0;color:var(--primary);font-weight:800;font-size:13px;cursor:pointer;font-family:var(--sans);padding:6px 0}
 .ed-bar .sp{flex:1}
 .ed-bar .save{background:var(--primary);color:#fff;border:0;border-radius:10px;padding:10px 20px;font-family:var(--sans);font-weight:800;font-size:13px;cursor:pointer}
-.ed-bar .save:hover{background:#E63100}
+.ed-bar .save:hover{background:#1E46D9}
 .ed-bar .del{background:#fff;border:1.5px solid #F2C1C1;color:var(--red);border-radius:10px;padding:9px 16px;font-family:var(--sans);font-weight:700;font-size:12px;cursor:pointer}
 .ed-bar .dup{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-family:var(--sans);font-weight:700;font-size:12px;cursor:pointer}
 .ed-bar .dup:hover{border-color:var(--primary);color:var(--primary)}
@@ -125,8 +125,8 @@ body.gated main{display:none}
 
 .msg-ok{background:#E7F8F0;border:1px solid #9FDFC4;color:#0B8F5C;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
 .msg-err{background:#FCEFEF;border:1px solid #F2C1C1;color:var(--red);border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;margin-bottom:12px}
-.tok-box{background:#FFF5F0;border:1px solid #FFB3A0;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:12px;color:var(--primary);line-height:1.6}
-.tok-box input{width:100%;margin-top:8px;border:1.5px solid #FFB3A0;border-radius:8px;padding:9px 12px;font-family:var(--sans);font-size:13px;background:#fff}
+.tok-box{background:#F0F4FF;border:1px solid #B3C6FF;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:12px;color:var(--primary);line-height:1.6}
+.tok-box input{width:100%;margin-top:8px;border:1.5px solid #B3C6FF;border-radius:8px;padding:9px 12px;font-family:var(--sans);font-size:13px;background:#fff}
 
 .empty{padding:50px;text-align:center;color:var(--mut);font-size:13px}
 .load{padding:50px;text-align:center;color:var(--mut)}
@@ -266,7 +266,7 @@ function renderChk(){
   <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다 — 이미 관심을 보인 잠재 고객이니, 버튼 한 번으로 진단 리포트를 만들어 연락해 보세요.</p>
   ${list.length?'':'<div class="empty">아직 기록이 없습니다.</div>'}
   <div class="cms-list">${list.map((c,i)=>{
-    const sc=Number(c.score), col=sc>=80?'#0BBF8C':(sc>=50?'#B45309':'#FF3E00');
+    const sc=Number(c.score), col=sc>=80?'#0BBF8C':(sc>=50?'#B45309':'#E2574C');
     return `<div class="cms-item" style="cursor:default">
       <span class="idx">${list.length-i}</span>
       <div style="flex:1;min-width:0"><b>${esc(String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,''))}</b><br><span>${esc(fmtTs(c.ts))}</span></div>
@@ -396,7 +396,7 @@ function seoHome(){
   <div class="ed" style="margin-top:20px" id="seoForm"><div class="load">불러오는 중…</div></div>`;
   setTimeout(async()=>{
     try{
-      const r=await fetch('/data/seo.json');
+      const r=await fetch('data/seo.json?t='+Date.now());
       if(!r.ok)throw 0;
       const seo=await r.json();
       const pageName=Object.keys(seo.pages||{})[0]||'메인';
@@ -472,7 +472,7 @@ function settingsHome(){
   <div class="ed" style="margin-top:20px" id="settingsForm"><div class="load">불러오는 중…</div></div>`;
   setTimeout(async()=>{
     try{
-      const r=await fetch('/data/settings.json');
+      const r=await fetch('data/settings.json?t='+Date.now());
       if(!r.ok)throw 0;
       const settings=await r.json();
       document.getElementById('settingsForm').innerHTML=`
@@ -544,7 +544,7 @@ function adminAccountsHome(){
   <div class="cms-note" style="margin-top:12px">⚠️ 비밀번호는 단순 접근 제한용입니다(파일에 평문 저장). 강력한 보안이 필요하면 별도 인증을 권장합니다.</div>`;
   setTimeout(async()=>{
     let accounts=[{id:'admin',pwd:'password'}];
-    try{const r=await fetch('/data/accounts.json');if(r.ok)accounts=await r.json();}catch(e){}
+    try{const r=await fetch('data/accounts.json?t='+Date.now());if(r.ok)accounts=await r.json();}catch(e){}
     const collect=()=>{document.querySelectorAll('#accountsList [data-i]').forEach(row=>{const i=+row.dataset.i;accounts[i].id=row.querySelector('.acc-id').value.trim();accounts[i].pwd=row.querySelector('.acc-pwd').value;});};
     const render=()=>{
       document.getElementById('accountsList').innerHTML=accounts.length?accounts.map((acc,i)=>`
