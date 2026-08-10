@@ -97,7 +97,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .nav:not(.solid) .nav-burger span{background:#fff}
 .nav-in{display:flex;align-items:center;height:64px;gap:36px}
 /* GNB 좌우 기준선을 히어로 카드 라인(max 1400 + 동일 여백)에 맞춤 */
-.nav .wrap{max-width:1400px;padding:0 clamp(16px,2.5vw,40px)}
+.nav .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
 .brand{display:flex;align-items:center;gap:9px}
 .brand .blogo{width:22px;height:22px}
 .brand .bword{font-family:'Poppins',var(--sans);font-weight:600;font-size:19px;letter-spacing:-.025em}
@@ -501,6 +501,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 /* ============ WHY (numbered narrative) ============ */
 .why{background:var(--sky-2)}
 /* SERVICES 통합 섹션 공통 */
+#features .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
+
 .btn-ink{background:var(--ink);color:#fff;border-radius:999px;padding:15px 30px;border:0}
 .btn-ink:hover{background:#12294a;transform:translateY(-2px)}
 #features .eyebrow::before{display:inline-block}
@@ -714,7 +716,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .bchips button:hover{background:#DCE6F6}
 .bchips button.on{background:var(--cobalt);color:#fff}
 /* 업종별 시뮬레이션 섹션: 히어로와 같은 1400 기준선 */
-.bcard .wrap{max-width:1400px;padding:0 clamp(16px,2.5vw,40px)}
+.bcard .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
 /* 무한 롤링 마퀴 (로고 마퀴와 동일 방식: 원본 6 + 복제 6, 절반 이동 루프) */
 .bslider{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 .bgrid{display:flex;gap:22px;width:max-content;padding:4px 0 16px;animation:bcroll 40s linear infinite;will-change:transform}
@@ -780,7 +782,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .kb-track{display:flex;width:max-content;animation:kbroll 46s linear infinite}
 .kb-mask:hover .kb-track{animation-play-state:paused}
 @keyframes kbroll{to{transform:translateX(-50%)}}
-.kb{flex:0 0 350px;width:350px;margin-right:20px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-sm);padding:22px 22px 24px;display:flex;flex-direction:column}
+.kb{flex:0 0 350px;width:350px;margin-right:20px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-sm);padding:22px 22px 24px;display:flex;flex-direction:column}
 .kb-top{display:flex;align-items:center;gap:13px;margin-bottom:15px}
 .kb-logo{width:54px;height:54px;flex:0 0 auto;display:grid;place-items:center;background:var(--sky-2);border:1px solid var(--line);border-radius:14px;font-size:10.5px;font-weight:800;color:#1B2A47;text-align:center;padding:4px;overflow:hidden}
 .kb-logo img{max-height:70%;max-width:84%;object-fit:contain}
@@ -861,7 +863,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 /* ============ MARKET OPPORTUNITY (선점 기회 차트) ============ */
 .mopp{background:var(--ink);color:#fff;position:relative;overflow:hidden}
 .mopp::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 380px at 82% -10%,rgba(43,92,255,.3),transparent 60%);pointer-events:none}
-.mopp .wrap{position:relative;max-width:1400px;padding:0 clamp(16px,2.5vw,40px)}
+.mopp .wrap{position:relative;max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
 .mopp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:36px;flex-wrap:wrap}
 .mopp-head .eyebrow{color:#7FA0FF}
 .mopp-head .eyebrow::before{background:#7FA0FF}
@@ -952,7 +954,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .shift{background:linear-gradient(180deg,#0A1930,#12224A);color:#fff;position:relative;overflow:hidden}
 .shift::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 85% 10%,rgba(43,92,255,.35),transparent 60%)}
 .shift .wrap{position:relative}
-.shift .wrap{max-width:1400px;padding:0 clamp(16px,2.5vw,40px)}
+.shift .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
 .shift-in{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4.5vw,80px);align-items:center;max-width:1180px;margin:0 auto}
 .shift-l h2{color:#fff}
 .pain-list{margin-top:32px;display:flex;flex-direction:column;gap:13px}
@@ -960,7 +962,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .pain-list .pain i{font-style:normal;flex:0 0 26px;height:26px;border-radius:50%;background:rgba(255,120,120,.16);color:#FF9A9A;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
 .pain-list .pain b{color:#fff}
 .shift-why{margin-top:26px;font-size:15px;color:#8FA3D9;line-height:1.72;word-break:keep-all}
-.shift-ans{background:linear-gradient(160deg,#3B6BFF,#1E46D9 68%,#1730B8);border-radius:26px;padding:clamp(30px,3vw,44px);box-shadow:0 30px 70px -22px rgba(43,92,255,.55)}
+.shift-ans{background:linear-gradient(160deg,#3B6BFF,#1E46D9 68%,#1730B8);border-radius:22px;padding:clamp(30px,3vw,44px);box-shadow:0 30px 70px -22px rgba(43,92,255,.55)}
 .sa-lab{font-size:13px;font-weight:800;color:#C6D8FF;letter-spacing:.05em}
 .shift-ans h3{font-size:clamp(24px,2.2vw,32px);color:#fff;margin-top:10px;letter-spacing:-.03em;line-height:1.3}
 .sa-rows{margin-top:26px;display:flex;flex-direction:column}
@@ -1038,7 +1040,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 #faq .faq.open .qa.extra{display:block}
 .faq-more{display:block;margin:6px auto 0;font-family:var(--sans);font-weight:800;font-size:14.5px;color:var(--cobalt);background:#fff;border:1.5px solid var(--line-2);border-radius:999px;padding:13px 30px;cursor:pointer;transition:.16s}
 .faq-more:hover{border-color:var(--cobalt);transform:translateY(-2px);box-shadow:var(--sh-sm)}
-.qa{border:1.5px solid var(--line);border-radius:18px;margin-bottom:14px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.qa{border:1.5px solid var(--line);border-radius:22px;margin-bottom:14px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s}
 .qa:hover{border-color:var(--line-2)}
 .qa.open{border-color:var(--cobalt);box-shadow:0 12px 32px rgba(43,92,255,.1)}
 .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:26px 30px;font-family:var(--sans);font-size:18.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:18px;letter-spacing:-.01em}
@@ -1051,20 +1053,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .faq .qa.rv{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .25s}
 
 /* 블로그 4종 역할 */
-.ch4{max-width:960px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;box-shadow:var(--sh-sm)}
-.ch4 h4{font-size:15.5px;margin-bottom:6px}
-.ch4 .c4sub{font-size:13px;color:var(--mut);margin-bottom:18px}
-.ch4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.c4{border:1px solid var(--line);border-radius:14px;padding:16px 15px;transition:.25s}
-.c4:hover{border-color:#C4D4FF;transform:translateY(-3px)}
-.c4 b{font-size:13.8px;display:block}
-.c4 em{font-style:normal;font-size:10.5px;font-weight:800;display:inline-block;margin-top:7px;border-radius:999px;padding:3px 9px}
-.c4.nv em{background:rgba(11,191,140,.13);color:#08916B}
-.c4.ts em{background:var(--sky);color:var(--cobalt)}
-.c4.gb em{background:#FFF3E0;color:#C77700}
-.c4.ow em{background:#F0EBFF;color:#6B4BD8}
-.c4 span{display:block;font-size:11.8px;color:var(--mut);margin-top:8px;line-height:1.5;font-weight:600}
-@media(max-width:820px){.ch4-grid{grid-template-columns:1fr 1fr}}
 /* ============ INSIGHTS ============ */
 .ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .ins{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
@@ -1116,16 +1104,21 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .rv{opacity:0;transform:translateY(24px);filter:blur(4px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none;filter:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
-/* ============ HOW IT WORKS (서비스 통합 4스텝 카드) ============ */
-.hw2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;scroll-margin-top:80px}
-.hw2{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px 30px;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s,border-color .2s}
+/* ============ HOW IT WORKS (프로세스 스텝: 커넥터로 연결) ============ */
+.hw2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;scroll-margin-top:80px}
+.hw2{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px 30px;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s,border-color .2s}
 .hw2:hover{border-color:#B9CCFF;box-shadow:0 16px 40px rgba(16,31,63,.1);transform:translateY(-3px)}
+/* 단계 커넥터: 카드 사이 점선 + 진행 화살표 */
+.hw2:not(:last-child)::after{content:"";position:absolute;top:47px;right:-28px;width:28px;border-top:2px dashed #B9CCFF}
+.hw2:not(:last-child)::before{content:"";position:absolute;top:43px;right:-21px;width:8px;height:8px;border-top:2px solid var(--cobalt);border-right:2px solid var(--cobalt);transform:rotate(45deg);z-index:1}
 .hw2-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .hw-no{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:2px solid var(--cobalt);color:var(--cobalt);font-family:var(--disp);font-weight:700;font-size:15px;display:grid;place-items:center}
 .hw2 .wtag{display:inline-block;font-size:12px;font-weight:800;color:var(--mint);background:rgba(11,191,140,.13);border-radius:999px;padding:5px 12px}
 .hw2 b{font-size:17px;letter-spacing:-.02em;display:block;color:var(--ink);word-break:keep-all}
 .hw2 p{font-size:13.8px;color:var(--body);line-height:1.64;margin-top:9px;word-break:keep-all}
-@media(max-width:1000px){.hw2-grid{grid-template-columns:1fr 1fr}}
+.hw2:hover .hw-no{background:var(--cobalt);color:#fff}
+.hw-no{transition:background .2s,color .2s}
+@media(max-width:1000px){.hw2-grid{grid-template-columns:1fr 1fr}.hw2::before,.hw2::after{display:none}}
 @media(max-width:560px){.hw2-grid{grid-template-columns:1fr}}
 
 /* ============ MICRO POLISH ============ */
@@ -1442,6 +1435,106 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div></div>
 </div>
 
+<!-- A. 시장 변화 -->
+<section class="sec shift" id="shift">
+  <div class="wrap">
+    <div class="shift-in">
+      <div class="shift-l rv">
+        <span class="eyebrow" style="color:#7FA0FF">WHY NOW</span>
+        <h2 class="h2">지금, 마케팅이<br>잘 안 되고 있지 않나요?</h2>
+        <div class="pain-list">
+          <div class="pain"><i>1</i><div><b>네이버 바이럴 마케팅</b>은 예전만큼 효과가 나오지 않고</div></div>
+          <div class="pain"><i>2</i><div><b>네이버 검색광고</b>는 단가만 오르고 효율이 나오지 않고</div></div>
+          <div class="pain"><i>3</i><div><b>다른 매체</b>는 우리 업종에서 효율이 나오지 않습니다</div></div>
+        </div>
+        <p class="shift-why">고객이 정보를 찾는 방식이 바뀌었기 때문입니다.<br>이제 고객은 검색 결과를 비교하지 않고 AI에게 묻습니다.</p>
+      </div>
+      <div class="shift-r rv d1">
+        <div class="shift-ans">
+          <span class="sa-lab">지금 해야 할 것</span>
+          <h3>이제 SEO · GEO · AEO<br>할 차례입니다</h3>
+          <div class="sa-rows">
+            <div class="sa-row"><b>SEO</b><span>검색 결과에 우리 회사가 나오게</span></div>
+            <div class="sa-row"><b>GEO</b><span>생성형 AI가 우리 정보를 인용하게</span></div>
+            <div class="sa-row"><b>AEO</b><span>AI 답변에 우리 회사가 들어가게</span></div>
+          </div>
+          <a class="btn sa-btn" href="#final">무료 진단 신청</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET OPPORTUNITY -->
+<section class="sec mopp">
+  <div class="wrap">
+    <div class="mopp-head rv">
+      <div>
+        <span class="eyebrow">Market Opportunity</span>
+        <h2 class="h2">지금이 AI 검색 시장의<br>선점 기회입니다</h2>
+      </div>
+      <p class="lead">2027년, AI 추천이 전통 검색을 추월합니다.<br>선점한 브랜드와의 격차는 시간이 갈수록 <b>더 벌어집니다.</b></p>
+    </div>
+    <div class="mopp-grid">
+    <div class="mopp-card rv d1">
+      <div class="ct">직접 검색 vs AI 추천 점유율 변화 (2023 — 2030)</div>
+      <div class="cs">2027년 이후 AI 답변이 전통 검색을 추월합니다 · 출처: Gartner</div>
+      <div class="mopp-legend">
+        <span class="lg"><i style="background:#6E93FF"></i>GEO (AI 답변 점유율)</span>
+        <span class="lg"><i style="background:#94A0B4"></i>전통 검색 트래픽</span>
+      </div>
+      <div class="mopp-nums">
+        <div class="mn geo"><b>78%<em>2030</em></b><span>GEO — AI 답변 점유율</span></div>
+        <div class="mn trad"><b>22%<em>2030</em></b><span>전통 검색 트래픽</span></div>
+      </div>
+      <div class="mopp-chart">
+        <svg viewBox="0 0 820 356" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',sans-serif">
+          <defs><linearGradient id="geoA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#2B5CFF" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="rgba(255,255,255,.08)" stroke-width="1"><line x1="56" y1="24" x2="780" y2="24"/><line x1="56" y1="98" x2="780" y2="98"/><line x1="56" y1="172" x2="780" y2="172"/><line x1="56" y1="246" x2="780" y2="246"/><line x1="56" y1="320" x2="780" y2="320"/></g>
+          <g fill="#5F6C8C" font-size="11" text-anchor="end"><text x="46" y="28">100%</text><text x="46" y="102">75%</text><text x="46" y="176">50%</text><text x="46" y="250">25%</text></g>
+          <g fill="#6E7893" font-size="11" text-anchor="middle"><text x="56" y="342">2023</text><text x="159" y="342">2024</text><text x="263" y="342">2025</text><text x="366" y="342">2026</text><text x="470" y="342">2027</text><text x="573" y="342">2028</text><text x="676" y="342">2029</text><text x="780" y="342">2030</text></g>
+          <path class="geoarea" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89 L780,320 L56,320 Z" fill="url(#geoA)"/>
+          <path class="drawline tradline" pathLength="1" d="M56,39 L159,60 L263,95 L366,134 L470,172 L573,208 L676,234 L780,255" fill="none" stroke="#94A0B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="drawline geoline" pathLength="1" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89" fill="none" stroke="#6E93FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="470" y1="24" x2="470" y2="320" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4 5"/>
+          <circle cx="470" cy="172" r="5.5" fill="#fff" stroke="#2B5CFF" stroke-width="2.5"/>
+          <rect x="424" y="5" width="92" height="20" rx="10" fill="#101F3F" stroke="rgba(255,255,255,.2)"/><text x="470" y="19" fill="#fff" font-size="10.5" font-weight="800" text-anchor="middle">Golden Cross</text>
+          <circle cx="780" cy="89" r="5" fill="#6E93FF"/><text x="770" y="80" fill="#6E93FF" font-size="13" font-weight="800" text-anchor="end">78%</text>
+          <circle cx="780" cy="255" r="5" fill="#94A0B4"/><text x="770" y="274" fill="#94A0B4" font-size="13" font-weight="800" text-anchor="end">22%</text>
+        </svg>
+      </div>
+    </div>
+    <div class="mopp-stats rv stagger">
+      <div class="mopp-stat"><b>-25<em>%</em></b><div class="ml">2026년까지 전통 검색량 감소</div><div class="msrc">Gartner, 2024</div></div>
+      <div class="mopp-stat"><b>3.2<em>x</em></b><div class="ml">AI 추천 대비 구매 전환율</div><div class="msrc">Princeton GEO Study, 2022</div></div>
+      <div class="mopp-stat"><b>90<em>%</em></b><div class="ml">상위 25% 브랜드의 AI 답변 점유</div><div class="msrc">Ahrefs, 2025</div></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI가 아는 브랜드 -->
+<section class="sec kbrand">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow">AI가 이미 아는 브랜드</span>
+      <h2 class="h2">AI에게 물어보면,<br><span class="kb-ac">이런 기업이 답이 됩니다</span></h2>
+      <p class="lead">유명할수록 AI 답변에 자주 등장합니다 — 여러 곳에 정보가 쌓여 있기 때문이죠.<br><b>messeze는 당신 회사도 'AI가 아는 기업'으로 만듭니다.</b></p>
+    </div>
+  </div>
+  <div class="kb-mask"><div class="kb-track" id="kbtrack">
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/samsung.com?fallback=false" alt="SAMSUNG" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>삼성전자</b><div class="kb-tags"><span>반도체·전자</span><span>글로벌</span></div></div></div><div class="bcc-q">글로벌 전자·반도체 기업을 추천해줘</div><div class="bcc-a"><i>AI</i><div>기술·언론 정보가 가장 많이 쌓인 <b>삼성전자</b>가 첫 답이 됩니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/posco.co.kr?fallback=false" alt="POSCO" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>포스코</b><div class="kb-tags"><span>철강·소재</span><span>글로벌</span></div></div></div><div class="bcc-q">믿을 만한 철강·소재 공급사는 어디야?</div><div class="bcc-a"><i>AI</i><div>수십 년 축적된 산업 자료 덕에 <b>포스코</b>가 기본값으로 답합니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Hyundai_Motor_Company_logo.svg" alt="HYUNDAI" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>현대자동차</b><div class="kb-tags"><span>자동차</span><span>글로벌</span></div></div></div><div class="bcc-q">전기차까지 만드는 글로벌 완성차 브랜드는?</div><div class="bcc-a"><i>AI</i><div>방대한 제품·기술 콘텐츠로 <b>현대자동차</b>를 상세히 인용합니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/google/news.skhynix.com?fallback=false" alt="SK hynix" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>SK하이닉스</b><div class="kb-tags"><span>반도체</span><span>글로벌</span></div></div></div><div class="bcc-q">메모리 반도체를 잘 만드는 회사는?</div><div class="bcc-a"><i>AI</i><div>기술·시장 자료가 촘촘해 <b>SK하이닉스</b>를 근거와 함께 답합니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/lg.com?fallback=false" alt="LG Chem" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>LG화학</b><div class="kb-tags"><span>화학·소재</span><span>배터리</span></div></div></div><div class="bcc-q">배터리 소재에 강한 기업을 알려줘</div><div class="bcc-a"><i>AI</i><div>특허·연구 자료가 폭넓게 쌓인 <b>LG화학</b>이 답에 등장합니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/google/hyosung.co.kr?fallback=false" alt="HYOSUNG" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>효성</b><div class="kb-tags"><span>소재·중공업</span></div></div></div><div class="bcc-q">산업용 소재에 강한 국내 기업은?</div><div class="bcc-a"><i>AI</i><div>산업 전문 자료가 쌓인 <b>효성</b>의 강점을 짚어 답합니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/hlmando.com?fallback=false" alt="HL Mando" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>만도</b><div class="kb-tags"><span>자동차 부품</span><span>수출</span></div></div></div><div class="bcc-q">수출까지 하는 자동차 부품사는 어디야?</div><div class="bcc-a"><i>AI</i><div>기술·수주 소식이 이어져 <b>만도</b>가 답변에 포함됩니다.</div></div></article>
+    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/celltrion.com?fallback=false" alt="Celltrion" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>셀트리온</b><div class="kb-tags"><span>바이오</span><span>글로벌</span></div></div></div><div class="bcc-q">바이오시밀러 대표 기업을 꼽아줘</div><div class="bcc-a"><i>AI</i><div>임상·논문·언론 근거로 <b>셀트리온</b>을 신뢰 있게 인용합니다.</div></div></article>
+  </div></div>
+</section>
+<script>(function(){var t=document.getElementById('kbtrack');if(t)t.innerHTML+=t.innerHTML;})();</script>
+
 <!-- FILTER -->
 <section class="sec bcard" id="ask">
   <div class="wrap">
@@ -1529,113 +1622,31 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div>
 </section>
 
-<!-- MARKET OPPORTUNITY -->
-<section class="sec mopp">
+<!-- SERVICES + HOW IT WORKS (통합) -->
+<section class="sec" id="features" style="background:var(--sky-2)">
   <div class="wrap">
-    <div class="mopp-head rv">
-      <div>
-        <span class="eyebrow">Market Opportunity</span>
-        <h2 class="h2">지금이 AI 검색 시장의<br>선점 기회입니다</h2>
-      </div>
-      <p class="lead">2027년, AI 추천이 전통 검색을 추월합니다.<br>선점한 브랜드와의 격차는 시간이 갈수록 <b>더 벌어집니다.</b></p>
+    <div class="shead center rv" style="max-width:760px;margin-bottom:56px">
+      <span class="eyebrow">메세지면 걱정 끝</span>
+      <h2 class="h2">노출 안 되고 있어도 괜찮습니다.<br>진단부터 노출 관리까지, 이렇게 해드립니다</h2>
+      <p class="lead">진단 데이터를 기반으로, 우리 회사 상황에 맞는 것만 골라 실행합니다.</p>
     </div>
-    <div class="mopp-grid">
-    <div class="mopp-card rv d1">
-      <div class="ct">직접 검색 vs AI 추천 점유율 변화 (2023 — 2030)</div>
-      <div class="cs">2027년 이후 AI 답변이 전통 검색을 추월합니다 · 출처: Gartner</div>
-      <div class="mopp-legend">
-        <span class="lg"><i style="background:#6E93FF"></i>GEO (AI 답변 점유율)</span>
-        <span class="lg"><i style="background:#94A0B4"></i>전통 검색 트래픽</span>
-      </div>
-      <div class="mopp-nums">
-        <div class="mn geo"><b>78%<em>2030</em></b><span>GEO — AI 답변 점유율</span></div>
-        <div class="mn trad"><b>22%<em>2030</em></b><span>전통 검색 트래픽</span></div>
-      </div>
-      <div class="mopp-chart">
-        <svg viewBox="0 0 820 356" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',sans-serif">
-          <defs><linearGradient id="geoA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#2B5CFF" stop-opacity="0"/></linearGradient></defs>
-          <g stroke="rgba(255,255,255,.08)" stroke-width="1"><line x1="56" y1="24" x2="780" y2="24"/><line x1="56" y1="98" x2="780" y2="98"/><line x1="56" y1="172" x2="780" y2="172"/><line x1="56" y1="246" x2="780" y2="246"/><line x1="56" y1="320" x2="780" y2="320"/></g>
-          <g fill="#5F6C8C" font-size="11" text-anchor="end"><text x="46" y="28">100%</text><text x="46" y="102">75%</text><text x="46" y="176">50%</text><text x="46" y="250">25%</text></g>
-          <g fill="#6E7893" font-size="11" text-anchor="middle"><text x="56" y="342">2023</text><text x="159" y="342">2024</text><text x="263" y="342">2025</text><text x="366" y="342">2026</text><text x="470" y="342">2027</text><text x="573" y="342">2028</text><text x="676" y="342">2029</text><text x="780" y="342">2030</text></g>
-          <path class="geoarea" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89 L780,320 L56,320 Z" fill="url(#geoA)"/>
-          <path class="drawline tradline" pathLength="1" d="M56,39 L159,60 L263,95 L366,134 L470,172 L573,208 L676,234 L780,255" fill="none" stroke="#94A0B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="drawline geoline" pathLength="1" d="M56,305 L159,285 L263,249 L366,208 L470,172 L573,137 L676,110 L780,89" fill="none" stroke="#6E93FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="470" y1="24" x2="470" y2="320" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4 5"/>
-          <circle cx="470" cy="172" r="5.5" fill="#fff" stroke="#2B5CFF" stroke-width="2.5"/>
-          <rect x="424" y="5" width="92" height="20" rx="10" fill="#101F3F" stroke="rgba(255,255,255,.2)"/><text x="470" y="19" fill="#fff" font-size="10.5" font-weight="800" text-anchor="middle">Golden Cross</text>
-          <circle cx="780" cy="89" r="5" fill="#6E93FF"/><text x="770" y="80" fill="#6E93FF" font-size="13" font-weight="800" text-anchor="end">78%</text>
-          <circle cx="780" cy="255" r="5" fill="#94A0B4"/><text x="770" y="274" fill="#94A0B4" font-size="13" font-weight="800" text-anchor="end">22%</text>
-        </svg>
-      </div>
+    <div class="hw2-grid" id="howwork">
+      <div class="hw2 rv"><div class="hw2-hd"><span class="hw-no">01</span><span class="wtag">상담</span></div><b>무료 상담과 목표 정의</b><p>회사 현황과 목표 시장, 고객이 AI에게 물어볼 질문을 함께 정리합니다. 시작할 만한지부터 솔직하게 말씀드립니다.</p></div>
+      <div class="hw2 rv d1"><div class="hw2-hd"><span class="hw-no">02</span><span class="wtag">진단</span></div><b>AI 가시성 진단</b><p>ChatGPT·Gemini·Perplexity·네이버에 실제 질문을 던져 노출·인용 현황을 점수로 확인하고, 경쟁사 격차까지 측정합니다.</p></div>
+      <div class="hw2 rv d2"><div class="hw2-hd"><span class="hw-no">03</span><span class="wtag">축적</span></div><b>콘텐츠·언론 축적</b><p>홈페이지 정비, 블로그 4채널, 언론 배포 중 효과가 큰 순서로 우선순위를 잡고, 보도자료·칼럼을 매달 발행해 쌓습니다.</p></div>
+      <div class="hw2 rv d3"><div class="hw2-hd"><span class="hw-no">04</span><span class="wtag">관리</span></div><b>월간 AI 노출 관리</b><p>AI 노출이 어떻게 변했는지 월간 리포트로 확인하고, 부족한 정보를 보완하며 다음 달 계획을 함께 정합니다.</p></div>
     </div>
-    <div class="mopp-stats rv stagger">
-      <div class="mopp-stat"><b>-25<em>%</em></b><div class="ml">2026년까지 전통 검색량 감소</div><div class="msrc">Gartner, 2024</div></div>
-      <div class="mopp-stat"><b>3.2<em>x</em></b><div class="ml">AI 추천 대비 구매 전환율</div><div class="msrc">Princeton GEO Study, 2022</div></div>
-      <div class="mopp-stat"><b>90<em>%</em></b><div class="ml">상위 25% 브랜드의 AI 답변 점유</div><div class="msrc">Ahrefs, 2025</div></div>
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- AI가 아는 브랜드 -->
-<section class="sec kbrand">
-  <div class="wrap">
-    <div class="shead center rv">
-      <span class="eyebrow">AI가 이미 아는 브랜드</span>
-      <h2 class="h2">AI에게 물어보면,<br><span class="kb-ac">이런 기업이 답이 됩니다</span></h2>
-      <p class="lead">유명할수록 AI 답변에 자주 등장합니다 — 여러 곳에 정보가 쌓여 있기 때문이죠.<br><b>messeze는 당신 회사도 'AI가 아는 기업'으로 만듭니다.</b></p>
-    </div>
-  </div>
-  <div class="kb-mask"><div class="kb-track" id="kbtrack">
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/samsung.com?fallback=false" alt="SAMSUNG" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>삼성전자</b><div class="kb-tags"><span>반도체·전자</span><span>글로벌</span></div></div></div><div class="bcc-q">글로벌 전자·반도체 기업을 추천해줘</div><div class="bcc-a"><i>AI</i><div>기술·언론 정보가 가장 많이 쌓인 <b>삼성전자</b>가 첫 답이 됩니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/posco.co.kr?fallback=false" alt="POSCO" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>포스코</b><div class="kb-tags"><span>철강·소재</span><span>글로벌</span></div></div></div><div class="bcc-q">믿을 만한 철강·소재 공급사는 어디야?</div><div class="bcc-a"><i>AI</i><div>수십 년 축적된 산업 자료 덕에 <b>포스코</b>가 기본값으로 답합니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Hyundai_Motor_Company_logo.svg" alt="HYUNDAI" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>현대자동차</b><div class="kb-tags"><span>자동차</span><span>글로벌</span></div></div></div><div class="bcc-q">전기차까지 만드는 글로벌 완성차 브랜드는?</div><div class="bcc-a"><i>AI</i><div>방대한 제품·기술 콘텐츠로 <b>현대자동차</b>를 상세히 인용합니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/google/news.skhynix.com?fallback=false" alt="SK hynix" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>SK하이닉스</b><div class="kb-tags"><span>반도체</span><span>글로벌</span></div></div></div><div class="bcc-q">메모리 반도체를 잘 만드는 회사는?</div><div class="bcc-a"><i>AI</i><div>기술·시장 자료가 촘촘해 <b>SK하이닉스</b>를 근거와 함께 답합니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/lg.com?fallback=false" alt="LG Chem" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>LG화학</b><div class="kb-tags"><span>화학·소재</span><span>배터리</span></div></div></div><div class="bcc-q">배터리 소재에 강한 기업을 알려줘</div><div class="bcc-a"><i>AI</i><div>특허·연구 자료가 폭넓게 쌓인 <b>LG화학</b>이 답에 등장합니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/google/hyosung.co.kr?fallback=false" alt="HYOSUNG" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>효성</b><div class="kb-tags"><span>소재·중공업</span></div></div></div><div class="bcc-q">산업용 소재에 강한 국내 기업은?</div><div class="bcc-a"><i>AI</i><div>산업 전문 자료가 쌓인 <b>효성</b>의 강점을 짚어 답합니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/hlmando.com?fallback=false" alt="HL Mando" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>만도</b><div class="kb-tags"><span>자동차 부품</span><span>수출</span></div></div></div><div class="bcc-q">수출까지 하는 자동차 부품사는 어디야?</div><div class="bcc-a"><i>AI</i><div>기술·수주 소식이 이어져 <b>만도</b>가 답변에 포함됩니다.</div></div></article>
-    <article class="kb"><div class="kb-top"><div class="kb-logo"><img src="https://unavatar.io/celltrion.com?fallback=false" alt="Celltrion" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(this.alt)"></div><div class="kb-id"><b>셀트리온</b><div class="kb-tags"><span>바이오</span><span>글로벌</span></div></div></div><div class="bcc-q">바이오시밀러 대표 기업을 꼽아줘</div><div class="bcc-a"><i>AI</i><div>임상·논문·언론 근거로 <b>셀트리온</b>을 신뢰 있게 인용합니다.</div></div></article>
-  </div></div>
-</section>
-<script>(function(){var t=document.getElementById('kbtrack');if(t)t.innerHTML+=t.innerHTML;})();</script>
-
-<!-- A. 시장 변화 -->
-<section class="sec shift" id="shift">
-  <div class="wrap">
-    <div class="shift-in">
-      <div class="shift-l rv">
-        <span class="eyebrow" style="color:#7FA0FF">WHY NOW</span>
-        <h2 class="h2">지금, 마케팅이<br>잘 안 되고 있지 않나요?</h2>
-        <div class="pain-list">
-          <div class="pain"><i>1</i><div><b>네이버 바이럴 마케팅</b>은 예전만큼 효과가 나오지 않고</div></div>
-          <div class="pain"><i>2</i><div><b>네이버 검색광고</b>는 단가만 오르고 효율이 나오지 않고</div></div>
-          <div class="pain"><i>3</i><div><b>다른 매체</b>는 우리 업종에서 효율이 나오지 않습니다</div></div>
-        </div>
-        <p class="shift-why">고객이 정보를 찾는 방식이 바뀌었기 때문입니다.<br>이제 고객은 검색 결과를 비교하지 않고 AI에게 묻습니다.</p>
-      </div>
-      <div class="shift-r rv d1">
-        <div class="shift-ans">
-          <span class="sa-lab">지금 해야 할 것</span>
-          <h3>이제 SEO · GEO · AEO<br>할 차례입니다</h3>
-          <div class="sa-rows">
-            <div class="sa-row"><b>SEO</b><span>검색 결과에 우리 회사가 나오게</span></div>
-            <div class="sa-row"><b>GEO</b><span>생성형 AI가 우리 정보를 인용하게</span></div>
-            <div class="sa-row"><b>AEO</b><span>AI 답변에 우리 회사가 들어가게</span></div>
-          </div>
-          <a class="btn sa-btn" href="#final">무료 진단 신청</a>
-        </div>
-      </div>
-    </div>
+    <div class="rv" style="text-align:center;margin-top:42px"><a href="services.html" class="btn btn-ink">서비스 자세히 보기 →</a></div>
   </div>
 </section>
 
 <!-- B. 타겟별 효과 -->
-<section class="sec forwho" id="forwho" style="background:var(--sky-2)">
+<section class="sec forwho" id="forwho">
   <div class="wrap">
     <div class="shead center rv" style="margin-bottom:48px">
-      <span class="eyebrow">WHO · 이런 기업에 효과가 큽니다</span>
-      <h2 class="h2">업종마다 고객이 묻는 질문이 다릅니다</h2>
-      <p class="lead">그 질문에 우리 회사가 답으로 등장하게 만드는 것이 messeze의 일입니다.<br>업종이 달라도 방식은 같습니다.</p>
+      <span class="eyebrow">WHO · 업종별 맞춤 실행</span>
+      <h2 class="h2">업종에 맞춰 다르게 실행합니다</h2>
+      <p class="lead">질문을 찾고, 답이 될 정보를 쌓는 방식은 같습니다.<br>실행 항목은 업종에 맞게 달라집니다. 행에 마우스를 올려 보세요.</p>
     </div>
     <div class="fw-rows rv stagger">
       <div class="fw-row">
@@ -1672,24 +1683,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         </div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- SERVICES + HOW IT WORKS (통합) -->
-<section class="sec" id="features" style="background:var(--sky-2)">
-  <div class="wrap">
-    <div class="shead center rv" style="max-width:760px;margin-bottom:56px">
-      <span class="eyebrow">메세지면 걱정 끝</span>
-      <h2 class="h2">노출 안 되고 있어도 괜찮습니다.<br>진단부터 노출 관리까지, 이렇게 해드립니다</h2>
-      <p class="lead">진단 데이터를 기반으로, 우리 회사 상황에 맞는 것만 골라 실행합니다.</p>
-    </div>
-    <div class="hw2-grid" id="howwork">
-      <div class="hw2 rv"><div class="hw2-hd"><span class="hw-no">01</span><span class="wtag">상담</span></div><b>무료 상담과 목표 정의</b><p>회사 현황과 목표 시장, 고객이 AI에게 물어볼 질문을 함께 정리합니다. 시작할 만한지부터 솔직하게 말씀드립니다.</p></div>
-      <div class="hw2 rv d1"><div class="hw2-hd"><span class="hw-no">02</span><span class="wtag">진단</span></div><b>AI 가시성 진단</b><p>ChatGPT·Gemini·Perplexity·네이버에 실제 질문을 던져 노출·인용 현황을 점수로 확인하고, 경쟁사 격차까지 측정합니다.</p></div>
-      <div class="hw2 rv d2"><div class="hw2-hd"><span class="hw-no">03</span><span class="wtag">축적</span></div><b>콘텐츠·언론 축적</b><p>홈페이지 정비, 블로그 4채널, 언론 배포 중 효과가 큰 순서로 우선순위를 잡고, 보도자료·칼럼을 매달 발행해 쌓습니다.</p></div>
-      <div class="hw2 rv d3"><div class="hw2-hd"><span class="hw-no">04</span><span class="wtag">관리</span></div><b>월간 AI 노출 관리</b><p>AI 노출이 어떻게 변했는지 월간 리포트로 확인하고, 부족한 정보를 보완하며 다음 달 계획을 함께 정합니다.</p></div>
-    </div>
-    <div class="rv" style="text-align:center;margin-top:42px"><a href="services.html" class="btn btn-ink">서비스 자세히 보기 →</a></div>
   </div>
 </section>
 
@@ -1804,17 +1797,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         <a href="#final" class="btn btn-gh">상담 신청</a>
       </div>
     </div>
-    <div class="ch4 rv">
-      <h4>블로그 채널, 각각 역할이 다릅니다</h4>
-      <p class="c4sub">같은 글을 복사하지 않습니다. 채널 성격에 맞게 다시 써서 검색 생태계를 넓게 덮습니다.</p>
-      <div class="ch4-grid" style="grid-template-columns:repeat(5,1fr)">
-        <div class="c4 ow"><b>홈페이지 칼럼</b><em>도메인 자산</em><span>자사 도메인에 쌓이는 전문성. AI가 기업 단위로 기억합니다.</span></div>
-        <div class="c4 nv"><b>네이버 블로그</b><em>국내 검색 · 프리미엄</em><span>국내 발주 담당자가 가장 많이 쓰는 네이버 검색을 커버합니다.</span></div>
-        <div class="c4 ts"><b>티스토리</b><em>구글 · 다음</em><span>기술·정보성 글의 구글 유입을 만듭니다.</span></div>
-        <div class="c4 gb"><b>구글 블로거</b><em>빠른 색인</em><span>구글 소유 플랫폼 특유의 빠른 인덱싱으로 신규 소식을 심습니다.</span></div>
-        <div class="c4 ow"><b>워드프레스 블로그</b><em>글로벌 웹</em><span>전 세계 웹 표준 플랫폼에 정보를 심어 AI 크롤러 접점을 넓힙니다.</span></div>
-      </div>
-    </div>
+    
     <div class="price-note rv">* 3개월 결제 시 할인가가 적용됩니다. 정보가 누적되는 특성상 3개월 이상 운영을 권장합니다.</div>
     <div class="rv" style="text-align:center;margin-top:28px"><a href="pricing.html" class="btn btn-gh">플랜 자세히 비교하기 →</a></div>
   </div>
