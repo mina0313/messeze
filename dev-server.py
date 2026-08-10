@@ -2,10 +2,16 @@
 # -*- coding: utf-8 -*-
 import json
 import os
-from http.server import HTTPServer, BaseHTTPRequestHandler
+import sys
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
 
-class DevHandler(BaseHTTPRequestHandler):
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except Exception:
+    pass
+
+class DevHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == '/api/seo':
             try:
