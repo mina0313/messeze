@@ -382,7 +382,7 @@ MEGA_JS = """<script>
 def nav():
     p = P
     return f"""<header class="nav"><div class="wrap nav-in">
-<a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
+<a class="brand" href="{p}index.html"><img src="{p}assets/logo.png" alt="messeze" style="height:26px;width:auto;display:block"></a>
 <nav class="nav-menu">
 <a class="on" href="{p}services.html">서비스</a>
 <a href="{p}pricing.html">요금</a>
@@ -401,7 +401,7 @@ def nav():
 def foot():
     p = P
     return f"""<footer class="foot"><div class="wrap"><div class="foot-in">
-<div><a class="brand" href="{p}index.html">{LOGO}<span class="bw">messeze</span></a>
+<div><a class="brand" href="{p}index.html"><img src="{p}assets/logo-white.png" alt="messeze" style="height:24px;width:auto;display:block"></a>
 <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p></div>
 </div><div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div></div></footer>"""
 
