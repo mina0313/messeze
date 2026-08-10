@@ -1,36 +1,36 @@
 {
-  "siteUrl": "https://messeze.io",
-  "ogImage": "https://messeze.io/assets/img/og-image.jpg",
+  "siteUrl": "https://mina0313.github.io/messeze",
+  "ogImage": "https://mina0313.github.io/messeze/assets/og.png",
   "pages": {
     "메인": {
       "file": "index.html",
-      "title": "messeze - SEO·GEO·AEO 최적화 서비스",
-      "description": "검색 노출과 순위 개선을 위한 SEO, 생성형 AI 검색 최적화 GEO, AI 답변 최적화 AEO 전문 서비스",
-      "keywords": "SEO, GEO, AEO, 검색순위, 검색노출, 키워드최적화",
+      "title": "messeze · 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로",
+      "description": "기업의 메시지를 언론과 검색, AI에 지속적으로 축적하는 구독형 기업 PR 서비스. 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로.",
+      "keywords": "AI 검색 최적화, AEO, GEO, SEO, 기업 PR, 구독형 홍보, AI 노출",
       "noindex": false,
       "headCode": ""
     },
     "서비스": {
       "file": "pricing.html",
-      "title": "messeze 요금제 - 구독형 SEO·GEO·AEO 서비스",
-      "description": "기본/프리미엄/엔터프라이즈 맞춤형 요금제. 월단위 구독으로 지속적인 검색 최적화",
-      "keywords": "요금제, 구독, SEO 가격, 검색최적화 비용",
+      "title": "요금 안내 | messeze — 구독형 기업 PR",
+      "description": "베이직·프리미엄·엔터프라이즈 — 우리 회사에 맞는 messeze 플랜을 비교하고, 30초 진단으로 추천받으세요.",
+      "keywords": "요금제, 구독, AI 검색 최적화 비용, 기업 PR 가격",
       "noindex": false,
       "headCode": ""
     },
     "블로그": {
-      "file": "blog.html",
-      "title": "messeze 블로그 - SEO, GEO, AEO 인사이트",
-      "description": "검색 최적화 트렌드, 키워드 선택법, 콘텐츠 전략 등 실무 가이드",
-      "keywords": "블로그, SEO 가이드, 검색최적화 팁",
+      "file": "blog/index.html",
+      "title": "블로그 | messeze — AI 검색 시대의 기업 홍보 인사이트",
+      "description": "AEO·GEO·SEO, 보도자료 작성법, 수출기업 PR 전략까지 — AI 검색 시대의 기업 홍보를 다루는 messeze 블로그.",
+      "keywords": "블로그, AEO, GEO, SEO 가이드, 기업 홍보 인사이트",
       "noindex": false,
       "headCode": ""
     },
     "FAQ": {
       "file": "faq.html",
-      "title": "messeze FAQ - 자주 묻는 질문",
-      "description": "SEO, GEO, AEO 서비스에 대한 자주 묻는 질문과 답변",
-      "keywords": "FAQ, 자주 묻는 질문, 서비스 설명",
+      "title": "자주 묻는 질문 (FAQ) | messeze — AI 검색 시대의 기업 PR",
+      "description": "AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문을 한곳에 모았습니다. 효과 기간·비용·구독·AI 노출까지.",
+      "keywords": "FAQ, 자주 묻는 질문, AI 검색 최적화, 기업 PR",
       "noindex": false,
       "headCode": ""
     }

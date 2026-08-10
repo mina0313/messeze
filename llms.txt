@@ -1,0 +1,34 @@
+# messeze
+
+> 중소기업·병원·수출기업을 위한 구독형 AI 검색 최적화 PR 서비스. 홈페이지 정비, 자사 블로그·언론보도 콘텐츠 축적, 월간 리포트를 통해 ChatGPT 등 AI 검색과 구글·네이버에서 기업이 추천되도록 만든다. SEO(검색엔진 최적화), AEO(답변엔진 최적화), GEO(생성형엔진 최적화)를 다룬다.
+
+## 주요 페이지
+- [서비스 안내](https://mina0313.github.io/messeze/services.html): 진단·홈페이지 정비·콘텐츠·언론보도·채널 운영 전체 서비스 구조
+- [AI 노출 무료 진단](https://mina0313.github.io/messeze/check.html): 우리 회사가 AI 검색에 어떻게 나오는지 무료 진단 신청
+- [가격 안내](https://mina0313.github.io/messeze/pricing.html): 구독형 요금제 안내 (월 60만원부터)
+- [FAQ](https://mina0313.github.io/messeze/faq.html): 서비스 관련 자주 묻는 질문과 답변
+- [업종별 인터뷰](https://mina0313.github.io/messeze/interview.html): 제조·수출·병원 등 업종별 AI 검색 활용 사례
+
+## 블로그 (AI 검색 시대의 기업 홍보 인사이트)
+- [AI 검색 성과, 무엇으로 측정하나요?](https://mina0313.github.io/messeze/blog/posts/measuring-geo.html): 클릭 수만으로는 AI 검색 성과가 잡히지 않습니다. 인용률·엔진 커버리지·크롤 신호까지, GEO를 재는 5가지 지표와 추적법.
+- [구글엔 나오는데 왜 ChatGPT엔 안 나올까요?](https://mina0313.github.io/messeze/blog/posts/indexed-not-cited.html): 분명 색인은 됐는데 AI 답변엔 우리 회사가 없습니다. 색인과 인용은 다른 관문이기 때문입니다. 인용되는 페이지의 조건까지.
+- [AI가 우리 회사를 틀리게 말할 때](https://mina0313.github.io/messeze/blog/posts/ai-hallucination-brand.html): AI가 없는 사실을 지어내거나 오래된 정보로 답하면 그대로 브랜드 타격이 됩니다. 왜 생기는지, 기업이 미리 대비하는 법.
+- [llms.txt, 정말 효과가 있을까요?](https://mina0313.github.io/messeze/blog/posts/llms-txt.html): AI에게 우리 사이트를 안내하는 llms.txt — 지금 넣어야 할까요? 무엇인지, 현재 실효성, 그리고 우리가 취할 현실적인 태도.
+- [AEO·GEO·SEO, 무엇이 어떻게 다른가요?](https://mina0313.github.io/messeze/blog/posts/aeo-geo-seo.html): 검색 최적화의 세 축을 처음 듣는 분도 이해할 수 있게 정리했습니다. AI 검색 시대에 기업이 먼저 챙겨야 할 순서까지.
+- [AI 검색 시대의 기업 홍보법: 무엇이 달라졌나](https://mina0313.github.io/messeze/blog/posts/ai-pr-guide.html): 고객은 이제 검색 결과를 비교하지 않고 AI에게 물어봅니다. 기업 홍보가 바뀌어야 하는 이유와 새 원칙 4가지.
+- [기자가 인용하는 보도자료 작성법](https://mina0313.github.io/messeze/blog/posts/press-release-writing.html): 보도자료는 '잘 쓴 글'이 아니라 '기사가 되기 쉬운 글'이어야 합니다. 실무에서 바로 쓰는 구조와 체크리스트.
+- [언론홍보와 애드버토리얼, 뭐가 다른가요?](https://mina0313.github.io/messeze/blog/posts/advertorial-vs-press.html): 비용, 형식, 노출 방식, 활용 시점까지 — 두 방식의 차이를 표로 정리하고 기업 상황별 조합 전략을 제안합니다.
+- [전시회 전후, 기업 홍보는 이렇게 합니다](https://mina0313.github.io/messeze/blog/posts/exhibition-pr.html): 전시회 참가비의 효과를 두 배로 만드는 사전·현장·사후 홍보 타임라인. 수출상담회에도 그대로 적용됩니다.
+- [수출기업을 위한 국가별 PR 전략](https://mina0313.github.io/messeze/blog/posts/export-pr-strategy.html): 베트남·중국·미국은 언론 환경도, 바이어가 정보를 찾는 방식도 다릅니다. 국가별 접근법과 공통 원칙.
+- [해외 바이어도 이제 AI에게 묻습니다](https://mina0313.github.io/messeze/blog/posts/global-buyer-ai.html): 해외 바이어의 소싱도 검색에서 AI로 옮겨가고 있습니다. 글로벌 시장에서 AI에 발견되는 수출기업의 조건.
+- [수출바우처로 해외 홍보비, 어디까지 아낄 수 있나요?](https://mina0313.github.io/messeze/blog/posts/export-voucher-pr.html): 해외 언론·다국어 콘텐츠 비용을 정부 지원사업으로 상당 부분 커버할 수 있습니다. 수출바우처 활용 포인트 정리.
+- [검색량 없는 제조기업이 AI에 발견되기까지](https://mina0313.github.io/messeze/blog/posts/manufacturer-case.html): 산업용 부품 제조사를 가정한 3개월 시나리오 — 진단, 질문 설계, 콘텐츠 축적이 실제로 어떻게 진행되는지.
+- [홈페이지만 고쳤을 뿐인데 — 리뉴얼 후 3개월](https://mina0313.github.io/messeze/blog/posts/renewal-case.html): 새 콘텐츠도, 광고도 아닙니다. 구조만 바꿨습니다. 소재기업을 가정한 리뉴얼 시나리오와 AI 인용의 변화.
+- [보도자료 한 건이 만든 변화 — B2B 부품사 사례](https://mina0313.github.io/messeze/blog/posts/press-case.html): 제3자 출처 하나가 AI의 확신을 바꿉니다. 부품 제조사를 가정한 언론 배포 시나리오와 인용의 변화.
+
+## 용어집
+- [SEO·AEO·GEO 용어집](https://mina0313.github.io/messeze/glossary/): AI 검색 최적화 관련 용어 102선, 용어별 상세 설명 페이지 제공
+
+## 문의
+- 이메일: hello@messeze.io
+- 사이트: https://mina0313.github.io/messeze/
