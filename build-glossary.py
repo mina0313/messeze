@@ -75,8 +75,7 @@ def mega(p):
 <a href="{p}services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="{p}services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
-<a href="{p}check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="{p}check.html"><b>AI 노출 무료 진단</b><span>URL만 넣으면 30초 진단</span></a>
 <a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>베이직 · 프리미엄 · 엔터프라이즈</span></a>
@@ -105,7 +104,7 @@ def nav(depth, on="glossary"):
 <nav class="nav-menu">
 <a href="{p}services/visibility.html">서비스</a>
 <a href="{p}pricing.html">요금</a>
-<a href="{p}check.html">AI 가시성 체크</a>
+<a href="{p}check.html">AI 노출 진단</a>
 <a href="{p}blog/index.html">블로그</a>
 <a href="{p}interview.html">인터뷰</a>
 <a class="on" href="{p}glossary/index.html">용어사전</a>
@@ -221,7 +220,7 @@ t("ai-crawler","ai","AI 크롤러","AI Crawler (GPTBot 등)",
 "AI 기업이 학습·답변 생성을 위해 웹을 수집하는 봇. GPTBot(OpenAI), Google-Extended 등이 있다.",
 ["검색엔진 크롤러처럼 AI 크롤러도 웹을 돌며 콘텐츠를 수집합니다. robots.txt에서 이들을 차단하면 AI의 학습과 답변 참고 대상에서 빠질 수 있습니다. 보호할 콘텐츠와 알려야 할 콘텐츠를 구분하는 정책이 필요합니다.",
 "AI 크롤러는 자바스크립트를 실행하지 않는 경우가 많아, 서버가 응답하는 HTML에 핵심 정보가 있어야 합니다. 화면에는 보이는데 HTML 원문에는 없는 정보는 AI에게 존재하지 않는 정보입니다."],
-"messeze의 AI 가시성 체크는 'AI 크롤러가 보는 조건'으로 사이트를 분석합니다.",
+"messeze의 AI 노출 진단는 'AI 크롤러가 보는 조건'으로 사이트를 분석합니다.",
 ["crawling-indexing","structured-data","geo"])
 
 t("citation","ai","인용 (출처 표기)","Citation",
@@ -278,7 +277,7 @@ t("structured-data","onpage","구조화 데이터 (스키마)","Structured Data 
 "페이지 내용을 기계가 이해하는 형식으로 표기하는 것. AI와 검색엔진의 엔티티 인식을 돕는 핵심 장치.",
 ["'우리는 정밀부품 제조사입니다'라는 문장은 사람용입니다. 기계용으로는 schema.org 어휘에 따라 '이 페이지의 발행 주체는 Organization이고, 이름은 ○○정밀이며, 업종은 제조업'이라고 선언해야 합니다. 주로 JSON-LD 형식을 씁니다.",
 "구조화 데이터가 있으면 검색 결과에 별점·FAQ 같은 리치 결과로 표시될 자격이 생기고, AI는 페이지의 주체와 성격을 확신을 갖고 인용할 수 있게 됩니다."],
-"messeze AI 가시성 체크의 'AI 준비도 50점' 중 30점이 구조화 데이터 항목입니다.",
+"messeze AI 노출 진단의 'AI 준비도 50점' 중 30점이 구조화 데이터 항목입니다.",
 ["json-ld","entity","faq-schema"])
 
 t("json-ld","onpage","JSON-LD","JSON for Linking Data",

@@ -80,8 +80,7 @@ def mega(p):
 <a href="{p}services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="{p}services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
 <div class="mega-col"><h5>무료 도구</h5>
-<a href="{p}check.html"><b>AI 가시성 진단</b><span>URL만 넣으면 30초 진단</span></a>
-<a href="{p}tools.html#seo"><b>SEO 점수 확인</b><span>검색 기본기 자가 점검</span></a>
+<a href="{p}check.html"><b>AI 노출 무료 진단</b><span>URL만 넣으면 30초 진단</span></a>
 <a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
 <div class="gap"></div><h5>요금</h5>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>베이직 · 프리미엄 · 엔터프라이즈</span></a>
@@ -465,7 +464,7 @@ def nav(depth):
 <nav class="nav-menu">
 <a href="{p}services/visibility.html">서비스</a>
 <a href="{p}pricing.html">요금</a>
-<a href="{p}check.html">AI 가시성 체크</a>
+<a href="{p}check.html">AI 노출 진단</a>
 <a class="on" href="{p}blog/index.html">블로그</a>
 <a href="{p}interview.html">인터뷰</a>
 <a href="{p}glossary/index.html">용어사전</a>
