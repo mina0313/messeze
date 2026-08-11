@@ -129,30 +129,24 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .price-grid .tier.in:nth-child(3){animation-delay:.28s}
 @media(prefers-reduced-motion:reduce){.price-grid .tier.in{animation:none}}
 /* 비교표 핀 — 섹션 고정 + 스크롤에 따라 강조 열이 소상공인→프리미엄→엔터로 이동 */
-.cmp-pin{position:relative;min-height:240vh;padding:0}
-.cmp-pin .pin-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
+.cmp-pin{position:relative;padding:132px 0}
+.cmp-pin .pin-stick{position:static}
 .cmpx-c{transition:background .45s ease,color .3s ease}
 /* 소상공인·엔터 활성 = 코발트 */
-.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4){background:rgba(43,92,255,.12)}
-.cmpx.col1 .cmpx-hd>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-hd>.cmpx-c:nth-child(4){background:var(--cobalt);color:#fff}
 /* 프리미엄은 활성일 때만 진한 잉크 */
-.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3){background:rgba(16,31,63,.08)}
-.cmpx.col2 .cmpx-hd>.cmpx-c:nth-child(3){background:var(--ink);color:#fff}
-.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2) .v,.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3) .v,.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4) .v{color:var(--ink);font-weight:800}
 @media(max-width:980px){.cmp-pin{min-height:0;padding:64px 0}.cmp-pin .pin-stick{position:static;min-height:0;display:block}}
 .price-note{text-align:center;margin-top:22px;font-size:13px;color:var(--mut)}
 /* compare table */
-.cmpx{max-width:920px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm);background:#fff}
-.cmpx-r{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--line);align-items:stretch}
+.cmpx{max-width:960px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm);background:#fff}
+.cmpx-r{display:grid;grid-template-columns:1.45fr 1fr 1fr 1fr;border-top:1px solid var(--line);align-items:stretch}
 .cmpx-r:first-child{border-top:0}
-.cmpx-c{padding:17px 20px;font-size:14.5px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--body)}
-.cmpx-c.lb{justify-content:flex-start;text-align:left;font-weight:700;color:var(--ink);background:#FAFBFD}
-.cmpx-hd .cmpx-c{font-size:14px;font-weight:800;padding:20px;color:var(--ink)}
-.cmpx-hd .cmpx-c.pp{background:transparent;color:var(--ink)}
+.cmpx-c{padding:16px 18px;font-size:14.5px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--body);line-height:1.5;word-break:keep-all}
+.cmpx-c.lb{justify-content:flex-start;text-align:left;font-weight:600;font-size:14px;color:var(--ink);background:#FAFBFD;border-right:1px solid var(--line)}
+.cmpx-hd .cmpx-c{font-size:14.5px;font-weight:800;padding:18px 16px;color:var(--ink);background:#F7F8FB}
+.cmpx-hd .cmpx-c.pp{background:var(--ink);color:#fff}
 .cmpx-c .v{font-weight:700;color:var(--ink)}
 .cmpx-c .ok{color:var(--mint);font-weight:800}
 .cmpx-c .no{color:#C6CDDA;font-weight:800}
-.cmpx-note{text-align:center;margin-top:18px;font-size:13px;color:var(--mut)}
 /* common features */
 .common{background:var(--sky-2)}
 .cg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -192,13 +186,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .quiz-res .again:hover{color:var(--cobalt)}
 /* faq */
 .faq{max-width:760px;margin:0 auto}
-.qa{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:#fff;overflow:hidden;transition:.2s}
+.faq{border-top:1px solid var(--line)}
+.qa{border-bottom:1px solid var(--line)}
 .qa.open{border-color:var(--ink);box-shadow:var(--sh-sm)}
-.qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:21px 24px;font-family:var(--sans);font-size:16.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:19px 2px;font-family:var(--sans);font-size:16.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
 .qa .ico{flex:0 0 26px;height:26px;border-radius:9px;background:var(--sky-2);display:grid;place-items:center;font-size:15px;transition:.2s}
 .qa.open .ico{background:var(--ink);color:#fff;transform:rotate(45deg)}
 .qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--body);font-size:15px;line-height:1.68}
-.qa .ans p{padding:0 24px 22px}
+.qa .ans p{padding:0 2px 22px}
 /* cta + foot */
 .cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
 .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
@@ -221,6 +216,27 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   .cmpx-r{grid-template-columns:1.2fr .8fr .8fr .8fr;min-width:560px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+/* 공통 제공 컴팩트 블록 */
+.cg2{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-sm);padding:30px 34px 32px}
+.cg2-hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.cg2-hd b{font-size:17px;letter-spacing:-.01em}
+.cg2-hd span{font-size:13.5px;color:var(--mut);font-weight:600}
+.cg2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.cg2-col h4{font-size:14px;margin-bottom:12px;letter-spacing:-.01em}
+.cg2-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cg2-col li{font-size:13.2px;color:var(--body);line-height:1.5;padding-left:14px;position:relative;word-break:keep-all}
+.cg2-col li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:#C7D6FF}
+@media(max-width:900px){.cg2-grid{grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:560px){.cg2-grid{grid-template-columns:1fr}}
+/* 비교표 가독성 */
+.cmpx-r:nth-child(even):not(.cmpx-hd){background:#FCFCFD}
+.cmpx-r:not(.cmpx-hd):hover{background:#F7F8FB}
+.cmpx-c.pp{background:#FAFBFD}
+.cmpx-r:not(.cmpx-hd):hover .cmpx-c.pp{background:#F4F6FA}
+.cmpx .ok{color:var(--mint);font-weight:800}
+.cmpx .no{color:var(--line-2);font-weight:700}
+.cmpx .v{font-weight:600;color:var(--ink)}
+@media(max-width:980px){.cmpx-c{padding:13px 12px;font-size:13.2px}.cmpx-c.lb{font-size:13px}}
 </style>
 <script>
 (function(){fetch('data/seo.json').then(r=>r.json()).then(seo=>{const page=seo.pages['서비스'];if(!page)return;document.title=page.title;let desc=document.querySelector('meta[name="description"]');if(!desc){desc=document.createElement('meta');desc.name='description';document.head.appendChild(desc);}desc.content=page.description;let og=document.querySelector('meta[property="og:image"]');if(!og){og=document.createElement('meta');og.setAttribute('property','og:image');document.head.appendChild(og);}og.content=seo.ogImage;if(page.noindex){let noindex=document.querySelector('meta[name="robots"]');if(!noindex){noindex=document.createElement('meta');noindex.name='robots';document.head.appendChild(noindex);}noindex.content='noindex,nofollow';}}).catch(e=>{});})();
@@ -356,7 +372,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       </div>
     </div>
     <div class="price-note">* 3개월 결제 시 할인가가 적용됩니다. 정보가 누적되는 특성상 3개월 이상 운영을 권장합니다.</div>
-  </div>
+    <div class="rv" style="text-align:center;margin-top:34px"><a href="tools.html#pr" style="font-size:14.5px;font-weight:700;color:var(--cobalt)">어떤 플랜이 맞을지 고민되면, 30초 플랜 추천 받아보기 →</a></div>
+</div>
 </section>
 
 <!-- COMPARE TABLE -->
@@ -380,17 +397,26 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <div class="cmpx-r"><div class="cmpx-c lb">월간 성과 보고서</div><div class="cmpx-c"><span class="ok">✓</span></div><div class="cmpx-c pp"><span class="ok">✓ + 전략 미팅</span></div><div class="cmpx-c"><span class="ok">✓ 맞춤</span></div></div>
       <div class="cmpx-r"><div class="cmpx-c lb">다국어·해외 배포·전시회·컨설팅</div><div class="cmpx-c"><span class="no">—</span></div><div class="cmpx-c pp"><span class="no">—</span></div><div class="cmpx-c"><span class="ok">✓</span></div></div>
     </div>
-    <div class="cmpx-note">월 블로그 발행량 기준 — 베이직 약 48건 (4채널 × 주 3회), 프리미엄 약 100건 (5채널 × 주 5회). 수량 확대가 필요하면 상담 시 협의합니다.</div>
   </div></div>
 </section>
 
-<!-- COMMON FEATURES -->
-
-
-<!-- QUIZ -->
-
 
 <!-- FAQ -->
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="cg2 rv">
+      <div class="cg2-hd"><b>모든 플랜 공통 제공</b><span>플랜 차이는 콘텐츠의 양과 범위일 뿐, 관리 과정은 동일합니다.</span></div>
+      <div class="cg2-grid">
+        <div class="cg2-col"><h4>🔍 진단 & 설계</h4><ul><li>주요 AI 검색 인식 상태 진단</li><li>홈페이지 SEO·AEO·GEO 점검</li><li>경쟁사 노출 비교</li><li>핵심 질문 5~6개 설계</li></ul></div>
+        <div class="cg2-col"><h4>✍️ 콘텐츠 제작</h4><ul><li>보도자료 기획·작성</li><li>애드버토리얼 제작</li><li>AEO·GEO·SEO형 칼럼</li><li>질의응답형 콘텐츠</li></ul></div>
+        <div class="cg2-col"><h4>📰 언론 배포</h4><ul><li>업종별 기자 매칭</li><li>언론사·편집국 배포</li><li>온라인 채널 배포</li><li>발행 결과 관리</li></ul></div>
+        <div class="cg2-col"><h4>📊 관리 & 보고</h4><ul><li>전담 매니저 배정</li><li>월간 축적 리포트</li><li>AI 노출 변화 확인</li><li>부족 정보 보완 과제</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="shead rv">
@@ -429,65 +455,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 const io=new IntersectionObserver(es=>{es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting)})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// 비교표 핀 스포트라이트 — 스크롤 진행도에 따라 강조 열 이동 (소상공인→프리미엄→엔터)
-const cmpPin=document.querySelector('.cmp-pin');
-const cmpxEl=document.getElementById('cmpx');
-if(cmpPin&&cmpxEl&&matchMedia('(min-width:981px)').matches){
-  let curCol=-1;
-  const setCol=i=>{if(i===curCol)return;curCol=i;cmpxEl.classList.remove('col1','col2','col3');if(i>=0)cmpxEl.classList.add('col'+(i+1));};
-  const onScroll=()=>{
-    const track=cmpPin.offsetHeight-innerHeight;if(track<=0){setCol(0);return;}
-    const p=-cmpPin.getBoundingClientRect().top/track;
-    if(p<0||p>1)return;
-    setCol(Math.min(2,Math.floor(p*3)));
-  };
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-}
 
-// ---- 30초 플랜 추천 ----
-const QUIZ=[
-  {q:'지금 우리 회사의 상황은?',opts:[
-    ['A','홍보를 거의 해본 적이 없어요',{basic:2,grow:0,ent:0}],
-    ['B','블로그·기사 좀 해봤는데 효과가 없었어요',{basic:1,grow:2,ent:0}],
-    ['C','국내는 하고 있고, 해외 진출을 준비 중이에요',{basic:0,grow:1,ent:2}]]},
-  {q:'가장 이루고 싶은 목표는?',opts:[
-    ['A','AI·검색에서 우리 회사가 검색되게 만들기',{basic:2,grow:1,ent:0}],
-    ['B','언론 노출을 늘리고 홈페이지까지 정비하기',{basic:0,grow:2,ent:1}],
-    ['C','해외 바이어·수출 시장에 알리기',{basic:0,grow:0,ent:2}]]},
-  {q:'월 홍보 예산은 어느 정도 생각하세요?',opts:[
-    ['A','월 60만원 안팎으로 시작하고 싶어요',{basic:2,grow:1,ent:0}],
-    ['B','월 100만원 안팎까지 가능해요',{basic:0,grow:2,ent:1}],
-    ['C','효과가 있다면 그 이상도 가능해요',{basic:0,grow:1,ent:2}]]}
-];
-const RESULT={
-  basic:{name:'베이직',desc:'부담 없는 비용으로 시작하세요. 언론 보도 주 1회와 블로그 4채널 주 3회 발행으로 3개월 안에 첫 변화를 만듭니다.'},
-  grow:{name:'프리미엄',desc:'노출을 본격적으로 확대할 단계입니다. 언론 보도 주 1회, 블로그 4채널 주 5회 발행, 홈페이지 정비까지 함께 갑니다.'},
-  ent:{name:'엔터프라이즈',desc:'해외까지 내다보는 기업에 맞습니다. 다국어 콘텐츠와 해외 기자 배포, 맞춤 캠페인으로 설계해 드립니다.'}
-};
-let step=0,score={basic:0,grow:0,ent:0};
-const body=document.getElementById('qzBody'),steps=document.getElementById('qzSteps');
-function renderQ(){
-  steps.innerHTML=QUIZ.map((_,i)=>`<i class="${i<=step?'on':''}"></i>`).join('');
-  const cur=QUIZ[step];
-  body.innerHTML=`<div class="qq">Q${step+1}. ${cur.q}</div><div class="opt">${cur.opts.map((o,i)=>`<button data-i="${i}"><span class="ab">${o[0]}</span>${o[1]}</button>`).join('')}</div>`;
-}
-function renderR(){
-  const key=Object.keys(score).sort((a,b)=>score[b]-score[a])[0];
-  const r=RESULT[key];
-  steps.innerHTML='<i class="on"></i><i class="on"></i><i class="on"></i>';
-  body.innerHTML=`<div class="quiz-res"><div class="rl">추천 플랜</div><div class="rn">${r.name}</div><p class="rp">${r.desc}</p>
-  <a class="btn btn-co" href="index.html#final">이 플랜으로 상담 신청</a>
-  <button class="again" id="qzAgain">다시 진단하기</button></div>`;
-  document.getElementById('qzAgain').addEventListener('click',()=>{step=0;score={basic:0,grow:0,ent:0};renderQ();});
-}
-body.addEventListener('click',e=>{
-  const b=e.target.closest('button[data-i]');if(!b)return;
-  const pts=QUIZ[step].opts[+b.dataset.i][2];
-  for(const k in pts)score[k]+=pts[k];
-  step++;
-  step<QUIZ.length?renderQ():renderR();
-});
-renderQ();
+
 
 // faq
 document.querySelectorAll('.qa button').forEach(btn=>{

@@ -235,47 +235,38 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .ivw-note{text-align:center;font-size:12.5px;color:var(--mut);margin-top:24px}
 .ivw-res a:hover{background:var(--cobalt-dk);transform:translateY(-1px)}
 /* 포트폴리오 */
-.pf-sec{padding:30px 0 84px;background:linear-gradient(180deg,#fff,#F6FAFF)}
-.pf-head{text-align:center;margin-bottom:34px}
-.pf-head .eyebrow{display:inline-flex;font-size:12.5px;font-weight:800;color:var(--cobalt);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-.pf-head h2{font-size:clamp(24px,3.2vw,34px)}
-.pf-head p{font-size:14.5px;color:var(--body);margin-top:10px}
-.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pf{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-sm);transition:box-shadow .2s,transform .2s,border-color .2s}
-.pf:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:#B9CCFF}
-.pf-logo{height:130px;display:grid;place-items:center;background:#FAFBFE;border-bottom:1px solid var(--line);padding:22px}
-.pf-logo img{max-height:64px;max-width:78%;object-fit:contain}
-.pf-body{padding:18px 20px 20px;display:flex;flex-direction:column}
-.pf-body b{font-size:16.5px;letter-spacing:-.01em;color:var(--ink)}
-.pf-body span{font-size:13px;color:var(--mut);margin-top:3px}
-.pf-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.pf-tags span{font-size:11.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:999px;padding:5px 11px;margin:0}
-.pf-body em{font-style:normal;font-size:13px;font-weight:800;color:var(--cobalt);margin-top:16px}
-@media(max-width:820px){.pf-grid{grid-template-columns:1fr}}
+@media(max-width:820px){}
 @media(max-width:820px){}
 @media(max-width:900px){.faq-layout{grid-template-columns:1fr;gap:0}.faq-side{position:sticky;top:64px;z-index:20;display:flex;gap:8px;overflow-x:auto;margin-bottom:18px;padding:8px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}.faq-side .fs-lab,.faq-side .side-cta{display:none}.faq-side a{border-left:0;border:1.5px solid var(--line);white-space:nowrap;padding:9px 14px}.faq-side a.on{border-color:var(--cobalt)}}
 /* 인터뷰 카드 (미니멀: 태그+인용+푸터) */
-.ivw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.ivw{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 28px 24px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:22px;transition:box-shadow .25s,transform .25s,border-color .25s}
-.ivw:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:#C4D4FF}
-.ivw.feat{grid-column:1/-1;border:1.5px solid rgba(43,92,255,.35);background:linear-gradient(180deg,#F8FAFF,#fff);padding:36px 34px 28px}
-.ivw-tag{align-self:flex-start;font-size:11.5px;font-weight:800;color:var(--cobalt);background:var(--sky);border-radius:999px;padding:5px 12px}
-.ivw-tag.on{background:var(--cobalt);color:#fff}
-.ivw-q{font-size:17px;font-weight:700;line-height:1.6;letter-spacing:-.02em;color:var(--ink);word-break:keep-all;flex:1;margin:0}
-.ivw.feat .ivw-q{font-size:20px;max-width:720px}
-.ivw-q b{color:var(--cobalt);font-weight:800}
-.feat-chips{display:flex;flex-wrap:wrap;gap:8px}
-.feat-chips span{font-size:12.5px;font-weight:700;color:var(--body);background:var(--sky-2);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
-.ivw-ft{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:20px}
-.ivw-photo{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#EDF3FF}
-.ivw-photo.logo{border-radius:11px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:5px}
-.ivw-who{min-width:0}
-.ivw-who b{font-size:14px;display:block;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ivw-who span{font-size:12px;color:var(--mut);display:block;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ivw-metric{margin-left:auto;flex:0 0 auto;font-size:12.5px;font-weight:800;color:var(--cobalt);word-break:keep-all}
-a.ivw-metric:hover{text-decoration:underline}
-@media(max-width:1000px){.ivw-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.ivw-grid{grid-template-columns:1fr}}
+@media(max-width:1000px){}
+@media(max-width:640px){}
+@media(max-width:900px){
+        }
+/* 썸네일 게시판 */
+.board{max-width:1000px;margin:0 auto;border-top:2px solid var(--ink)}
+.bd-row{display:grid;grid-template-columns:168px 1fr 210px;gap:24px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--line);transition:background .14s}
+.bd-row:hover{background:#FAFBFC}
+.bd-row.notice{background:#FAFBFC}
+.bd-thumb{width:168px;height:112px;border-radius:12px;overflow:hidden;background:var(--sky);display:block}
+.bd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.bd-thumb.logo{display:grid;place-items:center;background:#fff;border:1px solid var(--line)}
+.bd-thumb.logo img{width:auto;height:auto;max-width:74%;max-height:60%;object-fit:contain}
+.bd-main{min-width:0;display:flex;flex-direction:column;gap:5px}
+.bd-cat{align-self:flex-start;font-size:11.5px;font-weight:700;color:var(--mut);background:#F2F4F8;border-radius:6px;padding:3px 9px}
+.bd-cat.on{background:var(--ink);color:#fff}
+.bd-title{font-size:16.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bd-row:hover .bd-title{text-decoration:underline;text-underline-offset:3px}
+.bd-sum{font-size:13.8px;color:var(--mut);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.bd-side{text-align:right;display:flex;flex-direction:column;gap:6px}
+.bd-who{font-size:12.5px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bd-metric{font-size:12.5px;color:var(--ink);font-weight:700;white-space:nowrap}
+@media(max-width:820px){
+  .bd-row{grid-template-columns:120px 1fr;gap:16px;padding:16px 10px}
+  .bd-thumb{width:120px;height:84px}
+  .bd-side{grid-column:2;text-align:left;flex-direction:row;gap:10px;flex-wrap:wrap}
+  .bd-sum{white-space:normal}
+}
 </style>
 <!-- auto-meta:start -->
 <link rel="canonical" href="https://mina0313.github.io/messeze/interview.html">
@@ -355,135 +346,59 @@ a.ivw-metric:hover{text-decoration:underline}
 
 <section style="padding:30px 0 84px">
   <div class="wrap" style="max-width:1000px">
-    <div class="ivw-grid">
-      <article class="ivw feat">
-        <span class="ivw-tag on">대표 사례</span>
-        <blockquote class="ivw-q">홈페이지 구축부터 콘텐츠·언론까지, <b>전 과정을 messeze와 함께</b>했습니다.</blockquote>
-        <div class="feat-chips"><span>AI 가시성 진단</span><span>홈페이지 구축</span><span>콘텐츠·언론 축적</span><span>월간 리포트</span></div>
-        <div class="ivw-ft">
-          <img class="ivw-photo logo" src="assets/logos/hao.png" alt="하오커뮤니케이션" loading="lazy">
-          <div class="ivw-who"><b>하오커뮤니케이션</b><span>브랜드 디자인 · 커뮤니케이션 에이전시</span></div>
-          <a class="ivw-metric" href="https://haoc.co.kr/" target="_blank" rel="noopener">haoc.co.kr 방문 →</a>
-        </div>
-      </article>
-      <a class="ivw" href="interview/parts.html">
-        <span class="ivw-tag">정밀부품 제조</span>
-        <blockquote class="ivw-q">검색량이 없어 홍보를 반쯤 포기했었는데, 이제 <b>AI가 먼저 우리를 추천</b>합니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="김○○ 대표" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>김○○ 대표</b><span>○○정밀</span></div>
-          <span class="ivw-metric">3개월 만에 AI 답변 등장</span>
-        </div>
+    <div class="board rv">
+      <a class="bd-row notice" href="https://haoc.co.kr/" target="_blank" rel="noopener">
+        <span class="bd-thumb logo"><img src="assets/logos/hao.png" alt="하오커뮤니케이션"></span>
+        <span class="bd-main"><span class="bd-cat on">대표 사례</span><b class="bd-title">홈페이지 구축부터 콘텐츠·언론까지, 전 과정을 함께한 이야기</b><span class="bd-sum">진단부터 홈페이지 구축, 콘텐츠·언론 축적, 월간 리포트까지 전 과정을 운영했습니다.</span></span>
+        <span class="bd-side"><span class="bd-who">하오커뮤니케이션</span><span class="bd-metric">haoc.co.kr ↗</span></span>
       </a>
-      <a class="ivw" href="interview/export.html">
-        <span class="ivw-tag">수출기업</span>
-        <blockquote class="ivw-q">보도자료만 뿌리던 걸, 이제 <b>AI가 읽는 자산</b>으로 쌓습니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="이○○ 마케팅팀장" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>이○○ 마케팅팀장</b><span>○○인더스트리</span></div>
-          <span class="ivw-metric">6개월 · 해외 바이어 문의 3배</span>
-        </div>
+      <a class="bd-row" href="interview/parts.html">
+        <span class="bd-thumb"><img src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=400&h=400&fit=crop&crop=faces&q=72&auto=format" alt="김○○ 대표" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">정밀부품 제조</span><b class="bd-title">검색량 없던 정밀부품 제조사가 AI 답변에 등장하기까지</b><span class="bd-sum">검색량이 없어 홍보를 반쯤 포기했었는데, 이제 AI가 먼저 우리를 추천합니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○정밀 · 김○○ 대표</span><span class="bd-metric">AI 답변 등장률 87%</span></span>
       </a>
-      <a class="ivw" href="interview/material.html">
-        <span class="ivw-tag">산업소재</span>
-        <blockquote class="ivw-q">특허는 있는데 아무도 몰랐어요. 이제 <b>AI가 우리 소재를 먼저 설명</b>합니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1611403119860-57c4937ef987?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="박○○ 대표" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>박○○ 대표</b><span>○○소재</span></div>
-          <span class="ivw-metric">4개월 · 특허·기술 페이지 AI 인용</span>
-        </div>
+      <a class="bd-row" href="interview/export.html">
+        <span class="bd-thumb"><img src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=400&h=400&fit=crop&crop=faces&q=72&auto=format" alt="이○○ 마케팅팀장" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">수출기업</span><b class="bd-title">보도자료만 뿌리던 수출기업, 해외 바이어가 AI로 찾아오기까지</b><span class="bd-sum">보도자료만 뿌리던 걸, 이제 AI가 읽는 자산으로 쌓습니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○인더스트리 · 이○○ 마케팅팀장</span><span class="bd-metric">AI 인용 질문 수 0→11</span></span>
       </a>
-      <a class="ivw" href="interview/equip.html">
-        <span class="ivw-tag">자동화 설비</span>
-        <blockquote class="ivw-q">설비는 잘 만드는데 알리질 못했는데, 이제 <b>AI가 사례까지 소개</b>합니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&h=160&fit=crop&crop=faces&q=72&auto=format" alt="최○○ 이사" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>최○○ 이사</b><span>○○오토메이션</span></div>
-          <span class="ivw-metric">5개월 · 자동화 가이드 칼럼 축적</span>
-        </div>
+      <a class="bd-row" href="interview/material.html">
+        <span class="bd-thumb"><img src="https://images.unsplash.com/photo-1611403119860-57c4937ef987?w=400&h=400&fit=crop&crop=faces&q=72&auto=format" alt="박○○ 대표" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">산업소재</span><b class="bd-title">특허는 있는데 아무도 몰랐던 소재기업, AI가 먼저 설명하는 회사로</b><span class="bd-sum">특허는 있는데 아무도 몰랐어요. 이제 AI가 우리 소재를 먼저 설명합니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○소재 · 박○○ 대표</span><span class="bd-metric">AI 답변 등장률 81%</span></span>
       </a>
-      <a class="ivw" href="interview/clinic.html">
-        <span class="ivw-tag">병원</span>
-        <blockquote class="ivw-q">광고비 경쟁엔 한계가 있었어요. 이제 <b>AI가 진료 사례를 근거로 추천</b>합니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.pexels.com/photos/8376281/pexels-photo-8376281.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="정○○ 원장" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>정○○ 원장</b><span>○○치과의원</span></div>
-          <span class="ivw-metric">12주 · AI 답변 등장률 38%</span>
-        </div>
+      <a class="bd-row" href="interview/equip.html">
+        <span class="bd-thumb"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=faces&q=72&auto=format" alt="최○○ 이사" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">자동화 설비</span><b class="bd-title">잘 만들기만 하던 설비회사, AI가 도입 사례까지 소개하는 회사로</b><span class="bd-sum">설비는 잘 만드는데 알리질 못했는데, 이제 AI가 사례까지 소개합니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○오토메이션 · 최○○ 이사</span><span class="bd-metric">AI 답변 등장률 84%</span></span>
       </a>
-      <a class="ivw" href="interview/b2b.html">
-        <span class="ivw-tag">B2B 솔루션</span>
-        <blockquote class="ivw-q">영업이 뛰어야만 문의가 오던 회사가, 이제 <b>AI가 먼저 소개하는 회사</b>가 됐습니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.pexels.com/photos/17049771/pexels-photo-17049771.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="한○○ 영업이사" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>한○○ 영업이사</b><span>○○시스템</span></div>
-          <span class="ivw-metric">16주 · 인바운드 문의 2.2배</span>
-        </div>
+      <a class="bd-row" href="interview/clinic.html">
+        <span class="bd-thumb"><img src="https://images.pexels.com/photos/8376281/pexels-photo-8376281.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="정○○ 원장" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">병원·의원</span><b class="bd-title">개원 3년차 동네 치과, '이 근처 임플란트 잘하는 곳' 답이 되기까지</b><span class="bd-sum">광고비 경쟁엔 한계가 있었어요. 이제 AI가 우리 진료 사례를 근거로 추천합니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○치과의원 · 정○○ 원장</span><span class="bd-metric">AI 답변 등장률 89%</span></span>
       </a>
-      <a class="ivw" href="interview/food.html">
-        <span class="ivw-tag">식품 중소기업</span>
-        <blockquote class="ivw-q">영업 없이 30년을 버텼는데, 이제는 <b>AI 검색이 우리 영업사원</b>입니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.pexels.com/photos/7964223/pexels-photo-7964223.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="오○○ 대표" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>오○○ 대표</b><span>○○식품</span></div>
-          <span class="ivw-metric">16주 · 납품 문의 1.7배</span>
-        </div>
+      <a class="bd-row" href="interview/b2b.html">
+        <span class="bd-thumb"><img src="https://images.pexels.com/photos/17049771/pexels-photo-17049771.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="한○○ 영업이사" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">B2B 솔루션</span><b class="bd-title">영업사원 인맥에만 의존하던 B2B 솔루션, AI가 만들어주는 인바운드 문의</b><span class="bd-sum">영업이 뛰어야만 문의가 오던 회사였는데, 이제 AI가 먼저 우리를 소개합니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○시스템 · 한○○ 영업이사</span><span class="bd-metric">AI 답변 등장률 85%</span></span>
       </a>
-      <a class="ivw" href="interview/franchise.html">
-        <span class="ivw-tag">프랜차이즈</span>
-        <blockquote class="ivw-q">창업 카페 홍보만 돌리다 지쳤는데, 이제 <b>예비 점주가 AI로 먼저</b> 찾아냅니다.</blockquote>
-        <div class="ivw-ft">
-          <img class="ivw-photo" src="https://images.pexels.com/photos/3760605/pexels-photo-3760605.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="강○○ 대표" loading="lazy" referrerpolicy="no-referrer">
-          <div class="ivw-who"><b>강○○ 대표</b><span>○○외식</span></div>
-          <span class="ivw-metric">12주 · 가맹 상담 1.9배</span>
-        </div>
+      <a class="bd-row" href="interview/food.html">
+        <span class="bd-thumb"><img src="https://images.pexels.com/photos/7964223/pexels-photo-7964223.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="오○○ 대표" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">식품 중소기업</span><b class="bd-title">30년 제조만 하던 식품회사, 납품처가 먼저 찾아오는 회사로</b><span class="bd-sum">영업 없이 30년을 버텼는데, 이제는 AI 검색이 우리 영업사원입니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○식품 · 오○○ 대표</span><span class="bd-metric">AI 답변 등장률 78%</span></span>
       </a>
-
+      <a class="bd-row" href="interview/franchise.html">
+        <span class="bd-thumb"><img src="https://images.pexels.com/photos/3760605/pexels-photo-3760605.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="강○○ 대표" referrerpolicy="no-referrer"></span>
+        <span class="bd-main"><span class="bd-cat">프랜차이즈 외식</span><b class="bd-title">가맹 문의가 끊겼던 외식 브랜드, 예비 창업자의 AI 질문에 답이 되기까지</b><span class="bd-sum">창업 카페 홍보만 돌리다 지쳤는데, 이제 예비 점주가 AI로 우리를 먼저 찾아냅니다.</span></span>
+        <span class="bd-side"><span class="bd-who">○○외식 · 강○○ 대표</span><span class="bd-metric">AI 답변 등장률 82%</span></span>
+      </a>
     </div>
     <div class="ivw-note">※ 일부 인터뷰는 서비스 준비 단계의 예시이며, 실제 고객 인터뷰로 순차 교체됩니다.</div>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
-<section class="pf-sec">
-  <div class="wrap" style="max-width:1000px">
-    <div class="pf-head">
-      <span class="eyebrow">Portfolio</span>
-      <h2>함께한 브랜드</h2>
-      <p>messeze가 함께 만들어가는 브랜드입니다.</p>
-    </div>
-    <div class="pf-grid">
-      <a class="pf" href="https://haoc.co.kr/" target="_blank" rel="noopener">
-        <div class="pf-logo"><img src="assets/logos/hao.png" alt="하오커뮤니케이션 로고" loading="lazy"></div>
-        <div class="pf-body">
-          <b>하오커뮤니케이션</b>
-          <span>브랜드 디자인 · 커뮤니케이션 에이전시</span>
-          <div class="pf-tags"><span>홈페이지</span><span>AI 가시성</span><span>콘텐츠</span></div>
-          <em>haoc.co.kr 방문 →</em>
-        </div>
-      </a>
-      <a class="pf" href="https://dfirst.co.kr/" target="_blank" rel="noopener">
-        <div class="pf-logo"><img src="assets/logos/first.png" alt="퍼스트디자인 로고" loading="lazy"></div>
-        <div class="pf-body">
-          <b>퍼스트디자인</b>
-          <span>로고·브랜딩 · 종합 디자인 스튜디오</span>
-          <div class="pf-tags"><span>브랜딩</span><span>AI 가시성</span><span>콘텐츠</span></div>
-          <em>dfirst.co.kr 방문 →</em>
-        </div>
-      </a>
-      <a class="pf" href="https://kr.trevity.com/" target="_blank" rel="noopener">
-        <div class="pf-logo"><img src="assets/logos/trevity.png" alt="트래비티 로고" loading="lazy"></div>
-        <div class="pf-body">
-          <b>트래비티</b>
-          <span>글로벌 체험단 마케팅 플랫폼</span>
-          <div class="pf-tags"><span>질문형 콘텐츠</span><span>AI 가시성</span><span>다국어</span></div>
-          <em>kr.trevity.com 방문 →</em>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:48px"><a class="btn btn-co" href="index.html#final">우리 회사도 AI 노출 무료 진단</a></div>
-  </div>
-</section>
+
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
