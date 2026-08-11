@@ -13,8 +13,17 @@ try:
 except Exception:
     pass
 
-SITE = 'https://mina0313.github.io/messeze'
-OG_IMAGE = SITE + '/assets/og.png'
+def _load_seo():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'seo.json')
+    try:
+        with open(p, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+SEO = _load_seo()
+SITE = (SEO.get('siteUrl') or 'https://mina0313.github.io/messeze').rstrip('/')
+OG_IMAGE = SEO.get('ogImage') or (SITE + '/assets/og.png')
 EXCLUDE = {'admin.html', 'report.html', '_motion-demo.html'}
 MARK_START = '<!-- auto-meta:start -->'
 MARK_END = '<!-- auto-meta:end -->'
@@ -92,7 +101,7 @@ def build_block(rel, h, posts_by_slug, faq_data):
         MARK_START,
         f'<link rel="canonical" href="{url}">',
         f'<meta property="og:type" content="{og_type}">',
-        f'<meta property="og:site_name" content="messeze">',
+        f'<meta property="og:site_name" content="{e(SEO.get("siteName") or "messeze")}">',
         f'<meta property="og:locale" content="ko_KR">',
         f'<meta property="og:title" content="{e(og_title)}">',
         f'<meta property="og:description" content="{e(og_desc)}">',
@@ -100,11 +109,33 @@ def build_block(rel, h, posts_by_slug, faq_data):
         f'<meta property="og:image" content="{OG_IMAGE}">',
         '<meta property="og:image:width" content="1200">',
         '<meta property="og:image:height" content="630">',
-        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:card" content="{SEO.get("twitterCard") or "summary_large_image"}">',
         f'<meta name="twitter:title" content="{e(og_title)}">',
         f'<meta name="twitter:description" content="{e(og_desc)}">',
         f'<meta name="twitter:image" content="{OG_IMAGE}">',
     ]
+
+    # 사이트 공통: 파비콘·테마컬러·검색엔진 인증·애널리틱스
+    depth = rel.replace(os.sep, '/').count('/')
+    pre = '../' * depth
+    fav = SEO.get('favicon')
+    if fav:
+        ext = 'image/x-icon' if fav.endswith('.ico') else 'image/png'
+        lines.append(f'<link rel="icon" type="{ext}" href="{pre}{fav}">')
+    apple = SEO.get('appleIcon')
+    if apple:
+        lines.append(f'<link rel="apple-touch-icon" href="{pre}{apple}">')
+    if SEO.get('themeColor'):
+        lines.append(f'<meta name="theme-color" content="{SEO["themeColor"]}">')
+    if SEO.get('googleVerify'):
+        lines.append(f'<meta name="google-site-verification" content="{e(SEO["googleVerify"])}">')
+    if SEO.get('naverVerify'):
+        lines.append(f'<meta name="naver-site-verification" content="{e(SEO["naverVerify"])}">')
+    if SEO.get('gaId'):
+        gid = SEO['gaId']
+        lines.append(f'<script async src="https://www.googletagmanager.com/gtag/js?id={gid}"></script>')
+        lines.append('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+                     f"gtag('js',new Date());gtag('config','{gid}');</script>")
 
     slug = os.path.splitext(os.path.basename(rel))[0]
     if is_post and slug in posts_by_slug:

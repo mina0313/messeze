@@ -1,6 +1,16 @@
 {
+  "siteName": "messeze",
   "siteUrl": "https://mina0313.github.io/messeze",
+  "favicon": "assets/favicon.ico",
+  "appleIcon": "assets/apple-touch-icon.png",
   "ogImage": "https://mina0313.github.io/messeze/assets/og.png",
+  "ogTitle": "messeze — AI가 추천하는 기업을 만듭니다",
+  "ogDescription": "AI PR · AI 검색 최적화를 구독형으로. 진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지 전담팀이 대신합니다.",
+  "twitterCard": "summary_large_image",
+  "themeColor": "#2B5CFF",
+  "googleVerify": "",
+  "naverVerify": "",
+  "gaId": "",
   "pages": {
     "메인": {
       "file": "index.html",
