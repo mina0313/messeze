@@ -510,6 +510,13 @@ POST_CSS = CSS + """
 .pcover .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px}
 .pcover .tag{position:absolute;left:24px;bottom:20px;font-size:13px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px}
 .article{max-width:720px;margin:0 auto;padding:46px 0 10px}
+.pfaq{max-width:720px;margin:26px auto 10px}
+.pfaq h2{font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.pfq{padding:18px 0;border-bottom:1px solid var(--line)}
+.pfq:last-child{border-bottom:0}
+.pfq .q{font-weight:800;font-size:16px;word-break:keep-all}
+.pfq .q::before{content:"Q. ";color:var(--cobalt)}
+.pfq .a{margin-top:8px;color:var(--body);font-size:14.6px;line-height:1.78;word-break:keep-all}
 .article p{font-size:16.5px;color:#333C4E;line-height:1.85;margin-bottom:26px}
 .article h2{font-size:22px;margin:42px 0 16px;padding-top:8px}
 .article ul{margin:0 0 26px 4px;padding-left:20px;display:flex;flex-direction:column;gap:10px}
@@ -543,16 +550,34 @@ def related(post):
 <div class="b"><span class="cat">{q['cat']}</span><h4>{q['title']}</h4></div></a>"""
     return cards
 
+def post_faq(post):
+    """글에 faq([[질문,답변],...])가 있으면 섹션 HTML + FAQPage JSON-LD 반환"""
+    import json as _j, re as _re
+    fq = [x for x in (post.get('faq') or []) if x and len(x) >= 2 and str(x[0]).strip() and str(x[1]).strip()]
+    if not fq:
+        return "", ""
+    strip = lambda s: _re.sub(r'<[^>]+>', '', str(s)).strip()
+    items = "".join(f'<div class="pfq"><div class="q">{q}</div><div class="a">{a}</div></div>' for q, a in fq)
+    html = f'<section class="pfaq wrap"><h2>자주 묻는 질문</h2>{items}</section>'
+    ld = _j.dumps({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [{"@type": "Question", "name": strip(q),
+                        "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in fq]
+    }, ensure_ascii=False)
+    return html, f'<script type="application/ld+json">{ld}</script>'
+
 def build_post(post):
     fig = FIGS.get(post['slug'], "")
     body = post['body']
     if fig and '<h2>' in body:
         body = body.replace('<h2>', fig + '<h2>', 1)
+    faq_html, faq_ld = post_faq(post)
     return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{post['title']} | messeze 블로그</title>
 <meta name="description" content="{post['desc']}">
 {FONT_LINKS}
+{faq_ld}
 <style>{POST_CSS}</style></head><body>
 {nav(2)}
 <div class="wrap crumb"><a href="../index.html">블로그</a><span>›</span><span class="cat">{post['cat']}</span></div>
@@ -560,6 +585,7 @@ def build_post(post):
 <div class="meta"><span class="by">by. messeze 편집팀</span><span>·</span><span>{post['date']}</span></div></div>
 <div class="pcover" style="background:{post['grad']}"><span class="pat"></span>{COVERS[post['slug']]}<span class="tag">{post['cat']}</span></div>
 <article class="article wrap">{body}</article>
+{faq_html}
 <div class="backrow"><a href="../index.html">← 블로그 목록으로</a></div>
 <div class="rel"><h3>함께 읽으면 좋은 글</h3><div class="rel-grid">{related(post)}</div></div>
 {cta(2)}

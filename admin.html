@@ -283,7 +283,6 @@ const MENU=[
   {grp:'고객'},
   {v:'inq', label:'📥 문의 관리'},
   {v:'chk', label:'🔍 진단 기록'},
-  {v:'rpt', label:'📊 진단 리포트'},
   {grp:'콘텐츠'},
   {v:'cms:blog', label:'✍️ 블로그'},
   {v:'cms:interview', label:'🎤 인터뷰'},
@@ -388,7 +387,6 @@ function renderDash(){
   <div class="qbtns">
     <button data-go="inq">📥 문의 확인</button>
     <button data-go="chk">🔍 진단 기록</button>
-    <button data-go="rpt">📊 리포트 만들기</button>
     <button data-go="cms:blog">✍️ 블로그 글쓰기</button>
   </div>
   <div class="dash-grid">
@@ -403,7 +401,7 @@ function renderDash(){
       <h3>🔥 진단만 받고 문의 안 한 잠재고객<button class="more" data-go="chk">전체 보기 →</button></h3>
       ${recentLeads.length?recentLeads.map(c=>{
         const sc=Number(c.score);
-        return `<div class="drow"><div style="flex:1;min-width:0"><b>${esc(normSite(c.site))}</b><span class="sub">${esc(fmtTs(c.ts))}</span></div><span class="dnum" style="color:${scoreCol(sc)}">${isNaN(sc)?'-':sc+'점'}</span><button class="pill lead" style="border:0;cursor:pointer;font-family:var(--sans)" data-rpt="${esc(c.site||'')}">📊 리포트</button></div>`;
+        return `<div class="drow"><div style="flex:1;min-width:0"><b>${esc(normSite(c.site))}</b><span class="sub">${esc(fmtTs(c.ts))}</span></div><span class="dnum" style="color:${scoreCol(sc)}">${isNaN(sc)?'-':sc+'점'}</span></div>`;
       }).join(''):'<div class="empty" style="padding:24px">지금은 없습니다. 진단을 받은 방문자가 생기면 여기에 표시됩니다.</div>'}
     </div>
     <div class="dcard">
@@ -419,7 +417,6 @@ function renderDash(){
   </div>`;
   document.getElementById('rf').onclick=()=>load(LAST.key,'dash');
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-  document.querySelectorAll('[data-rpt]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.rpt);});
   dashContentCounts();
 }
 
@@ -447,7 +444,7 @@ function renderChk(){
   // 원본 배열 순서 기준 안정 번호 (최신이 큰 번호)
   const items=list.map((c,i)=>({c, no:list.length-i, inq:inqBySite[normSite(c.site)]}));
   app.innerHTML=`<div class="bar"><h1>🔍 진단 기록 · ${list.length}건</h1><span class="sp"></span><button id="rfc">새로고침</button></div>
-  <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다. <span class="pill lead">잠재고객</span>은 아직 문의하지 않은 곳이니, 리포트를 만들어 먼저 연락해 보세요.</p>
+  <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다. <span class="pill lead">잠재고객</span>은 아직 문의하지 않은 곳이니, 먼저 연락해 보세요.</p>
   <div class="chk-ctrl">
     <input type="search" id="chkQ" placeholder="🔍 주소 검색" value="${esc(CHKV.q)}">
     <select id="chkSort">
@@ -477,7 +474,7 @@ function renderChk(){
     document.querySelectorAll('.chk-ctrl .chip').forEach(b=>b.classList.toggle('on',b.dataset.flt===CHKV.flt));
     document.getElementById('chkCnt').textContent=rows.length+'건 표시';
     document.getElementById('chkList').innerHTML=rows.length?`<div class="ctab-wrap"><table class="ctab"><thead><tr>
-      <th style="width:46px">#</th><th>사이트</th><th style="width:150px">진단일시</th><th style="width:150px">상태</th><th style="width:80px">점수</th><th style="width:110px"></th>
+      <th style="width:46px">#</th><th>사이트</th><th style="width:160px">진단일시</th><th style="width:160px">상태</th><th style="width:90px">점수</th>
     </tr></thead><tbody>${rows.map(it=>{
       const c=it.c, s=Number(c.score), col=s>=80?'#0BBF8C':(s>=50?'#B45309':'#E2574C');
       const dom=String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,'');
@@ -488,9 +485,7 @@ function renderChk(){
         <td style="color:var(--mut);font-size:12.5px">${esc(fmtTs(c.ts))}</td>
         <td>${mark}</td>
         <td style="font-weight:900;font-size:15px;color:${col}">${isNaN(s)?'-':s+'점'}</td>
-        <td class="c-act"><button class="rowbtn" data-site="${esc(c.site||'')}">📊 리포트</button></td>
       </tr>`}).join('')}</tbody></table></div>`:'<div class="empty">조건에 맞는 기록이 없습니다.</div>';
-    document.querySelectorAll('#chkList [data-site]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.site);});
   };
   document.getElementById('chkQ').oninput=e=>{CHKV.q=e.target.value;paint();};
   document.getElementById('chkSort').onchange=e=>{CHKV.sort=e.target.value;paint();};
@@ -586,8 +581,12 @@ function render(key, rows){
 
 const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
 const TYPES=[{key:'service',file:'data/services.json',name:'서비스 페이지',icon:'🧩',note:'서비스 소개 페이지의 내용을 수정합니다.',label:s=>s.title,sub:s=>s.one?String(s.one).slice(0,40):''},{key:'faq',file:'data/faq.json',name:'FAQ',icon:'❓',note:'자주 묻는 질문을 그룹별로 관리합니다.',label:g=>g.title,sub:g=>`문항 ${g.items.length}개`},{key:'interview',file:'data/interviews.json',name:'인터뷰',icon:'🎤',note:'고객 인터뷰를 추가하거나 수정합니다.',label:c=>`${c.com}`,sub:c=>c.who||''},{key:'glossary',file:'data/glossary.json',name:'용어사전',icon:'📚',note:'용어를 추가하거나 수정합니다.',label:t=>t.ko||t.slug,sub:t=>t.en||''},{key:'blog',file:'data/posts.json',name:'블로그',icon:'✍️',note:'블로그 글을 새로 쓰거나 수정합니다. "+ 새 항목"을 누르면 마지막 글이 복제되니 내용을 바꿔 쓰세요.',label:p=>p.title,sub:p=>p.date||''}];
-const LBL={q:'질문',a:'답변',photo:'사진',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
+const LBL={q:'질문',a:'답변',photo:'사진',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ (글 하단 + AI용 스키마 자동)',def:'정의',eg:'예시',long:'상세 설명'};
 const lbl=k=>LBL[k]||k;
+// [질문,답변] 같은 쌍 배열의 칸별 라벨
+const TUPLE_LBL={faq:['질문','답변'],qa:['질문','답변'],actions:['제목','설명'],metrics:['수치','라벨','부가 설명'],weeks:['주차','값(%)'],questions:['질문','노출 엔진']};
+// 빈 배열에 "+ 추가" 시 넣을 기본 템플릿
+const ADD_TPL={faq:['',''],qa:['',''],questions:['',[]]};
 const CMS={type:null,arr:null,sha:null,idx:null};
 function b64dec(b){const bin=atob(b.replace(/\n/g,''));const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new TextDecoder().decode(u)}
 function b64enc(s){const u=new TextEncoder().encode(s);let bin='';for(let i=0;i<u.length;i+=8192)bin+=String.fromCharCode(...u.subarray(i,i+8192));return btoa(bin)}
@@ -673,25 +672,10 @@ function cmsList(){
   document.getElementById('addNew').onclick=()=>{CMS.arr.push(JSON.parse(JSON.stringify(CMS.arr[CMS.arr.length-1])));cmsEdit(CMS.arr.length-1);};
   paint();
 }
-function fld(val,path,key){const P=esc(path);if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;if(typeof val==='string'){if(isImgField(key,val))return`<div class="fld2"><label>${esc(lbl(key))}</label><div class="imgfld"><div class="thumbbox">${val?`<img src="${esc(val)}" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="ctrls"><input data-path="${P}" value="${esc(val)}" placeholder="사진 주소"><button type="button" class="upbtn" data-upl="${P}">📷 업로드</button></div></div></div>`;if(isRichField(key,val))return richFld(path,val,lbl(key),val.length<220&&key!=='body');const long=val.length>70;return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;}if(Array.isArray(val)){const rows=val.map((v,i)=>{const inner=(typeof v==='object'&&v!==null)?Object.entries(v).map(([k2,v2])=>fld(v2,`${path}.${i}.${k2}`,k2)).join(''):fld(v,`${path}.${i}`,key+' '+(i+1)).replace(/<label>.*?<\/label>/,'');return`<div class="fgrp"><div class="glab">${esc(lbl(key))} ${i+1}<button class="rowdel" data-del="${P}" data-i="${i}">✕</button></div>${inner}</div>`;}).join('');return`<div class="fld2"><label>${esc(lbl(key))}</label>${rows}<button class="addrow" data-add="${P}">+ 추가</button></div>`;}if(typeof val==='object'&&val!==null)return`<div class="fgrp"><div class="glab">${esc(lbl(key))}</div>${Object.entries(val).map(([k2,v2])=>fld(v2,`${path}.${k2}`,k2)).join('')}</div>`;return'';}
+function fld(val,path,key){const P=esc(path);if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;if(typeof val==='string'){if(isImgField(key,val))return`<div class="fld2"><label>${esc(lbl(key))}</label><div class="imgfld"><div class="thumbbox">${val?`<img src="${esc(val)}" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="ctrls"><input data-path="${P}" value="${esc(val)}" placeholder="사진 주소"><button type="button" class="upbtn" data-upl="${P}">📷 업로드</button></div></div></div>`;if(isRichField(key,val))return richFld(path,val,lbl(key),val.length<220&&key!=='body');const long=val.length>70;return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;}if(Array.isArray(val)){const tpl=TUPLE_LBL[key];const rows=val.map((v,i)=>{const inner=(typeof v==='object'&&v!==null)?Object.entries(v).map(([k2,v2])=>fld(v2,`${path}.${i}.${k2}`,(tpl&&Array.isArray(v)&&tpl[+k2])||k2)).join(''):fld(v,`${path}.${i}`,key+' '+(i+1)).replace(/<label>.*?<\/label>/,'');return`<div class="fgrp"><div class="glab">${esc(lbl(key))} ${i+1}<button class="rowdel" data-del="${P}" data-i="${i}">✕</button></div>${inner}</div>`;}).join('');return`<div class="fld2"><label>${esc(lbl(key))}</label>${rows}<button class="addrow" data-add="${P}">+ 추가</button></div>`;}if(typeof val==='object'&&val!==null)return`<div class="fgrp"><div class="glab">${esc(lbl(key))}</div>${Object.entries(val).map(([k2,v2])=>fld(v2,`${path}.${k2}`,k2)).join('')}</div>`;return'';}
 const getP=(o,p)=>p.split('.').reduce((a,k)=>a[k],o);const setP=(o,p,v)=>{const ks=p.split('.');const last=ks.pop();let cur=o;for(const k of ks)cur=cur[k];cur[last]=v;};
-function cmsEdit(i){CMS.idx=i;const it=CMS.arr[i],t=CMS.type;document.getElementById('cmsBody').innerHTML=`<div class="ed-bar"><button class="back" id="edBack">← ${t.name}</button><span class="sp"></span><button class="dup" id="edDup">복제</button><button class="del" id="edDel">삭제</button><button class="save" id="edSave">💾 저장</button></div><div id="edMsg"></div><div class="ed">${Object.entries(it).map(([k,v])=>fld(v,k,k)).join('')}</div>`;const collect=()=>{document.querySelectorAll('#cmsBody [data-path]').forEach(el=>{const v=el.dataset.rich?el.innerHTML.trim():(el.type==='number'?Number(el.value):el.value);setP(it,el.dataset.path,v);});};document.getElementById('edBack').onclick=()=>{collect();cmsList()};document.getElementById('edDup').onclick=()=>{collect();CMS.arr.splice(i+1,0,JSON.parse(JSON.stringify(it)));cmsEdit(i+1)};document.getElementById('edDel').onclick=()=>{if(confirm('삭제할까요?')){CMS.arr.splice(i,1);cmsList()}};document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{collect();getP(it,b.dataset.del).splice(+b.dataset.i,1);cmsEdit(i)});document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{collect();const arr2=getP(it,b.dataset.add);const last=arr2[arr2.length-1];arr2.push(typeof last==='object'?JSON.parse(JSON.stringify(last)):(typeof last==='number'?0:''));cmsEdit(i)});document.getElementById('edSave').onclick=()=>{collect();cmsSave()};document.querySelectorAll('[data-upl]').forEach(b=>b.onclick=async()=>{const url=await pickAndUpload(b);if(url){document.querySelector(`[data-path="${CSS.escape(b.dataset.upl)}"]`).value=url;collect();cmsEdit(i);}});initRich(document.getElementById('cmsBody'));}
+function cmsEdit(i){CMS.idx=i;const it=CMS.arr[i],t=CMS.type;document.getElementById('cmsBody').innerHTML=`<div class="ed-bar"><button class="back" id="edBack">← ${t.name}</button><span class="sp"></span><button class="dup" id="edDup">복제</button><button class="del" id="edDel">삭제</button><button class="save" id="edSave">💾 저장</button></div><div id="edMsg"></div><div class="ed">${Object.entries(it).map(([k,v])=>fld(v,k,k)).join('')}</div>`;const collect=()=>{document.querySelectorAll('#cmsBody [data-path]').forEach(el=>{const v=el.dataset.rich?el.innerHTML.trim():(el.type==='number'?Number(el.value):el.value);setP(it,el.dataset.path,v);});};document.getElementById('edBack').onclick=()=>{collect();cmsList()};document.getElementById('edDup').onclick=()=>{collect();CMS.arr.splice(i+1,0,JSON.parse(JSON.stringify(it)));cmsEdit(i+1)};document.getElementById('edDel').onclick=()=>{if(confirm('삭제할까요?')){CMS.arr.splice(i,1);cmsList()}};document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{collect();getP(it,b.dataset.del).splice(+b.dataset.i,1);cmsEdit(i)});document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{collect();const arr2=getP(it,b.dataset.add);const last=arr2[arr2.length-1];const tplKey=b.dataset.add.split('.').pop();if(last===undefined){arr2.push(ADD_TPL[tplKey]?JSON.parse(JSON.stringify(ADD_TPL[tplKey])):'');}else{arr2.push(typeof last==='object'?JSON.parse(JSON.stringify(last)):(typeof last==='number'?0:''));}cmsEdit(i)});document.getElementById('edSave').onclick=()=>{collect();cmsSave()};document.querySelectorAll('[data-upl]').forEach(b=>b.onclick=async()=>{const url=await pickAndUpload(b);if(url){document.querySelector(`[data-path="${CSS.escape(b.dataset.upl)}"]`).value=url;collect();cmsEdit(i);}});initRich(document.getElementById('cmsBody'));}
 async function cmsSave(){const msg=document.getElementById('edMsg');const tok=localStorage.getItem(TOK_LS);if(!tok)return askToken(()=>cmsSave());msg.innerHTML='<div class="load">저장 중…</div>';try{const body={message:`admin: ${CMS.type.name} 수정`,content:b64enc(JSON.stringify(CMS.arr,null,1)),sha:CMS.sha,branch:BR};const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CMS.type.file}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 수정됐습니다 — 다시 불러오세요.</div>';return;}if(!r.ok)throw 0;CMS.sha=j.content.sha;msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 반영됩니다.</div>';}catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 토큰 권한을 확인하세요.</div>';}}
-
-function rptHome(url){
-  updateSidebar('rpt');
-  const q=url?('?url='+encodeURIComponent(url)):'';
-  app.innerHTML=`<div style="margin:20px 0 10px">
-  <h1 style="font-size:20px;margin-bottom:8px">📊 진단 리포트 생성기</h1>
-  <p class="cms-note">AI 실측 질의 → 리포트 자동 생성 → PDF로 저장해 제안서에 첨부하세요.</p>
-  <a href="report.html${q}" target="_blank" style="margin-top:12px;display:inline-block;background:var(--primary);color:#fff;text-decoration:none;font-weight:800;font-size:13px;border-radius:10px;padding:10px 16px">↗ 새 창에서 열기</a>
-  </div>
-  <iframe id="rptFrame" src="report.html${q}" scrolling="no" style="width:100%;height:900px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:16px;overflow:hidden"></iframe>`;
-  // iframe을 내용 높이에 맞춰 자동 확장 (이중 스크롤·잘림 방지)
-  const fr=document.getElementById('rptFrame');
-  const fit=()=>{try{const d=fr.contentDocument;if(d&&d.body)fr.style.height=Math.max(700,d.documentElement.scrollHeight+24)+'px';}catch(e){}};
-  fr.onload=()=>{fit();try{new ResizeObserver(fit).observe(fr.contentDocument.body);}catch(e){}setInterval(fit,1000);};
-}
 
 /* ===== SEO·사이트 설정 편집기 (GitHub API 저장) ===== */
 const JEDIT={
@@ -912,7 +896,6 @@ function go(v){
   updateSidebar(v);
   if(v.startsWith('cms:'))return cmsHome(v.slice(4));
   if(v==='copy')return copyHome();
-  if(v==='rpt')return rptHome();
   if(v==='seo')return jsonEditHome('seo');
   if(v==='settings')return jsonEditHome('settings');
   if(!APPS_URL)return showSetup();

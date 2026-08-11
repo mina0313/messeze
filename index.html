@@ -2114,7 +2114,29 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
   cx.addEventListener('click',function(e){e.stopPropagation();root.classList.add('min');try{sessionStorage.setItem('mz_chat_min','1');}catch(err){}});
   x.addEventListener('click',function(){root.classList.remove('open');root.classList.add('min');});
   try{if(sessionStorage.getItem('mz_chat_min'))root.classList.add('min');}catch(err){}
-  form.addEventListener('submit',function(e){e.preventDefault();var v=input.value.trim();if(!v)return;usr(v);input.value='';setTimeout(function(){bot('메시지 감사합니다! 담당자가 확인 후 <b>영업일 1일 내</b>로 연락드릴게요 🙏 급하시면 아래 버튼으로 상담을 남겨주세요.',{href:'index.html#final',label:'무료 상담 신청'});},420);});
+  /* 직접 입력 → 폼과 같은 접수 라인(Apps Script)으로 전송: 내용 → 성함 → 연락처 3단계 */
+  var flow=null; // {msg, name}
+  function submitInquiry(msg,name,phone){
+    return fetch(APPS_URL,{method:'POST',body:JSON.stringify({name:name,company:'💬 채팅 문의',phone:phone,site:msg})});
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var v=input.value.trim();if(!v)return;usr(v);input.value='';
+    if(!flow){
+      flow={msg:v};
+      setTimeout(function(){bot('네, 남겨주신 내용 접수해 드릴게요. 먼저 <b>성함</b>을 알려주세요.');},380);
+    }else if(!flow.name){
+      flow.name=v;
+      setTimeout(function(){bot('감사합니다. 연락받으실 <b>전화번호 또는 이메일</b>을 알려주세요.');},380);
+    }else{
+      var f=flow;flow=null;
+      bot('접수 중이에요…');
+      submitInquiry(f.msg,f.name,v).then(function(){
+        bot('접수 완료됐습니다 ✓ 담당자가 확인 후 <b>영업일 1일 내</b>로 연락드릴게요 🙏');
+      }).catch(function(){
+        bot('앗, 전송에 실패했어요. 아래 버튼으로 상담을 남겨주시면 확실하게 접수됩니다.',{href:'index.html#final',label:'무료 상담 신청'});
+      });
+    }
+  });
 })();
 </script>
 </body>

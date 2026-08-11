@@ -15,7 +15,7 @@ except Exception:
     pass
 
 SITE = 'https://mina0313.github.io/messeze'
-EXCLUDE = {'admin.html', 'report.html', '_motion-demo.html'}
+EXCLUDE = {'admin.html', '_motion-demo.html'}
 
 
 def page_url(rel):

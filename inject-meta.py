@@ -24,7 +24,7 @@ def _load_seo():
 SEO = _load_seo()
 SITE = (SEO.get('siteUrl') or 'https://mina0313.github.io/messeze').rstrip('/')
 OG_IMAGE = SEO.get('ogImage') or (SITE + '/assets/og.png')
-EXCLUDE = {'admin.html', 'report.html', '_motion-demo.html'}
+EXCLUDE = {'admin.html', '_motion-demo.html'}
 MARK_START = '<!-- auto-meta:start -->'
 MARK_END = '<!-- auto-meta:end -->'
 
