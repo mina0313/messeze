@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>messeze 관리자 — 문의 관리</title>
+<title>messeze 관리자</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{--ink:#0A1930;--body:#4A5568;--mut:#8B95A7;--primary:#2B5CFF;--sky:#F5F5F5;--sky-2:#F0F0F0;--mint:#0BBF8C;--amber:#F59F1E;--red:#E2574C;--line:#E5EAF2;--sans:'Pretendard',system-ui,sans-serif;--dark:#1a1a1a}
@@ -20,6 +20,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--sky);line-height:
 .sidebar-menu button:hover{background:rgba(255,255,255,.05);color:#fff}
 .sidebar-menu button.on{background:var(--primary);color:#fff}
 .sidebar-menu .badge{background:rgba(43,92,255,.22);color:#9DB4FF;border-radius:999px;font-size:11px;padding:2px 7px;margin-left:auto;font-weight:900}
+.sidebar-menu .grp{font-size:10.5px;font-weight:900;color:#5e5e5e;letter-spacing:.1em;padding:16px 14px 2px}
 .sidebar-footer{padding:0 8px;font-size:11px;color:#666;border-top:1px solid rgba(255,255,255,.1);margin-top:auto;padding-top:16px}
 .sidebar-footer button{background:none;border:0;color:#999;font-family:var(--sans);font-size:12px;padding:8px 14px;cursor:pointer;width:100%;text-align:left;border-radius:8px;margin:4px 0}
 .sidebar-footer button:hover{color:#fff;background:rgba(255,255,255,.05)}
@@ -131,6 +132,30 @@ body.gated .sidebar-menu{display:none}
 .empty{padding:50px;text-align:center;color:var(--mut);font-size:13px}
 .load{padding:50px;text-align:center;color:var(--mut)}
 
+/* ━━━ 대시보드 ━━━ */
+.stats.s4{grid-template-columns:repeat(4,1fr)}
+.qbtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.qbtns button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 16px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;color:var(--ink)}
+.qbtns button:hover{border-color:var(--primary);color:var(--primary)}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.dcard h3{font-size:13.5px;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.dcard h3 .more{margin-left:auto;background:none;border:0;font-family:var(--sans);font-size:11.5px;color:var(--primary);font-weight:800;cursor:pointer}
+.drow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13px}
+.drow:first-of-type{border-top:0}
+.drow b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drow .sub{color:var(--mut);font-size:11.5px;display:block}
+.drow .rt{margin-left:auto;flex:0 0 auto;text-align:right}
+.pill{border-radius:999px;font-size:11px;font-weight:800;padding:3px 9px;flex:0 0 auto;white-space:nowrap}
+.pill.s-신규{color:var(--primary);background:#F0F4FF}
+.pill.s-연락중{color:var(--amber);background:#FFF7E8}
+.pill.s-계약{color:#0B8F5C;background:#E7F8F0}
+.pill.s-보류{color:var(--red);background:#FCEFEF}
+.pill.s-완료{color:var(--mut);background:var(--sky-2)}
+.pill.lead{color:#B45309;background:#FFF7E8}
+.pill.done{color:var(--mut);background:var(--sky-2)}
+.dnum{font-weight:900;font-size:15px}
+
 .upbtn{margin-top:6px;background:#fff;border:1.5px solid var(--primary);color:var(--primary);border-radius:8px;padding:8px 12px;font-family:var(--sans);font-weight:700;font-size:12px;cursor:pointer}
 .upbtn:hover{background:var(--sky-2)}
 .upbtn:disabled{opacity:.5;cursor:wait}
@@ -152,11 +177,14 @@ body.gated .sidebar-menu{display:none}
   body{grid-template-columns:1fr}
   .sidebar{width:100%;height:auto;position:static;flex-direction:row;padding:16px}
   .sidebar-logo{margin-bottom:0;margin-right:20px}
-  .sidebar-menu{display:flex;gap:8px;flex:1}
+  .sidebar-menu{display:flex;gap:8px;flex:1;flex-wrap:wrap}
   .sidebar-menu button{margin:0;padding:8px 12px}
+  .sidebar-menu .grp{display:none}
   .sidebar-footer{border:none;margin-top:0;padding:0;margin-left:auto}
   main{grid-column:1;padding:20px}
   .stats{grid-template-columns:1fr}
+  .stats.s4{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr}
   .tbl{overflow-x:auto}
   table{min-width:600px}
 }
@@ -194,21 +222,32 @@ const sideMenu = document.getElementById('sideMenu');
 
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
+const MENU=[
+  {v:'dash', label:'🏠 대시보드'},
+  {grp:'고객'},
+  {v:'inq', label:'📥 문의 관리'},
+  {v:'chk', label:'🔍 진단 기록'},
+  {v:'rpt', label:'📊 진단 리포트'},
+  {grp:'콘텐츠'},
+  {v:'cms:blog', label:'✍️ 블로그'},
+  {v:'cms:interview', label:'🎤 인터뷰'},
+  {v:'cms:faq', label:'❓ FAQ'},
+  {v:'cms:glossary', label:'📚 용어사전'},
+  {v:'cms:service', label:'🧩 서비스 페이지'},
+  {grp:'사이트'},
+  {v:'copy', label:'📝 페이지 문구'},
+  {v:'seo', label:'🔗 SEO 관리'},
+  {v:'settings', label:'⚙️ 사이트 설정'}
+];
 function updateSidebar(view){
-  sideMenu.innerHTML = `
-    <button data-v="inq" class="${view==='inq'?'on':''}">📥 문의 관리</button>
-    <button data-v="chk" class="${view==='chk'?'on':''}">🔍 가시성 체크</button>
-    <button data-v="cms" class="${view==='cms'?'on':''}">✏️ 콘텐츠 관리</button>
-      <button data-v="copy" class="${view==='copy'?'on':''}">📝 페이지 문구</button>
-    <button data-v="rpt" class="${view==='rpt'?'on':''}">📊 진단 리포트</button>
-      <button data-v="seo" class="${view==='seo'?'on':''}">🔗 SEO 관리</button>
-      <button data-v="settings" class="${view==='settings'?'on':''}">⚙️ 사이트 설정</button>
-  `;
+  sideMenu.innerHTML = MENU.map(m=>m.grp
+    ? `<div class="grp">${m.grp}</div>`
+    : `<button data-v="${m.v}" class="${view===m.v?'on':''}">${m.label}</button>`).join('');
   sideMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 }
 
 function showSetup(){
-  updateSidebar('inq');
+  updateSidebar('dash');
   app.innerHTML = `<div class="setup"><h1>⚙️ 아직 연결 설정 전입니다</h1>
   <p>문의 데이터를 저장할 <b>구글 시트 연결</b>이 필요합니다. 프로젝트 폴더의 <code>관리자-설정-가이드.md</code>를 따라 5분만 설정하면:</p>
   <p>① 홈페이지 문의가 구글 시트에 자동 저장되고<br>② 이 페이지에서 문의 목록 확인·상태 관리·메모가 가능해집니다.</p>
@@ -257,7 +296,7 @@ async function load(key,view){
     document.body.classList.remove('gated');
     LAST={key:key,rows:(j.rows||[]).filter(r=>String(r.name||'')||String(r.company||'')||String(r.phone||'')||String(r.memo||'')),checks:(j.checks||[]).filter(c=>String(c.site||''))};
     document.getElementById('out').style.display = 'block';
-    view==='chk' ? renderChk() : render(key, LAST.rows);
+    renderView(view||'dash');
   }catch(e){
     showGate('불러오기 실패 — 네트워크 또는 설정을 확인하세요.');
   }
@@ -269,19 +308,98 @@ function fmtTs(ts){
   return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}catch(e){return String(ts)}
 }
 
+/* 홈페이지 주소로 문의·진단 기록을 맞춰보기 위한 정규화 */
+const normSite=u=>String(u||'').toLowerCase().replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/\/+$/,'').trim();
+
+function renderDash(){
+  updateSidebar('dash');
+  const rows=LAST.rows||[], checks=LAST.checks||[];
+  const stat=s=>rows.filter(r=>(r.status||'신규')===s).length;
+  const byTs=(a,b)=>new Date(b.ts||0)-new Date(a.ts||0);
+  const inqSites=new Set(rows.map(r=>normSite(r.site)).filter(Boolean));
+  const leads=checks.filter(c=>normSite(c.site)&&!inqSites.has(normSite(c.site)));
+  const recentInq=[...rows].sort(byTs).slice(0,5);
+  const recentLeads=[...leads].sort(byTs).slice(0,5);
+  const scoreCol=sc=>sc>=80?'#0BBF8C':(sc>=50?'#B45309':'#E2574C');
+  app.innerHTML=`
+  <div class="bar"><h1>🏠 대시보드</h1><span class="sp"></span><button id="rf">새로고침</button></div>
+  <div class="stats s4">
+    <div class="st new"><b>${stat('신규')}</b><span>신규 문의</span></div>
+    <div class="st"><b>${stat('연락중')}</b><span>연락중</span></div>
+    <div class="st" style="border:1.5px solid #9FDFC4"><b style="color:#0B8F5C">${stat('계약')}</b><span>계약</span></div>
+    <div class="st"><b>${checks.length}</b><span>무료 진단 기록</span></div>
+  </div>
+  <div class="qbtns">
+    <button data-go="inq">📥 문의 확인</button>
+    <button data-go="chk">🔍 진단 기록</button>
+    <button data-go="rpt">📊 리포트 만들기</button>
+    <button data-go="cms:blog">✍️ 블로그 글쓰기</button>
+  </div>
+  <div class="dash-grid">
+    <div class="dcard">
+      <h3>📥 최근 문의<button class="more" data-go="inq">전체 보기 →</button></h3>
+      ${recentInq.length?recentInq.map(r=>{
+        const st=r.status||'신규';
+        return `<div class="drow"><div style="flex:1;min-width:0"><b>${esc(r.name||'')}</b><span class="sub">${esc(r.company||'')}</span></div><span class="pill s-${esc(st)}">${esc(st)}</span><span class="rt sub">${esc(fmtTs(r.ts))}</span></div>`;
+      }).join(''):'<div class="empty" style="padding:24px">아직 접수된 문의가 없습니다.</div>'}
+    </div>
+    <div class="dcard">
+      <h3>🔥 진단만 받고 문의 안 한 잠재고객<button class="more" data-go="chk">전체 보기 →</button></h3>
+      ${recentLeads.length?recentLeads.map(c=>{
+        const sc=Number(c.score);
+        return `<div class="drow"><div style="flex:1;min-width:0"><b>${esc(normSite(c.site))}</b><span class="sub">${esc(fmtTs(c.ts))}</span></div><span class="dnum" style="color:${scoreCol(sc)}">${isNaN(sc)?'-':sc+'점'}</span><button class="pill lead" style="border:0;cursor:pointer;font-family:var(--sans)" data-rpt="${esc(c.site||'')}">📊 리포트</button></div>`;
+      }).join(''):'<div class="empty" style="padding:24px">지금은 없습니다. 진단을 받은 방문자가 생기면 여기에 표시됩니다.</div>'}
+    </div>
+    <div class="dcard">
+      <h3>📄 콘텐츠 현황</h3>
+      <div id="dashCnt"><div class="load" style="padding:20px">세는 중…</div></div>
+    </div>
+    <div class="dcard">
+      <h3>🔗 빠른 링크</h3>
+      <div class="drow"><a href="${SITE}" target="_blank" rel="noopener">홈페이지 열기</a></div>
+      <div class="drow"><a href="${SITE}check.html" target="_blank" rel="noopener">AI 노출 무료 진단 (고객용)</a></div>
+      <div class="drow"><a href="https://github.com/${REPO}/actions" target="_blank" rel="noopener">빌드 상태 (GitHub Actions)</a></div>
+    </div>
+  </div>`;
+  document.getElementById('rf').onclick=()=>load(LAST.key,'dash');
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  document.querySelectorAll('[data-rpt]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.rpt);});
+  dashContentCounts();
+}
+
+async function dashContentCounts(){
+  const box=document.getElementById('dashCnt');
+  try{
+    const results=await Promise.all(TYPES.map(t=>
+      fetch(SITE+t.file+'?t='+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null)));
+    box.innerHTML=TYPES.map((t,i)=>{
+      const arr=results[i];
+      const n=Array.isArray(arr)?arr.length:'-';
+      const last=(t.key==='blog'&&Array.isArray(arr)&&arr.length)?` · 최근: ${esc(String(arr[0].date||arr[0].title||'').slice(0,24))}`:'';
+      return `<div class="drow" style="cursor:pointer" data-go="cms:${t.key}"><div style="flex:1">${t.icon} ${t.name}<span class="sub">${last||''}</span></div><span class="dnum">${n}</span></div>`;
+    }).join('');
+    box.querySelectorAll('[data-go]').forEach(el=>el.onclick=()=>go(el.dataset.go));
+  }catch(e){box.innerHTML='<div class="empty" style="padding:20px">불러오지 못했습니다.</div>';}
+}
+
 function renderChk(){
   updateSidebar('chk');
   const list=LAST.checks||[];
-  app.innerHTML=`<div class="bar"><h1>🔍 가시성 체크 목록 · ${list.length}건</h1><span class="sp"></span><button id="rfc">새로고침</button></div>
-  <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다 — 이미 관심을 보인 잠재 고객이니, 버튼 한 번으로 진단 리포트를 만들어 연락해 보세요.</p>
+  const inqBySite={};
+  (LAST.rows||[]).forEach(r=>{const k=normSite(r.site);if(k&&!inqBySite[k])inqBySite[k]=r;});
+  app.innerHTML=`<div class="bar"><h1>🔍 진단 기록 · ${list.length}건</h1><span class="sp"></span><button id="rfc">새로고침</button></div>
+  <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다. <span class="pill lead">잠재고객</span>은 아직 문의하지 않은 곳이니, 리포트를 만들어 먼저 연락해 보세요.</p>
   ${list.length?'':'<div class="empty">아직 기록이 없습니다.</div>'}
   <div class="cms-list">${list.map((c,i)=>{
     const sc=Number(c.score), col=sc>=80?'#0BBF8C':(sc>=50?'#B45309':'#E2574C');
+    const inq=inqBySite[normSite(c.site)];
+    const mark=inq?`<span class="pill s-${esc(inq.status||'신규')}">📥 문의함 · ${esc(inq.status||'신규')}</span>`:'<span class="pill lead">잠재고객</span>';
     return `<div class="cms-item" style="cursor:default">
       <span class="idx">${list.length-i}</span>
       <div style="flex:1;min-width:0"><b>${esc(String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,''))}</b><br><span>${esc(fmtTs(c.ts))}</span></div>
+      ${mark}
       <span style="font-weight:900;font-size:16px;color:${col};flex:0 0 auto">${isNaN(sc)?'-':sc+'점'}</span>
-      <button class="dup" style="flex:0 0 auto" data-site="${esc(c.site||'')}">📊 진단</button>
+      <button class="dup" style="flex:0 0 auto" data-site="${esc(c.site||'')}">📊 리포트</button>
     </div>`}).join('')}</div>`;
   document.querySelectorAll('[data-site]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.site);});
   const _rfc=document.getElementById('rfc'); if(_rfc)_rfc.onclick=()=>load(LAST.key,'chk');
@@ -291,11 +409,15 @@ function render(key, rows){
   updateSidebar('inq');
   const stat = s => rows.filter(r=>(r.status||'신규')===s).length;
   const OPTS = ['신규','연락중','계약','보류','완료'];
+  const chkBySite={};
+  (LAST.checks||[]).forEach(c=>{const k=normSite(c.site);if(k&&!(k in chkBySite))chkBySite[k]=Number(c.score);});
   const fmt = r => {
     const st = r.status||'신규';
     const d = r.ts ? new Date(r.ts) : null;
     const ts = d ? `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}<br>${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}` : '';
-    const site = r.site ? `<a href="${esc(r.site)}" target="_blank" rel="noopener">${esc(String(r.site).replace(/^https?:\/\//,'').slice(0,20))}</a>` : '<span style="color:var(--mut)">—</span>';
+    const sc = chkBySite[normSite(r.site)];
+    const scBadge = (sc!==undefined&&!isNaN(sc)) ? `<span class="pill" style="color:${sc>=80?'#0B8F5C':(sc>=50?'#B45309':'#E2574C')};background:var(--sky-2);margin-left:6px">진단 ${sc}점</span>` : '';
+    const site = r.site ? `<a href="${esc(r.site)}" target="_blank" rel="noopener">${esc(String(r.site).replace(/^https?:\/\//,'').slice(0,20))}</a>${scBadge}` : '<span style="color:var(--mut)">—</span>';
     return `<tr>
       <td class="ts">${ts}</td>
       <td><b>${esc(r.name)}</b><span class="co">${esc(r.company)}</span></td>
@@ -369,7 +491,7 @@ function render(key, rows){
 }
 
 const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
-const TYPES=[{key:'service',file:'data/services.json',name:'서비스 페이지',label:s=>s.title,sub:s=>s.one?String(s.one).slice(0,40):''},{key:'faq',file:'data/faq.json',name:'FAQ',label:g=>g.title,sub:g=>`문항 ${g.items.length}개`},{key:'interview',file:'data/interviews.json',name:'인터뷰',label:c=>`${c.com}`,sub:c=>c.who||''},{key:'glossary',file:'data/glossary.json',name:'용어사전',label:t=>t.ko||t.slug,sub:t=>t.en||''},{key:'blog',file:'data/posts.json',name:'블로그',label:p=>p.title,sub:p=>p.date||''}];
+const TYPES=[{key:'service',file:'data/services.json',name:'서비스 페이지',icon:'🧩',note:'서비스 소개 페이지의 내용을 수정합니다.',label:s=>s.title,sub:s=>s.one?String(s.one).slice(0,40):''},{key:'faq',file:'data/faq.json',name:'FAQ',icon:'❓',note:'자주 묻는 질문을 그룹별로 관리합니다.',label:g=>g.title,sub:g=>`문항 ${g.items.length}개`},{key:'interview',file:'data/interviews.json',name:'인터뷰',icon:'🎤',note:'고객 인터뷰를 추가하거나 수정합니다.',label:c=>`${c.com}`,sub:c=>c.who||''},{key:'glossary',file:'data/glossary.json',name:'용어사전',icon:'📚',note:'용어를 추가하거나 수정합니다.',label:t=>t.ko||t.slug,sub:t=>t.en||''},{key:'blog',file:'data/posts.json',name:'블로그',icon:'✍️',note:'블로그 글을 새로 쓰거나 수정합니다. "+ 새 항목"을 누르면 마지막 글이 복제되니 내용을 바꿔 쓰세요.',label:p=>p.title,sub:p=>p.date||''}];
 const LBL={q:'질문',a:'답변',photo:'사진',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
 const lbl=k=>LBL[k]||k;
 const CMS={type:null,arr:null,sha:null,idx:null};
@@ -380,7 +502,7 @@ const SITE='https://mina0313.github.io/messeze/';
 const isImgField=(k,v)=>/^(photo|img|image|cover|thumb|logo|avatar|pic)$/i.test(k)||/^https?:\/\/\S+\.(png|jpe?g|webp|gif|svg)(\?|$)/i.test(v||'')||/(images\.unsplash\.com|images\.pexels\.com)/.test(v||'');
 function askToken(then){const tok=localStorage.getItem(TOK_LS);if(tok)return then(tok);const msg=document.createElement('div');app.appendChild(msg);msg.innerHTML=`<div class="tok-box"><b>처음 한 번만:</b> GitHub 토큰이 필요합니다.<br>github.com 로그인 → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token → Repository: <b>messeze</b>만 선택 → Permissions: <b>Contents: Read and write</b> 선택 후 생성<input id="tokIn" type="password" placeholder="github_pat_… 붙여넣고 Enter"></div>`;document.getElementById('tokIn').focus();document.getElementById('tokIn').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim()){localStorage.setItem(TOK_LS,e.target.value.trim());msg.remove();then(e.target.value.trim());}});}
 async function pickAndUpload(btn){return new Promise(resolve=>{const fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.onchange=async()=>{const f=fi.files[0];if(!f)return resolve(null);askToken(async tok=>{btn.disabled=true;const orig=btn.textContent;btn.textContent='올리는 중…';try{let blob=f;if(/image\/(jpe?g|png|webp)/.test(f.type)&&f.size>250*1024){const bmp=await createImageBitmap(f);const sc=Math.min(1,1600/bmp.width);const cv=document.createElement('canvas');cv.width=Math.round(bmp.width*sc);cv.height=Math.round(bmp.height*sc);cv.getContext('2d').drawImage(bmp,0,0,cv.width,cv.height);blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.85));}const buf=new Uint8Array(await blob.arrayBuffer());let bin='';for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode(...buf.subarray(i,i+8192));const ext=blob.type==='image/jpeg'?'jpg':(f.name.split('.').pop()||'jpg').toLowerCase();const name=`up-${Date.now()}.${ext}`;const r=await fetch(`https://api.github.com/repos/${REPO}/contents/assets/uploads/${name}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify({message:'admin: 사진 '+name,content:btoa(bin),branch:BR})});if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);alert('토큰이 유효합니다. 버튼을 다시 눌러 새 토큰을 입력하세요.');return resolve(null);}if(!r.ok)throw 0;resolve(SITE+'assets/uploads/'+name);}catch(e){alert('업로드 실패 — 인터넷 또는 토큰을 확인하세요.');resolve(null);}finally{btn.disabled=false;btn.textContent=orig;}})};fi.click();});}
-function cmsHome(msg){updateSidebar('cms');app.innerHTML=`<h1 style="margin:26px 0 6px">✏️ 콘텐츠 관리</h1><p class="cms-note">FAQ·인터뷰·용어사전·블로그를 직접 수정합니다. 저장하면 <b>1~2분 뒤 자동 반영</b>됩니다.</p>${msg?`<div class="msg-ok">${esc(msg)}</div>`:''}<div class="cms-types">${TYPES.map(t=>`<button data-k="${t.key}">${t.name}</button>`).join('')}</div><div id="cmsBody"><div class="empty">위에서 편집할 콘텐츠를 선택하세요.</div></div>`;document.querySelectorAll('.cms-types button').forEach(b=>b.onclick=()=>cmsLoad(b.dataset.k));}
+function cmsHome(typeKey,msg){const t=TYPES.find(x=>x.key===typeKey)||TYPES[0];updateSidebar('cms:'+t.key);app.innerHTML=`<h1 style="margin:26px 0 6px">${t.icon} ${t.name}</h1><p class="cms-note">${t.note} 저장하면 <b>1~2분 뒤 자동 반영</b>됩니다.</p>${msg?`<div class="msg-ok">${esc(msg)}</div>`:''}<div id="cmsBody"><div class="load">불러오는 중…</div></div>`;cmsLoad(t.key);}
 async function cmsLoad(key){const t=TYPES.find(x=>x.key===key);document.querySelectorAll('.cms-types button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));const body=document.getElementById('cmsBody');body.innerHTML='<div class="load">불러오는 중…</div>';try{const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${t.file}?ref=${BR}&t=${Date.now()}`,{headers:ghH(localStorage.getItem(TOK_LS))});if(!r.ok)throw 0;const j=await r.json();CMS.type=t;CMS.sha=j.sha;CMS.arr=JSON.parse(b64dec(j.content));CMS.idx=null;cmsList();}catch(e){body.innerHTML='<div class="msg-err">불러오기 실패 — 인터넷을 확인하세요.</div>';}}
 function cmsList(){const t=CMS.type;document.getElementById('cmsBody').innerHTML=`<div class="ed-bar"><b>${t.name} · ${CMS.arr.length}개</b><span class="sp"></span><button class="dup" id="addNew">+ 새 항목</button></div><div class="cms-list">${CMS.arr.map((it,i)=>`<div class="cms-item" data-i="${i}"><span class="idx">${i+1}</span><div><b>${esc(t.label(it))}</b><br><span>${esc(t.sub(it))}</span></div></div>`).join('')}</div>`;document.querySelectorAll('.cms-item').forEach(el=>el.onclick=()=>cmsEdit(+el.dataset.i));document.getElementById('addNew').onclick=()=>{CMS.arr.push(JSON.parse(JSON.stringify(CMS.arr[CMS.arr.length-1])));cmsEdit(CMS.arr.length-1);};}
 function fld(val,path,key){const P=esc(path);if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;if(typeof val==='string'){if(isImgField(key,val))return`<div class="fld2"><label>${esc(lbl(key))}</label><div class="imgfld"><div class="thumbbox">${val?`<img src="${esc(val)}" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="ctrls"><input data-path="${P}" value="${esc(val)}" placeholder="사진 주소"><button type="button" class="upbtn" data-upl="${P}">📷 업로드</button></div></div></div>`;const long=val.length>70||val.includes('<');return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;}if(Array.isArray(val)){const rows=val.map((v,i)=>{const inner=(typeof v==='object'&&v!==null)?Object.entries(v).map(([k2,v2])=>fld(v2,`${path}.${i}.${k2}`,k2)).join(''):fld(v,`${path}.${i}`,key+' '+(i+1)).replace(/<label>.*?<\/label>/,'');return`<div class="fgrp"><div class="glab">${esc(lbl(key))} ${i+1}<button class="rowdel" data-del="${P}" data-i="${i}">✕</button></div>${inner}</div>`;}).join('');return`<div class="fld2"><label>${esc(lbl(key))}</label>${rows}<button class="addrow" data-add="${P}">+ 추가</button></div>`;}if(typeof val==='object'&&val!==null)return`<div class="fgrp"><div class="glab">${esc(lbl(key))}</div>${Object.entries(val).map(([k2,v2])=>fld(v2,`${path}.${k2}`,k2)).join('')}</div>`;return'';}
@@ -573,9 +695,15 @@ async function jsonEditSave(){
 }
 
 
+function renderView(v){
+  if(v==='chk')return renderChk();
+  if(v==='dash')return renderDash();
+  return render(LAST.key, LAST.rows);
+}
+
 function go(v){
   updateSidebar(v);
-  if(v==='cms')return cmsHome();
+  if(v.startsWith('cms:'))return cmsHome(v.slice(4));
   if(v==='copy')return copyHome();
   if(v==='rpt')return rptHome();
   if(v==='seo')return jsonEditHome('seo');
@@ -587,14 +715,13 @@ function go(v){
   if(LAST.key===saved && (LAST.rows.length || LAST.checks.length)){
     document.body.classList.remove('gated');
     document.getElementById('out').style.display='block';
-    return v==='chk' ? renderChk() : render(saved, LAST.rows);
+    return renderView(v);
   }
-  if(v==='chk')return load(saved,'chk');
-  load(saved);
+  load(saved,v);
 }
 
 document.getElementById('out').onclick = ()=>{LAST={key:null,rows:[],checks:[]};sessionStorage.removeItem(KEY_LS);showGate();};
-go('inq');
+go('dash');
 </script>
 </body>
 </html>
