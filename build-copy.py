@@ -25,6 +25,7 @@ COPY_FILE = os.path.join(ROOT, 'data', 'copy.json')
 # 카피를 관리할 페이지 (파일명 → copy.json 안의 그룹명)
 PAGES = {
     'index.html': 'home',
+    'pricing.html': 'pricing',
 }
 
 # data-copy="키" 요소의 여는 태그 ~ 닫는 태그
