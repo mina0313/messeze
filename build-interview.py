@@ -175,7 +175,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .ctags .gray{background:#EEF2F8;color:#5A6780}
 .chero h1{font-size:clamp(26px,3.8vw,42px)}
 .cwho{display:flex;align-items:center;gap:14px;margin-top:26px}
-.cwho img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.cwho img{width:76px;height:56px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:7px}
 .cwho b{display:block;font-size:15px}
 .cwho span{font-size:13px;color:var(--mut)}
 .cquote{margin-top:18px;font-size:17px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:16px 20px;max-width:720px;line-height:1.6}
@@ -210,6 +210,41 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .qi .a{font-size:14.3px;color:var(--body);line-height:1.7;margin-top:10px}
 .qi .a i{font-style:normal;color:var(--mint);font-weight:800;margin-right:8px}
 .exnote{max-width:820px;font-size:12.5px;color:var(--mut);background:#F6F8FC;border:1px dashed var(--line-2);border-radius:12px;padding:12px 16px}
+/* 가시성 평가 스코어 */
+.sc{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:stretch}
+.sc-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-sm);padding:26px}
+.sc-gcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.sc-ring{width:158px;height:158px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cobalt) var(--deg),#E7EDF7 0)}
+.sc-ring>div{width:126px;height:126px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
+.sc-ring b{font-family:var(--disp);font-size:42px;font-weight:700;color:var(--cobalt);line-height:1}
+.sc-ring span{font-size:11.5px;color:var(--mut);font-weight:700;margin-top:4px}
+.sc-lab{font-size:14px;font-weight:800}
+.sc-delta{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;background:var(--sky);color:var(--cobalt);border-radius:999px;padding:7px 14px}
+.sc-delta i{font-style:normal;color:var(--mut);font-weight:700}
+.sc-items{display:flex;flex-direction:column;gap:4px}
+.sc-g{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--mut);margin:10px 0 6px;display:flex;justify-content:space-between}
+.sc-g:first-child{margin-top:0}
+.sc-g b{color:var(--ink)}
+.si{display:grid;grid-template-columns:96px 1fr 64px;align-items:center;gap:12px;padding:4px 0}
+.si .n{font-size:12.8px;font-weight:700;color:var(--body);white-space:nowrap}
+.si .bar{height:8px;border-radius:99px;background:#EBF0F8;position:relative}
+.si .bar i{position:absolute;top:0;bottom:0;left:0;border-radius:99px;background:linear-gradient(90deg,#6E93FF,var(--cobalt))}
+.si .bar em{position:absolute;top:-3px;width:2px;height:14px;background:#C3CCDB;border-radius:2px}
+.si .v{font-size:12.8px;font-weight:800;text-align:right;color:var(--ink)}
+.si .v i{font-style:normal;color:var(--mut);font-weight:700}
+.sc-note{font-size:12px;color:var(--mut);margin-top:12px}
+@media(max-width:860px){.sc{grid-template-columns:1fr}.si{grid-template-columns:84px 1fr 58px}}
+/* 노출 질문 리포트 */
+.qx{max-width:820px;display:flex;flex-direction:column;gap:10px}
+.qxr{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh-sm);flex-wrap:wrap}
+.qxr .t{flex:1;min-width:230px;font-size:14.5px;font-weight:700;color:var(--ink);word-break:keep-all}
+.qxr .t::before{content:"Q. ";color:var(--cobalt);font-weight:800}
+.qxe{display:flex;gap:6px;flex-wrap:wrap}
+.qxe span{font-size:11px;font-weight:800;border-radius:999px;padding:5px 11px;background:var(--sky);color:var(--cobalt);display:inline-flex;align-items:center;gap:4px}
+.qxe span::before{content:"✓";font-size:10px;color:var(--mint)}
+.qxe span.off{background:#F3F5F9;color:#B6BFCE}
+.qxe span.off::before{content:"—";color:#C9D1DD}
+.qxnote{max-width:820px;font-size:12px;color:var(--mut);margin-top:14px}
 .ccta{background:linear-gradient(180deg,#0B1533,#101F3F 60%,#0A1224);color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
 .ccta::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% -10%,rgba(43,92,255,.32),transparent 62%)}
 .ccta .wrap{position:relative}
@@ -231,6 +266,50 @@ def bars(weeks):
         cls = ' class="cb zero"' if v == 0 else ' class="cb"'
         cells.append(f'<div{cls}><i style="height:{h}px"><em>{v}%</em></i><span>{lb}</span></div>')
     return "".join(cells)
+
+ENGINES = ["구글 AI", "ChatGPT", "Gemini", "Claude"]
+
+def qxs(x):
+    if not x.get("questions"):
+        return ""
+    rows = []
+    for q, on in x["questions"]:
+        chips = "".join(f'<span{"" if e in on else " class=\"off\""}>{e}</span>' for e in ENGINES)
+        rows.append(f'<div class="qxr"><div class="t">{q}</div><div class="qxe">{chips}</div></div>')
+    return f"""<section class="msec"><div class="wrap">
+<h2>지금, 이런 질문에 <em>등장합니다</em></h2>
+<div class="qx">{"".join(rows)}</div>
+<div class="qxnote">가시성 진단 질문 세트 기준 · 각 엔진의 답변에 인용 또는 추천으로 등장하는 질문입니다.</div>
+</div></section>"""
+
+def scorepanel(x):
+    s = x.get("score")
+    if not s:
+        return ""
+    def rows(items):
+        out = []
+        for n, mx, b, a in items:
+            pa = round(a / mx * 100)
+            pb = round(b / mx * 100)
+            out.append(f'<div class="si"><span class="n">{n}</span><span class="bar"><i style="width:{pa}%"></i><em style="left:{pb}%"></em></span><span class="v">{a}<i>/{mx}</i></span></div>')
+        return "".join(out)
+    seo, ai = s["items"][:3], s["items"][3:]
+    seo_a, ai_a = sum(i[3] for i in seo), sum(i[3] for i in ai)
+    deg = round(s["after"] * 3.6)
+    return f"""<div class="sc">
+<div class="sc-card sc-gcard">
+  <span class="sc-lab">종합 가시성 점수</span>
+  <div class="sc-ring" style="--deg:{deg}deg"><div><b>{s['after']}</b><span>100점 만점</span></div></div>
+  <span class="sc-delta"><i>도입 전 {s['before']}점</i> → {s['after']}점 · +{s['after']-s['before']}</span>
+</div>
+<div class="sc-card sc-items">
+  <div class="sc-g"><span>SEO 기본기 · 50점</span><b>{seo_a}점</b></div>
+  {rows(seo)}
+  <div class="sc-g"><span>AI 준비도 · 50점</span><b>{ai_a}점</b></div>
+  {rows(ai)}
+</div>
+</div>
+<div class="sc-note">messeze AI 가시성 평가 기준(SEO 기본기 50 + AI 준비도 50) · 회색 눈금은 도입 전 점수입니다.</div>"""
 
 def page(x):
     mcs = "".join(f'<div class="mc"><b>{n}</b><span class="l">{l}</span><span class="s">{s}</span></div>' for n, l, s in x["metrics"])
@@ -260,8 +339,9 @@ def page(x):
 </div></section>
 
 <section class="msec"><div class="wrap">
-<h2>핵심 성과 <em>한눈에</em></h2>
-<div class="mgrid">{mcs}</div>
+<h2>AI 가시성 평가 <em>{x['score']['before']}점 → {x['score']['after']}점</em></h2>
+{scorepanel(x)}
+<div class="mgrid" style="margin-top:26px">{mcs}</div>
 </div></section>
 
 <section class="msec bsec"><div class="wrap">
@@ -279,10 +359,11 @@ def page(x):
 <div class="chart"><div class="ct">핵심 질문 세트 기준 · 4개 엔진 평균</div><div class="cbars">{bars(x['weeks'])}</div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 값입니다.</div></div>
 </div></section>
 
-<section class="msec"><div class="wrap">
+{qxs(x)}
+
+<section class="msec bsec"><div class="wrap">
 <h2>{x['who']} 인터뷰</h2>
 <div class="qa2">{qas}</div>
-<div class="exnote" style="margin-top:22px">※ 본 사례는 서비스 준비 단계의 예시 구성이며, 수치·인터뷰는 실제 고객 사례로 순차 교체됩니다.</div>
 </div></section>
 
 <section class="ccta"><div class="wrap">

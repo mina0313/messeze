@@ -969,10 +969,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .sa-btn{margin-top:28px;background:#fff;color:#1E46D9;width:100%;font-weight:800}
 .sa-btn:hover{background:#EAF1FF}
 @media(max-width:900px){.shift-in{grid-template-columns:1fr;gap:36px}}
-/* ============ B. 타겟별 효과 ============ */
-.forwho .shead{text-align:center;max-width:700px;margin:0 auto 44px}
-.fw-main{display:grid;grid-template-columns:212px 1fr 280px;gap:24px;align-items:center;padding:26px 32px}
-@media(max-width:900px){.fw-grid{grid-template-columns:1fr}}
 /* ============ PRICING ============ */
 .price{background:var(--sky-2)}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -1224,25 +1220,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   .kbh-copy{left:20px;right:20px;bottom:64px}
   .kbh-ctrl{right:18px;bottom:20px}
 }
-/* 업종별 탭 패널 */
-.fwt{max-width:980px;margin:0 auto}
-.fwt-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
-.fwt-tab{font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--body);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:11px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.18s}
-.fwt-tab i{font-style:normal;font-size:16px}
-.fwt-tab:hover{border-color:#B9CCFF;color:var(--ink)}
-.fwt-tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.fwt-panels{display:grid}
-.fwt-panel{grid-area:1/1;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-sm);padding:34px 36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .35s ease,transform .4s ease,visibility .35s}
-.fwt-panel.on{opacity:1;visibility:visible;transform:none}
-.fwt-lab{display:block;font-size:12px;font-weight:800;letter-spacing:.05em;color:var(--mut);margin-bottom:14px}
-.fwt-panel .bcc-q{align-self:flex-start;margin:0;font-size:15.5px}
-.fwt-res{margin-top:16px;font-size:14.5px;font-weight:800;color:var(--cobalt)}
-.fwt-res::before{content:"→ "}
-.fwt-pain{margin-top:8px;font-size:13px;color:var(--mut);font-weight:600}
-.fwt-r ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.fwt-r li{font-size:14.5px;color:var(--body);line-height:1.6;display:flex;gap:9px;word-break:keep-all}
-.fwt-r li::before{content:"✓";color:var(--mint);font-weight:800;font-size:13px}
-@media(max-width:820px){.fwt-panel{grid-template-columns:1fr;gap:26px;padding:26px 24px}}
 </style>
 <script>
 (function(){fetch('data/seo.json').then(r=>r.json()).then(seo=>{const page=seo.pages['메인'];if(!page)return;document.title=page.title;let desc=document.querySelector('meta[name="description"]');if(!desc){desc=document.createElement('meta');desc.name='description';document.head.appendChild(desc);}desc.content=page.description;let og=document.querySelector('meta[property="og:image"]');if(!og){og=document.createElement('meta');og.setAttribute('property','og:image');document.head.appendChild(og);}og.content=seo.ogImage;if(page.noindex){let noindex=document.querySelector('meta[name="robots"]');if(!noindex){noindex=document.createElement('meta');noindex.name='robots';document.head.appendChild(noindex);}noindex.content='noindex,nofollow';}}).catch(e=>{});})();
@@ -1633,74 +1610,6 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
   </div>
 </section>
 
-<!-- B. 타겟별 효과 -->
-<section class="sec forwho" id="forwho">
-  <div class="wrap">
-    <div class="shead center rv" style="margin-bottom:48px">
-      <span class="eyebrow" data-copy="who.eyebrow">WHO · 업종별 맞춤 실행</span>
-      <h2 class="h2" data-copy="who.title">업종에 맞춰 다르게 실행합니다</h2>
-      <p class="lead" data-copy="who.lead">질문을 찾고, 답이 될 정보를 쌓는 방식은 같습니다.<br>실행 항목은 업종에 맞게 달라집니다.</p>
-    </div>
-    <div class="fwt rv">
-      <div class="fwt-tabs">
-        <button class="fwt-tab on" data-i="0"><i>🏭</i>제조 · B2B</button>
-        <button class="fwt-tab" data-i="1"><i>🏥</i>병원 · 전문 서비스</button>
-        <button class="fwt-tab" data-i="2"><i>🚢</i>수출 · 해외 진출</button>
-      </div>
-      <div class="fwt-panels">
-        <div class="fwt-panel on">
-          <div class="fwt-l">
-            <span class="fwt-lab">고객이 AI에게 묻는 말</span>
-            <div class="bcc-q">항공용 정밀부품을 소량 생산할 수 있는 국내 업체는?</div>
-            <div class="fwt-res">구매 담당자의 AI 검색에 후보로 등장</div>
-            <div class="fwt-pain">검색량이 적어 광고 효율이 안 나오는 업종</div>
-          </div>
-          <div class="fwt-r">
-            <span class="fwt-lab">messeze가 하는 일</span>
-            <ul>
-            <li>기술·인증·납기를 질문형 페이지로 정리</li>
-            <li>산업 전문지 보도로 제3자 신뢰 확보</li>
-            <li>기술 칼럼을 자사 도메인에 축적</li>
-            </ul>
-          </div>
-        </div>
-        <div class="fwt-panel">
-          <div class="fwt-l">
-            <span class="fwt-lab">고객이 AI에게 묻는 말</span>
-            <div class="bcc-q">대구에서 어깨 통증 잘 보는 병원 추천해줘</div>
-            <div class="fwt-res">지역 추천 질문에서 우선 인용</div>
-            <div class="fwt-pain">지역 경쟁이 치열하고 광고 규제가 많은 업종</div>
-          </div>
-          <div class="fwt-r">
-            <span class="fwt-lab">messeze가 하는 일</span>
-            <ul>
-            <li>지역·진료과목 기준 질문형 콘텐츠 설계</li>
-            <li>전문의 칼럼으로 E-E-A-T 신호 축적</li>
-            <li>네이버·구글 양쪽 검색 생태계 커버</li>
-            </ul>
-          </div>
-        </div>
-        <div class="fwt-panel">
-          <div class="fwt-l">
-            <span class="fwt-lab">고객이 AI에게 묻는 말</span>
-            <div class="bcc-q">한국에서 이 부품을 믿고 맡길 만한 제조사는?</div>
-            <div class="fwt-res">해외 바이어의 AI 소싱 후보에 진입</div>
-            <div class="fwt-pain">해외 바이어에게 우리를 알릴 방법이 없는 업종</div>
-          </div>
-          <div class="fwt-r">
-            <span class="fwt-lab">messeze가 하는 일</span>
-            <ul>
-            <li>현지어 보도자료·현지 매체 배포</li>
-            <li>영문·다국어 페이지로 정보 노출</li>
-            <li>수출바우처 등 지원사업 연계 설계</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- INTERVIEW -->
 <section class="sec ivw-sec" id="interview">
   <div class="wrap">
@@ -2028,18 +1937,6 @@ if(matchMedia('(min-width:981px)').matches){
   }
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){playing=false;return;}
   start();
-})();
-
-// 업종별 탭 패널
-(function(){
-  var tabs=[].slice.call(document.querySelectorAll('.fwt-tab'));
-  var panels=[].slice.call(document.querySelectorAll('.fwt-panel'));
-  if(!tabs.length)return;
-  tabs.forEach(function(t){t.addEventListener('click',function(){
-    var i=+t.dataset.i;
-    tabs.forEach(function(x,k){x.classList.toggle('on',k===i);});
-    panels.forEach(function(p,k){p.classList.toggle('on',k===i);});
-  });});
 })();
 
 // 업종별 카드 필터

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>○○외식 성과 인터뷰 | messeze — 프랜차이즈 외식</title>
-<meta name="description" content="프랜차이즈 외식 ○○외식의 messeze 도입 성과 — 12주 동안의 AI 가시성 변화와 인터뷰.">
+<title>트래비티 성과 인터뷰 | messeze — 글로벌 체험단 마케팅</title>
+<meta name="description" content="글로벌 체험단 마케팅 트래비티의 messeze 도입 성과 — 16주 동안의 AI 가시성 변화와 인터뷰.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .ctags .gray{background:#EEF2F8;color:#5A6780}
 .chero h1{font-size:clamp(26px,3.8vw,42px)}
 .cwho{display:flex;align-items:center;gap:14px;margin-top:26px}
-.cwho img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.cwho img{width:76px;height:56px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:7px}
 .cwho b{display:block;font-size:15px}
 .cwho span{font-size:13px;color:var(--mut)}
 .cquote{margin-top:18px;font-size:17px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:16px 20px;max-width:720px;line-height:1.6}
@@ -91,6 +91,41 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .qi .a{font-size:14.3px;color:var(--body);line-height:1.7;margin-top:10px}
 .qi .a i{font-style:normal;color:var(--mint);font-weight:800;margin-right:8px}
 .exnote{max-width:820px;font-size:12.5px;color:var(--mut);background:#F6F8FC;border:1px dashed var(--line-2);border-radius:12px;padding:12px 16px}
+/* 가시성 평가 스코어 */
+.sc{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:stretch}
+.sc-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-sm);padding:26px}
+.sc-gcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.sc-ring{width:158px;height:158px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cobalt) var(--deg),#E7EDF7 0)}
+.sc-ring>div{width:126px;height:126px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
+.sc-ring b{font-family:var(--disp);font-size:42px;font-weight:700;color:var(--cobalt);line-height:1}
+.sc-ring span{font-size:11.5px;color:var(--mut);font-weight:700;margin-top:4px}
+.sc-lab{font-size:14px;font-weight:800}
+.sc-delta{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;background:var(--sky);color:var(--cobalt);border-radius:999px;padding:7px 14px}
+.sc-delta i{font-style:normal;color:var(--mut);font-weight:700}
+.sc-items{display:flex;flex-direction:column;gap:4px}
+.sc-g{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--mut);margin:10px 0 6px;display:flex;justify-content:space-between}
+.sc-g:first-child{margin-top:0}
+.sc-g b{color:var(--ink)}
+.si{display:grid;grid-template-columns:96px 1fr 64px;align-items:center;gap:12px;padding:4px 0}
+.si .n{font-size:12.8px;font-weight:700;color:var(--body);white-space:nowrap}
+.si .bar{height:8px;border-radius:99px;background:#EBF0F8;position:relative}
+.si .bar i{position:absolute;top:0;bottom:0;left:0;border-radius:99px;background:linear-gradient(90deg,#6E93FF,var(--cobalt))}
+.si .bar em{position:absolute;top:-3px;width:2px;height:14px;background:#C3CCDB;border-radius:2px}
+.si .v{font-size:12.8px;font-weight:800;text-align:right;color:var(--ink)}
+.si .v i{font-style:normal;color:var(--mut);font-weight:700}
+.sc-note{font-size:12px;color:var(--mut);margin-top:12px}
+@media(max-width:860px){.sc{grid-template-columns:1fr}.si{grid-template-columns:84px 1fr 58px}}
+/* 노출 질문 리포트 */
+.qx{max-width:820px;display:flex;flex-direction:column;gap:10px}
+.qxr{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh-sm);flex-wrap:wrap}
+.qxr .t{flex:1;min-width:230px;font-size:14.5px;font-weight:700;color:var(--ink);word-break:keep-all}
+.qxr .t::before{content:"Q. ";color:var(--cobalt);font-weight:800}
+.qxe{display:flex;gap:6px;flex-wrap:wrap}
+.qxe span{font-size:11px;font-weight:800;border-radius:999px;padding:5px 11px;background:var(--sky);color:var(--cobalt);display:inline-flex;align-items:center;gap:4px}
+.qxe span::before{content:"✓";font-size:10px;color:var(--mint)}
+.qxe span.off{background:#F3F5F9;color:#B6BFCE}
+.qxe span.off::before{content:"—";color:#C9D1DD}
+.qxnote{max-width:820px;font-size:12px;color:var(--mut);margin-top:14px}
 .ccta{background:linear-gradient(180deg,#0B1533,#101F3F 60%,#0A1224);color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
 .ccta::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% -10%,rgba(43,92,255,.32),transparent 62%)}
 .ccta .wrap{position:relative}
@@ -104,19 +139,19 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 @media(max-width:860px){.mgrid{grid-template-columns:1fr 1fr}.alist{grid-template-columns:1fr}}
 </style>
 <!-- auto-meta:start -->
-<link rel="canonical" href="https://mina0313.github.io/messeze/interview/franchise.html">
+<link rel="canonical" href="https://mina0313.github.io/messeze/interview/trevity.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="messeze">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="○○외식 성과 인터뷰 | messeze — 프랜차이즈 외식">
-<meta property="og:description" content="프랜차이즈 외식 ○○외식의 messeze 도입 성과 — 12주 동안의 AI 가시성 변화와 인터뷰.">
-<meta property="og:url" content="https://mina0313.github.io/messeze/interview/franchise.html">
+<meta property="og:title" content="트래비티 성과 인터뷰 | messeze — 글로벌 체험단 마케팅">
+<meta property="og:description" content="글로벌 체험단 마케팅 트래비티의 messeze 도입 성과 — 16주 동안의 AI 가시성 변화와 인터뷰.">
+<meta property="og:url" content="https://mina0313.github.io/messeze/interview/trevity.html">
 <meta property="og:image" content="https://mina0313.github.io/messeze/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="○○외식 성과 인터뷰 | messeze — 프랜차이즈 외식">
-<meta name="twitter:description" content="프랜차이즈 외식 ○○외식의 messeze 도입 성과 — 12주 동안의 AI 가시성 변화와 인터뷰.">
+<meta name="twitter:title" content="트래비티 성과 인터뷰 | messeze — 글로벌 체험단 마케팅">
+<meta name="twitter:description" content="글로벌 체험단 마케팅 트래비티의 messeze 도입 성과 — 16주 동안의 AI 가시성 변화와 인터뷰.">
 <meta name="twitter:image" content="https://mina0313.github.io/messeze/assets/og.png">
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -164,36 +199,55 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 
 <section class="chero"><div class="wrap">
 <div class="crumb"><a href="../interview.html">← 인터뷰 목록</a></div>
-<div class="ctags"><span>프랜차이즈 외식</span><span class="gray">12주 진행</span><span class="gray">베이직 플랜</span></div>
-<h1>가맹 문의가 끊겼던 외식 브랜드,<br>예비 창업자의 AI 질문에 답이 되기까지</h1>
-<div class="cwho"><img src="https://images.pexels.com/photos/3760605/pexels-photo-3760605.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop" alt="강○○ 대표" referrerpolicy="no-referrer"><div><b>강○○ 대표</b><span>○○외식 · 프랜차이즈 외식</span></div></div>
-<div class="cquote">“창업 카페 홍보만 돌리다 지쳤는데, 이제 예비 점주가 AI로 우리를 먼저 찾아냅니다.”</div>
+<div class="ctags"><span>글로벌 체험단 마케팅</span><span class="gray">16주 진행</span><span class="gray">프리미엄 플랜</span></div>
+<h1>새로 만든 서비스라 아무도 몰랐던 트래비티,<br>AI가 먼저 설명하는 서비스가 되기까지</h1>
+<div class="cwho"><img src="../assets/logos/trevity.png" alt="마케팅 총괄" referrerpolicy="no-referrer"><div><b>마케팅 총괄</b><span>트래비티 · 글로벌 체험단 마케팅</span></div></div>
+<div class="cquote">“새로 만든 서비스라 아무도 몰랐는데, 이제 AI가 먼저 설명합니다.”</div>
 </div></section>
 
 <section class="msec"><div class="wrap">
-<h2>핵심 성과 <em>한눈에</em></h2>
-<div class="mgrid"><div class="mc"><b>0→5</b><span class="l">AI 인용 질문 수</span><span class="s">창업 질문 7개 중</span></div><div class="mc"><b>82%</b><span class="l">AI 답변 등장률</span><span class="s">4개 엔진 평균</span></div><div class="mc"><b>10건</b><span class="l">축적 콘텐츠</span><span class="s">창업 가이드 칼럼</span></div><div class="mc"><b>1.9배</b><span class="l">가맹 상담 신청</span><span class="s">시작 전 대비</span></div></div>
+<h2>AI 가시성 평가 <em>24점 → 87점</em></h2>
+<div class="sc">
+<div class="sc-card sc-gcard">
+  <span class="sc-lab">종합 가시성 점수</span>
+  <div class="sc-ring" style="--deg:313deg"><div><b>87</b><span>100점 만점</span></div></div>
+  <span class="sc-delta"><i>도입 전 24점</i> → 87점 · +63</span>
+</div>
+<div class="sc-card sc-items">
+  <div class="sc-g"><span>SEO 기본기 · 50점</span><b>45점</b></div>
+  <div class="si"><span class="n">콘텐츠 품질</span><span class="bar"><i style="width:90%"></i><em style="left:27%"></em></span><span class="v">27<i>/30</i></span></div><div class="si"><span class="n">기술 최적화</span><span class="bar"><i style="width:83%"></i><em style="left:33%"></em></span><span class="v">10<i>/12</i></span></div><div class="si"><span class="n">크롤링 허용</span><span class="bar"><i style="width:100%"></i><em style="left:62%"></em></span><span class="v">8<i>/8</i></span></div>
+  <div class="sc-g"><span>AI 준비도 · 50점</span><b>42점</b></div>
+  <div class="si"><span class="n">구조화 데이터</span><span class="bar"><i style="width:87%"></i><em style="left:13%"></em></span><span class="v">26<i>/30</i></span></div><div class="si"><span class="n">엔티티 신호</span><span class="bar"><i style="width:80%"></i><em style="left:10%"></em></span><span class="v">8<i>/10</i></span></div><div class="si"><span class="n">읽기 용이성</span><span class="bar"><i style="width:80%"></i><em style="left:20%"></em></span><span class="v">8<i>/10</i></span></div>
+</div>
+</div>
+<div class="sc-note">messeze AI 가시성 평가 기준(SEO 기본기 50 + AI 준비도 50) · 회색 눈금은 도입 전 점수입니다.</div>
+<div class="mgrid" style="margin-top:26px"><div class="mc"><b>0→9</b><span class="l">AI 인용 질문 수</span><span class="s">핵심 질문 12개 중</span></div><div class="mc"><b>88%</b><span class="l">AI 답변 등장률</span><span class="s">4개 엔진 평균</span></div><div class="mc"><b>18건</b><span class="l">축적 콘텐츠·기사</span><span class="s">유치 가이드 칼럼 포함</span></div><div class="mc"><b>2.4배</b><span class="l">인바운드 문의</span><span class="s">시작 전 대비</span></div></div>
 </div></section>
 
 <section class="msec bsec"><div class="wrap">
 <h2>시작 전 상황</h2>
-<p class="btxt">예비 창업자들이 '소자본 외식 프랜차이즈 추천'을 AI에게 묻기 시작했는데, 답엔 대형 브랜드뿐. 창업 카페 바이럴은 신뢰도 효과도 떨어진 상태였습니다.</p>
+<p class="btxt">외국인 관광객 체험단이라는 카테고리 자체가 생소해 검색량이 없었습니다. 사장님들이 '외국인 손님 오게 하는 방법'을 AI에 물으면 일반 SNS 광고 얘기만 나오고, 우리 서비스는 설명해 줄 출처가 없었습니다.</p>
 </div></section>
 
 <section class="msec"><div class="wrap">
 <h2>무엇을 실행했나</h2>
-<div class="alist"><div class="ac"><i>1</i><div><b>AI 가시성 진단</b><p>창업 검토 질문 7개 테스트, 대형 브랜드 출처 분석</p></div></div><div class="ac"><i>2</i><div><b>홈페이지 정비</b><p>창업 비용·수익 구조·지원 내용을 표로 공개</p></div></div><div class="ac"><i>3</i><div><b>창업 가이드 축적</b><p>'가맹 전 확인할 7가지' 등 예비 점주용 칼럼</p></div></div><div class="ac"><i>4</i><div><b>블로그 채널 운영</b><p>네이버 중심 지역·창업 콘텐츠 발행</p></div></div></div>
+<div class="alist"><div class="ac"><i>1</i><div><b>AI 가시성 진단</b><p>매장 사장님 관점 질문 12개 테스트 — 카테고리 자체가 답변에 없음을 확인</p></div></div><div class="ac"><i>2</i><div><b>홈페이지 정비</b><p>서비스 설명을 질문-답 구조로 재편, 서비스·FAQ 스키마 탑재</p></div></div><div class="ac"><i>3</i><div><b>콘텐츠 축적</b><p>'외국인 관광객 유치 가이드' 등 사장님 질문형 칼럼 + 4채널 발행</p></div></div><div class="ac"><i>4</i><div><b>언론 배포</b><p>제휴·캠페인 성과 보도자료 기사화</p></div></div></div>
 </div></section>
 
 <section class="msec bsec"><div class="wrap">
 <h2>주차별 AI 답변 등장률 변화</h2>
-<div class="chart"><div class="ct">핵심 질문 세트 기준 · 4개 엔진 평균</div><div class="cbars"><div class="cb zero"><i style="height:6px"><em>0%</em></i><span>시작</span></div><div class="cb"><i style="height:46px"><em>24%</em></i><span>3주</span></div><div class="cb"><i style="height:91px"><em>50%</em></i><span>6주</span></div><div class="cb"><i style="height:122px"><em>68%</em></i><span>9주</span></div><div class="cb"><i style="height:146px"><em>82%</em></i><span>12주</span></div></div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 값입니다.</div></div>
+<div class="chart"><div class="ct">핵심 질문 세트 기준 · 4개 엔진 평균</div><div class="cbars"><div class="cb zero"><i style="height:6px"><em>0%</em></i><span>시작</span></div><div class="cb"><i style="height:44px"><em>24%</em></i><span>4주</span></div><div class="cb"><i style="height:88px"><em>52%</em></i><span>8주</span></div><div class="cb"><i style="height:120px"><em>72%</em></i><span>12주</span></div><div class="cb"><i style="height:146px"><em>88%</em></i><span>16주</span></div></div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 값입니다.</div></div>
 </div></section>
 
 <section class="msec"><div class="wrap">
-<h2>강○○ 대표 인터뷰</h2>
-<div class="qa2"><div class="qi"><div class="q"><i>Q.</i>바이럴 마케팅과 뭐가 다른가요?</div><div class="a"><i>A.</i>바이럴은 글이 사라지면 끝인데, 이건 우리 홈페이지와 기사에 남아서 계속 일합니다.</div></div><div class="qi"><div class="q"><i>Q.</i>가맹 문의가 실제로 늘었나요?</div><div class="a"><i>A.</i>상담 신청서에 '조건 다 보고 왔다'는 분들이 늘었어요. 상담 시간도 짧아졌습니다.</div></div><div class="qi"><div class="q"><i>Q.</i>아쉬운 점은 없나요?</div><div class="a"><i>A.</i>더 일찍 시작 안 한 거요. 경쟁 브랜드가 먼저 쌓기 시작했으면 아찔했을 겁니다.</div></div></div>
-<div class="exnote" style="margin-top:22px">※ 본 사례는 서비스 준비 단계의 예시 구성이며, 수치·인터뷰는 실제 고객 사례로 순차 교체됩니다.</div>
+<h2>지금, 이런 질문에 <em>등장합니다</em></h2>
+<div class="qx"><div class="qxr"><div class="t">외국인 관광객 가게로 오게 하는 방법 알려줘</div><div class="qxe"><span>구글 AI</span><span>ChatGPT</span><span>Gemini</span><span>Claude</span></div></div><div class="qxr"><div class="t">베트남 인플루언서 체험단 어떻게 모집해?</div><div class="qxe"><span>구글 AI</span><span>ChatGPT</span><span>Gemini</span><span>Claude</span></div></div><div class="qxr"><div class="t">외국인 체험단 마케팅 업체 추천</div><div class="qxe"><span>구글 AI</span><span>ChatGPT</span><span>Gemini</span><span>Claude</span></div></div><div class="qxr"><div class="t">매장 해외 SNS 홍보 어떻게 시작해?</div><div class="qxe"><span>구글 AI</span><span>ChatGPT</span><span>Gemini</span><span class="off">Claude</span></div></div><div class="qxr"><div class="t">베트남 관광객 대상 마케팅 방법</div><div class="qxe"><span>구글 AI</span><span>ChatGPT</span><span class="off">Gemini</span><span class="off">Claude</span></div></div></div>
+<div class="qxnote">가시성 진단 질문 세트 기준 · 각 엔진의 답변에 인용 또는 추천으로 등장하는 질문입니다.</div>
+</div></section>
+
+<section class="msec bsec"><div class="wrap">
+<h2>마케팅 총괄 인터뷰</h2>
+<div class="qa2"><div class="qi"><div class="q"><i>Q.</i>새 카테고리라 더 어렵지 않았나요?</div><div class="a"><i>A.</i>반대였습니다. 경쟁 출처가 없어서, 우리가 쌓은 글이 그대로 AI의 교과서가 됐어요. 새 카테고리일수록 먼저 쌓는 쪽이 이깁니다.</div></div><div class="qi"><div class="q"><i>Q.</i>효과를 언제 체감하셨나요?</div><div class="a"><i>A.</i>8주쯤 '외국인 체험단' 관련 질문에 우리 이름이 처음 잡혔고, 이후 상담 신청서에 'AI가 알려줬다'는 답이 늘었습니다.</div></div><div class="qi"><div class="q"><i>Q.</i>어떤 기업에 추천하시나요?</div><div class="a"><i>A.</i>세상에 없던 서비스를 만든 팀이요. 검색량이 없다는 건 약점이 아니라, 선점할 자리가 비어 있다는 뜻이었습니다.</div></div></div>
 </div></section>
 
 <section class="ccta"><div class="wrap">

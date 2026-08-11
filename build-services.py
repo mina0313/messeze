@@ -271,6 +271,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .dv-card h3{color:#fff;font-size:19px;position:relative}
 .dv-card .chips{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .dv-card .chips span{font-size:13px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 15px}
+.dv-card .dvl{position:relative;display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.dvi{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:15px 17px}
+.dvi i{font-style:normal;font-family:var(--disp);font-weight:700;font-size:12.5px;color:#8FB0FF;padding-top:2px;flex:0 0 auto}
+.dvi b{font-size:14.8px;display:block}
+.dvi p{font-size:12.8px;color:#C9D6F5;margin-top:3px;line-height:1.55}
 .prcheck{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:30px 32px;display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center}.prc-score{text-align:center}.prc-gauge{display:inline-flex;align-items:baseline;gap:2px;font-family:var(--disp);color:var(--cobalt)}.prc-gauge b{font-size:52px;font-weight:700;line-height:1}.prc-gauge span{font-size:16px;font-weight:700}.prc-score p{font-size:13px;color:var(--body);margin-top:10px;line-height:1.6}.prc-items{display:flex;flex-direction:column;gap:11px}.prc-i{display:grid;grid-template-columns:82px 1fr 46px;gap:10px;align-items:center;font-size:13px;font-weight:700}.prc-i i{height:8px;border-radius:4px;background:#EEF2F9;overflow:hidden;display:block}.prc-i i em{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cobalt),#6E93FF)}.prc-i b{text-align:right;font-family:var(--disp);color:var(--mut)}.prc-cta{max-width:820px;margin:22px auto 0;background:var(--ink);color:#fff;border-radius:18px;padding:24px 28px;text-align:center}.prc-cta b{font-size:16px;display:block}.prc-cta span{display:block;font-size:13.5px;color:#AEB9D2;margin:8px 0 16px}@media(max-width:720px){.prcheck{grid-template-columns:1fr;gap:22px}}
 /* faq */
 .faq{max-width:760px;margin:0 auto}
@@ -580,7 +585,10 @@ def build_page(x):
     items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
     procs = "\n".join(f"""<div class="pr rv"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
-    delivs = "".join(f"<span>{d}</span>" for d in x["deliv"])
+    delivs = "".join(
+        f'<div class="dvi"><i>{i+1:02d}</i><div><b>{d[0]}</b><p>{d[1]}</p></div></div>' if isinstance(d, (list, tuple))
+        else f"<span>{d}</span>"
+        for i, d in enumerate(x["deliv"]))
     faqs = "\n".join(f"""<div class="qa"><button>{q}<span class="ico">+</span></button><div class="ans"><p>{a}</p></div></div>""" for q,a in x["faq"])
     _rt = RELTOOL.get(x["slug"])
     reltool = (f"""<a class="reltool rv" href="{_rt[0]}"><div><span class="rt-tag">관련 무료 도구</span><h3>{_rt[1]}</h3><p>{_rt[2]}</p></div><span class="rt-go">바로 써보기 →</span></a>""" if _rt else "")
@@ -627,7 +635,7 @@ def build_page(x):
 <section class="sec"><div class="wrap">
 <div class="fitrow">
 <div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">이런 상황이라면,<br>시작할 때입니다</h2><div class="fit-list">{fits}</div></div>
-<div class="dv-card rv"><h3>이렇게 받으세요</h3><div class="chips">{delivs}</div></div>
+<div class="dv-card rv"><h3>산출물</h3><div class="dvl">{delivs}</div></div>
 </div>
 </div></section>
 
