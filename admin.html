@@ -251,7 +251,7 @@ async function load(key,view){
   try{
     const r = await fetch(APPS_URL+'?key='+encodeURIComponent(key)+'&t='+Date.now());
     const j = await r.json();
-    if(!j.ok){localStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
+    if(!j.ok){sessionStorage.removeItem(KEY_LS);return showGate('아이디 또는 비밀번호가 올바르지 않습니다.');}
     sessionStorage.setItem(KEY_LS,key);
     document.body.classList.remove('gated');
     LAST={key:key,rows:(j.rows||[]).filter(r=>String(r.name||'')||String(r.company||'')||String(r.phone||'')||String(r.memo||'')),checks:(j.checks||[]).filter(c=>String(c.site||''))};
@@ -271,7 +271,7 @@ function fmtTs(ts){
 function renderChk(){
   updateSidebar('chk');
   const list=LAST.checks||[];
-  app.innerHTML=`<h1 style="margin:20px 0 6px">🔍 가시성 체크 목록 · ${list.length}건</h1>
+  app.innerHTML=`<div class="bar"><h1>🔍 가시성 체크 목록 · ${list.length}건</h1><span class="sp"></span><button id="rfc">새로고침</button></div>
   <p class="cms-note">홈페이지에서 <b>무료 AI 가시성 진단</b>을 돌린 방문자 기록입니다 — 이미 관심을 보인 잠재 고객이니, 버튼 한 번으로 진단 리포트를 만들어 연락해 보세요.</p>
   ${list.length?'':'<div class="empty">아직 기록이 없습니다.</div>'}
   <div class="cms-list">${list.map((c,i)=>{
@@ -283,6 +283,7 @@ function renderChk(){
       <button class="dup" style="flex:0 0 auto" data-site="${esc(c.site||'')}">📊 진단</button>
     </div>`}).join('')}</div>`;
   document.querySelectorAll('[data-site]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.site);});
+  const _rfc=document.getElementById('rfc'); if(_rfc)_rfc.onclick=()=>load(LAST.key,'chk');
 }
 
 function render(key, rows){
@@ -363,7 +364,7 @@ function render(key, rows){
     a.click(); URL.revokeObjectURL(a.href);
   };
   document.getElementById('rf').onclick = ()=>load(key);
-  document.getElementById('out2').onclick = ()=>{localStorage.removeItem(KEY_LS);showGate();};
+  document.getElementById('out2').onclick = ()=>{LAST={key:null,rows:[],checks:[]};sessionStorage.removeItem(KEY_LS);showGate();};
 }
 
 const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
@@ -556,13 +557,19 @@ function go(v){
   if(v==='seo')return jsonEditHome('seo');
   if(v==='settings')return jsonEditHome('settings');
   if(!APPS_URL)return showSetup();
-  const saved=localStorage.getItem(KEY_LS);
+  const saved=sessionStorage.getItem(KEY_LS);
   if(!saved)return showGate();
+  // 이미 받아온 데이터가 있으면 즉시 표시 (Apps Script 재조회 생략)
+  if(LAST.key===saved && (LAST.rows.length || LAST.checks.length)){
+    document.body.classList.remove('gated');
+    document.getElementById('out').style.display='block';
+    return v==='chk' ? renderChk() : render(saved, LAST.rows);
+  }
   if(v==='chk')return load(saved,'chk');
   load(saved);
 }
 
-document.getElementById('out').onclick = ()=>{localStorage.removeItem(KEY_LS);showGate();};
+document.getElementById('out').onclick = ()=>{LAST={key:null,rows:[],checks:[]};sessionStorage.removeItem(KEY_LS);showGate();};
 go('inq');
 </script>
 </body>
