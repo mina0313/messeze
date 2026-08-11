@@ -44,7 +44,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
 .cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
 .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
-.cta-band h3{font-size:clamp(20px,2.6vw,27px);color:#fff;position:relative}
+.cta-band h2{font-size:clamp(20px,2.6vw,27px);color:#fff;position:relative}
 .cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
 .cta-band .btn{position:relative;background:var(--cobalt);color:#fff;font-weight:700;font-size:15px;padding:15px 26px;border-radius:14px;display:inline-flex;transition:.18s}
 .cta-band .btn:hover{background:#4270FF}
@@ -55,7 +55,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .mega-brand:hover{transform:translateY(-3px)}
 .mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
 .mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
-.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .h5x{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
 .mega-col .gap{height:20px}
 .mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
 .mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
@@ -68,20 +68,20 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 def mega(p):
     return f"""<div class="mega" id="mega"><div class="wrap mega-in">
 <a class="mega-brand" href="{p}index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
-<div class="mega-col"><h5>서비스</h5>
+<div class="mega-col"><div class="h5x">서비스</div>
 <a href="{p}services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
 <a href="{p}services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
 <a href="{p}services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
 <a href="{p}services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
 <a href="{p}services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
 <a href="{p}services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
-<div class="mega-col"><h5>무료 도구</h5>
+<div class="mega-col"><div class="h5x">무료 도구</div>
 <a href="{p}check.html"><b>AI 노출 무료 진단</b><span>URL만 넣으면 30초 진단</span></a>
 <a href="{p}tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
-<div class="gap"></div><h5>요금</h5>
+<div class="gap"></div><div class="h5x">요금</div>
 <a href="{p}pricing.html"><b>플랜 비교</b><span>베이직 · 프리미엄 · 엔터프라이즈</span></a>
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
-<div class="mega-col"><h5>리소스</h5>
+<div class="mega-col"><div class="h5x">리소스</div>
 <a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
 <a href="{p}interview.html"><b>인터뷰</b><span>먼저 시작한 기업들의 이야기</span></a>
 <a href="{p}glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 {len(T)}개</span></a></div>
@@ -120,21 +120,21 @@ def nav(depth, on="glossary"):
 
 def foot(depth):
     p = "../" * depth
-    return f"""<footer class="foot"><style>.foot{{background:#070D1C;color:#7C879D;padding:60px 0 42px;font-size:13.5px}}.foot a{{color:inherit;text-decoration:none}}.foot .wrap{{max-width:1140px;margin:0 auto;padding:0 24px}}.foot-in{{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}}.foot .brand{{color:#fff;margin-bottom:16px;display:inline-block}}.foot p{{font-size:13.5px;line-height:1.7;max-width:320px;margin:0}}.foot-info{{font-size:12.5px;line-height:1.7;color:#7C879D;margin-top:14px}}.foot-cols{{display:flex;gap:56px}}.foot-col h5{{color:#C3CBDC;font-size:13.5px;margin:0 0 15px;font-weight:800}}.foot-col a{{display:block;font-size:14px;margin-bottom:10px}}.foot-col a:hover{{color:#fff}}.foot-b{{margin-top:46px;padding-top:24px;border-top:1px solid #141C30;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#4E5A73}}@media(max-width:720px){{.foot-cols{{gap:32px;flex-wrap:wrap}}}}</style><div class="wrap"><div class="foot-in">
+    return f"""<footer class="foot"><style>.foot{{background:#070D1C;color:#7C879D;padding:60px 0 42px;font-size:13.5px}}.foot a{{color:inherit;text-decoration:none}}.foot .wrap{{max-width:1140px;margin:0 auto;padding:0 24px}}.foot-in{{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}}.foot .brand{{color:#fff;margin-bottom:16px;display:inline-block}}.foot p{{font-size:13.5px;line-height:1.7;max-width:320px;margin:0}}.foot-info{{font-size:12.5px;line-height:1.7;color:#7C879D;margin-top:14px}}.foot-cols{{display:flex;gap:56px}}.foot-col .h5x{{color:#C3CBDC;font-size:13.5px;margin:0 0 15px;font-weight:800}}.foot-col a{{display:block;font-size:14px;margin-bottom:10px}}.foot-col a:hover{{color:#fff}}.foot-b{{margin-top:46px;padding-top:24px;border-top:1px solid #141C30;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#4E5A73}}@media(max-width:720px){{.foot-cols{{gap:32px;flex-wrap:wrap}}}}</style><div class="wrap"><div class="foot-in">
 <div><a class="brand" href="{p}index.html"><img src="{p}assets/logo-white.png" alt="messeze" style="height:24px;width:auto;display:block"></a>
 <p>기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스.</p>
 <div class="foot-info">주식회사 메세지 · 주식회사 퍼스트마케팅컴퍼니<br>대구광역시 중구 국채보상로 488, 3층<br>대표번호 1600-9487 · sales@firstmkt.co.kr</div></div>
 <div class="foot-cols">
-<div class="foot-col"><h5>서비스</h5><a href="{p}services.html">서비스 상세</a><a href="{p}pricing.html">요금</a><a href="{p}check.html">AI 노출 진단</a></div>
-<div class="foot-col"><h5>리소스</h5><a href="{p}blog/index.html">블로그</a><a href="{p}interview.html">인터뷰</a><a href="{p}glossary/index.html">용어사전</a><a href="{p}faq.html">FAQ</a></div>
-<div class="foot-col"><h5>회사</h5><a href="{p}index.html#final">상담 신청</a><a href="{p}index.html#final">무료 진단</a></div>
+<div class="foot-col"><div class="h5x">서비스</div><a href="{p}services.html">서비스 상세</a><a href="{p}pricing.html">요금</a><a href="{p}check.html">AI 노출 진단</a></div>
+<div class="foot-col"><div class="h5x">리소스</div><a href="{p}blog/index.html">블로그</a><a href="{p}interview.html">인터뷰</a><a href="{p}glossary/index.html">용어사전</a><a href="{p}faq.html">FAQ</a></div>
+<div class="foot-col"><div class="h5x">회사</div><a href="{p}index.html#final">상담 신청</a><a href="{p}index.html#final">무료 진단</a></div>
 </div>
 </div><div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div></div></footer>"""
 
 def cta(depth):
     p = "../" * depth
     return f"""<div class="wrap"><div class="cta-band">
-<div><h3>용어는 알겠는데, 실행할 사람이 없다면?</h3><p>진단부터 콘텐츠·언론 축적까지 — messeze 전담팀이 매달 대신 실행합니다.</p></div>
+<div><h2>용어는 알겠는데, 실행할 사람이 없다면?</h2><p>진단부터 콘텐츠·언론 축적까지 — messeze 전담팀이 매달 대신 실행합니다.</p></div>
 <a class="btn" href="{p}index.html#final">무료 진단 신청하기</a></div></div>"""
 
 # ---------------- 카테고리 ----------------
@@ -992,7 +992,7 @@ TERM_CSS = CSS + """
 .whybox .lb{position:relative;font-size:11.5px;font-weight:800;color:#7FA0FF;letter-spacing:.04em;margin-bottom:8px}
 .whybox p{position:relative;font-size:15px;line-height:1.7;color:#DDE4F2;font-weight:600}
 .rel{max-width:720px;margin:40px auto 0}
-.rel h3{font-size:17px;margin-bottom:14px}
+.rel h2{font-size:17px;margin-bottom:14px}
 .rel .chips{display:flex;flex-wrap:wrap;gap:9px}
 .rel a{font-size:13.5px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;transition:.15s}
 .rel a:hover{border-color:var(--cobalt);color:var(--cobalt)}
@@ -1017,10 +1017,15 @@ def build_term(x):
           {"@type":"ListItem","position":2,"name":x["ko"]}]}
       ]}, ensure_ascii=False)
     paras = "\n".join(f"<p>{p}</p>" for p in x["paras"])
+    _t = f"{x['ko']} 뜻 — {x['en']} | messeze 용어사전"
+    if len(_t) > 60: _t = f"{x['ko']} 뜻 | messeze 용어사전"
+    if len(_t) > 60: _t = f"{x['ko']} | messeze 용어사전"
+    _d = x["short"]
+    if len(_d) < 70: _d = _d.rstrip(".") + f". {x['ko']}의 의미와 실무 활용을 messeze 용어사전에서 쉽게 설명합니다."
     return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{x['ko']} 뜻 — {x['en']} | messeze 용어사전</title>
-<meta name="description" content="{x['short']}">
+<title>{_t}</title>
+<meta name="description" content="{_d}">
 {FONT_LINKS}
 <script type="application/ld+json">{ld}</script>
 <style>{TERM_CSS}</style></head><body>
@@ -1030,7 +1035,7 @@ def build_term(x):
 <div class="wrap"><div class="defbox"><span class="lb">한 줄 정의</span>{x['short']}</div></div>
 <article class="wrap tbody">{paras}</article>
 <div class="wrap"><div class="whybox"><div class="lb">MESSEZE 관점</div><p>{x['why']}</p></div></div>
-<div class="wrap rel"><h3>관련 용어</h3><div class="chips">{rel_links}</div></div>
+<div class="wrap rel"><h2>관련 용어</h2><div class="chips">{rel_links}</div></div>
 <div class="wrap backrow"><a href="../index.html">← 용어사전 전체 보기</a></div>
 {cta(2)}
 {foot(2)}

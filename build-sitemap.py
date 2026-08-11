@@ -14,7 +14,18 @@ try:
 except Exception:
     pass
 
-SITE = 'https://mina0313.github.io/messeze'
+def _site_url():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'seo.json')
+    try:
+        with open(p, encoding='utf-8') as f:
+            u = json.load(f).get('siteUrl')
+        if u:
+            return u.rstrip('/')
+    except Exception:
+        pass
+    return 'https://mina0313.github.io/messeze'
+
+SITE = _site_url()
 EXCLUDE = {'admin.html', '_motion-demo.html'}
 
 

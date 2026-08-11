@@ -58,6 +58,41 @@ def strip_existing(h):
     return h
 
 
+ORG_ID = SITE + '/#organization'
+SITE_ID = SITE + '/#website'
+
+def graph_ld(rel, url, title, desc):
+    """전 페이지 공통 엔티티 그래프: Organization + WebSite + WebPage(+ 메인은 Service)"""
+    org = {
+        '@type': 'Organization', '@id': ORG_ID,
+        'name': 'messeze', 'alternateName': ['메세지', '주식회사 메세지'],
+        'url': SITE + '/',
+        'logo': {'@type': 'ImageObject', '@id': SITE + '/#logo', 'url': SITE + '/assets/logo.png'},
+        'image': OG_IMAGE,
+        'description': '기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스',
+        'email': 'sales@firstmkt.co.kr', 'telephone': '+82-1600-9487',
+        'address': {'@type': 'PostalAddress', 'addressCountry': 'KR', 'addressRegion': '대구광역시',
+                    'addressLocality': '중구', 'streetAddress': '국채보상로 488, 3층'},
+        'sameAs': ['https://github.com/mina0313/messeze'],
+        'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer support',
+                         'email': 'sales@firstmkt.co.kr', 'telephone': '+82-1600-9487',
+                         'availableLanguage': 'Korean'},
+    }
+    website = {'@type': 'WebSite', '@id': SITE_ID, 'url': SITE + '/', 'name': 'messeze',
+               'publisher': {'@id': ORG_ID}, 'inLanguage': 'ko'}
+    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title,
+            'description': desc, 'isPartOf': {'@id': SITE_ID}, 'about': {'@id': ORG_ID},
+            'inLanguage': 'ko'}
+    graph = [org, website, page]
+    if rel == 'index.html':
+        graph.append({'@type': 'Service', '@id': SITE + '/#service',
+                      'name': 'messeze 구독형 기업 PR',
+                      'serviceType': 'AI 검색 최적화 · 기업 PR 구독 서비스',
+                      'description': '진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지 전담팀이 대신 실행합니다.',
+                      'provider': {'@id': ORG_ID}, 'areaServed': 'KR', 'url': SITE + '/'})
+    return {'@context': 'https://schema.org', '@graph': graph}
+
+
 def article_ld(post, url):
     return {
         '@context': 'https://schema.org',
@@ -75,6 +110,24 @@ def article_ld(post, url):
     }
 
 
+def crumb_ld(items):
+    """[(이름, URL), ...] → BreadcrumbList"""
+    return {'@context': 'https://schema.org', '@type': 'BreadcrumbList',
+            'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u}
+                                for i, (n, u) in enumerate(items)]}
+
+
+def interview_faq_ld(iv):
+    """인터뷰 문답(qa) → FAQPage"""
+    qa = [x for x in (iv.get('qa') or []) if x and len(x) >= 2]
+    if not qa:
+        return None
+    strip = lambda s: re.sub(r'<[^>]+>', '', str(s)).strip()
+    return {'@context': 'https://schema.org', '@type': 'FAQPage',
+            'mainEntity': [{'@type': 'Question', 'name': strip(q),
+                            'acceptedAnswer': {'@type': 'Answer', 'text': strip(a)}} for q, a in qa]}
+
+
 def faq_ld(faq_data):
     qa = []
     for cat in faq_data:
@@ -85,7 +138,7 @@ def faq_ld(faq_data):
     return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': qa}
 
 
-def build_block(rel, h, posts_by_slug, faq_data):
+def build_block(rel, h, posts_by_slug, faq_data, interviews_by_slug):
     url = page_url(rel)
     title = grab(r'<title>(.*?)</title>', h)
     desc = grab(r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']', h)
@@ -137,15 +190,32 @@ def build_block(rel, h, posts_by_slug, faq_data):
         lines.append('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
                      f"gtag('js',new Date());gtag('config','{gid}');</script>")
 
+    ld = json.dumps(graph_ld(rel.replace(os.sep, '/'), url, og_title, og_desc), ensure_ascii=False, indent=1)
+    lines.append(f'<script type="application/ld+json">\n{ld}\n</script>')
+
     slug = os.path.splitext(os.path.basename(rel))[0]
+    relu = rel.replace(os.sep, '/')
     if is_post and slug in posts_by_slug:
         post = posts_by_slug[slug]
         if post.get('date'):
             lines.append(f'<meta property="article:published_time" content="{post["date"]}T09:00:00+09:00">')
         ld = json.dumps(article_ld(post, url), ensure_ascii=False, indent=1)
         lines.append(f'<script type="application/ld+json">\n{ld}\n</script>')
+        cl = json.dumps(crumb_ld([('홈', SITE + '/'), ('블로그', SITE + '/blog/'), (post['title'], url)]),
+                        ensure_ascii=False, indent=1)
+        lines.append(f'<script type="application/ld+json">\n{cl}\n</script>')
 
-    if rel.replace(os.sep, '/') == 'faq.html' and faq_data:
+    if relu.startswith('interview/') and slug in interviews_by_slug:
+        iv = interviews_by_slug[slug]
+        fq = interview_faq_ld(iv)
+        if fq:
+            ld = json.dumps(fq, ensure_ascii=False, indent=1)
+            lines.append(f'<script type="application/ld+json">\n{ld}\n</script>')
+        cl = json.dumps(crumb_ld([('홈', SITE + '/'), ('인터뷰', SITE + '/interview.html'), (iv.get('com', slug), url)]),
+                        ensure_ascii=False, indent=1)
+        lines.append(f'<script type="application/ld+json">\n{cl}\n</script>')
+
+    if relu == 'faq.html' and faq_data:
         ld = json.dumps(faq_ld(faq_data), ensure_ascii=False, indent=1)
         lines.append(f'<script type="application/ld+json">\n{ld}\n</script>')
 
@@ -160,6 +230,11 @@ def main():
         posts_by_slug = {p['slug']: p for p in json.load(f)}
     with open('data/faq.json', encoding='utf-8') as f:
         faq_data = json.load(f)
+    try:
+        with open('data/interviews.json', encoding='utf-8') as f:
+            interviews_by_slug = {c['slug']: c for c in json.load(f)}
+    except Exception:
+        interviews_by_slug = {}
 
     count = 0
     for dp, dn, fn in os.walk(root):
@@ -177,7 +252,7 @@ def main():
             if 'noindex' in (grab(r'<meta\s+name=["\']robots["\']\s+content=["\'](.*?)["\']', h) or ''):
                 continue
             h = strip_existing(h)
-            block = build_block(rel, h, posts_by_slug, faq_data)
+            block = build_block(rel, h, posts_by_slug, faq_data, interviews_by_slug)
             i = h.lower().find('</head>')
             if i < 0:
                 print(f'  ⚠️ {rel}: </head> 없음, 건너뜀')

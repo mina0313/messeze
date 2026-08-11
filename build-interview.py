@@ -159,7 +159,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff}
 .mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
 .mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
-.mega-col h5{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .h5x{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
 .mega-col .gap{height:20px}
 .mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
 .mega-col a b{font-size:14.2px;display:block}
