@@ -230,6 +230,7 @@ body.gated .sidebar-menu{display:none}
 .c-tt b{display:block;font-size:14px;line-height:1.45;word-break:keep-all}
 .c-tt span{font-size:12px;color:var(--mut)}
 .c-act{text-align:right;white-space:nowrap}
+.fvi{width:18px;height:18px;border-radius:4px;vertical-align:-3px;margin-right:8px}
 .rowbtn{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:7px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-left:6px;color:var(--body)}
 .rowbtn:hover{border-color:var(--primary);color:var(--primary)}
 .rowbtn.del:hover{border-color:var(--red);color:var(--red)}
@@ -475,16 +476,20 @@ function renderChk(){
     if(CHKV.sort==='lo')rows.sort((a,b)=>sc(a.c)-sc(b.c));
     document.querySelectorAll('.chk-ctrl .chip').forEach(b=>b.classList.toggle('on',b.dataset.flt===CHKV.flt));
     document.getElementById('chkCnt').textContent=rows.length+'건 표시';
-    document.getElementById('chkList').innerHTML=rows.length?`<div class="cms-list">${rows.map(it=>{
+    document.getElementById('chkList').innerHTML=rows.length?`<div class="ctab-wrap"><table class="ctab"><thead><tr>
+      <th style="width:46px">#</th><th>사이트</th><th style="width:150px">진단일시</th><th style="width:150px">상태</th><th style="width:80px">점수</th><th style="width:110px"></th>
+    </tr></thead><tbody>${rows.map(it=>{
       const c=it.c, s=Number(c.score), col=s>=80?'#0BBF8C':(s>=50?'#B45309':'#E2574C');
+      const dom=String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,'');
       const mark=it.inq?`<span class="pill s-${esc(it.inq.status||'신규')}">📥 문의함 · ${esc(it.inq.status||'신규')}</span>`:'<span class="pill lead">잠재고객</span>';
-      return `<div class="cms-item" style="cursor:default">
-        <span class="idx">${it.no}</span>
-        <div style="flex:1;min-width:0"><b>${esc(String(c.site||'').replace(/^https?:\/\//,'').replace(/\/$/,''))}</b><br><span>${esc(fmtTs(c.ts))}</span></div>
-        ${mark}
-        <span style="font-weight:900;font-size:16px;color:${col};flex:0 0 auto">${isNaN(s)?'-':s+'점'}</span>
-        <button class="dup" style="flex:0 0 auto" data-site="${esc(c.site||'')}">📊 리포트</button>
-      </div>`}).join('')}</div>`:'<div class="empty">조건에 맞는 기록이 없습니다.</div>';
+      return `<tr>
+        <td style="color:var(--mut);font-weight:700">${it.no}</td>
+        <td class="c-tt"><b><img class="fvi" src="https://www.google.com/s2/favicons?sz=64&domain=${encodeURIComponent(dom.split('/')[0])}" onerror="this.remove()">${esc(dom)}</b></td>
+        <td style="color:var(--mut);font-size:12.5px">${esc(fmtTs(c.ts))}</td>
+        <td>${mark}</td>
+        <td style="font-weight:900;font-size:15px;color:${col}">${isNaN(s)?'-':s+'점'}</td>
+        <td class="c-act"><button class="rowbtn" data-site="${esc(c.site||'')}">📊 리포트</button></td>
+      </tr>`}).join('')}</tbody></table></div>`:'<div class="empty">조건에 맞는 기록이 없습니다.</div>';
     document.querySelectorAll('#chkList [data-site]').forEach(b=>b.onclick=()=>{go('rpt');rptHome(b.dataset.site);});
   };
   document.getElementById('chkQ').oninput=e=>{CHKV.q=e.target.value;paint();};
