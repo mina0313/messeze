@@ -367,7 +367,7 @@ function render(key, rows){
 }
 
 const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
-const TYPES=[{key:'faq',file:'data/faq.json',name:'FAQ',label:g=>g.title,sub:g=>`문항 ${g.items.length}개`},{key:'interview',file:'data/interviews.json',name:'인터뷰',label:c=>`${c.com}`,sub:c=>c.who||''},{key:'glossary',file:'data/glossary.json',name:'용어사전',label:t=>t.ko||t.slug,sub:t=>t.en||''},{key:'blog',file:'data/posts.json',name:'블로그',label:p=>p.title,sub:p=>p.date||''}];
+const TYPES=[{key:'service',file:'data/services.json',name:'서비스 페이지',label:s=>s.title,sub:s=>s.one?String(s.one).slice(0,40):''},{key:'faq',file:'data/faq.json',name:'FAQ',label:g=>g.title,sub:g=>`문항 ${g.items.length}개`},{key:'interview',file:'data/interviews.json',name:'인터뷰',label:c=>`${c.com}`,sub:c=>c.who||''},{key:'glossary',file:'data/glossary.json',name:'용어사전',label:t=>t.ko||t.slug,sub:t=>t.en||''},{key:'blog',file:'data/posts.json',name:'블로그',label:p=>p.title,sub:p=>p.date||''}];
 const LBL={q:'질문',a:'답변',photo:'사진',title:'제목',items:'문항 목록',id:'ID(주소용, 영문)',com:'회사/업체명',who:'담당자·직함',slug:'주소(영문)',ko:'용어(한글)',en:'영문',cat:'카테고리',date:'날짜',desc:'설명',summary:'요약',body:'본문',tags:'태그',name:'이름',read:'읽는 시간',intro:'도입부',sections:'섹션들',h:'소제목',p:'문단',rel:'관련 용어',faq:'FAQ',def:'정의',eg:'예시',long:'상세 설명'};
 const lbl=k=>LBL[k]||k;
 const CMS={type:null,arr:null,sha:null,idx:null};

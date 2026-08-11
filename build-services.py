@@ -227,17 +227,20 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.28;word-break:k
 .hm-step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C4D4FF;font-size:14px;font-weight:800;z-index:2}
 .hm-step:last-child::after{display:none}
 @media(max-width:820px){.hm-row{grid-template-columns:1fr 1fr}.hm-step::after{display:none}}
-.ptrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.ptc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s}
-.ptc:hover{box-shadow:0 18px 44px rgba(16,31,63,.13);transform:translateY(-3px);border-color:#B9CCFF}
-.ptc-hd{display:flex;align-items:center;gap:14px}
-.ptc-no{flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:16.5px;color:#fff;background:linear-gradient(135deg,#3B6BFF,#1E46D9);box-shadow:0 8px 18px rgba(43,92,255,.28)}
-.ptc-ico{flex:0 0 auto;width:46px;height:46px;border-radius:14px;object-fit:cover;box-shadow:0 8px 18px rgba(16,31,63,.14)}
-.ptc-hd b{font-size:18.5px;letter-spacing:-.02em;line-height:1.32;color:var(--ink)}
-.ptc>p{font-size:14.3px;color:#3D4A63;line-height:1.66;margin-top:14px}
-.pttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:16px}
-.pttags span{font-size:12.5px;font-weight:700;color:#2748B8;background:#F0F5FF;border:1px solid #D9E5FF;border-radius:999px;padding:6px 13px;line-height:1.45}
-@media(max-width:820px){.ptrow{grid-template-columns:1fr}}
+
+
+
+
+
+
+
+.dg-rows{max-width:880px;margin:0 auto;border-top:1px solid var(--line)}
+.dg-row{display:grid;grid-template-columns:64px 240px 1fr;gap:20px;align-items:baseline;padding:24px 4px;border-bottom:1px solid var(--line)}
+.dg-no{font-family:var(--disp);font-size:15px;font-weight:700;color:var(--cobalt)}
+.dg-row b{font-size:16.5px;letter-spacing:-.01em;color:var(--ink);word-break:keep-all}
+.dg-row p{font-size:14.5px;color:var(--body);line-height:1.66;margin:0;word-break:keep-all}
+@media(max-width:820px){.dg-row{grid-template-columns:44px 1fr;gap:8px 14px}.dg-row p{grid-column:2}}
+
 /* detail lists */
 .dt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .dt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
@@ -427,27 +430,8 @@ RELTOOL = {
   "press":          ("../tools.html#pr",      "PR 플랜 추천",     "상황·목표·예산 3가지 질문으로 우리에게 맞는 PR 플랜을 추천합니다."),
 }
 
-s(slug="visibility", no="01", title="AI 가시성 평가", en="AI Visibility Assessment",
-  one="고객이 ChatGPT에 우리 업종을 물어보면 우리 회사가 나올까요? 직접 테스트해서 점수와 리포트로 알려드립니다.",
-  ai="요즘 고객은 네이버 대신 ChatGPT에게 '괜찮은 업체 추천해줘'라고 묻습니다. 그 답에 우리 회사가 없으면, 고객은 우리가 있는 줄도 모른 채 경쟁사로 갑니다. 지금 어떤 상태인지부터 확인해야 합니다.",
-  intro="ChatGPT·Gemini·Perplexity·네이버 4곳에 고객이 물어볼 질문을 직접 던져, 우리 회사가 나오는지·경쟁사는 어디까지 나오는지 확인합니다. 결과는 점수와 리포트로 정리하고, 뭐부터 고치면 되는지 순서까지 알려드립니다.",
-  items=[("엔진별 인식 상태 점검","주요 AI 검색 4곳에 동일한 질문 세트를 던져 인식·인용 여부와 답변 내용을 기록합니다. '어느 엔진이 우리를 아는가'가 지도에 그려집니다.",["ChatGPT 등 4개 엔진 동일 질문 테스트","엔진별 인식·인용 여부 기록","답변 원문 수집·비교"]),
-        ("핵심 질문 5~6개 설계","고객이 실제로 물어볼 질문을 온보딩 미팅에서 함께 정의합니다. 이 질문들이 이후 홈페이지·콘텐츠·언론 실행 전체의 뼈대가 됩니다.",["온보딩 미팅에서 함께 질문 정의","고객이 실제 묻는 문장으로 설계","이후 실행 전체의 기준"]),
-        ("홈페이지 구조 진단","타이틀·헤딩·메타 같은 SEO 기본기부터 구조화 데이터·엔티티 연결까지, AI 크롤러 관점에서 읽히는 상태를 점검합니다.",["타이틀·헤딩·메타 기본기 점검","구조화 데이터·엔티티 연결 확인","AI 크롤러 관점 판독 테스트"]),
-        ("경쟁사 비교 분석","같은 질문에서 경쟁사가 어떤 출처 덕분에 답변에 등장하는지 분해합니다. 따라잡을 목록이 그대로 실행 과제가 됩니다.",["경쟁사 노출 원인 분해","경쟁사가 가진 출처 목록화","따라잡을 실행 과제 도출"]),
-        ("개선 우선순위 로드맵","점수를 가장 많이 올릴 항목부터 순서대로. 직접 실행해도 되고, messeze에 맡겨도 되는 형태로 작성합니다.",["점수 상승폭 큰 순서로 정리","직접 실행 가능한 수준으로 작성","messeze 대행 연계 가능"]),
-        ("기존 콘텐츠·기사 자산 조사","이미 보유한 기사·블로그·자료 중 AI가 활용할 수 있는 자산과 방치된 자산을 구분합니다.",["보유 기사·블로그 전수 조사","AI 활용 가능 자산 선별","방치 자산 재활용 방안 제시"])],
-  proc=[("사전 정보 수집","회사 소개·주요 제품·고객·목표 시장 자료를 받습니다. 간단한 질문지면 충분합니다."),
-        ("AI 질의 테스트","4개 엔진에 질문 세트를 실행하고 답변·인용 출처를 기록합니다."),
-        ("구조·출처 분석","홈페이지와 외부 출처를 크롤러 관점에서 분석합니다."),
-        ("리포트 브리핑","진단 리포트와 로드맵을 미팅으로 설명드립니다. 여기까지가 평가입니다.")],
-  fit=["홍보를 시작하기 전, 현재 위치부터 알고 싶은 기업","경쟁사가 먼저 쌓고 있는지 확인하고 싶은 기업","어디부터 손대야 할지 순서가 필요한 기업"],
-  deliv=["AI 가시성 진단 리포트","핵심 질문 설계서","개선 우선순위 로드맵"],
-  faq=[("무료 AI 노출 진단와 뭐가 다른가요?","홈페이지의 무료 체크는 URL 기반 구조 자동 진단입니다. 정식 평가는 실제 AI 질의 테스트, 경쟁사 비교, 핵심 질문 설계까지 전담팀이 수행하고 미팅으로 브리핑합니다."),
-       ("진단만 받고 실행은 직접 해도 되나요?","네. 로드맵은 자체 실행이 가능하도록 구체적으로 작성합니다. 실행까지 맡기실 경우 진단 결과가 그대로 운영 계획이 됩니다."),
-       ("기간은 얼마나 걸리나요?","기업 규모와 기존 자산에 따라 다르지만 통상 영업일 기준 1~2주입니다."),
-       ("어떤 자료를 준비해야 하나요?","회사 소개, 주요 제품·서비스, 홈페이지 주소 정도면 시작할 수 있습니다. 나머지는 저희가 조사합니다.")],
-  vis="""<div class="svc-vis rv">
+VIS_HTML = {
+  'visibility': """<div class="svc-vis rv">
 <span class="sticker white" style="top:2%;left:6%;transform:rotate(-5deg)">진단 리포트 미리보기</span>
 <div class="mini-win rep">
 <div class="mw-bar"><i></i><i></i><i></i><span class="u">messeze · AI 가시성 진단</span></div>
@@ -461,29 +445,7 @@ s(slug="visibility", no="01", title="AI 가시성 평가", en="AI Visibility Ass
 </div></div>
 <span class="sticker blue" style="bottom:6%;right:2%;transform:rotate(3deg)">여기서부터 시작합니다</span>
 </div>""",
-  rel=["website-renewal","own-blog"])
-
-s(slug="website-renewal", no="02", title="홈페이지 수정·리뉴얼", en="Website Optimization & Renewal",
-  one="지금 홈페이지를 버리지 않습니다. 검색과 AI에 잘 잡히도록 안쪽 구조만 고쳐드립니다.",
-  ai="홈페이지가 화면에선 멀쩡해 보여도, AI는 화면이 아니라 코드를 읽습니다. 회사 소개가 이미지 안에만 있으면 AI에게는 '내용 없는 홈페이지'입니다. 홈페이지는 있는데 검색에 안 나오는 이유가 대부분 여기 있습니다.",
-  intro="디자인을 갈아엎는 게 아니라, 제목·소개글·회사 정보를 AI와 검색엔진이 읽을 수 있는 형태로 정리합니다. 수정으로 충분하면 수정만, 뼈대부터 문제면 리뉴얼 제안 — 필요한 만큼만 진행하고 전후 점수를 비교해 보여드립니다.",
-  items=[("메타·헤딩 구조 정비","페이지마다 고유한 타이틀과 디스크립션, H1→H2→H3 위계를 바로잡습니다. 검색과 AI가 문서 구조를 즉시 파악하게 됩니다.",["페이지별 고유 타이틀·설명 작성","H1→H2→H3 위계 교정","검색·AI가 구조를 즉시 파악"]),
-        ("구조화 데이터(JSON-LD) 탑재","Organization·Service·FAQPage 스키마로 발행 주체와 서비스를 기계가 읽는 형식으로 선언합니다. @id·sameAs 연결까지.",["기업·서비스·FAQ 스키마 탑재","sameAs로 외부 프로필 연결","기계가 읽는 형식으로 선언"]),
-        ("질문-답변형 페이지 신설","설계한 핵심 질문에 정면으로 답하는 페이지를 홈페이지 안에 만듭니다. AI 인용의 착지 지점이 됩니다.",["핵심 질문에 답하는 페이지 신설","AI 인용의 착지 지점 마련","FAQ 구조로 구성"]),
-        ("이미지·텍스트 리커버리","이미지 속에 갇힌 정보를 텍스트로 꺼내고, 모든 이미지에 의미 있는 ALT를 채웁니다.",["이미지 속 정보 텍스트로 추출","모든 이미지 ALT 작성","갇힌 정보 복구"]),
-        ("크롤링 기반 정비","robots.txt·sitemap.xml·canonical을 정리해 검색엔진과 AI 크롤러의 수집 경로를 엽니다.",["robots·sitemap 정리","canonical 정규화","크롤러 수집 경로 개방"]),
-        ("전후 점수 검증","수정 전후를 AI 노출 진단 점수로 비교해 개선을 숫자로 증명합니다.",["수정 전후 점수 비교 측정","개선 폭을 숫자로 증명","비교 리포트 제공"])],
-  proc=[("범위 확정","진단 결과를 바탕으로 수정으로 갈지, 리뉴얼이 필요한지 판정하고 범위를 합의합니다."),
-        ("구조 정비 실행","메타·헤딩·콘텐츠·이미지를 순서대로 정비합니다."),
-        ("스키마·기술 적용","JSON-LD, 사이트맵, canonical 등 기술 요소를 적용합니다."),
-        ("전후 비교 검증","적용 전후 점수와 변화를 리포트로 확인시켜 드립니다.")],
-  fit=["홈페이지는 있는데 검색·AI에 안 잡히는 기업","리뉴얼 비용이 부담스러워 미뤄온 기업","이미지 위주로 제작된 구축형 홈페이지를 쓰는 기업"],
-  deliv=["수정 전후 비교 리포트","스키마 적용 페이지","질문별 랜딩 페이지"],
-  faq=[("수정과 리뉴얼은 어떻게 판단하나요?","진단에서 판단합니다. 콘텐츠와 구조를 살릴 수 있으면 수정으로 충분하고, 프레임 자체가 수정을 막거나(빌더 제약 등) 구조가 무너져 있으면 리뉴얼을 제안합니다."),
-       ("홈페이지를 만든 업체가 따로 있는데 가능한가요?","네. 관리 권한이나 업체 협조를 받아 진행하며, 직접 수정이 어려운 환경이면 적용 가이드를 만들어 기존 업체에 전달하는 방식도 가능합니다."),
-       ("아임웹·워드프레스 같은 빌더 사이트도 되나요?","대부분 가능합니다. 빌더별로 스키마 삽입·메타 편집 지원 범위가 달라, 제약이 있는 경우 대안(예: 코드 삽입 위젯)을 제시합니다."),
-       ("기간은 얼마나 걸리나요?","수정 범위에 따라 다르지만 통상 2~4주입니다. 리뉴얼 판정 시 제작 일정으로 전환됩니다.")],
-  vis="""<div class="svc-vis ba rv">
+  'website-renewal': """<div class="svc-vis ba rv">
 <span class="sticker white" style="top:-2%;left:8%;transform:rotate(-6deg)">Before — 사람만 보는 페이지</span>
 <div class="cwb before"><div class="mw-bar"><i></i><i></i><i></i><span class="u">기존 홈페이지</span></div>
 <div class="mw-body"><div class="skl dark"></div><div class="skl"></div><div class="skl s"></div><div class="skl xs"></div>
@@ -493,29 +455,7 @@ s(slug="website-renewal", no="02", title="홈페이지 수정·리뉴얼", en="W
 <div class="tagchips"><span class="good">✓ H1·헤딩 위계</span><span class="good">✓ Organization 스키마</span><span class="good">✓ FAQ 페이지</span><span class="good">✓ ALT 완비</span></div></div></div>
 <span class="sticker blue" style="bottom:0;right:6%;transform:rotate(2.5deg)">After — AI도 읽는 페이지</span>
 </div>""",
-  rel=["visibility","website-build"])
-
-s(slug="website-build", no="03", title="홈페이지 제작", en="AEO-first Website Build",
-  one="홈페이지를 새로 만든다면 — 예쁘기만 한 게 아니라, 검색과 AI에서 손님이 찾아오는 홈페이지로 지어드립니다.",
-  ai="다 만들어놓고 나중에 검색 대책을 붙이면 비용이 두 번 듭니다. 처음부터 '고객이 물어볼 질문'에 맞춰 페이지를 설계하면, 오픈하는 날부터 검색과 AI에 잡힐 준비가 끝나 있습니다.",
-  intro="고객이 궁금해할 질문을 먼저 정리하고, 그 질문에 답하는 페이지들로 홈페이지를 구성합니다. 검색 등록·속도·모바일까지 기본으로 챙기고, 오픈 후 글을 쌓아갈 블로그 공간까지 함께 만들어 드립니다.",
-  items=[("질문 기반 정보 구조(IA) 설계","핵심 질문 → 페이지 구조로 변환합니다. 산업·서비스·질문별로 페이지를 계속 늘릴 수 있는 확장형 골격입니다.",["핵심 질문을 페이지 구조로 변환","산업·서비스별 확장 골격","페이지가 늘수록 답이 느는 구조"]),
-        ("AEO·SEO 기본기 내장","메타·헤딩·구조화 데이터·사이트맵·robots까지, 나중에 고칠 것 없이 처음부터 표준으로 들어갑니다.",["메타·헤딩·스키마 표준 적용","sitemap·robots 기본 내장","나중에 고칠 것 없는 설계"]),
-        ("블로그·콘텐츠 시스템 포함","운영 단계에서 칼럼이 쌓일 수 있도록 발행 구조와 템플릿을 함께 짓습니다.",["칼럼 발행 구조 함께 구축","발행 템플릿 제공","운영 단계 축적 대비"]),
-        ("반응형·속도 최적화","모바일 우선 인덱싱과 사용자 경험 지표(Core Web Vitals)를 기준으로 만듭니다.",["모바일 우선 인덱싱 대응","Core Web Vitals 기준 제작","이미지·코드 속도 최적화"]),
-        ("다국어 확장 대비","수출기업이라면 베트남어·영어·중국어 페이지로 확장 가능한 컴포넌트 구조로 설계합니다.",["베트남어·영어·중국어 확장 구조","수출기업 대비 컴포넌트 설계","현지 페이지 추가 용이"]),
-        ("런칭 후 색인 등록","서치콘솔·네이버 서치어드바이저 등록과 초기 색인 확인까지 마무리합니다.",["구글 서치콘솔 등록","네이버 서치어드바이저 등록","초기 색인 확인까지 완료"])],
-  proc=[("질문·구조 설계","핵심 질문과 사이트 구조(IA)를 확정합니다. 제작의 절반은 여기서 결정됩니다."),
-        ("디자인·개발","브랜드에 맞는 디자인과 표준 마크업으로 개발합니다."),
-        ("콘텐츠·스키마 적용","초기 콘텐츠를 싣고 페이지별 구조화 데이터를 적용합니다."),
-        ("런칭·색인 등록","공개 후 검색엔진 등록과 AI 노출 진단 점수를 확인합니다.")],
-  fit=["홈페이지가 없거나 사실상 새로 시작해야 하는 기업","수출용 다국어 홈페이지가 필요한 기업","진단에서 리뉴얼 판정을 받은 기업"],
-  deliv=["신규 홈페이지","구조화 데이터 기본 탑재","운영 가이드"],
-  faq=[("제작 기간은 얼마나 걸리나요?","규모에 따라 다르지만 통상 4~8주입니다. 질문·구조 설계가 확정되면 이후 일정은 크게 흔들리지 않습니다."),
-       ("비용은 어떻게 되나요?","페이지 규모·다국어 여부에 따라 별도 견적입니다. 구독 플랜과 별도이며, 수출바우처 등 지원사업 활용 방안도 상담에서 안내드립니다."),
-       ("제작 후 관리는 어떻게 하나요?","구독 플랜과 연결하면 콘텐츠 발행·점검이 이어집니다. 자체 운영을 원하시면 운영 가이드와 교육을 제공합니다."),
-       ("콘텐츠(글·사진)도 만들어 주나요?","네. 초기 페이지 카피는 제작에 포함되며, 촬영·번역이 필요한 경우 범위를 협의해 진행합니다.")],
-  vis="""<div class="svc-vis rv">
+  'website-build': """<div class="svc-vis rv">
 <span class="sticker white" style="top:0;left:4%;transform:rotate(-4deg)">질문이 곧 페이지가 됩니다</span>
 <div class="tree">
 <div class="root">🏠 회사 홈</div>
@@ -528,29 +468,7 @@ s(slug="website-build", no="03", title="홈페이지 제작", en="AEO-first Webs
 </div></div>
 <span class="sticker dark" style="bottom:4%;right:4%;transform:rotate(2deg)">스키마 기본 탑재</span>
 </div>""",
-  rel=["website-renewal","own-blog"])
-
-s(slug="own-blog", no="04", title="홈페이지 내 블로그 운영", en="Owned Blog Operation",
-  one="우리 홈페이지 안에 전문 칼럼을 매달 대신 써서 쌓아드립니다. 글 쓸 사람이 없어도 됩니다.",
-  ai="AI는 '이 분야를 잘 아는 회사'인지를 그 회사 홈페이지에 쌓인 글을 보고 판단합니다. 네이버 블로그에 아무리 써도 그건 네이버의 자산 — 우리 홈페이지에 쌓인 글만 우리 회사의 전문성 점수가 됩니다.",
-  intro="고객이 물어볼 질문에 답하는 칼럼을 저희가 대신 작성해 홈페이지 블로그에 매달 발행합니다. 짧은 인터뷰나 자료만 주시면 충분하고, 어떤 글이 얼마나 효과 있었는지 매달 리포트로 확인시켜 드립니다.",
-  items=[("질문 기반 칼럼 기획","'고객이 AI에게 물어볼 질문'이 곧 글감입니다. 검색량이 아니라 질문에서 출발해 글감이 고갈되지 않습니다.",["고객이 AI에 물어볼 질문이 글감","검색량 아닌 질문에서 출발","글감 고갈 없는 기획"]),
-        ("AEO형 구조로 집필","질문형 소제목 → 정면 답변 → 근거 순서. 사람도 AI도 원하는 답을 바로 찾는 구조입니다.",["질문형 소제목으로 시작","정면 답변 먼저, 근거 다음","사람도 AI도 답을 바로 발견"]),
-        ("전문성 소재 인터뷰","현장의 노하우를 짧은 인터뷰·자료로 받아 전문가의 글로 바꿉니다. 쓸 사람이 없어도 됩니다.",["짧은 인터뷰로 소재 수집","현장 노하우를 전문가 글로","쓸 사람이 없어도 진행 가능"]),
-        ("FAQ·Article 스키마 적용","발행 글마다 구조화 데이터를 붙여 리치 결과와 AI 인용 자격을 만듭니다.",["발행 글마다 스키마 적용","리치 결과 노출 자격 확보","AI 인용 가능성 강화"]),
-        ("발행 캘린더 운영","월 단위 발행 계획으로 꾸준히. 축적의 리듬이 곧 전략입니다.",["월 단위 발행 계획 수립","질문 커버리지 기준 배치","꾸준한 축적 리듬 유지"]),
-        ("성과 추적","글별 노출·유입과 AI 인용 변화를 월간 리포트에 담습니다.",["글별 노출·유입 측정","AI 인용 변화 추적","월간 리포트 제공"])],
-  proc=[("글감 캘린더 수립","핵심 질문을 월별 글감으로 배치합니다."),
-        ("초안 작성·검수","전담팀이 작성하고, 원하시면 발행 전 검수를 거칩니다."),
-        ("발행·스키마 적용","자사 블로그에 발행하고 구조화 데이터를 붙입니다."),
-        ("월간 성과 리포트","노출·유입·AI 반영 변화를 확인하고 다음 달 계획에 반영합니다.")],
-  fit=["글 쓸 사람이 없어 블로그가 멈춰 있는 기업","기술력은 있는데 콘텐츠가 없는 제조·B2B 기업","검색량이 적어 블로그 효과를 못 보던 업종"],
-  deliv=["월 발행 칼럼","FAQ 스키마 적용","발행 캘린더 · 성과 리포트"],
-  faq=[("한 달에 몇 편이나 발행하나요?","플랜과 업종에 따라 확정하며, 수량보다 '질문 커버리지'를 기준으로 계획합니다. 확정 수량은 온보딩에서 함께 정합니다."),
-       ("우리 업종의 전문 내용을 어떻게 쓰나요?","짧은 인터뷰와 보유 자료(카탈로그·인증·사례)를 바탕으로 작성합니다. 초안을 검수해 주시면 정확도가 빠르게 올라갑니다."),
-       ("발행 전에 검수할 수 있나요?","네. 검수 프로세스를 포함해 운영할 수 있으며, 수정 반영 후 발행합니다."),
-       ("기존에 써둔 글도 활용할 수 있나요?","네. 기존 글을 AEO형 구조로 리라이팅하고 스키마를 붙여 재발행하는 것도 효과적인 방법입니다.")],
-  vis="""<div class="svc-vis rv">
+  'own-blog': """<div class="svc-vis rv">
 <div class="mini-win artwin">
 <div class="mw-bar"><i></i><i></i><i></i><span class="u">company.co.kr/blog</span></div>
 <div class="mw-body">
@@ -563,29 +481,7 @@ s(slug="own-blog", no="04", title="홈페이지 내 블로그 운영", en="Owned
 <div class="cal-hd"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span></div>
 <div class="cal-grid"><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i class="pub"></i><i></i><i></i><i class="pub"></i><i></i></div></div>
 </div>""",
-  rel=["channels","website-renewal"])
-
-s(slug="channels", no="05", title="외부 채널 운영", en="External Channel Operation",
-  one="네이버 블로그·티스토리·구글 블로거 3곳을 대신 운영해서, 네이버에서도 구글에서도 우리 회사가 보이게 만듭니다.",
-  ai="한 곳에서만 자기 얘기를 하는 회사보다, 서로 다른 여러 곳에서 같은 얘기가 확인되는 회사를 AI는 믿습니다. 네이버만 하면 구글에서 안 보이고, 구글만 하면 네이버에서 안 보입니다 — 그래서 세 곳을 같이 갑니다.",
-  intro="홈페이지 칼럼을 원본으로 삼아, 채널마다 성격에 맞게 다시 써서 발행합니다. 계정이 없으면 개설·세팅부터 대행하고, 채널별로 얼마나 노출됐는지 매달 비교 리포트를 드립니다.",
-  items=[("네이버 블로그 — 국내 검색","국내 B2B 발주 담당자가 여전히 가장 많이 쓰는 네이버 검색. 신뢰 콘텐츠로 네이버 노출을 잡습니다.",["국내 발주 담당자 최다 사용","신뢰 콘텐츠로 네이버 노출","국내 B2B 필수 커버"]),
-        ("티스토리 — 구글·다음","구글 검색에 잘 잡히는 플랫폼. 기술·정보성 콘텐츠의 구글 유입을 만듭니다.",["구글 검색에 강한 플랫폼","기술·정보성 글 구글 유입","다음 검색 동시 커버"]),
-        ("구글 블로거 — 빠른 색인","구글 소유 플랫폼 특유의 빠른 인덱싱. 신규 소식을 구글 생태계에 빠르게 심습니다.",["구글 소유 플랫폼 빠른 색인","신규 소식 즉시 반영","구글 생태계에 직접 심기"]),
-        ("원본-변주 체계","자사 블로그 원본을 채널별로 다시 씁니다. 복붙 중복이 아니라 서로를 보강하는 교차 출처가 되게.",["원본을 채널별로 다시 작성","복붙 중복 없는 변주 운영","서로 보강하는 교차 출처"]),
-        ("채널 개설·세팅 대행","채널이 없다면 개설부터 프로필·카테고리 세팅까지 대행합니다.",["계정 개설부터 대행","프로필·소개·카테고리 세팅","브랜드에 맞게 정비"]),
-        ("채널별 유입 리포트","채널별 노출·유입을 월간 리포트로 비교해 잘 되는 채널에 힘을 싣습니다.",["채널별 노출·유입 비교","잘 되는 채널에 집중 배분","월간 리포트 제공"])],
-  proc=[("채널 전략 수립","업종·목표에 맞춰 채널별 역할을 정합니다."),
-        ("개설·세팅","계정 개설, 프로필·소개·카테고리를 브랜드에 맞게 정비합니다."),
-        ("변주 콘텐츠 발행","원본 칼럼을 채널 성격에 맞게 다시 써서 발행합니다."),
-        ("유입 분석·조정","채널별 성과를 보고 비중을 조정합니다.")],
-  fit=["네이버 검색까지 잡아야 하는 국내 B2B 기업","구글 유입이 필요한 기술 중심 기업","채널 운영할 인력이 없는 기업"],
-  deliv=["채널별 월 발행 콘텐츠","채널 개설·세팅","채널별 유입 리포트"],
-  faq=[("왜 하필 이 세 채널인가요?","국내 검색(네이버), 구글·다음(티스토리), 구글 빠른 색인(블로거)으로 검색 생태계 커버리지가 가장 넓은 조합이기 때문입니다. 업종에 따라 다른 채널을 추가로 협의할 수 있습니다."),
-       ("같은 내용을 여러 곳에 올리면 중복 아닌가요?","그대로 복사하면 중복입니다. 그래서 채널마다 구성과 문장을 다시 쓰는 '변주'로 운영하고, 원본 표시로 출처의 원류를 명확히 합니다."),
-       ("기존에 쓰던 회사 블로그 계정을 활용할 수 있나요?","네. 기존 계정의 이력이 자산이 되는 경우가 많아, 살릴 수 있는 계정은 이어서 운영합니다."),
-       ("인스타그램·유튜브 같은 채널은 안 하나요?","텍스트 기반 검색·AI 노출에 직접 기여하는 채널을 우선합니다. SNS·영상은 목적이 다른 채널이라 필요시 별도 협의로 진행합니다.")],
-  vis="""<div class="svc-vis rv">
+  'channels': """<div class="svc-vis rv">
 <span class="sticker white" style="top:0;right:6%;transform:rotate(4deg)">출처가 셋이면, 신뢰는 배가</span>
 <div class="radial">
 <div class="hub"><em>원본</em>자사 블로그 칼럼</div>
@@ -595,46 +491,30 @@ s(slug="channels", no="05", title="외부 채널 운영", en="External Channel O
 <div class="ch gb"><b>구글 블로거</b><em>구글 색인</em><span>신규 소식<br>빠른 인덱싱</span></div>
 </div></div>
 </div>""",
-  rel=["own-blog","press"])
-
-s(slug="press", no="06", title="언론 배포", en="Press Distribution",
-  one="우리 회사 소식을 기사로 만들어 드립니다. 기자가 쓴 기사 한 건이 자기 홍보 백 마디보다 큰 신뢰를 만듭니다.",
-  ai="AI는 회사가 스스로 하는 말보다 언론 기사를 훨씬 높게 믿습니다. '이 회사 믿을 만해?'라는 질문에 AI가 근거로 드는 것이 바로 기사입니다. 기사가 없으면 AI가 보여줄 근거도 없습니다.",
-  intro="신제품·인증·수출 같은 회사 소식을 기사가 되기 좋은 형태로 쓰고, 그 분야 담당 기자에게 배포합니다. 꼭 실려야 하는 내용은 게재가 보장되는 기사형 광고로 진행하고, 발행된 기사는 홈페이지와 연결해 자산으로 남깁니다.",
-  items=[("보도자료 기획·작성","리드문 승부, 검증 가능한 사실 중심. 기사화 가능성과 AI 인용 가능성 두 기준으로 씁니다.",["리드문 중심 기사형 작성","검증 가능한 사실만 담기","기사화·AI 인용 두 기준"]),
-        ("업종별 기자 매칭","산업 담당 기자 데이터베이스를 기반으로 맞는 출입처에 정확히 배포합니다. 스팸이 아니라 제보가 되게.",["산업 담당 기자 DB 기반","출입처에 정확히 배포","스팸 아닌 제보형 전달"]),
-        ("애드버토리얼 발행","게재가 보장되는 기사형 콘텐츠로 원하는 메시지를 원하는 시점에 싣습니다.",["게재 보장형 기사 콘텐츠","원하는 메시지 그대로","원하는 시점에 발행"]),
-        ("뉴스거리 발굴","신제품·인증·수출·전시회 — 회사 안의 소식에서 기사가 될 이야기를 함께 찾습니다.",["신제품·인증·수출 소식 정리","전시회 일정 연계","월간 미팅으로 소재 발굴"]),
-        ("발행 결과 관리","배포·게재 결과를 추적하고, 발행된 기사를 홈페이지·채널과 연결해 자산화합니다.",["배포·게재 결과 추적","발행 기사 홈페이지 연결","기사 자산화 관리"]),
-        ("해외 언론 확장","수출기업이라면 베트남·중국·미국 등 현지어 보도자료와 현지 매체 배포까지 확장합니다.",["현지어 보도자료 작성","베트남·중국·미국 매체 배포","수출기업 확장 옵션"])],
-  proc=[("뉴스거리 발굴","월간 미팅에서 보도 소재를 정리합니다.",["신제품·인증·수출 소식 정리","전시회 일정 연계","월간 미팅으로 소재 발굴"]),
-        ("원고 작성·확정","보도자료·애드버토리얼 원고를 작성하고 확정받습니다."),
-        ("배포·팔로업","기자 매칭 배포와 게재 팔로업을 진행합니다."),
-        ("기사화 리포트","게재 결과와 AI 인용 반영을 리포트로 드립니다.")],
-  fit=["신제품·인증·수출 소식이 있는 기업","제3자 신뢰 출처가 필요한 기업","해외 시장에 알릴 일이 생긴 수출기업"],
-  deliv=["보도자료 · 애드버토리얼","기자 배포 · 발행 관리","기사화 결과 리포트"],
-  faq=[("보도자료를 보내면 기사화가 보장되나요?","보도자료는 기자의 판단을 거치므로 보장되지 않습니다. 그래서 뉴스 가치를 살린 원고와 정확한 기자 매칭으로 확률을 높이고, 반드시 실어야 하는 메시지는 게재가 보장되는 애드버토리얼로 조합합니다."),
-       ("어떤 매체에 실리나요?","업종과 소식의 성격에 따라 경제지·산업 전문지·온라인 매체를 조합합니다. 매체 리스트는 배포 전에 공유드립니다."),
-       ("한 달에 몇 건이나 진행하나요?","플랜에 따라 다르며, 건수보다 '소식의 뉴스 가치'가 우선입니다. 무리한 대량 송출은 스팸이 되어 오히려 해가 됩니다."),
-       ("해외 배포는 어떻게 진행되나요?","목표 국가의 언어로 현지화한 보도자료를 현지 매체·기자에게 배포합니다. 베트남·중국 등 국가별 매체망을 활용하며, 엔터프라이즈 플랜 또는 별도 견적으로 진행합니다.")],
-  vis="""<div class="svc-vis clips rv">
+  'press': """<div class="svc-vis clips rv">
 <div class="clip c1"><div class="pressname">산업 전문지</div><h5>○○정밀, 항공부품 소량 생산 라인 증설… 수출바우처 선정</h5></div>
 <div class="clip c2"><div class="pressname">경제지</div><h5>"베트남 수출 물꼬" ○○정밀, 동남아 인증 획득하고 첫 계약</h5>
 <div class="tagchips"><span class="good">✓ 제3자 검증 출처</span><span class="good">✓ AI 인용 근거</span></div></div>
 <div class="clip c3"><div class="pressname">온라인 뉴스</div><h5>○○정밀, 스마트공장 구축으로 정밀부품 납기 30% 단축</h5></div>
 <div class="flowrow"><span>보도자료</span><i>→</i><span>기자 매칭</span><i>→</i><span>기사 발행</span><i>→</i><span class="hl">AI가 인용</span></div>
 </div>""",
-  tool="""<section class="sec" style="background:var(--sky-2)"><div class="wrap"><div class="shead center rv"><span class="eyebrow">무료 도구 · 곧 공개</span><h2 class="h2">우리 회사 소식, 기사로 나갈 수 있을까요?</h2><p class="lead">간단한 정보만 입력하면 기사화 가능성과 보완 포인트를 무료로 진단해 드립니다.</p></div><div class="prcheck rv"><div class="prc-score"><div class="prc-gauge"><b>74</b><span>점</span></div><p>현재 소재는 보도자료로 활용할 수 있습니다. 구체적 수치와 시장적 의미를 더하면 기사 채택 가능성이 올라갑니다.</p></div><div class="prc-items"><div class="prc-i"><span>시의성</span><i><em style="width:80%"></em></i><b>16/20</b></div><div class="prc-i"><span>구체성</span><i><em style="width:60%"></em></i><b>12/20</b></div><div class="prc-i"><span>차별성</span><i><em style="width:75%"></em></i><b>15/20</b></div><div class="prc-i"><span>산업적 의미</span><i><em style="width:65%"></em></i><b>13/20</b></div><div class="prc-i"><span>신뢰 근거</span><i><em style="width:90%"></em></i><b>18/20</b></div></div></div><div class="prc-cta rv"><b>기사 가능성은 있지만, 어떻게 써야 할지 막막하신가요?</b><span>messeze가 강점을 기사 관점으로 정리하고 보도자료 작성부터 언론 배포까지 진행해 드립니다.</span><a href="../index.html#final" class="btn btn-co">무료 보도자료 상담받기</a></div></div></section>""",
-  rel=["channels","visibility"])
-
-PTPHOTOS = {
- "visibility": ["photo-1551288049-bebda4e38f71","photo-1460925895917-afdab827c52f","photo-1454165804606-c3d57bc86b40","photo-1543286386-713bdd548da4","photo-1504868584819-f8e8b4b6d7e3","photo-1517245386807-bb43f82c33c4"],
- "website-renewal": ["photo-1547658719-da2b51169166","photo-1467232004584-a241de8bcf5d","photo-1461749280684-dccba630e2f6","photo-1498050108023-c5249f4df085","photo-1522542550221-31fd19575a2d","photo-1551434678-e076c223a692"],
- "website-build": ["photo-1460925895917-afdab827c52f","photo-1507238691740-187a5b1d37b8","photo-1481487196290-c152efe083f5","photo-1555066931-4365d14bab8c","photo-1517180102446-f3ece451e9d8","photo-1531403009284-440f080d1e12"],
- "own-blog": ["photo-1499750310107-5fef28a66643","photo-1486312338219-ce68d2c6f44d","photo-1455390582262-044cdead277a","photo-1434030216411-0b793f4b4173","photo-1516321318423-f06f85e504b3","photo-1517048676732-d65bc937f952"],
- "channels": ["photo-1499750310107-5fef28a66643","photo-1517245386807-bb43f82c33c4","photo-1486312338219-ce68d2c6f44d","photo-1454165804606-c3d57bc86b40","photo-1531403009284-440f080d1e12","photo-1552664730-d307ca884978"],
- "press": ["photo-1504711434969-e33886168f5c","photo-1495020689067-958852a7765e","photo-1585829365295-ab7cd400c167","photo-1526304640581-d334cdbbf45e","photo-1450101499163-c8848c66ca85","photo-1521737604893-d14cc237f11d"],
 }
+
+# ---- 문구는 data/services.json에서 읽는다 (관리자에서 편집 가능) ----
+# vis(시각 목업 HTML)는 디자인 요소라 코드에 유지한다.
+_svc_json = os.path.join(ROOT, "data", "services.json")
+_VIS = {d["slug"]: d.get("vis", "") for d in S} if S else {}
+S.clear()
+with io.open(_svc_json, encoding="utf-8") as _f:
+    _data = {_x["slug"]: _x for _x in json.load(_f)}
+for _slug in ["visibility", "website-renewal", "website-build", "own-blog", "channels", "press"]:
+    _d = dict(_data[_slug])
+    _d["items"] = [tuple(x) if len(x) < 3 else (x[0], x[1], list(x[2])) for x in _d["items"]]
+    _d["proc"] = [tuple(x) for x in _d["proc"]]
+    _d["faq"]  = [tuple(x) for x in _d["faq"]]
+    _d["vis"]  = VIS_HTML.get(_slug, "")
+    s(**_d)
+
 SVCPHOTO = {
  "visibility": ("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=560&fit=crop&q=72&auto=format","진단 리포트로 현재 위치를 숫자로 확인합니다"),
  "website-renewal": ("https://images.unsplash.com/photo-1547658719-da2b51169166?w=1000&h=560&fit=crop&q=72&auto=format","AI가 읽을 수 있는 구조로 홈페이지를 정비합니다"),
@@ -696,7 +576,7 @@ def build_page(x):
         badge = (f'<img class="ptc-ico" src="{lg[0]}" alt="" loading="lazy">' if lg
                  else f'<span class="ptc-no">{i+1:02d}</span>')
         tags = "".join("<span>"+g+"</span>" for g in tg)
-        return f'<div class="ptc rv"><div class="ptc-hd">{badge}<b>{t}</b></div><p>{d}</p><div class="pttags">{tags}</div></div>'
+        return f'<div class="dg-row rv"><span class="dg-no">{i+1:02d}</span><b>{t}</b><p>{d}</p></div>'
     items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
     procs = "\n".join(f"""<div class="pr rv"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
     fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
@@ -735,7 +615,7 @@ def build_page(x):
 
 <section class="sec"><div class="wrap">
 <div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead">{x['intro']}</p></div>
-<div class="ptrow">{items}</div>
+<div class="dg-rows">{items}</div>
 {reltool}
 </div></section>
 
