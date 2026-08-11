@@ -26,6 +26,8 @@ COPY_FILE = os.path.join(ROOT, 'data', 'copy.json')
 PAGES = {
     'index.html': 'home',
     'pricing.html': 'pricing',
+    'check.html': 'check',
+    'tools.html': 'tools',
 }
 
 # data-copy="키" 요소의 여는 태그 ~ 닫는 태그
