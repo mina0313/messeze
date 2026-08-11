@@ -25,6 +25,7 @@ jobs:
           python build-glossary.py
           python build-interview.py
           python build-faq.py
+          python build-copy.py
       - name: Inject SEO meta and rebuild sitemap
         run: |
           python inject-meta.py

@@ -198,6 +198,7 @@ function updateSidebar(view){
     <button data-v="inq" class="${view==='inq'?'on':''}">📥 문의 관리</button>
     <button data-v="chk" class="${view==='chk'?'on':''}">🔍 가시성 체크</button>
     <button data-v="cms" class="${view==='cms'?'on':''}">✏️ 콘텐츠 관리</button>
+      <button data-v="copy" class="${view==='copy'?'on':''}">📝 페이지 문구</button>
     <button data-v="rpt" class="${view==='rpt'?'on':''}">📊 진단 리포트</button>
       <button data-v="seo" class="${view==='seo'?'on':''}">🔗 SEO 관리</button>
       <button data-v="settings" class="${view==='settings'?'on':''}">⚙️ 사이트 설정</button>
@@ -400,6 +401,8 @@ function rptHome(url){
 const JEDIT={
   seo:{file:'data/seo.json', name:'SEO 설정', icon:'🔗',
     note:'페이지별 검색 노출 정보를 관리합니다. 저장하면 1~2분 뒤 사이트에 반영됩니다.'},
+  copy:{file:'data/copy.json', name:'페이지 문구', icon:'📝',
+    note:'홈페이지에 보이는 문구를 직접 고칩니다. 저장하면 1~2분 뒤 사이트에 반영됩니다. &lt;br&gt;은 줄바꿈입니다.'},
   settings:{file:'data/settings.json', name:'사이트 설정', icon:'⚙️',
     note:'연락처·회사 정보를 관리합니다. 저장하면 1~2분 뒤 사이트에 반영됩니다.'}
 };
@@ -468,6 +471,54 @@ function jsonEditCollect(){
   });
 }
 
+
+/* ===== 페이지 문구 편집기 ===== */
+const COPY_SECTIONS={hero:'히어로 (첫 화면)', why:'WHY NOW (마케팅 고민)', market:'시장 기회',
+  brand:'AI가 아는 브랜드', sim:'업종별 시뮬레이션', service:'서비스 4단계',
+  who:'업종별 맞춤 실행', interview:'고객 인터뷰', price:'요금'};
+const COPY_FIELDS={eyebrow:'작은 제목', title:'큰 제목', lead:'설명문', h1:'헤드라인 1',
+  h21:'헤드라인 2', h22:'헤드라인 3', glassCard:'우측 상단 카드', sloganCard:'우측 하단 카드'};
+
+async function copyHome(msg){
+  updateSidebar('copy');
+  const cfg=JEDIT.copy;
+  app.innerHTML=`<h1 style="margin:26px 0 6px">${cfg.icon} ${cfg.name}</h1>
+    <p class="cms-note">${cfg.note}</p>${msg?`<div class="msg-ok">${esc(msg)}</div>`:''}
+    <div id="jBody"><div class="load">불러오는 중…</div></div>`;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${cfg.file}?ref=${BR}&t=${Date.now()}`,{headers:ghH(localStorage.getItem(TOK_LS))});
+    if(!r.ok)throw 0;
+    const j=await r.json();
+    JST={key:'copy', data:JSON.parse(b64dec(j.content)), sha:j.sha};
+    copyRender();
+  }catch(e){document.getElementById('jBody').innerHTML='<div class="msg-err">불러오기 실패 — 인터넷을 확인하세요.</div>';}
+}
+
+function copyRender(){
+  const home=JST.data.home||{};
+  const groups={};
+  Object.keys(home).forEach(k=>{
+    const sec=k.split('.')[0];
+    (groups[sec]=groups[sec]||[]).push(k);
+  });
+  let html='<div class="ed-bar"><b>문구 편집</b><span class="sp"></span><button class="dup" id="jSave">저장</button></div><div id="jMsg"></div>';
+  Object.keys(COPY_SECTIONS).forEach(sec=>{
+    if(!groups[sec])return;
+    html+=`<div class="jgroup"><h3>${COPY_SECTIONS[sec]}</h3>`;
+    groups[sec].forEach(k=>{
+      const fld=k.split('.')[1];
+      const label=COPY_FIELDS[fld]||fld;
+      const long=(home[k]||'').length>40;
+      html+=`<label class="jf"><span>${label}</span>${long
+        ? `<textarea data-jp="home.${k}" rows="2">${esc(home[k])}</textarea>`
+        : `<input type="text" data-jp="home.${k}" value="${esc(home[k])}">`}</label>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('jBody').innerHTML=html;
+  document.getElementById('jSave').onclick=jsonEditSave;
+}
+
 async function jsonEditSave(){
   const msg=document.getElementById('jMsg');
   const tok=localStorage.getItem(TOK_LS);
@@ -491,6 +542,7 @@ async function jsonEditSave(){
 function go(v){
   updateSidebar(v);
   if(v==='cms')return cmsHome();
+  if(v==='copy')return copyHome();
   if(v==='rpt')return rptHome();
   if(v==='seo')return jsonEditHome('seo');
   if(v==='settings')return jsonEditHome('settings');
