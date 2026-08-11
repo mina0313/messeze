@@ -21,6 +21,7 @@ a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all}
 .nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.nav .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
 .brand{display:flex;align-items:center;gap:9px}
 .brand svg{width:25px;height:25px}
 .brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
