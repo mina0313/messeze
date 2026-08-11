@@ -1,48 +1,48 @@
 {
-  "siteName": "messeze",
-  "siteUrl": "https://mina0313.github.io/messeze",
-  "favicon": "assets/favicon.ico",
-  "appleIcon": "assets/apple-touch-icon.png",
-  "ogImage": "https://mina0313.github.io/messeze/assets/og.png",
-  "ogTitle": "messeze — AI가 추천하는 기업을 만듭니다",
-  "ogDescription": "AI PR · AI 검색 최적화를 구독형으로. 진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지 전담팀이 대신합니다.",
-  "twitterCard": "summary_large_image",
-  "themeColor": "#2B5CFF",
-  "googleVerify": "",
-  "naverVerify": "",
-  "gaId": "",
-  "pages": {
-    "메인": {
-      "file": "index.html",
-      "title": "messeze · 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로",
-      "description": "기업의 메시지를 언론과 검색, AI에 지속적으로 축적하는 구독형 기업 PR 서비스. 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로.",
-      "keywords": "AI 검색 최적화, AEO, GEO, SEO, 기업 PR, 구독형 홍보, AI 노출",
-      "noindex": false,
-      "headCode": ""
-    },
-    "서비스": {
-      "file": "pricing.html",
-      "title": "요금 안내 | messeze — 구독형 기업 PR",
-      "description": "베이직·프리미엄·엔터프라이즈 — 우리 회사에 맞는 messeze 플랜을 비교하고, 30초 진단으로 추천받으세요.",
-      "keywords": "요금제, 구독, AI 검색 최적화 비용, 기업 PR 가격",
-      "noindex": false,
-      "headCode": ""
-    },
-    "블로그": {
-      "file": "blog/index.html",
-      "title": "블로그 | messeze — AI 검색 시대의 기업 홍보 인사이트",
-      "description": "AEO·GEO·SEO, 보도자료 작성법, 수출기업 PR 전략까지 — AI 검색 시대의 기업 홍보를 다루는 messeze 블로그.",
-      "keywords": "블로그, AEO, GEO, SEO 가이드, 기업 홍보 인사이트",
-      "noindex": false,
-      "headCode": ""
-    },
-    "FAQ": {
-      "file": "faq.html",
-      "title": "자주 묻는 질문 (FAQ) | messeze — AI 검색 시대의 기업 PR",
-      "description": "AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문을 한곳에 모았습니다. 효과 기간·비용·구독·AI 노출까지.",
-      "keywords": "FAQ, 자주 묻는 질문, AI 검색 최적화, 기업 PR",
-      "noindex": false,
-      "headCode": ""
-    }
+ "siteName": "messeze",
+ "siteUrl": "https://mina0313.github.io/messeze",
+ "favicon": "assets/favicon.ico",
+ "appleIcon": "assets/apple-touch-icon.png",
+ "ogImage": "https://mina0313.github.io/messeze/assets/og.png",
+ "ogTitle": "messeze — AI가 추천하는 기업을 만듭니다",
+ "ogDescription": "고객은 이제 검색하지 않습니다 — AI에게 묻습니다. MESSEZE는 AI가 기업을 이해하고 추천할 수 있도록 준비합니다.",
+ "twitterCard": "summary_large_image",
+ "themeColor": "#2B5CFF",
+ "googleVerify": "",
+ "naverVerify": "",
+ "gaId": "",
+ "pages": {
+  "메인": {
+   "file": "index.html",
+   "title": "messeze · 사람에게만 보이는 홍보에서, AI가 읽고 추천하는 홍보로",
+   "description": "AI 시대, 고객이 우리 회사를 발견하도록 만드는 새로운 기업 정보 관리 서비스. 진단부터 콘텐츠 구축, 정보 확산, 지속 관리까지 MESSEZE가 단계별로 함께합니다.",
+   "keywords": "AI 검색 최적화, AEO, GEO, SEO, 기업 PR, 구독형 홍보, AI 노출",
+   "noindex": false,
+   "headCode": ""
+  },
+  "서비스": {
+   "file": "pricing.html",
+   "title": "요금 안내 | messeze — 구독형 기업 PR",
+   "description": "베이직·프리미엄·엔터프라이즈 — 우리 회사에 맞는 messeze 플랜을 비교하고, 30초 진단으로 추천받으세요.",
+   "keywords": "요금제, 구독, AI 검색 최적화 비용, 기업 PR 가격",
+   "noindex": false,
+   "headCode": ""
+  },
+  "블로그": {
+   "file": "blog/index.html",
+   "title": "블로그 | messeze — AI 검색 시대의 기업 홍보 인사이트",
+   "description": "AEO·GEO·SEO, 보도자료 작성법, 수출기업 PR 전략까지 — AI 검색 시대의 기업 홍보를 다루는 messeze 블로그.",
+   "keywords": "블로그, AEO, GEO, SEO 가이드, 기업 홍보 인사이트",
+   "noindex": false,
+   "headCode": ""
+  },
+  "FAQ": {
+   "file": "faq.html",
+   "title": "자주 묻는 질문 (FAQ) | messeze — AI 검색 시대의 기업 PR",
+   "description": "AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문을 한곳에 모았습니다. 효과 기간·비용·구독·AI 노출까지.",
+   "keywords": "FAQ, 자주 묻는 질문, AI 검색 최적화, 기업 PR",
+   "noindex": false,
+   "headCode": ""
   }
+ }
 }

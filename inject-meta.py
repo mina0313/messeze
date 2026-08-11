@@ -32,7 +32,7 @@ MARK_END = '<!-- auto-meta:end -->'
 OVERRIDES = {
     'index.html': {
         'og_title': 'messeze — AI가 추천하는 기업을 만듭니다',
-        'og_desc': 'AI PR · AI 검색 최적화를 구독형으로. 진단부터 홈페이지 정비, 콘텐츠·언론 축적, 월간 리포트까지 전담팀이 대신합니다.',
+        'og_desc': '고객은 이제 검색하지 않습니다 — AI에게 묻습니다. MESSEZE는 AI가 기업을 이해하고 추천할 수 있도록 준비합니다.',
     },
 }
 
@@ -69,7 +69,7 @@ def graph_ld(rel, url, title, desc):
         'url': SITE + '/',
         'logo': {'@type': 'ImageObject', '@id': SITE + '/#logo', 'url': SITE + '/assets/logo.png'},
         'image': OG_IMAGE,
-        'description': '기업의 정보를 언론과 AI 검색에 지속적으로 축적하는 구독형 기업 PR 서비스',
+        'description': 'AI 시대, 고객이 우리 회사를 발견하도록 만드는 새로운 기업 정보 관리 서비스',
         'email': 'sales@firstmkt.co.kr', 'telephone': '+82-1600-9487',
         'address': {'@type': 'PostalAddress', 'addressCountry': 'KR', 'addressRegion': '대구광역시',
                     'addressLocality': '중구', 'streetAddress': '국채보상로 488, 3층'},
