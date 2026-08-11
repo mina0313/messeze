@@ -28,6 +28,8 @@ PAGES = {
     'pricing.html': 'pricing',
     'check.html': 'check',
     'tools.html': 'tools',
+    'faq.html': 'faq',
+    'interview.html': 'interview',
 }
 
 # data-copy="키" 요소의 여는 태그 ~ 닫는 태그

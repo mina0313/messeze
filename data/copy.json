@@ -68,5 +68,15 @@
     "card2.title": "PR 플랜 추천",
     "card1.desc": "URL만 입력하면 검색 기본기(SEO)와 AI 인용 준비도를 <b>100점 만점</b>으로 진단합니다.",
     "card2.desc": "상황·목표·예산 <b>3가지 질문</b>으로 우리에게 맞는 구독 플랜을 추천해 드립니다."
+  },
+  "faq": {
+    "hero.eyebrow": "자주 묻는 질문 · FAQ",
+    "hero.title": "궁금한 점을 <span class=\"co\">한곳에 모았습니다</span>",
+    "hero.lead": "AI 검색 시대의 기업 PR, SEO·AEO·GEO 최적화에 대해 가장 많이 묻는 질문들입니다."
+  },
+  "interview": {
+    "hero.eyebrow": "고객 인터뷰 · Interview",
+    "hero.title": "먼저 시작한 기업들의 <span class=\"co\">이야기</span>",
+    "hero.lead": "검색량 없는 중소·제조·수출 기업이 AI 답변에 등장하기까지 — 실제 여정을 인터뷰로 담았습니다."
   }
 }
