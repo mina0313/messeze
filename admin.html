@@ -160,6 +160,15 @@ body.gated main{display:none}
   .tbl{overflow-x:auto}
   table{min-width:600px}
 }
+
+.jgroup{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.jgroup h3{font-size:14px;margin-bottom:14px;color:var(--ink)}
+.jgroup h3 small{font-weight:500;color:var(--mut);font-size:12px;margin-left:6px}
+.jf{display:block;margin-bottom:12px}
+.jf>span{display:block;font-size:12px;font-weight:800;color:var(--body);margin-bottom:6px}
+.jf input[type=text],.jf textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font-family:var(--sans);font-size:13px;background:var(--bg,#fff);color:var(--ink)}
+.jf textarea{resize:vertical;line-height:1.6}
+.jf input[type=checkbox]{width:18px;height:18px}
 </style>
 </head>
 <body>
@@ -190,6 +199,8 @@ function updateSidebar(view){
     <button data-v="chk" class="${view==='chk'?'on':''}">🔍 가시성 체크</button>
     <button data-v="cms" class="${view==='cms'?'on':''}">✏️ 콘텐츠 관리</button>
     <button data-v="rpt" class="${view==='rpt'?'on':''}">📊 진단 리포트</button>
+      <button data-v="seo" class="${view==='seo'?'on':''}">🔗 SEO 관리</button>
+      <button data-v="settings" class="${view==='settings'?'on':''}">⚙️ 사이트 설정</button>
   `;
   sideMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 }
@@ -385,10 +396,104 @@ function rptHome(url){
   <iframe src="report.html${q}" style="width:100%;height:calc(100vh - 280px);min-height:500px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:16px"></iframe>`;
 }
 
+/* ===== SEO·사이트 설정 편집기 (GitHub API 저장) ===== */
+const JEDIT={
+  seo:{file:'data/seo.json', name:'SEO 설정', icon:'🔗',
+    note:'페이지별 검색 노출 정보를 관리합니다. 저장하면 1~2분 뒤 사이트에 반영됩니다.'},
+  settings:{file:'data/settings.json', name:'사이트 설정', icon:'⚙️',
+    note:'연락처·회사 정보를 관리합니다. 저장하면 1~2분 뒤 사이트에 반영됩니다.'}
+};
+const JLABEL={
+  siteUrl:'사이트 주소', ogImage:'공유 이미지 URL', title:'페이지 제목', description:'검색 설명문',
+  keywords:'키워드', noindex:'검색 제외', headCode:'추가 HEAD 코드', file:'파일 경로',
+  phone:'대표 전화', email:'대표 이메일', hours:'운영 시간', address:'주소', company:'회사명',
+  ceo:'대표자', bizId:'사업자번호', inquiryEmail:'문의 수신 메일', inquiryUrl:'문의 폼 주소',
+  kakao:'카카오톡', instagram:'인스타그램', blog:'블로그', channeltalk:'채널톡 키'
+};
+let JST={key:null, data:null, sha:null};
+
+async function jsonEditHome(key, msg){
+  updateSidebar(key);
+  const cfg=JEDIT[key];
+  app.innerHTML=`<h1 style="margin:26px 0 6px">${cfg.icon} ${cfg.name}</h1>
+    <p class="cms-note">${cfg.note}</p>${msg?`<div class="msg-ok">${esc(msg)}</div>`:''}
+    <div id="jBody"><div class="load">불러오는 중…</div></div>`;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${cfg.file}?ref=${BR}&t=${Date.now()}`,{headers:ghH(localStorage.getItem(TOK_LS))});
+    if(!r.ok)throw 0;
+    const j=await r.json();
+    JST={key:key, data:JSON.parse(b64dec(j.content)), sha:j.sha};
+    jsonEditRender();
+  }catch(e){document.getElementById('jBody').innerHTML='<div class="msg-err">불러오기 실패 — 인터넷을 확인하세요.</div>';}
+}
+
+function jFld(path, val, label){
+  const long=/description|headCode|address/.test(path);
+  if(typeof val==='boolean')
+    return `<label class="jf"><span>${label}</span><input type="checkbox" data-jp="${path}" ${val?'checked':''}></label>`;
+  return `<label class="jf"><span>${label}</span>${long
+    ? `<textarea data-jp="${path}" rows="${path.includes('headCode')?4:2}">${esc(val)}</textarea>`
+    : `<input type="text" data-jp="${path}" value="${esc(val)}">`}</label>`;
+}
+
+function jsonEditRender(){
+  const d=JST.data, body=document.getElementById('jBody');
+  let html='<div class="ed-bar"><b>내용 편집</b><span class="sp"></span><button class="dup" id="jSave">저장</button></div><div id="jMsg"></div>';
+  if(JST.key==='seo'){
+    html+='<div class="jgroup"><h3>공통</h3>';
+    ['siteUrl','ogImage'].forEach(k=>{ if(k in d) html+=jFld(k, d[k], JLABEL[k]||k); });
+    html+='</div>';
+    Object.keys(d.pages||{}).forEach(pg=>{
+      html+=`<div class="jgroup"><h3>${esc(pg)} <small>${esc(d.pages[pg].file||'')}</small></h3>`;
+      ['title','description','keywords','noindex','headCode'].forEach(k=>{
+        if(k in d.pages[pg]) html+=jFld(`pages.${pg}.${k}`, d.pages[pg][k], JLABEL[k]||k);
+      });
+      html+='</div>';
+    });
+  }else{
+    html+='<div class="jgroup"><h3>기본 정보</h3>';
+    Object.keys(d).forEach(k=>{ html+=jFld(k, d[k], JLABEL[k]||k); });
+    html+='</div>';
+  }
+  body.innerHTML=html;
+  document.getElementById('jSave').onclick=jsonEditSave;
+}
+
+function jsonEditCollect(){
+  document.querySelectorAll('[data-jp]').forEach(el=>{
+    const path=el.dataset.jp.split('.');
+    let t=JST.data;
+    for(let i=0;i<path.length-1;i++) t=t[path[i]];
+    t[path[path.length-1]] = el.type==='checkbox' ? el.checked : el.value.trim();
+  });
+}
+
+async function jsonEditSave(){
+  const msg=document.getElementById('jMsg');
+  const tok=localStorage.getItem(TOK_LS);
+  if(!tok)return askToken(()=>jsonEditSave());
+  jsonEditCollect();
+  const cfg=JEDIT[JST.key];
+  msg.innerHTML='<div class="load">저장 중…</div>';
+  try{
+    const body={message:`admin: ${cfg.name} 수정`,content:b64enc(JSON.stringify(JST.data,null,2)),sha:JST.sha,branch:BR};
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${cfg.file}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const j=await r.json();
+    if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}
+    if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 수정됐습니다 — 다시 불러오세요.</div>';return;}
+    if(!r.ok)throw 0;
+    JST.sha=j.content.sha;
+    msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 반영됩니다.</div>';
+  }catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 잠시 후 다시 시도하세요.</div>';}
+}
+
+
 function go(v){
   updateSidebar(v);
   if(v==='cms')return cmsHome();
   if(v==='rpt')return rptHome();
+  if(v==='seo')return jsonEditHome('seo');
+  if(v==='settings')return jsonEditHome('settings');
   if(!APPS_URL)return showSetup();
   const saved=localStorage.getItem(KEY_LS);
   if(!saved)return showGate();
