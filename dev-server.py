@@ -15,7 +15,6 @@ except Exception:
 API_FILES = {
     '/api/seo': ('data/seo.json', 'SEO 설정'),
     '/api/settings': ('data/settings.json', '사이트 설정'),
-    '/api/accounts': ('data/accounts.json', '관리자 계정'),
 }
 
 class DevHandler(SimpleHTTPRequestHandler):
