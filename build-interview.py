@@ -167,85 +167,90 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 .mega-col a:hover{background:var(--sky-2)}
 .mega-col a:hover b{color:var(--cobalt)}
 @media(max-width:900px){.nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto}}
-/* case */
-.chero{background:linear-gradient(180deg,#F4F9FF,#fff);padding:64px 0 46px}
-.crumb{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:18px}
+/* case — editorial */
+.chero{padding:60px 0 0}
+.crumb{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:28px}
 .crumb a{color:var(--cobalt)}
-.ctags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.ctags span{font-size:12.5px;font-weight:800;border-radius:999px;padding:6px 14px;background:var(--sky);color:var(--cobalt)}
-.ctags .gray{background:#EEF2F8;color:#5A6780}
-.chero h1{font-size:clamp(26px,3.8vw,42px)}
-.cwho{display:flex;align-items:center;gap:14px;margin-top:26px}
+.cmeta{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--cobalt);margin-bottom:16px}
+.cmeta i{font-style:normal;color:#C4CDDC;margin:0 9px;font-weight:600}
+.chero h1{font-size:clamp(28px,4vw,46px);letter-spacing:-.04em;line-height:1.22}
+.hfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:36px;padding-bottom:38px}
+.cwho{display:flex;align-items:center;gap:14px;flex:0 0 auto}
 .cwho img{width:76px;height:56px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:7px}
 .cwho b{display:block;font-size:15px}
 .cwho span{font-size:13px;color:var(--mut)}
-.cquote{margin-top:18px;font-size:17px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:16px 20px;max-width:720px;line-height:1.6}
-.msec{padding:46px 0}
-.msec h2{font-size:clamp(21px,2.6vw,28px);margin-bottom:22px}
-.msec h2 em{font-style:normal;color:var(--cobalt)}
-.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.mc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;box-shadow:var(--sh-sm)}
-.mc b{font-family:var(--disp);font-size:clamp(24px,2.8vw,34px);font-weight:700;color:var(--cobalt);display:block}
-.mc .l{font-size:13.5px;font-weight:800;margin-top:6px}
-.mc .s{font-size:11.5px;color:var(--mut);margin-top:3px;display:block}
-.bsec{background:var(--sky-2)}
-.btxt{max-width:820px;font-size:15.5px;color:var(--body);line-height:1.75}
-.alist{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:980px}
-.ac{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sh-sm)}
-.ac i{font-style:normal;flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--sky);color:var(--cobalt);font-weight:800;font-size:13px;display:grid;place-items:center}
-.ac b{font-size:15px;display:block}
-.ac p{font-size:13.3px;color:var(--body);margin-top:5px;line-height:1.6}
-.chart{max-width:820px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;box-shadow:var(--sh-sm)}
-.chart .ct{font-size:13.5px;font-weight:800;margin-bottom:20px}
-.cbars{display:flex;align-items:flex-end;gap:0;height:180px}
-.cb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px}
-.cb i{width:min(52px,70%);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#6E93FF,var(--cobalt));position:relative}
-.cb i em{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-style:normal;font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--cobalt);white-space:nowrap}
-.cb.zero i{background:#E3E9F4;min-height:6px}
-.cb span{font-size:12px;color:var(--mut);font-weight:700}
-.cnote{font-size:12px;color:var(--mut);margin-top:16px}
-.qa2{max-width:820px;display:flex;flex-direction:column;gap:14px}
-.qi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--sh-sm)}
-.qi .q{font-size:15.5px;font-weight:800}
-.qi .q i{font-style:normal;color:var(--cobalt);margin-right:8px}
-.qi .a{font-size:14.3px;color:var(--body);line-height:1.7;margin-top:10px}
-.qi .a i{font-style:normal;color:var(--mint);font-weight:800;margin-right:8px}
-.exnote{max-width:820px;font-size:12.5px;color:var(--mut);background:#F6F8FC;border:1px dashed var(--line-2);border-radius:12px;padding:12px 16px}
-/* 가시성 평가 스코어 */
-.sc{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:stretch}
-.sc-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-sm);padding:26px}
-.sc-gcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
-.sc-ring{width:158px;height:158px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cobalt) var(--deg),#E7EDF7 0)}
-.sc-ring>div{width:126px;height:126px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
-.sc-ring b{font-family:var(--disp);font-size:42px;font-weight:700;color:var(--cobalt);line-height:1}
-.sc-ring span{font-size:11.5px;color:var(--mut);font-weight:700;margin-top:4px}
-.sc-lab{font-size:14px;font-weight:800}
-.sc-delta{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;background:var(--sky);color:var(--cobalt);border-radius:999px;padding:7px 14px}
-.sc-delta i{font-style:normal;color:var(--mut);font-weight:700}
-.sc-items{display:flex;flex-direction:column;gap:4px}
-.sc-g{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--mut);margin:10px 0 6px;display:flex;justify-content:space-between}
-.sc-g:first-child{margin-top:0}
-.sc-g b{color:var(--ink)}
-.si{display:grid;grid-template-columns:96px 1fr 64px;align-items:center;gap:12px;padding:4px 0}
-.si .n{font-size:12.8px;font-weight:700;color:var(--body);white-space:nowrap}
-.si .bar{height:8px;border-radius:99px;background:#EBF0F8;position:relative}
-.si .bar i{position:absolute;top:0;bottom:0;left:0;border-radius:99px;background:linear-gradient(90deg,#6E93FF,var(--cobalt))}
-.si .bar em{position:absolute;top:-3px;width:2px;height:14px;background:#C3CCDB;border-radius:2px}
+.cquote{max-width:540px;font-size:16px;font-weight:700;line-height:1.65;color:var(--body);position:relative;padding-left:24px;word-break:keep-all;text-align:left}
+.cquote::before{content:"“";position:absolute;left:0;top:-6px;font-family:Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+@media(max-width:820px){.hfoot{flex-direction:column;align-items:flex-start;gap:22px}}
+/* 성과 밴드 */
+.statband{border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr}
+.statband>div{padding:26px 22px 24px;border-left:1px solid var(--line)}
+.statband>div:first-child{border-left:0;padding-left:0}
+.statband b{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.5vw,34px);letter-spacing:-.02em;display:block;line-height:1.1;white-space:nowrap}
+.statband .hero-n b{color:var(--cobalt)}
+.statband b em{font-style:normal;font-size:.52em;color:#B9C4D6;margin:0 4px;vertical-align:middle}
+.statband .l{font-size:13px;font-weight:800;margin-top:9px;display:block}
+.statband .s{font-size:11.5px;color:var(--mut);margin-top:2px;display:block}
+@media(max-width:860px){.statband{grid-template-columns:1fr 1fr}.statband>div{padding:18px 14px;border-left:0}.statband>div:nth-child(even){border-left:1px solid var(--line)}.statband>div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* 에디토리얼 섹션 */
+.esec{display:grid;grid-template-columns:200px 1fr;gap:48px;padding:52px 0;border-bottom:1px solid var(--line)}
+.esec.last{border-bottom:0}
+.esec .lab i{font-style:normal;font-family:var(--disp);font-weight:700;font-size:12.5px;color:#B9C4D6;letter-spacing:.05em;display:block}
+.esec .lab b{display:block;color:var(--ink);font-size:17.5px;letter-spacing:-.02em;margin-top:7px;line-height:1.4;word-break:keep-all}
+.esec .lab small{display:block;font-weight:700;font-size:11.5px;color:var(--mut);margin-top:9px;line-height:1.55}
+@media(max-width:860px){.esec{grid-template-columns:1fr;gap:20px;padding:40px 0}}
+.btxt{max-width:640px;font-size:15.5px;color:var(--body);line-height:1.8;word-break:keep-all}
+/* 평가 세부 */
+.sdet{display:grid;grid-template-columns:1fr 1fr;gap:6px 60px;max-width:880px}
+.sg{font-size:11.5px;font-weight:800;letter-spacing:.05em;color:var(--mut);display:flex;justify-content:space-between;align-items:baseline;padding-bottom:10px;border-bottom:1.5px solid var(--ink)}
+.sg b{color:var(--ink);font-size:13px}
+.si{display:grid;grid-template-columns:92px 1fr 58px;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.si .n{font-size:13px;font-weight:700;color:var(--body);white-space:nowrap}
+.si .bar{height:6px;border-radius:99px;background:#EDF1F8;position:relative}
+.si .bar i{position:absolute;top:0;bottom:0;left:0;border-radius:99px;background:var(--cobalt)}
+.si .bar em{position:absolute;top:-4px;width:2px;height:14px;background:#C3CCDB;border-radius:2px}
 .si .v{font-size:12.8px;font-weight:800;text-align:right;color:var(--ink)}
 .si .v i{font-style:normal;color:var(--mut);font-weight:700}
-.sc-note{font-size:12px;color:var(--mut);margin-top:12px}
-@media(max-width:860px){.sc{grid-template-columns:1fr}.si{grid-template-columns:84px 1fr 58px}}
-/* 노출 질문 리포트 */
-.qx{max-width:820px;display:flex;flex-direction:column;gap:10px}
-.qxr{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh-sm);flex-wrap:wrap}
-.qxr .t{flex:1;min-width:230px;font-size:14.5px;font-weight:700;color:var(--ink);word-break:keep-all}
+.sc-note{font-size:12px;color:var(--mut);margin-top:16px}
+@media(max-width:860px){.sdet{grid-template-columns:1fr;gap:4px}}
+/* 실행 리스트 */
+.axl{max-width:880px}
+.axl .r{display:grid;grid-template-columns:46px 200px 1fr;gap:20px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
+.axl .r:first-child{padding-top:4px}
+.axl i{font-style:normal;font-family:var(--disp);font-weight:700;font-size:13px;color:#B9C4D6}
+.axl b{font-size:15.5px;letter-spacing:-.01em}
+.axl p{font-size:14px;color:var(--body);line-height:1.65;word-break:keep-all}
+@media(max-width:860px){.axl .r{grid-template-columns:40px 1fr}.axl p{grid-column:2}}
+/* 차트 */
+.wchart{max-width:640px}
+.cbars{display:flex;align-items:flex-end;height:168px;border-bottom:1.5px solid var(--ink);padding-top:26px}
+.cb{flex:1;display:flex;align-items:flex-end;justify-content:center;height:100%}
+.cb i{width:min(42px,58%);background:var(--cobalt);position:relative;border-radius:3px 3px 0 0}
+.cb i em{position:absolute;top:-23px;left:50%;transform:translateX(-50%);font-style:normal;font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink);white-space:nowrap}
+.cb.zero i{background:#E3E9F4;min-height:4px}
+.clabs{display:flex;margin-top:9px}
+.clabs span{flex:1;text-align:center;font-size:12px;color:var(--mut);font-weight:700}
+.cnote{font-size:12px;color:var(--mut);margin-top:16px}
+/* 노출 질문 */
+.qx{max-width:880px}
+.qxr{display:flex;align-items:center;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.qxr:first-child{padding-top:4px}
+.qxr .t{flex:1;min-width:240px;font-size:14.8px;font-weight:700;color:var(--ink);word-break:keep-all}
 .qxr .t::before{content:"Q. ";color:var(--cobalt);font-weight:800}
-.qxe{display:flex;gap:6px;flex-wrap:wrap}
-.qxe span{font-size:11px;font-weight:800;border-radius:999px;padding:5px 11px;background:var(--sky);color:var(--cobalt);display:inline-flex;align-items:center;gap:4px}
-.qxe span::before{content:"✓";font-size:10px;color:var(--mint)}
-.qxe span.off{background:#F3F5F9;color:#B6BFCE}
-.qxe span.off::before{content:"—";color:#C9D1DD}
-.qxnote{max-width:820px;font-size:12px;color:var(--mut);margin-top:14px}
+.qxe{display:flex;gap:16px;flex-wrap:wrap}
+.qxe span{font-size:12px;font-weight:800;color:var(--ink);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.qxe span::before{content:"✓";color:var(--mint);font-weight:800;font-size:11px}
+.qxe span.off{color:#C0C9D8}
+.qxe span.off::before{content:"—";color:#D4DBE6}
+/* 인터뷰 */
+.qa2{max-width:760px}
+.qi{padding:20px 0;border-bottom:1px solid var(--line)}
+.qi:first-child{padding-top:0}
+.qi:last-child{border-bottom:0}
+.qi .q{font-size:16px;font-weight:800;letter-spacing:-.01em;word-break:keep-all}
+.qi .q i{font-style:normal;color:var(--cobalt);margin-right:9px;font-family:var(--disp)}
+.qi .a{font-size:14.5px;color:var(--body);line-height:1.75;margin-top:9px;word-break:keep-all}
+.qi .a i{display:none}
 .ccta{background:linear-gradient(180deg,#0B1533,#101F3F 60%,#0A1224);color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
 .ccta::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% -10%,rgba(43,92,255,.32),transparent 62%)}
 .ccta .wrap{position:relative}
@@ -261,32 +266,29 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-a
 
 def bars(weeks):
     mx = max(v for _, v in weeks) or 1
-    cells = []
+    cells, labels = [], []
     for lb, v in weeks:
-        h = int(v / mx * 140) + 6
+        h = int(v / mx * 130) + 5
         cls = ' class="cb zero"' if v == 0 else ' class="cb"'
-        cells.append(f'<div{cls}><i style="height:{h}px"><em>{v}%</em></i><span>{lb}</span></div>')
-    return "".join(cells)
+        cells.append(f'<div{cls}><i style="height:{h}px"><em>{v}%</em></i></div>')
+        labels.append(f'<span>{lb}</span>')
+    return "".join(cells), "".join(labels)
 
 ENGINES = ["구글 AI", "ChatGPT", "Gemini", "Claude"]
 
+def esec(no, name, body, small="", last=False):
+    sm = f"<small>{small}</small>" if small else ""
+    return f'<div class="esec{" last" if last else ""}"><div class="lab"><i>{no}</i><b>{name}</b>{sm}</div><div>{body}</div></div>'
+
 def qxs(x):
-    if not x.get("questions"):
-        return ""
     rows = []
-    for q, on in x["questions"]:
+    for q, on in x.get("questions", []):
         chips = "".join(f'<span{"" if e in on else " class=\"off\""}>{e}</span>' for e in ENGINES)
         rows.append(f'<div class="qxr"><div class="t">{q}</div><div class="qxe">{chips}</div></div>')
-    return f"""<section class="msec"><div class="wrap">
-<h2>지금, 이런 질문에 <em>등장합니다</em></h2>
-<div class="qx">{"".join(rows)}</div>
-<div class="qxnote">가시성 진단 질문 세트 기준 · 각 엔진의 답변에 인용 또는 추천으로 등장하는 질문입니다.</div>
-</div></section>"""
+    return f'<div class="qx">{"".join(rows)}</div><div class="sc-note">가시성 진단 질문 세트 기준 · 각 엔진의 답변에 인용 또는 추천으로 등장하는 질문입니다.</div>'
 
-def scorepanel(x):
-    s = x.get("score")
-    if not s:
-        return ""
+def sdet(x):
+    s = x["score"]
     def rows(items):
         out = []
         for n, mx, b, a in items:
@@ -296,26 +298,20 @@ def scorepanel(x):
         return "".join(out)
     seo, ai = s["items"][:3], s["items"][3:]
     seo_a, ai_a = sum(i[3] for i in seo), sum(i[3] for i in ai)
-    deg = round(s["after"] * 3.6)
-    return f"""<div class="sc">
-<div class="sc-card sc-gcard">
-  <span class="sc-lab">종합 가시성 점수</span>
-  <div class="sc-ring" style="--deg:{deg}deg"><div><b>{s['after']}</b><span>100점 만점</span></div></div>
-  <span class="sc-delta"><i>도입 전 {s['before']}점</i> → {s['after']}점 · +{s['after']-s['before']}</span>
+    return f"""<div class="sdet">
+<div><div class="sg"><span>SEO 기본기 · 50점</span><b>{seo_a}점</b></div>{rows(seo)}</div>
+<div><div class="sg"><span>AI 준비도 · 50점</span><b>{ai_a}점</b></div>{rows(ai)}</div>
 </div>
-<div class="sc-card sc-items">
-  <div class="sc-g"><span>SEO 기본기 · 50점</span><b>{seo_a}점</b></div>
-  {rows(seo)}
-  <div class="sc-g"><span>AI 준비도 · 50점</span><b>{ai_a}점</b></div>
-  {rows(ai)}
-</div>
-</div>
-<div class="sc-note">messeze AI 가시성 평가 기준(SEO 기본기 50 + AI 준비도 50) · 회색 눈금은 도입 전 점수입니다.</div>"""
+<div class="sc-note">회색 눈금은 도입 전 점수입니다.</div>"""
 
 def page(x):
-    mcs = "".join(f'<div class="mc"><b>{n}</b><span class="l">{l}</span><span class="s">{s}</span></div>' for n, l, s in x["metrics"])
-    acs = "".join(f'<div class="ac"><i>{i+1}</i><div><b>{t}</b><p>{d}</p></div></div>' for i, (t, d) in enumerate(x["actions"]))
-    qas = "".join(f'<div class="qi"><div class="q"><i>Q.</i>{q}</div><div class="a"><i>A.</i>{a}</div></div>' for q, a in x["qa"])
+    s = x["score"]
+    stats = f'<div class="hero-n"><b>{s["before"]}<em>→</em>{s["after"]}</b><span class="l">AI 가시성 점수</span><span class="s">100점 만점 · {x["period"]}</span></div>'
+    stats += "".join(f'<div><b>{n}</b><span class="l">{l}</span><span class="s">{sm}</span></div>' for n, l, sm in x["metrics"])
+    acs = "".join(f'<div class="r"><i>{i+1:02d}</i><b>{t}</b><p>{d}</p></div>' for i, (t, d) in enumerate(x["actions"]))
+    qas = "".join(f'<div class="qi"><div class="q"><i>Q.</i>{q}</div><div class="a">{a}</div></div>' for q, a in x["qa"])
+    cells, labels = bars(x["weeks"])
+    chart = f'<div class="wchart"><div class="cbars">{cells}</div><div class="clabs">{labels}</div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 AI 답변 등장률입니다. (4개 엔진 평균)</div></div>'
     return f"""<!doctype html>
 <html lang="ko">
 <head>
@@ -333,38 +329,22 @@ def page(x):
 
 <section class="chero"><div class="wrap">
 <div class="crumb"><a href="../interview.html">← 인터뷰 목록</a></div>
-<div class="ctags"><span>{x['tag']}</span><span class="gray">{x['period']} 진행</span><span class="gray">{x['plan']} 플랜</span></div>
+<div class="cmeta">{x['tag']}<i>|</i>{x['period']} 진행<i>|</i>{x['plan']} 플랜</div>
 <h1>{x['title']}</h1>
-<div class="cwho"><img src="{x['photo']}" alt="{x['who']}" referrerpolicy="no-referrer"><div><b>{x['who']}</b><span>{x['com']} · {x['tag']}</span></div></div>
-<div class="cquote">“{x['quote']}”</div>
+<div class="hfoot">
+<div class="cwho"><img src="{x['photo']}" alt="{x['com']}" referrerpolicy="no-referrer"><div><b>{x['com']}</b><span>{x['who']} · {x['tag']}</span></div></div>
+<blockquote class="cquote">{x['quote']}</blockquote>
+</div>
 </div></section>
 
-<section class="msec"><div class="wrap">
-<h2>AI 가시성 평가 <em>{x['score']['before']}점 → {x['score']['after']}점</em></h2>
-{scorepanel(x)}
-<div class="mgrid" style="margin-top:26px">{mcs}</div>
-</div></section>
-
-<section class="msec bsec"><div class="wrap">
-<h2>시작 전 상황</h2>
-<p class="btxt">{x['before']}</p>
-</div></section>
-
-<section class="msec"><div class="wrap">
-<h2>무엇을 실행했나</h2>
-<div class="alist">{acs}</div>
-</div></section>
-
-<section class="msec bsec"><div class="wrap">
-<h2>주차별 AI 답변 등장률 변화</h2>
-<div class="chart"><div class="ct">핵심 질문 세트 기준 · 4개 엔진 평균</div><div class="cbars">{bars(x['weeks'])}</div><div class="cnote">동일 질문 세트를 주기적으로 재실행해 측정한 값입니다.</div></div>
-</div></section>
-
-{qxs(x)}
-
-<section class="msec bsec"><div class="wrap">
-<h2>{x['who']} 인터뷰</h2>
-<div class="qa2">{qas}</div>
+<section style="padding:0 0 30px"><div class="wrap">
+<div class="statband">{stats}</div>
+{esec("01", "평가 세부", sdet(x), "messeze AI 가시성 평가 기준")}
+{esec("02", "시작 전", f'<p class="btxt">{x["before"]}</p>')}
+{esec("03", "실행한 것", f'<div class="axl">{acs}</div>')}
+{esec("04", "주차별 변화", chart, "AI 답변 등장률")}
+{esec("05", "노출 질문", qxs(x), "지금 등장하는 질문")}
+{esec("06", f"{x['who']} 인터뷰", f'<div class="qa2">{qas}</div>', last=True)}
 </div></section>
 
 <section class="ccta"><div class="wrap">
