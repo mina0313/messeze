@@ -659,7 +659,7 @@ function render(u,items){
 
   // 체크 기록을 관리자 목록으로 전송 (개인정보 없음: URL·점수만)
   try{
-    const APPS_URL='https://script.google.com/macros/s/AKfycbzBWMloPYJjGqCdxzHbsI8psVm-MOf1iFtsVPLSHpvEWZeGNH4wrtZJG_se5GGzJPpk/exec';
+    const APPS_URL='https://script.google.com/macros/s/AKfycbxQLdZpu5aqmDkFd4JcVT1Dk8iuQZ4vryz1UoHEgh0RxkdohTg_x0fMZaxo6_9Y7ZDN/exec';
     fetch(APPS_URL,{method:'POST',body:JSON.stringify({action:'check',site:u,score:total})});
   }catch(e){}
 }
