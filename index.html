@@ -2032,9 +2032,16 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
   const [name,company,phone,site]=[...f.querySelectorAll('input')].map(i=>i.value.trim());
   if(APPS_URL){
     b.disabled=true;b.textContent='전송 중…';
-    try{
-      await fetch(APPS_URL,{method:'POST',body:JSON.stringify({name,company,phone,site})});
-    }catch(_){ b.disabled=false;b.textContent='전송 실패 — 다시 시도해 주세요';return; }
+    let sent=false;
+    for(let a=0;a<3&&!sent;a++){
+      try{
+        const r=await fetch(APPS_URL,{method:'POST',body:JSON.stringify({name,company,phone,site})});
+        const j=await r.json();
+        sent=!!(j&&j.ok);
+      }catch(_){}
+      if(!sent)await new Promise(rs=>setTimeout(rs,1200));
+    }
+    if(!sent){ b.disabled=false;b.textContent='전송 실패 — 다시 시도해 주세요';return; }
   }
   b.textContent='신청 완료 · 곧 연락드립니다 ✓';b.style.background='var(--mint)';b.disabled=true;
 });
@@ -2184,7 +2191,17 @@ document.getElementById('diagForm').addEventListener('submit',async e=>{
   /* 직접 입력 → 폼과 같은 접수 라인(Apps Script)으로 전송: 내용 → 성함 → 연락처 3단계 */
   var flow=null; // {msg, name}
   function submitInquiry(msg,name,phone){
-    return fetch(APPS_URL,{method:'POST',body:JSON.stringify({name:name,company:'💬 채팅 문의',phone:phone,site:msg})});
+    var payload=JSON.stringify({name:name,company:'💬 채팅 문의',phone:phone,site:msg});
+    var attempt=function(n){
+      return fetch(APPS_URL,{method:'POST',body:payload})
+        .then(function(r){return r.json();})
+        .then(function(j){ if(j&&j.ok)return true; throw 0; })
+        .catch(function(){
+          if(n<=1)throw 0;
+          return new Promise(function(rs){setTimeout(rs,1200);}).then(function(){return attempt(n-1);});
+        });
+    };
+    return attempt(3);
   }
   form.addEventListener('submit',function(e){
     e.preventDefault();var v=input.value.trim();if(!v)return;usr(v);input.value='';
