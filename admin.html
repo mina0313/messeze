@@ -594,8 +594,16 @@ function render(key, rows){
 }
 
 const REPO='mina0313/messeze', BR='master', TOK_LS='mz_gh_token';
+/* 로컬(:5678 등)에서는 GitHub 토큰 없이 내 컴퓨터 파일에 바로 저장 → 클로드가 푸시 */
+const LOCAL_EDIT=(location.hostname==='localhost'||location.hostname==='127.0.0.1');
+const LOCAL_SAVED_MSG='✅ 내 컴퓨터에 저장됨 — 사이트 반영은 클로드에게 "메세지 올려줘"라고 하면 됩니다.';
+async function localSave(file,content){
+  const r=await fetch('/__save__',{method:'POST',body:JSON.stringify({file,content})});
+  if(!(await r.json()).ok)throw 0;
+}
 /* 데이터 읽기: GitHub API 4초 → 실패 시 사이트 사본(즉시). sha는 저장 직전 조회로 보충 */
 async function ghRead(file){
+  if(LOCAL_EDIT){const r=await fetch(file+'?t='+Date.now());if(!r.ok)throw 0;return {data:await r.json(), sha:null};}
   try{
     const ac=new AbortController();const to=setTimeout(()=>ac.abort(),4000);
     const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${file}?ref=${BR}&t=${Date.now()}`,{headers:ghH(localStorage.getItem(TOK_LS)),signal:ac.signal});
@@ -663,7 +671,7 @@ document.execCommand(c,false,b.dataset.arg||null);};});
 src.addEventListener('input',()=>{ed.innerHTML=src.value;});
 });}
 function askToken(then){const tok=localStorage.getItem(TOK_LS);if(tok)return then(tok);const msg=document.createElement('div');app.appendChild(msg);msg.innerHTML=`<div class="tok-box"><b>처음 한 번만:</b> GitHub 토큰이 필요합니다.<br>github.com 로그인 → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token → Repository: <b>messeze</b>만 선택 → Permissions: <b>Contents: Read and write</b> 선택 후 생성<input id="tokIn" type="password" placeholder="github_pat_… 붙여넣고 Enter"></div>`;document.getElementById('tokIn').focus();document.getElementById('tokIn').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim()){localStorage.setItem(TOK_LS,e.target.value.trim());msg.remove();then(e.target.value.trim());}});}
-async function pickAndUpload(btn){return new Promise(resolve=>{const fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.onchange=async()=>{const f=fi.files[0];if(!f)return resolve(null);askToken(async tok=>{btn.disabled=true;const orig=btn.textContent;btn.textContent='올리는 중…';try{let blob=f;if(/image\/(jpe?g|png|webp)/.test(f.type)&&f.size>250*1024){const bmp=await createImageBitmap(f);const sc=Math.min(1,1600/bmp.width);const cv=document.createElement('canvas');cv.width=Math.round(bmp.width*sc);cv.height=Math.round(bmp.height*sc);cv.getContext('2d').drawImage(bmp,0,0,cv.width,cv.height);blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.85));}const buf=new Uint8Array(await blob.arrayBuffer());let bin='';for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode(...buf.subarray(i,i+8192));const ext=blob.type==='image/jpeg'?'jpg':(f.name.split('.').pop()||'jpg').toLowerCase();const name=`up-${Date.now()}.${ext}`;const r=await fetch(`https://api.github.com/repos/${REPO}/contents/assets/uploads/${name}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify({message:'admin: 사진 '+name,content:btoa(bin),branch:BR})});if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);alert('토큰이 유효합니다. 버튼을 다시 눌러 새 토큰을 입력하세요.');return resolve(null);}if(!r.ok)throw 0;resolve(SITE+'assets/uploads/'+name);}catch(e){alert('업로드 실패 — 인터넷 또는 토큰을 확인하세요.');resolve(null);}finally{btn.disabled=false;btn.textContent=orig;}})};fi.click();});}
+async function pickAndUpload(btn){return new Promise(resolve=>{const fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.onchange=async()=>{const f=fi.files[0];if(!f)return resolve(null);const doUp=async tok=>{btn.disabled=true;const orig=btn.textContent;btn.textContent='올리는 중…';try{let blob=f;if(/image\/(jpe?g|png|webp)/.test(f.type)&&f.size>250*1024){const bmp=await createImageBitmap(f);const sc=Math.min(1,1600/bmp.width);const cv=document.createElement('canvas');cv.width=Math.round(bmp.width*sc);cv.height=Math.round(bmp.height*sc);cv.getContext('2d').drawImage(bmp,0,0,cv.width,cv.height);blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.85));}const buf=new Uint8Array(await blob.arrayBuffer());let bin='';for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode(...buf.subarray(i,i+8192));const ext=blob.type==='image/jpeg'?'jpg':(f.name.split('.').pop()||'jpg').toLowerCase();const name=`up-${Date.now()}.${ext}`;if(LOCAL_EDIT){const lr=await fetch('/__save__',{method:'POST',body:JSON.stringify({file:'assets/uploads/'+name,b64:btoa(bin)})});if(!(await lr.json()).ok)throw 0;return resolve(SITE+'assets/uploads/'+name);}const r=await fetch(`https://api.github.com/repos/${REPO}/contents/assets/uploads/${name}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify({message:'admin: 사진 '+name,content:btoa(bin),branch:BR})});if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);alert('토큰이 유효합니다. 버튼을 다시 눌러 새 토큰을 입력하세요.');return resolve(null);}if(!r.ok)throw 0;resolve(SITE+'assets/uploads/'+name);}catch(e){alert('업로드 실패 — 인터넷 또는 토큰을 확인하세요.');resolve(null);}finally{btn.disabled=false;btn.textContent=orig;}};if(LOCAL_EDIT)doUp(null);else askToken(doUp);};fi.click();});}
 function cmsHome(typeKey,msg){const t=TYPES.find(x=>x.key===typeKey)||TYPES[0];updateSidebar('cms:'+t.key);app.innerHTML=`<h1 style="margin:26px 0 6px">${t.icon} ${t.name}</h1><p class="cms-note">${t.note} 저장하면 <b>1~2분 뒤 자동 반영</b>됩니다.</p>${msg?`<div class="msg-ok">${esc(msg)}</div>`:''}<div id="cmsBody"><div class="load">불러오는 중…</div></div>`;cmsLoad(t.key);}
 async function cmsLoad(key){const t=TYPES.find(x=>x.key===key);document.querySelectorAll('.cms-types button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));const body=document.getElementById('cmsBody');body.innerHTML='<div class="load">불러오는 중…</div>';try{const g=await ghRead(t.file);CMS.type=t;CMS.sha=g.sha;CMS.arr=g.data;CMS.idx=null;cmsList();}catch(e){body.innerHTML='<div class="msg-err">불러오기 실패 — 인터넷을 확인하세요.</div>';}}
 function cmsList(){
@@ -709,7 +717,7 @@ function cmsList(){
 function fld(val,path,key){const P=esc(path);if(typeof val==='number')return`<div class="fld2"><label>${esc(lbl(key))}</label><input type="number" data-path="${P}" value="${val}"></div>`;if(typeof val==='string'){if(isImgField(key,val))return`<div class="fld2"><label>${esc(lbl(key))}</label><div class="imgfld"><div class="thumbbox">${val?`<img src="${esc(val)}" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="ctrls"><input data-path="${P}" value="${esc(val)}" placeholder="사진 주소"><button type="button" class="upbtn" data-upl="${P}">📷 업로드</button></div></div></div>`;if(isRichField(key,val))return richFld(path,val,lbl(key),val.length<220&&key!=='body');const long=val.length>70;return`<div class="fld2"><label>${esc(lbl(key))}</label>${long?`<textarea data-path="${P}" class="${val.length>400?'big':''}">${esc(val)}</textarea>`:`<input data-path="${P}" value="${esc(val)}">`}</div>`;}if(Array.isArray(val)){const tpl=TUPLE_LBL[key];const rows=val.map((v,i)=>{const inner=(typeof v==='object'&&v!==null)?Object.entries(v).map(([k2,v2])=>fld(v2,`${path}.${i}.${k2}`,(tpl&&Array.isArray(v)&&tpl[+k2])||k2)).join(''):fld(v,`${path}.${i}`,key+' '+(i+1)).replace(/<label>.*?<\/label>/,'');return`<div class="fgrp"><div class="glab">${esc(lbl(key))} ${i+1}<button class="rowdel" data-del="${P}" data-i="${i}">✕</button></div>${inner}</div>`;}).join('');return`<div class="fld2"><label>${esc(lbl(key))}</label>${rows}<button class="addrow" data-add="${P}">+ 추가</button></div>`;}if(typeof val==='object'&&val!==null)return`<div class="fgrp"><div class="glab">${esc(lbl(key))}</div>${Object.entries(val).map(([k2,v2])=>fld(v2,`${path}.${k2}`,k2)).join('')}</div>`;return'';}
 const getP=(o,p)=>p.split('.').reduce((a,k)=>a[k],o);const setP=(o,p,v)=>{const ks=p.split('.');const last=ks.pop();let cur=o;for(const k of ks)cur=cur[k];cur[last]=v;};
 function cmsEdit(i){CMS.idx=i;const it=CMS.arr[i],t=CMS.type;document.getElementById('cmsBody').innerHTML=`<div class="ed-bar"><button class="back" id="edBack">← ${t.name}</button><span class="sp"></span><button class="dup" id="edDup">복제</button><button class="del" id="edDel">삭제</button><button class="save" id="edSave">💾 저장</button></div><div id="edMsg"></div><div class="ed">${Object.entries(it).map(([k,v])=>fld(v,k,k)).join('')}</div>`;const collect=()=>{document.querySelectorAll('#cmsBody [data-path]').forEach(el=>{const v=el.dataset.rich?el.innerHTML.trim():(el.type==='number'?Number(el.value):el.value);setP(it,el.dataset.path,v);});};document.getElementById('edBack').onclick=()=>{collect();cmsList()};document.getElementById('edDup').onclick=()=>{collect();CMS.arr.splice(i+1,0,JSON.parse(JSON.stringify(it)));cmsEdit(i+1)};document.getElementById('edDel').onclick=()=>{if(confirm('삭제할까요?')){CMS.arr.splice(i,1);cmsList()}};document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{collect();getP(it,b.dataset.del).splice(+b.dataset.i,1);cmsEdit(i)});document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{collect();const arr2=getP(it,b.dataset.add);const last=arr2[arr2.length-1];const tplKey=b.dataset.add.split('.').pop();if(last===undefined){arr2.push(ADD_TPL[tplKey]?JSON.parse(JSON.stringify(ADD_TPL[tplKey])):'');}else{arr2.push(typeof last==='object'?JSON.parse(JSON.stringify(last)):(typeof last==='number'?0:''));}cmsEdit(i)});document.getElementById('edSave').onclick=()=>{collect();cmsSave()};document.querySelectorAll('[data-upl]').forEach(b=>b.onclick=async()=>{const url=await pickAndUpload(b);if(url){document.querySelector(`[data-path="${CSS.escape(b.dataset.upl)}"]`).value=url;collect();cmsEdit(i);}});initRich(document.getElementById('cmsBody'));}
-async function cmsSave(){const msg=document.getElementById('edMsg');const tok=localStorage.getItem(TOK_LS);if(!tok)return askToken(()=>cmsSave());msg.innerHTML='<div class="load">저장 중…</div>';try{if(!CMS.sha)CMS.sha=await ghSha(CMS.type.file);const body={message:`admin: ${CMS.type.name} 수정`,content:b64enc(JSON.stringify(CMS.arr,null,1)),sha:CMS.sha,branch:BR};const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CMS.type.file}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 수정됐습니다 — 다시 불러오세요.</div>';return;}if(!r.ok)throw 0;CMS.sha=j.content.sha;msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 반영됩니다.</div>';}catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 토큰 권한을 확인하세요.</div>';}}
+async function cmsSave(){const msg=document.getElementById('edMsg');if(LOCAL_EDIT){msg.innerHTML='<div class="load">저장 중…</div>';try{await localSave(CMS.type.file,JSON.stringify(CMS.arr,null,1));msg.innerHTML='<div class="msg-ok">'+LOCAL_SAVED_MSG+'</div>';}catch(e){msg.innerHTML='<div class="msg-err">로컬 저장 실패 — 미리보기 서버가 켜져 있는지 확인하세요.</div>';}return;}const tok=localStorage.getItem(TOK_LS);if(!tok)return askToken(()=>cmsSave());msg.innerHTML='<div class="load">저장 중…</div>';try{if(!CMS.sha)CMS.sha=await ghSha(CMS.type.file);const body={message:`admin: ${CMS.type.name} 수정`,content:b64enc(JSON.stringify(CMS.arr,null,1)),sha:CMS.sha,branch:BR};const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CMS.type.file}`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(r.status===401||r.status===403){localStorage.removeItem(TOK_LS);msg.innerHTML='<div class="msg-err">토큰이 유효하지 않습니다.</div>';return;}if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 수정됐습니다 — 다시 불러오세요.</div>';return;}if(!r.ok)throw 0;CMS.sha=j.content.sha;msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 반영됩니다.</div>';}catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 토큰 권한을 확인하세요.</div>';}}
 
 /* ===== SEO·사이트 설정 편집기 (GitHub API 저장) ===== */
 const JEDIT={
@@ -810,10 +818,16 @@ function jsonEditRender(){
 
 function jsonEditCollect(){
   document.querySelectorAll('[data-jp]').forEach(el=>{
-    const path=el.dataset.jp.split('.');
+    const v = el.type==='checkbox' ? el.checked : el.value.trim();
+    const parts=el.dataset.jp.split('.');
     let t=JST.data;
-    for(let i=0;i<path.length-1;i++) t=t[path[i]];
-    t[path[path.length-1]] = el.type==='checkbox' ? el.checked : el.value.trim();
+    for(let i=0;i<parts.length-1;i++){
+      const rest=parts.slice(i).join('.');
+      if(Object.prototype.hasOwnProperty.call(t,rest)){t[rest]=v;return;} // copy.json처럼 "hero.eyebrow" 통짜 키
+      t=t[parts[i]];
+      if(!t)return;
+    }
+    t[parts[parts.length-1]]=v;
   });
 }
 
@@ -987,6 +1001,13 @@ function copyRender(page){
 
 async function jsonEditSave(){
   const msg=document.getElementById('jMsg');
+  if(LOCAL_EDIT){
+    jsonEditCollect();
+    msg.innerHTML='<div class="load">저장 중…</div>';
+    try{await localSave(JEDIT[JST.key].file, JSON.stringify(JST.data,null,2));msg.innerHTML='<div class="msg-ok">'+LOCAL_SAVED_MSG+'</div>';}
+    catch(e){msg.innerHTML='<div class="msg-err">로컬 저장 실패 — 미리보기 서버가 켜져 있는지 확인하세요.</div>';}
+    return;
+  }
   const tok=localStorage.getItem(TOK_LS);
   if(!tok)return askToken(()=>jsonEditSave());
   jsonEditCollect();
