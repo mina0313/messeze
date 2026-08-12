@@ -251,7 +251,8 @@ body.gated .sidebar-menu{display:none}
 .cp-hd .sp{flex:1}
 .cp-hd button,.cp-hd a{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--body);text-decoration:none;font-family:var(--sans)}
 .cp-hd button:hover,.cp-hd a:hover{border-color:var(--primary);color:var(--primary)}
-.copy-prev iframe{flex:1;width:100%;border:0}
+.cp-wrap{flex:1;overflow:hidden;position:relative;background:#EEF1F6}
+.copy-prev iframe{border:0;transform-origin:0 0;position:absolute;top:0;left:0}
 @media(max-width:1200px){.copy-live{grid-template-columns:170px 1fr}.copy-prev{display:none}}
 /* 문구 편집 레이아웃 */
 .copy-bar{position:sticky;top:0;z-index:6;background:#F7F9FC;padding:10px 0;margin-bottom:10px}
@@ -852,7 +853,7 @@ function copyRender(page){
   });
   html+='</div>';
   const pvFile=COPY_FILES[cur];
-  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span>실시간 미리보기 — 입력하면 바로 반영됩니다<span class="sp"></span><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><iframe id="copyPrev" src="${pvFile}"></iframe></div>`;
+  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span>실시간 미리보기 — 입력하면 바로 반영됩니다<span class="sp"></span><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}"></iframe></div></div>`;
   html+='</div>';
   document.getElementById('jBody').innerHTML=html;
   document.getElementById('jSave').onclick=jsonEditSave;
@@ -868,9 +869,16 @@ function copyRender(page){
     el.addEventListener('input',()=>applyField(el));
     el.addEventListener('focus',()=>{const t=pvEl(el.dataset.jp);if(t)flash(t);});
   });
+  /* 데스크톱 폭(1280px)으로 렌더 후 패널에 맞게 축소 */
+  const PV_W=1280, wrap=document.getElementById('cpWrap');
+  const fit=()=>{if(!wrap)return;const s=wrap.clientWidth/PV_W;pv.style.width=PV_W+'px';pv.style.height=Math.round(wrap.clientHeight/s)+'px';pv.style.transform=`scale(${s})`;};
+  window.addEventListener('resize',fit);
+  fit();
   pv.onload=()=>{
+    fit();
     applyAll(); // 저장 전 수정값을 미리보기에 재적용
     const d=pvDoc();if(!d)return;
+    const hide=d.createElement('style');hide.textContent='#mchat{display:none!important}';d.head.appendChild(hide); // 상담 위젯은 편집에 방해되니 숨김
     d.querySelectorAll('[data-copy]').forEach(t=>{
       t.style.cursor='pointer';t.title='클릭하면 편집칸으로 이동';
       t.addEventListener('click',e=>{
