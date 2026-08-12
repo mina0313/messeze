@@ -142,7 +142,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .res-cta .btn{position:relative}
 /* explainer */
 .explain{background:var(--sky-2);padding:80px 0}
-.explain .shead{max-width:640px;margin:0 auto 44px;text-align:center}
+.explain .shead{max-width:980px;margin:0 auto 44px;text-align:center}
 .explain .h2{font-size:clamp(24px,3.2vw,34px)}
 .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:920px;margin:0 auto}
 .ex{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
@@ -379,8 +379,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
     <div class="cats" id="cats"></div>
     <div class="todo" id="todo"></div>
     <div class="res-cta">
-      <div><h3 id="ctaTitle">이 점수, 메세지가 올려드립니다</h3><p>진단 결과를 바탕으로 홈페이지 최적화부터 언론·콘텐츠 축적까지 — 전담팀이 대신 실행합니다.</p></div>
-      <a class="btn btn-co" href="index.html#final">무료 상담 신청하기</a>
+      <div><h3 id="ctaTitle">이 점수, 메세지가 올려드립니다</h3><p data-copy="final.lead">진단 결과를 바탕으로 홈페이지 최적화부터 언론·콘텐츠 축적까지 — 전담팀이 대신 실행합니다.</p></div>
+      <a class="btn btn-co" href="index.html#final" data-copy="final.cta">무료 상담 신청하기</a>
     </div>
   </div>
 </section>
@@ -390,61 +390,61 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   <div class="wrap">
     <div class="shead">
       <h2 class="h2" data-copy="explain.title">무엇을 진단하나요?</h2>
-      <p style="font-size:15.5px;color:var(--body);margin-top:12px">URL 하나로 SEO 기본기부터 AI 인용 준비도까지 — 총 <b style="color:var(--cobalt)">100점</b>, 7개 영역 <b style="color:var(--cobalt)">32개 항목</b>을 검사합니다.</p>
+      <p style="font-size:15.5px;color:var(--body);margin-top:12px" data-copy="hero.note">URL 하나로 SEO 기본기부터 AI 인용 준비도까지 — 총 <b style="color:var(--cobalt)">100점</b>, 7개 영역 <b style="color:var(--cobalt)">32개 항목</b>을 검사합니다.</p>
     </div>
     <div class="acat-grid">
       <div class="acat seo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/></svg></span><h3>콘텐츠 SEO</h3><span class="pt">28점</span></div>
-        <div class="ai-row"><b>타이틀 태그</b><span>검색결과에 표시되는 페이지 제목. 핵심을 앞쪽에 담습니다.</span></div>
-        <div class="ai-row"><b>타이틀 단일 사용</b><span>title 태그는 페이지당 1개여야 합니다.</span></div>
-        <div class="ai-row"><b>메타 디스크립션</b><span>검색결과 설명문. 클릭률(CTR)에 직접 영향.</span></div>
-        <div class="ai-row"><b>H1 태그 존재</b><span>페이지 대표 제목. 검색·AI의 주제 파악 기준.</span></div>
-        <div class="ai-row"><b>H1 단일 사용</b><span>H1은 페이지당 1개로 주제를 명확히.</span></div>
-        <div class="ai-row"><b>H2 구조화</b><span>소제목으로 콘텐츠를 구조화 — AI 인용에 유리.</span></div>
-        <div class="ai-row"><b>제목 태그 계층 구조</b><span>H1→H2→H3 순서 준수, 건너뛰기 없음.</span></div>
-        <div class="ai-row"><b>이미지 ALT 속성</b><span>기계·AI가 이미지를 이해하는 유일한 통로.</span></div>
+        <div class="ai-row"><b data-copy="explain.i1t">타이틀 태그</b><span data-copy="explain.i1d">검색결과에 표시되는 페이지 제목. 핵심을 앞쪽에 담습니다.</span></div>
+        <div class="ai-row"><b data-copy="explain.i2t">타이틀 단일 사용</b><span data-copy="explain.i2d">title 태그는 페이지당 1개여야 합니다.</span></div>
+        <div class="ai-row"><b data-copy="explain.i3t">메타 디스크립션</b><span data-copy="explain.i3d">검색결과 설명문. 클릭률(CTR)에 직접 영향.</span></div>
+        <div class="ai-row"><b data-copy="explain.i4t">H1 태그 존재</b><span data-copy="explain.i4d">페이지 대표 제목. 검색·AI의 주제 파악 기준.</span></div>
+        <div class="ai-row"><b data-copy="explain.i5t">H1 단일 사용</b><span data-copy="explain.i5d">H1은 페이지당 1개로 주제를 명확히.</span></div>
+        <div class="ai-row"><b data-copy="explain.i6t">H2 구조화</b><span data-copy="explain.i6d">소제목으로 콘텐츠를 구조화 — AI 인용에 유리.</span></div>
+        <div class="ai-row"><b data-copy="explain.i7t">제목 태그 계층 구조</b><span data-copy="explain.i7d">H1→H2→H3 순서 준수, 건너뛰기 없음.</span></div>
+        <div class="ai-row"><b data-copy="explain.i8t">이미지 ALT 속성</b><span data-copy="explain.i8d">기계·AI가 이미지를 이해하는 유일한 통로.</span></div>
       </div>
       <div class="acat seo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M4.4 7.2l2.3 1.3M17.3 15.5l2.3 1.3M4.4 16.8l2.3-1.3M17.3 8.5l2.3-1.3"/></svg></span><h3>기술적 SEO</h3><span class="pt">12점</span></div>
-        <div class="ai-row"><b>HTTPS 보안</b><span>SSL 적용. 신뢰·랭킹 요소이자 AI 크롤러 접근 조건.</span></div>
-        <div class="ai-row"><b>Canonical 태그</b><span>대표 URL 명시로 중복 콘텐츠 방지.</span></div>
-        <div class="ai-row"><b>Viewport 설정</b><span>모바일 우선 인덱싱 대응.</span></div>
-        <div class="ai-row"><b>언어 속성 (lang)</b><span>html lang으로 콘텐츠 언어를 명시.</span></div>
-        <div class="ai-row"><b>DOCTYPE 선언</b><span>HTML5 표준 문서 선언.</span></div>
-        <div class="ai-row"><b>Open Graph 태그</b><span>SNS 공유·네이버 사이트명 표시용.</span></div>
+        <div class="ai-row"><b data-copy="explain.i9t">HTTPS 보안</b><span data-copy="explain.i9d">SSL 적용. 신뢰·랭킹 요소이자 AI 크롤러 접근 조건.</span></div>
+        <div class="ai-row"><b data-copy="explain.i10t">Canonical 태그</b><span data-copy="explain.i10d">대표 URL 명시로 중복 콘텐츠 방지.</span></div>
+        <div class="ai-row"><b data-copy="explain.i11t">Viewport 설정</b><span data-copy="explain.i11d">모바일 우선 인덱싱 대응.</span></div>
+        <div class="ai-row"><b data-copy="explain.i12t">언어 속성 (lang)</b><span data-copy="explain.i12d">html lang으로 콘텐츠 언어를 명시.</span></div>
+        <div class="ai-row"><b data-copy="explain.i13t">DOCTYPE 선언</b><span data-copy="explain.i13d">HTML5 표준 문서 선언.</span></div>
+        <div class="ai-row"><b data-copy="explain.i14t">Open Graph 태그</b><span data-copy="explain.i14d">SNS 공유·네이버 사이트명 표시용.</span></div>
       </div>
       <div class="acat seo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><h3>크롤링 준비</h3><span class="pt">6점</span></div>
-        <div class="ai-row"><b>파비콘</b><span>브라우저 탭·검색결과에 표시되는 사이트 아이콘.</span></div>
-        <div class="ai-row"><b>robots.txt</b><span>크롤러 접근 제어. AI 크롤러 허용 여부도 관리.</span></div>
-        <div class="ai-row"><b>sitemap.xml</b><span>검색엔진에 사이트 구조를 제공해 색인을 돕습니다.</span></div>
+        <div class="ai-row"><b data-copy="explain.i15t">파비콘</b><span data-copy="explain.i15d">브라우저 탭·검색결과에 표시되는 사이트 아이콘.</span></div>
+        <div class="ai-row"><b data-copy="explain.i16t">robots.txt</b><span data-copy="explain.i16d">크롤러 접근 제어. AI 크롤러 허용 여부도 관리.</span></div>
+        <div class="ai-row"><b data-copy="explain.i17t">sitemap.xml</b><span data-copy="explain.i17d">검색엔진에 사이트 구조를 제공해 색인을 돕습니다.</span></div>
       </div>
       <div class="acat seo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><h3>속도·기술 최적화</h3><span class="pt">4점</span></div>
-        <div class="ai-row"><b>혼합 콘텐츠 없음</b><span>HTTPS 페이지에 http 리소스가 섞이지 않았는지.</span></div>
-        <div class="ai-row"><b>이미지 지연 로딩</b><span>loading="lazy"로 초기 로딩 속도 개선.</span></div>
-        <div class="ai-row"><b>차세대 이미지 포맷</b><span>WebP·AVIF로 이미지 용량을 크게 절감.</span></div>
-        <div class="ai-row"><b>리소스 힌트</b><span>preconnect·preload로 외부 자원 사전 연결.</span></div>
+        <div class="ai-row"><b data-copy="explain.i18t">혼합 콘텐츠 없음</b><span data-copy="explain.i18d">HTTPS 페이지에 http 리소스가 섞이지 않았는지.</span></div>
+        <div class="ai-row"><b data-copy="explain.i19t">이미지 지연 로딩</b><span data-copy="explain.i19d">loading="lazy"로 초기 로딩 속도 개선.</span></div>
+        <div class="ai-row"><b data-copy="explain.i20t">차세대 이미지 포맷</b><span data-copy="explain.i20d">WebP·AVIF로 이미지 용량을 크게 절감.</span></div>
+        <div class="ai-row"><b data-copy="explain.i21t">리소스 힌트</b><span data-copy="explain.i21d">preconnect·preload로 외부 자원 사전 연결.</span></div>
       </div>
       <div class="acat geo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M8 4C6 4 6 8.5 4 12c2 3.5 2 8 4 8M16 4c2 0 2 4.5 4 8-2 3.5-2 8-4 8"/></svg></span><h3>구조화 데이터</h3><span class="pt">30점</span></div>
-        <div class="ai-row"><b>JSON-LD 존재</b><span>AI가 페이지의 발행 주체를 식별하는 기반.</span></div>
-        <div class="ai-row"><b>JSON-LD 문법 유효</b><span>파싱 오류 없이 기계가 읽히는지.</span></div>
-        <div class="ai-row"><b>발행 주체 (Organization)</b><span>누가 만든 페이지인지 조직 엔티티로 선언.</span></div>
-        <div class="ai-row"><b>WebSite · WebPage</b><span>사이트·페이지 엔티티 선언.</span></div>
-        <div class="ai-row"><b>이동경로 (BreadcrumbList)</b><span>페이지 위치 맥락을 AI에 전달.</span></div>
-        <div class="ai-row"><b>페이지 유형 스키마</b><span>Article·Service·FAQPage 등 콘텐츠 성격 선언.</span></div>
+        <div class="ai-row"><b data-copy="explain.i22t">JSON-LD 존재</b><span data-copy="explain.i22d">AI가 페이지의 발행 주체를 식별하는 기반.</span></div>
+        <div class="ai-row"><b data-copy="explain.i23t">JSON-LD 문법 유효</b><span data-copy="explain.i23d">파싱 오류 없이 기계가 읽히는지.</span></div>
+        <div class="ai-row"><b data-copy="explain.i24t">발행 주체 (Organization)</b><span data-copy="explain.i24d">누가 만든 페이지인지 조직 엔티티로 선언.</span></div>
+        <div class="ai-row"><b data-copy="explain.i25t">WebSite · WebPage</b><span data-copy="explain.i25d">사이트·페이지 엔티티 선언.</span></div>
+        <div class="ai-row"><b data-copy="explain.i26t">이동경로 (BreadcrumbList)</b><span data-copy="explain.i26d">페이지 위치 맥락을 AI에 전달.</span></div>
+        <div class="ai-row"><b data-copy="explain.i27t">페이지 유형 스키마</b><span data-copy="explain.i27d">Article·Service·FAQPage 등 콘텐츠 성격 선언.</span></div>
       </div>
       <div class="acat geo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M9.5 14.5l5-5"/><path d="M10.5 6.5 12 5a4 4 0 0 1 6 6l-1.5 1.5"/><path d="M13.5 17.5 12 19a4 4 0 0 1-6-6l1.5-1.5"/></svg></span><h3>엔티티 연결성</h3><span class="pt">10점</span></div>
-        <div class="ai-row"><b>@id 식별자</b><span>엔티티끼리 상호 연결하는 기준점.</span></div>
-        <div class="ai-row"><b>sameAs 외부 연결</b><span>SNS·외부 프로필과 연결해 지식과 이어줍니다.</span></div>
+        <div class="ai-row"><b data-copy="explain.i28t">@id 식별자</b><span data-copy="explain.i28d">엔티티끼리 상호 연결하는 기준점.</span></div>
+        <div class="ai-row"><b data-copy="explain.i29t">sameAs 외부 연결</b><span data-copy="explain.i29d">SNS·외부 프로필과 연결해 지식과 이어줍니다.</span></div>
       </div>
       <div class="acat geo">
         <div class="acat-hd"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span><h3>AI 읽기 용이성</h3><span class="pt">10점</span></div>
-        <div class="ai-row"><b>본문 텍스트 충분성</b><span>서버 HTML에 AI가 읽을 텍스트가 충분한지.</span></div>
-        <div class="ai-row"><b>질문형 콘텐츠</b><span>Q&amp;A형 구조는 AI 인용에 유리.</span></div>
-        <div class="ai-row"><b>타이틀 최적 길이</b><span>권장 15~60자.</span></div>
+        <div class="ai-row"><b data-copy="explain.i30t">본문 텍스트 충분성</b><span data-copy="explain.i30d">서버 HTML에 AI가 읽을 텍스트가 충분한지.</span></div>
+        <div class="ai-row"><b data-copy="explain.i31t">질문형 콘텐츠</b><span data-copy="explain.i31d">Q&amp;A형 구조는 AI 인용에 유리.</span></div>
+        <div class="ai-row"><b data-copy="explain.i32t">타이틀 최적 길이</b><span data-copy="explain.i32d">권장 15~60자.</span></div>
       </div>
     </div>
 
