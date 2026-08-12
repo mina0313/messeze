@@ -1174,9 +1174,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 @media(max-width:1080px),(max-height:740px){.kv{display:none}}
 .kbh-copy{position:absolute;left:clamp(24px,4vw,64px);right:clamp(24px,4vw,64px);bottom:clamp(28px,4.5vw,60px);z-index:3;max-width:680px}
 .kbh-eyebrow{font-size:clamp(13px,1vw,15px);font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.01em;margin-bottom:14px}
-.kbh-hroll{display:grid;align-items:end} /* 슬라이드 길이가 달라도 헤드라인은 항상 바닥에 붙음 */
-.kbh-h{grid-area:1/1;font-size:clamp(28px,3.3vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.24;color:#fff;word-break:keep-all;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
-.kbh-h.on{opacity:1;transform:none;pointer-events:auto}
+/* 활성 헤드라인이 높이를 정하고 나머지는 바닥에 겹침 — 아이브로우가 항상 헤드라인 바로 위에 붙음 */
+.kbh-hroll{position:relative}
+.kbh-h{position:absolute;bottom:0;left:0;right:0;font-size:clamp(28px,3.3vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.24;color:#fff;word-break:keep-all;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.kbh-h.on{position:static;opacity:1;transform:none;pointer-events:auto}
 .kbh-h span{background:linear-gradient(92deg,#7FA6FF,#C6D8FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .kbh-ctrl{position:absolute;right:clamp(18px,2.2vw,32px);bottom:clamp(18px,2.2vw,30px);z-index:4;display:flex;align-items:center;gap:12px}
 .kbh-dot{width:11px;height:11px;border-radius:50%;border:2px solid rgba(255,255,255,.8);background:transparent;cursor:pointer;padding:0;transition:.18s}
