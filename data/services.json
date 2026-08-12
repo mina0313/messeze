@@ -121,7 +121,19 @@
   "rel": [
    "website-renewal",
    "own-blog"
-  ]
+  ],
+  "whatEyebrow": "무엇을 진단하나요",
+  "whatTitle": "이렇게 진단합니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "AI 가시성 평가, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "AI 가시성 평가, 궁금한 점"
  },
  {
   "slug": "website-renewal",
@@ -245,7 +257,19 @@
   "rel": [
    "visibility",
    "website-build"
-  ]
+  ],
+  "whatEyebrow": "무엇을 정비하나요",
+  "whatTitle": "이렇게 정비합니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "홈페이지 수정·리뉴얼, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "홈페이지 수정·리뉴얼, 궁금한 점"
  },
  {
   "slug": "website-build",
@@ -369,7 +393,19 @@
   "rel": [
    "website-renewal",
    "own-blog"
-  ]
+  ],
+  "whatEyebrow": "어떻게 설계하나요",
+  "whatTitle": "이렇게 설계하고 짓습니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "홈페이지 제작, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "홈페이지 제작, 궁금한 점"
  },
  {
   "slug": "own-blog",
@@ -493,7 +529,19 @@
   "rel": [
    "channels",
    "website-renewal"
-  ]
+  ],
+  "whatEyebrow": "어떻게 운영하나요",
+  "whatTitle": "이렇게 쌓아 올립니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "홈페이지 내 블로그 운영, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "홈페이지 내 블로그 운영, 궁금한 점"
  },
  {
   "slug": "channels",
@@ -617,7 +665,19 @@
   "rel": [
    "own-blog",
    "press"
-  ]
+  ],
+  "whatEyebrow": "어떻게 운영하나요",
+  "whatTitle": "이렇게 확산시킵니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "외부 채널 운영, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "외부 채널 운영, 궁금한 점"
  },
  {
   "slug": "press",
@@ -747,6 +807,18 @@
   "rel": [
    "channels",
    "visibility"
-  ]
+  ],
+  "whatEyebrow": "어떻게 배포하나요",
+  "whatTitle": "이렇게 기사로 만듭니다",
+  "procEyebrow": "진행 절차",
+  "procTitle": "이렇게 진행됩니다",
+  "fitEyebrow": "이런 기업에 맞아요",
+  "fitTitle": "이런 상황이라면,<br>시작할 때입니다",
+  "delivTitle": "산출물",
+  "ctaTitle": "언론 배포, 혼자 고민하지 마세요",
+  "ctaLead": "전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.",
+  "ctaBtn": "무료 상담 신청",
+  "faqEyebrow": "자주 묻는 질문",
+  "faqTitle": "언론 배포, 궁금한 점"
  }
 ]

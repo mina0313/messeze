@@ -869,7 +869,12 @@ const COPY_FIELDS={eyebrow:'작은 제목', title:'큰 제목', lead:'설명문'
 const TIER_NAMES={basic:'베이직', premium:'프리미엄', enterprise:'엔터프라이즈'};
 
 let SVCJ=null; // 서비스 페이지 문구(data/services.json)
-const SVC_SECTIONS={title:'서비스 이름',en:'영문 이름',one:'한 줄 소개',ai:'AI의 눈으로 보면',intro:'구성 소개',items:'서비스 구성',proc:'진행 절차',fit:'이런 기업에 맞아요',deliv:'산출물',faq:'자주 묻는 질문'};
+const SVC_SECTIONS={title:'서비스 이름',en:'영문 이름',one:'한 줄 소개',ai:'AI의 눈으로 보면',
+  whatEyebrow:'구성 작은제목',whatTitle:'구성 제목',intro:'구성 소개',items:'서비스 구성',
+  procEyebrow:'절차 작은제목',procTitle:'절차 제목',proc:'진행 절차',
+  fitEyebrow:'적합 작은제목',fitTitle:'적합 제목',fit:'이런 기업에 맞아요',delivTitle:'산출물 제목',deliv:'산출물',
+  ctaTitle:'하단 CTA 제목',ctaLead:'하단 CTA 설명',ctaBtn:'하단 CTA 버튼',
+  faqEyebrow:'FAQ 작은제목',faqTitle:'FAQ 제목',faq:'자주 묻는 질문'};
 function svcLabel(k){
   const p=k.split('.');
   if(p.length===1)return SVC_SECTIONS[k]||k;
@@ -885,7 +890,7 @@ function flattenSvc(o){
     if(typeof v==='string'){out[path]=v;return;}
     if(Array.isArray(v))v.forEach((c,i)=>walk(c,path+'.'+i));
   };
-  ['title','en','one','ai','intro','items','proc','fit','deliv','faq'].forEach(k=>{if(o[k]!==undefined)walk(o[k],k)});
+  Object.keys(SVC_SECTIONS).forEach(k=>{if(o[k]!==undefined)walk(o[k],k)});
   return out;
 }
 async function copyHome(msg){

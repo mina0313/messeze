@@ -629,32 +629,32 @@ def build_page(x):
 </div></section>
 
 <section class="sec"><div class="wrap">
-<div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead" data-copy="intro">{x['intro']}</p></div>
+<div class="shead rv"><span class="eyebrow" data-copy="whatEyebrow">{x['whatEyebrow']}</span><h2 class="h2" data-copy="whatTitle">{x['whatTitle']}</h2><p class="lead" data-copy="intro">{x['intro']}</p></div>
 <div class="dg-rows">{items}</div>
 {reltool}
 </div></section>
 
 {x.get('tool','')}<section class="proc"><div class="wrap">
-<div class="shead center rv" style="margin-bottom:40px"><span class="eyebrow">진행 절차</span><h2 class="h2">이렇게 진행됩니다</h2></div>
+<div class="shead center rv" style="margin-bottom:40px"><span class="eyebrow" data-copy="procEyebrow">{x['procEyebrow']}</span><h2 class="h2" data-copy="procTitle">{x['procTitle']}</h2></div>
 <div class="pr-grid">{procs}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
 <div class="fitrow">
-<div class="rv"><span class="eyebrow">이런 기업에 맞아요</span><h2 class="h2" style="margin-bottom:22px">이런 상황이라면,<br>시작할 때입니다</h2><div class="fit-list">{fits}</div></div>
-<div class="dv-card rv"><h3>산출물</h3><div class="dvl">{delivs}</div></div>
+<div class="rv"><span class="eyebrow" data-copy="fitEyebrow">{x['fitEyebrow']}</span><h2 class="h2" style="margin-bottom:22px" data-copy="fitTitle">{x['fitTitle']}</h2><div class="fit-list">{fits}</div></div>
+<div class="dv-card rv"><h3 data-copy="delivTitle">{x['delivTitle']}</h3><div class="dvl">{delivs}</div></div>
 </div>
 </div></section>
 
 <section class="svcta"><div class="wrap">
-<h2>{x['title']}, 혼자 고민하지 마세요</h2>
-<p>전담 매니저가 우리 회사를 깊이 이해하고, AI가 추천하는 기업이 될 때까지 함께합니다.<br>첫 진단은 무료입니다.</p>
-<a class="sbtn" href="../index.html#final">무료 상담 신청</a>
+<h2 data-copy="ctaTitle">{x['ctaTitle']}</h2>
+<p data-copy="ctaLead">{x['ctaLead']}</p>
+<a class="sbtn" href="../index.html#final" data-copy="ctaBtn">{x['ctaBtn']}</a>
 <div class="svcta-stats"><div><b>4개 엔진</b><span>ChatGPT·Gemini·Perplexity·네이버</span></div><div><b>월 60만원~</b><span>구독형 운영 · 약정 없음</span></div><div><b>3개월</b><span>AI 반영 기준선</span></div></div>
 </div></section>
 
 <section class="sec" style="background:var(--sky-2)"><div class="wrap">
-<div class="shead center rv"><span class="eyebrow">자주 묻는 질문</span><h2 class="h2">{x['title']}, 궁금한 점</h2></div>
+<div class="shead center rv"><span class="eyebrow" data-copy="faqEyebrow">{x['faqEyebrow']}</span><h2 class="h2" data-copy="faqTitle">{x['faqTitle']}</h2></div>
 <div class="faq rv">{faqs}</div>
 </div></section>
 {foot()}
