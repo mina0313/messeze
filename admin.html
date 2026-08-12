@@ -1000,22 +1000,30 @@ function copyRender(page){
   const applyMode=()=>{
     liveWrap.classList.toggle('direct',direct);
     modeBtn.textContent=direct?'📋 목록으로 편집':'🖱 화면에서 바로 수정';
-    pvHint.textContent=direct?'화면의 문구를 클릭해 바로 고치세요 — 다 고친 뒤 💾 저장':'실시간 미리보기 — 입력하면 바로 반영됩니다';
     const d=pvDoc();
+    let n=0;
     if(d&&d.body){
       d.body.classList.toggle('mz-direct',direct);
       d.querySelectorAll('[data-copy]').forEach(t=>{
+        n++;
         t.contentEditable=direct?'true':'false';
         t.title=direct?'클릭해서 바로 수정':'클릭하면 편집칸으로 이동';
       });
     }
+    pvHint.textContent=direct
+      ?(n?`화면의 문구를 클릭해 바로 고치세요 (${n}곳 수정 가능) — 다 고친 뒤 💾 저장`:'미리보기 준비 중… 잠시만요')
+      :'실시간 미리보기 — 입력하면 바로 반영됩니다';
     fit();
   };
   modeBtn.onclick=()=>{direct=!direct;localStorage.setItem('mz_pv_direct',direct?'1':'0');applyMode();};
-  pv.onload=()=>{
-    fit();
+  /* 편집 활성화 — onload 한 번에 의존하지 않고, 문서가 준비될 때까지 반복 확인 */
+  let pvInitedDoc=null;
+  const initPreview=()=>{
+    const d=pvDoc();
+    if(!d||!d.body||!d.querySelector('[data-copy]'))return false;
+    if(pvInitedDoc===d){applyMode();return true;}
+    pvInitedDoc=d;
     applyAll(); // 저장 전 수정값을 미리보기에 재적용
-    const d=pvDoc();if(!d)return;
     const hide=d.createElement('style');hide.textContent='#mchat{display:none!important}\n.mz-direct [data-copy]{outline:1.5px dashed rgba(43,92,255,.35);outline-offset:3px;cursor:text;min-height:1em}\n.mz-direct [data-copy]:hover{outline-color:rgba(43,92,255,.85)}\n.mz-direct [data-copy]:focus{outline:2.5px solid #2B5CFF;background:rgba(43,92,255,.05)}';d.head.appendChild(hide); // 상담 위젯 숨김 + 직접수정 하이라이트
     d.querySelectorAll('[data-copy]').forEach(t=>{
       t.style.cursor='pointer';
@@ -1036,7 +1044,13 @@ function copyRender(page){
       });
     });
     applyMode();
+    return true;
   };
+  pv.onload=()=>{fit();initPreview();};
+  const pvTick=setInterval(()=>{
+    if(document.getElementById('copyPrev')!==pv){clearInterval(pvTick);return;} // 페이지 전환됨
+    initPreview();
+  },800);
   // 섹션 사이드바: 클릭 점프 + 스크롤 하이라이트
   const side=document.getElementById('copySide');
   const links=[...side.querySelectorAll('a')];
