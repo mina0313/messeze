@@ -242,6 +242,17 @@ body.gated .sidebar-menu{display:none}
 .chk-ctrl .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;color:var(--body);font-family:var(--sans)}
 .chk-ctrl .chip:hover{border-color:var(--primary);color:var(--primary)}
 .chk-ctrl .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+/* 문구 편집 라이브 미리보기 */
+.copy-live{display:grid;grid-template-columns:170px minmax(300px,1fr) minmax(360px,46%);gap:18px;align-items:start}
+.copy-live.noprev{grid-template-columns:185px 1fr}
+.copy-prev{position:sticky;top:62px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column;height:calc(100vh - 90px)}
+.cp-hd{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);background:#F8FAFC;font-size:12.5px;font-weight:800;color:var(--body)}
+.cp-hd .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.cp-hd .sp{flex:1}
+.cp-hd button,.cp-hd a{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--body);text-decoration:none;font-family:var(--sans)}
+.cp-hd button:hover,.cp-hd a:hover{border-color:var(--primary);color:var(--primary)}
+.copy-prev iframe{flex:1;width:100%;border:0}
+@media(max-width:1200px){.copy-live{grid-template-columns:170px 1fr}.copy-prev{display:none}}
 /* 문구 편집 레이아웃 */
 .copy-bar{position:sticky;top:0;z-index:6;background:#F7F9FC;padding:10px 0;margin-bottom:10px}
 .copy-search{flex:1;max-width:380px;border:1.5px solid var(--line);border-radius:10px;padding:9px 14px;font-family:var(--sans);font-size:13px}
@@ -822,7 +833,8 @@ function copyRender(page){
   const order=Object.keys(COPY_SECTIONS).filter(s=>groups[s]);
   let html='<div class="cms-types">'+pages.map(p=>`<button data-pg="${p}" class="${p===cur?'on':''}">${COPY_PAGES[p]}</button>`).join('')+'</div>';
   html+='<div class="ed-bar copy-bar"><b>문구 편집</b><input type="search" id="copyQ" class="copy-search" placeholder="🔍 문구 검색 — 제목·내용으로 바로 찾기"><span class="sp"></span><button class="dup" id="jSave">💾 저장</button></div><div id="jMsg"></div>';
-  html+='<div class="copy-wrap"><nav class="copy-side" id="copySide">'+order.map((s,i)=>`<a data-sec="${s}" class="${i===0?'on':''}">${COPY_SECTIONS[s]}</a>`).join('')+'</nav><div class="copy-main">';
+  const COPY_FILES={home:'index.html',pricing:'pricing.html',check:'check.html',tools:'tools.html',faq:'faq.html',interview:'interview.html'};
+  html+='<div class="copy-wrap copy-live"><nav class="copy-side" id="copySide">'+order.map((s,i)=>`<a data-sec="${s}" class="${i===0?'on':''}">${COPY_SECTIONS[s]}</a>`).join('')+'</nav><div class="copy-main">';
   order.forEach(sec=>{
     html+=`<div class="jgroup" id="cg-${sec}"><h3>${COPY_SECTIONS[sec]}</h3><div class="jgrid">`;
     groups[sec].forEach(k=>{
@@ -838,10 +850,37 @@ function copyRender(page){
     });
     html+='</div></div>';
   });
-  html+='</div></div>';
+  html+='</div>';
+  const pvFile=COPY_FILES[cur];
+  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span>실시간 미리보기 — 입력하면 바로 반영됩니다<span class="sp"></span><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><iframe id="copyPrev" src="${pvFile}"></iframe></div>`;
+  html+='</div>';
   document.getElementById('jBody').innerHTML=html;
   document.getElementById('jSave').onclick=jsonEditSave;
   document.querySelectorAll('[data-pg]').forEach(b=>b.onclick=()=>copyRender(b.dataset.pg));
+  /* ── 라이브 미리보기 동기화 ── */
+  const pv=document.getElementById('copyPrev');
+  const pvDoc=()=>{try{return pv.contentDocument}catch(e){return null}};
+  const pvEl=jp=>{const d=pvDoc();if(!d)return null;const key=jp.split('.').slice(1).join('.');return d.querySelector(`[data-copy="${CSS.escape(key)}"]`);};
+  const applyField=el=>{const t=pvEl(el.dataset.jp);if(t)t.innerHTML=el.value;};
+  const applyAll=()=>{document.querySelectorAll('.copy-main [data-jp]').forEach(applyField);};
+  const flash=t=>{t.scrollIntoView({block:'center',behavior:'smooth'});t.style.outline='2px solid #2B5CFF';t.style.outlineOffset='3px';clearTimeout(t._fo);t._fo=setTimeout(()=>{t.style.outline='';t.style.outlineOffset='';},1600);};
+  document.querySelectorAll('.copy-main [data-jp]').forEach(el=>{
+    el.addEventListener('input',()=>applyField(el));
+    el.addEventListener('focus',()=>{const t=pvEl(el.dataset.jp);if(t)flash(t);});
+  });
+  pv.onload=()=>{
+    applyAll(); // 저장 전 수정값을 미리보기에 재적용
+    const d=pvDoc();if(!d)return;
+    d.querySelectorAll('[data-copy]').forEach(t=>{
+      t.style.cursor='pointer';t.title='클릭하면 편집칸으로 이동';
+      t.addEventListener('click',e=>{
+        e.preventDefault();e.stopPropagation();
+        const f=document.querySelector(`.copy-main [data-jp="${CSS.escape(cur+'.'+t.dataset.copy)}"]`);
+        if(f){f.scrollIntoView({block:'center',behavior:'smooth'});f.focus({preventScroll:true});
+          f.style.boxShadow='0 0 0 3px rgba(43,92,255,.35)';setTimeout(()=>f.style.boxShadow='',1600);}
+      },true);
+    });
+  };
   // 섹션 사이드바: 클릭 점프 + 스크롤 하이라이트
   const side=document.getElementById('copySide');
   const links=[...side.querySelectorAll('a')];

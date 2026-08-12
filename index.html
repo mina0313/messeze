@@ -1129,7 +1129,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .kbh-slide::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,14,30,.46) 0%,rgba(6,14,30,.05) 46%,transparent 70%)}
 
 /* 슬라이드 내부 비주얼 (글자 없는 그래픽만 · 우상단 배치, 카피는 좌하단) */
-.kv{position:absolute;z-index:2;top:clamp(28px,6vh,56px);right:clamp(24px,3.5vw,64px);width:clamp(300px,32vw,430px);animation:kvfloat 7s ease-in-out infinite alternate}
+.kv{display:none} /* 실사진 히어로에선 스켈레톤 장식 그래픽 미사용 */
+.kv-unused{position:absolute;z-index:2;top:clamp(28px,6vh,56px);right:clamp(24px,3.5vw,64px);width:clamp(300px,32vw,430px);animation:kvfloat 7s ease-in-out infinite alternate}
 /* 사진 인물이 우측 구도라 그래픽은 좌상단 빈 공간에 배치 */
 .kv1,.kv2,.kv3{right:auto;left:clamp(24px,3.5vw,64px)}
 @keyframes kvfloat{from{transform:translateY(0)}to{transform:translateY(-12px)}}
@@ -1155,7 +1156,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .kv-b1{width:52px;height:52px;left:-30px;bottom:-16px;animation:kvfloat 5s .6s ease-in-out infinite alternate}
 .kv-b2{width:34px;height:34px;right:-10px;top:-14px;animation:kvfloat 6s .3s ease-in-out infinite alternate}
 /* s2: 정보 축적 스택 */
-.kv2{display:flex;flex-direction:column;align-items:center;perspective:900px}
+.kv2{flex-direction:column;align-items:center;perspective:900px}
 .kv-stack{display:flex;flex-direction:column-reverse;gap:12px;transform:rotateX(14deg)}
 .st{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);border-radius:14px;padding:14px 18px;width:clamp(230px,22vw,300px);box-shadow:0 14px 34px -12px rgba(0,0,0,.5)}
 .st i{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#7FA6FF,#2B5CFF);flex:0 0 auto}
@@ -1166,14 +1167,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
 .st4{background:rgba(255,255,255,.95);box-shadow:0 18px 44px -10px rgba(43,92,255,.55)}
 .st4 i{background:linear-gradient(135deg,#101F3F,#2B5CFF)}
 /* s3: 질문 레이더 */
-.kv3{aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.kv3{aspect-ratio:1;align-items:center;justify-content:center}
 .kv-radar{width:100%;height:auto}
 .kv-pulse{animation:kvpulse 2.2s ease-out infinite}
 @keyframes kvpulse{0%{r:12;opacity:.9}100%{r:52;opacity:0}}
 @media(max-width:1080px),(max-height:740px){.kv{display:none}}
 .kbh-copy{position:absolute;left:clamp(24px,4vw,64px);right:clamp(24px,4vw,64px);bottom:clamp(28px,4.5vw,60px);z-index:3;max-width:680px}
 .kbh-eyebrow{font-size:clamp(13px,1vw,15px);font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.01em;margin-bottom:14px}
-.kbh-hroll{display:grid}
+.kbh-hroll{display:grid;align-items:end} /* 슬라이드 길이가 달라도 헤드라인은 항상 바닥에 붙음 */
 .kbh-h{grid-area:1/1;font-size:clamp(28px,3.3vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.24;color:#fff;word-break:keep-all;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .66s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .kbh-h.on{opacity:1;transform:none;pointer-events:auto}
 .kbh-h span{background:linear-gradient(92deg,#7FA6FF,#C6D8FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
@@ -1406,8 +1407,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.22;word-break:k
         <p class="kbh-eyebrow" data-copy="hero.eyebrow">중소기업 · 병원 · 수출기업을 위한 AI 검색 노출 솔루션</p>
         <div class="kbh-hroll">
           <h1 class="kbh-h on" data-copy="hero.h1">AI가 답하는 시대,<br><span>우리 회사가 선택되는 방법을 만듭니다</span></h1>
-          <h2 class="kbh-h" data-copy="hero.h21">광고비를 태우는 대신,<br><span>AI가 읽는 정보를 쌓습니다</span></h2>
-          <h2 class="kbh-h" data-copy="hero.h22">검색량 없는 우리 업종,<br><span>AI에는 답이 있습니다</span></h2>
+          <h2 class="kbh-h" data-copy="hero.h21">고객은 이제,<br><span>검색하지 않고 AI에게 묻습니다</span></h2>
+          <h2 class="kbh-h" data-copy="hero.h22">AI에게 질문하는 시대,<br><span>새로운 노출 구조가 필요합니다</span></h2>
         </div>
       </div>
       <div class="kbh-ctrl" role="group" aria-label="히어로 슬라이드 컨트롤">
