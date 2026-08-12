@@ -23,6 +23,11 @@ class Handler(SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
+    def end_headers(self):
+        # 브라우저가 옛 파일을 캐시로 물고 있지 않게 항상 재검증
+        self.send_header('Cache-Control', 'no-cache')
+        super().end_headers()
+
     def do_POST(self):
         if self.path != '/__save__':
             return self.send_error(404)
