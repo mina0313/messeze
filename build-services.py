@@ -588,15 +588,15 @@ def build_page(x):
         badge = (f'<img class="ptc-ico" src="{lg[0]}" alt="" loading="lazy">' if lg
                  else f'<span class="ptc-no">{i+1:02d}</span>')
         tags = "".join("<span>"+g+"</span>" for g in tg)
-        return f'<div class="dg-row rv"><span class="dg-no">{i+1:02d}</span><b>{t}</b><p>{d}</p></div>'
+        return f'<div class="dg-row rv"><span class="dg-no">{i+1:02d}</span><b data-copy="items.{i}.0">{t}</b><p data-copy="items.{i}.1">{d}</p></div>'
     items = "\n".join(_pt(i, t, d, (rest[0] if rest else [])) for i,(t,d,*rest) in enumerate(x["items"]))
-    procs = "\n".join(f"""<div class="pr rv"><span class="n">{i+1}</span><b>{t}</b><p>{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
-    fits = "\n".join(f"""<div><span class="c">✓</span>{f}</div>""" for f in x["fit"])
+    procs = "\n".join(f"""<div class="pr rv"><span class="n">{i+1}</span><b data-copy="proc.{i}.0">{t}</b><p data-copy="proc.{i}.1">{d}</p></div>""" for i,(t,d,*_) in enumerate(x["proc"]))
+    fits = "\n".join(f"""<div><span class="c">✓</span><span data-copy="fit.{i}">{f}</span></div>""" for i,f in enumerate(x["fit"]))
     delivs = "".join(
-        f'<div class="dvi"><i>{i+1:02d}</i><div><b>{d[0]}</b><p>{d[1]}</p></div></div>' if isinstance(d, (list, tuple))
-        else f"<span>{d}</span>"
+        f'<div class="dvi"><i>{i+1:02d}</i><div><b data-copy="deliv.{i}.0">{d[0]}</b><p data-copy="deliv.{i}.1">{d[1]}</p></div></div>' if isinstance(d, (list, tuple))
+        else f'<span data-copy="deliv.{i}">{d}</span>'
         for i, d in enumerate(x["deliv"]))
-    faqs = "\n".join(f"""<div class="qa"><button>{q}<span class="ico">+</span></button><div class="ans"><p>{a}</p></div></div>""" for q,a in x["faq"])
+    faqs = "\n".join(f"""<div class="qa"><button><span data-copy="faq.{i}.0">{q}</span><span class="ico">+</span></button><div class="ans"><p data-copy="faq.{i}.1">{a}</p></div></div>""" for i,(q,a) in enumerate(x["faq"]))
     _rt = RELTOOL.get(x["slug"])
     reltool = (f"""<a class="reltool rv" href="{_rt[0]}"><div><span class="rt-tag">관련 무료 도구</span><h3>{_rt[1]}</h3><p>{_rt[2]}</p></div><span class="rt-go">바로 써보기 →</span></a>""" if _rt else "")
     ld = json.dumps({
@@ -619,17 +619,17 @@ def build_page(x):
 <div class="wrap crumb"><a href="../services.html">서비스</a><span>›</span><span class="cat">SERVICE {x['no']}</span></div>
 <section class="phero"><div class="wrap phero-in">
 <div class="rv">
-<span class="no">SERVICE {x['no']} · {x['en']}</span>
-<h1>{x['title']}</h1>
-<p class="sub">{x['one']}</p>
-<div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p>{x['ai']}</p></div>
+<span class="no">SERVICE {x['no']} · <span data-copy="en">{x['en']}</span></span>
+<h1 data-copy="title">{x['title']}</h1>
+<p class="sub" data-copy="one">{x['one']}</p>
+<div class="ai-view"><span class="avl">AI의 눈으로 보면</span><p data-copy="ai">{x['ai']}</p></div>
 <div class="cta"><a href="../check.html" class="btn btn-co">AI 노출 무료 진단</a><a href="../pricing.html" class="btn btn-gh">요금 보기</a></div>
 </div>
 {x['vis']}
 </div></section>
 
 <section class="sec"><div class="wrap">
-<div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead">{x['intro']}</p></div>
+<div class="shead rv"><span class="eyebrow">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[0]}</span><h2 class="h2">{WHATHEADS.get(x['slug'],("무엇을 하나요","이 서비스에 포함된 것"))[1]}</h2><p class="lead" data-copy="intro">{x['intro']}</p></div>
 <div class="dg-rows">{items}</div>
 {reltool}
 </div></section>

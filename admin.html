@@ -868,6 +868,26 @@ const COPY_FIELDS={eyebrow:'작은 제목', title:'큰 제목', lead:'설명문'
   free1:'혜택 1', free2:'혜택 2', free3:'혜택 3'};
 const TIER_NAMES={basic:'베이직', premium:'프리미엄', enterprise:'엔터프라이즈'};
 
+let SVCJ=null; // 서비스 페이지 문구(data/services.json)
+const SVC_SECTIONS={title:'서비스 이름',en:'영문 이름',one:'한 줄 소개',ai:'AI의 눈으로 보면',intro:'구성 소개',items:'서비스 구성',proc:'진행 절차',fit:'이런 기업에 맞아요',deliv:'산출물',faq:'자주 묻는 질문'};
+function svcLabel(k){
+  const p=k.split('.');
+  if(p.length===1)return SVC_SECTIONS[k]||k;
+  const n=(+p[1]+1)+'번';
+  if(p.length===2)return n;
+  const sub=p[2];
+  if(p[0]==='faq')return n+' '+(sub==='0'?'질문':'답변');
+  return n+' '+(sub==='0'?'제목':sub==='1'?'설명':'항목 '+sub);
+}
+function flattenSvc(o){
+  const out={};
+  const walk=(v,path)=>{
+    if(typeof v==='string'){out[path]=v;return;}
+    if(Array.isArray(v))v.forEach((c,i)=>walk(c,path+'.'+i));
+  };
+  ['title','en','one','ai','intro','items','proc','fit','deliv','faq'].forEach(k=>{if(o[k]!==undefined)walk(o[k],k)});
+  return out;
+}
 async function copyHome(msg){
   updateSidebar('copy');
   const cfg=JEDIT.copy;
@@ -877,27 +897,63 @@ async function copyHome(msg){
   try{
     const g=await ghRead(cfg.file);
     JST={key:'copy', data:g.data, sha:g.sha};
+    try{const sv=await ghRead('data/services.json');SVCJ={data:sv.data, sha:sv.sha};}catch(e){SVCJ=null;}
     copyRender();
   }catch(e){document.getElementById('jBody').innerHTML='<div class="msg-err">불러오기 실패 — 인터넷을 확인하세요.</div>';}
 }
+async function svcSaveFor(cur){
+  const msg=document.getElementById('jMsg');
+  const slug=cur.slice(4);
+  const svc=SVCJ.data.find(x=>x.slug===slug);
+  document.querySelectorAll('.copy-main [data-jp]').forEach(el=>{
+    const jp=el.dataset.jp;if(!jp.startsWith(cur+'.'))return;
+    const parts=jp.slice(cur.length+1).split('.');
+    let t=svc;
+    for(let i=0;i<parts.length-1;i++){t=t[parts[i]];if(!t)return;}
+    t[parts[parts.length-1]]=el.value.trim();
+  });
+  const body=JSON.stringify(SVCJ.data,null,1);
+  msg.innerHTML='<div class="load">저장 중…</div>';
+  if(LOCAL_EDIT){
+    try{await localSave('data/services.json',body);msg.innerHTML='<div class="msg-ok">'+LOCAL_SAVED_MSG+'</div>';}
+    catch(e){msg.innerHTML='<div class="msg-err">로컬 저장 실패 — 미리보기 서버가 켜져 있는지 확인하세요.</div>';}
+    return;
+  }
+  const tok=localStorage.getItem(TOK_LS);
+  if(!tok)return askToken(()=>svcSaveFor(cur));
+  try{
+    if(!SVCJ.sha)SVCJ.sha=await ghSha('data/services.json');
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/data/services.json`,{method:'PUT',headers:{...ghH(tok),'Content-Type':'application/json'},body:JSON.stringify({message:'admin: 서비스 문구 수정',content:b64enc(body),sha:SVCJ.sha,branch:BR})});
+    const j=await r.json();
+    if(r.status===409){msg.innerHTML='<div class="msg-err">다른 곳에서 수정됐습니다 — 다시 불러오세요.</div>';return;}
+    if(!r.ok)throw 0;
+    SVCJ.sha=j.content.sha;
+    msg.innerHTML='<div class="msg-ok">✅ 저장 완료 — 1~2분 뒤 반영됩니다.</div>';
+  }catch(e){msg.innerHTML='<div class="msg-err">저장 실패 — 다시 시도해 주세요.</div>';}
+}
 
 function copyRender(page){
-  const pages=Object.keys(COPY_PAGES).filter(p=>JST.data[p]);
+  const svcPages=SVCJ?Object.fromEntries(SVCJ.data.map(x=>['svc:'+x.slug,'서비스·'+x.title])):{};
+  const pages=[...Object.keys(COPY_PAGES).filter(p=>JST.data[p]),...Object.keys(svcPages)];
   const cur=page||pages[0];
-  const src=JST.data[cur]||{};
+  const isSvc=cur.startsWith('svc:');
+  const src=isSvc?flattenSvc(SVCJ.data.find(x=>'svc:'+x.slug===cur)||{}):(JST.data[cur]||{});
   const groups={};
   Object.keys(src).forEach(k=>{const sec=k.split('.')[0];(groups[sec]=groups[sec]||[]).push(k);});
-  const order=Object.keys(COPY_SECTIONS).filter(s=>groups[s]);
-  let html='<div class="cms-types">'+pages.map(p=>`<button data-pg="${p}" class="${p===cur?'on':''}">${COPY_PAGES[p]}</button>`).join('')+'</div>';
+  const SECMAP=isSvc?SVC_SECTIONS:COPY_SECTIONS;
+  const order=Object.keys(SECMAP).filter(s=>groups[s]);
+  const pageLabel=p=>COPY_PAGES[p]||svcPages[p]||p;
+  let html='<div class="cms-types">'+pages.map(p=>`<button data-pg="${p}" class="${p===cur?'on':''}">${pageLabel(p)}</button>`).join('')+'</div>';
   html+='<div class="ed-bar copy-bar"><b>문구 편집</b><input type="search" id="copyQ" class="copy-search" placeholder="🔍 문구 검색 — 제목·내용으로 바로 찾기"><span class="sp"></span><button class="dup" id="jSave">💾 저장</button></div><div id="jMsg"></div>';
   const COPY_FILES={home:'index.html',pricing:'pricing.html',check:'check.html',tools:'tools.html',faq:'faq.html',interview:'interview.html'};
-  html+='<div class="copy-wrap copy-live"><nav class="copy-side" id="copySide">'+order.map((s,i)=>`<a data-sec="${s}" class="${i===0?'on':''}">${COPY_SECTIONS[s]}</a>`).join('')+'</nav><div class="copy-main">';
+  html+='<div class="copy-wrap copy-live"><nav class="copy-side" id="copySide">'+order.map((s,i)=>`<a data-sec="${s}" class="${i===0?'on':''}">${SECMAP[s]}</a>`).join('')+'</nav><div class="copy-main">';
   order.forEach(sec=>{
-    html+=`<div class="jgroup" id="cg-${sec}"><h3>${COPY_SECTIONS[sec]}</h3><div class="jgrid">`;
+    html+=`<div class="jgroup" id="cg-${sec}"><h3>${SECMAP[sec]}</h3><div class="jgrid">`;
     groups[sec].forEach(k=>{
       const parts=k.split('.');
       let label;
-      if(sec==='tier'&&parts.length===3) label=(TIER_NAMES[parts[1]]||parts[1])+' · '+(COPY_FIELDS[parts[2]]||parts[2]);
+      if(isSvc) label=svcLabel(k);
+      else if(sec==='tier'&&parts.length===3) label=(TIER_NAMES[parts[1]]||parts[1])+' · '+(COPY_FIELDS[parts[2]]||parts[2]);
       else label=COPY_FIELDS[parts[parts.length-1]]||parts[parts.length-1];
       const val=src[k]||'';
       const long=val.length>40||val.includes('<br');
@@ -908,11 +964,11 @@ function copyRender(page){
     html+='</div></div>';
   });
   html+='</div>';
-  const pvFile=COPY_FILES[cur];
+  const pvFile=isSvc?('services/'+cur.slice(4)+'.html'):COPY_FILES[cur];
   html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span><span id="pvHint">실시간 미리보기</span><span class="sp"></span><button id="pvMode"></button><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}"></iframe></div></div>`;
   html+='</div>';
   document.getElementById('jBody').innerHTML=html;
-  document.getElementById('jSave').onclick=jsonEditSave;
+  document.getElementById('jSave').onclick=()=>isSvc?svcSaveFor(cur):jsonEditSave();
   document.querySelectorAll('[data-pg]').forEach(b=>b.onclick=()=>copyRender(b.dataset.pg));
   /* ── 라이브 미리보기 동기화 ── */
   const pv=document.getElementById('copyPrev');
