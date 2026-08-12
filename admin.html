@@ -194,7 +194,7 @@ body.gated .sidebar-menu{display:none}
 .jgroup h3 small{font-weight:500;color:var(--mut);font-size:12px;margin-left:6px}
 .jf{display:block;margin-bottom:12px}
 .jf>span{display:block;font-size:12px;font-weight:800;color:var(--body);margin-bottom:6px}
-.jf input[type=text],.jf textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font-family:var(--sans);font-size:13px;background:var(--bg,#fff);color:var(--ink)}
+.jf input[type=text],.jf textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:11px 13px;font-family:var(--sans);font-size:14px;background:var(--bg,#fff);color:var(--ink)}
 .jf textarea{resize:vertical;line-height:1.6}
 .jf input[type=checkbox]{width:18px;height:18px}
 .jf .hint{display:block;font-size:11.5px;color:var(--mut);font-weight:600;margin-top:5px}
@@ -245,6 +245,8 @@ body.gated .sidebar-menu{display:none}
 /* 문구 편집 라이브 미리보기 */
 .copy-wrap.copy-live{display:grid;grid-template-columns:170px minmax(300px,1fr) minmax(360px,46%);gap:18px;align-items:start}
 .copy-wrap.copy-live.noprev{grid-template-columns:185px 1fr}
+.copy-wrap.copy-live.direct{grid-template-columns:1fr}
+.copy-wrap.copy-live.direct .copy-side,.copy-wrap.copy-live.direct .copy-main{display:none}
 .copy-prev{position:sticky;top:62px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column;height:calc(100vh - 90px)}
 .cp-hd{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);background:#F8FAFC;font-size:12.5px;font-weight:800;color:var(--body)}
 .cp-hd .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
@@ -253,7 +255,7 @@ body.gated .sidebar-menu{display:none}
 .cp-hd button:hover,.cp-hd a:hover{border-color:var(--primary);color:var(--primary)}
 .cp-wrap{flex:1;overflow:hidden;position:relative;background:#EEF1F6}
 .copy-prev iframe{border:0;transform-origin:0 0;position:absolute;top:0;left:0}
-@media(max-width:1200px){.copy-wrap.copy-live{grid-template-columns:170px 1fr}.copy-prev{display:none}}
+@media(max-width:1200px){.copy-wrap.copy-live:not(.direct){grid-template-columns:170px 1fr}.copy-wrap.copy-live:not(.direct) .copy-prev{display:none}}
 /* 문구 편집 레이아웃 */
 .copy-bar{position:sticky;top:0;z-index:6;background:#F7F9FC;padding:10px 0;margin-bottom:10px}
 .copy-search{flex:1;max-width:380px;border:1.5px solid var(--line);border-radius:10px;padding:9px 14px;font-family:var(--sans);font-size:13px}
@@ -853,7 +855,7 @@ function copyRender(page){
   });
   html+='</div>';
   const pvFile=COPY_FILES[cur];
-  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span>실시간 미리보기 — 입력하면 바로 반영됩니다<span class="sp"></span><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}"></iframe></div></div>`;
+  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span><span id="pvHint">실시간 미리보기</span><span class="sp"></span><button id="pvMode"></button><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}"></iframe></div></div>`;
   html+='</div>';
   document.getElementById('jBody').innerHTML=html;
   document.getElementById('jSave').onclick=jsonEditSave;
@@ -874,20 +876,50 @@ function copyRender(page){
   const fit=()=>{if(!wrap)return;const s=wrap.clientWidth/PV_W;pv.style.width=PV_W+'px';pv.style.height=Math.round(wrap.clientHeight/s)+'px';pv.style.transform=`scale(${s})`;};
   window.addEventListener('resize',fit);
   fit();
+  /* ── 화면에서 바로 수정 모드 (기본 켬) ── */
+  let direct=localStorage.getItem('mz_pv_direct')!=='0';
+  const liveWrap=document.querySelector('.copy-wrap.copy-live');
+  const modeBtn=document.getElementById('pvMode'), pvHint=document.getElementById('pvHint');
+  const fieldOf=t=>document.querySelector(`.copy-main [data-jp="${CSS.escape(cur+'.'+t.dataset.copy)}"]`);
+  const applyMode=()=>{
+    liveWrap.classList.toggle('direct',direct);
+    modeBtn.textContent=direct?'📋 목록으로 편집':'🖱 화면에서 바로 수정';
+    pvHint.textContent=direct?'화면의 문구를 클릭해 바로 고치세요 — 다 고친 뒤 💾 저장':'실시간 미리보기 — 입력하면 바로 반영됩니다';
+    const d=pvDoc();
+    if(d&&d.body){
+      d.body.classList.toggle('mz-direct',direct);
+      d.querySelectorAll('[data-copy]').forEach(t=>{
+        t.contentEditable=direct?'true':'false';
+        t.title=direct?'클릭해서 바로 수정':'클릭하면 편집칸으로 이동';
+      });
+    }
+    fit();
+  };
+  modeBtn.onclick=()=>{direct=!direct;localStorage.setItem('mz_pv_direct',direct?'1':'0');applyMode();};
   pv.onload=()=>{
     fit();
     applyAll(); // 저장 전 수정값을 미리보기에 재적용
     const d=pvDoc();if(!d)return;
-    const hide=d.createElement('style');hide.textContent='#mchat{display:none!important}';d.head.appendChild(hide); // 상담 위젯은 편집에 방해되니 숨김
+    const hide=d.createElement('style');hide.textContent='#mchat{display:none!important}\n.mz-direct [data-copy]{outline:1.5px dashed rgba(43,92,255,.35);outline-offset:3px;cursor:text;min-height:1em}\n.mz-direct [data-copy]:hover{outline-color:rgba(43,92,255,.85)}\n.mz-direct [data-copy]:focus{outline:2.5px solid #2B5CFF;background:rgba(43,92,255,.05)}';d.head.appendChild(hide); // 상담 위젯 숨김 + 직접수정 하이라이트
     d.querySelectorAll('[data-copy]').forEach(t=>{
-      t.style.cursor='pointer';t.title='클릭하면 편집칸으로 이동';
+      t.style.cursor='pointer';
       t.addEventListener('click',e=>{
         e.preventDefault();e.stopPropagation();
-        const f=document.querySelector(`.copy-main [data-jp="${CSS.escape(cur+'.'+t.dataset.copy)}"]`);
+        if(direct){t.focus();return;} // 직접수정: 링크 이동 막고 그 자리에서 편집
+        const f=fieldOf(t);
         if(f){f.scrollIntoView({block:'center',behavior:'smooth'});f.focus({preventScroll:true});
           f.style.boxShadow='0 0 0 3px rgba(43,92,255,.35)';setTimeout(()=>f.style.boxShadow='',1600);}
       },true);
+      t.addEventListener('input',()=>{ // 직접수정 → 숨은 편집칸에 동기화(저장이 이 값을 수집)
+        if(!direct)return;
+        const f=fieldOf(t);
+        if(f)f.value=t.innerHTML.trim();
+      });
+      t.addEventListener('keydown',e=>{
+        if(direct&&e.key==='Enter'){e.preventDefault();d.execCommand('insertLineBreak');}
+      });
     });
+    applyMode();
   };
   // 섹션 사이드바: 클릭 점프 + 스크롤 하이라이트
   const side=document.getElementById('copySide');
