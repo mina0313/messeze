@@ -871,8 +871,8 @@ function copyRender(page){
     el.addEventListener('input',()=>applyField(el));
     el.addEventListener('focus',()=>{const t=pvEl(el.dataset.jp);if(t)flash(t);});
   });
-  /* 데스크톱 폭(1280px)으로 렌더 후 패널에 맞게 축소 */
-  const PV_W=1280, wrap=document.getElementById('cpWrap');
+  /* 내 브라우저 창 폭 그대로 렌더 후 패널에 맞게 축소 — 실제 보이는 줄바꿈과 일치 */
+  const PV_W=Math.max(1024,Math.min(1600,window.innerWidth)), wrap=document.getElementById('cpWrap');
   const fit=()=>{if(!wrap)return;const s=wrap.clientWidth/PV_W;pv.style.width=PV_W+'px';pv.style.height=Math.round(wrap.clientHeight/s)+'px';pv.style.transform=`scale(${s})`;};
   window.addEventListener('resize',fit);
   fit();
