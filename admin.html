@@ -971,7 +971,7 @@ function copyRender(page){
   });
   html+='</div>';
   const pvFile=isSvc?('services/'+cur.slice(4)+'.html'):COPY_FILES[cur];
-  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span><span id="pvHint">실시간 미리보기</span><span class="sp"></span><button id="pvMode"></button><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}"></iframe></div></div>`;
+  html+=`<div class="copy-prev"><div class="cp-hd"><span class="dot"></span><span id="pvHint">실시간 미리보기</span><span class="sp"></span><button id="pvMode"></button><a href="${pvFile}" target="_blank" rel="noopener">↗ 새 창</a></div><div class="cp-wrap" id="cpWrap"><iframe id="copyPrev" src="${pvFile}?edit=${Date.now()}"></iframe></div></div>`;
   html+='</div>';
   document.getElementById('jBody').innerHTML=html;
   document.getElementById('jSave').onclick=()=>isSvc?svcSaveFor(cur):jsonEditSave();
