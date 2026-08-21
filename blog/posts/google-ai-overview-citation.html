@@ -1,0 +1,333 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙 | messeze 블로그</title>
+<meta name="description" content="구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--ink:#0A1930;--navy:#101F3F;--body:#4A5568;--mut:#8B95A7;--cobalt:#2B5CFF;--cobalt-dk:#1E46D9;
+--sky:#EAF1FF;--sky-2:#F5F8FD;--mint:#0BBF8C;--line:#E5EAF2;--line-2:#D8E0EC;
+--sans:'Pretendard',system-ui,-apple-system,sans-serif;--disp:'Poppins',var(--sans);--maxw:1140px;
+--sh-sm:0 1px 2px rgba(10,25,48,.05),0 4px 14px rgba(10,25,48,.05);--sh:0 12px 34px rgba(16,31,63,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all}
+.nav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;height:72px;gap:40px}
+.nav .wrap{max-width:1480px;padding:0 clamp(16px,2.5vw,40px)}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:25px;height:25px}
+.brand .bw{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.025em}
+.nav-menu{display:flex;gap:6px;font-size:15px;font-weight:600;color:var(--body)}
+.nav-menu a{padding:9px 13px;border-radius:10px}
+.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a.on{color:var(--cobalt)}
+.nav-r{margin-left:auto}
+.nav-cta{font-weight:700;font-size:14.5px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;transition:.18s}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:10px 4px 10px 10px;flex:0 0 auto}
+.nav-burger span{display:block;width:22px;height:2.5px;background:var(--ink);border-radius:2px;margin:4.5px 0;transition:.22s}
+.nav-burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.on span:nth-child(2){opacity:0}
+.nav-burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.foot{background:#070D1C;color:#7C879D;padding:52px 0 38px;margin-top:0}
+.foot-in{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.foot .brand{color:#fff;margin-bottom:14px}
+.foot p{font-size:13.5px;line-height:1.7;max-width:320px}
+.foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
+.cta-band{background:var(--ink);border-radius:24px;padding:46px 40px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;margin:70px auto}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 90% 100%,rgba(43,92,255,.4),transparent 60%)}
+.cta-band h2{font-size:clamp(20px,2.6vw,27px);color:#fff;position:relative}
+.cta-band p{color:#AEB9D2;font-size:14.5px;margin-top:8px;position:relative}
+.cta-band .btn{position:relative;background:var(--cobalt);color:#fff;font-weight:700;font-size:15px;padding:15px 26px;border-radius:14px;display:inline-flex;transition:.18s}
+.cta-band .btn:hover{background:#4270FF}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(16,31,63,.14);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s;padding:32px 0 36px;z-index:80}
+.mega.on{opacity:1;visibility:visible;transform:none}
+.mega-in{display:grid;grid-template-columns:225px 1fr 1fr 1fr;gap:36px;align-items:stretch}
+.mega-brand{background:linear-gradient(160deg,#101F3F,#2B5CFF);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:225px;color:#fff;transition:.2s}
+.mega-brand:hover{transform:translateY(-3px)}
+.mega-brand .bw2{font-family:var(--disp);font-weight:600;font-size:22px}
+.mega-brand p{font-size:12.5px;color:#C7D6FF;margin-top:8px;line-height:1.55;font-weight:600}
+.mega-col .h5x{font-size:11.5px;color:var(--mut);font-weight:800;letter-spacing:.05em;margin:0 0 8px 12px}
+.mega-col .gap{height:20px}
+.mega-col a{display:block;padding:9px 12px;border-radius:12px;transition:.15s}
+.mega-col a b{font-size:14.2px;display:block;letter-spacing:-.01em}
+.mega-col a span{font-size:12.2px;color:var(--mut);display:block;margin-top:1px}
+.mega-col a:hover{background:var(--sky-2)}
+.mega-col a:hover b{color:var(--cobalt)}
+@media(max-width:900px){.nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
+.cover{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;z-index:0}
+.card .thumb::after,.pcover::after,.rcard .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,31,63,.06) 42%,rgba(9,17,35,.55));z-index:1;pointer-events:none}
+.card .thumb .tag,.pcover .tag{z-index:2}
+.card:hover .thumb .cover,.rcard:hover .thumb .cover{transform:scale(1.06);transition:transform .6s ease}
+.card .thumb .cover,.rcard .thumb .cover{transition:transform .6s ease}
+
+.crumb{font-size:13.5px;font-weight:600;color:var(--mut);padding:34px 0 0;display:flex;gap:8px;align-items:center}
+.crumb a:hover{color:var(--cobalt)}
+.crumb .cat{color:var(--cobalt);font-weight:700}
+.phead{max-width:760px;margin:0 auto;padding:26px 0 34px}
+.phead h1{font-size:clamp(27px,3.8vw,40px);line-height:1.32}
+.phead .meta{margin-top:18px;font-size:13.5px;color:var(--mut);font-weight:600;display:flex;gap:14px;align-items:center}
+.phead .meta .by{color:var(--ink)}
+.pcover{max-width:860px;margin:0 auto;height:360px;border-radius:22px;position:relative;overflow:hidden}
+.pcover .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px}
+.pcover .tag{position:absolute;left:24px;bottom:20px;font-size:13px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px}
+.article{max-width:720px;margin:0 auto;padding:46px 0 10px}
+.pfaq{max-width:720px;margin:26px auto 10px}
+.pfaq h2{font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.pfq{padding:18px 0;border-bottom:1px solid var(--line)}
+.pfq:last-child{border-bottom:0}
+.pfq .q{font-weight:800;font-size:16px;word-break:keep-all}
+.pfq .q::before{content:"Q. ";color:var(--cobalt)}
+.pfq .a{margin-top:8px;color:var(--body);font-size:14.6px;line-height:1.78;word-break:keep-all}
+.article p{font-size:16.5px;color:#333C4E;line-height:1.85;margin-bottom:26px}
+.article h2{font-size:22px;margin:42px 0 16px;padding-top:8px}
+.article ul{margin:0 0 26px 4px;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.article li{font-size:16px;color:#333C4E;line-height:1.75}
+.article b{color:var(--ink)}
+.article blockquote{background:var(--sky);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:20px 24px;font-size:16px;color:var(--navy);line-height:1.75;margin:34px 0}
+.fig{margin:38px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--sky-2)}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--mut);font-weight:600;text-align:center;padding:13px 16px;border-top:1px solid var(--line);background:#fff}
+.rel{max-width:860px;margin:60px auto 0;padding:0 24px}
+.rel h3{font-size:20px;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.rcard:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.rcard .thumb{height:110px;position:relative}
+.rcard .thumb .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:16px 16px}
+.rcard .b{padding:18px 20px 20px}
+.rcard .cat{font-size:12px;font-weight:800;color:var(--cobalt)}
+.rcard h4{font-size:15.5px;margin-top:8px;line-height:1.45}
+.backrow{max-width:720px;margin:44px auto 0;padding:0 24px}
+.backrow a{font-size:14.5px;font-weight:700;color:var(--cobalt)}
+@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:220px;border-radius:16px;margin:0 20px}}
+</style><!-- auto-meta:start -->
+<link rel="canonical" href="https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="messeze">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙 | messeze 블로그">
+<meta property="og:description" content="구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.">
+<meta property="og:url" content="https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html">
+<meta property="og:image" content="https://mina0313.github.io/messeze/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙 | messeze 블로그">
+<meta name="twitter:description" content="구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.">
+<meta name="twitter:image" content="https://mina0313.github.io/messeze/assets/og.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#2B5CFF">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://mina0313.github.io/messeze/#organization",
+   "name": "messeze",
+   "alternateName": [
+    "메세지",
+    "주식회사 메세지"
+   ],
+   "url": "https://mina0313.github.io/messeze/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://mina0313.github.io/messeze/#logo",
+    "url": "https://mina0313.github.io/messeze/assets/logo.png"
+   },
+   "image": "https://mina0313.github.io/messeze/assets/og.png",
+   "description": "AI 시대, 고객이 우리 회사를 발견하도록 만드는 새로운 기업 정보 관리 서비스",
+   "email": "sales@firstmkt.co.kr",
+   "telephone": "+82-1600-9487",
+   "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "대구광역시",
+    "addressLocality": "중구",
+    "streetAddress": "국채보상로 488, 3층"
+   },
+   "sameAs": [
+    "https://github.com/mina0313/messeze"
+   ],
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "sales@firstmkt.co.kr",
+    "telephone": "+82-1600-9487",
+    "availableLanguage": "Korean"
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://mina0313.github.io/messeze/#website",
+   "url": "https://mina0313.github.io/messeze/",
+   "name": "messeze",
+   "publisher": {
+    "@id": "https://mina0313.github.io/messeze/#organization"
+   },
+   "inLanguage": "ko"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html#webpage",
+   "url": "https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html",
+   "name": "구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙 | messeze 블로그",
+   "description": "구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.",
+   "isPartOf": {
+    "@id": "https://mina0313.github.io/messeze/#website"
+   },
+   "about": {
+    "@id": "https://mina0313.github.io/messeze/#organization"
+   },
+   "inLanguage": "ko"
+  }
+ ]
+}
+</script>
+<meta property="article:published_time" content="2026-08-21T09:00:00+09:00">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙",
+ "description": "구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.",
+ "datePublished": "2026-08-21",
+ "dateModified": "2026-08-21",
+ "author": {
+  "@type": "Organization",
+  "name": "messeze 편집팀",
+  "url": "https://mina0313.github.io/messeze/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "messeze",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://mina0313.github.io/messeze/assets/og.png"
+  }
+ },
+ "mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html"
+ },
+ "image": "https://mina0313.github.io/messeze/assets/og.png",
+ "inLanguage": "ko"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "홈",
+   "item": "https://mina0313.github.io/messeze/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "블로그",
+   "item": "https://mina0313.github.io/messeze/blog/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙",
+   "item": "https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html"
+  }
+ ]
+}
+</script>
+<!-- auto-meta:end -->
+</head><body>
+<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="../../index.html"><img src="../../assets/logo.png" alt="messeze" style="height:26px;width:auto;display:block"></a>
+<nav class="nav-menu">
+<a href="../../services/visibility.html">서비스</a>
+<a href="../../pricing.html">요금</a>
+<a href="../../check.html">AI 노출 진단</a>
+<a class="on" href="../../blog/index.html">블로그</a>
+<a href="../../interview.html">인터뷰</a>
+<a href="../../glossary/index.html">용어사전</a>
+<a href="../../faq.html">FAQ</a>
+</nav>
+<div class="nav-r"><a class="nav-cta" href="../../index.html#final">무료 진단 받기</a></div>
+<button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+</div>
+<div class="mega" id="mega"><div class="wrap mega-in">
+<a class="mega-brand" href="../../index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
+<div class="mega-col"><div class="h5x">서비스</div>
+<a href="../../services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
+<a href="../../services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
+<a href="../../services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
+<a href="../../services/own-blog.html"><b>자사 블로그 운영</b><span>도메인에 쌓이는 전문성</span></a>
+<a href="../../services/channels.html"><b>외부 채널 운영</b><span>네이버·티스토리·구글 블로거</span></a>
+<a href="../../services/press.html"><b>언론 배포</b><span>기자 매칭 · 보도자료 · 기사화</span></a></div>
+<div class="mega-col"><div class="h5x">무료 도구</div>
+<a href="../../check.html"><b>AI 노출 무료 진단</b><span>URL만 넣으면 30초 진단</span></a>
+<a href="../../tools.html#pr"><b>PR 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
+<div class="gap"></div><div class="h5x">요금</div>
+<a href="../../pricing.html"><b>플랜 비교</b><span>베이직 · 프리미엄 · 엔터프라이즈</span></a>
+<a href="../../pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
+<div class="mega-col"><div class="h5x">리소스</div>
+<a href="../../blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
+<a href="../../interview.html"><b>인터뷰</b><span>먼저 시작한 기업들의 이야기</span></a>
+<a href="../../glossary/index.html"><b>용어사전</b><span>SEO·AEO·GEO·PR 용어 102개</span></a></div>
+</div></div>
+</header>
+<script>
+(function(){const p=document.getElementById('mega'),t=document.querySelector('.nav-menu'),b=document.getElementById('burger');if(!p)return;let m;const o=()=>{clearTimeout(m);p.classList.add('on')},c=()=>{m=setTimeout(()=>p.classList.remove('on'),140)};if(t){t.addEventListener('mouseenter',o);t.addEventListener('mouseleave',c);t.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',o));}if(window.matchMedia('(hover:hover)').matches){p.addEventListener('mouseenter',o);p.addEventListener('mouseleave',c);}if(b){b.addEventListener('click',()=>{const on=p.classList.toggle('on');b.classList.toggle('on',on);});p.addEventListener('click',e=>{if(e.target.closest('a')){p.classList.remove('on');b.classList.remove('on');}});}})();
+</script>
+<div class="wrap crumb"><a href="../index.html">블로그</a><span>›</span><span class="cat">AI 가시성</span></div>
+<div class="wrap phead"><h1>구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙</h1>
+<div class="meta"><span class="by">by. messeze 편집팀</span><span>·</span><span>2026-08-21</span></div></div>
+<div class="pcover" style="background:linear-gradient(135deg,#1B3C8F,#2B5CFF)"><span class="pat"></span><img class="cover" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&q=70&auto=format" alt="구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙" loading="lazy" referrerpolicy="no-referrer"><span class="tag">AI 가시성</span></div>
+<article class="article wrap">
+<p>고객이 구글에 우리 업종을 검색하면, 이제 화면 맨 위에는 파란 링크가 아니라 AI가 정리한 답변, 즉 AI 오버뷰가 먼저 뜹니다. 그렇다면 그 답변 안에 우리 회사가 근거로 인용되려면 무엇이 필요할까요? 결론부터 말씀드리면, 구글 AI 오버뷰는 <b>여러 출처를 교차 확인해 인용</b>하며, 검색 순위가 아니라 페이지가 답을 얼마나 명확히 담고 있는지로 인용 대상을 고릅니다.</p>
+<p>이 글에서는 2026년 공개된 대규모 인용 분석 데이터를 근거로, AI 오버뷰가 실제로 어떤 페이지를 인용하는지 몇 가지 규칙으로 정리했습니다. 막연한 감이 아니라 숫자로 확인된 패턴이기 때문에, 우리 홈페이지를 점검하는 기준으로 바로 쓰실 수 있습니다.</p>
+<h2>구글 AI 오버뷰는 한 곳이 아니라 여러 출처를 교차 확인해 인용합니다</h2>
+<p>AI 오버뷰는 하나의 페이지를 그대로 옮기는 것이 아니라, 여러 출처에서 일치하는 정보를 모아 답을 구성합니다. 마케팅 분석 매체 CXL이 공개한 100페이지 규모의 AI 오버뷰 인용 분석에 따르면, AI 요약의 88%가 세 개 이상의 출처를 인용했고, 단 하나의 출처만 인용한 경우는 1%에 불과했습니다.</p>
+<p>이 숫자가 기업에 주는 의미는 분명합니다. 홈페이지 한 곳에만 정보가 있으면, 그 정보가 아무리 정확해도 AI가 교차 확인할 상대가 없습니다. 같은 사실이 언론 기사·전문 칼럼·외부 채널에서 함께 확인될 때 비로소 인용 후보가 됩니다. 이것이 GEO(생성형 엔진 최적화)에서 출처 다변화를 강조하는 이유입니다.</p>
+<p>바꿔 말하면, AI 오버뷰에 인용되는 것은 한 편의 글을 잘 쓰는 문제가 아니라 같은 사실을 여러 곳에 일관되게 남겨 두는 문제에 가깝습니다. 출처가 세 곳 이상에서 서로를 뒷받침할 때 AI는 그 정보를 확신하고 답변에 반영합니다. 반대로 출처가 하나뿐이면, 정보의 정확성과 무관하게 후보 목록에서 조용히 제외됩니다.</p>
+<h2>검색 순위와 AI 인용은 분리돼 있습니다</h2>
+<p>구글에서 상위에 오르는 것과 AI 오버뷰에 인용되는 것은 별개의 관문입니다. 같은 CXL 분석에서, AI 오버뷰가 인용한 페이지의 67%는 그 검색어의 일반 검색 결과(오가닉)에는 아예 나타나지 않았습니다. 순위와 인용이 사실상 분리돼 있다는 뜻입니다.</p>
+<p>따라서 검색 1페이지에 못 올라가니 AI에도 못 나온다는 생각은 사실과 다릅니다. 반대로 검색 상위에 있다고 자동으로 인용되지도 않습니다. AI는 순위표가 아니라 질문에 대한 답이 명확히 담긴 페이지를 따로 골라냅니다. 이 지점이 SEO와 AEO(답변 엔진 최적화)가 갈라지는 부분입니다.</p>
+<h2>답은 페이지 상단에 있어야 인용됩니다</h2>
+<p>AI 오버뷰는 페이지 안에서도 앞부분에 놓인 답을 우선해 인용합니다. CXL 분석에 따르면 AI 오버뷰 인용의 55%가 페이지 상단 30% 구간에서 나왔고, 중간 구간(30~60%)이 24%, 하단은 21%에 그쳤습니다. 결론을 뒤에 숨겨 두면 인용될 확률이 절반 이하로 떨어지는 셈입니다.</p>
+<p>그래서 각 페이지는 질문을 정면으로 받고 첫 문단에서 바로 답하는 구조여야 합니다. 회사 연혁이나 인사말로 길게 시작하는 페이지가 흔히 인용에서 밀리는 이유가 여기에 있습니다. 핵심 사실을 맨 앞에, 그리고 문단마다 하나의 질문에 하나의 답으로 정리하는 것이 인용률을 높이는 기본 원칙입니다.</p>
+<h2>신뢰 신호와 명확한 회사 정보가 마지막 선택을 가릅니다</h2>
+<p>AI 오버뷰는 같은 조건이라면 전문성·신뢰성 신호가 뚜렷한 페이지를 인용합니다. 관련 분석에서는 AI 오버뷰 인용의 96%가 이른바 E-E-A-T(경험·전문성·권위·신뢰) 신호가 강한 출처에서 나왔고, 문서 안에 인식 가능한 개체(회사명·제품명·인증명 등)가 15개 이상 명확히 담긴 페이지는 그렇지 않은 페이지보다 인용 선택 확률이 약 4.8배 높았다고 보고됐습니다.</p>
+<p>여기서 실무적으로 중요한 것은 엔티티(개체)의 명확성입니다. 상호·소재지·대표 제품·인증명이 페이지마다 똑같이, 그리고 기계가 읽을 수 있는 텍스트와 구조화 데이터로 표기돼 있어야 AI가 누구에 대한 정보인지 확신합니다. AI 가시성은 결국 이 신뢰 신호와 엔티티 일관성 위에서 만들어집니다.</p>
+<h2>정리 — 오늘 우리 페이지에서 확인할 것</h2>
+<p>정리하면, 구글 AI 오버뷰는 여러 출처를 교차 확인하고, 검색 순위와 무관하게, 페이지 앞부분에 놓인 명확한 답을, 신뢰 신호가 뚜렷한 출처에서 골라 인용합니다. 오늘 우리 홈페이지의 핵심 페이지를 열어, 첫 문단에서 고객의 질문에 바로 답하고 있는지, 같은 사실이 외부 출처에서도 확인되는지부터 점검해 보시길 권합니다. 우리 페이지가 이 조건들 중 어디에서 걸리는지 무료 진단(/check.html)으로 함께 확인해 보실 수 있습니다.</p>
+</article>
+
+<div class="backrow"><a href="../index.html">← 블로그 목록으로</a></div>
+<div class="rel"><h3>함께 읽으면 좋은 글</h3><div class="rel-grid"><a class="rcard" href="aeo-geo-seo.html"><div class="thumb" style="background:linear-gradient(135deg,#101F3F,#2B5CFF)"><span class="pat"></span><svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c1a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".6"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><radialGradient id="c1b" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0BBF8C" stop-opacity=".45"/><stop offset="1" stop-color="#0BBF8C" stop-opacity="0"/></radialGradient><linearGradient id="c1c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E93FF"/><stop offset="1" stop-color="#1E46D9"/></linearGradient><filter id="c1s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#06122b" flood-opacity=".4"/></filter></defs><circle cx="252" cy="34" r="92" fill="url(#c1a)"/><circle cx="52" cy="164" r="72" fill="url(#c1b)"/><g filter="url(#c1s)"><rect x="36" y="34" width="150" height="34" rx="17" fill="#fff"/></g><circle cx="57" cy="51" r="8" fill="none" stroke="#2B5CFF" stroke-width="3"/><line x1="63" y1="57" x2="69" y2="63" stroke="#2B5CFF" stroke-width="3" stroke-linecap="round"/><rect x="78" y="47" width="72" height="8" rx="4" fill="#C7D6FF"/><g filter="url(#c1s)"><rect x="58" y="92" width="208" height="58" rx="16" fill="#fff"/></g><rect x="74" y="108" width="26" height="26" rx="9" fill="url(#c1c)"/><text x="87" y="125" font-size="11" fill="#fff" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">AI</text><rect x="110" y="107" width="142" height="8" rx="4" fill="#0A1930"/><rect x="110" y="123" width="104" height="7" rx="3.5" fill="#C0C9D8"/><g filter="url(#c1s)"><path d="M264 82l5 12.5 12.5 5-12.5 5-5 12.5-5-12.5-12.5-5 12.5-5z" fill="#0BBF8C"/></g></svg></div>
+<div class="b"><span class="cat">AI 가시성</span><h4>AEO·GEO·SEO, 무엇이 어떻게 다른가요?</h4></div></a><a class="rcard" href="indexed-not-cited.html"><div class="thumb" style="background:linear-gradient(135deg,#0E2148,#3D6BFF)"><span class="pat"></span><svg class="cover" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="cv8a" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7CA0FF" stop-opacity=".5"/><stop offset="1" stop-color="#7CA0FF" stop-opacity="0"/></radialGradient><filter id="cv8s" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#06122b" flood-opacity=".34"/></filter></defs><circle cx="256" cy="30" r="84" fill="url(#cv8a)"/><circle cx="44" cy="160" r="54" fill="url(#cv8a)"/><path d="M122 90 h58" stroke="#94A0B4" stroke-width="2.4" stroke-dasharray="3 6" fill="none" stroke-linecap="round"/><path d="M178 85 l7 5 -7 5" stroke="#94A0B4" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g filter="url(#cv8s)"><rect x="36" y="48" width="76" height="86" rx="20" fill="#fff"/></g><g transform="translate(55.4,60.2) scale(0.78)"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></g><text x="74" y="120" font-size="12.5" fill="#3C4043" text-anchor="middle" font-weight="700" font-family="Poppins,sans-serif">Google</text><circle cx="100" cy="58" r="10" fill="#0BBF8C"/><path d="M96 58l2.8 2.8 5.4-5.8" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g filter="url(#cv8s)"><rect x="208" y="48" width="76" height="86" rx="20" fill="#fff"/></g><g transform="translate(229.9,61.5) scale(1.36)" fill="#0A1930"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.98 5.98 0 0 0-3.998 2.9 6.05 6.05 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 22.05a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071.006zM18.44 11.6l-5.83-3.383L14.63 7.05a.076.076 0 0 1 .071-.006l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.415-.662zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L8.921 9.08V6.75a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zM7.82 12.74l-2.02-1.164a.08.08 0 0 1-.038-.057V5.936a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.216 5.32a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v3l-2.602 1.5-2.607-1.5z"/></g><text x="246" y="120" font-size="12.5" fill="#0A1930" text-anchor="middle" font-weight="700" font-family="Poppins,sans-serif">ChatGPT</text><circle cx="272" cy="58" r="10" fill="#fff" stroke="#E2574C" stroke-width="2.2"/><text x="272" y="62.5" font-size="12" fill="#E2574C" text-anchor="middle" font-weight="800" font-family="Poppins,sans-serif">?</text></svg></div>
+<div class="b"><span class="cat">AI 가시성</span><h4>구글엔 나오는데 왜 ChatGPT엔 안 나올까요?</h4></div></a></div></div>
+<div class="wrap"><div class="cta-band">
+<div><h2>우리 회사는 AI에서 어떻게 보이고 있을까요?</h2><p>AI 가시성 무료 진단 · 보도자료 1건 무료 · 최적화 콘텐츠 3건</p></div>
+<a class="btn" href="../../index.html#final">무료 진단 신청하기</a></div></div>
+<footer class="foot"><style>.foot{background:#070D1C;color:#7C879D;padding:60px 0 42px;font-size:13.5px}.foot a{color:inherit;text-decoration:none}.foot .wrap{max-width:1140px;margin:0 auto;padding:0 24px}.foot-in{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}.foot .brand{color:#fff;margin-bottom:16px;display:inline-block}.foot p{font-size:13.5px;line-height:1.7;max-width:320px;margin:0}.foot-info{font-size:12.5px;line-height:1.7;color:#7C879D;margin-top:14px}.foot-cols{display:flex;gap:56px}.foot-col .h5x{color:#C3CBDC;font-size:13.5px;margin:0 0 15px;font-weight:800}.foot-col a{display:block;font-size:14px;margin-bottom:10px}.foot-col a:hover{color:#fff}.foot-b{margin-top:46px;padding-top:24px;border-top:1px solid #141C30;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#4E5A73}@media(max-width:720px){.foot-cols{gap:32px;flex-wrap:wrap}}</style><div class="wrap"><div class="foot-in">
+<div><a class="brand" href="../../index.html"><img src="../../assets/logo-white.png" alt="messeze" style="height:24px;width:auto;display:block"></a>
+<p>AI 시대, 고객이 우리 회사를 발견하도록 만드는 새로운 기업 정보 관리 서비스.</p>
+<div class="foot-info">주식회사 메세지 · 주식회사 퍼스트마케팅컴퍼니<br>대구광역시 중구 국채보상로 488, 3층<br>대표번호 1600-9487 · sales@firstmkt.co.kr</div></div>
+<div class="foot-cols">
+<div class="foot-col"><div class="h5x">서비스</div><a href="../../services.html">서비스 상세</a><a href="../../pricing.html">요금</a><a href="../../check.html">AI 노출 진단</a></div>
+<div class="foot-col"><div class="h5x">리소스</div><a href="../../blog/index.html">블로그</a><a href="../../interview.html">인터뷰</a><a href="../../glossary/index.html">용어사전</a><a href="../../faq.html">FAQ</a></div>
+<div class="foot-col"><div class="h5x">회사</div><a href="../../index.html#final">상담 신청</a><a href="../../index.html#final">무료 진단</a></div>
+</div>
+</div><div class="foot-b"><span>© 2026 messeze</span><span>사람에게만 보이는 홍보에서, AI가 읽는 홍보로</span></div></div></footer>
+</body></html>
