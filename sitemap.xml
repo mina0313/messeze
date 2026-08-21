@@ -840,4 +840,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://messeze.com/blog/posts/how-ai-knows-latest-news.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>
