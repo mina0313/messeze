@@ -10,6 +10,7 @@
 - [업종별 인터뷰](https://mina0313.github.io/messeze/interview.html): 제조·수출·병원 등 업종별 AI 검색 활용 사례
 
 ## 블로그 (AI 검색 시대의 기업 홍보 인사이트)
+- [AI 검색은 '추천'을 돈으로 살 수 없습니다 — 광고가 생겨도 그대로인 이유](https://mina0313.github.io/messeze/blog/posts/ai-search-cannot-buy-recommendation.html): AI 검색에 광고가 생겨도 답변 본문의 추천·인용 자리는 여전히 돈으로 살 수 없습니다. 광고와 추천이 왜 다른 자리인지, 광고비 없이 노출되는 원리를 정리했습니다.
 - [AI 검색 성과, 무엇으로 측정하나요?](https://mina0313.github.io/messeze/blog/posts/measuring-geo.html): 클릭 수만으로는 AI 검색 성과가 잡히지 않습니다. 인용률·엔진 커버리지·크롤 신호까지, GEO를 재는 5가지 지표와 추적법.
 - [구글엔 나오는데 왜 ChatGPT엔 안 나올까요?](https://mina0313.github.io/messeze/blog/posts/indexed-not-cited.html): 분명 색인은 됐는데 AI 답변엔 우리 회사가 없습니다. 색인과 인용은 다른 관문이기 때문입니다. 인용되는 페이지의 조건까지.
 - [AI가 우리 회사를 틀리게 말할 때](https://mina0313.github.io/messeze/blog/posts/ai-hallucination-brand.html): AI가 없는 사실을 지어내거나 오래된 정보로 답하면 그대로 브랜드 타격이 됩니다. 왜 생기는지, 기업이 미리 대비하는 법.
