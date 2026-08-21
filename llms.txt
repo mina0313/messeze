@@ -11,6 +11,10 @@
 
 ## 블로그 (AI 검색 시대의 기업 홍보 인사이트)
 - [AI 검색은 '추천'을 돈으로 살 수 없습니다 — 광고가 생겨도 그대로인 이유](https://mina0313.github.io/messeze/blog/posts/ai-search-cannot-buy-recommendation.html): AI 검색에 광고가 생겨도 답변 본문의 추천·인용 자리는 여전히 돈으로 살 수 없습니다. 광고와 추천이 왜 다른 자리인지, 광고비 없이 노출되는 원리를 정리했습니다.
+- [AI는 우리 회사 최신 소식을 어떻게 아나요 — 학습과 검색, 두 경로의 원리](https://mina0313.github.io/messeze/blog/posts/how-ai-knows-latest-news.html): AI가 최신 소식을 아는 경로는 학습과 검색 두 가지입니다. 두 통로의 작동 원리와, 우리 회사 정보를 어느 쪽에도 빠짐없이 남기는 방법까지 정리했습니다.
+- [위키백과에 없으면 AI가 모른다? — AI가 참조하는 출처의 우선순위](https://mina0313.github.io/messeze/blog/posts/ai-source-priority-wikipedia.html): 위키백과에 없어도 AI는 우리 회사를 인용할 수 있습니다. AI가 출처를 고르는 진짜 기준인 교차 확인의 원리와, 위키백과보다 먼저 챙길 일을 짚었습니다.
+- [구글 AI 오버뷰는 무엇을 인용하나 — 100페이지 분석이 보여준 3가지 규칙](https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html): 구글 AI 오버뷰는 여러 출처를 교차 확인해 인용합니다. 100페이지 분석으로 드러난 인용의 규칙과, 우리 페이지가 근거로 선택되는 조건을 정리했습니다.
+- [FAQ 페이지가 AEO의 핵심 무기인 이유](https://mina0313.github.io/messeze/blog/posts/faq-page-aeo.html): FAQ 페이지는 고객의 질문과 AI의 질문이 만나는 지점이라 AEO에 강력합니다. 왜 핵심 무기인지, 인용되는 FAQ의 작성 원칙까지 정리했습니다.
 - [AI 검색 성과, 무엇으로 측정하나요?](https://mina0313.github.io/messeze/blog/posts/measuring-geo.html): 클릭 수만으로는 AI 검색 성과가 잡히지 않습니다. 인용률·엔진 커버리지·크롤 신호까지, GEO를 재는 5가지 지표와 추적법.
 - [구글엔 나오는데 왜 ChatGPT엔 안 나올까요?](https://mina0313.github.io/messeze/blog/posts/indexed-not-cited.html): 분명 색인은 됐는데 AI 답변엔 우리 회사가 없습니다. 색인과 인용은 다른 관문이기 때문입니다. 인용되는 페이지의 조건까지.
 - [AI가 우리 회사를 틀리게 말할 때](https://mina0313.github.io/messeze/blog/posts/ai-hallucination-brand.html): AI가 없는 사실을 지어내거나 오래된 정보로 답하면 그대로 브랜드 타격이 됩니다. 왜 생기는지, 기업이 미리 대비하는 법.

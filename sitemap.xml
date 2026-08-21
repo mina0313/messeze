@@ -163,6 +163,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mina0313.github.io/messeze/blog/posts/ai-source-priority-wikipedia.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mina0313.github.io/messeze/blog/posts/exhibition-pr.html</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -181,7 +187,25 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mina0313.github.io/messeze/blog/posts/faq-page-aeo.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mina0313.github.io/messeze/blog/posts/global-buyer-ai.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mina0313.github.io/messeze/blog/posts/google-ai-overview-citation.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mina0313.github.io/messeze/blog/posts/how-ai-knows-latest-news.html</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -839,25 +863,5 @@
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://messeze.com/blog/posts/how-ai-knows-latest-news.html</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://messeze.com/blog/posts/ai-source-priority-wikipedia.html</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://messeze.com/blog/posts/google-ai-overview-citation.html</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://messeze.com/blog/posts/faq-page-aeo.html</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.7</priority>
   </url>
 </urlset>
