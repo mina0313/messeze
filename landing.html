@@ -12,53 +12,56 @@
 --sky:#EAF1FF;--sky2:#F5F8FD;--mint:#0BBF8C;--red:#E2574C;--line:#E5EAF2;
 --sans:'Pretendard',system-ui,-apple-system,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.72;-webkit-font-smoothing:antialiased;word-break:keep-all;letter-spacing:-.012em}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:760px;margin:0 auto;padding:0 22px}
-h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.38}
 .co{color:var(--cobalt)}
 .rd{color:var(--red)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cobalt);color:#fff;font-weight:800;font-size:17px;border-radius:14px;padding:17px 30px;box-shadow:0 10px 26px rgba(43,92,255,.32);transition:.18s;border:0;cursor:pointer;font-family:var(--sans)}
 .btn:hover{background:var(--cobalt-dk);transform:translateY(-2px)}
 .btn small{font-weight:600;opacity:.8;font-size:12.5px}
-.sec{padding:64px 0}
-.eyebrow{display:inline-block;font-size:13px;font-weight:800;color:var(--cobalt);letter-spacing:.04em;margin-bottom:12px}
-.h2{font-size:clamp(23px,4.6vw,30px);margin-bottom:14px}
-.lead{font-size:16px;color:var(--body)}
+.sec{padding:76px 0}
+.eyebrow{display:inline-block;font-size:13px;font-weight:800;color:var(--cobalt);letter-spacing:.06em;margin-bottom:14px}
+.h2{font-size:clamp(22px,4.4vw,29px);margin-bottom:16px}
+.lead{font-size:15.5px;color:var(--body);line-height:1.8;margin-bottom:10px}
 
 /* hero */
-.hero{background:linear-gradient(180deg,#0A1930,#101F3F);color:#fff;padding:72px 0 64px;text-align:center}
-.hero .tag{display:inline-block;font-size:13px;font-weight:800;color:#9DB4FF;border:1px solid rgba(108,140,255,.5);background:rgba(43,92,255,.14);border-radius:999px;padding:8px 18px;margin-bottom:24px}
-.hero h1{font-size:clamp(27px,6vw,42px);color:#fff}
+.hero{background:linear-gradient(180deg,#0A1930,#101F3F);color:#fff;padding:78px 0 70px;text-align:center}
+.hero .tag{display:inline-block;font-size:13px;font-weight:800;color:#9DB4FF;border:1px solid rgba(108,140,255,.5);background:rgba(43,92,255,.14);border-radius:999px;padding:8px 18px;margin-bottom:28px}
+.hero h1{font-size:clamp(25px,5.6vw,40px);color:#fff;line-height:1.42}
 .hero h1 .rd{color:#FF8A7A}
-.hero p{font-size:clamp(15px,2.5vw,17.5px);color:#AEB9D2;margin:18px auto 30px;max-width:560px}
-.hero .under{font-size:13px;color:#7C879D;margin-top:14px}
+.hero p{font-size:clamp(14.5px,2.4vw,16.5px);color:#AEB9D2;margin:22px auto 34px;max-width:540px;line-height:1.85}
+.hero .under{font-size:13px;color:#7C879D;margin-top:16px}
 
 /* 공감 체크 */
 .pain{background:#fff}
-.pain-card{background:var(--sky2);border:1px solid var(--line);border-radius:16px;padding:8px 22px;margin-top:8px}
-.pain-card .item{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15.5px;font-weight:600;align-items:flex-start}
+.pain-card{background:var(--sky2);border:1px solid var(--line);border-radius:16px;padding:10px 24px;margin-top:22px}
+.pain-card .item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:500;line-height:1.65;align-items:flex-start;color:var(--body)}
+.pain-card .item b{color:var(--ink)}
 .pain-card .item:last-child{border-bottom:0}
-.pain-card .x{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#FCEFEF;color:var(--red);font-weight:900;font-size:13px;display:grid;place-items:center;margin-top:1px}
-.try{margin-top:22px;background:var(--ink);color:#fff;border-radius:16px;padding:26px 24px;text-align:center}
-.try b{font-size:17px;display:block;margin-bottom:8px}
-.try .q{display:inline-block;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:10px 16px;font-size:14.5px;color:#C9D6F5;margin:8px 0 4px}
-.try p{font-size:13.5px;color:#8FA3D9;margin-top:10px}
+.pain-card .x{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#FCEFEF;color:var(--red);font-weight:900;font-size:13px;display:grid;place-items:center;margin-top:2px}
+.pain-card .tx,.gain .tx{flex:1;min-width:0}
+.try{margin-top:28px;background:var(--ink);color:#fff;border-radius:16px;padding:30px 26px;text-align:center}
+.try b{font-size:16.5px;display:block;margin-bottom:12px}
+.try .q{display:inline-block;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:11px 18px;font-size:14px;color:#C9D6F5;margin:4px 0 6px}
+.try p{font-size:13.5px;color:#8FA3D9;margin-top:12px;line-height:1.75}
 
 /* 통계 */
 .stats{background:var(--sky2)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
-.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 14px;text-align:center}
 .stat b{font-size:clamp(20px,4vw,27px);font-weight:900;color:var(--cobalt);display:block}
-.stat span{font-size:12.5px;color:var(--body);font-weight:700;display:block;margin-top:6px;line-height:1.45}
-.stat em{font-style:normal;font-size:10.5px;color:var(--mut);display:block;margin-top:6px}
-.stats .punch{text-align:center;font-size:16.5px;font-weight:800;margin-top:26px}
+.stat span{font-size:12.5px;color:var(--body);font-weight:700;display:block;margin-top:8px;line-height:1.5}
+.stat em{font-style:normal;font-size:10.5px;color:var(--mut);display:block;margin-top:8px}
+.stats .punch{text-align:center;font-size:16.5px;font-weight:800;margin-top:34px;line-height:1.7}
 
 /* 기준 4 */
-.crit .card{border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:14px;display:flex;gap:16px;align-items:flex-start}
+.crit .card{border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin-top:16px;display:flex;gap:16px;align-items:flex-start}
+.crit .card:first-of-type{margin-top:26px}
 .crit .num{flex:0 0 auto;width:38px;height:38px;border-radius:12px;background:var(--sky);color:var(--cobalt);font-weight:900;font-size:16px;display:grid;place-items:center}
-.crit b{font-size:16.5px;display:block;margin-bottom:5px}
-.crit p{font-size:14px;color:var(--body)}
+.crit b{font-size:16px;display:block;margin-bottom:7px}
+.crit p{font-size:14px;color:var(--body);line-height:1.75}
 .crit .card.warn{background:#FFF8F7;border-color:#F4C9C2}
 .crit .card.warn .num{background:#FCEFEF;color:var(--red)}
 
@@ -67,15 +70,16 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
 .how .eyebrow{color:#6C8CFF}
 .how .h2{color:#fff}
 .how .lead{color:#AEB9D2}
-.step{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:16px;padding:22px;margin-top:14px}
-.step .st-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.step{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:16px;padding:24px 22px;margin-top:16px}
+.step:first-of-type{margin-top:26px}
+.step .st-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .step .st-n{font-size:12px;font-weight:900;color:#6C8CFF;letter-spacing:.1em}
-.step b{font-size:17px;color:#fff}
-.step p{font-size:14px;color:#AEB9D2}
-.step .pill{display:inline-block;font-size:12px;font-weight:800;color:#9DB4FF;background:rgba(43,92,255,.18);border-radius:999px;padding:4px 12px;margin-top:10px;margin-right:6px}
+.step b{font-size:16.5px;color:#fff}
+.step p{font-size:14px;color:#AEB9D2;line-height:1.75}
+.step .pill{display:inline-block;font-size:12px;font-weight:700;color:#9DB4FF;background:rgba(43,92,255,.18);border-radius:999px;padding:5px 13px;margin-top:12px;margin-right:6px}
 
 /* 효과 */
-.effect .score-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:22px;box-shadow:0 14px 40px rgba(16,31,63,.09)}
+.effect .score-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 26px;margin-top:26px;box-shadow:0 14px 40px rgba(16,31,63,.09)}
 .effect .sc-h{font-size:12px;font-weight:800;color:var(--mut);margin-bottom:14px}
 .effect .sc-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .effect .sc-v{text-align:center}
@@ -84,30 +88,31 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
 .effect .arrow{font-size:26px;color:var(--mut)}
 .effect .sc-v.after b{color:var(--cobalt)}
 .effect .sc-note{font-size:11px;color:var(--mut);margin-top:14px;text-align:center}
-.gain{margin-top:20px}
-.gain .g{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:600;align-items:flex-start}
+.gain{margin-top:24px}
+.gain .g{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14.5px;font-weight:500;line-height:1.65;align-items:flex-start;color:var(--body)}
 .gain .g:last-child{border-bottom:0}
-.gain .ck{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#E7F8F0;color:#0B8F5C;font-weight:900;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.gain .ck{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#E7F8F0;color:#0B8F5C;font-weight:900;font-size:13px;display:grid;place-items:center;margin-top:2px}
 
 /* 요금 */
 .price{background:var(--sky2)}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
-.ptier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.ptier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px}
 .ptier.pop{border:2px solid var(--cobalt);position:relative}
 .ptier .badge{position:absolute;top:-12px;left:20px;background:var(--cobalt);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:4px 12px}
 .ptier .tn{font-size:13px;font-weight:800;color:var(--cobalt)}
-.ptier .tp{font-size:26px;font-weight:900;margin:8px 0 2px}
+.ptier .tp{font-size:25px;font-weight:900;margin:10px 0 2px}
 .ptier .tp small{font-size:13px;color:var(--mut);font-weight:600}
-.ptier ul{list-style:none;margin-top:14px}
-.ptier li{font-size:13.5px;color:var(--body);padding:5px 0;font-weight:600}
+.ptier ul{list-style:none;margin-top:16px}
+.ptier li{font-size:13.5px;color:var(--body);padding:6px 0;font-weight:500;line-height:1.55}
 .ptier li::before{content:"✓ ";color:var(--cobalt);font-weight:900}
-.price .pnote{font-size:12.5px;color:var(--mut);margin-top:16px;text-align:center}
+.price .pnote{font-size:12.5px;color:var(--mut);margin-top:20px;text-align:center;line-height:1.7}
 
 /* faq */
-.faq .qa{border-bottom:1px solid var(--line);padding:20px 0}
-.faq .qa b{display:block;font-size:16px;margin-bottom:8px}
+.faq .qa{border-bottom:1px solid var(--line);padding:22px 0}
+.faq .qa:first-of-type{margin-top:10px}
+.faq .qa b{display:block;font-size:15.5px;margin-bottom:9px}
 .faq .qa b::before{content:"Q. ";color:var(--cobalt)}
-.faq .qa p{font-size:14.5px;color:var(--body)}
+.faq .qa p{font-size:14px;color:var(--body);line-height:1.78}
 
 /* final */
 .final{background:linear-gradient(180deg,#101F3F,#0A1930);color:#fff;text-align:center;padding:70px 0}
@@ -118,9 +123,14 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
 
 @media(max-width:640px){
 .stat-grid{grid-template-columns:1fr 1fr 1fr;gap:8px}
-.stat{padding:14px 8px}
+.stat{padding:16px 8px}
 .pgrid{grid-template-columns:1fr}
-.sec{padding:52px 0}
+.sec{padding:58px 0}
+.hero{padding:64px 0 58px}
+.hero p br{display:none}
+.hero p{padding:0 4px}
+.crit .card{padding:20px 18px;gap:13px}
+.try{padding:26px 20px}
 }
 </style>
 </head>
@@ -130,7 +140,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
 <section class="hero"><div class="wrap">
   <span class="tag">중소기업·병원·수출기업 대표님께</span>
   <h1>"상위노출 보장" — 그 말에<br>올해도 수많은 대표님이 <span class="rd">돈을 버렸습니다</span></h1>
-  <p>속은 대표님 잘못이 아닙니다. 구별법을 몰랐을 뿐입니다.<br>업체를 고르기 전에 확인해야 할 <b style="color:#fff">기준 4가지</b>와, 지금 시작해야 할 <b style="color:#fff">'쌓이는 마케팅'</b>을 3분으로 정리했습니다.</p>
+  <p>속은 대표님 잘못이 아닙니다. 구별법을 몰랐을 뿐입니다. <br>계약 전에 확인할 <b style="color:#fff">기준 4가지</b>, 3분으로 정리했습니다.</p>
   <a class="btn" href="https://messeze.com/check.html">내 회사 AI 노출 점수 무료 확인 <small>· 30초</small></a>
   <div class="under">URL만 입력하면 끝 — 영업 전화 없습니다</div>
 </div></section>
@@ -141,10 +151,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
   <h2 class="h2">혹시 이런 경험, 있으시죠?</h2>
   <p class="lead">저희가 상담에서 매주 듣는 이야기입니다.</p>
   <div class="pain-card">
-    <div class="item"><span class="x">✕</span>블로그 대행을 몇 달 했는데, 방문자만 늘고 <b>문의는 그대로</b>다</div>
-    <div class="item"><span class="x">✕</span>"상위노출 보장" 업체에 맡겼더니 <b>로직이 바뀌자 순위가 증발</b>했다</div>
-    <div class="item"><span class="x">✕</span>광고비는 매달 나가는데, <b>광고를 끄면 아무것도 남지 않는다</b></div>
-    <div class="item"><span class="x">✕</span>챗GPT에 우리 업종을 물어보니 <b>경쟁사만 나온다</b></div>
+    <div class="item"><span class="x">✕</span><span class="tx">블로그 대행을 몇 달 했는데, 방문자만 늘고 <b>문의는 그대로</b>다</span></div>
+    <div class="item"><span class="x">✕</span><span class="tx">"상위노출 보장" 업체에 맡겼더니 <b>로직이 바뀌자 순위가 증발</b>했다</span></div>
+    <div class="item"><span class="x">✕</span><span class="tx">광고비는 매달 나가는데, <b>광고를 끄면 아무것도 남지 않는다</b></span></div>
+    <div class="item"><span class="x">✕</span><span class="tx">챗GPT에 우리 업종을 물어보니 <b>경쟁사만 나온다</b></span></div>
   </div>
   <div class="try">
     <b>마지막 항목, 직접 확인해 보셨나요?</b>
@@ -204,10 +214,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.32}
     <div class="sc-note">※ 예시 화면입니다. 실제 점수와 속도는 업종·시작 상태에 따라 다르며, 매달 리포트로 실측값을 보고드립니다.</div>
   </div>
   <div class="gain">
-    <div class="g"><span class="ck">✓</span>업종 질문에 AI가 우리 회사를 언급하기 시작합니다</div>
-    <div class="g"><span class="ck">✓</span>검색·블로그에 콘텐츠가 쌓여 유입 경로가 늘어납니다</div>
-    <div class="g"><span class="ck">✓</span>언론 기사가 남아 바이어·고객이 검색해도 신뢰 근거가 보입니다</div>
-    <div class="g"><span class="ck">✓</span>계약을 멈춰도 쌓인 기사·콘텐츠는 사라지지 않습니다</div>
+    <div class="g"><span class="ck">✓</span><span class="tx">업종 질문에 AI가 우리 회사를 언급하기 시작합니다</span></div>
+    <div class="g"><span class="ck">✓</span><span class="tx">검색·블로그에 콘텐츠가 쌓여 유입 경로가 늘어납니다</span></div>
+    <div class="g"><span class="ck">✓</span><span class="tx">언론 기사가 남아 바이어·고객이 검색해도 신뢰 근거가 보입니다</span></div>
+    <div class="g"><span class="ck">✓</span><span class="tx">계약을 멈춰도 쌓인 기사·콘텐츠는 사라지지 않습니다</span></div>
   </div>
 </div></section>
 
