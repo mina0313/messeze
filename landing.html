@@ -132,6 +132,43 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.38}
 .crit .card{padding:20px 18px;gap:13px}
 .try{padding:26px 20px}
 }
+
+/* ===== 시장 정세(WHY NOW) ===== */
+.tl{margin-top:26px;border-left:2px solid var(--line);padding-left:0}
+.tl .row{display:flex;gap:14px;padding:13px 0 13px 18px;position:relative;border-bottom:1px dashed var(--line)}
+.tl .row:last-child{border-bottom:0}
+.tl .row::before{content:"";position:absolute;left:-6px;top:20px;width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--line)}
+.tl .row.on::before{background:var(--cobalt);border-color:var(--cobalt);box-shadow:0 0 0 4px rgba(43,92,255,.14)}
+.tl .when{flex:0 0 92px;font-size:12.5px;font-weight:800;color:var(--mut);padding-top:1px}
+.tl .row.on .when{color:var(--cobalt)}
+.tl .what{flex:1;min-width:0;font-size:14.5px;color:var(--body);line-height:1.68}
+.tl .what b{color:var(--ink);font-weight:700}
+
+.mchg{margin-top:30px;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.mchg .hd{display:flex;background:var(--ink)}
+.mchg .hd div{flex:1;padding:11px 14px;font-size:12.5px;font-weight:800;color:#fff}
+.mchg .hd div:first-child{flex:0 0 40%;color:#8B98B4}
+.mchg .rw{display:flex;border-top:1px solid var(--line)}
+.mchg .rw div{flex:1;padding:11px 14px;font-size:13.5px;color:var(--body);line-height:1.55}
+.mchg .rw div:first-child{flex:0 0 40%;font-weight:700;color:var(--ink)}
+.mchg .rw .dn{color:var(--red);font-weight:800}
+.mchg .rw .up{color:var(--mint);font-weight:800}
+.mchg .src{padding:10px 14px;font-size:11.5px;color:var(--mut);background:var(--sky2);line-height:1.6}
+
+.nowbox{margin-top:30px;background:linear-gradient(165deg,#0A1930,#1B2F5C);border-radius:18px;padding:30px 26px;color:#fff}
+.nowbox h3{font-size:20px;font-weight:800;line-height:1.45;color:#fff;margin-bottom:14px;letter-spacing:-.03em}
+.nowbox p{font-size:14.5px;color:#B9C4D8;line-height:1.75;margin-bottom:10px}
+.nowbox p:last-child{margin-bottom:0}
+.nowbox b{color:#fff}
+.nowbox .hi{color:#FF9D93;font-weight:800}
+@media(max-width:600px){
+  .tl .row{flex-direction:column;gap:3px}
+  .tl .when{flex:none}
+  .mchg .hd div:first-child,.mchg .rw div:first-child{flex:0 0 38%}
+  .mchg .rw div,.mchg .hd div{font-size:12px;padding:9px 10px}
+}
+
 </style>
 </head>
 <body>
@@ -165,15 +202,33 @@ h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.38}
 
 <!-- 시대 전환 -->
 <section class="sec stats"><div class="wrap">
-  <span class="eyebrow">WHY</span>
-  <h2 class="h2">문제는 대표님이 아니라, '방식'이 낡은 겁니다</h2>
-  <p class="lead">고객이 묻는 곳이 바뀌었습니다. 이제 사람들은 검색창 대신 AI에게 묻습니다.</p>
-  <div class="stat-grid">
-    <div class="stat"><b>-25%</b><span>전통 검색량<br>감소 전망</span><em>Gartner · 2026</em></div>
-    <div class="stat"><b>8억 명</b><span>ChatGPT<br>주간 사용자</span><em>OpenAI · 2025</em></div>
-    <div class="stat"><b>최상단</b><span>구글·네이버 검색<br>첫 화면이 AI 답변</span><em>AI 오버뷰·AI 브리핑</em></div>
+  <span class="eyebrow">WHY NOW</span>
+  <h2 class="h2">문제는 대표님이 아니라,<br>&#39;방식&#39;이 낡은 겁니다</h2>
+  <p class="lead">지난 1년 반, 고객이 정보를 찾는 방법이 바뀌었습니다.<br>느낌이 아니라 숫자로 확인한 내용입니다.</p>
+
+  <div class="tl">
+    <div class="row"><div class="when">2025년 3월</div><div class="what">네이버가 검색 결과 맨 위에 AI 요약 답변을 붙이기 시작합니다. <b>AI 브리핑</b> 도입.</div></div>
+    <div class="row"><div class="when">2025년 말</div><div class="what">AI 브리핑 적용 범위가 전체 검색의 <b>20% 이상</b>으로 확대됩니다.</div></div>
+    <div class="row on"><div class="when">2026년</div><div class="what">네이버는 전체 검색의 <b>40%에 AI 요약을 붙이겠다</b>고 밝혔습니다. 월 이용자 3,000만 명.<br>같은 기간 챗GPT를 최근 3개월 안에 써 본 사람은 <b>54.5%</b>, 전년 대비 약 15%p 늘었습니다.</div></div>
   </div>
-  <p class="punch">AI는 답을 <span class="co">'하나'</span>만 말합니다.<br>그 답 안에 우리 회사가 없으면, 고객은 경쟁사로 갑니다.</p>
+
+  <div class="mchg">
+    <div class="hd"><div>네이버에서 사람들이 찾던 말</div><div>2025년 1월</div><div>2026년 8월</div></div>
+    <div class="rw"><div>블로그 마케팅·상위노출</div><div>100</div><div class="dn">9.7 &nbsp;(-90%)</div></div>
+    <div class="rw"><div>홈페이지 제작·리뉴얼</div><div>100</div><div class="dn">12.7 &nbsp;(-87%)</div></div>
+    <div class="rw"><div>SEO·검색엔진최적화</div><div>56.7</div><div class="dn">20.6 &nbsp;(-64%)</div></div>
+    <div class="rw"><div>AI 마케팅·챗GPT 활용</div><div>2.84</div><div class="up">3.33 &nbsp;(+17%)</div></div>
+    <div class="src">네이버 데이터랩 상대지수 · 메세지 자체 측정(2026.8) · 각 그룹 최대값 100 기준<br>전통 마케팅 키워드는 업종을 가리지 않고 줄었고, <b>AI 관련 키워드만 늘었습니다.</b></div>
+  </div>
+
+  <p class="punch">검색은 목록을 보여줬지만,<br>AI는 답을 <span class="co">&#39;하나&#39;</span>만 말합니다.</p>
+
+  <div class="nowbox">
+    <h3>그런데 왜 &#39;지금&#39;이어야 할까요?</h3>
+    <p>AI가 인용하는 출처는 <b>매달 40~60%가 교체</b>된다는 분석이 있습니다. 뒤집어 말하면 <span class="hi">아직 고정석이 정해지지 않았다</span>는 뜻입니다.</p>
+    <p>지금은 대부분의 회사가 이 준비를 하지 않고 있습니다. 그래서 <b>먼저 정리한 회사가 그 분야의 답</b>이 됩니다. 특히 검색량이 적은 제조·부품·수출 업종일수록 경쟁이 비어 있습니다.</p>
+    <p>다만 이건 광고처럼 켜면 바로 되는 방식이 아닙니다. 쌓이는 데 시간이 걸려 <b>보통 3개월 차부터</b> 변화가 관측됩니다. 시작이 늦어질수록 그만큼 뒤로 밀립니다.</p>
+  </div>
 </div></section>
 
 <!-- 기준 4가지 -->
