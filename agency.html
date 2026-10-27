@@ -228,11 +228,93 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 .hero .lead { animation-delay: 0.4s; }
 .hero-btns { animation-delay: 0.6s; }
 
+/* ============ PROCESS ============ */
+.process-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.process-tab {
+  padding: 12px 24px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--sans);
+}
+.process-tab:hover {
+  border-color: var(--cobalt);
+}
+.process-tab.active {
+  border-color: var(--cobalt);
+  background: var(--sky);
+  color: var(--cobalt);
+}
+.process-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+  position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.process-step {
+  position: relative;
+  padding: 32px;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  text-align: center;
+  transition: .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.process-step.active {
+  border-color: var(--cobalt);
+  background: var(--sky);
+  box-shadow: 0 8px 24px rgba(43, 92, 255, 0.15);
+}
+.process-step:hover {
+  transform: translateY(-6px);
+}
+.process-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #3B6BFF, #2B5CFF);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 auto 16px;
+}
+.process-step h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.process-step p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.6;
+}
+
 /* ============ UTILITY ============ */
 .hide-mobile{display:block}
 @media(max-width:768px){
   .hide-mobile{display:none}
   .sec{padding:60px 0}
+  .process-flow {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -462,26 +544,51 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <h2>간단한 파트너십 프로세스</h2>
 <p class="lead">신청부터 판매까지, 얼마나 간단한지 확인하세요.</p>
 </div>
-<div style="max-width:900px;margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px">
-<div class="rv-left d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
-<div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">01</div>
-<h4 style="font-size:16px;margin-bottom:8px">파트너 신청</h4>
-<p style="font-size:14px;color:var(--body);line-height:1.6">전화 한 통으로 시작합니다. 기본 정보만 확인하면 됩니다.</p>
+<div class="process-tabs">
+<button class="process-tab active" onclick="switchTab(0)">파트너가 하는 일</button>
+<button class="process-tab" onclick="switchTab(1)">messeze가 하는 일</button>
 </div>
-<div class="rv-scale d2" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
-<div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">02</div>
-<h4 style="font-size:16px;margin-bottom:8px">상품 교육</h4>
-<p style="font-size:14px;color:var(--body);line-height:1.6">messeze 서비스, 차별점, 판매 전략을 배웁니다.</p>
+<div class="process-flow">
+<div class="process-step rv-left d1 active" data-tab="0">
+<div class="process-num">01</div>
+<h4>파트너 신청</h4>
+<p>전화 한 통으로 시작합니다. 기본 정보만 확인하면 됩니다.</p>
 </div>
-<div class="rv-right d3" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
-<div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">03</div>
-<h4 style="font-size:16px;margin-bottom:8px">고객 발굴</h4>
-<p style="font-size:14px;color:var(--body);line-height:1.6">보유 고객에게 제안하세요. 제안서와 자료는 모두 제공됩니다.</p>
+<div class="process-step rv-scale d2 active" data-tab="0">
+<div class="process-num">02</div>
+<h4>상품 교육 참여</h4>
+<p>messeze 서비스, 차별점, 판매 전략을 배웁니다.</p>
 </div>
-<div class="rv-rotate d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
-<div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">04</div>
-<h4 style="font-size:16px;margin-bottom:8px">수수료 정산</h4>
-<p style="font-size:14px;color:var(--body);line-height:1.6">계약 완료 후 수수료를 받고, 매월 정산합니다.</p>
+<div class="process-step rv-right d3 active" data-tab="0">
+<div class="process-num">03</div>
+<h4>고객 발굴 & 제안</h4>
+<p>보유 고객에게 제안하세요. 제안서와 자료는 모두 제공됩니다.</p>
+</div>
+<div class="process-step rv-rotate d1 active" data-tab="0">
+<div class="process-num">04</div>
+<h4>계약 & 정산</h4>
+<p>계약 완료 후 수수료를 받고, 매월 정산합니다.</p>
+</div>
+
+<div class="process-step rv-left d1" data-tab="1" style="display:none">
+<div class="process-num">01</div>
+<h4>파트너 검증</h4>
+<p>신청 정보 확인 및 파트너 자격 검토를 진행합니다.</p>
+</div>
+<div class="process-step rv-scale d2" data-tab="1" style="display:none">
+<div class="process-num">02</div>
+<h4>교육 & 지원 준비</h4>
+<p>상품 교육, 영업 자료, 진단 도구를 모두 준비합니다.</p>
+</div>
+<div class="process-step rv-right d3" data-tab="1" style="display:none">
+<div class="process-num">03</div>
+<h4>고객 상담 & 계약</h4>
+<p>파트너 소개 고객과 직접 상담하여 계약을 진행합니다.</p>
+</div>
+<div class="process-step rv-rotate d1" data-tab="1" style="display:none">
+<div class="process-num">04</div>
+<h4>고객 관리 & 정산</h4>
+<p>고객 서비스 전담 관리 및 수수료 매월 정산을 실행합니다.</p>
 </div>
 </div>
 </div>
@@ -573,6 +680,33 @@ const burger = document.querySelector('.nav-burger');
 if(burger){
   burger.addEventListener('click', (e)=>{
     burger.classList.toggle('on');
+  });
+}
+
+// Process tab switching
+function switchTab(tabIndex) {
+  const tabs = document.querySelectorAll('.process-tab');
+  const steps = document.querySelectorAll('.process-step');
+
+  // Update tab active state
+  tabs.forEach((tab, idx) => {
+    if (idx === tabIndex) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  // Update step visibility
+  steps.forEach(step => {
+    const stepTab = parseInt(step.getAttribute('data-tab'));
+    if (stepTab === tabIndex) {
+      step.style.display = 'block';
+      step.classList.add('active');
+    } else {
+      step.style.display = 'none';
+      step.classList.remove('active');
+    }
   });
 }
 </script>
