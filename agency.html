@@ -69,8 +69,8 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 .brand .blogo{width:22px;height:22px}
 .brand .bword{font-family:'Poppins',var(--sans);font-weight:600;font-size:19px;letter-spacing:-.025em}
 .nav-menu{display:flex;gap:4px;font-size:14px;font-weight:600;color:var(--body)}
-.nav-menu a{padding:8px 12px;border-radius:9px;transition:.15s;white-space:nowrap}
-.nav-menu a:hover{background:var(--sky-2);color:var(--ink)}
+.nav-menu a{padding:8px 12px;border-radius:9px;transition:.2s;white-space:nowrap}
+.nav-menu a:hover{background:var(--sky-2);color:var(--cobalt);font-weight:700}
 .nav-r{margin-left:auto;display:flex;align-items:center;gap:10px}
 .nav-r .lk{font-size:14px;font-weight:600;color:var(--body);padding:8px 11px}
 .nav-r .lk:hover{color:var(--ink)}
@@ -100,16 +100,16 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 /* ============ BUTTONS ============ */
 .btn{font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:14px 24px;border:1.5px solid transparent;transition:.18s;letter-spacing:-.01em}
 .btn-co{background:linear-gradient(135deg,#3B6BFF,#2B5CFF);color:#fff;box-shadow:0 3px 8px rgba(43,92,255,.22),0 12px 26px -6px rgba(43,92,255,.40)}
-.btn-co:hover{background:linear-gradient(135deg,#3564FF,#1E46D9);transform:translateY(-2px);box-shadow:0 5px 12px rgba(43,92,255,.26),0 18px 34px -8px rgba(43,92,255,.46)}
+.btn-co:hover{background:linear-gradient(135deg,#3564FF,#1E46D9);transform:translateY(-4px);box-shadow:0 8px 16px rgba(43,92,255,.32),0 24px 48px -8px rgba(43,92,255,.50)}
 .btn-white{background:#fff;color:var(--ink)}
 .btn-white:hover{background:rgba(255,255,255,.9)}
 .btn-navy{background:var(--ink);color:#fff}
 .btn-navy:hover{background:#000}
 
 /* ============ COMMISSION SECTION ============ */
-.commission{background:var(--sky-2);padding:80px 0}
+.commission{background:#fff;padding:80px 0;border-top:1px solid var(--line-2)}
 .comm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:48px}
-.comm-card{background:#fff;padding:40px;border-radius:16px;box-shadow:var(--sh);text-align:center}
+.comm-card{background:#fff;padding:40px;border-radius:16px;box-shadow:var(--sh);text-align:center;transition:.3s cubic-bezier(0.34,1.56,0.64,1)}.comm-card:hover{transform:translateY(-8px);box-shadow:var(--sh-lg)}
 .comm-card h3{margin-bottom:12px;color:var(--cobalt)}
 .comm-card .num{display:block;font-size:clamp(36px,4vw,54px);font-weight:800;background:linear-gradient(135deg,#3B6BFF,#2B5CFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
 .comm-card .desc{display:block;font-size:14px;color:var(--mut);margin-top:12px;font-weight:600}
@@ -119,10 +119,10 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 }
 
 /* ============ TARGET SECTION ============ */
-.targets{padding:80px 0}
+.targets{background:var(--sky-2);padding:80px 0}
 .target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.target-card{padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s}
-.target-card:hover{border-color:var(--cobalt);box-shadow:0 4px 16px rgba(43,92,255,.12)}
+.target-card{padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.3s cubic-bezier(0.34,1.56,0.64,1)}
+.target-card:hover{border-color:var(--cobalt);box-shadow:0 8px 32px rgba(43,92,255,.18);transform:translateY(-6px)}
 .target-card h4{font-size:18px;margin-bottom:12px}
 .target-card p{font-size:14px;color:var(--body);line-height:1.6}
 @media(max-width:768px){
@@ -162,6 +162,28 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
   }
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -169,15 +191,15 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 
 .rv {
   opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
+  animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .rv.d1 { animation-delay: 0.1s; }
-.rv.d2 { animation-delay: 0.2s; }
-.rv.d3 { animation-delay: 0.3s; }
+.rv.d2 { animation-delay: 0.25s; }
+.rv.d3 { animation-delay: 0.4s; }
 
 .hero-in > * {
-  animation: fadeInUp 0.8s ease forwards;
+  animation: slideInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 .hero h1 { animation-delay: 0.2s; }
 .hero .lead { animation-delay: 0.4s; }
@@ -330,7 +352,7 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 </div>
 
 <!-- BENEFITS -->
-<div class="sec" style="background:var(--sky-2)">
+<div class="sec" style="background:#fff;border-top:1px solid var(--line-2)">
 <div class="wrap">
 <div class="shead center">
 <span class="eyebrow">파트너 혜택</span>
@@ -367,7 +389,7 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 </div>
 
 <!-- MATERIALS -->
-<div class="sec">
+<div class="sec" style="background:var(--sky-2)">
 <div class="wrap">
 <div class="shead center">
 <span class="eyebrow">준비된 것들</span>
@@ -443,7 +465,7 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 </div>
 
 <!-- FAQ -->
-<div class="sec" style="background:var(--sky-2)">
+<div class="sec" style="background:#fff;border-top:1px solid var(--line-2)">
 <div class="wrap">
 <div class="shead center">
 <span class="eyebrow">자주 묻는 질문</span>
