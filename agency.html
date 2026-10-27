@@ -229,82 +229,122 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 .hero-btns { animation-delay: 0.6s; }
 
 /* ============ PROCESS ============ */
-.process-tabs {
+.process-tabs-container {
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 40px;
 }
-.process-tab {
-  padding: 12px 24px;
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  background: #fff;
-  color: var(--body);
+.process-tab-item {
+  flex: 1;
+}
+.process-tab-item input {
+  display: none;
+}
+.process-tab-label {
+  display: block;
+  padding: 16px 24px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
+  color: var(--body);
   cursor: pointer;
-  transition: .3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  font-family: var(--sans);
-}
-.process-tab:hover {
-  border-color: var(--cobalt);
-}
-.process-tab.active {
-  border-color: var(--cobalt);
-  background: var(--sky);
-  color: var(--cobalt);
-}
-.process-flow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 28px;
-  margin-top: 48px;
-  position: relative;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.process-step {
-  position: relative;
-  padding: 32px;
-  background: #fff;
-  border: 2px solid var(--line);
-  border-radius: 14px;
+  border-bottom: 3px solid transparent;
   text-align: center;
+  transition: .3s;
+  position: relative;
+  bottom: -2px;
+}
+.process-tab-label.active {
+  color: var(--cobalt);
+  border-bottom-color: var(--cobalt);
+}
+
+.process-progress-bar {
+  height: 4px;
+  background: var(--line);
+  border-radius: 2px;
+  margin-bottom: 48px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  transition: .6s ease;
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timeline-step {
+  display: grid;
+  grid-template-columns: 100px 1fr 40px;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 28px;
+  background: var(--sky-2);
+  border-radius: 14px;
+  position: relative;
   transition: .3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.process-step.active {
-  border-color: var(--cobalt);
-  background: var(--sky);
-  box-shadow: 0 8px 24px rgba(43, 92, 255, 0.15);
+.timeline-step:hover {
+  box-shadow: 0 8px 28px rgba(43, 92, 255, 0.12);
+  transform: translateY(-4px);
 }
-.process-step:hover {
-  transform: translateY(-6px);
-}
-.process-num {
-  display: inline-flex;
+
+.step-badge {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #3B6BFF, #2B5CFF);
+  padding: 12px;
+  background: var(--cobalt);
   color: #fff;
-  border-radius: 50%;
-  font-size: 24px;
   font-weight: 800;
-  margin: 0 auto 16px;
+  font-size: 13px;
+  border-radius: 10px;
+  white-space: nowrap;
+  height: fit-content;
 }
-.process-step h4 {
-  font-size: 16px;
-  margin-bottom: 12px;
+
+.step-content h4 {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
   color: var(--ink);
 }
-.process-step p {
+.step-content p {
   font-size: 14px;
   color: var(--body);
-  line-height: 1.6;
+  line-height: 1.5;
+}
+
+.step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--cobalt);
+  font-weight: 300;
+  opacity: 0.3;
+}
+
+.timeline-step:last-child .step-arrow {
+  display: none;
+}
+
+@media(max-width:768px){
+  .timeline-step {
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+  }
+  .step-arrow {
+    display: none;
+  }
+  .process-tab-label {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
 }
 
 /* ============ UTILITY ============ */
@@ -544,53 +584,101 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <h2>간단한 파트너십 프로세스</h2>
 <p class="lead">신청부터 판매까지, 얼마나 간단한지 확인하세요.</p>
 </div>
-<div class="process-tabs">
-<button class="process-tab active" onclick="switchTab(0)">파트너가 하는 일</button>
-<button class="process-tab" onclick="switchTab(1)">messeze가 하는 일</button>
-</div>
-<div class="process-flow">
-<div class="process-step rv-left d1 active" data-tab="0">
-<div class="process-num">01</div>
-<h4>파트너 신청</h4>
-<p>전화 한 통으로 시작합니다. 기본 정보만 확인하면 됩니다.</p>
-</div>
-<div class="process-step rv-scale d2 active" data-tab="0">
-<div class="process-num">02</div>
-<h4>상품 교육 참여</h4>
-<p>messeze 서비스, 차별점, 판매 전략을 배웁니다.</p>
-</div>
-<div class="process-step rv-right d3 active" data-tab="0">
-<div class="process-num">03</div>
-<h4>고객 발굴 & 제안</h4>
-<p>보유 고객에게 제안하세요. 제안서와 자료는 모두 제공됩니다.</p>
-</div>
-<div class="process-step rv-rotate d1 active" data-tab="0">
-<div class="process-num">04</div>
-<h4>계약 & 정산</h4>
-<p>계약 완료 후 수수료를 받고, 매월 정산합니다.</p>
-</div>
 
-<div class="process-step rv-left d1" data-tab="1" style="display:none">
-<div class="process-num">01</div>
-<h4>파트너 검증</h4>
-<p>신청 정보 확인 및 파트너 자격 검토를 진행합니다.</p>
-</div>
-<div class="process-step rv-scale d2" data-tab="1" style="display:none">
-<div class="process-num">02</div>
-<h4>교육 & 지원 준비</h4>
-<p>상품 교육, 영업 자료, 진단 도구를 모두 준비합니다.</p>
-</div>
-<div class="process-step rv-right d3" data-tab="1" style="display:none">
-<div class="process-num">03</div>
-<h4>고객 상담 & 계약</h4>
-<p>파트너 소개 고객과 직접 상담하여 계약을 진행합니다.</p>
-</div>
-<div class="process-step rv-rotate d1" data-tab="1" style="display:none">
-<div class="process-num">04</div>
-<h4>고객 관리 & 정산</h4>
-<p>고객 서비스 전담 관리 및 수수료 매월 정산을 실행합니다.</p>
-</div>
-</div>
+<div style="max-width:1100px;margin:48px auto 0">
+  <div class="process-tabs-container">
+    <div class="process-tab-item" onclick="switchTab(0)">
+      <input type="radio" name="process-tab" id="tab-partner" checked>
+      <label for="tab-partner" class="process-tab-label active">파트너가 하는 일</label>
+    </div>
+    <div class="process-tab-item" onclick="switchTab(1)">
+      <input type="radio" name="process-tab" id="tab-messeze">
+      <label for="tab-messeze" class="process-tab-label">messeze가 하는 일</label>
+    </div>
+  </div>
+
+  <div class="process-progress-bar" id="progress-0" style="display:block">
+    <div class="progress-fill" style="width:100%; background:var(--cobalt)"></div>
+  </div>
+  <div class="process-progress-bar" id="progress-1" style="display:none">
+    <div class="progress-fill" style="width:100%; background:#0BBF8C"></div>
+  </div>
+
+  <div class="process-timeline" id="timeline-0" style="display:block">
+    <div class="timeline-step rv-left d1">
+      <div class="step-badge">STEP 1</div>
+      <div class="step-content">
+        <h4>파트너 신청</h4>
+        <p>전화 한 통으로 시작합니다.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">기본 정보만 확인하면 됩니다</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-scale d2">
+      <div class="step-badge">STEP 2</div>
+      <div class="step-content">
+        <h4>상품 교육 참여</h4>
+        <p>messeze 서비스와 차별점을 배웁니다.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">판매 전략까지 충분히 학습</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-right d3">
+      <div class="step-badge">STEP 3</div>
+      <div class="step-content">
+        <h4>고객 발굴 & 제안</h4>
+        <p>보유 고객에게 제안하세요.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">제안서와 자료는 모두 제공</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-rotate d1">
+      <div class="step-badge">STEP 4</div>
+      <div class="step-content">
+        <h4>계약 & 수수료 정산</h4>
+        <p>계약 완료 후 수수료를 받습니다.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">매월 자동 정산</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-timeline" id="timeline-1" style="display:none">
+    <div class="timeline-step rv-left d1">
+      <div class="step-badge" style="background:#0BBF8C">STEP 1</div>
+      <div class="step-content">
+        <h4>파트너 검증</h4>
+        <p>신청 정보 확인 및 자격 검토.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">신뢰할 수 있는 파트너 확보</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-scale d2">
+      <div class="step-badge" style="background:#0BBF8C">STEP 2</div>
+      <div class="step-content">
+        <h4>교육 & 지원 준비</h4>
+        <p>상품 교육 및 영업 자료 준비.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">판매하기 쉽도록 모든 준비</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-right d3">
+      <div class="step-badge" style="background:#0BBF8C">STEP 3</div>
+      <div class="step-content">
+        <h4>고객 상담 & 계약</h4>
+        <p>파트너 소개 고객과 직접 상담.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">계약 진행 및 서비스 시작</p>
+      </div>
+      <div class="step-arrow">›</div>
+    </div>
+    <div class="timeline-step rv-rotate d1">
+      <div class="step-badge" style="background:#0BBF8C">STEP 4</div>
+      <div class="step-content">
+        <h4>고객 관리 & 정산</h4>
+        <p>고객 서비스 전담 관리 진행.</p>
+        <p style="font-size:13px;color:var(--mut);margin-top:8px">수수료 매월 정산</p>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -685,27 +773,19 @@ if(burger){
 
 // Process tab switching
 function switchTab(tabIndex) {
-  const tabs = document.querySelectorAll('.process-tab');
-  const steps = document.querySelectorAll('.process-step');
+  const labels = document.querySelectorAll('.process-tab-label');
+  const timelines = document.querySelectorAll('.process-timeline');
+  const progresses = document.querySelectorAll('.process-progress-bar');
 
-  // Update tab active state
-  tabs.forEach((tab, idx) => {
+  labels.forEach((label, idx) => {
     if (idx === tabIndex) {
-      tab.classList.add('active');
+      label.classList.add('active');
+      timelines[idx].style.display = 'block';
+      progresses[idx].style.display = 'block';
     } else {
-      tab.classList.remove('active');
-    }
-  });
-
-  // Update step visibility
-  steps.forEach(step => {
-    const stepTab = parseInt(step.getAttribute('data-tab'));
-    if (stepTab === tabIndex) {
-      step.style.display = 'block';
-      step.classList.add('active');
-    } else {
-      step.style.display = 'none';
-      step.classList.remove('active');
+      label.classList.remove('active');
+      timelines[idx].style.display = 'none';
+      progresses[idx].style.display = 'none';
     }
   });
 }
