@@ -46,8 +46,9 @@ h3{font-size:clamp(20px,2.5vw,26px)}
 
 /* OVERVIEW */
 .overview{background:var(--sky-2);padding:80px 0}
-.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
-.overview-card{background:#fff;padding:40px;border-radius:16px;text-align:center;box-shadow:0 2px 8px rgba(16,31,63,.08)}
+.overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:48px;max-width:900px;margin-left:auto;margin-right:auto}
+.overview-card{background:#fff;padding:40px;border-radius:16px;text-align:center;box-shadow:0 2px 8px rgba(16,31,63,.08);transition:.3s;cursor:pointer;position:relative}
+.overview-card:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(43,92,255,.15)}
 .overview-card h3{font-size:18px;margin-bottom:12px;color:var(--cobalt)}
 .overview-num{font-size:48px;font-weight:800;background:linear-gradient(135deg,#3B6BFF,#2B5CFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
 .overview-desc{font-size:14px;color:var(--body);line-height:1.6}
@@ -111,6 +112,7 @@ h3{font-size:clamp(20px,2.5vw,26px)}
 
 /* ANIMATIONS */
 @keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%{transform:translateY(0)},50%{transform:translateY(-10px)},100%{transform:translateY(0)}}
 .rv{animation:slideInUp .8s cubic-bezier(.34,1.56,.64,1) forwards;opacity:0}
 .rv.d1{animation-delay:.1s}
 .rv.d2{animation-delay:.25s}
@@ -153,13 +155,15 @@ h3{font-size:clamp(20px,2.5vw,26px)}
 <div class="overview-num">30%</div>
 <h3>첫 계약</h3>
 <p class="overview-desc">신규 고객 확보 시<br>수수료</p>
+<div style="font-size:60px;margin-top:20px;animation:bounce 2s infinite">💰</div>
 </div>
 <div class="overview-card rv d2">
 <div class="overview-num">20%</div>
 <h3>재계약</h3>
 <p class="overview-desc">기존 고객 재계약 시<br>지속적인 수익</p>
+<div style="font-size:60px;margin-top:20px;animation:bounce 2s infinite 0.2s">💸</div>
 </div>
-<div class="overview-card rv d3">
+<div class="overview-card rv d3" style="grid-column:1/-1;max-width:500px;margin:0 auto">
 <div class="overview-num">∞</div>
 <h3>판매 기회</h3>
 <p class="overview-desc">B2B, B2C, 모든 업종<br>판매 가능</p>
