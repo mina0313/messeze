@@ -152,41 +152,43 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes rotateIn {
+  from { opacity: 0; transform: rotate(-5deg) scale(0.95); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
 }
 
 .rv {
@@ -197,6 +199,27 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 .rv.d1 { animation-delay: 0.1s; }
 .rv.d2 { animation-delay: 0.25s; }
 .rv.d3 { animation-delay: 0.4s; }
+
+/* 다양한 진입 효과 */
+.rv-left {
+  opacity: 0;
+  animation: slideInLeft 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.rv-right {
+  opacity: 0;
+  animation: slideInRight 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.rv-scale {
+  opacity: 0;
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.rv-rotate {
+  opacity: 0;
+  animation: rotateIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
 
 .hero-in > * {
   animation: slideInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -256,13 +279,13 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead">명확하고 경쟁력 있는 수수료로 함께 성장합니다.</p>
 </div>
 <div class="comm-grid">
-<div class="comm-card">
+<div class="comm-card rv-left d1">
 <h3>첫 계약</h3>
 <span class="num">30%</span>
 <span class="desc">신규 고객 계약 수수료</span>
 <span class="note">초기 파트너십을 충분히 보상합니다</span>
 </div>
-<div class="comm-card">
+<div class="comm-card rv-right d2">
 <h3>재계약</h3>
 <span class="num">20%</span>
 <span class="desc">기존 고객 재계약 수수료</span>
@@ -281,15 +304,15 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead">B2B, B2C, 서비스업, 제조업, 의료 등 어느 업종이든 AI 검색에 노출될 필요가 있습니다.</p>
 </div>
 <div class="target-grid">
-<div class="target-card">
+<div class="target-card rv-left d1">
 <h4>B2B 기업</h4>
 <p>기술, 제조, 부품, 솔루션 기업 등 의사결정자가 AI 검색을 통해 정보를 찾습니다.</p>
 </div>
-<div class="target-card">
+<div class="target-card rv-scale d2">
 <h4>B2C 서비스업</h4>
 <p>의류, 식품, 유통, 교육, 부동산 등 소비자가 검색할 때 기업 정보가 노출되도록.</p>
 </div>
-<div class="target-card">
+<div class="target-card rv-right d3">
 <h4>병원 & 의료기관</h4>
 <p>환자들이 AI 건강 검색 시 의료기관 정보가 자동으로 추천되도록 관리합니다.</p>
 </div>
@@ -302,15 +325,15 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <div class="wrap">
 <h2>파트너를 위한 지원</h2>
 <div class="sup-grid">
-<div class="sup-item">
+<div class="sup-item rv-left d1">
 <h4>영업 자료</h4>
 <p>제안서, 실사례, 성과 리포트 등 고객 설득에 필요한 모든 자료를 제공합니다.</p>
 </div>
-<div class="sup-item">
+<div class="sup-item rv d2">
 <h4>상품 교육</h4>
 <p>서비스 설명, 차별점, 경쟁사 비교 등 충분한 교육으로 자신감 있게 판매하세요.</p>
 </div>
-<div class="sup-item">
+<div class="sup-item rv-right d3">
 <h4>고객 지원</h4>
 <p>판매 이후 고객 서비스는 messeze가 담당하므로 관계 관리에만 집중할 수 있습니다.</p>
 </div>
@@ -326,22 +349,22 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead" style="color:rgba(255,255,255,.82)">messeze는 투명하고 공정한 파트너십을 믿습니다. 아래 원칙을 모든 계약서에 명시합니다.</p>
 </div>
 <div style="max-width:1000px;margin:48px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:28px">
-<div class="rv d1" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
+<div class="rv-left d1" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
 <div style="font-size:14px;font-weight:700;color:#5FDD9D;margin-bottom:12px">✅ 원칙</div>
 <h4 style="font-size:16px;margin-bottom:8px">정가 고수</h4>
 <p style="font-size:14px;color:rgba(255,255,255,.76);line-height:1.6">고객사는 정해진 요금을 받습니다. 파트너가 할인을 약속하거나 수수료를 깎을 수 없습니다.</p>
 </div>
-<div class="rv d2" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
+<div class="rv-right d2" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
 <div style="font-size:14px;font-weight:700;color:#5FDD9D;margin-bottom:12px">✅ 원칙</div>
 <h4 style="font-size:16px;margin-bottom:8px">조건 없는 서비스</h4>
 <p style="font-size:14px;color:rgba(255,255,255,.76);line-height:1.6">서비스는 순수 정보 제공입니다. 추가 구매나 다른 조건과 연계하지 않습니다.</p>
 </div>
-<div class="rv d3" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
+<div class="rv-left d3" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
 <div style="font-size:14px;font-weight:700;color:#5FDD9D;margin-bottom:12px">✅ 원칙</div>
 <h4 style="font-size:16px;margin-bottom:8px">투명한 정산</h4>
 <p style="font-size:14px;color:rgba(255,255,255,.76);line-height:1.6">수수료는 매월 명확하게 계산되어 파트너 계좌로 직접 입금됩니다.</p>
 </div>
-<div class="rv d1" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
+<div class="rv-right d1" style="padding:28px;background:rgba(255,255,255,.08);border-radius:12px;border:1px solid rgba(255,255,255,.1)">
 <div style="font-size:14px;font-weight:700;color:#5FDD9D;margin-bottom:12px">✅ 원칙</div>
 <h4 style="font-size:16px;margin-bottom:8px">공정한 우선권</h4>
 <p style="font-size:14px;color:rgba(255,255,255,.76);line-height:1.6">먼저 소개한 고객은 90일간 해당 파트너의 담당입니다. messeze 직접 영업과 동등합니다.</p>
@@ -360,27 +383,27 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead">messeze와 함께하면 단순한 수수료 이상의 가치를 만들 수 있습니다.</p>
 </div>
 <div class="target-grid">
-<div class="target-card rv d1">
+<div class="target-card rv-left d1">
 <h4>🎯 지속적인 수익</h4>
 <p>신규 고객은 30%, 재계약은 20%로 안정적인 수익 구조. 고객이 오래 남을수록 수익이 커집니다.</p>
 </div>
-<div class="target-card rv d2">
+<div class="target-card rv-rotate d2">
 <h4>📚 완벽한 지원</h4>
 <p>제안서, 교육, 마케팅 자료 모두 제공. 판매하기 쉽도록 모든 준비물을 갖춰줍니다.</p>
 </div>
-<div class="target-card rv d3">
+<div class="target-card rv-right d3">
 <h4>🤝 긴 파트너십</h4>
 <p>고객 관리는 messeze가 담당. 대행사는 판매에만 집중하고 관계 관리는 걱정 없습니다.</p>
 </div>
-<div class="target-card rv d1">
+<div class="target-card rv-scale d1">
 <h4>📈 함께 성장</h4>
 <p>고객 성공이 곧 대행사 성공. messeze는 고객 만족도를 최우선으로 관리합니다.</p>
 </div>
-<div class="target-card rv d2">
+<div class="target-card rv-left d2">
 <h4>🌐 B2B, B2C 모두</h4>
 <p>제조사부터 병원까지. 어느 업종이든 기업 PR 수요가 있어 판매 기회가 무한합니다.</p>
 </div>
-<div class="target-card rv d3">
+<div class="target-card rv-right d3">
 <h4>✅ 신청 자격 없음</h4>
 <p>에이전시, 컨설팅, 마케팅사 등 어떤 형태의 업체든 환영합니다. 믿을 수 있으면 됩니다.</p>
 </div>
@@ -397,32 +420,32 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead">파트너는 원하기만 하면 됩니다. 고객사를 설득할 자료는 모두 제공합니다.</p>
 </div>
 <div style="max-width:1100px;margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px">
-<div class="rv d1" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-left d1" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">📋</div>
 <h4 style="font-size:16px;margin-bottom:12px">맞춤 진단 설문표</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">고객사의 현재 상황을 진단하는 설문. 답변을 통해 맞춤 제안이 가능해집니다.</p>
 </div>
-<div class="rv d2" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-rotate d2" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">📊</div>
 <h4 style="font-size:16px;margin-bottom:12px">AI 노출 진단</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">고객사가 ChatGPT·Perplexity 등 AI에게 얼마나 노출되는지 실측 데이터. 가시성 점수와 차트로 한눈에.</p>
 </div>
-<div class="rv d3" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-right d3" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">📈</div>
 <h4 style="font-size:16px;margin-bottom:12px">경쟁사 비교분석</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">경쟁사가 AI에는 어떻게 노출되는지 비교. 비교표로 우위점을 명확히 합니다.</p>
 </div>
-<div class="rv d1" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-left d1" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">💼</div>
 <h4 style="font-size:16px;margin-bottom:12px">맞춤 제안서</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">진단 결과를 바탕으로 한 맞춤 제안서. 고객사 상황에 맞는 서비스 플랜을 추천합니다.</p>
 </div>
-<div class="rv d2" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-scale d2" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">📞</div>
 <h4 style="font-size:16px;margin-bottom:12px">전문 상담팀</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">messeze 전담팀이 직접 고객사와 상담. 파트너는 소개만 하면 나머지는 모두 진행합니다.</p>
 </div>
-<div class="rv d3" style="padding:32px;background:var(--sky-2);border-radius:16px">
+<div class="rv-right d3" style="padding:32px;background:var(--sky-2);border-radius:16px">
 <div style="font-size:28px;margin-bottom:16px">📚</div>
 <h4 style="font-size:16px;margin-bottom:12px">마케팅 자료</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">파트너가 쉽게 사용할 수 있는 카카오톡 배너, 이메일 템플릿, 소개문구 등 모두 준비됩니다.</p>
@@ -440,22 +463,22 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <p class="lead">신청부터 판매까지, 얼마나 간단한지 확인하세요.</p>
 </div>
 <div style="max-width:900px;margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px">
-<div class="rv d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
+<div class="rv-left d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
 <div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">01</div>
 <h4 style="font-size:16px;margin-bottom:8px">파트너 신청</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">전화 한 통으로 시작합니다. 기본 정보만 확인하면 됩니다.</p>
 </div>
-<div class="rv d2" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
+<div class="rv-scale d2" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
 <div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">02</div>
 <h4 style="font-size:16px;margin-bottom:8px">상품 교육</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">messeze 서비스, 차별점, 판매 전략을 배웁니다.</p>
 </div>
-<div class="rv d3" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
+<div class="rv-right d3" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
 <div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">03</div>
 <h4 style="font-size:16px;margin-bottom:8px">고객 발굴</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">보유 고객에게 제안하세요. 제안서와 자료는 모두 제공됩니다.</p>
 </div>
-<div class="rv d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
+<div class="rv-rotate d1" style="padding:32px;border:2px solid var(--line);border-radius:14px;text-align:center;transition:.22s">
 <div style="font-size:36px;font-weight:800;color:var(--cobalt);margin-bottom:12px">04</div>
 <h4 style="font-size:16px;margin-bottom:8px">수수료 정산</h4>
 <p style="font-size:14px;color:var(--body);line-height:1.6">계약 완료 후 수수료를 받고, 매월 정산합니다.</p>
@@ -472,23 +495,23 @@ h3{font-size:clamp(20px,2.5vw,26px);margin-bottom:16px}
 <h2>궁금한 것들</h2>
 </div>
 <div style="max-width:800px;margin:0 auto;margin-top:48px">
-<div class="faq-item rv d1" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
+<div class="faq-item rv-left d1" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
 <h4 style="margin-bottom:8px;color:var(--ink)">Q. 어떤 업체든 대행사가 될 수 있나요?</h4>
 <p style="color:var(--body);font-size:14px">네, 특별한 자격 요건은 없습니다. 믿을 수 있는 업체라면 모두 환영합니다. 디지털 에이전시, PR 회사, 마케팅사, 컨설팅사 등 다양한 형태의 업체가 파트너로 활동 중입니다.</p>
 </div>
-<div class="faq-item rv d2" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
+<div class="faq-item rv-right d2" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
 <h4 style="margin-bottom:8px;color:var(--ink)">Q. 수수료는 언제 받나요?</h4>
 <p style="color:var(--body);font-size:14px">고객 계약이 완료되면 첫 계약 수수료 30%를 받습니다. 재계약 시마다 20%를 정산합니다. 정산은 매월 실행합니다.</p>
 </div>
-<div class="faq-item rv d3" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
+<div class="faq-item rv-left d3" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
 <h4 style="margin-bottom:8px;color:var(--ink)">Q. 고객 관리는 누가 하나요?</h4>
 <p style="color:var(--body);font-size:14px">고객 관리는 messeze가 전담합니다. 대행사는 판매에만 집중하면 됩니다. 고객 문제나 요청은 messeze가 담당하므로 관계 관리 부담이 없습니다.</p>
 </div>
-<div class="faq-item rv d1" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
+<div class="faq-item rv-right d1" style="padding:24px;border-bottom:1px solid var(--line);cursor:pointer">
 <h4 style="margin-bottom:8px;color:var(--ink)">Q. 판매 자료는 제공하나요?</h4>
 <p style="color:var(--body);font-size:14px">네, 필요한 모든 자료를 제공합니다. 제안서, 실사례, 성과 리포트, 경쟁사 비교표 등 고객을 설득할 수 있는 자료가 준비되어 있습니다.</p>
 </div>
-<div class="faq-item rv d2" style="padding:24px;cursor:pointer">
+<div class="faq-item rv-scale d2" style="padding:24px;cursor:pointer">
 <h4 style="margin-bottom:8px;color:var(--ink)">Q. 재계약 때 수수료가 계속 20%인가요?</h4>
 <p style="color:var(--body);font-size:14px">현재는 재계약 수수료 20%를 기본으로 제공합니다. 고객 수나 파트너십 규모에 따라 추후 협의 가능합니다.</p>
 </div>
